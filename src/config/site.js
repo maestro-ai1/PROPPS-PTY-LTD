@@ -82,6 +82,14 @@ export const CHAT = {
   ]
 }
 
+// Real receiving wallets for the 10% crypto-discount payment option.
+// Single source of truth - referenced by the admin payment composer.
+export const CRYPTO_WALLETS = {
+  usdtTrc20: 'TXsafxfWLDFPdU8aNNec7fTZH4jkKfWYDP',
+  bitcoin: 'bc1q26x7nc3r2vjzyzjvv2mzg56sudtwum4xteg3hd',
+  ethereum: '0xaF80aa1ca688A1318e1F39E273cAf5895bE12749',
+}
+
 export const BRAND = {
   foundingYear: '2019',
   foundingLocation: 'Melbourne, Victoria, Australia',

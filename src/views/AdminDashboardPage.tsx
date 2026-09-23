@@ -43,7 +43,7 @@ import {
 } from '../lib/order.js';
 import { buildEmailHtml } from '../lib/emailTemplate.js';
 import { sendMail } from '../lib/mailer.js';
-import { SITE, REPLY } from '../config/site.js';
+import { SITE, REPLY, CRYPTO_WALLETS } from '../config/site.js';
 
 export const AdminDashboardContent: React.FC = () => {
   const { isUnlocked, unlock, lock, error } = useAdminPasscode();
@@ -128,7 +128,7 @@ export const AdminDashboardContent: React.FC = () => {
     if (order.paymentMethod === 'bank-transfer' || order.paymentMethod === 'payid') {
       setPaymentDetailText(`PayID: dispatch@propps.com.au\nBank: Commonwealth Bank of Australia\nBSB: 063-000\nAccount Number: 1092 8493\nAccount Name: PROPPS PTY LTD\nReference: ${order.orderRef}`);
     } else {
-      setPaymentDetailText(`Cryptocurrency Transfer (10% Discount Applied):\nUSDT (TRC20): T9yD14Nj9yDb1992019488392\nBitcoin: bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq\nReference: ${order.orderRef}`);
+      setPaymentDetailText(`Cryptocurrency Transfer (10% Discount Applied):\nUSDT (TRC20): ${CRYPTO_WALLETS.usdtTrc20}\nBitcoin: ${CRYPTO_WALLETS.bitcoin}\nEthereum: ${CRYPTO_WALLETS.ethereum}\nReference: ${order.orderRef}`);
     }
     setActiveTab('send-payment');
     setEmailSuccess(null);
