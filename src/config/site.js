@@ -110,37 +110,37 @@ export const CATEGORIES = [
     slug: 'new-notes',
     name: 'New Notes',
     description: 'Our current-series Australian prop notes across all five denominations, printed double-sided on premium archival paper for film, TV, and photography production.',
-    image: 'new-notes.webp'
+    image: 'new-notes.jpeg'
   },
   {
     slug: 'film-and-tv-props',
     name: 'Film & TV Props',
     description: 'Cinema and television production props engineered for on-camera realism under studio lighting.',
-    image: 'film-tv-props.webp'
+    image: 'film-tv-props.jpg'
   },
   {
     slug: 'money-stacks',
     name: 'Money Stacks',
     description: 'Bulk strapped stacks and bundles for scenes requiring large visible cash volumes.',
-    image: 'money-stacks.webp'
+    image: 'money-stacks.jpeg'
   },
   {
     slug: 'photography-props',
     name: 'Photography Props',
     description: 'Prop currency styled for print, editorial, and commercial photography shoots.',
-    image: 'photography-props.webp'
+    image: 'photography-props.jpeg'
   },
   {
     slug: 'event-and-party-props',
     name: 'Event & Party Props',
     description: 'Novelty prop cash for events, parties, and themed entertainment.',
-    image: 'event-party-props.webp'
+    image: 'event-party-props.jpeg'
   },
   {
     slug: 'custom-and-branded-props',
     name: 'Custom & Branded Props',
     description: 'Bespoke and custom-branded prop currency for agencies, brands, and special productions.',
-    image: 'custom-branded-props.webp'
+    image: 'custom-branded-props.jpeg'
   }
 ]
 

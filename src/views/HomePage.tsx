@@ -17,7 +17,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ } from '../config/site.js';
-import { SmartImage } from '../components/SmartImage.js';
+import { CategoryPhoto } from '../components/CategoryPhoto.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { TrustpilotReviewsSlider } from '../components/TrustpilotReviewsSlider.js';
 import { useApp } from '../context/AppContext.js';
@@ -302,7 +302,7 @@ export const HomeContent: React.FC = () => {
             >
               {/* Product Frame standard 4:3 */}
               <div className="relative overflow-hidden">
-                <SmartImage src={cat.image} alt={cat.name} category={cat.slug} />
+                <CategoryPhoto src={cat.image} alt={cat.name} />
                 <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#00b67a] text-white font-mono-code text-[9.5px] font-bold shadow-md">
                   CINEMA GRADE
                 </div>
