@@ -7,8 +7,13 @@ JSON-LD per page) so AI/search crawlers that don't execute JavaScript can actual
 ## Non-negotiable: Crimes (Currency) Act 1981 Section 22 Compliance
 All currency items on this website are non-legal tender reproduction props manufactured solely for motion pictures, television, theatre, visual arts, and simulation training.
 Never market, describe, or frame products as spendable cash, counterfeit, replica tender, or for financial deception.
-Every product carries mandatory specimen markings. 18+ age verification required.
+Every product carries mandatory specimen markings.
 If a request would require breaking the above, stop and say so rather than complying.
+
+Note: the on-site 18+ age-gate modal was removed at the client's explicit request (2026) - this was
+a site policy choice, not a Crimes (Currency) Act 1981 requirement itself, so removing it does not
+touch the non-negotiable rule above. If asked to re-add an age gate, the component was AgeGateModal.tsx
+(removed from src/components/) and was rendered at the top of src/app/layout.tsx.
 
 ## Architecture
 `src/config/site.js` is the single source of truth. Adding one entry to PRODUCTS / CATEGORIES / POSTS

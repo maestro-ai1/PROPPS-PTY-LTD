@@ -5,7 +5,6 @@ import { AppProvider } from '../context/AppContext.js';
 import { Nav } from '../components/Nav.js';
 import { Footer } from '../components/Footer.js';
 import { AnnouncementBar } from '../components/AnnouncementBar.js';
-import { AgeGateModal } from '../components/AgeGateModal.js';
 import { CartDrawerMount } from '../components/CartDrawerMount.js';
 import { SearchModalMount } from '../components/SearchModalMount.js';
 import './globals.css';
@@ -61,7 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
         <AppProvider>
-          <AgeGateModal />
           <AnnouncementBar />
           <Nav />
           <main id="main" className="flex-1">
