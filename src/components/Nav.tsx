@@ -137,6 +137,18 @@ export const Nav: React.FC = () => {
             >
               FAQ
             </Link>
+
+            {/* 6. CONTACT */}
+            <Link
+              href="/contact"
+              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                pathname === '/contact'
+                  ? 'text-[#D4AF37] border-[#D4AF37]'
+                  : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
+              }`}
+            >
+              CONTACT
+            </Link>
           </nav>
 
           {/* Action Icons: Search, Cart, Admin Reply Portal, Mobile Toggle */}
@@ -266,6 +278,16 @@ export const Nav: React.FC = () => {
             }`}
           >
             FAQ
+          </Link>
+
+          <Link
+            href="/contact"
+            onClick={closeMobile}
+            className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
+              pathname === '/contact' ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
+            }`}
+          >
+            CONTACT
           </Link>
 
           <div className="pt-2 border-t border-[#29171D] space-y-1.5">
