@@ -106,6 +106,13 @@ No authentication required. All resources are publicly accessible.
 | Search API | https://${DOMAIN}/api/search |
 | MCP Server | https://${DOMAIN}/api/mcp |
 
+## OAuth Protected Resource Metadata
+
+This site has no protected resources requiring OAuth. Metadata is published per
+RFC 9728 at [/.well-known/oauth-protected-resource](https://${DOMAIN}/.well-known/oauth-protected-resource)
+and the authorization server metadata (with an \`agent_auth\` block) is at
+[/.well-known/oauth-authorization-server](https://${DOMAIN}/.well-known/oauth-authorization-server).
+
 ## Authentication
 
 \`\`\`json
@@ -230,12 +237,20 @@ fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'acp.json'), JSON.s
 // 11b. public/.well-known/ai-catalog.json (Agentic Resource Discovery / ARD).
 // Has a real .json extension, so Vercel's static-file Content-Type
 // detection gets it right without needing a Route Handler.
+// Field names/values checked directly against the published schemas
+// (ai-catalog.schema.json + ard-entry.schema.json in ards-project/ard-spec):
+// specVersion is a fixed enum "1.0" (not a semver-style free string), host
+// takes displayName (not name/url - additionalProperties is false), and
+// each entry's unique handle is `identifier` (not `id`).
 const ardCatalog = {
-  specVersion: "0.1.0",
-  host: { name: NAME, url: `https://${DOMAIN}` },
+  specVersion: "1.0",
+  host: {
+    displayName: NAME,
+    documentationUrl: `https://${DOMAIN}/llms.txt`
+  },
   entries: [
     {
-      id: `urn:air:${DOMAIN}:catalog:products`,
+      identifier: `urn:air:${DOMAIN}:catalog:products`,
       displayName: `${NAME} Product Catalog`,
       type: "application/json",
       url: `https://${DOMAIN}/api/products`,
@@ -246,7 +261,7 @@ const ardCatalog = {
       ]
     },
     {
-      id: `urn:air:${DOMAIN}:catalog:categories`,
+      identifier: `urn:air:${DOMAIN}:catalog:categories`,
       displayName: `${NAME} Categories`,
       type: "application/json",
       url: `https://${DOMAIN}/api/categories`,
@@ -256,7 +271,7 @@ const ardCatalog = {
       ]
     },
     {
-      id: `urn:air:${DOMAIN}:search`,
+      identifier: `urn:air:${DOMAIN}:catalog:search`,
       displayName: `${NAME} Product Search`,
       type: "application/json",
       url: `https://${DOMAIN}/api/search`,
@@ -266,7 +281,7 @@ const ardCatalog = {
       ]
     },
     {
-      id: `urn:air:${DOMAIN}:mcp`,
+      identifier: `urn:air:${DOMAIN}:mcp:server`,
       displayName: `${NAME} MCP Server`,
       type: "application/json",
       url: `https://${DOMAIN}/api/mcp`,

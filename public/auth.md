@@ -19,6 +19,13 @@ No authentication required. All resources are publicly accessible.
 | Search API | https://proppsptyltd.com.au/api/search |
 | MCP Server | https://proppsptyltd.com.au/api/mcp |
 
+## OAuth Protected Resource Metadata
+
+This site has no protected resources requiring OAuth. Metadata is published per
+RFC 9728 at [/.well-known/oauth-protected-resource](https://proppsptyltd.com.au/.well-known/oauth-protected-resource)
+and the authorization server metadata (with an `agent_auth` block) is at
+[/.well-known/oauth-authorization-server](https://proppsptyltd.com.au/.well-known/oauth-authorization-server).
+
 ## Authentication
 
 ```json
