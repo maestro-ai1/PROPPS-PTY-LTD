@@ -22,14 +22,12 @@ export const CategoryPhoto: React.FC<CategoryPhotoProps> = ({ src, alt }) => {
       {/* MANDATORY Crimes (Currency) Act 1981 s22 specimen marking.
           Do not remove: these are real currency photos and are only
           permitted on this site with this overlay present. */}
-      <div className="absolute bottom-2 left-2 z-[5] px-2 py-1 rounded-md bg-black/75 border border-[#D4AF37]/70 pointer-events-none">
+      <div className="absolute bottom-2 left-2 z-[5] px-2 py-0.5 rounded-md bg-black/75 border border-[#D4AF37]/70 pointer-events-none">
         <p
-          className="text-[#F5E5B8] font-bold tracking-[0.1em] text-[7px] sm:text-[8px] leading-tight"
+          className="text-[#F5E5B8] font-bold tracking-[0.15em] text-[8px] sm:text-[9px]"
           style={{ fontVariant: 'small-caps' }}
         >
-          Specimen · Not Legal Tender
-          <br />
-          For Motion Picture Use Only
+          Specimen
         </p>
       </div>
     </div>

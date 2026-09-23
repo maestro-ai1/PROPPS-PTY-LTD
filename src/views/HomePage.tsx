@@ -115,12 +115,10 @@ export const HomeContent: React.FC = () => {
             Kept small/corner so it stays out of the way of the photo. */}
         <div className="absolute bottom-4 left-4 z-[5] px-2.5 py-1 rounded-lg bg-black/75 border border-[#D4AF37]/70 pointer-events-none">
           <p
-            className="text-[#F5E5B8] font-bold tracking-[0.15em] text-[9px] sm:text-[10px] leading-tight"
+            className="text-[#F5E5B8] font-bold tracking-[0.2em] text-[10px] sm:text-xs"
             style={{ fontVariant: 'small-caps' }}
           >
-            Specimen · Not Legal Tender
-            <br />
-            For Motion Picture Use Only
+            Specimen
           </p>
         </div>
 
