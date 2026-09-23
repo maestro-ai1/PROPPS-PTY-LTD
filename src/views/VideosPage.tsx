@@ -1,7 +1,7 @@
 // src/views/VideosPage.tsx
 import React from 'react';
 
-const YOUTUBE_VIDEO_ID = '1Lv9K3mJrXg';
+const YOUTUBE_VIDEO_ID = '5akeQV8ZNas';
 const VIDEO_TITLE = 'Review Props Money Denominations: 5s, 10s, 20, 50s, 100s';
 
 export const VideosContent: React.FC = () => {
