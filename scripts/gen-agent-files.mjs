@@ -376,7 +376,7 @@ const vercelJson = {
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         { key: "Permissions-Policy", value: "geolocation=(), microphone=(), camera=()" },
-        { key: "Link", value: `</.well-known/api-catalog>; rel="api-catalog", </.well-known/ai-catalog.json>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="describedby", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </auth.md>; rel="auth", </.well-known/openid-configuration>; rel="openid-configuration"` }
+        { key: "Link", value: `</.well-known/api-catalog>; rel="api-catalog", </.well-known/ai-catalog.json>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="describedby", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </auth.md>; rel="auth", </.well-known/openid-configuration>; rel="openid-configuration", </.well-known/oauth-protected-resource>; rel="resource-metadata", </.well-known/oauth-authorization-server>; rel="oauth-authorization-server"` }
       ]
     },
     // api-catalog, oauth-protected-resource, oauth-authorization-server,
