@@ -2,23 +2,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SITE, CATEGORIES, PRODUCTS, POSTS, SHOP, BRAND } from '../src/config/site.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-// Read SITE and configs from site.js
-const siteConfigPath = path.join(rootDir, 'src', 'config', 'site.js');
-const siteConfigFile = fs.readFileSync(siteConfigPath, 'utf8');
-
-const domainMatch = siteConfigFile.match(/domain:\s*['"]([^'"]+)['"]/);
-const DOMAIN = domainMatch ? domainMatch[1] : 'propps.com.au';
-
-const nameMatch = siteConfigFile.match(/name:\s*['"]([^'"]+)['"]/);
-const NAME = nameMatch ? nameMatch[1] : 'PROPPS PTY LTD';
-
-const taglineMatch = siteConfigFile.match(/tagline:\s*['"]([^'"]+)['"]/);
-const TAGLINE = taglineMatch ? taglineMatch[1] : 'Cinema Grade Reproduction Currency';
+// Import the real config directly instead of regex-extracting fields from the
+// raw file text - the old regex approach only ever pulled domain/name/tagline,
+// which meant CATEGORIES/POSTS additions (new shop categories, new blog posts)
+// silently never reached llms.txt/auth.md and those files went stale.
+const DOMAIN = SITE.domain;
+const NAME = SITE.name;
+const TAGLINE = SITE.tagline;
 
 const ensureDir = (dir) => {
   if (!fs.existsSync(dir)) {
@@ -38,32 +34,52 @@ ensureDir(path.join(rootDir, 'public', '.well-known', 'mcp'));
 // would conflict with app/robots.ts at build time — never add one back.
 
 // 2. public/llms.txt
+const categoryLines = CATEGORIES.map((cat) => {
+  const priceFrom = Math.min(
+    ...PRODUCTS.filter((p) => p.category === cat.slug).map((p) => p.price)
+  );
+  return `- [${cat.name}](https://${DOMAIN}/shop/${cat.slug}/): From $${priceFrom} AUD - ${cat.description}`;
+}).join('\n');
+
+const recentPosts = [...POSTS]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 5);
+const blogLines = recentPosts
+  .map((post) => `- [${post.title}](https://${DOMAIN}/blog/${post.slug}/): ${post.excerpt}`)
+  .join('\n');
+
 const llmsTxt = `# ${NAME}
 
-> Australia's dedicated studio for cinema-grade prop currency, reproduction banknotes, bank-strapped bundles, and director heist kits.
+> ${BRAND.description}
 
 ## Identity & Verification
 - Brand: ${NAME}
-- Location: Eltham, VIC 3093, Melbourne, Australia
-- Founding: 2019
+- Location: ${BRAND.foundingLocation}
+- Founding: ${BRAND.foundingYear}
 - Compliance: Crimes (Currency) Act 1981 Section 22 Specimen Notes
 - Disclaimers: Non-legal tender, artistic simulation, film production and training use only.
 
 ## Key Ordering Rules
-- Minimum Order: $300 AUD
-- Free Express Shipping: $500 AUD and above via Australia Post Express with signature on delivery
-- Flat Shipping: $20 AUD under $500
-- Crypto Discount: 10% instant deduction on Bitcoin, USDT, and Ethereum
+- Minimum Order: $${SHOP.minOrder} AUD
+- Free Express Shipping: $${SHOP.freeShippingThreshold} AUD and above via Australia Post Express with signature on delivery
+- Flat Shipping: $${SHOP.shippingFee} AUD under $${SHOP.freeShippingThreshold}
+- Crypto Discount: ${SHOP.cryptoDiscount}% instant deduction on Bitcoin, USDT, and Ethereum
 - Checkout Channels: WhatsApp direct checkout and Email order checkout
 
-## Primary Prop Collections
-- [New Notes](https://${DOMAIN}/shop/new-notes/): $5, $10, $20, $50, and $100 Australian prop notes, each selectable from a Starter Stack ($115) up to a 100-Stack bulk vault size ($14,000)
+## Prop Categories
+${categoryLines}
+
+## Wholesale
 - [Wholesale Studio Supply](https://${DOMAIN}/wholesale/): Tiered discounts for production companies (10% to 30% off)
+
+## Production Guides (Blog)
+${blogLines}
+- [All Guides](https://${DOMAIN}/blog/): Full production, compliance, and cinematography guide index
 
 ## Optional & Agent Specifications
 - [API Catalog](https://${DOMAIN}/.well-known/api-catalog): Linkset endpoints
 - [Agent Skills](https://${DOMAIN}/.well-known/agent-skills/index.json): Commerce and navigation skills
-- [MCP Server Card](https://${DOMAIN}/.well-known/mcp/server-card.json): Streamable HTTP MCP tools
+- [MCP Server Card](https://${DOMAIN}/.well-known/mcp/server-card.json): MCP tools (search, product lookup, categories, policies, order drafting)
 - [Auth Specification](https://${DOMAIN}/auth.md): Open public access guidelines
 `;
 fs.writeFileSync(path.join(rootDir, 'public', 'llms.txt'), llmsTxt);
@@ -84,6 +100,11 @@ No authentication required. All resources are publicly accessible.
 | FAQ | https://${DOMAIN}/faq/ |
 | Wholesale Studio Supply | https://${DOMAIN}/wholesale/ |
 | Compliance Guidelines | https://${DOMAIN}/compliance/ |
+| Contact | https://${DOMAIN}/contact/ |
+| Products API | https://${DOMAIN}/api/products |
+| Categories API | https://${DOMAIN}/api/categories |
+| Search API | https://${DOMAIN}/api/search |
+| MCP Server | https://${DOMAIN}/api/mcp |
 
 ## Authentication
 
@@ -145,7 +166,7 @@ const serverCard = {
     homepage: `https://${DOMAIN}`,
     contact: { email: `dispatch@${DOMAIN}`, whatsapp: "+61420128746" }
   },
-  transport: { type: "streamable-http", endpoint: `https://${DOMAIN}/api/mcp` },
+  transport: { type: "http", endpoint: `https://${DOMAIN}/api/mcp` },
   capabilities: {
     tools: [
       { name: "search_products", description: "Search cinema prop cash by keyword, category, max_price", inputSchema: { type: "object", properties: { query: { type: "string" }, category: { type: "string" }, max_price: { type: "number" } } } },
@@ -206,6 +227,10 @@ const oauthAuthServer = {
     `https://${DOMAIN}/wholesale/`,
     `https://${DOMAIN}/compliance/`,
     `https://${DOMAIN}/llms.txt`,
+    `https://${DOMAIN}/api/products`,
+    `https://${DOMAIN}/api/categories`,
+    `https://${DOMAIN}/api/search`,
+    `https://${DOMAIN}/api/mcp`,
     `https://${DOMAIN}/.well-known/api-catalog`,
     `https://${DOMAIN}/.well-known/agent-skills/index.json`,
     `https://${DOMAIN}/.well-known/mcp/server-card.json`

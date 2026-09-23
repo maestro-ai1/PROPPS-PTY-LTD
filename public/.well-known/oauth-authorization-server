@@ -14,6 +14,10 @@
     "https://proppsptyltd.com.au/wholesale/",
     "https://proppsptyltd.com.au/compliance/",
     "https://proppsptyltd.com.au/llms.txt",
+    "https://proppsptyltd.com.au/api/products",
+    "https://proppsptyltd.com.au/api/categories",
+    "https://proppsptyltd.com.au/api/search",
+    "https://proppsptyltd.com.au/api/mcp",
     "https://proppsptyltd.com.au/.well-known/api-catalog",
     "https://proppsptyltd.com.au/.well-known/agent-skills/index.json",
     "https://proppsptyltd.com.au/.well-known/mcp/server-card.json"

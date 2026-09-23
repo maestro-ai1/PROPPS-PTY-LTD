@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   if (typeof navigator === 'undefined' || !navigator.modelContext) return;
   navigator.modelContext.provideContext({
     tools: [

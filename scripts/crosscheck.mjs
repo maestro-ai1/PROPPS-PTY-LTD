@@ -22,9 +22,14 @@ function assert(condition, message) {
   }
 }
 
-// Check 1: Agent files A-N exist
+// Check 1: Agent files A-N exist.
+// robots.txt and sitemap.xml are Next.js route handlers, not static files in
+// public/ - check the route source instead of a public/robots.txt that will
+// never exist on this codebase.
+assert(fs.existsSync(path.join(rootDir, 'src', 'app', 'robots.txt', 'route.ts')), 'robots.txt route exists');
+assert(fs.existsSync(path.join(rootDir, 'src', 'app', 'sitemap.ts')), 'sitemap.ts route exists');
+
 const agentFiles = [
-  'public/robots.txt',
   'public/llms.txt',
   'public/auth.md',
   'public/.well-known/api-catalog',
@@ -36,7 +41,7 @@ const agentFiles = [
   'public/.well-known/acp.json',
   'public/.well-known/ucp',
   'public/js/webmcp.js',
-  'vercel.json'
+  'vercel.json',
 ];
 
 for (const file of agentFiles) {
@@ -52,21 +57,45 @@ assert(authContent.startsWith('# Auth.md'), 'auth.md starts with exact "# Auth.m
 const ucpContent = JSON.parse(fs.readFileSync(path.join(rootDir, 'public', '.well-known', 'ucp'), 'utf8'));
 assert(ucpContent.ucp === '1.0', '.well-known/ucp has "ucp":"1.0" field');
 
-// Check 4: server-card.json has streamable-http transport
+// Check 4: server-card.json transport matches what /api/mcp actually implements.
+// This site's MCP endpoint is a plain request/response JSON-RPC handler, not a
+// real streamable-http/SSE transport - declaring "streamable-http" would be
+// exactly the capability lie WebForge Rule 10 bans.
 const serverCard = JSON.parse(fs.readFileSync(path.join(rootDir, 'public', '.well-known', 'mcp', 'server-card.json'), 'utf8'));
-assert(serverCard.transport && serverCard.transport.type === 'streamable-http', 'server-card.json has streamable-http transport');
+assert(serverCard.transport && serverCard.transport.type === 'http', 'server-card.json declares the transport type it actually implements ("http")');
 
-// Check 5: No secrets leaked in tracked files
-const trackedCheck = ['src/config/site.js', 'src/App.tsx'];
+// Check 5: server-card.json tools match the live /api/mcp route's TOOLS list
+// (name + required-ness), so the card never advertises a tool the endpoint
+// doesn't actually serve.
+const mcpRouteSource = fs.readFileSync(path.join(rootDir, 'src', 'app', 'api', 'mcp', 'route.ts'), 'utf8');
+const declaredToolNames = serverCard.capabilities?.tools?.map((t) => t.name) ?? [];
+for (const name of declaredToolNames) {
+  assert(mcpRouteSource.includes(`case '${name}':`), `/api/mcp implements declared tool "${name}"`);
+}
+
+// Check 6: the API routes referenced by api-catalog / agent-skills / acp.json /
+// ucp actually exist as real route handlers - never claim a live endpoint that
+// 404s (WebForge Rule 10).
+const claimedApiRoutes = ['products', 'categories', 'search', 'mcp'];
+for (const route of claimedApiRoutes) {
+  assert(
+    fs.existsSync(path.join(rootDir, 'src', 'app', 'api', route, 'route.ts')),
+    `/api/${route} route handler exists (referenced by agent-ready files)`
+  );
+}
+
+// Check 7: No secrets leaked in tracked files
+const trackedCheck = ['src/config/site.js'];
 for (const file of trackedCheck) {
   const content = fs.readFileSync(path.join(rootDir, file), 'utf8');
   assert(!content.includes('process.env.ADMIN_PASSCODE ='), `No hardcoded passcode in ${file}`);
   assert(!content.includes('RESEND_API_KEY = "re_'), `No raw Resend key in ${file}`);
 }
 
-// Check 6: Strategy docs never in public
+// Check 8: Strategy docs never in public
 assert(!fs.existsSync(path.join(rootDir, 'public', 'docs')), 'Strategy docs not in public/');
 assert(!fs.existsSync(path.join(rootDir, 'public', 'PROJECT.md')), 'PROJECT.md not in public/');
+assert(!fs.existsSync(path.join(rootDir, 'public', 'keyword-map.md')), 'keyword-map.md not in public/');
 
 console.log('--------------------------------------------');
 if (failed) {

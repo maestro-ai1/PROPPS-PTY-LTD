@@ -11,7 +11,7 @@
     }
   },
   "transport": {
-    "type": "streamable-http",
+    "type": "http",
     "endpoint": "https://proppsptyltd.com.au/api/mcp"
   },
   "capabilities": {

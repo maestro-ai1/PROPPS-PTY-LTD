@@ -1,10 +1,10 @@
 # PROPPS PTY LTD
 
-> Australia's dedicated studio for cinema-grade prop currency, reproduction banknotes, bank-strapped bundles, and director heist kits.
+> PROPPS PTY LTD is Australia's premier provider of cinema-grade reproduction currency and prop cash, engineered strictly in compliance with Crimes (Currency) Act 1981 Section 22 guidelines for film, television, theatre, advertising, and simulation arts.
 
 ## Identity & Verification
 - Brand: PROPPS PTY LTD
-- Location: Eltham, VIC 3093, Melbourne, Australia
+- Location: Melbourne, Victoria, Australia
 - Founding: 2019
 - Compliance: Crimes (Currency) Act 1981 Section 22 Specimen Notes
 - Disclaimers: Non-legal tender, artistic simulation, film production and training use only.
@@ -16,16 +16,27 @@
 - Crypto Discount: 10% instant deduction on Bitcoin, USDT, and Ethereum
 - Checkout Channels: WhatsApp direct checkout and Email order checkout
 
-## Primary Prop Collections
-- [Current Series AUD Prop Notes](https://proppsptyltd.com.au/shop/next-gen-polymer-props/): $5 to $100 denominations printed on 120gsm matte archival paper
-- [Bank Strapped Bundles & Bricks](https://proppsptyltd.com.au/shop/bank-strapped-bundles/): 100-note strapped bundles and 1,000-note vault bricks
-- [Film Director Heist Kits](https://proppsptyltd.com.au/shop/film-director-kits/): Locking aluminium flight cases filled with strapped stacks
-- [Vintage Australian Props](https://proppsptyltd.com.au/shop/vintage-australian-props/): Pre-polymer paper banknote designs for period dramas
-- [Custom Distressed Cash](https://proppsptyltd.com.au/shop/custom-studio-props/): Hand-weathered, burnt, or blood-splattered props for gritty sequences
+## Prop Categories
+- [New Notes](https://proppsptyltd.com.au/shop/new-notes/): From $115 AUD - Our current-series Australian prop notes across all five denominations, printed double-sided on premium archival paper for film, TV, and photography production.
+- [Film & TV Props](https://proppsptyltd.com.au/shop/film-and-tv-props/): From $115 AUD - Cinema and television production props engineered for on-camera realism under studio lighting.
+- [Money Stacks](https://proppsptyltd.com.au/shop/money-stacks/): From $115 AUD - Bulk strapped stacks and bundles for scenes requiring large visible cash volumes.
+- [Photography Props](https://proppsptyltd.com.au/shop/photography-props/): From $115 AUD - Prop currency styled for print, editorial, and commercial photography shoots.
+- [Event & Party Props](https://proppsptyltd.com.au/shop/event-and-party-props/): From $115 AUD - Novelty prop cash for events, parties, and themed entertainment.
+- [Custom & Branded Props](https://proppsptyltd.com.au/shop/custom-and-branded-props/): From $115 AUD - Bespoke and custom-branded prop currency for agencies, brands, and special productions.
+
+## Wholesale
 - [Wholesale Studio Supply](https://proppsptyltd.com.au/wholesale/): Tiered discounts for production companies (10% to 30% off)
+
+## Production Guides (Blog)
+- [Local vs Overseas Prop Money Suppliers: What Australian Productions Should Check](https://proppsptyltd.com.au/blog/local-vs-overseas-prop-money-suppliers-compared/): Why sourcing prop money from an Australian supplier avoids the compliance, customs, and dispatch risks that come with overseas listings.
+- [Prop Money Compliance Checklist: What Every Australian Production Must Know](https://proppsptyltd.com.au/blog/prop-money-compliance-checklist-what-every-australian-production-must-know/): A condensed compliance checklist covering the Crimes (Currency) Act 1981 requirements every Australian production should confirm before filming.
+- [Shipping and Dispatch: How Fast Can You Get Prop Money in Australia?](https://proppsptyltd.com.au/blog/shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia/): What to expect for dispatch timing, tracking, and delivery when ordering prop money for a tight production schedule.
+- [Toy Money and Play Money for Kids' Games and Learning](https://proppsptyltd.com.au/blog/toy-money-and-play-money-for-kids-games-and-learning/): Why toy and play money designed for children's games and classroom learning is a different product to cinema prop money.
+- [Cryptocurrency Payments for Studios: How the 10% Discount Works](https://proppsptyltd.com.au/blog/cryptocurrency-payments-for-studios-how-the-discount-works/): A quick guide to paying for prop money orders with Bitcoin, USDT, or Ethereum and the automatic 10% discount that applies.
+- [All Guides](https://proppsptyltd.com.au/blog/): Full production, compliance, and cinematography guide index
 
 ## Optional & Agent Specifications
 - [API Catalog](https://proppsptyltd.com.au/.well-known/api-catalog): Linkset endpoints
 - [Agent Skills](https://proppsptyltd.com.au/.well-known/agent-skills/index.json): Commerce and navigation skills
-- [MCP Server Card](https://proppsptyltd.com.au/.well-known/mcp/server-card.json): Streamable HTTP MCP tools
+- [MCP Server Card](https://proppsptyltd.com.au/.well-known/mcp/server-card.json): MCP tools (search, product lookup, categories, policies, order drafting)
 - [Auth Specification](https://proppsptyltd.com.au/auth.md): Open public access guidelines

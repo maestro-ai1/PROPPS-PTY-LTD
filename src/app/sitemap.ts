@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: 'weekly',
     priority: 0.8,
+    images: [`${base}/images/categories/${cat.image}`],
   }));
 
   const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map((p) => ({
@@ -33,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: 'weekly',
     priority: 0.7,
+    images: p.images.map((img) => `${base}/images/products/${img}`),
   }));
 
   const blogRoutes: MetadataRoute.Sitemap = POSTS.map((post) => ({
@@ -40,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: post.date ? new Date(post.date) : now,
     changeFrequency: 'monthly',
     priority: 0.5,
+    images: [`${base}/images/blog/${post.image}`],
   }));
 
   return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes];

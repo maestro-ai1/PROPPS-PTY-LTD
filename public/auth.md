@@ -13,6 +13,11 @@ No authentication required. All resources are publicly accessible.
 | FAQ | https://proppsptyltd.com.au/faq/ |
 | Wholesale Studio Supply | https://proppsptyltd.com.au/wholesale/ |
 | Compliance Guidelines | https://proppsptyltd.com.au/compliance/ |
+| Contact | https://proppsptyltd.com.au/contact/ |
+| Products API | https://proppsptyltd.com.au/api/products |
+| Categories API | https://proppsptyltd.com.au/api/categories |
+| Search API | https://proppsptyltd.com.au/api/search |
+| MCP Server | https://proppsptyltd.com.au/api/mcp |
 
 ## Authentication
 
