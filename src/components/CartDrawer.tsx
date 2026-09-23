@@ -50,16 +50,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const [checkoutMode, setCheckoutMode] = useState<'cart' | 'details'>('cart');
   const [selectedPayment, setSelectedPayment] = useState<'bank-transfer' | 'payid' | 'crypto'>('bank-transfer');
 
-  // Customer form details
+  // Customer form details (kept simple and brief - just what's needed to dispatch)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     address: '',
-    city: '',
-    state: 'VIC',
-    postcode: '3000',
-    notes: '',
   });
 
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
@@ -84,9 +80,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     const errors: Record<string, string> = {};
     if (!formData.name.trim()) errors.name = 'Full name is required';
     if (!formData.phone.trim()) errors.phone = 'Australian contact number is required';
-    if (!formData.address.trim()) errors.address = 'Street address is required';
-    if (!formData.city.trim()) errors.city = 'Suburban city is required';
-    if (!formData.postcode.trim()) errors.postcode = 'Postcode is required';
+    if (!formData.address.trim()) errors.address = 'Delivery address is required';
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -110,10 +104,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       email: formData.email || 'orders-via-whatsapp@proppsptyltd.com.au',
       phone: formData.phone,
       address: formData.address,
-      city: formData.city,
-      state: formData.state,
-      postcode: formData.postcode,
-      notes: formData.notes,
+      city: '',
+      state: '',
+      postcode: '',
       items: cart,
       subtotal,
       shippingFee,
@@ -164,10 +157,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       email: formData.email,
       phone: formData.phone,
       address: formData.address,
-      city: formData.city,
-      state: formData.state,
-      postcode: formData.postcode,
-      notes: formData.notes,
+      city: '',
+      state: '',
+      postcode: '',
       items: cart,
       subtotal,
       shippingFee,
@@ -409,9 +401,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </div>
 
               <div>
-                <label className="block text-[#9AA7A0] mb-1 font-medium">
-                  Full Name / Production Lead *
-                </label>
+                <label className="block text-[#9AA7A0] mb-1 font-medium">Full Name *</label>
                 <input
                   type="text"
                   required
@@ -425,45 +415,41 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="block text-[#9AA7A0] mb-1 font-medium">Email Address</label>
-                  <input
-                    type="email"
-                    placeholder="propps@studio.com.au"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                  />
-                  {formErrors.email && (
-                    <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.email}</span>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-[#9AA7A0] mb-1 font-medium">Mobile Phone *</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="0400 000 000"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                  />
-                  {formErrors.phone && (
-                    <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.phone}</span>
-                  )}
-                </div>
+              <div>
+                <label className="block text-[#9AA7A0] mb-1 font-medium">Mobile Phone *</label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="0400 000 000"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
+                />
+                {formErrors.phone && (
+                  <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.phone}</span>
+                )}
               </div>
 
               <div>
-                <label className="block text-[#9AA7A0] mb-1 font-medium">
-                  Australian Delivery Street Address *
-                </label>
+                <label className="block text-[#9AA7A0] mb-1 font-medium">Email Address</label>
                 <input
-                  type="text"
+                  type="email"
+                  placeholder="propps@studio.com.au"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
+                />
+                {formErrors.email && (
+                  <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.email}</span>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-[#9AA7A0] mb-1 font-medium">Delivery Address *</label>
+                <textarea
+                  rows={2}
                   required
-                  placeholder="Studio 4, 120 Exhibition St"
+                  placeholder="Street, suburb, state, postcode"
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
@@ -471,63 +457,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 {formErrors.address && (
                   <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.address}</span>
                 )}
-              </div>
-
-              <div className="grid grid-cols-3 gap-2">
-                <div>
-                  <label className="block text-[#9AA7A0] mb-1 font-medium">City / Suburb *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Melbourne"
-                    value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[#9AA7A0] mb-1 font-medium">State *</label>
-                  <select
-                    value={formData.state}
-                    onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                    className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white focus:border-[#C5A059] focus:outline-none"
-                  >
-                    <option value="VIC">VIC</option>
-                    <option value="NSW">NSW</option>
-                    <option value="QLD">QLD</option>
-                    <option value="WA">WA</option>
-                    <option value="SA">SA</option>
-                    <option value="TAS">TAS</option>
-                    <option value="ACT">ACT</option>
-                    <option value="NT">NT</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-[#9AA7A0] mb-1 font-medium">Postcode *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="3000"
-                    value={formData.postcode}
-                    onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
-                    className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-[#9AA7A0] mb-1 font-medium">
-                  Production Notes / Scene Specifications (Optional)
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="e.g. Filming dates, non-glare lighting requirements, urgent dispatch..."
-                  value={formData.notes}
-                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                />
               </div>
             </form>
           )}

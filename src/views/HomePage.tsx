@@ -534,7 +534,7 @@ export const HomeContent: React.FC = () => {
               className="px-5 py-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0F7569] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2 font-mono-code"
             >
               <MessageCircle className="w-4 h-4 text-white" />
-              <span>WhatsApp Studio Desk</span>
+              <span>WhatsApp</span>
             </a>
           </div>
         </div>

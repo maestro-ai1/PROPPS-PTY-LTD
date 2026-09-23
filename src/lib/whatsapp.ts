@@ -41,7 +41,7 @@ export function waOrderLink(order: StoredOrder): string {
     `• Name: ${order.customerName}`,
     `• Phone: ${order.phone}`,
     `• Email: ${order.email}`,
-    `• Delivery Address: ${order.address}, ${order.city} ${order.state} ${order.postcode}`,
+    `• Delivery Address: ${[order.address, order.city, order.state, order.postcode].filter(Boolean).join(', ')}`,
     order.notes ? `• Production Notes: ${order.notes}` : '',
     ``,
     `*Order Items:*`,

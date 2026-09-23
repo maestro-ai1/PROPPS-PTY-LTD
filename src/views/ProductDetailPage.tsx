@@ -216,7 +216,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
               className="w-full py-3.5 px-4 bg-[#121A16] hover:bg-[#1A2520] border border-[#25D366]/40 text-[#25D366] font-mono-code font-bold text-xs uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>Inquire via WhatsApp Studio Desk</span>
+              <span>Inquire via WhatsApp</span>
             </button>
           </div>
 
