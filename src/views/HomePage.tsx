@@ -101,8 +101,8 @@ export const HomeContent: React.FC = () => {
           </div>
         ))}
 
-        {/* Dark scrim so heading/CTA text stays legible over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070708]/85 via-[#0A0A0B]/80 to-[#070708]/92" />
+        {/* Light scrim — just enough for text legibility, photos stay bright */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070708]/45 via-[#0A0A0B]/32 to-[#070708]/55" />
 
         {/* Gold & Pure Light Ambient Glows */}
         <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[550px] h-[320px] bg-[#D4AF37]/15 rounded-full blur-[130px] pointer-events-none" />
@@ -110,17 +110,20 @@ export const HomeContent: React.FC = () => {
 
         {/* MANDATORY Crimes (Currency) Act 1981 s22 specimen marking.
             Do not remove: these hero photos are real currency photography
-            and are only permitted on this site with this overlay present. */}
-        <div className="absolute inset-x-0 top-[42%] -translate-y-1/2 -rotate-6 z-[5] bg-black/70 border-y border-[#D4AF37]/70 py-1.5 pointer-events-none">
+            and are only permitted on this site with this overlay present.
+            Kept small/corner so it stays out of the way of the photo. */}
+        <div className="absolute bottom-4 left-4 z-[5] px-2.5 py-1 rounded-lg bg-black/75 border border-[#D4AF37]/70 pointer-events-none">
           <p
-            className="text-center text-[#F5E5B8] font-bold tracking-[0.35em] text-[11px] sm:text-sm whitespace-nowrap overflow-hidden"
+            className="text-[#F5E5B8] font-bold tracking-[0.15em] text-[9px] sm:text-[10px] leading-tight"
             style={{ fontVariant: 'small-caps' }}
           >
-            Specimen · Not Legal Tender · For Motion Picture Use Only · Specimen · Not Legal Tender · For Motion Picture Use Only
+            Specimen · Not Legal Tender
+            <br />
+            For Motion Picture Use Only
           </p>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center space-y-5">
+        <div className="relative z-10 max-w-5xl mx-auto text-center space-y-5" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.65)' }}>
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#181611] border border-[#D4AF37]/70 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
