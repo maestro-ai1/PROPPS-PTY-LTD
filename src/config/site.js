@@ -1,4 +1,4 @@
-// src/config/site.js
+﻿// src/config/site.js
 // Single source of truth for PROPPS PTY LTD
 
 export const SITE = {
@@ -46,7 +46,7 @@ export const REPLY = {
   brand: { primary: '#C5A059', headerDark: '#0D1512' },
   currency: { code: 'AUD', symbol: '$' },
   orderPrefix: 'PRP',
-  headerTagline: 'Australian Prop Money · Eltham, Melbourne VIC 3093',
+  headerTagline: 'Australian Prop Money Â· Eltham, Melbourne VIC 3093',
   dispatchLine: 'Dispatched via Australia Post Express with end-to-end tracking, fast and safe delivery. Refunded if not satisfied.',
   bizNumber: { label: 'ABN', value: '72 642 507 042' },
   channels: { email: 'orders&#64;proppsptyltd.com.au', whatsapp: '+61400000000', whatsappCountryCode: '61' },
@@ -68,7 +68,7 @@ export const REPLY = {
     },
     {
       id: 'crypto',
-      label: 'Cryptocurrency (Bitcoin / USDT TRC20 / Ethereum — 10% Discount Applied)',
+      label: 'Cryptocurrency (Bitcoin / USDT TRC20 / Ethereum â€” 10% Discount Applied)',
       opening: 'Send the discounted balance of {amount} to our secure designated cold wallet address.',
       closing: 'A 10% crypto discount is automatically calculated on your invoice. Forward TXID or screenshot to confirm transaction clearance.',
       discount: { percent: 10, label: '10% Crypto Discount' }
@@ -167,7 +167,7 @@ export const PRODUCTS = [
     badge: 'New',
     featured: true,
     images: ['5-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $5 prop notes on premium archival paper — for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $5 prop notes on premium archival paper â€” for film, TV, and photography productions.',
     description: propDescription(5),
     bundles: BUNDLE_TIERS,
     details: {
@@ -185,7 +185,7 @@ export const PRODUCTS = [
     badge: 'New',
     featured: true,
     images: ['10-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $10 prop notes on premium archival paper — for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $10 prop notes on premium archival paper â€” for film, TV, and photography productions.',
     description: propDescription(10),
     bundles: BUNDLE_TIERS,
     details: {
@@ -203,7 +203,7 @@ export const PRODUCTS = [
     badge: 'New',
     featured: true,
     images: ['20-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $20 prop notes on premium archival paper — for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $20 prop notes on premium archival paper â€” for film, TV, and photography productions.',
     description: propDescription(20),
     bundles: BUNDLE_TIERS,
     details: {
@@ -221,7 +221,7 @@ export const PRODUCTS = [
     badge: 'Popular Choice',
     featured: true,
     images: ['50-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $50 prop notes on premium archival paper — for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $50 prop notes on premium archival paper â€” for film, TV, and photography productions.',
     description: propDescription(50),
     bundles: BUNDLE_TIERS,
     details: {
@@ -239,7 +239,7 @@ export const PRODUCTS = [
     badge: 'Best Seller',
     featured: true,
     images: ['100-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $100 prop notes on premium archival paper — for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $100 prop notes on premium archival paper â€” for film, TV, and photography productions.',
     description: propDescription(100),
     bundles: BUNDLE_TIERS,
     details: {
@@ -260,7 +260,7 @@ export const PRODUCTS = [
     shortDescription: 'Cinema-grade prop currency curated for film and television productions, ready for cash-handling and transaction scenes.',
     description: 'Cinema-grade prop currency curated for film and television productions. Designed for authentic on-camera texture and weight in scenes involving cash handling, transactions, and reveals. Every note carries mandatory non-legal-tender specimen markings.',
     details: {
-      useCase: 'Film & television production',
+      'use case': 'Film & television production',
       paper: 'Premium archival-grade paper',
       print: 'Dual-sided high-definition print',
       dispatch: 'Australia Post Express with signature on delivery'
@@ -277,7 +277,7 @@ export const PRODUCTS = [
     shortDescription: 'Bulk strapped prop currency stacks for scenes requiring large visible cash volumes.',
     description: 'Bulk strapped prop currency stacks for scenes requiring large visible cash volumes, ideal for heist sequences, vault reveals, and bank scenes. Every note carries mandatory non-legal-tender specimen markings.',
     details: {
-      useCase: 'Heist, vault & bank scenes',
+      'use case': 'Heist, vault & bank scenes',
       paper: 'Premium archival-grade paper',
       print: 'Dual-sided high-definition print',
       dispatch: 'Australia Post Express with signature on delivery'
@@ -294,7 +294,7 @@ export const PRODUCTS = [
     shortDescription: 'Prop currency styled for editorial and commercial photography shoots.',
     description: 'Prop currency styled for print, editorial, and commercial photography shoots, delivering a realistic look for camera close-ups. Every note carries mandatory non-legal-tender specimen markings.',
     details: {
-      useCase: 'Editorial & commercial photography',
+      'use case': 'Editorial & commercial photography',
       paper: 'Premium archival-grade paper',
       print: 'Dual-sided high-definition print',
       dispatch: 'Australia Post Express with signature on delivery'
@@ -311,7 +311,7 @@ export const PRODUCTS = [
     shortDescription: 'Novelty prop cash designed for events, parties, and themed entertainment.',
     description: 'Novelty prop cash designed for events, parties, and themed entertainment experiences. Every note carries mandatory non-legal-tender specimen markings.',
     details: {
-      useCase: 'Events, parties & themed entertainment',
+      'use case': 'Events, parties & themed entertainment',
       paper: 'Premium archival-grade paper',
       print: 'Dual-sided high-definition print',
       dispatch: 'Australia Post Express with signature on delivery'
@@ -328,7 +328,7 @@ export const PRODUCTS = [
     shortDescription: 'Bespoke prop currency available with custom branding for agencies, brands, and special productions.',
     description: 'Bespoke and custom-branded prop currency for agencies, brands, and special productions. Contact our studio to discuss custom denominations, artwork, and branding. Every note carries mandatory non-legal-tender specimen markings.',
     details: {
-      useCase: 'Agencies, brands & special productions',
+      'use case': 'Agencies, brands & special productions',
       paper: 'Premium archival-grade paper',
       print: 'Dual-sided high-definition print',
       dispatch: 'Australia Post Express with signature on delivery'
