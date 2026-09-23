@@ -125,19 +125,15 @@ Orders are completed by an adult human via WhatsApp or the checkout order form. 
 `;
 fs.writeFileSync(path.join(rootDir, 'public', 'auth.md'), authMd);
 
-// 4. public/.well-known/api-catalog
-const apiCatalog = {
-  linkset: [
-    { anchor: `https://${DOMAIN}/`, "https://www.iana.org/assignments/link-relations/service-doc": [{ href: `https://${DOMAIN}/faq/` }], title: `${NAME} — ${TAGLINE}` },
-    { anchor: `https://${DOMAIN}/shop/`, type: "text/html", title: `${NAME} Product Catalog` },
-    { anchor: `https://${DOMAIN}/wholesale/`, type: "text/html", title: `${NAME} Wholesale` },
-    { anchor: `https://${DOMAIN}/api/products`, type: "application/json", title: `${NAME} Products API` },
-    { anchor: `https://${DOMAIN}/api/categories`, type: "application/json", title: `${NAME} Categories API` },
-    { anchor: `https://${DOMAIN}/api/search`, type: "application/json", title: `${NAME} Search API` },
-    { anchor: `https://${DOMAIN}/api/mcp`, type: "application/json", "https://www.iana.org/assignments/link-relations/service-desc": [{ href: `https://${DOMAIN}/.well-known/mcp/server-card.json` }], title: `${NAME} MCP Server` }
-  ]
-};
-fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'api-catalog'), JSON.stringify(apiCatalog, null, 2));
+// 4. public/.well-known/api-catalog is now served by
+// src/app/.well-known/api-catalog/route.ts, NOT written as a static file
+// here - Vercel serves extensionless static files as
+// application/octet-stream regardless of vercel.json Content-Type
+// overrides, which broke agent-readiness scanning. A Route Handler sets
+// the header directly and it actually takes effect. Same reasoning
+// applies to oauth-protected-resource, oauth-authorization-server,
+// openid-configuration, and ucp below - all extensionless, all moved to
+// Route Handlers.
 
 // 5. public/.well-known/agent-skills/index.json
 const agentSkills = {
@@ -196,70 +192,8 @@ const serverCard = {
 };
 fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'mcp', 'server-card.json'), JSON.stringify(serverCard, null, 2));
 
-// 7. public/.well-known/oauth-protected-resource
-const oauthProtectedResource = {
-  resource: `https://${DOMAIN}`,
-  resource_name: `${NAME} Public Catalog`,
-  authorization_servers: [],
-  scopes_supported: [],
-  bearer_methods_supported: [],
-  resource_documentation: `https://${DOMAIN}/auth.md`,
-  resource_policy_uri: `https://${DOMAIN}/compliance/`,
-  tls_client_certificate_bound_access_tokens: false,
-  note: `All resources on ${DOMAIN} are publicly accessible. No OAuth tokens required.`
-};
-fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'oauth-protected-resource'), JSON.stringify(oauthProtectedResource, null, 2));
-
-// 8. public/.well-known/oauth-authorization-server
-const oauthAuthServer = {
-  issuer: `https://${DOMAIN}`,
-  authorization_endpoint: null,
-  token_endpoint: null,
-  jwks_uri: null,
-  grant_types_supported: [],
-  response_types_supported: [],
-  scopes_supported: [],
-  note: `${NAME} has no protected APIs. All resources publicly accessible.`,
-  public_resources: [
-    `https://${DOMAIN}/shop/`,
-    `https://${DOMAIN}/blog/`,
-    `https://${DOMAIN}/faq/`,
-    `https://${DOMAIN}/wholesale/`,
-    `https://${DOMAIN}/compliance/`,
-    `https://${DOMAIN}/llms.txt`,
-    `https://${DOMAIN}/api/products`,
-    `https://${DOMAIN}/api/categories`,
-    `https://${DOMAIN}/api/search`,
-    `https://${DOMAIN}/api/mcp`,
-    `https://${DOMAIN}/.well-known/api-catalog`,
-    `https://${DOMAIN}/.well-known/agent-skills/index.json`,
-    `https://${DOMAIN}/.well-known/mcp/server-card.json`
-  ],
-  agent_auth: {
-    register_uri: null,
-    identity_types_supported: ["none"],
-    credential_types_supported: ["none"],
-    notes: "No registration required. All content publicly accessible to agents."
-  }
-};
-fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'oauth-authorization-server'), JSON.stringify(oauthAuthServer, null, 2));
-
-// 9. public/.well-known/openid-configuration
-const openidConfig = {
-  issuer: `https://${DOMAIN}`,
-  note: `${NAME} does not operate an OpenID Connect provider. All resources publicly accessible.`,
-  public_site: true,
-  authorization_endpoint: null,
-  token_endpoint: null,
-  userinfo_endpoint: null,
-  jwks_uri: null,
-  scopes_supported: [],
-  response_types_supported: [],
-  grant_types_supported: [],
-  subject_types_supported: [],
-  id_token_signing_alg_values_supported: []
-};
-fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'openid-configuration'), JSON.stringify(openidConfig, null, 2));
+// 7, 8, 9. oauth-protected-resource, oauth-authorization-server, and
+// openid-configuration are now Route Handlers - see note above check 4.
 
 // 10. public/.well-known/acp.json
 const acpJson = {
@@ -291,41 +225,59 @@ const acpJson = {
 };
 fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'acp.json'), JSON.stringify(acpJson, null, 2));
 
-// 11. public/.well-known/ucp (CRITICAL: "ucp": "1.0" is mandatory)
-const ucp = {
-  ucp: "1.0",
-  protocol_version: "1.0",
-  spec: "https://ucp.dev/specification/overview/",
-  schema: "https://ucp.dev/schema/v1.json",
-  site: `https://${DOMAIN}`,
-  name: NAME,
-  description: TAGLINE,
-  services: [
-    { id: "product-catalog", type: "catalog", url: `https://${DOMAIN}/shop/`, description: "Australian cinema prop money catalog" },
-    { id: "mcp-server", type: "mcp", url: `https://${DOMAIN}/api/mcp`, description: "MCP Streamable HTTP server" },
-    { id: "order", type: "commerce", url: "https://wa.me/61420128746", description: "Place orders via WhatsApp or Email form" },
-    { id: "wholesale", type: "b2b", url: `https://${DOMAIN}/wholesale/`, description: "B2B studio wholesale supply" }
-  ],
-  capabilities: ["browse", "search", "inquiry", "wholesale", "content", "mcp"],
-  endpoints: {
-    mcp: `https://${DOMAIN}/api/mcp`,
-    catalog: `https://${DOMAIN}/shop/`,
-    contact: `https://${DOMAIN}/contact/`,
-    agent_skills: `https://${DOMAIN}/.well-known/agent-skills/index.json`,
-    mcp_server_card: `https://${DOMAIN}/.well-known/mcp/server-card.json`,
-    api_catalog: `https://${DOMAIN}/.well-known/api-catalog`,
-    llms_txt: `https://${DOMAIN}/llms.txt`
-  },
-  currency: "AUD",
-  minimum_order_usd: 300,
-  payment_methods: ["bank-transfer", "payid", "crypto-BTC", "crypto-USDT", "crypto-ETH"],
-  legal: {
-    age_restriction: "18+",
-    product_type: "Cinema Reproduction Currency",
-    compliance: "Crimes (Currency) Act 1981 Section 22"
-  }
+// 11. public/.well-known/ucp is now a Route Handler - see note above check 4.
+
+// 11b. public/.well-known/ai-catalog.json (Agentic Resource Discovery / ARD).
+// Has a real .json extension, so Vercel's static-file Content-Type
+// detection gets it right without needing a Route Handler.
+const ardCatalog = {
+  specVersion: "0.1.0",
+  host: { name: NAME, url: `https://${DOMAIN}` },
+  entries: [
+    {
+      id: `urn:air:${DOMAIN}:catalog:products`,
+      displayName: `${NAME} Product Catalog`,
+      type: "application/json",
+      url: `https://${DOMAIN}/api/products`,
+      representativeQueries: [
+        "Show me all Australian prop money products",
+        "What prop currency does PROPPS sell?",
+        "List cinema prop money categories and prices"
+      ]
+    },
+    {
+      id: `urn:air:${DOMAIN}:catalog:categories`,
+      displayName: `${NAME} Categories`,
+      type: "application/json",
+      url: `https://${DOMAIN}/api/categories`,
+      representativeQueries: [
+        "What categories of prop money are available?",
+        "Browse prop currency by category"
+      ]
+    },
+    {
+      id: `urn:air:${DOMAIN}:search`,
+      displayName: `${NAME} Product Search`,
+      type: "application/json",
+      url: `https://${DOMAIN}/api/search`,
+      representativeQueries: [
+        "Search for $100 prop notes under $200",
+        "Find play money for a party"
+      ]
+    },
+    {
+      id: `urn:air:${DOMAIN}:mcp`,
+      displayName: `${NAME} MCP Server`,
+      type: "application/json",
+      url: `https://${DOMAIN}/api/mcp`,
+      representativeQueries: [
+        "Connect to PROPPS PTY LTD via MCP",
+        "What tools does the PROPPS MCP server expose?"
+      ]
+    }
+  ]
 };
-fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'ucp'), JSON.stringify(ucp, null, 2));
+fs.writeFileSync(path.join(rootDir, 'public', '.well-known', 'ai-catalog.json'), JSON.stringify(ardCatalog, null, 2));
 
 // 12. public/js/webmcp.js
 const webmcpJs = `(function () {
@@ -409,17 +361,19 @@ const vercelJson = {
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         { key: "Permissions-Policy", value: "geolocation=(), microphone=(), camera=()" },
-        { key: "Link", value: `</.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="describedby", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </auth.md>; rel="auth", </.well-known/openid-configuration>; rel="openid-configuration"` }
+        { key: "Link", value: `</.well-known/api-catalog>; rel="api-catalog", </.well-known/ai-catalog.json>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="describedby", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </auth.md>; rel="auth", </.well-known/openid-configuration>; rel="openid-configuration"` }
       ]
     },
-    { source: "/.well-known/api-catalog", headers: [{ key: "Content-Type", value: "application/linkset+json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
+    // api-catalog, oauth-protected-resource, oauth-authorization-server,
+    // openid-configuration, and ucp are Route Handlers now (they set their
+    // own Content-Type directly) - not listed here to avoid a second,
+    // possibly conflicting header rule for the same path. Only genuinely
+    // static files (real .json/.md extension, correctly detected by
+    // Vercel already) get an explicit override below, mainly for CORS.
     { source: "/.well-known/agent-skills/index.json", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/.well-known/mcp/server-card.json", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
-    { source: "/.well-known/oauth-protected-resource", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
-    { source: "/.well-known/oauth-authorization-server", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
-    { source: "/.well-known/openid-configuration", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/.well-known/acp.json", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
-    { source: "/.well-known/ucp", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
+    { source: "/.well-known/ai-catalog.json", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/auth.md", headers: [{ key: "Content-Type", value: "text/markdown; charset=utf-8" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/llms.txt", headers: [{ key: "Content-Type", value: "text/plain; charset=utf-8" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/api/:path*", headers: [{ key: "Access-Control-Allow-Origin", value: "*" }, { key: "Access-Control-Allow-Methods", value: "GET, POST, OPTIONS" }, { key: "Access-Control-Allow-Headers", value: "Content-Type, Accept, Mcp-Session-Id" }] }

@@ -29,17 +29,31 @@ function assert(condition, message) {
 assert(fs.existsSync(path.join(rootDir, 'src', 'app', 'robots.txt', 'route.ts')), 'robots.txt route exists');
 assert(fs.existsSync(path.join(rootDir, 'src', 'app', 'sitemap.ts')), 'sitemap.ts route exists');
 
+// Extensionless well-known files are Route Handlers, not static files -
+// Vercel serves extensionless public/ files as application/octet-stream
+// regardless of vercel.json Content-Type overrides, which broke agent
+// scanning. Check the route source instead.
+const wellKnownRoutes = [
+  'api-catalog',
+  'oauth-protected-resource',
+  'oauth-authorization-server',
+  'openid-configuration',
+  'ucp',
+];
+for (const route of wellKnownRoutes) {
+  assert(
+    fs.existsSync(path.join(rootDir, 'src', 'app', '.well-known', route, 'route.ts')),
+    `.well-known/${route} route exists`
+  );
+}
+
 const agentFiles = [
   'public/llms.txt',
   'public/auth.md',
-  'public/.well-known/api-catalog',
   'public/.well-known/agent-skills/index.json',
   'public/.well-known/mcp/server-card.json',
-  'public/.well-known/oauth-protected-resource',
-  'public/.well-known/oauth-authorization-server',
-  'public/.well-known/openid-configuration',
   'public/.well-known/acp.json',
-  'public/.well-known/ucp',
+  'public/.well-known/ai-catalog.json',
   'public/js/webmcp.js',
   'vercel.json',
 ];
@@ -53,9 +67,9 @@ for (const file of agentFiles) {
 const authContent = fs.readFileSync(path.join(rootDir, 'public', 'auth.md'), 'utf8');
 assert(authContent.startsWith('# Auth.md'), 'auth.md starts with exact "# Auth.md" heading');
 
-// Check 3: ucp has "ucp": "1.0"
-const ucpContent = JSON.parse(fs.readFileSync(path.join(rootDir, 'public', '.well-known', 'ucp'), 'utf8'));
-assert(ucpContent.ucp === '1.0', '.well-known/ucp has "ucp":"1.0" field');
+// Check 3: ucp route declares "ucp": "1.0"
+const ucpRouteSource = fs.readFileSync(path.join(rootDir, 'src', 'app', '.well-known', 'ucp', 'route.ts'), 'utf8');
+assert(/ucp:\s*'1\.0'/.test(ucpRouteSource), '.well-known/ucp route declares ucp: "1.0" field');
 
 // Check 4: server-card.json transport matches what /api/mcp actually implements.
 // This site's MCP endpoint is a plain request/response JSON-RPC handler, not a

@@ -1,0 +1,50 @@
+{
+  "specVersion": "0.1.0",
+  "host": {
+    "name": "PROPPS PTY LTD",
+    "url": "https://proppsptyltd.com.au"
+  },
+  "entries": [
+    {
+      "id": "urn:air:proppsptyltd.com.au:catalog:products",
+      "displayName": "PROPPS PTY LTD Product Catalog",
+      "type": "application/json",
+      "url": "https://proppsptyltd.com.au/api/products",
+      "representativeQueries": [
+        "Show me all Australian prop money products",
+        "What prop currency does PROPPS sell?",
+        "List cinema prop money categories and prices"
+      ]
+    },
+    {
+      "id": "urn:air:proppsptyltd.com.au:catalog:categories",
+      "displayName": "PROPPS PTY LTD Categories",
+      "type": "application/json",
+      "url": "https://proppsptyltd.com.au/api/categories",
+      "representativeQueries": [
+        "What categories of prop money are available?",
+        "Browse prop currency by category"
+      ]
+    },
+    {
+      "id": "urn:air:proppsptyltd.com.au:search",
+      "displayName": "PROPPS PTY LTD Product Search",
+      "type": "application/json",
+      "url": "https://proppsptyltd.com.au/api/search",
+      "representativeQueries": [
+        "Search for $100 prop notes under $200",
+        "Find play money for a party"
+      ]
+    },
+    {
+      "id": "urn:air:proppsptyltd.com.au:mcp",
+      "displayName": "PROPPS PTY LTD MCP Server",
+      "type": "application/json",
+      "url": "https://proppsptyltd.com.au/api/mcp",
+      "representativeQueries": [
+        "Connect to PROPPS PTY LTD via MCP",
+        "What tools does the PROPPS MCP server expose?"
+      ]
+    }
+  ]
+}
