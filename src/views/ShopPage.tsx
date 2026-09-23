@@ -3,7 +3,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, ShieldCheck, Check } from 'lucide-react';
+import { ShoppingBag, Check } from 'lucide-react';
 import { PRODUCTS, CATEGORIES } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { useApp } from '../context/AppContext.js';
@@ -172,16 +172,6 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
         })}
       </div>
 
-      {/* RBA Compliance Banner on Shop Page */}
-      <div className="p-6 rounded-2xl bg-[#121A16] border border-[#2C3E36] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-code text-[#B4C0BA]">
-        <div className="flex items-center gap-3">
-          <ShieldCheck className="w-6 h-6 text-[#C5A059] shrink-0" />
-          <span>All reproduction currency adheres strictly to Section 22 of the Crimes (Currency) Act 1981.</span>
-        </div>
-        <Link href="/compliance" className="text-[#C5A059] hover:underline shrink-0">
-          Read Legal Compliance Guide →
-        </Link>
-      </div>
     </div>
   );
 };
