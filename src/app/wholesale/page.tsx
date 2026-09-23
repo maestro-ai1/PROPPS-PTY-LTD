@@ -5,9 +5,9 @@ import { JsonLd } from '../../components/JsonLd.js';
 import { WholesaleContent } from '../../views/WholesalePage.js';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Cinema Prop Supply — B2B Studio Pricing',
+  title: 'Wholesale Prop Money Australia | Bulk Pricing',
   description:
-    'Tiered wholesale discounts (10%–30%) on Australian cinema prop currency for film, TV, and theatrical production companies. Request a production estimate.',
+    'Wholesale prop money Australia for production companies. Bulk prop cash pricing, tiered discounts (10%–30%), and a dedicated studio contact for ongoing orders.',
   alternates: { canonical: `https://${SITE.domain}/wholesale/` },
 };
 

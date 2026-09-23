@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!cat) return {};
 
   return {
-    title: cat.name,
-    description: cat.description,
+    title: cat.seoTitle ?? cat.name,
+    description: cat.seoDescription ?? cat.description,
     alternates: { canonical: `https://${SITE.domain}/shop/${cat.slug}/` },
   };
 }

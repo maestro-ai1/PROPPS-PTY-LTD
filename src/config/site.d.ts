@@ -86,6 +86,9 @@ export interface Category {
   name: string;
   description: string;
   image: string;
+  h1?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export declare const CATEGORIES: Category[];

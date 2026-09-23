@@ -53,7 +53,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
           Australian Cinema Specimen Catalog
         </span>
         <h1 className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#F8F6F0]">
-          {currentCatObj ? currentCatObj.name.toUpperCase() : 'CINEMA PROP MONEY CATALOG'}
+          {currentCatObj ? (currentCatObj.h1 ?? currentCatObj.name).toUpperCase() : 'PROP MONEY AUSTRALIA — FULL CATALOG'}
         </h1>
         <p className="text-xs sm:text-sm text-[#9AA7A0] max-w-3xl leading-relaxed">
           {currentCatObj

@@ -14,7 +14,7 @@ export const ComplianceContent: React.FC = () => {
           <span>Commonwealth Legal Framework</span>
         </div>
         <h1 className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#F8F6F0]">
-          RESERVE BANK &amp; CRIMES ACT COMPLIANCE
+          PROP MONEY AUSTRALIA LAWS &amp; COMPLIANCE
         </h1>
         <p className="text-xs sm:text-sm text-[#9AA7A0] max-w-2xl mx-auto leading-relaxed">
           Comprehensive legal guidelines governing the design, manufacture, purchase, and on-camera utilization of reproduction Australian currency props.

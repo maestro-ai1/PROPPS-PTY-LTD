@@ -4,9 +4,9 @@ import { SITE } from '../../config/site.js';
 import { ShopContent } from '../../views/ShopPage.js';
 
 export const metadata: Metadata = {
-  title: 'Shop Australian Cinema Prop Money',
+  title: 'Prop Money Australia | Shop Cinema Currency',
   description:
-    'Browse the full PROPPS PTY LTD catalog: strapped bundles, bank bricks, director briefcase kits, vintage props, and custom distressed cash for Australian film and TV.',
+    'Shop prop money Australia: New Notes, Money Stacks, Film & TV Props, Photography, Event & Party, and Custom Props. Buy prop money online, fast Melbourne dispatch.',
   alternates: { canonical: `https://${SITE.domain}/shop/` },
 };
 

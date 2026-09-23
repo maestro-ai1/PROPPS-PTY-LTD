@@ -4,9 +4,9 @@ import { SITE } from '../../config/site.js';
 import { ComplianceContent } from '../../views/CompliancePage.js';
 
 export const metadata: Metadata = {
-  title: 'Crimes (Currency) Act 1981 & RBA Compliance',
+  title: 'Prop Money Australia Laws | Compliance Guide',
   description:
-    'How PROPPS PTY LTD reproduction currency complies with Section 22 of the Crimes (Currency) Act 1981 and Reserve Bank of Australia guidelines: specimen markings, paper stock, and on-set protocols.',
+    'Prop money Australia laws explained: Crimes (Currency) Act 1981 Section 22 and RBA reproduction currency guidelines for legally compliant prop currency.',
   alternates: { canonical: `https://${SITE.domain}/compliance/` },
 };
 

@@ -49,7 +49,7 @@ export const WholesaleContent: React.FC = () => {
           B2B Studio &amp; Production Supply
         </span>
         <h1 className="font-serif-luxury text-3xl sm:text-5xl font-bold text-[#F8F6F0]">
-          WHOLESALE CINEMA PROP SUPPLY
+          WHOLESALE PROP MONEY AUSTRALIA
         </h1>
         <p className="text-xs sm:text-sm text-[#B4C0BA] leading-relaxed">
           Supplying Australian film productions, television studios, streaming networks, commercial art departments, and law enforcement training academies with compliant reproduction currency.

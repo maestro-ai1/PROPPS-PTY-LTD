@@ -118,37 +118,55 @@ export const CATEGORIES = [
     slug: 'new-notes',
     name: 'New Notes',
     description: 'Our current-series Australian prop notes across all five denominations, printed double-sided on premium archival paper for film, TV, and photography production.',
-    image: 'new-notes.jpeg'
+    image: 'new-notes.jpeg',
+    h1: 'Buy Prop Money Australia — New Notes Collection',
+    seoTitle: 'Buy Prop Money Australia | New Notes',
+    seoDescription: 'Buy prop money Australia across all five denominations. Realistic, specimen-marked prop notes for film, TV, and photography, dispatched fast from Melbourne.'
   },
   {
     slug: 'film-and-tv-props',
     name: 'Film & TV Props',
     description: 'Cinema and television production props engineered for on-camera realism under studio lighting.',
-    image: 'film-tv-props.jpg'
+    image: 'film-tv-props.jpg',
+    h1: 'Buy Film Props Australia — Film & TV Prop Currency',
+    seoTitle: 'Buy Film Props Australia | Film & TV Props',
+    seoDescription: 'Buy film props and prop cash for film production in Australia. Cinema-grade currency for movie money scenes and on-camera realism, fast Melbourne dispatch.'
   },
   {
     slug: 'money-stacks',
     name: 'Money Stacks',
     description: 'Bulk strapped stacks and bundles for scenes requiring large visible cash volumes.',
-    image: 'money-stacks.jpeg'
+    image: 'money-stacks.jpeg',
+    h1: 'Prop Bundles of Money Australia — Money Stacks',
+    seoTitle: 'Prop Bundles of Money Australia | Money Stacks',
+    seoDescription: 'Prop bundles of money Australia for heist, vault, and bank scenes. Bulk strapped money stacks with fast Melbourne dispatch and wholesale pricing.'
   },
   {
     slug: 'photography-props',
     name: 'Photography Props',
     description: 'Prop currency styled for print, editorial, and commercial photography shoots.',
-    image: 'photography-props.jpeg'
+    image: 'photography-props.jpeg',
+    h1: 'Prop Money for Photoshoot — Photography Props',
+    seoTitle: 'Prop Money for Photoshoot Australia | Photography Props',
+    seoDescription: 'Prop money for photoshoot and editorial photography in Australia. Camera-accurate specimen currency styled for print and commercial shoots.'
   },
   {
     slug: 'event-and-party-props',
     name: 'Event & Party Props',
     description: 'Novelty prop cash for events, parties, and themed entertainment.',
-    image: 'event-party-props.jpeg'
+    image: 'event-party-props.jpeg',
+    h1: 'Play Money Australia — Event & Party Props',
+    seoTitle: 'Play Money Australia | Event & Party Props',
+    seoDescription: 'Play money Australia and novelty prop cash for parties, events, and themed entertainment. Fun, compliant prop currency dispatched fast from Melbourne.'
   },
   {
     slug: 'custom-and-branded-props',
     name: 'Custom & Branded Props',
     description: 'Bespoke and custom-branded prop currency for agencies, brands, and special productions.',
-    image: 'custom-branded-props.jpeg'
+    image: 'custom-branded-props.jpeg',
+    h1: 'Custom Prop Money Printing Australia',
+    seoTitle: 'Custom Prop Money Printing Australia | Branded Props',
+    seoDescription: 'Custom prop money printing Australia for agencies and brand campaigns. Bespoke branded prop currency manufactured to the same specimen compliance standard.'
   }
 ]
 
