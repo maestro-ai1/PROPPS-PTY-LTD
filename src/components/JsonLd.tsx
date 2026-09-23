@@ -15,7 +15,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
       '@context': 'https://schema.org',
       '@graph': [
         {
-          '@type': ['Store', 'Organization'],
+          '@type': ['Store', 'Organization', 'LocalBusiness'],
           '@id': `https://${SITE.domain}/#organization`,
           name: SITE.name,
           description: BRAND.description,
@@ -33,7 +33,10 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
             postalCode: '3093',
             addressCountry: 'AU',
           },
-          areaServed: ['AU'],
+          areaServed: {
+            '@type': 'Country',
+            name: 'Australia',
+          },
           numberOfItems: PRODUCTS.length,
           knowsAbout: [
             'Australian Prop Money',

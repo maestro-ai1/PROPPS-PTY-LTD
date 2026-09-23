@@ -67,9 +67,9 @@ export const WholesaleContent: React.FC = () => {
               10% OFF
             </span>
           </div>
-          <h3 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
             5 to 10 Bundles / Items
-          </h3>
+          </h2>
           <p className="text-xs text-[#9AA7A0] leading-relaxed">
             Ideal for indie short films, music videos, theatrical stage productions, and escape room installations.
           </p>
@@ -101,9 +101,9 @@ export const WholesaleContent: React.FC = () => {
               20% OFF
             </span>
           </div>
-          <h3 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
             11 to 25 Bundles / Items
-          </h3>
+          </h2>
           <p className="text-xs text-[#9AA7A0] leading-relaxed">
             Formulated for episodic television dramas, feature film robbery sequences, and multi-location commercial shoots.
           </p>
@@ -132,9 +132,9 @@ export const WholesaleContent: React.FC = () => {
               30% OFF
             </span>
           </div>
-          <h3 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
             26+ Bundles / Full Vault Bricks
-          </h3>
+          </h2>
           <p className="text-xs text-[#9AA7A0] leading-relaxed">
             Full vault sets, armored truck props, locking flight cases, and long-term studio rental arrangements.
           </p>
@@ -160,9 +160,9 @@ export const WholesaleContent: React.FC = () => {
         {/* Info Column */}
         <div className="space-y-6">
           <div className="space-y-3">
-            <h3 className="font-serif-luxury text-2xl font-bold text-[#F8F6F0]">
+            <h2 className="font-serif-luxury text-2xl font-bold text-[#F8F6F0]">
               REQUEST A PRODUCTION ESTIMATE
-            </h3>
+            </h2>
             <p className="text-xs text-[#9AA7A0] leading-relaxed">
               Our Melbourne fulfillment desk coordinates directly with line producers, prop masters, and art directors across Australia.
             </p>
@@ -219,9 +219,9 @@ export const WholesaleContent: React.FC = () => {
               <div className="w-16 h-16 rounded-full bg-[#1C2A24] border-2 border-[#56C48B] flex items-center justify-center text-[#56C48B] mx-auto">
                 <CheckCircle className="w-8 h-8" />
               </div>
-              <h3 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
+              <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
                 WHOLESALE INQUIRY RECEIVED
-              </h3>
+              </h2>
               <p className="text-xs text-[#B4C0BA] max-w-sm mx-auto leading-relaxed">
                 Thank you. Our studio dispatch desk has registered your project requirements. A producer will contact you within 4 business hours with bulk pricing.
               </p>
@@ -235,9 +235,9 @@ export const WholesaleContent: React.FC = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <h3 className="font-serif-luxury text-lg font-bold text-[#F8F6F0] mb-2">
+              <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0] mb-2">
                 Production Inquiry Details
-              </h3>
+              </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

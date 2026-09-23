@@ -122,9 +122,9 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
               {/* Card Content */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <Link href={productHref} className="block space-y-1.5">
-                  <h3 className="font-serif-luxury text-sm font-bold text-[#F8F6F0] hover:text-[#E5C378] transition-colors leading-snug">
+                  <h2 className="font-serif-luxury text-sm font-bold text-[#F8F6F0] hover:text-[#E5C378] transition-colors leading-snug">
                     {product.name}
-                  </h3>
+                  </h2>
                   <p className="text-xs text-[#9AA7A0] leading-relaxed line-clamp-2">
                     {product.shortDescription}
                   </p>

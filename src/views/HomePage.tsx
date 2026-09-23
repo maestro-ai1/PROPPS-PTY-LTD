@@ -230,9 +230,9 @@ export const HomeContent: React.FC = () => {
               <ShieldCheck className="w-5 h-5 text-[#00E599]" />
             </div>
             <div>
-              <h4 className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
                 100% Legal Specimen Props
-              </h4>
+              </p>
               <p className="text-[11px] text-[#A8A49D] mt-0.5">
                 Clearly marked cinema specimen for film & stage.
               </p>
@@ -244,9 +244,9 @@ export const HomeContent: React.FC = () => {
               <Truck className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <div>
-              <h4 className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
                 AusPost Express Dispatch
-              </h4>
+              </p>
               <p className="text-[11px] text-[#A8A49D] mt-0.5">
                 Same-day dispatch before 2PM with tracking.
               </p>
@@ -258,9 +258,9 @@ export const HomeContent: React.FC = () => {
               <Percent className="w-5 h-5 text-[#F5E5B8]" />
             </div>
             <div>
-              <h4 className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
                 10% Crypto Discount
-              </h4>
+              </p>
               <p className="text-[11px] text-[#A8A49D] mt-0.5">
                 Instant 10% deduction on Bitcoin & USDT.
               </p>
@@ -272,9 +272,9 @@ export const HomeContent: React.FC = () => {
               <Building2 className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <div>
-              <h4 className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
                 Melbourne VIC Studio
-              </h4>
+              </p>
               <p className="text-[11px] text-[#A8A49D] mt-0.5">
                 Supplying Australia's top film & TV productions.
               </p>

@@ -157,9 +157,9 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
 
       {relatedProducts.length > 0 && (
         <div className="pt-8 border-t border-[#1E2B25] space-y-5">
-          <h3 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
             RELATED PROP SPECIMENS
-          </h3>
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {relatedProducts.map((rel) => (
               <Link
@@ -169,9 +169,9 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
               >
                 <ProductPhoto src={rel.images[0]} alt={rel.name} />
                 <div className="p-4 space-y-1">
-                  <h4 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] group-hover:text-[#E5C378] transition-colors truncate">
+                  <h3 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] group-hover:text-[#E5C378] transition-colors truncate">
                     {rel.name}
-                  </h4>
+                  </h3>
                   <span className="font-mono-code text-xs font-bold text-[#C5A059] block">
                     From ${rel.price} AUD
                   </span>

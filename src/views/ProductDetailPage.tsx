@@ -204,6 +204,11 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
               </button>
             </div>
 
+            <p className="text-[10px] text-[#6E7B75] font-mono-code text-center flex items-center justify-center gap-1.5">
+              <ShieldCheck className="w-3 h-3 text-[#56C48B]" />
+              Non-legal-tender specimen prop currency, Section 22 Crimes (Currency) Act 1981 compliant
+            </p>
+
             {/* Direct WhatsApp Studio Inquiry */}
             <button
               type="button"
@@ -218,10 +223,10 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
           {/* Technical Specifications Table */}
           {product.details && (
             <div className="p-5 rounded-2xl bg-[#0F1714] border border-[#22302A] space-y-3">
-              <h4 className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-2">
+              <h2 className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-2">
                 <FileCheck className="w-4 h-4" />
                 <span>Production &amp; Camera Specifications</span>
-              </h4>
+              </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono-code">
                 {Object.entries(product.details).map(([key, val]) => (
@@ -240,9 +245,9 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
       {relatedProducts.length > 0 && (
         <div className="pt-12 border-t border-[#1E2B25] space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
+            <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
               RELATED PROP SPECIMENS
-            </h3>
+            </h2>
             <Link href="/shop" className="text-xs font-mono-code text-[#C5A059] hover:underline">
               Browse All Props →
             </Link>
@@ -257,9 +262,9 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
               >
                 <ProductPhoto src={rel.images[0]} alt={rel.name} />
                 <div className="p-4 space-y-1">
-                  <h4 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] group-hover:text-[#E5C378] transition-colors truncate">
+                  <h3 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] group-hover:text-[#E5C378] transition-colors truncate">
                     {rel.name}
-                  </h4>
+                  </h3>
                   <span className="font-mono-code text-xs font-bold text-[#C5A059] block">
                     From ${rel.price} AUD
                   </span>

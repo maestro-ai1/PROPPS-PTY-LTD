@@ -55,10 +55,10 @@ export const ThankYouOrderContent: React.FC = () => {
 
         {/* What Happens Next Guidance (Strict Section P: Watch for email only) */}
         <div className="space-y-3 pt-1">
-          <h4 className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-2">
+          <p className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-2">
             <Mail className="w-4 h-4" />
             <span>Next Steps in Fulfillment</span>
-          </h4>
+          </p>
           <ul className="text-xs text-[#9AA7A0] space-y-2">
             <li className="flex items-start gap-2">
               <span className="text-[#C5A059] font-bold">1.</span>

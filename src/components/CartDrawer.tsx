@@ -527,6 +527,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             <p className="text-[10px] text-[#6E7B75] text-center font-mono-code">
               Dispatched from Melbourne VIC 3093 with tracking &amp; signature.
             </p>
+            <p className="text-[10px] text-[#6E7B75] text-center font-mono-code">
+              Non-legal-tender specimen prop currency, Section 22 Crimes (Currency) Act 1981 compliant.
+            </p>
           </div>
         )}
       </div>

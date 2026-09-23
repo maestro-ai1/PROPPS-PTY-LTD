@@ -60,9 +60,9 @@ export const FaqContent: React.FC = () => {
 
       {/* Need more help */}
       <div className="p-8 rounded-2xl bg-[#0D1512] border border-[#2C3E36] text-center space-y-4">
-        <h3 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
+        <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
           Have a Specific Production Question?
-        </h3>
+        </h2>
         <p className="text-xs text-[#9AA7A0] max-w-md mx-auto">
           Our Melbourne dispatch desk is staffed weekdays from 9:00 AM to 6:00 PM AEST to assist with production timelines.
         </p>
