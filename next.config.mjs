@@ -15,6 +15,19 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // This codebase imports its own .ts/.tsx files with a trailing .js
+  // extension (e.g. `from '../lib/order.js'` where the real file is
+  // order.ts) - a convention TypeScript's own resolver understands,
+  // but webpack does not by default, so it fails with "Module not
+  // found". Teach webpack the same fallback: try .ts/.tsx when a .js
+  // specifier doesn't resolve to a literal .js file.
+  webpack(config) {
+    config.resolve.extensionAlias = {
+      ...(config.resolve.extensionAlias || {}),
+      '.js': ['.js', '.ts', '.tsx'],
+    };
+    return config;
+  },
 };
 
 export default nextConfig;
