@@ -57,7 +57,7 @@ export function waOrderLink(order: StoredOrder): string {
     `_Please reply with verified payment instructions to confirm dispatch reservation._`
   ].filter(Boolean).join('\n');
 
-  const targetNumber = REPLY.channels.whatsapp || '61400000000';
+  const targetNumber = REPLY.channels.whatsapp || '61420128746';
   return waLink(targetNumber, message);
 }
 

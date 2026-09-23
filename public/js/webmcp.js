@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   if (typeof navigator === 'undefined' || !navigator.modelContext) return;
   navigator.modelContext.provideContext({
     tools: [
@@ -30,7 +30,7 @@
         description: "Initiate a WhatsApp prop order. Minimum order $300 AUD. Human completes.",
         inputSchema: { type: "object", properties: { message: { type: "string" } } },
         execute: async ({ message }) => {
-          const url = message ? `https://wa.me/61400000000?text=${encodeURIComponent(message)}` : `https://wa.me/61400000000`;
+          const url = message ? `https://wa.me/61420128746?text=${encodeURIComponent(message)}` : `https://wa.me/61420128746`;
           window.open(url, '_blank');
           return { url };
         }

@@ -528,7 +528,7 @@ export const HomeContent: React.FC = () => {
             </Link>
 
             <a
-              href="https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20inquiring%20about%20film%20prop%20currency%20dispatch"
+              href="https://wa.me/61420128746?text=Hello%20PROPPS%20PTY%20LTD,%20inquiring%20about%20film%20prop%20currency%20dispatch"
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0F7569] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2 font-mono-code"

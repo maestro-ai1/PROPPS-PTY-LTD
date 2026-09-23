@@ -99,7 +99,7 @@ export const ContactContent: React.FC = () => {
               type="button"
               onClick={() =>
                 window.open(
-                  'https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20I%20have%20an%20inquiry%20regarding%20an%20order',
+                  'https://wa.me/61420128746?text=Hello%20PROPPS%20PTY%20LTD,%20I%20have%20an%20inquiry%20regarding%20an%20order',
                   '_blank'
                 )
               }

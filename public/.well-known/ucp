@@ -1,4 +1,4 @@
-{
+﻿{
   "ucp": "1.0",
   "protocol_version": "1.0",
   "spec": "https://ucp.dev/specification/overview/",
@@ -22,7 +22,7 @@
     {
       "id": "order",
       "type": "commerce",
-      "url": "https://wa.me/61400000000",
+      "url": "https://wa.me/61420128746",
       "description": "Place orders via WhatsApp or Email form"
     },
     {

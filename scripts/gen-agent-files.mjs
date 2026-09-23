@@ -143,7 +143,7 @@ const serverCard = {
     version: "1.0.0",
     description: TAGLINE,
     homepage: `https://${DOMAIN}`,
-    contact: { email: `dispatch@${DOMAIN}`, whatsapp: "+61400000000" }
+    contact: { email: `dispatch@${DOMAIN}`, whatsapp: "+61420128746" }
   },
   transport: { type: "streamable-http", endpoint: `https://${DOMAIN}/api/mcp` },
   capabilities: {
@@ -253,7 +253,7 @@ const acpJson = {
     free_shipping_threshold_usd: 500
   },
   contact: {
-    whatsapp: "https://wa.me/61400000000",
+    whatsapp: "https://wa.me/61420128746",
     email: `dispatch@${DOMAIN}`
   },
   legal: {
@@ -278,7 +278,7 @@ const ucp = {
   services: [
     { id: "product-catalog", type: "catalog", url: `https://${DOMAIN}/shop/`, description: "Australian cinema prop money catalog" },
     { id: "mcp-server", type: "mcp", url: `https://${DOMAIN}/api/mcp`, description: "MCP Streamable HTTP server" },
-    { id: "order", type: "commerce", url: "https://wa.me/61400000000", description: "Place orders via WhatsApp or Email form" },
+    { id: "order", type: "commerce", url: "https://wa.me/61420128746", description: "Place orders via WhatsApp or Email form" },
     { id: "wholesale", type: "b2b", url: `https://${DOMAIN}/wholesale/`, description: "B2B studio wholesale supply" }
   ],
   capabilities: ["browse", "search", "inquiry", "wholesale", "content", "mcp"],
@@ -335,7 +335,7 @@ const webmcpJs = `(function () {
         description: "Initiate a WhatsApp prop order. Minimum order $300 AUD. Human completes.",
         inputSchema: { type: "object", properties: { message: { type: "string" } } },
         execute: async ({ message }) => {
-          const url = message ? \`https://wa.me/61400000000?text=\${encodeURIComponent(message)}\` : \`https://wa.me/61400000000\`;
+          const url = message ? \`https://wa.me/61420128746?text=\${encodeURIComponent(message)}\` : \`https://wa.me/61420128746\`;
           window.open(url, '_blank');
           return { url };
         }

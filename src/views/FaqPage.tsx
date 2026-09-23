@@ -74,7 +74,7 @@ export const FaqContent: React.FC = () => {
             Submit an Inquiry
           </Link>
           <a
-            href="https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20I%20have%20a%20question%20regarding%20prop%20currency%20orders"
+            href="https://wa.me/61420128746?text=Hello%20PROPPS%20PTY%20LTD,%20I%20have%20a%20question%20regarding%20prop%20currency%20orders"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto px-6 py-3 bg-[#25D366] text-[#0D1512] text-xs font-mono-code font-bold rounded-xl flex items-center justify-center gap-1.5"

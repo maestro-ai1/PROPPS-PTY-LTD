@@ -201,7 +201,7 @@ export const WholesaleContent: React.FC = () => {
               type="button"
               onClick={() =>
                 window.open(
-                  'https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20we%20have%20an%20urgent%20studio%20prop%20currency%20wholesale%20order',
+                  'https://wa.me/61420128746?text=Hello%20PROPPS%20PTY%20LTD,%20we%20have%20an%20urgent%20studio%20prop%20currency%20wholesale%20order',
                   '_blank'
                 )
               }

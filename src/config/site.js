@@ -1,4 +1,4 @@
-﻿// src/config/site.js
+// src/config/site.js
 // Single source of truth for PROPPS PTY LTD
 
 export const SITE = {
@@ -20,7 +20,7 @@ export const CONTACT = {
   abn: '72 642 507 042',
   email: 'orders&#64;proppsptyltd.com.au',
   phone: '+61 3 9000 0000',
-  whatsapp: '+61 400 000 000',
+  whatsapp: '+61 420 128 746',
   address: 'Suite 4, 95 Main Road, Eltham, VIC 3093, Australia',
   hq: 'Eltham, VIC 3093, Melbourne, Australia',
   country: 'Australia',
@@ -49,7 +49,7 @@ export const REPLY = {
   headerTagline: 'Australian Prop Money Â· Eltham, Melbourne VIC 3093',
   dispatchLine: 'Dispatched via Australia Post Express with end-to-end tracking, fast and safe delivery. Refunded if not satisfied.',
   bizNumber: { label: 'ABN', value: '72 642 507 042' },
-  channels: { email: 'orders&#64;proppsptyltd.com.au', whatsapp: '+61400000000', whatsappCountryCode: '61' },
+  channels: { email: 'orders&#64;proppsptyltd.com.au', whatsapp: '+61420128746', whatsappCountryCode: '61' },
   deadlineHours: 48,
   paymentMethods: [
     {
@@ -68,7 +68,7 @@ export const REPLY = {
     },
     {
       id: 'crypto',
-      label: 'Cryptocurrency (Bitcoin / USDT TRC20 / Ethereum â€” 10% Discount Applied)',
+      label: 'Cryptocurrency (Bitcoin / USDT TRC20 / Ethereum — 10% Discount Applied)',
       opening: 'Send the discounted balance of {amount} to our secure designated cold wallet address.',
       closing: 'A 10% crypto discount is automatically calculated on your invoice. Forward TXID or screenshot to confirm transaction clearance.',
       discount: { percent: 10, label: '10% Crypto Discount' }
@@ -78,7 +78,7 @@ export const REPLY = {
 
 export const CHAT = {
   channels: [
-    { type: 'whatsapp', value: '+61400000000' }
+    { type: 'whatsapp', value: '+61420128746' }
   ]
 }
 
@@ -167,7 +167,7 @@ export const PRODUCTS = [
     badge: 'New',
     featured: true,
     images: ['5-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $5 prop notes on premium archival paper â€” for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $5 prop notes on premium archival paper — for film, TV, and photography productions.',
     description: propDescription(5),
     bundles: BUNDLE_TIERS,
     details: {
@@ -185,7 +185,7 @@ export const PRODUCTS = [
     badge: 'New',
     featured: true,
     images: ['10-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $10 prop notes on premium archival paper â€” for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $10 prop notes on premium archival paper — for film, TV, and photography productions.',
     description: propDescription(10),
     bundles: BUNDLE_TIERS,
     details: {
@@ -203,7 +203,7 @@ export const PRODUCTS = [
     badge: 'New',
     featured: true,
     images: ['20-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $20 prop notes on premium archival paper â€” for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $20 prop notes on premium archival paper — for film, TV, and photography productions.',
     description: propDescription(20),
     bundles: BUNDLE_TIERS,
     details: {
@@ -221,7 +221,7 @@ export const PRODUCTS = [
     badge: 'Popular Choice',
     featured: true,
     images: ['50-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $50 prop notes on premium archival paper â€” for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $50 prop notes on premium archival paper — for film, TV, and photography productions.',
     description: propDescription(50),
     bundles: BUNDLE_TIERS,
     details: {
@@ -239,7 +239,7 @@ export const PRODUCTS = [
     badge: 'Best Seller',
     featured: true,
     images: ['100-dollar-prop-note.webp'],
-    shortDescription: 'Double-sided Australian $100 prop notes on premium archival paper â€” for film, TV, and photography productions.',
+    shortDescription: 'Double-sided Australian $100 prop notes on premium archival paper — for film, TV, and photography productions.',
     description: propDescription(100),
     bundles: BUNDLE_TIERS,
     details: {

@@ -45,7 +45,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
   const handleWhatsAppInquiry = () => {
     const bundleNote = selectedBundle ? ` (${selectedBundle.label})` : '';
     const msg = `Hello ${SITE.name}, I am inquiring about ordering: ${quantity}x ${product.name}${bundleNote} ($${unitPrice * quantity} AUD). Could you confirm dispatch availability to my production location?`;
-    window.open(waLink('61400000000', msg), '_blank');
+    window.open(waLink('61420128746', msg), '_blank');
   };
 
   return (
