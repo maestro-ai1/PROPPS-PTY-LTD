@@ -1,10 +1,12 @@
 // src/views/AboutPage.tsx
 import React from 'react';
 import Link from 'next/link';
-import { Scale } from 'lucide-react';
+import { Scale, CheckCircle2, ExternalLink } from 'lucide-react';
 import { SITE, BRAND } from '../config/site.js';
 
 export const AboutContent: React.FC = () => {
+  const abrUrl = `https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`;
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-16">
       {/* Page Title & Entity Header */}
@@ -18,6 +20,29 @@ export const AboutContent: React.FC = () => {
         <p className="text-xs sm:text-sm text-[#B4C0BA] max-w-2xl mx-auto leading-relaxed">
           The authorized standard in cinema-grade reproduction currency, bespoke theatrical bank props, and law enforcement training specimens across the Commonwealth of Australia.
         </p>
+      </div>
+
+      {/* ABN / ABR Verification */}
+      <div className="p-5 rounded-2xl bg-[#07130E] border border-[#00b67a]/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <CheckCircle2 className="w-6 h-6 text-[#00E599] shrink-0" />
+          <div className="text-sm">
+            <span className="font-bold text-[#F8F6F0] block">{SITE.name} · Active Australian Proprietary Company</span>
+            <span className="text-xs text-[#A7D1BD] font-mono-code">
+              ABN: <span className="font-bold text-[#00E599]">{SITE.abn}</span> · Registered in Victoria (VIC 3093)
+            </span>
+          </div>
+        </div>
+        <a
+          href={abrUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#00b67a]/20 hover:bg-[#00b67a]/30 text-[#00E599] hover:text-white border border-[#00b67a]/60 hover:border-[#00E599] font-mono-code text-[10.5px] font-bold uppercase tracking-wider transition-all shadow-sm shrink-0"
+          title="Verify PROPPS PTY LTD on the official Australian Business Register (abr.business.gov.au)"
+        >
+          <span>Verify on ABR</span>
+          <ExternalLink className="w-3 h-3" />
+        </a>
       </div>
 
       {/* Main Narrative Article (700+ Words Entity-Rich) */}

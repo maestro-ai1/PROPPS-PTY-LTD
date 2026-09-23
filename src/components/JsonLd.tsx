@@ -51,8 +51,10 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
           makesOffer: {
             '@type': 'AggregateOffer',
             priceCurrency: SITE.currency,
-            lowPrice: 300,
-            highPrice: 1850,
+            lowPrice: Math.min(...PRODUCTS.map((p) => p.price)),
+            highPrice: Math.max(
+              ...PRODUCTS.flatMap((p) => (p.bundles ? p.bundles.map((b) => b.price) : [p.price]))
+            ),
             offerCount: PRODUCTS.length,
           },
           aggregateRating: {
@@ -100,17 +102,25 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
         '@type': 'Brand',
         name: SITE.name,
       },
-      offers: {
-        '@type': 'Offer',
-        price: data.price,
-        priceCurrency: SITE.currency,
-        availability: 'https://schema.org/InStock',
-        url: `https://${SITE.domain}/shop/${data.category}/${data.slug}/`,
-        seller: {
-          '@type': 'Organization',
-          name: SITE.name,
-        },
-      },
+      offers: data.bundles
+        ? {
+            '@type': 'AggregateOffer',
+            lowPrice: Math.min(...data.bundles.map((b: { price: number }) => b.price)),
+            highPrice: Math.max(...data.bundles.map((b: { price: number }) => b.price)),
+            priceCurrency: SITE.currency,
+            offerCount: data.bundles.length,
+            availability: 'https://schema.org/InStock',
+            url: `https://${SITE.domain}/shop/${data.category}/${data.slug}/`,
+            seller: { '@type': 'Organization', name: SITE.name },
+          }
+        : {
+            '@type': 'Offer',
+            price: data.price,
+            priceCurrency: SITE.currency,
+            availability: 'https://schema.org/InStock',
+            url: `https://${SITE.domain}/shop/${data.category}/${data.slug}/`,
+            seller: { '@type': 'Organization', name: SITE.name },
+          },
       category: data.category,
     };
   } else if (type === 'faq') {

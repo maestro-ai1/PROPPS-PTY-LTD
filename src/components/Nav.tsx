@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag, Search, Menu, X, ShieldCheck, Lock, ChevronDown, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, ShieldCheck, Lock, ChevronDown } from 'lucide-react';
 import { SITE, CATEGORIES } from '../config/site.js';
 import { useApp } from '../context/AppContext.js';
 
@@ -192,48 +192,6 @@ export const Nav: React.FC = () => {
         </div>
       </div>
 
-      {/* Official Commonwealth ABN & ABR Verification Strip under Navigation */}
-      <div className="bg-[#07130E] border-t border-b border-[#143828] py-1.5 px-4 shadow-inner">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-y-1.5 gap-x-4 text-xs">
-          <div className="flex items-center flex-wrap gap-2.5 sm:gap-3">
-            <a
-              href={`https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00b67a]/20 hover:bg-[#00b67a]/30 text-[#00E599] hover:text-white border border-[#00b67a]/60 hover:border-[#00E599] font-mono-code text-[10.5px] font-bold uppercase tracking-wider transition-all shadow-sm group cursor-pointer"
-              title="Verify PROPPS PTY LTD on the official Australian Business Register (abr.business.gov.au)"
-            >
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#00E599] group-hover:scale-110 transition-transform" />
-              <span>VERIFY ON ABR</span>
-              <ExternalLink className="w-3 h-3 text-[#00E599] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-
-            <div className="flex items-center gap-1.5 font-mono-code text-[11.5px]">
-              <span className="text-[#8FB3A1] font-medium">ABN:</span>
-              <a
-                href={`https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold text-[#00E599] hover:text-[#FFF] tracking-widest transition-colors select-all"
-                title="Click to view registration on Australian Business Register"
-              >
-                {SITE.abn}
-              </a>
-            </div>
-
-            <span className="hidden sm:inline-block text-[#1C4A34]">•</span>
-            <span className="hidden sm:inline-block text-[11px] text-[#A7D1BD]">
-              <strong className="text-[#F8F6F0] font-semibold">{SITE.name}</strong> · Active Australian Proprietary Company
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2 text-[10.5px] font-mono-code text-[#00E599]">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#00b67a] shadow-[0_0_8px_#00b67a] animate-pulse"></span>
-            <span className="font-semibold">Registered in Victoria (VIC 3093) · Verified</span>
-          </div>
-        </div>
-      </div>
-
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#120A0D] border-b border-[#38242A] px-4 pt-3 pb-6 space-y-2 animate-fade-in shadow-2xl">
@@ -311,22 +269,6 @@ export const Nav: React.FC = () => {
           </Link>
 
           <div className="pt-2 border-t border-[#29171D] space-y-1.5">
-            <a
-              href={`https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-lg bg-[#07130E] border border-[#00b67a]/40 text-[#00E599] flex items-center justify-between text-xs font-mono-code transition-all"
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#00E599]" />
-                <div>
-                  <div className="font-bold">VERIFIED ON ABR</div>
-                  <div className="text-[10px] text-[#A7D1BD]">ABN: {SITE.abn} · Active</div>
-                </div>
-              </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#00E599]" />
-            </a>
-
             <Link
               href="/#reviews-section"
               onClick={closeMobile}

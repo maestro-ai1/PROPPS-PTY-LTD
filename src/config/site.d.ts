@@ -84,6 +84,15 @@ export interface Category {
 
 export declare const CATEGORIES: Category[];
 
+export interface BundleTier {
+  id: string;
+  label: string;
+  faceValue: number;
+  price: number;
+}
+
+export declare const BUNDLE_TIERS: BundleTier[];
+
 export interface Product {
   slug: string;
   name: string;
@@ -94,6 +103,7 @@ export interface Product {
   images: string[];
   shortDescription: string;
   description: string;
+  bundles?: BundleTier[];
   details?: Record<string, string>;
 }
 

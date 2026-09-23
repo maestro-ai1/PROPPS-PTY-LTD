@@ -18,10 +18,15 @@ export const SmartImage: React.FC<SmartImageProps> = ({
   category,
   badge,
 }) => {
-  // Determine artwork type based on filename or category
-  const isHundred = src?.includes('100') || alt.includes('$100');
-  const isFifty = src?.includes('50') || alt.includes('$50');
-  const isTwenty = src?.includes('20') || alt.includes('$20');
+  // Determine denomination from a leading "N-" in the filename (e.g.
+  // "5-dollar-prop-note.webp") or a "$N" in the alt text, matched as a
+  // whole number so "5" never accidentally matches inside "50"/"150".
+  const denom = src?.match(/^(\d+)-/)?.[1] || alt.match(/\$(\d+)\b/)?.[1];
+
+  const isFive = denom === '5';
+  const isTen = denom === '10';
+  const isTwenty = denom === '20';
+  const isFifty = denom === '50';
   const isMixed = src?.includes('mixed') || alt.includes('Mixed');
   const isBrick = src?.includes('brick') || alt.includes('Brick');
   const isBriefcase = src?.includes('briefcase') || alt.includes('Briefcase');
@@ -46,6 +51,16 @@ export const SmartImage: React.FC<SmartImageProps> = ({
     accentColor = '#E0533C';
     bandText = 'AUD $2,000 · 100 x $20 SPECIMEN';
     denomText = '$20';
+  } else if (isTen) {
+    baseColor = '#1B6F8E'; // $10 Blue
+    accentColor = '#3EA4C9';
+    bandText = 'AUD $1,000 · 100 x $10 SPECIMEN';
+    denomText = '$10';
+  } else if (isFive) {
+    baseColor = '#5B3E8E'; // $5 Purple
+    accentColor = '#7D5FB8';
+    bandText = 'AUD $500 · 100 x $5 SPECIMEN';
+    denomText = '$5';
   } else if (isVintage) {
     baseColor = '#3A423D';
     accentColor = '#B8A882';

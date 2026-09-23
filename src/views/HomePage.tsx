@@ -45,11 +45,11 @@ export const HomeContent: React.FC = () => {
       badge: 'Certified Film & Stage Props',
     },
     {
-      title: 'HEIST VAULT BRICKS, BRIEFCASE KITS & $10,000 BANK STRAPS',
+      title: 'FROM A STARTER STACK TO A FULL 100-STACK VAULT',
       subtitle:
-        'Authentic Australian bank-strapped bundles, tamper-evident shrink-wrapped bricks, and director lockable flight cases ready for filming.',
-      ctaText: 'View Production Bundles',
-      ctaPath: '/shop/bank-strapped-bundles',
+        'Every denomination is available in six bundle sizes, from a $1,500 starter stack to a $200,000 bulk vault stack, ready for filming.',
+      ctaText: 'View Bundle Sizes',
+      ctaPath: '/shop/new-notes',
       badge: 'Director Grade Cinema Props',
     },
     {
@@ -175,12 +175,12 @@ export const HomeContent: React.FC = () => {
           {/* Quick Category Jump Chips (Gold & White Style) */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-2">
             {[
-              { label: '$100 Stacks', path: '/shop/next-gen-polymer-props', badge: 'Hot' },
-              { label: '$50 Stacks', path: '/shop/next-gen-polymer-props', badge: 'Popular' },
-              { label: '$20 Stacks', path: '/shop/next-gen-polymer-props', badge: '' },
-              { label: 'Mixed Bundles', path: '/shop/bank-strapped-bundles', badge: 'Save 15%' },
-              { label: 'Bank Bricks', path: '/shop/bank-strapped-bundles', badge: 'Vault' },
-              { label: 'Briefcase Sets', path: '/shop/film-director-kits', badge: 'Director' },
+              { label: '$100 Notes', path: '/shop/new-notes/100-australian-prop-money-for-sale', badge: 'Hot' },
+              { label: '$50 Notes', path: '/shop/new-notes/50-australian-prop-money-for-sale', badge: 'Popular' },
+              { label: '$20 Notes', path: '/shop/new-notes/20-australian-prop-money-for-sale', badge: '' },
+              { label: '$10 Notes', path: '/shop/new-notes/10-australian-prop-money-for-sale', badge: '' },
+              { label: '$5 Notes', path: '/shop/new-notes/5-australian-prop-money-for-sale', badge: 'New' },
+              { label: 'All Bundle Sizes', path: '/shop/new-notes', badge: '' },
             ].map((chip, idx) => (
               <Link
                 key={idx}
@@ -364,7 +364,7 @@ export const HomeContent: React.FC = () => {
                   <div className="flex items-center justify-between font-mono-code">
                     <div>
                       <span className="text-sm font-bold text-[#D4AF37]">
-                        ${product.price} AUD
+                        From ${product.price} AUD
                       </span>
                       <span className="text-[9.5px] text-[#F5E5B8] block font-semibold">
                         Crypto: ${(product.price * 0.9).toFixed(0)} AUD (-10%)

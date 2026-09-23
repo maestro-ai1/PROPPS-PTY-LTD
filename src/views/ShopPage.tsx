@@ -126,7 +126,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
                   <div className="flex items-center justify-between font-mono-code">
                     <div>
                       <span className="text-base font-bold text-[#C5A059]">
-                        ${product.price} AUD
+                        From ${product.price} AUD
                       </span>
                       <span className="text-[10px] text-[#6E7B75] block">
                         crypto: ${(product.price * 0.9).toFixed(0)} AUD

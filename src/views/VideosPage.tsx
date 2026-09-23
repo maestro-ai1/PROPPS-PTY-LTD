@@ -43,7 +43,7 @@ export const VideosContent: React.FC = () => {
         'Close-up camera analysis of our 120gsm matte archival paper stock filmed at 1,000 frames per second on ARRI Alexa Mini LF. Demonstrates zero glare under 5600K high-key film lighting and authentic stack fanning.',
       productionNotes:
         'Tested with ARRI Master Primes 50mm T1.3. Lighting: Aputure 600d with parabolic softbox. Shows the complete absence of reflective polymer glint.',
-      relatedProductSlug: 'aud-100-full-print-strapped-bundle',
+      relatedProductSlug: '100-australian-prop-money-for-sale',
     },
     {
       id: 'video-2',
@@ -57,7 +57,7 @@ export const VideosContent: React.FC = () => {
         'Unboxing and tactile inspection of the 1,000-note vacuum-sealed $100 AUD vault brick. Features Commonwealth security-simulation strapping and heavy-density studio heft.',
       productionNotes:
         'Ideal for bank robbery scenes and cartel vaults. Weighs approximately 1.05 kg matching realistic Australian currency bulk.',
-      relatedProductSlug: 'vault-heist-10-bundle-brick-100k-prop',
+      relatedProductSlug: '100-australian-prop-money-for-sale',
     },
     {
       id: 'video-3',
@@ -71,7 +71,7 @@ export const VideosContent: React.FC = () => {
         'Full walkthrough of the lockable dual-combination aluminium flight case. Contains 30 pre-strapped cinema bundles seated in custom high-density EVA shockproof foam.',
       productionNotes:
         'Includes dual key locks and numeric combination latches. Ready to place directly on set without additional art department dressing.',
-      relatedProductSlug: 'film-directors-aluminium-cash-briefcase-kit',
+      relatedProductSlug: '50-australian-prop-money-for-sale',
     },
     {
       id: 'video-4',
@@ -85,7 +85,7 @@ export const VideosContent: React.FC = () => {
         'Educational side-by-side comparison illustrating why our prop notes look hyper-realistic through camera viewfinders while strictly adhering to Commonwealth specimen markings.',
       productionNotes:
         'Clearly shows the enlarged non-reflective SPECIMEN text, distinct micro-signatures, and absence of holographic diffraction foils.',
-      relatedProductSlug: 'aud-50-full-print-strapped-bundle',
+      relatedProductSlug: '50-australian-prop-money-for-sale',
     },
     {
       id: 'video-5',
@@ -99,7 +99,7 @@ export const VideosContent: React.FC = () => {
         'Melbourne prop masters demonstrate tea-staining, corner-dogearing, and hand-weathering techniques to transform crisp mint bills into gritty street-level crime cash.',
       productionNotes:
         'Techniques taught by veteran Australian art department crews for crime thrillers, street dramas, and period cinematic storytelling.',
-      relatedProductSlug: 'action-distressed-weathered-100-bundle',
+      relatedProductSlug: '50-australian-prop-money-for-sale',
     },
     {
       id: 'video-6',
@@ -113,7 +113,7 @@ export const VideosContent: React.FC = () => {
         'Dynamic handling of mixed $5, $10, $20, $50, and $100 Australian prop notes. Highlights the precise proportional sizing step-downs across all denominations.',
       productionNotes:
         'Each note strictly reflects Australian note dimensional scaling (from $5 small note to $100 wide format) for believable camera presence.',
-      relatedProductSlug: 'aud-mixed-denomination-master-pack',
+      relatedProductSlug: '5-australian-prop-money-for-sale',
     },
   ];
 
@@ -215,7 +215,7 @@ export const VideosContent: React.FC = () => {
 
             <button
               type="button"
-              onClick={() => router.push('/shop/next-gen-polymer-props')}
+              onClick={() => router.push('/shop/new-notes')}
               className="px-5 py-3 bg-[#1C1014] hover:bg-[#2B181F] text-[#F8F6F0] font-semibold text-xs uppercase tracking-wider rounded-xl border border-[#38242A] hover:border-[#D4AF37] transition-colors flex items-center gap-2 cursor-pointer"
             >
               <ShoppingBag className="w-4 h-4 text-[#D4AF37]" />

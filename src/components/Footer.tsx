@@ -141,11 +141,6 @@ export const Footer: React.FC = () => {
                   <span className="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#00b67a]/20 border border-[#00b67a]/40 font-bold">4.7 ★</span>
                 </Link>
               </li>
-              <li>
-                <Link href="/admin" className="hover:text-[#D4AF37] transition-colors font-mono-code text-[#D4AF37] text-left text-[11px] block">
-                  Reply Portal Login →
-                </Link>
-              </li>
             </ul>
           </div>
 

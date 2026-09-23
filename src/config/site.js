@@ -107,193 +107,146 @@ export const BRAND = {
 
 export const CATEGORIES = [
   {
-    slug: 'next-gen-polymer-props',
-    name: 'Current Series AUD Prop Stacks',
-    description: 'Modern Australian polymer-styled prop currency notes ($5, $10, $20, $50, $100). Engineered with legal dimensional shifts, matte non-reflective finish, and high-impact camera contrast.',
-    image: 'next-gen-aud-stack.webp'
+    slug: 'new-notes',
+    name: 'New Notes',
+    description: 'Our current-series Australian prop notes across all five denominations, printed double-sided on premium archival paper for film, TV, and photography production.',
+    image: 'new-notes.webp'
   },
   {
-    slug: 'bank-strapped-bundles',
-    name: 'Bank Strapped Bundles & Bricks',
-    description: '100-note strapped bundles with authentic Australian bank currency bands, serialised vault tags, and shrink-wrapped production bricks for heist and vault sequences.',
-    image: 'bank-strapped-bundles.webp'
+    slug: 'film-and-tv-props',
+    name: 'Film & TV Props',
+    description: 'Cinema and television production props engineered for on-camera realism under studio lighting.',
+    image: 'film-tv-props.webp'
   },
   {
-    slug: 'film-director-kits',
-    name: 'Director Production Sets & Cases',
-    description: 'Turnkey props for cinema, crime dramas, and music videos including combination briefcase cases, duffle bags filled with strapped prop cash, and safe filler kits.',
-    image: 'director-briefcase-kit.webp'
+    slug: 'money-stacks',
+    name: 'Money Stacks',
+    description: 'Bulk strapped stacks and bundles for scenes requiring large visible cash volumes.',
+    image: 'money-stacks.webp'
   },
   {
-    slug: 'vintage-australian-props',
-    name: 'Classic Vintage Australian Heritage',
-    description: 'Period-accurate Australian paper currency reproduction notes from the pre-decimal and early decimal eras for historical dramas, period television, and theatre.',
-    image: 'vintage-paper-aud.webp'
+    slug: 'photography-props',
+    name: 'Photography Props',
+    description: 'Prop currency styled for print, editorial, and commercial photography shoots.',
+    image: 'photography-props.webp'
   },
   {
-    slug: 'custom-studio-props',
-    name: 'Weathered & Distressed Studio Props',
-    description: 'Custom art department distressed currency including weathered, circulated-feel notes, blood-splattered thriller props, and burn-edged stunt notes.',
-    image: 'distressed-weathered-notes.webp'
+    slug: 'event-and-party-props',
+    name: 'Event & Party Props',
+    description: 'Novelty prop cash for events, parties, and themed entertainment.',
+    image: 'event-party-props.webp'
+  },
+  {
+    slug: 'custom-and-branded-props',
+    name: 'Custom & Branded Props',
+    description: 'Bespoke and custom-branded prop currency for agencies, brands, and special productions.',
+    image: 'custom-branded-props.webp'
   }
 ]
 
+// Shared bundle-size pricing tiers, selectable on every "New Notes" product.
+export const BUNDLE_TIERS = [
+  { id: 'starter', label: 'Starter Stack', faceValue: 1500, price: 115 },
+  { id: 'stack-1', label: '1 Stack', faceValue: 2000, price: 200 },
+  { id: 'stack-5', label: '5 Stacks', faceValue: 10000, price: 850 },
+  { id: 'stack-10', label: '10 Stacks', faceValue: 20000, price: 1600 },
+  { id: 'stack-50', label: '50 Stacks', faceValue: 100000, price: 7500 },
+  { id: 'stack-100', label: '100 Stacks', faceValue: 200000, price: 14000 }
+]
+
+function propDescription(denom) {
+  return `Cinema-grade Australian $${denom} prop currency, printed double-sided on premium archival paper for authentic on-camera weight and texture. Designed for film and TV production, photography, educational training, and other legitimate simulation use. Every note carries mandatory non-legal-tender specimen markings.`
+}
+
 export const PRODUCTS = [
   {
-    slug: 'aud-100-full-print-strapped-bundle',
-    name: 'AUD $100 Cinema Series 100-Note Strapped Bundle',
-    price: 320,
-    category: 'next-gen-polymer-props',
-    badge: 'Best Seller',
+    slug: '5-australian-prop-money-for-sale',
+    name: '5 Australian Prop Money For Sale',
+    price: BUNDLE_TIERS[0].price,
+    category: 'new-notes',
+    badge: 'New',
     featured: true,
-    images: ['aud-100-bundle.webp'],
-    shortDescription: 'Full 100-note strapped bundle of dual-sided AUD $100 cinema prop notes with official reproduction bank band.',
-    description: 'Crafted specifically for Australian television and cinema productions. This 100-note bundle features high-definition dual-sided prints of the green Australian $100 note design with required Commonwealth legal specimen identifiers, non-reflective matte finish for high-output studio lighting, and authentic dimensions. Secured with a printed Australian currency band.',
+    images: ['5-dollar-prop-note.webp'],
+    shortDescription: 'Double-sided Australian $5 prop notes on premium archival paper — for film, TV, and photography productions.',
+    description: propDescription(5),
+    bundles: BUNDLE_TIERS,
     details: {
-      count: '100 notes per bundle',
-      denomination: '$100 AUD simulation',
-      dimensions: 'Compliant RBA dimensional adjustment',
-      paper: '120gsm high-tensile matte archival paper',
-      finish: 'Dual-sided camera ready matte non-glare'
+      denomination: '$5 AUD design',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      availability: 'Available from Starter Stack up to 100-Stack bulk sizes'
     }
   },
   {
-    slug: 'aud-50-full-print-strapped-bundle',
-    name: 'AUD $50 Cinema Series 100-Note Strapped Bundle',
-    price: 310,
-    category: 'next-gen-polymer-props',
+    slug: '10-australian-prop-money-for-sale',
+    name: '10 Australian Prop Money For Sale',
+    price: BUNDLE_TIERS[0].price,
+    category: 'new-notes',
+    badge: 'New',
+    featured: true,
+    images: ['10-dollar-prop-note.webp'],
+    shortDescription: 'Double-sided Australian $10 prop notes on premium archival paper — for film, TV, and photography productions.',
+    description: propDescription(10),
+    bundles: BUNDLE_TIERS,
+    details: {
+      denomination: '$10 AUD design',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      availability: 'Available from Starter Stack up to 100-Stack bulk sizes'
+    }
+  },
+  {
+    slug: '20-australian-prop-money-for-sale',
+    name: '20 Australian Prop Money For Sale',
+    price: BUNDLE_TIERS[0].price,
+    category: 'new-notes',
+    badge: 'New',
+    featured: true,
+    images: ['20-dollar-prop-note.webp'],
+    shortDescription: 'Double-sided Australian $20 prop notes on premium archival paper — for film, TV, and photography productions.',
+    description: propDescription(20),
+    bundles: BUNDLE_TIERS,
+    details: {
+      denomination: '$20 AUD design',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      availability: 'Available from Starter Stack up to 100-Stack bulk sizes'
+    }
+  },
+  {
+    slug: '50-australian-prop-money-for-sale',
+    name: '50 Australian Prop Money For Sale',
+    price: BUNDLE_TIERS[0].price,
+    category: 'new-notes',
     badge: 'Popular Choice',
     featured: true,
-    images: ['aud-50-bundle.webp'],
-    shortDescription: 'Full 100-note bundle of dual-sided AUD $50 cinema prop notes with heavy-duty bank band.',
-    description: 'The industry standard prop for Australian crime thrillers, casino scenes, and high-stakes drama. Contains 100 double-sided printed notes mimicking the vibrant gold tone of the Australian $50 note with prominent SPECIMEN and REPRODUCTION notices. Perfect for handling, counting on camera, and close-up tabletop shots.',
+    images: ['50-dollar-prop-note.webp'],
+    shortDescription: 'Double-sided Australian $50 prop notes on premium archival paper — for film, TV, and photography productions.',
+    description: propDescription(50),
+    bundles: BUNDLE_TIERS,
     details: {
-      count: '100 notes per bundle',
-      denomination: '$50 AUD simulation',
-      dimensions: 'Compliant RBA dimensional adjustment',
-      paper: '120gsm high-tensile matte archival paper',
-      finish: 'Dual-sided camera ready matte non-glare'
+      denomination: '$50 AUD design',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      availability: 'Available from Starter Stack up to 100-Stack bulk sizes'
     }
   },
   {
-    slug: 'aud-20-full-print-strapped-bundle',
-    name: 'AUD $20 Cinema Series 100-Note Strapped Bundle',
-    price: 300,
-    category: 'next-gen-polymer-props',
-    badge: 'Studio Essential',
-    featured: false,
-    images: ['aud-20-bundle.webp'],
-    shortDescription: '100-note bundle of vivid red-orange AUD $20 prop banknotes, banded and sealed.',
-    description: 'High-contrast red-orange Australian $20 cinema reproduction notes. Designed to withstand vigorous handling in action sequences and counting scenes without ripping or causing lens flare under sodium and LED cinema fixtures.',
-    details: {
-      count: '100 notes per bundle',
-      denomination: '$20 AUD simulation',
-      dimensions: 'Compliant RBA dimensional adjustment',
-      paper: '120gsm high-tensile matte archival paper',
-      finish: 'Dual-sided camera ready matte non-glare'
-    }
-  },
-  {
-    slug: 'aud-mixed-denomination-master-pack',
-    name: 'AUD Mixed Denomination Studio Master Pack ($5, $10, $20, $50, $100)',
-    price: 480,
-    category: 'next-gen-polymer-props',
-    badge: 'Most Versatile',
+    slug: '100-australian-prop-money-for-sale',
+    name: '100 Australian Prop Money For Sale',
+    price: BUNDLE_TIERS[0].price,
+    category: 'new-notes',
+    badge: 'Best Seller',
     featured: true,
-    images: ['aud-mixed-pack.webp'],
-    shortDescription: 'Comprehensive kit featuring 250 mixed prop banknotes across all 5 modern Australian denominations.',
-    description: 'An art director\'s dream pack. Includes 50 notes each of $5, $10, $20, $50, and $100 Australian denominations. Ideal for cash register dressing, wallet inserts, street transaction scenes, and commercial training simulations.',
+    images: ['100-dollar-prop-note.webp'],
+    shortDescription: 'Double-sided Australian $100 prop notes on premium archival paper — for film, TV, and photography productions.',
+    description: propDescription(100),
+    bundles: BUNDLE_TIERS,
     details: {
-      count: '250 notes total (50 of each denomination)',
-      denomination: 'Mixed $5, $10, $20, $50, $100',
-      dimensions: 'Graduated realistic sizes with legal alterations',
-      paper: '120gsm archival matte cinema grade',
-      finish: 'Full dual-sided print'
-    }
-  },
-  {
-    slug: 'vault-heist-10-bundle-brick-100k-prop',
-    name: 'Vault Heist 10-Bundle Bank Brick ($100k Prop Simulation)',
-    price: 750,
-    category: 'bank-strapped-bundles',
-    badge: 'High Value',
-    featured: true,
-    images: ['vault-heist-brick.webp'],
-    shortDescription: 'Heavyweight bank brick consisting of ten 100-note strapped bundles in shrink-wrapped vault packaging.',
-    description: 'Engineered for high-intensity heist movies and bank robbery scenes. Ten individually strapped $100-note bundles stacked and wrapped in thick industrial heat-shrink with a tamper-evident Reserve Bank simulation vault label.',
-    details: {
-      count: '1,000 prop notes (10 strapped bundles of 100)',
-      denomination: '$100 AUD simulation',
-      packaging: 'Heavy duty heat-shrink with serialised vault barcode label',
-      weight: 'Approx. 1.2kg solid feel',
-      finish: 'Dual-sided high resolution'
-    }
-  },
-  {
-    slug: 'film-directors-aluminium-cash-briefcase-kit',
-    name: 'The Director\'s Aluminium Vault Case Kit',
-    price: 1250,
-    category: 'film-director-kits',
-    badge: 'Production Flagship',
-    featured: true,
-    images: ['aluminium-briefcase-kit.webp'],
-    shortDescription: 'Locking aluminium flight briefcase packed with 20 strapped bundles of $50 & $100 prop notes.',
-    description: 'The ultimate hero prop for cinema climaxes and underworld ransom handoffs. Comes with a reinforced brushed aluminium case with twin combination locks and custom foam insert holding 20 pristine strapped bundles (10x $100 and 10x $50 bundles). Ready to open on camera to stun your audience.',
-    details: {
-      count: '2,000 prop notes (20 strapped bundles)',
-      case: 'Reinforced aluminium hardcase with dual 3-digit combination locks',
-      interior: 'Custom laser-cut high-density velvet-lined foam insert',
-      dimensions: '450mm x 330mm x 110mm',
-      finish: 'Turnkey hero camera ready'
-    }
-  },
-  {
-    slug: 'vintage-paper-era-100-aud-bundle',
-    name: 'Historic Series Vintage Australian $100 Paper Prop Bundle',
-    price: 360,
-    category: 'vintage-australian-props',
-    badge: 'Period Accurate',
-    featured: false,
-    images: ['vintage-100-bundle.webp'],
-    shortDescription: '100-note bundle replicating the iconic pre-polymer paper $100 note design for historical productions.',
-    description: 'Perfect for period films set in the 1980s and early 1990s before the introduction of polymer currency in Australia. Printed on textured off-white heavy rag paper giving the realistic weight and feel of vintage Australian paper notes with legal specimen marks.',
-    details: {
-      count: '100 notes per bundle',
-      era: '1984-1996 Paper Series tribute',
-      paper: '135gsm cotton rag texture',
-      finish: 'Vintage warm tones'
-    }
-  },
-  {
-    slug: 'action-distressed-weathered-100-bundle',
-    name: 'Action Distressed & Weathered $50 Currency Bundle',
-    price: 340,
-    category: 'custom-studio-props',
-    badge: 'Art Dept Distressed',
-    featured: false,
-    images: ['distressed-50-bundle.webp'],
-    shortDescription: '100 individually tumbled and hand-weathered $50 prop notes for authentic gritty scenes.',
-    description: 'Fresh prop money looks fake in gritty underworld scenes. Our scenic artists tumble, crease, and gently age each note so the stack looks thoroughly circulated and weathered without compromising the structural integrity of the paper.',
-    details: {
-      count: '100 pre-distressed notes',
-      treatment: 'Mechanical tumble creasing & organic aging patina',
-      safety: 'Clean, odourless, non-toxic water-based scenic wash'
-    }
-  },
-  {
-    slug: 'crime-heist-canvas-duffle-bag-pack',
-    name: 'Getaway Heist Tactical Duffle Bag Cash Loadout',
-    price: 1850,
-    category: 'film-director-kits',
-    badge: 'Studio Blockbuster',
-    featured: true,
-    images: ['duffle-bag-kit.webp'],
-    shortDescription: 'Tactical black canvas duffle loaded with 30 strapped prop cash bundles and vault brick.',
-    description: 'Designed for high-adrenaline getaway scenes and bank robbery sequences. Includes a military-grade canvas duffle bag stuffed with 30 strapped bundles ($100s and $50s) along with 2 shrink-wrapped bank bricks. Weighted realistically for authentic shoulder hang.',
-    details: {
-      count: '3,000 strapped notes + 2 sealed bricks',
-      bag: 'Heavyweight black tactical canvas duffle with heavy-duty metal zippers',
-      weight: 'Approx. 5.5kg realistic heist weight'
+      denomination: '$100 AUD design',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      availability: 'Available from Starter Stack up to 100-Stack bulk sizes'
     }
   }
 ]

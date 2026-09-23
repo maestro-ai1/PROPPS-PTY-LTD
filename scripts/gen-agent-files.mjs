@@ -57,11 +57,7 @@ const llmsTxt = `# ${NAME}
 - Checkout Channels: WhatsApp direct checkout and Email order checkout
 
 ## Primary Prop Collections
-- [Current Series AUD Prop Notes](https://${DOMAIN}/shop/next-gen-polymer-props/): $5 to $100 denominations printed on 120gsm matte archival paper
-- [Bank Strapped Bundles & Bricks](https://${DOMAIN}/shop/bank-strapped-bundles/): 100-note strapped bundles and 1,000-note vault bricks
-- [Film Director Heist Kits](https://${DOMAIN}/shop/film-director-kits/): Locking aluminium flight cases filled with strapped stacks
-- [Vintage Australian Props](https://${DOMAIN}/shop/vintage-australian-props/): Pre-polymer paper banknote designs for period dramas
-- [Custom Distressed Cash](https://${DOMAIN}/shop/custom-studio-props/): Hand-weathered, burnt, or blood-splattered props for gritty sequences
+- [New Notes](https://${DOMAIN}/shop/new-notes/): $5, $10, $20, $50, and $100 Australian prop notes, each selectable from a Starter Stack ($115) up to a 100-Stack bulk vault size ($14,000)
 - [Wholesale Studio Supply](https://${DOMAIN}/wholesale/): Tiered discounts for production companies (10% to 30% off)
 
 ## Optional & Agent Specifications

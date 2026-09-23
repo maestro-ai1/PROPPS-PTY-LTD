@@ -15,8 +15,13 @@ interface ProductDetailContentProps {
 
 export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ product }) => {
   const { addToCart } = useApp();
+  const bundles = product.bundles;
+  const [selectedBundleId, setSelectedBundleId] = useState(bundles?.[0]?.id);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+
+  const selectedBundle = bundles?.find((b) => b.id === selectedBundleId) ?? bundles?.[0];
+  const unitPrice = selectedBundle?.price ?? product.price;
 
   const categoryObj = CATEGORIES.find((c) => c.slug === product.category);
   const relatedProducts = PRODUCTS.filter(
@@ -24,13 +29,22 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
   ).slice(0, 3);
 
   const handleAdd = () => {
-    addToCart(product, quantity);
+    const cartLine = selectedBundle
+      ? {
+          ...product,
+          slug: `${product.slug}--${selectedBundle.id}`,
+          name: `${product.name} — ${selectedBundle.label}`,
+          price: selectedBundle.price,
+        }
+      : product;
+    addToCart(cartLine, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
 
   const handleWhatsAppInquiry = () => {
-    const msg = `Hello ${SITE.name}, I am inquiring about ordering: ${quantity}x ${product.name} ($${product.price * quantity} AUD). Could you confirm dispatch availability to my production location?`;
+    const bundleNote = selectedBundle ? ` (${selectedBundle.label})` : '';
+    const msg = `Hello ${SITE.name}, I am inquiring about ordering: ${quantity}x ${product.name}${bundleNote} ($${unitPrice * quantity} AUD). Could you confirm dispatch availability to my production location?`;
     window.open(waLink('61400000000', msg), '_blank');
   };
 
@@ -102,16 +116,50 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
           <div className="p-5 rounded-2xl bg-[#141E1A] border border-[#2C3E36] space-y-2">
             <div className="flex items-baseline gap-3">
               <span className="font-mono-code text-3xl font-extrabold text-[#C5A059]">
-                ${product.price} AUD
+                ${unitPrice} AUD
               </span>
               <span className="text-xs text-[#9AA7A0] font-mono-code">EXPRESS DISPATCH</span>
             </div>
 
             <div className="flex items-center gap-2 text-xs font-mono-code text-[#E5C378]">
               <Percent className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>Pay via Crypto &amp; save 10%: ${(product.price * 0.9).toFixed(0)} AUD</span>
+              <span>Pay via Crypto &amp; save 10%: ${(unitPrice * 0.9).toFixed(0)} AUD</span>
             </div>
           </div>
+
+          {/* Bundle Size Selector */}
+          {bundles && bundles.length > 0 && (
+            <div className="space-y-2.5">
+              <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] block">
+                Select Bundle Size
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                {bundles.map((bundle) => {
+                  const isSelected = selectedBundle?.id === bundle.id;
+                  return (
+                    <button
+                      key={bundle.id}
+                      type="button"
+                      onClick={() => setSelectedBundleId(bundle.id)}
+                      className={`p-3 rounded-xl border text-left transition-all ${
+                        isSelected
+                          ? 'bg-[#1C2A24] border-[#C5A059] shadow ring-1 ring-[#C5A059]'
+                          : 'bg-[#121A16] border-[#22302A] hover:border-[#2C3E36]'
+                      }`}
+                    >
+                      <span className="text-xs font-bold text-[#F8F6F0] block">{bundle.label}</span>
+                      <span className="text-[10px] text-[#9AA7A0] font-mono-code block">
+                        ${bundle.faceValue.toLocaleString()} face value
+                      </span>
+                      <span className="text-sm font-mono-code font-bold text-[#C5A059] block mt-1">
+                        ${bundle.price} AUD
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Quantity & Add to Cart Controls */}
           <div className="space-y-4 pt-2">
@@ -155,7 +203,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
                 ) : (
                   <>
                     <ShoppingBag className="w-4 h-4" />
-                    <span>Add {quantity} To Cart — ${product.price * quantity} AUD</span>
+                    <span>Add {quantity} To Cart — ${unitPrice * quantity} AUD</span>
                   </>
                 )}
               </button>
@@ -218,7 +266,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
                     {rel.name}
                   </h4>
                   <span className="font-mono-code text-xs font-bold text-[#C5A059] block">
-                    ${rel.price} AUD
+                    From ${rel.price} AUD
                   </span>
                 </div>
               </Link>
