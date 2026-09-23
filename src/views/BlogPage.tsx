@@ -57,6 +57,48 @@ export const BlogListContent: React.FC = () => {
   );
 };
 
+// Authors write links inline as [label](url). Internal hrefs (starting with
+// "/") render as next/link; external hrefs open in a new tab with a
+// dofollow rel — these are curated authoritative citations (RBA,
+// legislation.gov.au, etc.), not user content, so no nofollow is applied.
+const LINK_PATTERN = /(\[[^\]]+\]\([^)]+\))/g;
+const LINK_MATCH = /^\[([^\]]+)\]\(([^)]+)\)$/;
+
+function renderParagraph(text: string, key: number) {
+  const parts = text.split(LINK_PATTERN);
+  return (
+    <p key={key}>
+      {parts.map((part, i) => {
+        const match = part.match(LINK_MATCH);
+        if (!match) return <React.Fragment key={i}>{part}</React.Fragment>;
+        const [, label, href] = match;
+        if (href.startsWith('http')) {
+          return (
+            <a
+              key={i}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#C5A059] underline hover:text-[#E5C378] transition-colors"
+            >
+              {label}
+            </a>
+          );
+        }
+        return (
+          <Link
+            key={i}
+            href={href}
+            className="text-[#C5A059] underline hover:text-[#E5C378] transition-colors"
+          >
+            {label}
+          </Link>
+        );
+      })}
+    </p>
+  );
+}
+
 interface BlogPostContentProps {
   post: (typeof POSTS)[number];
 }
@@ -103,9 +145,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
       </header>
 
       <article className="prose prose-invert max-w-none text-[#B4C0BA] text-sm leading-relaxed space-y-4">
-        {post.content.split('\n\n').map((para, i) => (
-          <p key={i}>{para}</p>
-        ))}
+        {post.content.split('\n\n').map((para, i) => renderParagraph(para, i))}
       </article>
 
       {relatedProducts.length > 0 && (
