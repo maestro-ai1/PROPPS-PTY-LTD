@@ -1,20 +1,10 @@
-// src/pages/CompliancePage.tsx
+// src/views/CompliancePage.tsx
 import React from 'react';
-import {
-  ShieldAlert,
-  Scale,
-  FileText,
-  AlertTriangle,
-  CheckCircle,
-  ExternalLink,
-} from 'lucide-react';
-import { SITE, COMPLIANCE } from '../config/site.js';
+import Link from 'next/link';
+import { ShieldAlert, Scale, AlertTriangle, CheckCircle } from 'lucide-react';
+import { SITE } from '../config/site.js';
 
-interface CompliancePageProps {
-  onNavigate: (path: string) => void;
-}
-
-export const CompliancePage: React.FC<CompliancePageProps> = ({ onNavigate }) => {
+export const ComplianceContent: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
       {/* Title */}
@@ -146,13 +136,12 @@ export const CompliancePage: React.FC<CompliancePageProps> = ({ onNavigate }) =>
         <p className="text-xs text-[#889690] font-mono-code">
           Questions regarding legal documentation or compliance paperwork for your insurer?
         </p>
-        <button
-          type="button"
-          onClick={() => onNavigate('/contact')}
-          className="px-6 py-2.5 bg-[#1C2A24] hover:bg-[#263830] text-xs font-mono-code text-[#C5A059] rounded-lg border border-[#2C3E36]"
+        <Link
+          href="/contact"
+          className="inline-block px-6 py-2.5 bg-[#1C2A24] hover:bg-[#263830] text-xs font-mono-code text-[#C5A059] rounded-lg border border-[#2C3E36]"
         >
           Contact Legal &amp; Dispatch Desk →
-        </button>
+        </Link>
       </div>
     </div>
   );

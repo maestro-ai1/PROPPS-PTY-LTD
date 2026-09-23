@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { SITE, PRODUCTS } from '../config/site.js';
 import type { StoredOrder } from '../lib/order.js';
 
@@ -32,6 +33,7 @@ interface AppContextValue {
 const AppContext = createContext<AppContextValue | null>(null);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -111,9 +113,17 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = useCallback(() => updateCart([]), [updateCart]);
 
-  const onOrderCompleted = useCallback((_order: StoredOrder) => {
-    setIsCartOpen(false);
-  }, []);
+  const onOrderCompleted = useCallback(
+    (order: StoredOrder) => {
+      setIsCartOpen(false);
+      const params = new URLSearchParams({
+        ref: order.ref,
+        email: order.email || '',
+      });
+      router.push(`/thank-you-order?${params.toString()}`);
+    },
+    [router]
+  );
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 

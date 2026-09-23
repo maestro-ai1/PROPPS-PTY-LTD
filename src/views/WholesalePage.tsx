@@ -1,23 +1,11 @@
-// src/pages/WholesalePage.tsx
+// src/views/WholesalePage.tsx
+'use client';
+
 import React, { useState } from 'react';
-import {
-  Film,
-  Building,
-  ShieldCheck,
-  CheckCircle,
-  Send,
-  MessageCircle,
-  Truck,
-  Briefcase,
-} from 'lucide-react';
-import { SITE, CONTACT } from '../config/site.js';
+import { ShieldCheck, CheckCircle, Send, MessageCircle, Truck } from 'lucide-react';
 import { saveEnquiry } from '../lib/enquiryStore.js';
 
-interface WholesalePageProps {
-  onNavigate: (path: string) => void;
-}
-
-export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate }) => {
+export const WholesaleContent: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

@@ -1,11 +1,10 @@
-// src/pages/VideosPage.tsx
-import React, { useState } from 'react';
-import { Play, Film, ShieldCheck, ShoppingBag, Eye, Clock, Sparkles, CheckCircle2, X } from 'lucide-react';
-import { SITE, PRODUCTS } from '../config/site.js';
+// src/views/VideosPage.tsx
+'use client';
 
-interface VideosPageProps {
-  onNavigate: (path: string) => void;
-}
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Play, Film, ShoppingBag, Clock, Sparkles, CheckCircle2, X } from 'lucide-react';
+import { PRODUCTS } from '../config/site.js';
 
 interface VideoItem {
   id: string;
@@ -21,9 +20,15 @@ interface VideoItem {
   videoUrl?: string;
 }
 
-export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
+export const VideosContent: React.FC = () => {
+  const router = useRouter();
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('All');
+
+  const goToProduct = (slug: string) => {
+    const prod = PRODUCTS.find((p) => p.slug === slug);
+    router.push(prod ? `/shop/${prod.category}/${prod.slug}` : '/shop');
+  };
 
   const videos: VideoItem[] = [
     {
@@ -38,7 +43,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
         'Close-up camera analysis of our 120gsm matte archival paper stock filmed at 1,000 frames per second on ARRI Alexa Mini LF. Demonstrates zero glare under 5600K high-key film lighting and authentic stack fanning.',
       productionNotes:
         'Tested with ARRI Master Primes 50mm T1.3. Lighting: Aputure 600d with parabolic softbox. Shows the complete absence of reflective polymer glint.',
-      relatedProductSlug: '100-dollar-cinema-stack',
+      relatedProductSlug: 'aud-100-full-print-strapped-bundle',
     },
     {
       id: 'video-2',
@@ -52,7 +57,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
         'Unboxing and tactile inspection of the 1,000-note vacuum-sealed $100 AUD vault brick. Features Commonwealth security-simulation strapping and heavy-density studio heft.',
       productionNotes:
         'Ideal for bank robbery scenes and cartel vaults. Weighs approximately 1.05 kg matching realistic Australian currency bulk.',
-      relatedProductSlug: '10000-dollar-heist-brick',
+      relatedProductSlug: 'vault-heist-10-bundle-brick-100k-prop',
     },
     {
       id: 'video-3',
@@ -66,7 +71,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
         'Full walkthrough of the lockable dual-combination aluminium flight case. Contains 30 pre-strapped cinema bundles seated in custom high-density EVA shockproof foam.',
       productionNotes:
         'Includes dual key locks and numeric combination latches. Ready to place directly on set without additional art department dressing.',
-      relatedProductSlug: 'film-director-briefcase',
+      relatedProductSlug: 'film-directors-aluminium-cash-briefcase-kit',
     },
     {
       id: 'video-4',
@@ -80,7 +85,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
         'Educational side-by-side comparison illustrating why our prop notes look hyper-realistic through camera viewfinders while strictly adhering to Commonwealth specimen markings.',
       productionNotes:
         'Clearly shows the enlarged non-reflective SPECIMEN text, distinct micro-signatures, and absence of holographic diffraction foils.',
-      relatedProductSlug: '50-dollar-cinema-stack',
+      relatedProductSlug: 'aud-50-full-print-strapped-bundle',
     },
     {
       id: 'video-5',
@@ -94,7 +99,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
         'Melbourne prop masters demonstrate tea-staining, corner-dogearing, and hand-weathering techniques to transform crisp mint bills into gritty street-level crime cash.',
       productionNotes:
         'Techniques taught by veteran Australian art department crews for crime thrillers, street dramas, and period cinematic storytelling.',
-      relatedProductSlug: 'weathered-street-bundle',
+      relatedProductSlug: 'action-distressed-weathered-100-bundle',
     },
     {
       id: 'video-6',
@@ -108,16 +113,14 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
         'Dynamic handling of mixed $5, $10, $20, $50, and $100 Australian prop notes. Highlights the precise proportional sizing step-downs across all denominations.',
       productionNotes:
         'Each note strictly reflects Australian note dimensional scaling (from $5 small note to $100 wide format) for believable camera presence.',
-      relatedProductSlug: 'mixed-denomination-bundle',
+      relatedProductSlug: 'aud-mixed-denomination-master-pack',
     },
   ];
 
   const categories = ['All', 'Camera Testing', 'Product Showcase', 'Production Kits', 'Legal & Specimen', 'Behind The Scenes'];
 
   const filteredVideos =
-    activeCategory === 'All'
-      ? videos
-      : videos.filter((v) => v.category === activeCategory);
+    activeCategory === 'All' ? videos : videos.filter((v) => v.category === activeCategory);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
@@ -166,8 +169,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          
-          {/* Big Play Button Overlay */}
+
           <button
             type="button"
             onClick={() => setSelectedVideo(videos[0])}
@@ -183,9 +185,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
             <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm border border-white/20">
               4K ULTRA-HD · 1,000 FPS
             </span>
-            <span className="px-2 py-0.5 rounded bg-[#00b67a] font-bold">
-              01:45
-            </span>
+            <span className="px-2 py-0.5 rounded bg-[#00b67a] font-bold">01:45</span>
           </div>
         </div>
 
@@ -215,7 +215,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
 
             <button
               type="button"
-              onClick={() => onNavigate('/shop/100-dollar-stacks')}
+              onClick={() => router.push('/shop/next-gen-polymer-props')}
               className="px-5 py-3 bg-[#1C1014] hover:bg-[#2B181F] text-[#F8F6F0] font-semibold text-xs uppercase tracking-wider rounded-xl border border-[#38242A] hover:border-[#D4AF37] transition-colors flex items-center gap-2 cursor-pointer"
             >
               <ShoppingBag className="w-4 h-4 text-[#D4AF37]" />
@@ -233,7 +233,6 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
             className="luxury-card rounded-xl overflow-hidden flex flex-col justify-between group cursor-pointer border border-[#38242A] hover:border-[#D4AF37]/80 transition-all bg-[#140C0F]"
             onClick={() => setSelectedVideo(item)}
           >
-            {/* Thumbnail with Video Badges */}
             <div className="relative aspect-video overflow-hidden bg-[#0A0507]">
               <img
                 src={item.thumbnail}
@@ -250,7 +249,6 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
                 {item.resolution}
               </div>
 
-              {/* Play Icon in center on hover */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-12 h-12 rounded-full bg-[#D4AF37] text-black flex items-center justify-center shadow-xl group-hover:scale-110 transition-all border border-white">
                   <Play className="w-5 h-5 fill-black translate-x-0.5" />
@@ -263,7 +261,6 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Video Info Body */}
             <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
               <div className="space-y-1.5">
                 <span className="text-[10px] font-mono-code font-bold uppercase tracking-wider text-[#D4AF37] block">
@@ -287,12 +284,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    const prod = PRODUCTS.find((p) => p.slug === item.relatedProductSlug);
-                    if (prod) {
-                      onNavigate(`/shop/${prod.category}/${prod.slug}`);
-                    } else {
-                      onNavigate('/shop');
-                    }
+                    goToProduct(item.relatedProductSlug);
                   }}
                   className="px-2.5 py-1 rounded bg-[#1A1A1E] hover:bg-[#25252B] text-white border border-[#2C2822] text-[10.5px] font-mono-code transition-colors cursor-pointer"
                 >
@@ -314,7 +306,6 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
             className="w-full max-w-4xl bg-[#141417] border-2 border-[#D4AF37] rounded-2xl overflow-hidden shadow-2xl space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header bar */}
             <div className="p-4 bg-[#1A1A1E] border-b border-[#2C2822] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded bg-[#00b67a] text-white font-mono-code text-[10px] font-bold uppercase">
@@ -329,12 +320,12 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
                 type="button"
                 onClick={() => setSelectedVideo(null)}
                 className="p-1 rounded-lg text-[#A8A49D] hover:text-white hover:bg-[#25252A] transition-colors cursor-pointer"
+                aria-label="Close video"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Video Simulated Interactive Player Screen */}
             <div className="relative aspect-video bg-black flex flex-col items-center justify-center p-6 text-center overflow-hidden">
               <img
                 src={selectedVideo.thumbnail}
@@ -361,7 +352,6 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            {/* Video details & Direct Shop Actions */}
             <div className="p-5 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="space-y-1">
@@ -376,12 +366,7 @@ export const VideosPage: React.FC<VideosPageProps> = ({ onNavigate }) => {
                 <button
                   type="button"
                   onClick={() => {
-                    const prod = PRODUCTS.find((p) => p.slug === selectedVideo.relatedProductSlug);
-                    if (prod) {
-                      onNavigate(`/shop/${prod.category}/${prod.slug}`);
-                    } else {
-                      onNavigate('/shop');
-                    }
+                    goToProduct(selectedVideo.relatedProductSlug);
                     setSelectedVideo(null);
                   }}
                   className="px-5 py-2.5 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] text-[#120A0D] font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow shrink-0"

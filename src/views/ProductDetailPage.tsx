@@ -1,43 +1,30 @@
-// src/pages/ProductDetailPage.tsx
-import React, { useState } from 'react';
-import {
-  ShieldCheck,
-  Truck,
-  Percent,
-  ShoppingBag,
-  MessageCircle,
-  ArrowLeft,
-  Check,
-  FileCheck,
-  Layers,
-} from 'lucide-react';
-import { PRODUCTS, CATEGORIES, SHOP, SITE } from '../config/site.js';
-import { SmartImage } from '../components/SmartImage.js';
-import { JsonLd } from '../components/JsonLd.js';
-import { waLink } from '../lib/whatsapp.js';
+// src/views/ProductDetailPage.tsx
+'use client';
 
-interface ProductDetailPageProps {
-  slug: string;
-  onNavigate: (path: string) => void;
-  onAddToCart: (product: (typeof PRODUCTS)[0], quantity: number) => void;
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { ShieldCheck, Percent, ShoppingBag, MessageCircle, ArrowLeft, Check, FileCheck } from 'lucide-react';
+import { PRODUCTS, CATEGORIES, SITE } from '../config/site.js';
+import { SmartImage } from '../components/SmartImage.js';
+import { waLink } from '../lib/whatsapp.js';
+import { useApp } from '../context/AppContext.js';
+
+interface ProductDetailContentProps {
+  product: (typeof PRODUCTS)[number];
 }
 
-export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
-  slug,
-  onNavigate,
-  onAddToCart,
-}) => {
+export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ product }) => {
+  const { addToCart } = useApp();
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
-  const product = PRODUCTS.find((p) => p.slug === slug) || PRODUCTS[0];
   const categoryObj = CATEGORIES.find((c) => c.slug === product.category);
   const relatedProducts = PRODUCTS.filter(
     (p) => p.category === product.category && p.slug !== product.slug
   ).slice(0, 3);
 
   const handleAdd = () => {
-    onAddToCart(product, quantity);
+    addToCart(product, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
@@ -49,35 +36,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-12">
-      <JsonLd type="product" data={product} />
-
       {/* Breadcrumb Navigation */}
       <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono-code text-[#889690]">
-        <button
-          type="button"
-          onClick={() => onNavigate('/')}
-          className="hover:text-[#C5A059] transition-colors"
-        >
-          Home
-        </button>
+        <Link href="/" className="hover:text-[#C5A059] transition-colors">Home</Link>
         <span>/</span>
-        <button
-          type="button"
-          onClick={() => onNavigate('/shop')}
-          className="hover:text-[#C5A059] transition-colors"
-        >
-          Shop
-        </button>
+        <Link href="/shop" className="hover:text-[#C5A059] transition-colors">Shop</Link>
         <span>/</span>
         {categoryObj && (
           <>
-            <button
-              type="button"
-              onClick={() => onNavigate(`/shop/${categoryObj.slug}`)}
-              className="hover:text-[#C5A059] transition-colors"
-            >
+            <Link href={`/shop/${categoryObj.slug}`} className="hover:text-[#C5A059] transition-colors">
               {categoryObj.name}
-            </button>
+            </Link>
             <span>/</span>
           </>
         )}
@@ -85,25 +54,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
       </nav>
 
       {/* Back button */}
-      <button
-        type="button"
-        onClick={() => onNavigate('/shop')}
-        className="inline-flex items-center gap-2 text-xs font-mono-code text-[#C5A059] hover:underline"
-      >
+      <Link href="/shop" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#C5A059] hover:underline">
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Prop Catalog</span>
-      </button>
+      </Link>
 
       {/* Main Product Showcase Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
         {/* Left Column: Photorealistic SmartImage Artwork */}
         <div className="space-y-4">
           <div className="luxury-card rounded-2xl overflow-hidden border-2 border-[#C5A059]/30">
-            <SmartImage
-              src={product.images[0]}
-              alt={product.name}
-              badge={product.badge}
-            />
+            <SmartImage src={product.images[0]} alt={product.name} badge={product.badge} />
           </div>
 
           <div className="p-4 bg-[#121A16] rounded-xl border border-[#22302A] flex items-center justify-between text-xs font-mono-code text-[#9AA7A0]">
@@ -134,9 +95,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               {product.name}
             </h1>
 
-            <p className="text-sm text-[#B4C0BA] leading-relaxed">
-              {product.description}
-            </p>
+            <p className="text-sm text-[#B4C0BA] leading-relaxed">{product.description}</p>
           </div>
 
           {/* Price Box */}
@@ -145,16 +104,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <span className="font-mono-code text-3xl font-extrabold text-[#C5A059]">
                 ${product.price} AUD
               </span>
-              <span className="text-xs text-[#9AA7A0] font-mono-code">
-                EXPRESS DISPATCH
-              </span>
+              <span className="text-xs text-[#9AA7A0] font-mono-code">EXPRESS DISPATCH</span>
             </div>
 
             <div className="flex items-center gap-2 text-xs font-mono-code text-[#E5C378]">
               <Percent className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>
-                Pay via Crypto &amp; save 10%: ${(product.price * 0.9).toFixed(0)} AUD
-              </span>
+              <span>Pay via Crypto &amp; save 10%: ${(product.price * 0.9).toFixed(0)} AUD</span>
             </div>
           </div>
 
@@ -245,21 +200,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
             <h3 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
               RELATED PROP SPECIMENS
             </h3>
-            <button
-              type="button"
-              onClick={() => onNavigate('/shop')}
-              className="text-xs font-mono-code text-[#C5A059] hover:underline"
-            >
+            <Link href="/shop" className="text-xs font-mono-code text-[#C5A059] hover:underline">
               Browse All Props →
-            </button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {relatedProducts.map((rel) => (
-              <div
+              <Link
                 key={rel.slug}
-                onClick={() => onNavigate(`/shop/${rel.category}/${rel.slug}`)}
-                className="luxury-card rounded-2xl overflow-hidden cursor-pointer group"
+                href={`/shop/${rel.category}/${rel.slug}`}
+                className="luxury-card rounded-2xl overflow-hidden group block"
               >
                 <SmartImage src={rel.images[0]} alt={rel.name} />
                 <div className="p-4 space-y-1">
@@ -270,7 +221,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     ${rel.price} AUD
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

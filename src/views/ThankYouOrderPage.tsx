@@ -1,20 +1,17 @@
-// src/pages/ThankYouOrderPage.tsx
+// src/views/ThankYouOrderPage.tsx
+'use client';
+
 import React from 'react';
-import { CheckCircle2, Mail, ShieldCheck, ArrowRight, Package } from 'lucide-react';
-import { SITE } from '../config/site.js';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { CheckCircle2, Mail } from 'lucide-react';
 import { CopyField } from '../components/CopyField.js';
 
-interface ThankYouOrderPageProps {
-  orderRef: string;
-  customerEmail: string;
-  onNavigate: (path: string) => void;
-}
+export const ThankYouOrderContent: React.FC = () => {
+  const searchParams = useSearchParams();
+  const orderRef = searchParams.get('ref') || '';
+  const customerEmail = searchParams.get('email') || '';
 
-export const ThankYouOrderPage: React.FC<ThankYouOrderPageProps> = ({
-  orderRef,
-  customerEmail,
-  onNavigate,
-}) => {
   return (
     <div className="max-w-2xl mx-auto px-4 py-16 sm:py-24 text-center space-y-8">
       {/* Success Badge */}
@@ -42,7 +39,7 @@ export const ThankYouOrderPage: React.FC<ThankYouOrderPageProps> = ({
               Official Order Reference
             </span>
             <div className="mt-1">
-              <CopyField value={orderRef || 'MM-ORDER-PENDING'} label="Order Reference" />
+              <CopyField value={orderRef || 'PRP-ORDER-PENDING'} label="Order Reference" />
             </div>
           </div>
 
@@ -72,7 +69,8 @@ export const ThankYouOrderPage: React.FC<ThankYouOrderPageProps> = ({
             <li className="flex items-start gap-2">
               <span className="text-[#C5A059] font-bold">2.</span>
               <span>
-                <strong>Watch for payment-details email:</strong> An invoice containing your verified payment routing will arrive at <span className="text-white font-mono-code">{customerEmail || 'your email address'}</span> shortly.
+                <strong>Watch for payment-details email:</strong> An invoice containing your verified payment routing will arrive at{' '}
+                <span className="text-white font-mono-code">{customerEmail || 'your email address'}</span> shortly.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -86,21 +84,19 @@ export const ThankYouOrderPage: React.FC<ThankYouOrderPageProps> = ({
       </div>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-        <button
-          type="button"
-          onClick={() => onNavigate('/shop')}
-          className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow cursor-pointer font-mono-code"
+        <Link
+          href="/shop"
+          className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center"
         >
           Return to Cinema Catalog
-        </button>
+        </Link>
 
-        <button
-          type="button"
-          onClick={() => onNavigate('/')}
-          className="w-full sm:w-auto px-6 py-3.5 bg-[#141E1A] hover:bg-[#1C2A24] text-[#F8F6F0] text-xs font-mono-code rounded-xl border border-[#2C3E36] transition-colors"
+        <Link
+          href="/"
+          className="w-full sm:w-auto px-6 py-3.5 bg-[#141E1A] hover:bg-[#1C2A24] text-[#F8F6F0] text-xs font-mono-code rounded-xl border border-[#2C3E36] transition-colors text-center"
         >
           Return to Home
-        </button>
+        </Link>
       </div>
     </div>
   );

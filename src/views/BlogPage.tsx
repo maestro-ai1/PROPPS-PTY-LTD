@@ -1,72 +1,10 @@
-// src/pages/BlogPage.tsx
-import React, { useState } from 'react';
-import { POSTS, SITE } from '../config/site.js';
-import { Calendar, Clock, ArrowRight, BookOpen, ArrowLeft } from 'lucide-react';
+// src/views/BlogPage.tsx
+import React from 'react';
+import Link from 'next/link';
+import { POSTS } from '../config/site.js';
+import { Calendar, Clock, ArrowRight, ArrowLeft } from 'lucide-react';
 
-interface BlogPageProps {
-  onNavigate: (path: string) => void;
-  selectedSlug?: string;
-}
-
-export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, selectedSlug }) => {
-  if (selectedSlug) {
-    const post = POSTS.find((p) => p.slug === selectedSlug) || POSTS[0];
-    return (
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8">
-        <button
-          type="button"
-          onClick={() => onNavigate('/blog')}
-          className="inline-flex items-center gap-2 text-xs font-mono-code text-[#C5A059] hover:underline"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Return to Production Guides</span>
-        </button>
-
-        <header className="space-y-3 border-b border-[#1E2B25] pb-6">
-          <div className="flex items-center gap-3 text-xs font-mono-code text-[#C5A059]">
-            <span className="px-2.5 py-0.5 rounded bg-[#1C2A24] border border-[#2C3E36] font-bold">
-              {post.category}
-            </span>
-            <span>·</span>
-            <span className="flex items-center gap-1 text-[#9AA7A0]">
-              <Calendar className="w-3.5 h-3.5" />
-              {post.date}
-            </span>
-            <span>·</span>
-            <span className="flex items-center gap-1 text-[#9AA7A0]">
-              <Clock className="w-3.5 h-3.5" />
-              {post.readTime}
-            </span>
-          </div>
-
-          <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#F8F6F0] leading-tight">
-            {post.title}
-          </h1>
-
-          <p className="text-sm text-[#9AA7A0] leading-relaxed">
-            {post.excerpt}
-          </p>
-        </header>
-
-        <article className="prose prose-invert max-w-none text-[#B4C0BA] text-sm leading-relaxed space-y-4">
-          {post.content.split('\n\n').map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
-        </article>
-
-        <div className="pt-8 border-t border-[#1E2B25] flex justify-between items-center">
-          <button
-            type="button"
-            onClick={() => onNavigate('/shop')}
-            className="px-6 py-3 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow cursor-pointer font-mono-code"
-          >
-            Explore Cinema Props Catalog →
-          </button>
-        </div>
-      </div>
-    );
-  }
-
+export const BlogListContent: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
       {/* Header */}
@@ -84,10 +22,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, selectedSlug }) 
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {POSTS.map((post) => (
-          <div
+          <Link
             key={post.slug}
-            onClick={() => onNavigate(`/blog/${post.slug}`)}
-            className="luxury-card rounded-2xl p-6 flex flex-col justify-between cursor-pointer group space-y-4"
+            href={`/blog/${post.slug}`}
+            className="luxury-card rounded-2xl p-6 flex flex-col justify-between group space-y-4"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between text-[11px] font-mono-code text-[#9AA7A0]">
@@ -108,8 +46,62 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate, selectedSlug }) 
               <span>Read Guide</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
-          </div>
+          </Link>
         ))}
+      </div>
+    </div>
+  );
+};
+
+interface BlogPostContentProps {
+  post: (typeof POSTS)[number];
+}
+
+export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
+  return (
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8">
+      <Link href="/blog" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#C5A059] hover:underline">
+        <ArrowLeft className="w-4 h-4" />
+        <span>Return to Production Guides</span>
+      </Link>
+
+      <header className="space-y-3 border-b border-[#1E2B25] pb-6">
+        <div className="flex items-center gap-3 text-xs font-mono-code text-[#C5A059]">
+          <span className="px-2.5 py-0.5 rounded bg-[#1C2A24] border border-[#2C3E36] font-bold">
+            {post.category}
+          </span>
+          <span>·</span>
+          <span className="flex items-center gap-1 text-[#9AA7A0]">
+            <Calendar className="w-3.5 h-3.5" />
+            {post.date}
+          </span>
+          <span>·</span>
+          <span className="flex items-center gap-1 text-[#9AA7A0]">
+            <Clock className="w-3.5 h-3.5" />
+            {post.readTime}
+          </span>
+        </div>
+
+        <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#F8F6F0] leading-tight">
+          {post.title}
+        </h1>
+
+        <p className="text-sm text-[#9AA7A0] leading-relaxed">{post.excerpt}</p>
+      </header>
+
+      <article className="prose prose-invert max-w-none text-[#B4C0BA] text-sm leading-relaxed space-y-4">
+        {post.content.split('\n\n').map((para, i) => (
+          <p key={i}>{para}</p>
+        ))}
+      </article>
+
+      <div className="pt-8 border-t border-[#1E2B25] flex justify-between items-center">
+        <Link
+          href="/shop"
+          className="px-6 py-3 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code"
+        >
+          Explore Cinema Props Catalog →
+        </Link>
       </div>
     </div>
   );

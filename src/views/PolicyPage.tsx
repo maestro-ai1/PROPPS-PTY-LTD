@@ -1,20 +1,23 @@
-// src/pages/PolicyPage.tsx
-import React, { useEffect } from 'react';
-import { ShieldCheck, Truck, RefreshCw, FileText, Lock, ArrowLeft, CheckCircle2, AlertTriangle, Scale } from 'lucide-react';
+// src/views/PolicyPage.tsx
+import React from 'react';
+import Link from 'next/link';
+import { Truck, RefreshCw, Lock, ArrowLeft, CheckCircle2, AlertTriangle, Scale } from 'lucide-react';
 import { SITE, CONTACT } from '../config/site.js';
 
 export type PolicyType = 'shipping' | 'refund' | 'privacy' | 'terms';
 
-interface PolicyPageProps {
+const POLICY_PATHS: Record<PolicyType, string> = {
+  shipping: '/shipping-policy',
+  refund: '/refund-policy',
+  privacy: '/privacy-policy',
+  terms: '/terms-and-conditions',
+};
+
+interface PolicyContentProps {
   policyType: PolicyType;
-  onNavigate: (path: string) => void;
 }
 
-export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [policyType]);
-
+export const PolicyContent: React.FC<PolicyContentProps> = ({ policyType }) => {
   const renderShippingPolicy = () => (
     <div className="space-y-8">
       <div className="border-b border-[#38242A] pb-6 space-y-2">
@@ -30,7 +33,6 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
         </p>
       </div>
 
-      {/* Highlights Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono-code text-xs">
         <div className="p-4 rounded-xl bg-[#140C0F] border border-[#38242A] space-y-1">
           <span className="text-[#A69C9F] text-[11px] block">STANDARD EXPRESS</span>
@@ -170,9 +172,7 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
 
       <div className="prose prose-invert max-w-none text-[#C5BDBA] text-xs sm:text-sm leading-relaxed space-y-6">
         <section className="space-y-3">
-          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
-            1. Information We Collect
-          </h2>
+          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">1. Information We Collect</h2>
           <p>
             We collect only the minimum necessary information required to fulfill your order and provide delivery tracking updates:
           </p>
@@ -223,7 +223,6 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
         </p>
       </div>
 
-      {/* Compliance Warning Box */}
       <div className="p-4 rounded-xl bg-[#181612] border-2 border-[#D4AF37] text-xs space-y-2">
         <div className="flex items-center gap-2 text-[#D4AF37] font-bold uppercase tracking-wider font-mono-code">
           <AlertTriangle className="w-4 h-4 text-[#D4AF37]" />
@@ -236,9 +235,7 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
 
       <div className="prose prose-invert max-w-none text-[#C5BDBA] text-xs sm:text-sm leading-relaxed space-y-6">
         <section className="space-y-3">
-          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
-            1. Entity Identification
-          </h2>
+          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">1. Entity Identification</h2>
           <p>
             These Terms and Conditions apply to all purchases made through this website operated by PROPPS PTY LTD, a registered proprietary company in Victoria, Australia (ABN: 72 642 507 042, Registered Office: Eltham VIC 3093).
           </p>
@@ -248,9 +245,7 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
           <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
             2. Reserve Bank of Australia Compliance Standards
           </h2>
-          <p>
-            All products listed on this website are designed strictly to satisfy Reserve Bank of Australia (RBA) guidelines for reproduction notes:
-          </p>
+          <p>All products listed on this website are designed strictly to satisfy Reserve Bank of Australia (RBA) guidelines for reproduction notes:</p>
           <ul className="list-disc pl-5 space-y-1 text-xs text-[#A69C9F]">
             <li>All notes feature prominent, non-removable "SPECIMEN" or "PROP MONEY" design identifiers.</li>
             <li>No notes contain genuine polymer substrate, optical variable ink (OVI), or holographic diffraction patches.</li>
@@ -268,9 +263,7 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
         </section>
 
         <section className="space-y-3">
-          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
-            4. Limitation of Liability
-          </h2>
+          <h2 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">4. Limitation of Liability</h2>
           <p>
             PROPPS PTY LTD disclaims any and all liability arising from the unlawful misuse, unauthorized alteration, or fraudulent distribution of our prop products by third parties. Purchasers indemnify PROPPS PTY LTD against any legal actions arising from breaches of Commonwealth or state laws.
           </p>
@@ -283,14 +276,13 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-10">
       {/* Back button */}
       <div>
-        <button
-          type="button"
-          onClick={() => onNavigate('/')}
-          className="inline-flex items-center gap-2 text-xs font-mono-code text-[#D4AF37] hover:text-white transition-colors cursor-pointer"
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-xs font-mono-code text-[#D4AF37] hover:text-white transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Home Storefront</span>
-        </button>
+        </Link>
       </div>
 
       {/* Main Content Area */}
@@ -305,45 +297,33 @@ export const PolicyPage: React.FC<PolicyPageProps> = ({ policyType, onNavigate }
       <div className="p-4 rounded-xl bg-[#140C0F] border border-[#2B181E] flex flex-wrap items-center justify-between gap-3 text-xs font-mono-code">
         <span className="text-[#A69C9F]">Quick Policy Links:</span>
         <div className="flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={() => onNavigate('/policies/shipping')}
-            className={`cursor-pointer transition-colors ${
-              policyType === 'shipping' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'
-            }`}
+          <Link
+            href={POLICY_PATHS.shipping}
+            className={policyType === 'shipping' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'}
           >
             Shipping Policy
-          </button>
+          </Link>
           <span className="text-[#38242A]">·</span>
-          <button
-            type="button"
-            onClick={() => onNavigate('/policies/refund')}
-            className={`cursor-pointer transition-colors ${
-              policyType === 'refund' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'
-            }`}
+          <Link
+            href={POLICY_PATHS.refund}
+            className={policyType === 'refund' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'}
           >
             Refund Policy
-          </button>
+          </Link>
           <span className="text-[#38242A]">·</span>
-          <button
-            type="button"
-            onClick={() => onNavigate('/policies/privacy')}
-            className={`cursor-pointer transition-colors ${
-              policyType === 'privacy' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'
-            }`}
+          <Link
+            href={POLICY_PATHS.privacy}
+            className={policyType === 'privacy' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'}
           >
             Privacy Policy
-          </button>
+          </Link>
           <span className="text-[#38242A]">·</span>
-          <button
-            type="button"
-            onClick={() => onNavigate('/policies/terms')}
-            className={`cursor-pointer transition-colors ${
-              policyType === 'terms' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'
-            }`}
+          <Link
+            href={POLICY_PATHS.terms}
+            className={policyType === 'terms' ? 'text-[#D4AF37] font-bold underline' : 'text-[#C5BDBA] hover:text-white'}
           >
             Terms &amp; Conditions
-          </button>
+          </Link>
         </div>
       </div>
     </div>

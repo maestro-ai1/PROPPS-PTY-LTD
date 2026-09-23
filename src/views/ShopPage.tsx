@@ -1,47 +1,41 @@
-// src/pages/ShopPage.tsx
-import React, { useState, useMemo } from 'react';
-import { Filter, ShoppingBag, ShieldCheck, ArrowRight, Check } from 'lucide-react';
-import { PRODUCTS, CATEGORIES, SHOP, SITE } from '../config/site.js';
-import { SmartImage } from '../components/SmartImage.js';
+// src/views/ShopPage.tsx
+'use client';
 
-interface ShopPageProps {
-  initialCategory?: string;
-  onNavigate: (path: string) => void;
-  onAddToCart: (product: (typeof PRODUCTS)[0]) => void;
+import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
+import { ShoppingBag, ShieldCheck, Check } from 'lucide-react';
+import { PRODUCTS, CATEGORIES } from '../config/site.js';
+import { SmartImage } from '../components/SmartImage.js';
+import { useApp } from '../context/AppContext.js';
+
+interface ShopContentProps {
+  category?: string;
 }
 
-export const ShopPage: React.FC<ShopPageProps> = ({
-  initialCategory,
-  onNavigate,
-  onAddToCart,
-}) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
+export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
+  const { addToCart } = useApp();
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc'>('featured');
   const [addedSlug, setAddedSlug] = useState<string | null>(null);
 
   const filteredProducts = useMemo(() => {
-    let list = [...PRODUCTS];
-
-    if (selectedCategory !== 'all') {
-      list = list.filter((p) => p.category === selectedCategory);
-    }
+    let list = category ? PRODUCTS.filter((p) => p.category === category) : [...PRODUCTS];
 
     if (sortBy === 'price-asc') {
-      list.sort((a, b) => a.price - b.price);
+      list = [...list].sort((a, b) => a.price - b.price);
     } else if (sortBy === 'price-desc') {
-      list.sort((a, b) => b.price - a.price);
+      list = [...list].sort((a, b) => b.price - a.price);
     }
 
     return list;
-  }, [selectedCategory, sortBy]);
+  }, [category, sortBy]);
 
-  const handleAdd = (product: (typeof PRODUCTS)[0]) => {
-    onAddToCart(product);
+  const handleAdd = (product: (typeof PRODUCTS)[number]) => {
+    addToCart(product);
     setAddedSlug(product.slug);
     setTimeout(() => setAddedSlug(null), 1500);
   };
 
-  const currentCatObj = CATEGORIES.find((c) => c.slug === selectedCategory);
+  const currentCatObj = CATEGORIES.find((c) => c.slug === category);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10">
@@ -62,33 +56,31 @@ export const ShopPage: React.FC<ShopPageProps> = ({
 
       {/* Category Filter Pills & Sort Bar */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        {/* Category Pills */}
+        {/* Category Pills — real links so every category is its own indexable URL */}
         <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => setSelectedCategory('all')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-              selectedCategory === 'all'
+          <Link
+            href="/shop"
+            className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
+              !category
                 ? 'bg-[#C5A059] text-[#0D1512] font-bold shadow'
                 : 'bg-[#141E1A] text-[#B4C0BA] hover:bg-[#1C2A24] border border-[#22302A]'
             }`}
           >
             All Props ({PRODUCTS.length})
-          </button>
+          </Link>
 
           {CATEGORIES.map((cat) => (
-            <button
+            <Link
               key={cat.slug}
-              type="button"
-              onClick={() => setSelectedCategory(cat.slug)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-                selectedCategory === cat.slug
+              href={`/shop/${cat.slug}`}
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
+                category === cat.slug
                   ? 'bg-[#C5A059] text-[#0D1512] font-bold shadow'
                   : 'bg-[#141E1A] text-[#B4C0BA] hover:bg-[#1C2A24] border border-[#22302A]'
               }`}
             >
               {cat.name}
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -111,36 +103,24 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProducts.map((product) => {
           const isAdded = addedSlug === product.slug;
+          const productHref = `/shop/${product.category}/${product.slug}`;
           return (
-            <div
-              key={product.slug}
-              className="luxury-card rounded-2xl overflow-hidden flex flex-col justify-between"
-            >
+            <div key={product.slug} className="luxury-card rounded-2xl overflow-hidden flex flex-col justify-between">
               {/* Image Frame */}
-              <div
-                onClick={() => onNavigate(`/shop/${product.category}/${product.slug}`)}
-                className="cursor-pointer"
-              >
-                <SmartImage
-                  src={product.images[0]}
-                  alt={product.name}
-                  badge={product.badge}
-                />
-              </div>
+              <Link href={productHref} className="block">
+                <SmartImage src={product.images[0]} alt={product.name} badge={product.badge} />
+              </Link>
 
               {/* Card Content */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <div
-                  onClick={() => onNavigate(`/shop/${product.category}/${product.slug}`)}
-                  className="cursor-pointer space-y-1.5"
-                >
+                <Link href={productHref} className="block space-y-1.5">
                   <h3 className="font-serif-luxury text-sm font-bold text-[#F8F6F0] hover:text-[#E5C378] transition-colors leading-snug">
                     {product.name}
                   </h3>
                   <p className="text-xs text-[#9AA7A0] leading-relaxed line-clamp-2">
                     {product.shortDescription}
                   </p>
-                </div>
+                </Link>
 
                 <div className="pt-3 border-t border-[#22302A] space-y-3">
                   <div className="flex items-center justify-between font-mono-code">
@@ -152,21 +132,16 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                         crypto: ${(product.price * 0.9).toFixed(0)} AUD
                       </span>
                     </div>
-                    <span className="text-[10px] text-[#56C48B] font-semibold">
-                      MELBOURNE STOCK
-                    </span>
+                    <span className="text-[10px] text-[#56C48B] font-semibold">MELBOURNE STOCK</span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        onNavigate(`/shop/${product.category}/${product.slug}`)
-                      }
-                      className="py-2.5 px-3 bg-[#1C2A24] hover:bg-[#263830] text-[#F8F6F0] text-xs font-semibold rounded-lg border border-[#2C3E36] transition-colors text-center cursor-pointer"
+                    <Link
+                      href={productHref}
+                      className="py-2.5 px-3 bg-[#1C2A24] hover:bg-[#263830] text-[#F8F6F0] text-xs font-semibold rounded-lg border border-[#2C3E36] transition-colors text-center"
                     >
                       Specifications
-                    </button>
+                    </Link>
 
                     <button
                       type="button"
@@ -201,17 +176,11 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       <div className="p-6 rounded-2xl bg-[#121A16] border border-[#2C3E36] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-code text-[#B4C0BA]">
         <div className="flex items-center gap-3">
           <ShieldCheck className="w-6 h-6 text-[#C5A059] shrink-0" />
-          <span>
-            All reproduction currency adheres strictly to Section 22 of the Crimes (Currency) Act 1981.
-          </span>
+          <span>All reproduction currency adheres strictly to Section 22 of the Crimes (Currency) Act 1981.</span>
         </div>
-        <button
-          type="button"
-          onClick={() => onNavigate('/compliance')}
-          className="text-[#C5A059] hover:underline shrink-0"
-        >
+        <Link href="/compliance" className="text-[#C5A059] hover:underline shrink-0">
           Read Legal Compliance Guide →
-        </button>
+        </Link>
       </div>
     </div>
   );

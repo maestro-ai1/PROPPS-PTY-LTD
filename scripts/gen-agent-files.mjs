@@ -32,60 +32,10 @@ ensureDir(path.join(rootDir, 'public', '.well-known'));
 ensureDir(path.join(rootDir, 'public', '.well-known', 'agent-skills'));
 ensureDir(path.join(rootDir, 'public', '.well-known', 'mcp'));
 
-// 1. public/robots.txt
-const robotsTxt = `User-agent: *
-Disallow: /thank-you-contact/
-Disallow: /thank-you-order/
-Disallow: /thank-you-wholesale/
-Disallow: /admin/
-Sitemap: https://${DOMAIN}/sitemap.xml
-
-Content-Signal: search=yes, ai-input=yes, ai-train=no
-
-# AI crawlers — welcome to index product and content pages
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-# Agent-readable resources
-# llms.txt: https://${DOMAIN}/llms.txt
-# API Catalog: https://${DOMAIN}/.well-known/api-catalog
-# Agent Skills: https://${DOMAIN}/.well-known/agent-skills/index.json
-# MCP Server Card: https://${DOMAIN}/.well-known/mcp/server-card.json
-`;
-fs.writeFileSync(path.join(rootDir, 'public', 'robots.txt'), robotsTxt);
+// NOTE: robots.txt and sitemap.xml are NOT generated here — they are owned by
+// src/app/robots.ts and src/app/sitemap.ts (Next.js native metadata routes),
+// which read SITE.domain directly at request time. A static public/robots.txt
+// would conflict with app/robots.ts at build time — never add one back.
 
 // 2. public/llms.txt
 const llmsTxt = `# ${NAME}

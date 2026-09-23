@@ -1,20 +1,16 @@
-// src/pages/FaqPage.tsx
+// src/views/FaqPage.tsx
+'use client';
+
 import React, { useState } from 'react';
-import { FAQ, SITE } from '../config/site.js';
-import { JsonLd } from '../components/JsonLd.js';
-import { HelpCircle, ChevronDown, MessageCircle } from 'lucide-react';
+import Link from 'next/link';
+import { FAQ } from '../config/site.js';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 
-interface FaqPageProps {
-  onNavigate: (path: string) => void;
-}
-
-export const FaqPage: React.FC<FaqPageProps> = ({ onNavigate }) => {
+export const FaqContent: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
-      <JsonLd type="faq" />
-
       {/* Header */}
       <div className="border-b border-[#1E2B25] pb-6 space-y-2 text-center">
         <span className="text-[11px] font-mono-code font-bold uppercase tracking-widest text-[#C5A059] block">
@@ -33,13 +29,11 @@ export const FaqPage: React.FC<FaqPageProps> = ({ onNavigate }) => {
         {FAQ.map((item, idx) => {
           const isOpen = openIndex === idx;
           return (
-            <div
-              key={idx}
-              className="rounded-2xl bg-[#121A16] border border-[#22302A] overflow-hidden transition-all"
-            >
+            <div key={idx} className="rounded-2xl bg-[#121A16] border border-[#22302A] overflow-hidden transition-all">
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
+                aria-expanded={isOpen}
                 className="w-full p-5 text-left flex items-center justify-between gap-4 focus:outline-none"
               >
                 <span className="font-serif-luxury text-sm sm:text-base font-bold text-[#F8F6F0]">
@@ -73,26 +67,21 @@ export const FaqPage: React.FC<FaqPageProps> = ({ onNavigate }) => {
           Our Melbourne dispatch desk is staffed weekdays from 9:00 AM to 6:00 PM AEST to assist with production timelines.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => onNavigate('/contact')}
-            className="w-full sm:w-auto px-6 py-3 bg-[#1C2A24] text-xs font-mono-code text-[#C5A059] rounded-xl border border-[#2C3E36] hover:bg-[#263830]"
+          <Link
+            href="/contact"
+            className="w-full sm:w-auto px-6 py-3 bg-[#1C2A24] text-xs font-mono-code text-[#C5A059] rounded-xl border border-[#2C3E36] hover:bg-[#263830] text-center"
           >
             Submit an Inquiry
-          </button>
-          <button
-            type="button"
-            onClick={() =>
-              window.open(
-                'https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20I%20have%20a%20question%20regarding%20prop%20currency%20orders',
-                '_blank'
-              )
-            }
+          </Link>
+          <a
+            href="https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20I%20have%20a%20question%20regarding%20prop%20currency%20orders"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-6 py-3 bg-[#25D366] text-[#0D1512] text-xs font-mono-code font-bold rounded-xl flex items-center justify-center gap-1.5"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Chat on WhatsApp</span>
-          </button>
+          </a>
         </div>
       </div>
     </div>

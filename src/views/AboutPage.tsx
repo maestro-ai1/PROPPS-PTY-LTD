@@ -1,25 +1,10 @@
-// src/pages/AboutPage.tsx
+// src/views/AboutPage.tsx
 import React from 'react';
-import {
-  Building2,
-  Calendar,
-  ShieldCheck,
-  Award,
-  Layers,
-  Sparkles,
-  MapPin,
-  CheckCircle,
-  Film,
-  Camera,
-  Scale,
-} from 'lucide-react';
-import { SITE, BRAND, CONTACT } from '../config/site.js';
+import Link from 'next/link';
+import { Scale } from 'lucide-react';
+import { SITE, BRAND } from '../config/site.js';
 
-interface AboutPageProps {
-  onNavigate: (path: string) => void;
-}
-
-export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
+export const AboutContent: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-16">
       {/* Page Title & Entity Header */}
@@ -83,111 +68,52 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose my-6">
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              1. Founding Provenance
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Established 2019 in Eltham, Victoria as an incorporated proprietary limited enterprise.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">1. Founding Provenance</span>
+            <p className="text-xs text-[#9AA7A0]">Established 2019 in Eltham, Victoria as an incorporated proprietary limited enterprise.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              2. Victorian Headquarters
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Operating from Suite 4, 95 Main Road, Eltham VIC 3093 with secure packing facilities.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">2. Victorian Headquarters</span>
+            <p className="text-xs text-[#9AA7A0]">Operating from Suite 4, 95 Main Road, Eltham VIC 3093 with secure packing facilities.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              3. Quantifiable Scale
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Over 500 Australian productions supplied, spanning feature films to theatrical tours.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">3. Quantifiable Scale</span>
+            <p className="text-xs text-[#9AA7A0]">Over 500 Australian productions supplied, spanning feature films to theatrical tours.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              4. Crimes Act S22 Adherence
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Every specimen note engineered to prevent any potential confusion with legal tender.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">4. Crimes Act S22 Adherence</span>
+            <p className="text-xs text-[#9AA7A0]">Every specimen note engineered to prevent any potential confusion with legal tender.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              5. Historical Milestones
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              From bespoke pilot orders in 2019 to nationwide express studio distribution in 2026.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">5. Historical Milestones</span>
+            <p className="text-xs text-[#9AA7A0]">From bespoke pilot orders in 2019 to nationwide express studio distribution in 2026.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              6. Nationwide Dispatch
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Australia Post Express tracked courier dispatch with mandatory signature on delivery.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">6. Nationwide Dispatch</span>
+            <p className="text-xs text-[#9AA7A0]">Australia Post Express tracked courier dispatch with mandatory signature on delivery.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              7. Non-Glare Inks
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Formulated specifically for ARRI, RED, Sony Venice, and Blackmagic cinema sensors.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">7. Non-Glare Inks</span>
+            <p className="text-xs text-[#9AA7A0]">Formulated specifically for ARRI, RED, Sony Venice, and Blackmagic cinema sensors.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              8. Complete Denomination Suite
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Accurately representing $5, $10, $20, $50, and $100 denominations plus vintage series.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">8. Complete Denomination Suite</span>
+            <p className="text-xs text-[#9AA7A0]">Accurately representing $5, $10, $20, $50, and $100 denominations plus vintage series.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              9. Bank-Strapped Authentication
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Heavy kraft paper straps featuring authentic simulation reserve banking typography.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">9. Bank-Strapped Authentication</span>
+            <p className="text-xs text-[#9AA7A0]">Heavy kraft paper straps featuring authentic simulation reserve banking typography.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              10. Vault-Grade Heist Hardware
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Aluminium locking flight cases and shrink-wrapped bricks for major cinematic climaxes.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">10. Vault-Grade Heist Hardware</span>
+            <p className="text-xs text-[#9AA7A0]">Aluminium locking flight cases and shrink-wrapped bricks for major cinematic climaxes.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              11. Age-Gated 18+ Access
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Strict adult ordering verification preventing improper use by unverified parties.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">11. Age-Gated 18+ Access</span>
+            <p className="text-xs text-[#9AA7A0]">Strict adult ordering verification preventing improper use by unverified parties.</p>
           </div>
-
           <div className="p-4 rounded-xl bg-[#121A16] border border-[#22302A] space-y-1">
-            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">
-              12. Direct Studio Hotline
-            </span>
-            <p className="text-xs text-[#9AA7A0]">
-              Direct WhatsApp liaison for urgent call sheet dispatch and custom script requests.
-            </p>
+            <span className="text-xs font-mono-code font-bold text-[#C5A059] block">12. Direct Studio Hotline</span>
+            <p className="text-xs text-[#9AA7A0]">Direct WhatsApp liaison for urgent call sheet dispatch and custom script requests.</p>
           </div>
         </div>
 
@@ -196,16 +122,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         </h2>
         <div className="space-y-4 not-prose my-6">
           {BRAND.milestones.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex items-start gap-4 p-4 rounded-xl bg-[#0D1512] border border-[#22302A]"
-            >
+            <div key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-[#0D1512] border border-[#22302A]">
               <div className="px-3 py-1 rounded bg-[#1C2A24] border border-[#C5A059]/40 text-[#C5A059] font-mono-code font-bold text-xs shrink-0">
                 {item.year}
               </div>
-              <p className="text-xs text-[#B4C0BA] leading-relaxed pt-0.5">
-                {item.event}
-              </p>
+              <p className="text-xs text-[#B4C0BA] leading-relaxed pt-0.5">{item.event}</p>
             </div>
           ))}
         </div>
@@ -227,20 +148,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           Explore our complete catalog of strapped bundles, bank bricks, and locking flight cases.
         </p>
         <div className="flex justify-center gap-4">
-          <button
-            type="button"
-            onClick={() => onNavigate('/shop')}
-            className="px-6 py-3 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow cursor-pointer font-mono-code"
+          <Link
+            href="/shop"
+            className="px-6 py-3 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code"
           >
             Browse Cinema Shop
-          </button>
-          <button
-            type="button"
-            onClick={() => onNavigate('/compliance')}
-            className="px-6 py-3 bg-[#1C2A24] text-[#F8F6F0] text-xs font-bold uppercase tracking-wider rounded-xl border border-[#2C3E36] cursor-pointer font-mono-code"
+          </Link>
+          <Link
+            href="/compliance"
+            className="px-6 py-3 bg-[#1C2A24] text-[#F8F6F0] text-xs font-bold uppercase tracking-wider rounded-xl border border-[#2C3E36] font-mono-code"
           >
             Legal Compliance
-          </button>
+          </Link>
         </div>
       </div>
     </div>

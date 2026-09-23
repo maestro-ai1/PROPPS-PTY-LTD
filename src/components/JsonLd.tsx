@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ, SHOP } from '../config/site.js';
 
 interface JsonLdProps {
-  type: 'homepage' | 'product' | 'category' | 'faq' | 'about' | 'wholesale';
+  type: 'homepage' | 'product' | 'category' | 'faq' | 'about' | 'wholesale' | 'article';
   data?: any;
 }
 
@@ -65,19 +65,15 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
           },
         },
         {
+          // No SearchAction here: there is no real /search/ route on this
+          // site (search is a client-side modal, not a URL) — emitting
+          // SearchAction without one is exactly the "capability lie"
+          // WebForge Rule 10 bans.
           '@type': 'WebSite',
           '@id': `https://${SITE.domain}/#website`,
           url: `https://${SITE.domain}/`,
           name: SITE.name,
           description: SITE.tagline,
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: {
-              '@type': 'EntryPoint',
-              urlTemplate: `https://${SITE.domain}/search/?q={search_term_string}`,
-            },
-            'query-input': 'required name=search_term_string',
-          },
         },
         {
           '@type': 'FAQPage',
@@ -129,6 +125,75 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
           text: item.answer,
         },
       })),
+    };
+  } else if (type === 'about') {
+    schema = {
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      name: `About ${SITE.name}`,
+      url: `https://${SITE.domain}/about/`,
+      mainEntity: {
+        '@type': 'Organization',
+        '@id': `https://${SITE.domain}/#organization`,
+        name: SITE.name,
+        description: BRAND.description,
+        foundingDate: BRAND.foundingYear,
+        foundingLocation: { '@type': 'Place', name: BRAND.foundingLocation },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Suite 4, 95 Main Road',
+          addressLocality: 'Eltham',
+          addressRegion: 'VIC',
+          postalCode: '3093',
+          addressCountry: 'AU',
+        },
+        sameAs: BRAND.sameAs,
+      },
+    };
+  } else if (type === 'category' && data) {
+    schema = {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: data.name,
+      description: data.description,
+      url: `https://${SITE.domain}/shop/${data.slug}/`,
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: (data.products || []).map((p: (typeof PRODUCTS)[number], idx: number) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          url: `https://${SITE.domain}/shop/${p.category}/${p.slug}/`,
+          name: p.name,
+        })),
+      },
+    };
+  } else if (type === 'article' && data) {
+    schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: data.title,
+      description: data.excerpt,
+      datePublished: data.date,
+      articleSection: data.category,
+      author: { '@type': 'Organization', name: SITE.name },
+      publisher: { '@type': 'Organization', name: SITE.name },
+      mainEntityOfPage: `https://${SITE.domain}/blog/${data.slug}/`,
+    };
+  } else if (type === 'wholesale') {
+    schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      serviceType: 'Wholesale cinema prop currency supply',
+      provider: {
+        '@type': 'Organization',
+        name: SITE.name,
+        url: `https://${SITE.domain}/`,
+      },
+      areaServed: 'AU',
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'Film, television, and theatrical production companies',
+      },
     };
   }
 

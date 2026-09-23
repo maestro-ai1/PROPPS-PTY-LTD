@@ -1,14 +1,12 @@
-// src/pages/ContactPage.tsx
+// src/views/ContactPage.tsx
+'use client';
+
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, MessageCircle, Send, CheckCircle } from 'lucide-react';
+import { Mail, MessageCircle, Send, CheckCircle, MapPin } from 'lucide-react';
 import { SITE, CONTACT } from '../config/site.js';
 import { saveEnquiry } from '../lib/enquiryStore.js';
 
-interface ContactPageProps {
-  onNavigate: (path: string) => void;
-}
-
-export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
+export const ContactContent: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

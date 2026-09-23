@@ -6,14 +6,9 @@ import { SITE } from '../../config/site.js';
 interface PasscodeGateProps {
   onUnlock: (passcode: string) => boolean;
   error?: string | null;
-  defaultHint: string;
 }
 
-export const PasscodeGate: React.FC<PasscodeGateProps> = ({
-  onUnlock,
-  error,
-  defaultHint,
-}) => {
+export const PasscodeGate: React.FC<PasscodeGateProps> = ({ onUnlock, error }) => {
   const [passcode, setPasscode] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -69,13 +64,6 @@ export const PasscodeGate: React.FC<PasscodeGateProps> = ({
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
-
-        <div className="mt-6 pt-4 border-t border-[#1C2A24] text-[11px] text-[#7A8782] font-mono-code">
-          <span>Development Passcode: </span>
-          <span className="text-[#C5A059] font-bold select-all bg-[#0A0F0D] px-2 py-0.5 rounded border border-[#2C3E36]">
-            {defaultHint}
-          </span>
-        </div>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
-// src/pages/AdminDashboardPage.tsx
+// src/views/AdminDashboardPage.tsx
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import {
   Lock,
@@ -43,13 +45,7 @@ import { buildEmailHtml } from '../lib/emailTemplate.js';
 import { sendMail } from '../lib/mailer.js';
 import { SITE, REPLY } from '../config/site.js';
 
-interface AdminDashboardPageProps {
-  onNavigate: (path: string) => void;
-}
-
-export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
-  onNavigate,
-}) => {
+export const AdminDashboardContent: React.FC = () => {
   const { isUnlocked, unlock, lock, error } = useAdminPasscode();
 
   // Navigation tab inside admin
@@ -105,13 +101,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
 
   // If not unlocked, render PasscodeGate
   if (!isUnlocked) {
-    return (
-      <PasscodeGate
-        onUnlock={unlock}
-        error={error}
-        defaultHint="PROPPS2026"
-      />
-    );
+    return <PasscodeGate onUnlock={unlock} error={error} />;
   }
 
   // Handle Order Deletion
