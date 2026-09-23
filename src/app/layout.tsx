@@ -8,6 +8,7 @@ import { AnnouncementBar } from '../components/AnnouncementBar.js';
 import { CartDrawerMount } from '../components/CartDrawerMount.js';
 import { SearchModalMount } from '../components/SearchModalMount.js';
 import { WhatsAppLiveChat } from '../components/WhatsAppLiveChat.js';
+import { ReviewPopup } from '../components/ReviewPopup.js';
 import './globals.css';
 
 const siteUrl = `https://${SITE.domain}`;
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CartDrawerMount />
           <SearchModalMount />
           <WhatsAppLiveChat />
+          <ReviewPopup />
         </AppProvider>
       </body>
     </html>
