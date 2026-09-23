@@ -1,39 +1,26 @@
 // src/components/Nav.tsx
+'use client';
+
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ShoppingBag, Search, Menu, X, ShieldCheck, Lock, ChevronDown, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { SITE, CATEGORIES } from '../config/site.js';
+import { useApp } from '../context/AppContext.js';
 
-interface NavProps {
-  currentPath: string;
-  onNavigate: (path: string) => void;
-  cartCount: number;
-  onOpenCart: () => void;
-  onOpenSearch: () => void;
-}
-
-export const Nav: React.FC<NavProps> = ({
-  currentPath,
-  onNavigate,
-  cartCount,
-  onOpenCart,
-  onOpenSearch,
-}) => {
+export const Nav: React.FC = () => {
+  const pathname = usePathname() || '/';
+  const { cartCount, openCart, openSearch } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (path: string) => {
-    onNavigate(path);
-    setMobileMenuOpen(false);
-  };
+  const closeMobile = () => setMobileMenuOpen(false);
 
   return (
     <header className="sticky top-0 z-40 bg-[#0A0A0C]/98 backdrop-blur-md border-b border-[#2C2822] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Brand Identity */}
-          <div
-            onClick={() => handleNavClick('/')}
-            className="flex items-center gap-3 cursor-pointer group"
-          >
+          <Link href="/" className="flex items-center gap-3 group">
             {/* Gold & White Seal Emblem */}
             <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#1C1A14] to-[#0A0A0B] border-2 border-[#D4AF37] flex items-center justify-center shadow-lg group-hover:border-white transition-colors relative overflow-hidden">
               <span className="font-serif-luxury font-black text-xl gold-gradient-text tracking-tighter">
@@ -55,37 +42,35 @@ export const Nav: React.FC<NavProps> = ({
                 AUSTRALIAN CINEMA CURRENCY · VIC 3093
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation Links: HOME, SHOP, VIDEOS, BLOG, FAQ */}
           <nav className="hidden md:flex items-center gap-5 lg:gap-7 font-mono-code" aria-label="Main navigation">
             {/* 1. HOME */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/')}
-              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 cursor-pointer ${
-                currentPath === '/'
+            <Link
+              href="/"
+              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                pathname === '/'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
                   : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
               }`}
             >
               HOME
-            </button>
+            </Link>
 
             {/* 2. SHOP with Dropdown */}
             <div className="relative group">
-              <button
-                type="button"
-                onClick={() => handleNavClick('/shop')}
-                className={`flex items-center gap-1 text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 cursor-pointer ${
-                  currentPath.startsWith('/shop')
+              <Link
+                href="/shop"
+                className={`flex items-center gap-1 text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                  pathname.startsWith('/shop')
                     ? 'text-[#D4AF37] border-[#D4AF37]'
                     : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
                 }`}
               >
                 <span>SHOP</span>
                 <ChevronDown className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-200" />
-              </button>
+              </Link>
 
               {/* Mega Dropdown Menu */}
               <div className="absolute top-full left-0 w-72 mt-2 bg-[#141417] border border-[#2C2822] rounded-xl shadow-2xl p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -96,68 +81,62 @@ export const Nav: React.FC<NavProps> = ({
                   <span className="text-[9px] font-mono-code text-[#00b67a] font-bold">100% LEGAL</span>
                 </div>
                 {CATEGORIES.map((cat) => (
-                  <button
+                  <Link
                     key={cat.slug}
-                    type="button"
-                    onClick={() => handleNavClick(`/shop/${cat.slug}`)}
-                    className="w-full text-left p-2 rounded-lg hover:bg-[#1E1E24] transition-colors flex flex-col cursor-pointer"
+                    href={`/shop/${cat.slug}`}
+                    className="w-full text-left p-2 rounded-lg hover:bg-[#1E1E24] transition-colors flex flex-col"
                   >
                     <span className="text-xs font-semibold text-white">{cat.name}</span>
                     <span className="text-[10px] text-[#A8A49D] truncate">{cat.description}</span>
-                  </button>
+                  </Link>
                 ))}
                 <div className="pt-1.5 mt-1 border-t border-[#23211D]">
-                  <button
-                    type="button"
-                    onClick={() => handleNavClick('/shop')}
-                    className="w-full text-center py-1 text-[11px] font-bold text-[#D4AF37] hover:underline cursor-pointer"
+                  <Link
+                    href="/shop"
+                    className="block w-full text-center py-1 text-[11px] font-bold text-[#D4AF37] hover:underline"
                   >
                     View All Cinema Prop Catalog →
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* 3. VIDEOS */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/videos')}
-              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 cursor-pointer ${
-                currentPath === '/videos'
+            <Link
+              href="/videos"
+              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                pathname === '/videos'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
                   : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
               }`}
             >
               VIDEOS
-            </button>
+            </Link>
 
             {/* 4. BLOG (also matches GLOG / Guides) */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/blog')}
-              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 cursor-pointer ${
-                currentPath.startsWith('/blog') || currentPath.startsWith('/glog')
+            <Link
+              href="/blog"
+              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                pathname.startsWith('/blog')
                   ? 'text-[#D4AF37] border-[#D4AF37]'
                   : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
               }`}
               title="Production Blog & Compliance Tutorials"
-              data-glog="true"
             >
               BLOG
-            </button>
+            </Link>
 
             {/* 5. FAQ */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/faq')}
-              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 cursor-pointer ${
-                currentPath === '/faq'
+            <Link
+              href="/faq"
+              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                pathname === '/faq'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
                   : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
               }`}
             >
               FAQ
-            </button>
+            </Link>
           </nav>
 
           {/* Action Icons: Search, Cart, Admin Reply Portal, Mobile Toggle */}
@@ -165,7 +144,7 @@ export const Nav: React.FC<NavProps> = ({
             {/* Search Trigger */}
             <button
               type="button"
-              onClick={onOpenSearch}
+              onClick={openSearch}
               className="p-2 text-[#C5BDBA] hover:text-[#D4AF37] rounded-lg hover:bg-[#1A1014] transition-colors focus:outline-none cursor-pointer"
               aria-label="Search prop products"
             >
@@ -173,11 +152,10 @@ export const Nav: React.FC<NavProps> = ({
             </button>
 
             {/* Admin Portal Quick Link */}
-            <button
-              type="button"
-              onClick={() => handleNavClick('/admin')}
-              className={`p-1.5 px-2.5 rounded-lg border text-xs font-mono-code flex items-center gap-1.5 transition-colors cursor-pointer ${
-                currentPath.startsWith('/admin')
+            <Link
+              href="/admin"
+              className={`p-1.5 px-2.5 rounded-lg border text-xs font-mono-code flex items-center gap-1.5 transition-colors ${
+                pathname.startsWith('/admin')
                   ? 'bg-[#29171D] border-[#D4AF37] text-[#D4AF37]'
                   : 'bg-[#140D10] border-[#38242A] text-[#A69C9F] hover:text-[#D4AF37] hover:border-[#D4AF37]/50'
               }`}
@@ -186,12 +164,12 @@ export const Nav: React.FC<NavProps> = ({
             >
               <Lock className="w-3.5 h-3.5" />
               <span className="hidden lg:inline text-[10.5px] font-bold">PORTAL</span>
-            </button>
+            </Link>
 
             {/* Cart Trigger with luxury Gold & White style */}
             <button
               type="button"
-              onClick={onOpenCart}
+              onClick={openCart}
               className="relative p-2 px-3 white-gold-btn font-bold rounded-xl shadow-lg border border-[#D4AF37]/50 transition-all flex items-center gap-2 focus:outline-none cursor-pointer"
               aria-label={`Open shopping cart with ${cartCount} items`}
             >
@@ -214,11 +192,10 @@ export const Nav: React.FC<NavProps> = ({
         </div>
       </div>
 
-      {/* Official Commonwealth ABN & ABR Verification Strip under Navigation (Verified Green & Gold Theme) */}
+      {/* Official Commonwealth ABN & ABR Verification Strip under Navigation */}
       <div className="bg-[#07130E] border-t border-b border-[#143828] py-1.5 px-4 shadow-inner">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-y-1.5 gap-x-4 text-xs">
           <div className="flex items-center flex-wrap gap-2.5 sm:gap-3">
-            {/* Clickable VERIFY ON ABR in Green Verified Style */}
             <a
               href={`https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`}
               target="_blank"
@@ -231,7 +208,6 @@ export const Nav: React.FC<NavProps> = ({
               <ExternalLink className="w-3 h-3 text-[#00E599] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
-            {/* ABN Display in Verified Green */}
             <div className="flex items-center gap-1.5 font-mono-code text-[11.5px]">
               <span className="text-[#8FB3A1] font-medium">ABN:</span>
               <a
@@ -271,80 +247,70 @@ export const Nav: React.FC<NavProps> = ({
             </div>
           </div>
 
-          {/* 1. HOME */}
-          <button
-            type="button"
-            onClick={() => handleNavClick('/')}
-            className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
-              currentPath === '/' ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
+          <Link
+            href="/"
+            onClick={closeMobile}
+            className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
+              pathname === '/' ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
             }`}
           >
             HOME
-          </button>
+          </Link>
 
-          {/* 2. SHOP */}
-          <button
-            type="button"
-            onClick={() => handleNavClick('/shop')}
-            className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
-              currentPath.startsWith('/shop') ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
+          <Link
+            href="/shop"
+            onClick={closeMobile}
+            className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
+              pathname.startsWith('/shop') ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
             }`}
           >
             SHOP
-          </button>
+          </Link>
 
-          {/* Subcategories list on mobile */}
           <div className="pl-4 space-y-1 border-l-2 border-[#38242A]">
             {CATEGORIES.map((cat) => (
-              <button
+              <Link
                 key={cat.slug}
-                type="button"
-                onClick={() => handleNavClick(`/shop/${cat.slug}`)}
-                className="w-full text-left py-1 text-xs text-[#A69C9F] hover:text-[#D4AF37]"
+                href={`/shop/${cat.slug}`}
+                onClick={closeMobile}
+                className="block w-full text-left py-1 text-xs text-[#A69C9F] hover:text-[#D4AF37]"
               >
                 • {cat.name}
-              </button>
+              </Link>
             ))}
           </div>
 
-          {/* 3. VIDEOS */}
-          <button
-            type="button"
-            onClick={() => handleNavClick('/videos')}
-            className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
-              currentPath === '/videos' ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
+          <Link
+            href="/videos"
+            onClick={closeMobile}
+            className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
+              pathname === '/videos' ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
             }`}
           >
             VIDEOS
-          </button>
+          </Link>
 
-          {/* 4. BLOG */}
-          <button
-            type="button"
-            onClick={() => handleNavClick('/blog')}
-            className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
-              currentPath.startsWith('/blog') || currentPath.startsWith('/glog')
-                ? 'bg-[#29171D] text-[#D4AF37]'
-                : 'text-[#C5BDBA] hover:bg-[#1A1014]'
+          <Link
+            href="/blog"
+            onClick={closeMobile}
+            className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
+              pathname.startsWith('/blog') ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
             }`}
           >
             BLOG
-          </button>
+          </Link>
 
-          {/* 5. FAQ */}
-          <button
-            type="button"
-            onClick={() => handleNavClick('/faq')}
-            className={`w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
-              currentPath === '/faq' ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
+          <Link
+            href="/faq"
+            onClick={closeMobile}
+            className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
+              pathname === '/faq' ? 'bg-[#29171D] text-[#D4AF37]' : 'text-[#C5BDBA] hover:bg-[#1A1014]'
             }`}
           >
             FAQ
-          </button>
+          </Link>
 
-          {/* Mobile Reviews link & Secondary Navigation */}
           <div className="pt-2 border-t border-[#29171D] space-y-1.5">
-            {/* Mobile ABR Verified Badge */}
             <a
               href={`https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`}
               target="_blank"
@@ -361,63 +327,58 @@ export const Nav: React.FC<NavProps> = ({
               <ExternalLink className="w-3.5 h-3.5 text-[#00E599]" />
             </a>
 
-            <button
-              type="button"
-              onClick={() => {
-                handleNavClick('/');
-                setTimeout(() => {
-                  document.getElementById('reviews-section')?.scrollIntoView({ behavior: 'smooth' });
-                }, 120);
-              }}
+            <Link
+              href="/#reviews-section"
+              onClick={closeMobile}
               className="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-[#00b67a] hover:bg-[#1A1014] flex items-center justify-between"
             >
               <span>Verified Trustpilot Reviews</span>
               <span className="text-xs px-2 py-0.5 rounded font-mono-code bg-[#00b67a]/20 text-[#00b67a] border border-[#00b67a]/40 font-bold">
                 4.7 ★
               </span>
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => handleNavClick('/wholesale')}
-              className="w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
+            <Link
+              href="/wholesale"
+              onClick={closeMobile}
+              className="block w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
             >
               Wholesale Studio &amp; B2B
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => handleNavClick('/compliance')}
-              className="w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
+            <Link
+              href="/compliance"
+              onClick={closeMobile}
+              className="block w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
             >
               RBA Specimen Guidelines
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => handleNavClick('/about')}
-              className="w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
+            <Link
+              href="/about"
+              onClick={closeMobile}
+              className="block w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
             >
               About PROPPS PTY LTD
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => handleNavClick('/contact')}
-              className="w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
+            <Link
+              href="/contact"
+              onClick={closeMobile}
+              className="block w-full text-left px-3 py-1.5 text-xs text-[#A69C9F] hover:text-[#FFF]"
             >
               Contact Melbourne Dispatch
-            </button>
+            </Link>
           </div>
 
-          <button
-            type="button"
-            onClick={() => handleNavClick('/admin')}
+          <Link
+            href="/admin"
+            onClick={closeMobile}
             className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-[#D4AF37] bg-[#1A1014] border border-[#D4AF37]/40 flex items-center justify-between"
           >
             <span>Passcode Reply Portal</span>
             <Lock className="w-4 h-4 text-[#D4AF37]" />
-          </button>
+          </Link>
         </div>
       )}
     </header>

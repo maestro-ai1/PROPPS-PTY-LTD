@@ -54,9 +54,9 @@ npm run build
    git push -u origin main
    ```
 3. In Vercel, click **Add New Project** → **Import Git Repository**.
-4. Set **Framework Preset** to Vite or Next.js.
-5. In **Environment Variables**, optionally set:
-   - `ADMIN_PASSCODE` (default is `PROPPS2026`)
+4. Set **Framework Preset** to Next.js.
+5. In **Environment Variables**, set:
+   - `ADMIN_PASSCODE` (required — set a real passcode; there is no usable default in production)
    - `EMAIL_SERVER_HOST`, `EMAIL_SERVER_PORT`, `EMAIL_SERVER_USER`, `EMAIL_SERVER_PASSWORD`, `EMAIL_FROM`
    - `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
 6. Click **Deploy**.

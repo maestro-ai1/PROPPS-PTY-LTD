@@ -1,13 +1,10 @@
 // src/components/Footer.tsx
 import React from 'react';
+import Link from 'next/link';
 import { Mail, MapPin, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { SITE, CONTACT } from '../config/site.js';
 
-interface FooterProps {
-  onNavigate: (path: string) => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#0A0507] text-[#C5BDBA] border-t-2 border-[#29171D] pt-12 pb-8 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,77 +56,45 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Home Page</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/shop')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/shop" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Shop Props</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/videos')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/videos" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Prop Videos Showcase</span>
                   <span className="px-1.5 py-0.2 rounded bg-[#00b67a] text-white text-[9px] font-mono-code font-bold">4K</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/wholesale')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/wholesale" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Wholesale &amp; Bulk Quotes</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/about')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/about" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">About Our Mission</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/blog')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/blog" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Production Blog &amp; Tutorials</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/faq')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/faq" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">FAQ</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/contact')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/contact" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Contact Us</span>
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -142,77 +107,44 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/shipping-policy')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/shipping-policy" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Shipping Policy</span>
                   <span className="text-[10px] font-mono-code text-[#A69C9F]">Express</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/refund-policy')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/refund-policy" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Refund Policy</span>
                   <span className="text-[10px] font-mono-code text-[#00E599]">30-Day ACL</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/privacy-policy')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/privacy-policy" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Privacy Policy</span>
                   <span className="text-[10px] font-mono-code text-[#A69C9F]">Cth 1988</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/terms-and-conditions')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full flex items-center justify-between group"
-                >
+                <Link href="/terms-and-conditions" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Terms &amp; Conditions</span>
                   <span className="text-[10px] font-mono-code text-[#A69C9F]">Statutory</span>
-                </button>
+                </Link>
               </li>
               <li className="pt-2 border-t border-[#29171D]">
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/compliance')}
-                  className="hover:text-[#D4AF37] transition-colors cursor-pointer text-left w-full text-[11px] text-[#A69C9F]"
-                >
+                <Link href="/compliance" className="hover:text-[#D4AF37] transition-colors text-left w-full text-[11px] text-[#A69C9F] block">
                   RBA Specimen Guidelines
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onNavigate('/');
-                    setTimeout(() => {
-                      document.getElementById('reviews-section')?.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                  }}
-                  className="hover:text-[#00b67a] transition-colors flex items-center justify-between w-full cursor-pointer text-left text-[11px] text-[#00b67a]"
-                >
+                <Link href="/#reviews-section" className="hover:text-[#00b67a] transition-colors flex items-center justify-between w-full text-left text-[11px] text-[#00b67a]">
                   <span>Verified Trustpilot Reviews</span>
                   <span className="text-[10px] font-mono-code px-1.5 py-0.5 rounded bg-[#00b67a]/20 border border-[#00b67a]/40 font-bold">4.7 ★</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/admin')}
-                  className="hover:text-[#D4AF37] transition-colors font-mono-code text-[#D4AF37] cursor-pointer text-left text-[11px]"
-                >
+                <Link href="/admin" className="hover:text-[#D4AF37] transition-colors font-mono-code text-[#D4AF37] text-left text-[11px] block">
                   Reply Portal Login →
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

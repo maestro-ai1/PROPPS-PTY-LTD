@@ -1,34 +1,29 @@
 // src/pages/HomePage.tsx
+'use client';
+
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import {
   ShieldCheck,
   Truck,
   Percent,
-  CheckCircle,
   ArrowRight,
   ShoppingBag,
-  Sparkles,
-  Award,
-  Film,
   Building2,
-  FileText,
+  Film,
   ChevronRight,
   MessageCircle,
-  Clock,
-  Layers,
   Zap,
 } from 'lucide-react';
-import { SITE, BRAND, PRODUCTS, CATEGORIES, SHOP, FAQ } from '../config/site.js';
+import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ } from '../config/site.js';
 import { SmartImage } from '../components/SmartImage.js';
-import { JsonLd } from '../components/JsonLd.js';
 import { TrustpilotReviewsSlider } from '../components/TrustpilotReviewsSlider.js';
+import { useApp } from '../context/AppContext.js';
 
-interface HomePageProps {
-  onNavigate: (path: string) => void;
-  onAddToCart: (product: (typeof PRODUCTS)[0]) => void;
-}
+export const HomeContent: React.FC = () => {
+  const { addToCart } = useApp();
 
-export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) => {
   // Hero slider state
   const [heroSlide, setHeroSlide] = useState(0);
 
@@ -67,6 +62,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
     },
   ];
 
+  // Real product photography — specimen-marked in-browser via the overlay
+  // band below (never remove that overlay; it's the mandatory Crimes
+  // (Currency) Act 1981 s22 specimen marking for these images).
+  const heroImages = ['/images/hero/hero-1.jpg', '/images/hero/hero-2.jpg', '/images/hero/hero-3.jpg'];
+
   useEffect(() => {
     const timer = setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroSlides.length);
@@ -80,13 +80,45 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
 
   return (
     <div className="space-y-12 sm:space-y-16">
-      <JsonLd type="homepage" />
-
       {/* SECTION 1: HERO VIEWPORT - AUSTRALIAN PROP MONEY GOLD & WHITE LUXURY THEME */}
-      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden border-b border-[#2C2822] bg-radial from-[#151410] via-[#0D0D0E] to-[#070708] px-4 py-14 sm:py-20">
+      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden border-b border-[#2C2822] bg-[#0D0D0E] px-4 py-14 sm:py-20">
+        {/* Photo background layer — crossfades with heroSlide */}
+        {heroImages.map((src, idx) => (
+          <div
+            key={src}
+            className="absolute inset-0 transition-opacity duration-700 ease-out"
+            style={{ opacity: idx === heroSlide % heroImages.length ? 1 : 0 }}
+            aria-hidden={idx !== heroSlide % heroImages.length}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              priority={idx === 0}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
+
+        {/* Dark scrim so heading/CTA text stays legible over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070708]/85 via-[#0A0A0B]/80 to-[#070708]/92" />
+
         {/* Gold & Pure Light Ambient Glows */}
         <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[550px] h-[320px] bg-[#D4AF37]/15 rounded-full blur-[130px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[300px] bg-white/10 rounded-full blur-[130px] pointer-events-none" />
+
+        {/* MANDATORY Crimes (Currency) Act 1981 s22 specimen marking.
+            Do not remove: these hero photos are real currency photography
+            and are only permitted on this site with this overlay present. */}
+        <div className="absolute inset-x-0 top-[42%] -translate-y-1/2 -rotate-6 z-[5] bg-black/70 border-y border-[#D4AF37]/70 py-1.5 pointer-events-none">
+          <p
+            className="text-center text-[#F5E5B8] font-bold tracking-[0.35em] text-[11px] sm:text-sm whitespace-nowrap overflow-hidden"
+            style={{ fontVariant: 'small-caps' }}
+          >
+            Specimen · Not Legal Tender · For Motion Picture Use Only · Specimen · Not Legal Tender · For Motion Picture Use Only
+          </p>
+        </div>
 
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-5">
           {/* Badge */}
@@ -97,16 +129,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
             </span>
           </div>
 
-          {/* Heading - EXACTLY ONE H1 ON SLIDE 0 */}
-          {heroSlide === 0 ? (
-            <h1 className="font-serif-luxury text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
-              {heroSlides[0].title}
-            </h1>
-          ) : (
-            <div className="font-serif-luxury text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
-              {heroSlides[heroSlide].title}
-            </div>
-          )}
+          {/* Heading - EXACTLY ONE H1, statically rendered on slide 0 */}
+          <h1
+            className="font-serif-luxury text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]"
+            aria-live="polite"
+          >
+            {heroSlide === 0 ? heroSlides[0].title : heroSlides[heroSlide].title}
+          </h1>
 
           {/* Brand Entity Statement */}
           <p className="max-w-3xl mx-auto text-sm sm:text-base text-[#D4D0C8] leading-relaxed font-normal">
@@ -115,49 +144,45 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
 
           {/* Action CTAs in Gold & White */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
-            <button
-              type="button"
-              onClick={() => onNavigate(heroSlides[heroSlide].ctaPath)}
-              className="w-full sm:w-auto px-7 py-3.5 white-gold-btn font-serif-luxury font-black text-xs tracking-wider uppercase rounded-xl shadow-xl transition-all transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer border border-[#D4AF37]/50"
+            <Link
+              href={heroSlides[heroSlide].ctaPath}
+              className="w-full sm:w-auto px-7 py-3.5 white-gold-btn font-serif-luxury font-black text-xs tracking-wider uppercase rounded-xl shadow-xl transition-all transform active:scale-98 flex items-center justify-center gap-2 border border-[#D4AF37]/50"
             >
               <span>{heroSlides[heroSlide].ctaText}</span>
               <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => onNavigate('/shop')}
-              className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#C5A059] hover:from-[#F3E5AB] hover:to-[#D4AF37] text-[#0A0A0B] font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg border border-[#FFE799]"
+            <Link
+              href="/shop"
+              className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#C5A059] hover:from-[#F3E5AB] hover:to-[#D4AF37] text-[#0A0A0B] font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg border border-[#FFE799]"
             >
               <span>View Best Sellers</span>
               <Zap className="w-4 h-4 text-[#0A0A0B]" />
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => onNavigate('/wholesale')}
-              className="w-full sm:w-auto px-6 py-3.5 bg-[#141416] hover:bg-[#1E1E22] border border-[#2C2822] hover:border-white text-white font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+            <Link
+              href="/wholesale"
+              className="w-full sm:w-auto px-6 py-3.5 bg-[#141416] hover:bg-[#1E1E22] border border-[#2C2822] hover:border-white text-white font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2"
             >
               <span>Studio B2B</span>
               <Film className="w-3.5 h-3.5 text-[#D4AF37]" />
-            </button>
+            </Link>
           </div>
 
           {/* Quick Category Jump Chips (Gold & White Style) */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-2">
             {[
-              { label: '$100 Stacks', path: '/shop/100-dollar-stacks', badge: 'Hot' },
-              { label: '$50 Stacks', path: '/shop/50-dollar-stacks', badge: 'Popular' },
-              { label: '$20 Stacks', path: '/shop/20-dollar-stacks', badge: '' },
+              { label: '$100 Stacks', path: '/shop/next-gen-polymer-props', badge: 'Hot' },
+              { label: '$50 Stacks', path: '/shop/next-gen-polymer-props', badge: 'Popular' },
+              { label: '$20 Stacks', path: '/shop/next-gen-polymer-props', badge: '' },
               { label: 'Mixed Bundles', path: '/shop/bank-strapped-bundles', badge: 'Save 15%' },
               { label: 'Bank Bricks', path: '/shop/bank-strapped-bundles', badge: 'Vault' },
-              { label: 'Briefcase Sets', path: '/shop/production-briefcase-kits', badge: 'Director' },
+              { label: 'Briefcase Sets', path: '/shop/film-director-kits', badge: 'Director' },
             ].map((chip, idx) => (
-              <button
+              <Link
                 key={idx}
-                type="button"
-                onClick={() => onNavigate(chip.path)}
-                className="px-3 py-1.5 rounded-lg bg-[#121214] hover:bg-[#1C1B1F] border border-[#2C2822] hover:border-[#D4AF37] text-[#EDEBE6] hover:text-white text-xs font-mono-code transition-all flex items-center gap-1.5 cursor-pointer shadow-sm group"
+                href={chip.path}
+                className="px-3 py-1.5 rounded-lg bg-[#121214] hover:bg-[#1C1B1F] border border-[#2C2822] hover:border-[#D4AF37] text-[#EDEBE6] hover:text-white text-xs font-mono-code transition-all flex items-center gap-1.5 shadow-sm group"
               >
                 <span>{chip.label}</span>
                 {chip.badge && (
@@ -165,7 +190,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
                     {chip.badge}
                   </span>
                 )}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -258,22 +283,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
               EXPLORE PROP CURRENCY CATEGORIES
             </h2>
           </div>
-          <button
-            type="button"
-            onClick={() => onNavigate('/shop')}
-            className="text-xs font-mono-code font-bold text-[#D4AF37] hover:underline flex items-center gap-1 cursor-pointer"
-          >
+          <Link href="/shop" className="text-xs font-mono-code font-bold text-[#D4AF37] hover:underline flex items-center gap-1">
             <span>View All Categories</span>
             <ChevronRight className="w-3.5 h-3.5" />
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {CATEGORIES.map((cat) => (
-            <div
+            <Link
               key={cat.slug}
-              onClick={() => onNavigate(`/shop/${cat.slug}`)}
-              className="luxury-card rounded-xl overflow-hidden cursor-pointer group flex flex-col justify-between"
+              href={`/shop/${cat.slug}`}
+              className="luxury-card rounded-xl overflow-hidden group flex flex-col justify-between"
             >
               {/* Product Frame standard 4:3 */}
               <div className="relative overflow-hidden">
@@ -298,7 +319,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -321,33 +342,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredProducts.map((product) => (
-            <div
-              key={product.slug}
-              className="luxury-card rounded-xl overflow-hidden flex flex-col justify-between"
-            >
-              <div
-                onClick={() => onNavigate(`/shop/${product.category}/${product.slug}`)}
-                className="cursor-pointer relative"
-              >
-                <SmartImage
-                  src={product.images[0]}
-                  alt={product.name}
-                  badge={product.badge}
-                />
-              </div>
+            <div key={product.slug} className="luxury-card rounded-xl overflow-hidden flex flex-col justify-between">
+              <Link href={`/shop/${product.category}/${product.slug}`} className="relative block">
+                <SmartImage src={product.images[0]} alt={product.name} badge={product.badge} />
+              </Link>
 
               <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
-                <div
-                  onClick={() => onNavigate(`/shop/${product.category}/${product.slug}`)}
-                  className="cursor-pointer space-y-1"
-                >
+                <Link href={`/shop/${product.category}/${product.slug}`} className="space-y-1 block">
                   <h3 className="font-serif-luxury text-sm font-bold text-white hover:text-[#D4AF37] transition-colors leading-snug">
                     {product.name}
                   </h3>
                   <p className="text-[11px] text-[#A8A49D] leading-relaxed line-clamp-2">
                     {product.shortDescription}
                   </p>
-                </div>
+                </Link>
 
                 <div className="pt-2.5 border-t border-[#2C2822] space-y-2.5">
                   <div className="flex items-center justify-between font-mono-code">
@@ -365,19 +373,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        onNavigate(`/shop/${product.category}/${product.slug}`)
-                      }
-                      className="py-2 px-2.5 bg-[#17161A] hover:bg-[#222126] text-white text-xs font-semibold rounded-lg border border-[#2C2822] hover:border-white transition-colors text-center cursor-pointer"
+                    <Link
+                      href={`/shop/${product.category}/${product.slug}`}
+                      className="py-2 px-2.5 bg-[#17161A] hover:bg-[#222126] text-white text-xs font-semibold rounded-lg border border-[#2C2822] hover:border-white transition-colors text-center"
                     >
                       Specs
-                    </button>
+                    </Link>
 
                     <button
                       type="button"
-                      onClick={() => onAddToCart(product)}
+                      onClick={() => addToCart(product)}
                       className="py-2 px-2.5 white-gold-btn font-bold text-xs uppercase tracking-wider rounded-lg transition-transform active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer shadow border border-[#D4AF37]/40"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
@@ -392,7 +397,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
       </section>
 
       {/* SECTION: TRUSTPILOT VERIFIED STUDIO REVIEWS & REVOLUTIONARY SLIDER */}
-      <TrustpilotReviewsSlider />
+      <div id="reviews-section">
+        <TrustpilotReviewsSlider />
+      </div>
 
       {/* SECTION 5: "ABOUT PROPPS PTY LTD" AUTHORITY LAYER (12 SIGNALS) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -412,10 +419,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
           {/* 4 Core Differentiation Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
             {BRAND.differentiation.map((diff, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-xl bg-[#140C0F] border border-[#2B181E] space-y-2"
-              >
+              <div key={idx} className="p-4 rounded-xl bg-[#140C0F] border border-[#2B181E] space-y-2">
                 <div className="w-7 h-7 rounded-lg bg-[#24131A] border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] text-xs font-bold font-mono-code">
                   0{idx + 1}
                 </div>
@@ -429,33 +433,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
           {/* Scale & Footprint Metrics */}
           <div className="pt-5 border-t border-[#29171D] grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             <div>
-              <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#D4AF37] block">
-                500+
-              </span>
+              <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#D4AF37] block">500+</span>
               <span className="text-[10px] text-[#A69C9F] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Australian Productions Supplied
               </span>
             </div>
             <div>
-              <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#00b67a] block">
-                100%
-              </span>
+              <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#00b67a] block">100%</span>
               <span className="text-[10px] text-[#A69C9F] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Legal Specimen Compliance
               </span>
             </div>
             <div>
-              <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#D4AF37] block">
-                24hr
-              </span>
+              <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#D4AF37] block">24hr</span>
               <span className="text-[10px] text-[#A69C9F] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Express Melbourne Dispatch
               </span>
             </div>
             <div>
-              <span className="font-mono-code text-xl sm:text-2xl font-bold text-white block">
-                VIC 3093
-              </span>
+              <span className="font-mono-code text-xl sm:text-2xl font-bold text-white block">VIC 3093</span>
               <span className="text-[10px] text-[#A8A49D] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Australian Studio HQ
               </span>
@@ -482,18 +478,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
           {FAQ.map((item, idx) => {
             const isOpen = activeFaq === idx;
             return (
-              <div
-                key={idx}
-                className="rounded-xl bg-[#141417] border border-[#2C2822] overflow-hidden transition-colors"
-              >
+              <div key={idx} className="rounded-xl bg-[#141417] border border-[#2C2822] overflow-hidden transition-colors">
                 <button
                   type="button"
                   onClick={() => setActiveFaq(isOpen ? null : idx)}
+                  aria-expanded={isOpen}
                   className="w-full p-3.5 sm:p-4 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                 >
-                  <span className="font-semibold text-xs sm:text-sm text-white">
-                    {item.question}
-                  </span>
+                  <span className="font-semibold text-xs sm:text-sm text-white">{item.question}</span>
                   <span className="w-5 h-5 rounded-full bg-[#201F1A] flex items-center justify-center text-[#D4AF37] text-xs font-bold shrink-0">
                     {isOpen ? '−' : '+'}
                   </span>
@@ -526,24 +518,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onAddToCart }) =
           </div>
 
           <div className="flex flex-col sm:flex-row gap-2.5 shrink-0">
-            <button
-              type="button"
-              onClick={() => onNavigate('/contact')}
-              className="px-5 py-3 bg-[#1E1116] hover:bg-[#2C1820] text-white font-serif-luxury font-bold text-xs uppercase tracking-wider rounded-xl border border-[#38242A] hover:border-[#D4AF37] transition-colors cursor-pointer"
+            <Link
+              href="/contact"
+              className="px-5 py-3 bg-[#1E1116] hover:bg-[#2C1820] text-white font-serif-luxury font-bold text-xs uppercase tracking-wider rounded-xl border border-[#38242A] hover:border-[#D4AF37] transition-colors"
             >
               Contact Dispatch Desk
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() =>
-                window.open('https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20inquiring%20about%20film%20prop%20currency%20dispatch', '_blank')
-              }
-              className="px-5 py-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0F7569] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer font-mono-code"
+            <a
+              href="https://wa.me/61400000000?text=Hello%20PROPPS%20PTY%20LTD,%20inquiring%20about%20film%20prop%20currency%20dispatch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20BA5A] hover:to-[#0F7569] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2 font-mono-code"
             >
               <MessageCircle className="w-4 h-4 text-white" />
               <span>WhatsApp Studio Desk</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>

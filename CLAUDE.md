@@ -1,6 +1,8 @@
 # PROPPS PTY LTD — project instructions
 
-React/Vite & Next-ready cinema prop currency ecommerce store, mobile-first, Vercel-deployable.
+React/Next.js (App Router) cinema prop currency ecommerce store, mobile-first, Vercel-deployable via GitHub.
+Migrated from a Vite SPA in 2026 specifically to get real per-route SSR (unique metadata + server-rendered
+JSON-LD per page) so AI/search crawlers that don't execute JavaScript can actually see product and page content.
 
 ## Non-negotiable: Crimes (Currency) Act 1981 Section 22 Compliance
 All currency items on this website are non-legal tender reproduction props manufactured solely for motion pictures, television, theatre, visual arts, and simulation training.
@@ -23,7 +25,7 @@ derive directly from `src/config/site.js` via `npm run gen`.
 - Minimum order: $300 AUD. Free shipping threshold: $500 AUD. Crypto discount: 10%.
 
 ## Live Placeholders
-- `SITE.domain`: currently `propps.com.au` (update in `src/config/site.js` when final DNS is pointed).
+- `SITE.domain`: currently `proppsptyltd.com.au` (update in `src/config/site.js` when final DNS is pointed — this is the single source of truth; never hand-edit a domain into any other file).
 - `EMAIL_SERVER_*`: SMTP credentials in `.env` (without them, `sendMail()` returns `{sent:false}` gracefully and logs locally).
 - `ADMIN_PASSCODE`: default dev passcode `PROPPS2026`.
 - `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`: Upstash Redis store (uses localStorage fallback if absent).
