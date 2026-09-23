@@ -123,6 +123,7 @@ export interface Post {
   date: string;
   readTime: string;
   image: string;
+  imageAlt?: string;
   content: string;
   relatedProducts?: string[];
   relatedCategories?: string[];

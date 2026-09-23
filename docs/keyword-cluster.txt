@@ -25,7 +25,7 @@
 [USED]	toy money australia	/blog/toy-money-and-play-money-for-kids-games-and-learning/	Commercial	T1	~220w	Article
 [USED]	prop money near me	/blog/shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia/	Transactional	T2	~250w	Article
 [USED]	prop money australia laws	/blog/prop-money-compliance-checklist-what-every-australian-production-must-know/	Informational	T2	~320w	Article
+[USED]	prop money for sale near me	/blog/local-vs-overseas-prop-money-suppliers-compared/	Commercial	T2	~250w	Article
 
 # Bonus clusters — identified but not yet built (no matching page/post exists)
 [UNUSED]	buy prop money	/blog/how-to-order-prop-money-online-in-australia/	Transactional	T2	~250w	Article
-[UNUSED]	prop money for sale near me	/blog/local-vs-overseas-prop-money-suppliers-compared/	Commercial	T2	~250w	Article

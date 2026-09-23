@@ -184,6 +184,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
       '@type': 'Article',
       headline: data.title,
       description: data.excerpt,
+      image: data.image ? `https://${SITE.domain}/images/blog/${data.image}` : undefined,
       datePublished: data.date,
       articleSection: data.category,
       author: { '@type': 'Organization', name: SITE.name },

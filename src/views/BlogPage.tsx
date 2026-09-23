@@ -5,6 +5,7 @@ import { POSTS, PRODUCTS, CATEGORIES } from '../config/site.js';
 import { Calendar, Clock, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Breadcrumb } from '../components/Breadcrumb.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
+import { BlogPhoto } from '../components/BlogPhoto.js';
 
 export const BlogListContent: React.FC = () => {
   return (
@@ -29,8 +30,11 @@ export const BlogListContent: React.FC = () => {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="luxury-card rounded-2xl p-6 flex flex-col justify-between group space-y-4"
+            className="luxury-card rounded-2xl overflow-hidden flex flex-col justify-between group"
           >
+            <BlogPhoto src={post.image} alt={post.imageAlt ?? post.title} />
+
+            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="flex items-center justify-between text-[11px] font-mono-code text-[#9AA7A0]">
                 <span className="text-[#C5A059] font-bold uppercase">{post.category}</span>
@@ -49,6 +53,7 @@ export const BlogListContent: React.FC = () => {
             <div className="pt-4 border-t border-[#1E2B25] flex items-center justify-between text-xs font-mono-code text-[#C5A059]">
               <span>Read Guide</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
             </div>
           </Link>
         ))}
@@ -143,6 +148,8 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
 
         <p className="text-sm text-[#9AA7A0] leading-relaxed">{post.excerpt}</p>
       </header>
+
+      <BlogPhoto src={post.image} alt={post.imageAlt ?? post.title} priority />
 
       <article className="prose prose-invert max-w-none text-[#B4C0BA] text-sm leading-relaxed space-y-4">
         {post.content.split('\n\n').map((para, i) => renderParagraph(para, i))}
