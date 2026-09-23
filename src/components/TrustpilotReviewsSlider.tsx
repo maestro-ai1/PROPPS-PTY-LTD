@@ -363,9 +363,9 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                         </div>
 
                         {/* Title - strictly single line clamp for uniform height */}
-                        <h4 className="font-serif-luxury text-sm font-bold text-white leading-snug line-clamp-1 group-hover:text-[#D4AF37] transition-colors mb-1.5" title={review.title}>
+                        <h3 className="font-serif-luxury text-sm font-bold text-white leading-snug line-clamp-1 group-hover:text-[#D4AF37] transition-colors mb-1.5" title={review.title}>
                           "{review.title}"
-                        </h4>
+                        </h3>
 
                         {/* Comment Body - strictly 3 line clamp */}
                         <p className="text-[11.5px] text-[#C4C0B8] leading-relaxed line-clamp-3">

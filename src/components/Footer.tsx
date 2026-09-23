@@ -50,10 +50,10 @@ export const Footer: React.FC = () => {
 
           {/* Col 2: Navigation */}
           <div>
-            <h5 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
+            <p className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
               <span>Navigation</span>
-            </h5>
+            </p>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
@@ -101,10 +101,10 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Shop Categories */}
           <div>
-            <h5 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
+            <p className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
               <span>Shop Categories</span>
-            </h5>
+            </p>
             <ul className="space-y-2 text-xs">
               {CATEGORIES.map((cat) => (
                 <li key={cat.slug}>
@@ -121,10 +121,10 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Information */}
           <div>
-            <h5 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
+            <p className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00E599]"></span>
               <span>Information</span>
-            </h5>
+            </p>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/shipping-policy" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
@@ -166,9 +166,9 @@ export const Footer: React.FC = () => {
 
           {/* Col 5: Order Rules & Dispatch */}
           <div>
-            <h5 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5">
+            <p className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5">
               Order &amp; Delivery Rules
-            </h5>
+            </p>
             <div className="p-3.5 bg-[#140C0F] rounded-xl border border-[#2B181E] space-y-1.5 text-xs">
               <p className="font-mono-code text-[#D4AF37]">
                 <strong>Minimum Order:</strong> $300 AUD
