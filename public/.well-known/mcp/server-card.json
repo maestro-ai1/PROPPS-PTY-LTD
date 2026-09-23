@@ -1,0 +1,120 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.json",
+  "serverInfo": {
+    "name": "PROPPS PTY LTD",
+    "version": "1.0.0",
+    "description": "Cinema-Grade Reproduction Australian Currency for Film, Television & Visual Arts",
+    "homepage": "https://proppsptyltd.com.au",
+    "contact": {
+      "email": "dispatch@proppsptyltd.com.au",
+      "whatsapp": "+61400000000"
+    }
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://proppsptyltd.com.au/api/mcp"
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "search_products",
+        "description": "Search cinema prop cash by keyword, category, max_price",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "max_price": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      {
+        "name": "get_product",
+        "description": "Get full prop product specifications by slug",
+        "inputSchema": {
+          "type": "object",
+          "required": [
+            "slug"
+          ],
+          "properties": {
+            "slug": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      {
+        "name": "list_categories",
+        "description": "List all Australian prop money categories",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "get_policies",
+        "description": "Get shipping rules, Crimes Act S22 compliance, and payment terms",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "create_order_draft",
+        "description": "Create prefilled order URL. Human completes — never captures payment directly.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    ],
+    "resources": [
+      {
+        "name": "product-catalog",
+        "description": "Full prop currency catalog",
+        "uri": "https://proppsptyltd.com.au/shop/"
+      },
+      {
+        "name": "wholesale",
+        "description": "Studio B2B wholesale pricing tiers",
+        "uri": "https://proppsptyltd.com.au/wholesale/"
+      },
+      {
+        "name": "blog",
+        "description": "Cinematography lighting and camera guide",
+        "uri": "https://proppsptyltd.com.au/blog/"
+      }
+    ],
+    "commerce": {
+      "ordering": "human-assisted-whatsapp-or-form",
+      "payment": [
+        "bank-transfer",
+        "payid",
+        "crypto-BTC",
+        "crypto-USDT",
+        "crypto-ETH"
+      ],
+      "currency": "AUD",
+      "minimumOrder": 300,
+      "freeShipping": 500
+    }
+  },
+  "legal": {
+    "ageRestriction": "18+",
+    "productType": "Cinema Reproduction Currency / Prop Money",
+    "compliance": "Crimes (Currency) Act 1981 Section 22 Specimen Notes"
+  }
+}

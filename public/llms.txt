@@ -1,0 +1,31 @@
+# PROPPS PTY LTD
+
+> Australia's dedicated studio for cinema-grade prop currency, reproduction banknotes, bank-strapped bundles, and director heist kits.
+
+## Identity & Verification
+- Brand: PROPPS PTY LTD
+- Location: Eltham, VIC 3093, Melbourne, Australia
+- Founding: 2019
+- Compliance: Crimes (Currency) Act 1981 Section 22 Specimen Notes
+- Disclaimers: Non-legal tender, artistic simulation, film production and training use only.
+
+## Key Ordering Rules
+- Minimum Order: $300 AUD
+- Free Express Shipping: $500 AUD and above via Australia Post Express with signature on delivery
+- Flat Shipping: $20 AUD under $500
+- Crypto Discount: 10% instant deduction on Bitcoin, USDT, and Ethereum
+- Checkout Channels: WhatsApp direct checkout and Email order checkout
+
+## Primary Prop Collections
+- [Current Series AUD Prop Notes](https://proppsptyltd.com.au/shop/next-gen-polymer-props/): $5 to $100 denominations printed on 120gsm matte archival paper
+- [Bank Strapped Bundles & Bricks](https://proppsptyltd.com.au/shop/bank-strapped-bundles/): 100-note strapped bundles and 1,000-note vault bricks
+- [Film Director Heist Kits](https://proppsptyltd.com.au/shop/film-director-kits/): Locking aluminium flight cases filled with strapped stacks
+- [Vintage Australian Props](https://proppsptyltd.com.au/shop/vintage-australian-props/): Pre-polymer paper banknote designs for period dramas
+- [Custom Distressed Cash](https://proppsptyltd.com.au/shop/custom-studio-props/): Hand-weathered, burnt, or blood-splattered props for gritty sequences
+- [Wholesale Studio Supply](https://proppsptyltd.com.au/wholesale/): Tiered discounts for production companies (10% to 30% off)
+
+## Optional & Agent Specifications
+- [API Catalog](https://proppsptyltd.com.au/.well-known/api-catalog): Linkset endpoints
+- [Agent Skills](https://proppsptyltd.com.au/.well-known/agent-skills/index.json): Commerce and navigation skills
+- [MCP Server Card](https://proppsptyltd.com.au/.well-known/mcp/server-card.json): Streamable HTTP MCP tools
+- [Auth Specification](https://proppsptyltd.com.au/auth.md): Open public access guidelines

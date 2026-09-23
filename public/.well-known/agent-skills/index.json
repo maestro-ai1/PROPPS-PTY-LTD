@@ -1,0 +1,50 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "name": "PROPPS PTY LTD",
+  "url": "https://proppsptyltd.com.au",
+  "description": "Cinema-Grade Reproduction Australian Currency for Film, Television & Visual Arts",
+  "skills": [
+    {
+      "name": "search-products",
+      "type": "commerce",
+      "description": "Search cinema prop cash by denomination, category, or price",
+      "url": "https://proppsptyltd.com.au/api/mcp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "browse-catalog",
+      "type": "navigation",
+      "description": "Browse the full Australian prop money catalog",
+      "url": "https://proppsptyltd.com.au/shop/",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "order-draft",
+      "type": "commerce",
+      "description": "Create prefilled order draft for film production. Adult human completes.",
+      "url": "https://proppsptyltd.com.au/api/mcp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "wholesale-inquiry",
+      "type": "commerce",
+      "description": "B2B studio wholesale bulk rates for television and film sets",
+      "url": "https://proppsptyltd.com.au/wholesale/",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "product-education",
+      "type": "content",
+      "description": "Cinematography lighting and camera advice for prop currency",
+      "url": "https://proppsptyltd.com.au/blog/",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "contact",
+      "type": "support",
+      "description": "Contact Melbourne fulfillment desk for dispatch",
+      "url": "https://proppsptyltd.com.au/contact/",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

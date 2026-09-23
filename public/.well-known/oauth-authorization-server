@@ -1,0 +1,31 @@
+{
+  "issuer": "https://proppsptyltd.com.au",
+  "authorization_endpoint": null,
+  "token_endpoint": null,
+  "jwks_uri": null,
+  "grant_types_supported": [],
+  "response_types_supported": [],
+  "scopes_supported": [],
+  "note": "PROPPS PTY LTD has no protected APIs. All resources publicly accessible.",
+  "public_resources": [
+    "https://proppsptyltd.com.au/shop/",
+    "https://proppsptyltd.com.au/blog/",
+    "https://proppsptyltd.com.au/faq/",
+    "https://proppsptyltd.com.au/wholesale/",
+    "https://proppsptyltd.com.au/compliance/",
+    "https://proppsptyltd.com.au/llms.txt",
+    "https://proppsptyltd.com.au/.well-known/api-catalog",
+    "https://proppsptyltd.com.au/.well-known/agent-skills/index.json",
+    "https://proppsptyltd.com.au/.well-known/mcp/server-card.json"
+  ],
+  "agent_auth": {
+    "register_uri": null,
+    "identity_types_supported": [
+      "none"
+    ],
+    "credential_types_supported": [
+      "none"
+    ],
+    "notes": "No registration required. All content publicly accessible to agents."
+  }
+}

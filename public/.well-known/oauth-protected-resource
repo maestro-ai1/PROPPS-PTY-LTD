@@ -1,0 +1,11 @@
+{
+  "resource": "https://proppsptyltd.com.au",
+  "resource_name": "PROPPS PTY LTD Public Catalog",
+  "authorization_servers": [],
+  "scopes_supported": [],
+  "bearer_methods_supported": [],
+  "resource_documentation": "https://proppsptyltd.com.au/auth.md",
+  "resource_policy_uri": "https://proppsptyltd.com.au/compliance/",
+  "tls_client_certificate_bound_access_tokens": false,
+  "note": "All resources on proppsptyltd.com.au are publicly accessible. No OAuth tokens required."
+}

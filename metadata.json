@@ -1,0 +1,6 @@
+{
+  "name": "PROPPS PTY LTD | Australian Prop Money",
+  "description": "Premium Australian prop money and cinema-grade reproduction currency for film, television, theatre, advertising, and training productions in Australia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
