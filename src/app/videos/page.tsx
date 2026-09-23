@@ -4,9 +4,8 @@ import { SITE } from '../../config/site.js';
 import { VideosContent } from '../../views/VideosPage.js';
 
 export const metadata: Metadata = {
-  title: 'Cinema Prop Videos & Camera Tests',
-  description:
-    '4K video demonstrations of PROPPS PTY LTD Australian prop currency: slow-motion camera tests, bank brick unboxings, director kit breakdowns, and art department aging tutorials.',
+  title: 'Review Props Money Denominations: 5s, 10s, 20, 50s, 100s',
+  description: 'Video review of PROPPS PTY LTD prop money across all denominations: $5, $10, $20, $50, and $100.',
   alternates: { canonical: `https://${SITE.domain}/videos/` },
 };
 
