@@ -98,6 +98,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
       name: data.name,
       description: data.description,
       sku: data.slug,
+      image: data.images?.[0] ? `https://${SITE.domain}/images/products/${data.images[0]}` : undefined,
       brand: {
         '@type': 'Brand',
         name: SITE.name,

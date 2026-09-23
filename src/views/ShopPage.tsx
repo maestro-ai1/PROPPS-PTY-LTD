@@ -5,7 +5,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, ShieldCheck, Check } from 'lucide-react';
 import { PRODUCTS, CATEGORIES } from '../config/site.js';
-import { SmartImage } from '../components/SmartImage.js';
+import { ProductPhoto } from '../components/ProductPhoto.js';
 import { useApp } from '../context/AppContext.js';
 
 interface ShopContentProps {
@@ -108,7 +108,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
             <div key={product.slug} className="luxury-card rounded-2xl overflow-hidden flex flex-col justify-between">
               {/* Image Frame */}
               <Link href={productHref} className="block">
-                <SmartImage src={product.images[0]} alt={product.name} badge={product.badge} />
+                <ProductPhoto src={product.images[0]} alt={product.name} badge={product.badge} />
               </Link>
 
               {/* Card Content */}

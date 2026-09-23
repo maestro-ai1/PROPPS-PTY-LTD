@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ } from '../config/site.js';
 import { SmartImage } from '../components/SmartImage.js';
+import { ProductPhoto } from '../components/ProductPhoto.js';
 import { TrustpilotReviewsSlider } from '../components/TrustpilotReviewsSlider.js';
 import { useApp } from '../context/AppContext.js';
 
@@ -347,7 +348,7 @@ export const HomeContent: React.FC = () => {
           {featuredProducts.map((product) => (
             <div key={product.slug} className="luxury-card rounded-xl overflow-hidden flex flex-col justify-between">
               <Link href={`/shop/${product.category}/${product.slug}`} className="relative block">
-                <SmartImage src={product.images[0]} alt={product.name} badge={product.badge} />
+                <ProductPhoto src={product.images[0]} alt={product.name} badge={product.badge} />
               </Link>
 
               <div className="p-4 flex-1 flex flex-col justify-between space-y-3">

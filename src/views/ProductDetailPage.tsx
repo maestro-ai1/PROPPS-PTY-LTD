@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, Percent, ShoppingBag, MessageCircle, ArrowLeft, Check, FileCheck } from 'lucide-react';
 import { PRODUCTS, CATEGORIES, SITE } from '../config/site.js';
-import { SmartImage } from '../components/SmartImage.js';
+import { ProductPhoto } from '../components/ProductPhoto.js';
 import { waLink } from '../lib/whatsapp.js';
 import { useApp } from '../context/AppContext.js';
 
@@ -75,10 +75,10 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
 
       {/* Main Product Showcase Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
-        {/* Left Column: Photorealistic SmartImage Artwork */}
+        {/* Left Column: Real Product Photography */}
         <div className="space-y-4">
           <div className="luxury-card rounded-2xl overflow-hidden border-2 border-[#C5A059]/30">
-            <SmartImage src={product.images[0]} alt={product.name} badge={product.badge} />
+            <ProductPhoto src={product.images[0]} alt={product.name} badge={product.badge} priority />
           </div>
 
           <div className="p-4 bg-[#121A16] rounded-xl border border-[#22302A] flex items-center justify-between text-xs font-mono-code text-[#9AA7A0]">
@@ -260,7 +260,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
                 href={`/shop/${rel.category}/${rel.slug}`}
                 className="luxury-card rounded-2xl overflow-hidden group block"
               >
-                <SmartImage src={rel.images[0]} alt={rel.name} />
+                <ProductPhoto src={rel.images[0]} alt={rel.name} />
                 <div className="p-4 space-y-1">
                   <h4 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] group-hover:text-[#E5C378] transition-colors truncate">
                     {rel.name}
