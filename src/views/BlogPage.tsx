@@ -1,12 +1,16 @@
 // src/views/BlogPage.tsx
 import React from 'react';
 import Link from 'next/link';
-import { POSTS } from '../config/site.js';
+import { POSTS, PRODUCTS, CATEGORIES } from '../config/site.js';
 import { Calendar, Clock, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Breadcrumb } from '../components/Breadcrumb.js';
+import { ProductPhoto } from '../components/ProductPhoto.js';
 
 export const BlogListContent: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
+      <Breadcrumb items={[{ name: 'Blog', href: '/blog' }]} />
+
       {/* Header */}
       <div className="border-b border-[#1E2B25] pb-6 space-y-2 text-center">
         <span className="text-[11px] font-mono-code font-bold uppercase tracking-widest text-[#C5A059] block">
@@ -58,8 +62,17 @@ interface BlogPostContentProps {
 }
 
 export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
+  const relatedProducts = (post.relatedProducts ?? [])
+    .map((slug) => PRODUCTS.find((p) => p.slug === slug))
+    .filter((p): p is (typeof PRODUCTS)[number] => Boolean(p));
+  const relatedCategories = (post.relatedCategories ?? [])
+    .map((slug) => CATEGORIES.find((c) => c.slug === slug))
+    .filter((c): c is (typeof CATEGORIES)[number] => Boolean(c));
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8">
+      <Breadcrumb items={[{ name: 'Blog', href: '/blog' }, { name: post.title, href: `/blog/${post.slug}` }]} />
+
       <Link href="/blog" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#C5A059] hover:underline">
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Production Guides</span>
@@ -94,6 +107,56 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
           <p key={i}>{para}</p>
         ))}
       </article>
+
+      {relatedProducts.length > 0 && (
+        <div className="pt-8 border-t border-[#1E2B25] space-y-5">
+          <h3 className="font-serif-luxury text-lg font-bold text-[#F8F6F0]">
+            RELATED PROP SPECIMENS
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {relatedProducts.map((rel) => (
+              <Link
+                key={rel.slug}
+                href={`/shop/${rel.category}/${rel.slug}`}
+                className="luxury-card rounded-2xl overflow-hidden group block"
+              >
+                <ProductPhoto src={rel.images[0]} alt={rel.name} />
+                <div className="p-4 space-y-1">
+                  <h4 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] group-hover:text-[#E5C378] transition-colors truncate">
+                    {rel.name}
+                  </h4>
+                  <span className="font-mono-code text-xs font-bold text-[#C5A059] block">
+                    From ${rel.price} AUD
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {relatedCategories.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          {relatedCategories.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/shop/${cat.slug}`}
+              className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#141E1A] text-[#B4C0BA] hover:bg-[#1C2A24] border border-[#22302A] transition-all"
+            >
+              Explore {cat.name} →
+            </Link>
+          ))}
+        </div>
+      )}
+
+      {post.relatedPage && (
+        <Link
+          href={post.relatedPage.href}
+          className="inline-block text-xs font-mono-code text-[#C5A059] hover:underline"
+        >
+          {post.relatedPage.label} →
+        </Link>
+      )}
 
       <div className="pt-8 border-t border-[#1E2B25] flex justify-between items-center">
         <Link

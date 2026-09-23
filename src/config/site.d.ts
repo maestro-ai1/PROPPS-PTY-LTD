@@ -124,6 +124,9 @@ export interface Post {
   readTime: string;
   image: string;
   content: string;
+  relatedProducts?: string[];
+  relatedCategories?: string[];
+  relatedPage?: { href: string; label: string };
 }
 
 export declare const POSTS: Post[];

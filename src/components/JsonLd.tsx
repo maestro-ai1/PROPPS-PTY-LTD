@@ -3,7 +3,7 @@ import React from 'react';
 import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ, SHOP } from '../config/site.js';
 
 interface JsonLdProps {
-  type: 'homepage' | 'product' | 'category' | 'faq' | 'about' | 'wholesale' | 'article';
+  type: 'homepage' | 'product' | 'category' | 'faq' | 'about' | 'wholesale' | 'article' | 'breadcrumb';
   data?: any;
 }
 
@@ -189,6 +189,17 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
       author: { '@type': 'Organization', name: SITE.name },
       publisher: { '@type': 'Organization', name: SITE.name },
       mainEntityOfPage: `https://${SITE.domain}/blog/${data.slug}/`,
+    };
+  } else if (type === 'breadcrumb' && data) {
+    schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: (data as Array<{ name: string; href: string }>).map((item, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: item.name,
+        item: `https://${SITE.domain}${item.href}`,
+      })),
     };
   } else if (type === 'wholesale') {
     schema = {

@@ -2,14 +2,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { Mail, MapPin, ExternalLink, CheckCircle2 } from 'lucide-react';
-import { SITE, CONTACT } from '../config/site.js';
+import { SITE, CONTACT, CATEGORIES } from '../config/site.js';
 
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#0A0507] text-[#C5BDBA] border-t-2 border-[#29171D] pt-12 pb-8 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 4 Main Footer Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[#29171D]">
+        {/* 5 Main Footer Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-[#29171D]">
           {/* Col 1: Brand & Headquarters */}
           <div className="space-y-3.5">
             <div className="flex items-center gap-2.5">
@@ -99,7 +99,27 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Col 3: Information */}
+          {/* Col 3: Shop Categories */}
+          <div>
+            <h5 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
+              <span>Shop Categories</span>
+            </h5>
+            <ul className="space-y-2 text-xs">
+              {CATEGORIES.map((cat) => (
+                <li key={cat.slug}>
+                  <Link
+                    href={`/shop/${cat.slug}`}
+                    className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center group"
+                  >
+                    <span className="group-hover:translate-x-1 transition-transform">{cat.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: Information */}
           <div>
             <h5 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00E599]"></span>
@@ -144,7 +164,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Col 4: Order Rules & Dispatch */}
+          {/* Col 5: Order Rules & Dispatch */}
           <div>
             <h5 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] tracking-wider uppercase mb-3.5">
               Order &amp; Delivery Rules

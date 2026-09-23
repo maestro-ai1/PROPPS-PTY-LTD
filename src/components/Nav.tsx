@@ -45,7 +45,7 @@ export const Nav: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation Links: HOME, SHOP, VIDEOS, BLOG, FAQ */}
-          <nav className="hidden md:flex items-center gap-5 lg:gap-7 font-mono-code" aria-label="Main navigation">
+          <nav className="hidden md:flex items-center gap-3 lg:gap-5 font-mono-code" aria-label="Main navigation">
             {/* 1. HOME */}
             <Link
               href="/"
@@ -113,6 +113,18 @@ export const Nav: React.FC = () => {
               VIDEOS
             </Link>
 
+            {/* 3b. WHOLESALE */}
+            <Link
+              href="/wholesale"
+              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                pathname === '/wholesale'
+                  ? 'text-[#D4AF37] border-[#D4AF37]'
+                  : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
+              }`}
+            >
+              WHOLESALE
+            </Link>
+
             {/* 4. BLOG (also matches GLOG / Guides) */}
             <Link
               href="/blog"
@@ -136,6 +148,18 @@ export const Nav: React.FC = () => {
               }`}
             >
               FAQ
+            </Link>
+
+            {/* 5b. ABOUT */}
+            <Link
+              href="/about"
+              className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
+                pathname === '/about'
+                  ? 'text-[#D4AF37] border-[#D4AF37]'
+                  : 'text-[#C5BDBA] border-transparent hover:text-white hover:border-[#D4AF37]/50'
+              }`}
+            >
+              ABOUT
             </Link>
 
             {/* 6. CONTACT */}

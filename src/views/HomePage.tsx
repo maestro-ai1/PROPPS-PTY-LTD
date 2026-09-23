@@ -78,7 +78,15 @@ export const HomeContent: React.FC = () => {
 
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  const featuredProducts = PRODUCTS.filter((p) => p.featured);
+  // Always feature the flagged products, plus at least one product from every
+  // other category so every category gets homepage-level product exposure,
+  // not just the flagged "new-notes" denominations.
+  const flaggedFeatured = PRODUCTS.filter((p) => p.featured);
+  const representedCategories = new Set(flaggedFeatured.map((p) => p.category));
+  const categoryFillIns = CATEGORIES.filter((c) => !representedCategories.has(c.slug))
+    .map((c) => PRODUCTS.find((p) => p.category === c.slug))
+    .filter((p): p is (typeof PRODUCTS)[number] => Boolean(p));
+  const featuredProducts = [...flaggedFeatured, ...categoryFillIns];
 
   return (
     <div className="space-y-12 sm:space-y-16">

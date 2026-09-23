@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ShieldCheck, Percent, ShoppingBag, MessageCircle, ArrowLeft, Check, FileCheck } from 'lucide-react';
 import { PRODUCTS, CATEGORIES, SITE } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
+import { Breadcrumb } from '../components/Breadcrumb.js';
 import { waLink } from '../lib/whatsapp.js';
 import { useApp } from '../context/AppContext.js';
 
@@ -24,9 +25,11 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
   const unitPrice = selectedBundle?.price ?? product.price;
 
   const categoryObj = CATEGORIES.find((c) => c.slug === product.category);
-  const relatedProducts = PRODUCTS.filter(
+  const sameCategoryProducts = PRODUCTS.filter(
     (p) => p.category === product.category && p.slug !== product.slug
-  ).slice(0, 3);
+  );
+  const otherCategoryProducts = PRODUCTS.filter((p) => p.category !== product.category);
+  const relatedProducts = [...sameCategoryProducts, ...otherCategoryProducts].slice(0, 3);
 
   const handleAdd = () => {
     const cartLine = selectedBundle
@@ -51,21 +54,13 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-12">
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono-code text-[#889690]">
-        <Link href="/" className="hover:text-[#C5A059] transition-colors">Home</Link>
-        <span>/</span>
-        <Link href="/shop" className="hover:text-[#C5A059] transition-colors">Shop</Link>
-        <span>/</span>
-        {categoryObj && (
-          <>
-            <Link href={`/shop/${categoryObj.slug}`} className="hover:text-[#C5A059] transition-colors">
-              {categoryObj.name}
-            </Link>
-            <span>/</span>
-          </>
-        )}
-        <span className="text-[#F8F6F0] truncate max-w-xs">{product.name}</span>
-      </nav>
+      <Breadcrumb
+        items={[
+          { name: 'Shop', href: '/shop' },
+          ...(categoryObj ? [{ name: categoryObj.name, href: `/shop/${categoryObj.slug}` }] : []),
+          { name: product.name, href: `/shop/${product.category}/${product.slug}` },
+        ]}
+      />
 
       {/* Back button */}
       <Link href="/shop" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#C5A059] hover:underline">

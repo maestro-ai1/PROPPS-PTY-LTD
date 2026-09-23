@@ -46,7 +46,7 @@ export const REPLY = {
   brand: { primary: '#C5A059', headerDark: '#0D1512' },
   currency: { code: 'AUD', symbol: '$' },
   orderPrefix: 'PRP',
-  headerTagline: 'Australian Prop Money Â· Eltham, Melbourne VIC 3093',
+  headerTagline: 'Australian Prop Money · Eltham, Melbourne VIC 3093',
   dispatchLine: 'Dispatched via Australia Post Express with end-to-end tracking, fast and safe delivery. Refunded if not satisfied.',
   bizNumber: { label: 'ABN', value: '72 642 507 042' },
   channels: { email: 'orders&#64;proppsptyltd.com.au', whatsapp: '+61420128746', whatsappCountryCode: '61' },
@@ -358,6 +358,9 @@ export const POSTS = [
     date: '2026-02-15',
     readTime: '6 min read',
     image: 'post-legal-guidelines.webp',
+    relatedCategories: ['new-notes'],
+    relatedProducts: ['100-australian-prop-money-for-sale', '50-australian-prop-money-for-sale'],
+    relatedPage: { href: '/compliance', label: 'Read our full RBA specimen compliance guide' },
     content: `When producing television, cinema, or commercial theatre in Australia, capturing realistic cash exchanges is crucial for cinematic immersion. However, Australia strictly regulates the reproduction of Australian currency under the Commonwealth Crimes (Currency) Act 1981 and guidelines published by the Reserve Bank of Australia (RBA).\n\nUnder Section 22 of the Crimes (Currency) Act, it is an offence to make or circulate counterfeit currency or unauthorized reproductions of currency that could deceive reasonable persons. To ensure full legal compliance, professional prop houses must observe strict criteria:\n\n1. Distinctive Markings: Notes must feature prominent, indelible notices such as 'SPECIMEN', 'REPRODUCTION', or 'FOR MOTION PICTURE USE ONLY'.\n2. Size Adjustments: Reproductions must deviate from genuine currency dimensions (less than 75% or greater than 150% in scale for standard one-sided representations, or strictly marked with substantial textural and structural modifications for filming).\n3. Non-Polymer Texture: Genuine Australian banknotes are printed on specialized biaxially oriented polypropylene (BOPP). PROPPS PTY LTD uses premium non-reflective archival paper instead of polymer, preventing any tactile confusion with genuine legal tender.\n\nBy procuring certified props from PROPPS PTY LTD, Australian production companies protect their crew and production from legal liability while maintaining impeccable visual standards on camera.`
   },
   {
@@ -368,6 +371,12 @@ export const POSTS = [
     date: '2026-01-20',
     readTime: '5 min read',
     image: 'post-lighting-tips.webp',
+    relatedCategories: ['film-and-tv-props'],
+    relatedProducts: [
+      '100-australian-prop-money-for-sale',
+      '50-australian-prop-money-for-sale',
+      'film-and-tv-prop-currency-pack'
+    ],
     content: `Shooting prop money under bright studio lighting presents unique optical challenges. Real polymer Australian banknotes reflect high-output LED panels and Fresnel fixtures, creating blown-out specular highlights that ruin close-up focus.\n\nPROPPS PTY LTD engineered our cinema series prop notes specifically to overcome this obstacle. Our 120gsm matte finish absorbs harsh incident light while maintaining vivid saturation for the emerald greens of the $100 and the rich ochre gold of the $50.\n\nDP Pro Tips:\n- Use soft, diffused side lighting (cross-key) rather than direct top-down lighting to highlight note texture without glare.\n- Incorporate subtle back-rim lighting to define the edges of strapped bundles against dark mahogany desks or metal vault surfaces.\n- In high-speed slow-motion shots (120fps+), our matte paper maintains crisp micro-contrast as notes flutter through the air.`
   },
   {
@@ -378,6 +387,8 @@ export const POSTS = [
     date: '2025-11-10',
     readTime: '4 min read',
     image: 'post-weathering-guide.webp',
+    relatedCategories: ['film-and-tv-props', 'money-stacks'],
+    relatedProducts: ['film-and-tv-prop-currency-pack', 'bulk-money-stack-pack'],
     content: `Pristine, crisp banknotes right out of the wrapper can immediately pull viewers out of a gritty crime thriller or street-level drama. Genuine circulated cash is softened, creased, and carries subtle patina from countless human transactions.\n\nTo achieve organic aging:\n- Mechanical Tumbling: Run stacks through clean cloth tumblers or gently crumple and re-flatten individual notes by hand.\n- Coffee & Tea Washes: Dilute instant dark roast coffee to create a warm, non-toxic staining wash applied with a soft atomizer spray.\n- Edge Burnishing: Lightly drag graphite or fine charcoal along the edges of the bundle to simulate years of friction in wallets and cash drawers.\n\nPROPPS PTY LTD also offers pre-distressed bundles prepared by professional Melbourne scenic artists, saving your art department dozens of prep hours.`
   }
 ]

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ShoppingBag, Check } from 'lucide-react';
 import { PRODUCTS, CATEGORIES } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
+import { Breadcrumb } from '../components/Breadcrumb.js';
 import { useApp } from '../context/AppContext.js';
 
 interface ShopContentProps {
@@ -39,6 +40,13 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10">
+      <Breadcrumb
+        items={[
+          { name: 'Shop', href: '/shop' },
+          ...(currentCatObj ? [{ name: currentCatObj.name, href: `/shop/${currentCatObj.slug}` }] : []),
+        ]}
+      />
+
       {/* Page Header */}
       <div className="border-b border-[#1E2B25] pb-6 space-y-2">
         <span className="text-[11px] font-mono-code font-bold uppercase tracking-widest text-[#C5A059] block">
