@@ -1,5 +1,5 @@
 // src/components/JsonLd.tsx
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ, SHOP } from '../config/site.js';
 
 interface JsonLdProps {

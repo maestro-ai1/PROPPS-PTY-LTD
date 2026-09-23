@@ -1,4 +1,6 @@
 // src/components/AnnouncementBar.tsx
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Truck, Percent, ShieldCheck, MessageCircle } from 'lucide-react';
 import { SHOP } from '../config/site.js';

@@ -1,4 +1,6 @@
 // src/components/AgeGateModal.tsx
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { ShieldAlert, CheckCircle, ExternalLink } from 'lucide-react';
 import { SITE, COMPLIANCE } from '../config/site.js';
