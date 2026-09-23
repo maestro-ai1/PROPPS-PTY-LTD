@@ -248,6 +248,91 @@ export const PRODUCTS = [
       print: 'Dual-sided high-definition print',
       availability: 'Available from Starter Stack up to 100-Stack bulk sizes'
     }
+  },
+  {
+    slug: 'film-and-tv-prop-currency-pack',
+    name: 'Film & TV Prop Currency Pack',
+    price: 250,
+    category: 'film-and-tv-props',
+    badge: 'Production Ready',
+    featured: false,
+    images: ['film-tv-props.jpg'],
+    shortDescription: 'Cinema-grade prop currency curated for film and television productions, ready for cash-handling and transaction scenes.',
+    description: 'Cinema-grade prop currency curated for film and television productions. Designed for authentic on-camera texture and weight in scenes involving cash handling, transactions, and reveals. Every note carries mandatory non-legal-tender specimen markings.',
+    details: {
+      useCase: 'Film & television production',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      dispatch: 'Australia Post Express with signature on delivery'
+    }
+  },
+  {
+    slug: 'bulk-money-stack-pack',
+    name: 'Bulk Money Stack Pack',
+    price: 500,
+    category: 'money-stacks',
+    badge: 'High Volume',
+    featured: false,
+    images: ['money-stacks.jpeg'],
+    shortDescription: 'Bulk strapped prop currency stacks for scenes requiring large visible cash volumes.',
+    description: 'Bulk strapped prop currency stacks for scenes requiring large visible cash volumes, ideal for heist sequences, vault reveals, and bank scenes. Every note carries mandatory non-legal-tender specimen markings.',
+    details: {
+      useCase: 'Heist, vault & bank scenes',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      dispatch: 'Australia Post Express with signature on delivery'
+    }
+  },
+  {
+    slug: 'photography-prop-currency-set',
+    name: 'Photography Prop Currency Set',
+    price: 180,
+    category: 'photography-props',
+    badge: 'Studio Favourite',
+    featured: false,
+    images: ['photography-props.jpeg'],
+    shortDescription: 'Prop currency styled for editorial and commercial photography shoots.',
+    description: 'Prop currency styled for print, editorial, and commercial photography shoots, delivering a realistic look for camera close-ups. Every note carries mandatory non-legal-tender specimen markings.',
+    details: {
+      useCase: 'Editorial & commercial photography',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      dispatch: 'Australia Post Express with signature on delivery'
+    }
+  },
+  {
+    slug: 'event-and-party-prop-cash-pack',
+    name: 'Event & Party Prop Cash Pack',
+    price: 150,
+    category: 'event-and-party-props',
+    badge: 'Crowd Favourite',
+    featured: false,
+    images: ['event-party-props.jpeg'],
+    shortDescription: 'Novelty prop cash designed for events, parties, and themed entertainment.',
+    description: 'Novelty prop cash designed for events, parties, and themed entertainment experiences. Every note carries mandatory non-legal-tender specimen markings.',
+    details: {
+      useCase: 'Events, parties & themed entertainment',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      dispatch: 'Australia Post Express with signature on delivery'
+    }
+  },
+  {
+    slug: 'custom-and-branded-prop-currency',
+    name: 'Custom & Branded Prop Currency',
+    price: 350,
+    category: 'custom-and-branded-props',
+    badge: 'Made To Order',
+    featured: false,
+    images: ['custom-branded-props.jpeg'],
+    shortDescription: 'Bespoke prop currency available with custom branding for agencies, brands, and special productions.',
+    description: 'Bespoke and custom-branded prop currency for agencies, brands, and special productions. Contact our studio to discuss custom denominations, artwork, and branding. Every note carries mandatory non-legal-tender specimen markings.',
+    details: {
+      useCase: 'Agencies, brands & special productions',
+      paper: 'Premium archival-grade paper',
+      print: 'Dual-sided high-definition print',
+      dispatch: 'Australia Post Express with signature on delivery'
+    }
   }
 ]
 
