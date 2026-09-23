@@ -102,6 +102,15 @@
   }
 }
 
+/* Auto-scrolling logo/label strip (ProductionTypesMarquee) */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll 28s linear infinite;
+}
+
 /* Product frame standard */
 .product-frame {
   background: #FFFFFF;

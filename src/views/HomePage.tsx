@@ -20,6 +20,7 @@ import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ } from '../config/site.js';
 import { CategoryPhoto } from '../components/CategoryPhoto.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { TrustpilotReviewsSlider } from '../components/TrustpilotReviewsSlider.js';
+import { ProductionTypesMarquee } from '../components/ProductionTypesMarquee.js';
 import { useApp } from '../context/AppContext.js';
 
 export const HomeContent: React.FC = () => {
@@ -539,6 +540,9 @@ export const HomeContent: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* SECTION 8: PRODUCTION TYPES MARQUEE */}
+      <ProductionTypesMarquee />
     </div>
   );
 };
