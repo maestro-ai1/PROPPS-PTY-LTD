@@ -161,3 +161,118 @@ for transactional intent directly)
 - KnowsAbout schema: Australian Prop Money, Cinema Reproduction Currency, Film Production Props,
   Theatrical Stage Currency.
 - Local Geographic Anchor: Eltham, VIC 3093, Melbourne, Australia.
+
+---
+
+## 🔍 Audit & Expansion — 2026-09-24 (30,003-row keyword bank + live Lighthouse audit)
+
+**New source:** `australian-prop-money_keywords bank.csv` (30,003 rows, generic "Australian money"
+seed expansion — most rows are real-currency/economy/numismatic noise unrelated to the niche).
+Filtered by: keyword semantically matches prop/fake/play/toy/replica/novelty money or film/movie
+props, Volume ≥ 20, and (where scored) Intent contains Commercial or Transactional. ~29,600 of the
+30,003 rows were dropped as niche-irrelevant (real banknote trivia, economy/GDP stats, unclaimed-
+money registers, band names, coin collecting, counterfeit-detection). This confirms and extends —
+does not replace — the Tier 1/Tier 2 sets above.
+
+### New Tier 1 candidates found (Vol ≥ 50, KD ≤ 40, genuinely on-niche)
+| Keyword | Intent | Volume | KD | Best Use |
+|---|---|---|---|---|
+| imitation money | Informational, Transactional | 1300 | 25 | Homepage/New Notes secondary — strong synonym |
+| fake australian money | Informational | 720 | 29 | Homepage secondary, blog |
+| play money | Commercial | 720 | 19 | New: Event & Party Props / Photography Props secondary |
+| australian play money | Commercial | 320 | **11** | Event & Party Props — very low KD |
+| au prop money | Commercial | 260 | 28 | (already in Tier 1 above) |
+| australian toy money | Commercial | 170 | **10** | Event & Party Props secondary |
+| toy money | Transactional | 170 | 19 | Event & Party Props secondary |
+| toy money australia | Commercial | 170 | **9** | Event & Party Props secondary |
+| fake australian dollars | Informational | 140 | 23 | Blog/homepage LSI |
+| australia play money | Commercial | 140 | **10** | Event & Party Props secondary |
+| fake australian money prop | Commercial | 140 | 25 | (already in Tier 1 above) |
+| fake note australia | Informational | 110 | 24 | Blog LSI |
+| buy film props | Transactional | 90 | 28 | **Film & TV Props category — new primary candidate** |
+| film props for sale | Transactional | 90 | 31 | Film & TV Props secondary |
+| childrens play money | Commercial | 90 | **10** | Event & Party Props secondary |
+| play money australia | Commercial | 90 | **9** | Event & Party Props — lowest KD in the whole set |
+| prop money au | Commercial | 70 | 25 | (already in Tier 1 above) |
+| aus prop money | Informational, Commercial | 70 | 20 | (already in Tier 1 above) |
+
+**⚠️ Deliberately excluded from this batch too:** `fake money` (Vol 1600, KD 38) and `fake note
+detector` / `fake money detector` / `fake dollar bill detector` (all informational, all in the
+counterfeit-detection-tool cluster) — same brand-safety reasoning as the original Excluded
+Clusters section: ambiguous-to-illegal search intent, wrong audience, or literally a different
+product (detection machines). `money fake money` / `fake fake money` are keyword-tool phrase-order
+artifacts (not real search phrasing) — dropped as junk, not used even as LSI.
+
+**Printable/DIY cluster found and excluded from commercial targeting:** `printable play money
+australia`, `play money printable australia`, `australian money printables play money`, `play
+money print` — these are "print my own at home for free" intent, the opposite of a sale. Only
+worth touching in a blog post that explicitly pitches professional cinema-grade props as the
+upgrade from home-printed paper.
+
+### Tier 2 additions — Untapped Exact-Match (Vol ~20, zero competition, same treatment as existing Tier 2)
+buy prop money · buy prop money near me · cheap prop money · prop money for sale ·
+prop money near me · real prop money for sale · realistic prop money for sale ·
+where to buy prop money · where can i buy prop money · fake cash prop · fake party money ·
+fake money stacks · money stack australia · australian money bundles · prop dollar bills ·
+buy fake money stacks · money bundle amounts australia
+
+### Live SEO Audit — Google PageSpeed Insights / Lighthouse (mobile, homepage, 2026-09-23)
+Real automated audit run against `https://proppsptyltd.com.au/` (not estimated):
+
+| Category | Score |
+|---|---|
+| **SEO** | **100 / 100** ✅ (target of 90+ already met and exceeded) |
+| Best Practices | 100 / 100 ✅ |
+| Accessibility | 90 / 100 🟡 (at threshold, 3 issues found) |
+| Performance | 84 / 100 🟡 |
+| Agentic Browsing (AI crawler readiness) | 3/3 ✅ |
+
+**Lighthouse SEO passed all 10 automated checks** (indexable, meta description present, valid
+`hreflang`/canonical, crawlable links, structured data present, etc.) — the only "manually check"
+item is a routine reminder to validate structured data in Google's Rich Results Test, which is
+good practice but not a failure.
+
+**Accessibility issues found (fix before/alongside the keyword rollout, they affect UX + can
+suppress ranking via Core Web Vitals/UX signals):**
+1. Insufficient colour contrast on some text (dark theme gold-on-charcoal in places).
+2. Touch targets too small/tightly spaced on mobile (likely the new 8-item desktop nav bleeding
+   into a breakpoint, or category pill buttons).
+3. Heading elements not in sequentially-descending order — likely an H3 (e.g. "RELATED PROP
+   SPECIMENS") appearing without an intervening H2 on some pages.
+
+**Performance (84/100):** render-blocking requests (~1.85s possible savings, likely the Google
+Fonts `<link rel="stylesheet">` noted as a known follow-up in `layout.tsx`) and ~71 KiB of
+image-delivery savings (next/image is already used sitewide, so this is likely a couple of
+oversized source photos, not a structural issue).
+
+---
+
+## Refined Per-Page Keyword Targets (Focus + 5 Secondary) — for the next build pass
+
+| Page | Focus Keyword (Vol/KD) | Secondary Keywords (5) |
+|---|---|---|
+| Homepage `/` | prop money australia (480/30) | australian prop money (720/24), prop money (480/23), au props (50/6), imitation money (1300/25), fake australian money (720/29) |
+| Shop hub `/shop/` | prop money australia (480/30) | props money (50/11), prop bundles of money australia, australia prop money (110/18), buy prop money australia, aus prop money (70/20) |
+| New Notes `/shop/new-notes/` | buy prop money australia | fake australian money prop (140/25), realistic prop money australia, prop money au (70/25), imitation money (1300/25), au prop money (260/28) |
+| Film & TV Props `/shop/film-and-tv-props/` | buy film props (90/28) | film props for sale (90/31), movie prop money australia, cinema prop currency australia, prop cash for film production, movie money for sale australia |
+| Money Stacks `/shop/money-stacks/` | prop bundles of money australia | money stack australia, fake money stacks, fake australian money prop (140/25), bulk prop money australia, buy fake money stacks |
+| Photography Props `/shop/photography-props/` | prop money for photoshoot | fake money for photography australia, imitation money (1300/25), play money (720/19), prop dollar bills, fake australian money (720/29) |
+| Event & Party Props `/shop/event-and-party-props/` | play money australia (90/9) | australian play money (320/11), toy money australia (170/9), childrens play money (90/10), novelty prop money australia, fake party money |
+| Custom & Branded Props `/shop/custom-and-branded-props/` | custom prop money printing australia | branded prop currency australia, prop dollar bills, prop money for sale, order prop money, prop money online |
+| Wholesale `/wholesale/` | wholesale prop money australia | bulk prop money australia, prop money supplier, prop money price, order prop money, prop cash for film production |
+| Compliance `/compliance/` | prop money australia laws | crimes currency act 1981 section 22, RBA reproduction currency guidelines, is it legal to buy prop money, is it illegal to buy prop money, fake australian money prop |
+
+### Blog keyword intent + linking plan (existing 3 posts + 2 new candidates)
+| Post | Primary Intent Keyword | Outbound Internal Links | Inbound (link here from) |
+|---|---|---|---|
+| Crimes (Currency) Act 1981 & RBA guidelines | prop money australia laws | → `/compliance/`, → New Notes products ($100/$50) | Homepage footer, Compliance page, Money Stacks post |
+| Lighting prop money for camera | film props for sale | → Film & TV Props category, → $100/$50 products | Film & TV Props category page |
+| Art department weathering guide | prop cash for film production | → Film & TV Props, → Money Stacks | Money Stacks category page |
+| **New:** "Play Money vs Prop Money — Which One Do You Need for Your Shoot/Party?" | play money australia (90/9) | → Event & Party Props, → Photography Props | Event & Party Props category page |
+| **New:** "Where to Buy Prop Money in Australia (Legally)" | buy prop money australia | → Shop hub, → Compliance | Homepage, Blog index |
+
+This satisfies the "5+ secondary keywords per page" and "intentional blog keywords with in/outbound
+linking" requirements. **This is a preview only — nothing above has been written into `site.js`,
+page metadata, or new blog content yet.** Next step on approval: apply these focus/secondary
+keywords to title tags, H1s, meta descriptions, and body copy across the 10 mapped pages, write the
+2 new blog posts, and fix the 3 Lighthouse accessibility issues.
