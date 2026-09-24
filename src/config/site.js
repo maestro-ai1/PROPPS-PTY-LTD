@@ -11,7 +11,7 @@ export const SITE = {
   currency: 'AUD',
   target: 'vercel',
   primaryColor: '#C5A059',
-  gscVerification: 'PENDING_GSC_VERIFICATION',
+  gscVerification: '1qHH6DkjQ-fKpXzygDLiNTvg2E18GsdfjerP0ZsISAg',
   indexNowKey: 'propps-au-indexnow-2026',
   cartKey: 'mm-cart',
 }
