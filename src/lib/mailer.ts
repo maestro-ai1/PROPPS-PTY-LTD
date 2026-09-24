@@ -7,6 +7,7 @@ export interface MailerOptions {
   html: string;
   text: string;
   replyTo?: string;
+  attachments?: { filename: string; content: Buffer; contentType?: string }[];
 }
 
 export interface MailerResult {
@@ -62,6 +63,7 @@ export async function sendMail(opts: MailerOptions): Promise<MailerResult> {
       text: opts.text,
       html: opts.html,
       replyTo: opts.replyTo,
+      attachments: opts.attachments,
     });
 
     return {

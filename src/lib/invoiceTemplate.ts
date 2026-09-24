@@ -1,5 +1,6 @@
-// Branded HTML invoice email (LIGHT shell: white body, dark header band, gold accent).
+// Compact branded invoice email (LIGHT shell: white body, dark header band, gold accent).
 import { SITE, CONTACT, REPLY } from '../config/site.js';
+import { paymentConfirmLine, paymentWhatsAppLink, encodeAt } from './order.js';
 
 export interface InvoiceOrder {
   ref: string;
@@ -44,52 +45,44 @@ export function brandSealHtml(size = 46): string {
   return `<table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td align="center" valign="middle" width="${size}" height="${size}" style="width:${size}px;height:${size}px;background-color:#1C1A14;border:2px solid #D4AF37;border-radius:11px;font-family:${SERIF};font-size:${Math.round(size * 0.52)}px;font-weight:700;color:#D4AF37;line-height:${size - 4}px;">P</td></tr></table>`;
 }
 
+const heading = (text: string) =>
+  `<div style="font-family:${SANS};font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:${GOLD};padding-bottom:7px;border-bottom:2px solid ${GOLD};">${text}</div>`;
+
 export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl }: InvoiceOpts): string {
   const lineRows = lines
     .filter((l) => l.value.trim())
-    .map(
-      (l) =>
-        l.label
-          ? `<tr>
-        <td valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${SANS};font-size:12.5px;color:#6F665F;width:34%;">${esc(l.label)}</td>
-        <td valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;word-break:break-all;">${esc(l.value)}</td>
+    .map((l) =>
+      l.label
+        ? `<tr>
+        <td valign="top" style="padding:7px 0;border-bottom:1px solid #EAE3DC;font-family:${SANS};font-size:12.5px;color:#6F665F;width:34%;">${esc(l.label)}</td>
+        <td valign="top" style="padding:7px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;word-break:break-all;">${esc(l.value)}</td>
       </tr>`
-          : `<tr>
-        <td colspan="2" valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;word-break:break-all;">${esc(l.value)}</td>
+        : `<tr>
+        <td colspan="2" valign="top" style="padding:7px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;word-break:break-all;">${esc(l.value)}</td>
       </tr>`
     )
     .join('');
-  const paymentHtml = `<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">${lineRows}</table>`;
-  const openButton = openUrl
-    ? `<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:4px 0 22px 0;"><tr><td align="center">
-        <a href="${esc(openUrl)}" target="_blank" style="display:inline-block;padding:14px 30px;background-color:${GOLD};color:#0D1512;text-decoration:none;font-family:${SANS};font-weight:700;font-size:14px;letter-spacing:0.5px;border-radius:8px;">Open invoice &amp; pay</a>
-        <div style="font-family:${SANS};font-size:11.5px;color:#6F665F;margin-top:9px;">Copy each payment detail with one tap, or scan a QR code.</div>
-      </td></tr></table>`
-    : '';
-  const dateStr = new Date(order.date || Date.now()).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
-  const due = new Date(new Date(order.date || Date.now()).getTime() + REPLY.deadlineHours * 3600 * 1000).toLocaleDateString('en-AU', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
 
   const itemRows = order.items
     .map(
       (i) => `<tr>
-        <td style="padding:11px 0;border-bottom:1px solid #EAE3DC;font-family:${SANS};font-size:13.5px;color:#1A1414;">${esc(i.name)}</td>
-        <td align="center" style="padding:11px 8px;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;color:#3A322C;">${i.quantity}</td>
-        <td align="right" style="padding:11px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;color:#3A322C;white-space:nowrap;">${money(i.price)}</td>
-        <td align="right" style="padding:11px 0 11px 10px;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;white-space:nowrap;">${money(i.price * i.quantity)}</td>
+        <td style="padding:5px 0;font-family:${SANS};font-size:12.5px;color:#3A322C;">${i.quantity} &times; ${esc(i.name)}</td>
+        <td align="right" style="padding:5px 0 5px 10px;font-family:${MONO};font-size:12.5px;color:#1A1414;white-space:nowrap;">${money(i.price * i.quantity)}</td>
       </tr>`
     )
     .join('');
+  const sumRow = (l: string, v: string) => `<tr>
+        <td style="padding:2px 0;font-family:${SANS};font-size:12px;color:#6F665F;">${l}</td>
+        <td align="right" style="padding:2px 0 2px 10px;font-family:${MONO};font-size:12px;color:#6F665F;white-space:nowrap;">${v}</td>
+      </tr>`;
 
-  const sumRow = (label: string, value: string) => `<tr>
-      <td colspan="3" align="right" style="padding:7px 10px 7px 0;font-family:${SANS};font-size:13px;color:#6F665F;">${label}</td>
-      <td align="right" style="padding:7px 0;font-family:${MONO};font-size:13px;color:#1A1414;white-space:nowrap;">${value}</td>
-    </tr>`;
-
-  const th = `padding:0 0 8px 0;border-bottom:2px solid ${GOLD};font-family:${SANS};font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:${GOLD};`;
+  const invoiceUrl = openUrl || `https://${SITE.domain}/invoice/`;
+  const uploadUrl = `${invoiceUrl}#confirm`;
+  const waUrl = paymentWhatsAppLink(order.ref, order.total);
+  const btn = (href: string, text: string, filled: boolean) =>
+    `<a href="${esc(href)}" target="_blank" style="display:inline-block;margin:0 5px 8px 5px;padding:13px 22px;font-family:${SANS};font-size:13.5px;font-weight:700;text-decoration:none;border-radius:8px;${
+      filled ? `background-color:${GOLD};color:#0D1512;` : `background-color:#25D366;color:#06210F;`
+    }">${text}</a>`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -100,84 +93,68 @@ export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl
   <meta name="supported-color-schemes" content="light">
   <title>Invoice ${esc(order.ref)}</title>
 </head>
-<body style="margin:0;padding:24px 12px;background-color:#F4F0EA;-webkit-text-size-adjust:100%;">
-  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Invoice ${esc(order.ref)} - ${money(order.total)} AUD due by ${esc(due)}</div>
+<body style="margin:0;padding:20px 10px;background-color:#F4F0EA;-webkit-text-size-adjust:100%;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Order ${esc(order.ref)} - pay ${money(order.total)} AUD</div>
   <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td align="center">
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:620px;background-color:#FFFFFF;border-radius:14px;overflow:hidden;border:1px solid #EAE3DC;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:560px;background-color:#FFFFFF;border-radius:14px;overflow:hidden;border:1px solid #EAE3DC;">
 
-      <tr><td style="padding:26px 32px;background-color:${DARK};border-bottom:3px solid ${GOLD};">
+      <tr><td style="padding:20px 26px;background-color:${DARK};border-bottom:3px solid ${GOLD};">
         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
-          <td width="60" valign="middle">${brandSealHtml(48)}</td>
-          <td valign="middle" style="padding-left:14px;">
-            <div style="font-family:${SERIF};font-size:20px;font-weight:700;color:#FFFFFF;letter-spacing:1.5px;text-transform:uppercase;">${esc(SITE.name)}</div>
-            <div style="font-family:${SANS};font-size:11px;color:${GOLD};margin-top:4px;letter-spacing:0.5px;">${esc(REPLY.headerTagline)}</div>
+          <td width="54" valign="middle">${brandSealHtml(42)}</td>
+          <td valign="middle" style="padding-left:12px;">
+            <div style="font-family:${SERIF};font-size:17px;font-weight:700;color:#FFFFFF;letter-spacing:1.3px;text-transform:uppercase;">${esc(SITE.name)}</div>
+            <div style="font-family:${SANS};font-size:10.5px;color:${GOLD};margin-top:3px;">${esc(REPLY.headerTagline)}</div>
           </td>
-          <td align="right" valign="middle" style="font-family:${SERIF};font-size:22px;font-weight:700;color:${GOLD};letter-spacing:3px;">INVOICE</td>
+          <td align="right" valign="middle" style="font-family:${SERIF};font-size:17px;font-weight:700;color:${GOLD};letter-spacing:2px;">INVOICE</td>
         </tr></table>
       </td></tr>
 
-      <tr><td style="padding:28px 32px 6px 32px;">
-        ${intro ? `<p style="margin:0 0 22px 0;font-family:${SANS};font-size:14.5px;line-height:1.6;color:#3A322C;">${esc(intro)}</p>` : ''}
+      <tr><td style="padding:22px 26px 6px 26px;">
+        ${intro ? `<p style="margin:0 0 16px 0;font-family:${SANS};font-size:14px;line-height:1.55;color:#3A322C;">${esc(intro)}</p>` : ''}
 
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:22px;"><tr>
-          <td valign="top" width="52%" style="font-family:${SANS};font-size:13px;line-height:1.6;color:#1A1414;">
-            <div style="font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:${GOLD};margin-bottom:6px;">Billed to</div>
-            <strong>${esc(order.customerName)}</strong><br>
-            ${order.email ? `${esc(order.email)}<br>` : ''}
-            ${order.phone ? `${esc(order.phone)}<br>` : ''}
-            ${order.address ? esc(order.address).replace(/\n/g, '<br>') : ''}
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:14px;background-color:#FDFBF7;border:1px solid #ECE5DC;border-radius:10px;"><tr>
+          <td valign="top" width="50%" style="padding:14px 16px;">
+            <div style="font-family:${SANS};font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6F665F;">Order number</div>
+            <div style="font-family:${MONO};font-size:19px;font-weight:700;color:#1A1414;margin-top:3px;">${esc(order.ref)}</div>
           </td>
-          <td valign="top" align="right" style="font-family:${SANS};font-size:13px;line-height:1.8;color:#3A322C;">
-            <span style="color:#6F665F;">Invoice no.</span> <strong style="font-family:${MONO};color:#1A1414;">${esc(order.ref)}</strong><br>
-            <span style="color:#6F665F;">Issued</span> <strong style="color:#1A1414;">${esc(dateStr)}</strong><br>
-            <span style="color:#6F665F;">Payment due</span> <strong style="color:#1A1414;">${esc(due)}</strong>
+          <td valign="top" align="right" style="padding:14px 16px;">
+            <div style="font-family:${SANS};font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#6F665F;">Amount due</div>
+            <div style="font-family:${MONO};font-size:22px;font-weight:700;color:${GOLD};margin-top:3px;">${money(order.total)} <span style="font-size:12px;">AUD</span></div>
           </td>
         </tr></table>
 
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-          <tr>
-            <td style="${th}">Item</td>
-            <td align="center" style="${th}">Qty</td>
-            <td align="right" style="${th}">Unit</td>
-            <td align="right" style="${th}">Amount</td>
-          </tr>
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:8px;">
           ${itemRows}
-          ${sumRow('Subtotal', money(order.subtotal))}
-          ${sumRow('Shipping (Australia Post Express)', order.shippingFee > 0 ? money(order.shippingFee) : 'FREE')}
+          ${sumRow('Shipping', order.shippingFee > 0 ? money(order.shippingFee) : 'FREE')}
           ${order.discount > 0 ? sumRow('Crypto discount', `-${money(order.discount)}`) : ''}
-          <tr>
-            <td colspan="3" align="right" style="padding:14px 10px 12px 0;border-top:2px solid ${GOLD};font-family:${SANS};font-size:13px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:#1A1414;">Total due (AUD)</td>
-            <td align="right" style="padding:14px 0 12px 0;border-top:2px solid ${GOLD};font-family:${MONO};font-size:22px;font-weight:700;color:${GOLD};white-space:nowrap;">${money(order.total)}</td>
-          </tr>
         </table>
 
-        <!-- ABN directly beneath the invoice -->
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:6px 0 26px 0;"><tr>
-          <td align="center" style="padding:11px 12px;background-color:#FDFBF7;border:1px solid #ECE5DC;border-radius:8px;font-family:${SANS};font-size:12px;line-height:1.6;color:#3A322C;">
-            <strong>${esc(SITE.name)}</strong> &nbsp;&middot;&nbsp; <strong>${esc(REPLY.bizNumber.label)} ${esc(REPLY.bizNumber.value)}</strong><br>
-            ${esc(CONTACT.address)} &nbsp;&middot;&nbsp; ${CONTACT.email}
-          </td>
-        </tr></table>
+        <div style="margin:0 0 20px 0;font-family:${SANS};font-size:11.5px;color:#6F665F;">
+          <strong style="color:#3A322C;">${esc(SITE.name)}</strong> &middot; ${esc(REPLY.bizNumber.label)} ${esc(REPLY.bizNumber.value)} &middot; ${esc(CONTACT.hq)}
+        </div>
 
-        ${openButton}
-        ${note ? `<p style="margin:0 0 18px 0;font-family:${SANS};font-size:13.5px;line-height:1.6;color:#3A322C;">${esc(note).replace(/\n/g, '<br>')}</p>` : ''}
+        ${heading(`Pay by ${esc(METHOD_LABEL[order.paymentMethod] || order.paymentMethod)}`)}
+        <p style="margin:10px 0 6px 0;font-family:${SANS};font-size:13px;line-height:1.5;color:#3A322C;">Please pay exactly <strong>${money(order.total)} AUD</strong> using the details below.</p>
+        <div style="margin:0 0 6px 0;padding:6px 14px;background-color:#F8F6F2;border-left:3px solid ${GOLD};border-radius:4px;">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">${lineRows}</table>
+        </div>
+        ${note ? `<p style="margin:10px 0 0 0;font-family:${SANS};font-size:13px;line-height:1.55;color:#3A322C;">${esc(note).replace(/\n/g, '<br>')}</p>` : ''}
+        <div style="margin:0 0 20px 0;font-family:${SANS};font-size:11.5px;color:#6F665F;padding-top:8px;">
+          <a href="${esc(invoiceUrl)}" target="_blank" style="color:#8A6B25;">Open the invoice page</a> to copy each detail with one tap or scan a QR code.
+        </div>
 
-        <div style="font-family:${SANS};font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:${GOLD};padding-bottom:8px;border-bottom:2px solid ${GOLD};">How to pay - ${esc(METHOD_LABEL[order.paymentMethod] || order.paymentMethod)}</div>
-        <div style="margin:12px 0 22px 0;padding:14px 16px;background-color:#F8F6F2;border-left:3px solid ${GOLD};border-radius:4px;font-family:${SANS};font-size:13.5px;line-height:1.7;color:#1A1414;">${paymentHtml}</div>
+        ${heading('Before your order ships')}
+        <div style="margin:10px 0 18px 0;">${termsHtml || ''}</div>
 
-        ${
-          termsHtml
-            ? `<div style="margin:0 0 22px 0;padding:16px;background-color:#FAF8F5;border-radius:8px;border:1px solid #ECE5DC;">
-          <div style="font-family:${SANS};font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6F665F;margin-bottom:10px;">Payment instructions</div>
-          ${termsHtml}
-        </div>`
-            : ''
-        }
+        ${heading('Confirm your payment')}
+        <p style="margin:10px 0 12px 0;font-family:${SANS};font-size:13px;line-height:1.55;color:#3A322C;">${encodeAt(esc(paymentConfirmLine()))}</p>
+        <div style="text-align:center;margin:0 0 6px 0;">
+          ${btn(uploadUrl, 'Upload confirmation', true)}${btn(waUrl, 'Confirm via WhatsApp', false)}
+        </div>
       </td></tr>
 
-      <tr><td style="padding:22px 32px;background-color:#F7F4F0;border-top:1px solid #EAE3DC;text-align:center;font-family:${SANS};font-size:11.5px;line-height:1.6;color:#6F665F;">
-        ${esc(SITE.name)} &middot; ${esc(REPLY.bizNumber.label)} ${esc(REPLY.bizNumber.value)} &middot; Eltham, Victoria Australia<br>
-        All products are non-legal tender reproduction props for motion picture, television, theatre, visual arts and simulation use only, marked SPECIMEN in accordance with the Crimes (Currency) Act 1981 Section 22.
+      <tr><td style="padding:16px 26px;background-color:#F7F4F0;border-top:1px solid #EAE3DC;text-align:center;font-family:${SANS};font-size:11px;line-height:1.55;color:#6F665F;">
+        Non-legal tender reproduction props for motion picture, television, theatre, visual arts and simulation use only, marked SPECIMEN in accordance with the Crimes (Currency) Act 1981 Section 22.
       </td></tr>
 
     </table>

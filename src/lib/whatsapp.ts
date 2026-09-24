@@ -1,6 +1,6 @@
 // src/lib/whatsapp.ts
 import { SITE, REPLY } from '../config/site.js';
-import { StoredOrder, paymentTermsLines, paymentMethodParts } from './order.js';
+import { StoredOrder, paymentTermsLines, paymentConfirmLine, paymentMethodParts } from './order.js';
 
 export function toWhatsAppNumber(raw: string): string {
   if (!raw) return '';
@@ -81,8 +81,10 @@ export function waPaymentDetailsMessage(order: StoredOrder, customPaymentDetails
     ``,
     closing,
     ``,
-    `*Terms of Fulfillment:*`,
+    `*Before your order ships:*`,
     ...terms.map((t) => `• ${t}`),
+    ``,
+    paymentConfirmLine(),
     ``,
     `_Thank you for choosing ${SITE.name} for your cinema prop reproduction requirements._`
   ].join('\n');

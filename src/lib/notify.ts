@@ -271,17 +271,27 @@ export async function sendInvoiceEmail(order: StoredOrder, invoice: InvoiceRecor
 }
 
 // Client pressed "I have made the payment": alert the owner, reassure the client.
-export async function sendPaymentNotifiedEmails(order: StoredOrder) {
+export interface ProofFile {
+  filename: string;
+  content: Buffer;
+  contentType: string;
+}
+
+export async function sendPaymentNotifiedEmails(order: StoredOrder, proof?: ProofFile) {
   const to = getNotifyEmail();
   const total = money(order.invoice?.total ?? order.total);
+  let ownerSent = false;
   if (to) {
-    await sendMail({
+    ownerSent = (
+      await sendMail({
       to,
       subject: `Client says paid: ${order.ref} - ${total}`,
       html: buildEmailHtml({
         title: `Payment notification ${order.ref}`,
         preheader: `${order.customerName} says they have paid ${total}`,
-        intro: 'The client pressed "I have made the payment". Check your bank or wallet, then mark the order as paid in the portal to send the thank-you email.',
+        intro: proof
+          ? 'The client uploaded a payment confirmation (attached). Check your bank or wallet, then mark the order as paid in the portal to send the thank-you email.'
+          : 'The client pressed "I have made the payment". Check your bank or wallet, then mark the order as paid in the portal to send the thank-you email.',
         refBadge: order.ref,
         rows: [
           { label: 'Customer', value: order.customerName },
@@ -293,12 +303,14 @@ export async function sendPaymentNotifiedEmails(order: StoredOrder) {
       }),
       text: `${order.customerName} says they paid ${total} for ${order.ref}. Verify, then mark as paid: ${adminUrl()}`,
       replyTo: order.email || undefined,
-    });
+      attachments: proof ? [proof] : undefined,
+    })
+    ).sent;
   }
   if (order.email) {
     await sendMail({
       to: order.email,
-      subject: `Thank you - payment notification received (${order.ref})`,
+      subject: `Thank you - we have your payment confirmation (${order.ref})`,
       html: buildEmailHtml({
         title: 'Thank you - we have your payment notification',
         preheader: `Order ${order.ref}: we are confirming your payment`,
@@ -310,6 +322,7 @@ export async function sendPaymentNotifiedEmails(order: StoredOrder) {
       replyTo: to,
     });
   }
+  return ownerSent;
 }
 
 // Owner confirmed the money arrived (status set to paid).

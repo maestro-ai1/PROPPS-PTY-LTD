@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Trash2, ArrowLeft, RefreshCw, Copy, Check, Mail, MessageCircle } from 'lucide-react';
 import { useAdminPasscode } from '../lib/useAdminPasscode.js';
 import { PasscodeGate } from '../components/admin/PasscodeGate.js';
-import { StoredOrder, paymentTermsLines, paymentTermsHtml } from '../lib/order.js';
+import { StoredOrder, paymentTermsLines, paymentTermsHtml, paymentConfirmLine } from '../lib/order.js';
 import { getAllOrders, deleteOrder, setOrderStatus, sendInvoice, getPaymentDefaultsClient } from '../lib/orderStore.js';
 import { StoredEnquiry, getAllEnquiries, deleteEnquiry, updateEnquiryStatus } from '../lib/enquiryStore.js';
 import {
@@ -355,6 +355,7 @@ export const AdminDashboardContent: React.FC = () => {
                 <li key={i}>{l}</li>
               ))}
             </ul>
+            <p className="mt-3 text-sm text-[#889690]">{paymentConfirmLine()}</p>
           </div>
 
           <div>

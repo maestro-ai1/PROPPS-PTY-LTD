@@ -58,18 +58,28 @@ export function paymentMethodParts(
   return { opening, closing, methodObj: method };
 }
 
-// The single source of the short payment instructions shown to the customer
-// (invoice email, hosted invoice page, WhatsApp message). Plain text: HTML
+// The single source of the short customer-facing payment text (invoice email,
+// hosted invoice page, WhatsApp message, admin screen). Plain text: HTML
 // renderers must entity-encode the @ (see paymentTermsHtml / encodeAt).
 export function paymentTermsLines(ref: string = 'YOUR-ORDER-REF', _methodId?: string): string[] {
-  const email = CONTACT.email.replace('&#64;', '@');
   return [
-    `Payment must be made within ${REPLY.deadlineHours} hours of this invoice to reserve your stock.`,
+    'This order is confirmed once payment is received.',
     `Use your order number ${ref} as the payment reference.`,
-    `After paying, send a screenshot of your payment by email to ${email} or on WhatsApp to ${CONTACT.whatsapp}.`,
+    'Ships within 1 business day.',
   ];
 }
 
+// How the customer confirms payment so we can dispatch.
+export function paymentConfirmLine(): string {
+  const email = CONTACT.email.replace('&#64;', '@');
+  return `After paying, send a screenshot of your payment by email to ${email} or on WhatsApp to ${CONTACT.whatsapp} so we can confirm and dispatch.`;
+}
+
+export function paymentWhatsAppLink(ref: string, total: number): string {
+  const digits = CONTACT.whatsapp.replace(/\D/g, '');
+  const text = `Hi ${SITE.name}, I have paid order ${ref} ($${Number(total).toFixed(2)} AUD). Payment screenshot attached.`;
+  return `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
+}
 export const encodeAt = (text: string) => text.replace(/@/g, '&#64;');
 
 export function paymentTermsHtml(ref: string = 'YOUR-ORDER-REF', methodId?: string): string {
