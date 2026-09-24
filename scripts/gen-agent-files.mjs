@@ -28,10 +28,18 @@ ensureDir(path.join(rootDir, 'public', '.well-known'));
 ensureDir(path.join(rootDir, 'public', '.well-known', 'agent-skills'));
 ensureDir(path.join(rootDir, 'public', '.well-known', 'mcp'));
 
-// NOTE: robots.txt and sitemap.xml are NOT generated here — they are owned by
-// src/app/robots.ts and src/app/sitemap.ts (Next.js native metadata routes),
-// which read SITE.domain directly at request time. A static public/robots.txt
-// would conflict with app/robots.ts at build time — never add one back.
+// NOTE: robots.txt and sitemap.xml are NOT generated here — robots.txt is
+// owned by src/app/robots.txt/route.ts and sitemap.xml by
+// src/app/sitemap.ts, both of which read SITE.domain directly at request
+// time. A static public/robots.txt would conflict with the route handler
+// at build time — never add one back.
+
+// 1. IndexNow key file. Required at https://DOMAIN/<key>.txt (plain text,
+// content = the key itself) so Bing/Yandex/other IndexNow-participating
+// engines can verify a submission actually came from this site's owner.
+// SITE.indexNowKey existed in config but this file was never generated -
+// found while wiring up Bing Webmaster Tools, which surfaced the 404.
+fs.writeFileSync(path.join(rootDir, 'public', `${SITE.indexNowKey}.txt`), SITE.indexNowKey);
 
 // 2. public/llms.txt
 const categoryLines = CATEGORIES.map((cat) => {
