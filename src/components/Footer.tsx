@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link href="/videos" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Prop Videos Showcase</span>
-                  <span className="px-1.5 py-0.2 rounded bg-[#00b67a] text-white text-[9px] font-mono-code font-bold">4K</span>
+                  <span className="px-1.5 py-0.2 rounded bg-[#00b67a] text-[#04150e] text-[9px] font-mono-code font-bold">4K</span>
                 </Link>
               </li>
               <li>

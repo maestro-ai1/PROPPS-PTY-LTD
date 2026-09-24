@@ -121,6 +121,7 @@ export declare const PRODUCTS: Product[];
 export interface Post {
   slug: string;
   title: string;
+  seoTitle?: string;
   excerpt: string;
   category: string;
   date: string;

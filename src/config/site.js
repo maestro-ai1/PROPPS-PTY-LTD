@@ -147,7 +147,7 @@ export const CATEGORIES = [
     description: 'Prop currency styled for print, editorial, and commercial photography shoots.',
     image: 'photography-props.jpeg',
     h1: 'Prop Money for Photoshoot — Photography Props',
-    seoTitle: 'Prop Money for Photoshoot Australia | Photography Props',
+    seoTitle: 'Prop Money for Photoshoot Australia',
     seoDescription: 'Prop money for photoshoot and editorial photography in Australia. Camera-accurate specimen currency styled for print and commercial shoots.'
   },
   {
@@ -165,7 +165,7 @@ export const CATEGORIES = [
     description: 'Bespoke and custom-branded prop currency for agencies, brands, and special productions.',
     image: 'custom-branded-props.jpeg',
     h1: 'Custom Prop Money Printing Australia',
-    seoTitle: 'Custom Prop Money Printing Australia | Branded Props',
+    seoTitle: 'Custom Prop Money Printing Australia',
     seoDescription: 'Custom prop money printing Australia for agencies and brand campaigns. Bespoke branded prop currency manufactured to the same specimen compliance standard.'
   }
 ]
@@ -319,7 +319,7 @@ export const PRODUCTS = [
     badge: 'Studio Favourite',
     featured: false,
     images: ['photography-props.jpeg'],
-    shortDescription: 'Prop currency styled for editorial and commercial photography shoots.',
+    shortDescription: 'Prop currency styled for editorial and commercial photography shoots — realistic on camera, specimen-marked, dispatched from Melbourne.',
     description: 'Prop currency styled for print, editorial, and commercial photography shoots, delivering a realistic look for camera close-ups. Every note carries mandatory non-legal-tender specimen markings.',
     bundles: BUNDLE_TIERS,
     details: {
@@ -371,6 +371,7 @@ export const POSTS = [
   {
     slug: 'crimes-currency-act-1981-rba-prop-money-guidelines',
     title: 'Crimes (Currency) Act 1981 & RBA Prop Money Rules Explained for Australian Filmmakers',
+    seoTitle: 'Prop Money Australia Laws: Crimes Act & RBA',
     excerpt: 'A comprehensive guide to legally using and manufacturing reproduction currency for Australian film and television productions.',
     category: 'Compliance & Legal',
     date: '2026-02-15',
@@ -385,6 +386,7 @@ export const POSTS = [
   {
     slug: 'lighting-prop-money-for-camera-avoiding-glare',
     title: 'How Cinematographers Light Prop Money on Camera to Eliminate Glare',
+    seoTitle: 'Lighting Prop Money on Camera Without Glare',
     excerpt: 'Practical lighting techniques for Director of Photography crews shooting close-up cash counting and tabletop exchanges.',
     category: 'Cinematography & Lighting',
     date: '2026-01-20',
@@ -402,6 +404,7 @@ export const POSTS = [
   {
     slug: 'art-department-guide-weathering-prop-cash',
     title: 'The Art Department Guide: Weathering Prop Cash for Underworld Realism',
+    seoTitle: 'Weathering Prop Cash: Art Department Guide',
     excerpt: 'How scenic artists create believable, weathered street currency without destroying props.',
     category: 'Art Department',
     date: '2025-11-10',
@@ -415,6 +418,7 @@ export const POSTS = [
   {
     slug: 'where-to-buy-prop-money-in-australia-legally',
     title: 'Where to Buy Prop Money in Australia (Legally)',
+    seoTitle: 'Where to Buy Prop Money in Australia (Legally)',
     excerpt: 'A practical buyer\'s guide to sourcing compliant, specimen-marked prop currency for Australian productions instead of risky overseas listings.',
     category: 'Buying Guide',
     date: '2026-03-01',
@@ -429,6 +433,7 @@ export const POSTS = [
   {
     slug: 'play-money-vs-prop-money-which-one-do-you-need',
     title: 'Play Money vs Prop Money: Which One Do You Need?',
+    seoTitle: 'Play Money vs Prop Money: Which Do You Need?',
     excerpt: 'Board-game play money and cinema-grade prop money look similar in photos but serve very different jobs on set or on camera.',
     category: 'Buying Guide',
     date: '2026-03-11',
@@ -442,6 +447,7 @@ export const POSTS = [
   {
     slug: 'how-much-prop-money-do-you-need-for-a-scene',
     title: 'How Much Prop Money Do You Need for a Scene? A Quantity Guide for Producers',
+    seoTitle: 'How Much Prop Money Do You Need for a Scene?',
     excerpt: 'A practical breakdown of bundle sizes, face values, and camera coverage to help line producers budget the right amount of prop cash.',
     category: 'Production Planning',
     date: '2026-03-21',
@@ -455,6 +461,7 @@ export const POSTS = [
   {
     slug: 'prop-money-for-photography-realistic-cash-shots-without-the-risk',
     title: 'Prop Money for Photography: Getting Realistic Cash Shots Without the Risk',
+    seoTitle: 'Prop Money for Photography: Realistic Shots',
     excerpt: 'How editorial and commercial photographers get camera-convincing cash shots while staying clear of currency-reproduction law.',
     category: 'Photography',
     date: '2026-03-31',
@@ -468,6 +475,7 @@ export const POSTS = [
   {
     slug: 'novelty-money-for-parties-and-events-whats-legal-in-australia',
     title: "Novelty Money for Parties and Events: What's Legal in Australia",
+    seoTitle: "Novelty Money for Parties: What's Legal in AU",
     excerpt: 'A quick compliance primer for event planners ordering novelty cash for bucks nights, birthdays, and themed parties.',
     category: 'Compliance & Legal',
     date: '2026-04-10',
@@ -481,6 +489,7 @@ export const POSTS = [
   {
     slug: 'custom-and-branded-prop-currency-guide-for-agencies',
     title: 'Custom & Branded Prop Currency: A Guide for Agencies and Brand Campaigns',
+    seoTitle: 'Custom & Branded Prop Currency for Agencies',
     excerpt: 'What agencies need to plan for when commissioning custom-branded prop currency for campaigns, launches, or in-store activations.',
     category: 'Custom Production',
     date: '2026-04-20',
@@ -494,6 +503,7 @@ export const POSTS = [
   {
     slug: 'wholesale-prop-money-for-production-companies-bulk-pricing-explained',
     title: 'Wholesale Prop Money for Production Companies: Bulk Pricing Explained',
+    seoTitle: 'Wholesale Prop Money: Bulk Pricing Explained',
     excerpt: 'How wholesale tiers work for production companies ordering prop currency across multiple projects or a full shooting season.',
     category: 'Wholesale',
     date: '2026-04-30',
@@ -507,6 +517,7 @@ export const POSTS = [
   {
     slug: 'fake-money-vs-prop-money-the-legal-difference-in-australia',
     title: 'Fake Money vs Prop Money: Understanding the Legal Difference in Australia',
+    seoTitle: 'Fake Money vs Prop Money: The Legal Difference',
     excerpt: 'Clearing up the confusion between imitation money, counterfeit currency, and legally compliant prop money under Australian law.',
     category: 'Compliance & Legal',
     date: '2026-05-10',
@@ -521,6 +532,7 @@ export const POSTS = [
   {
     slug: 'best-australian-banknote-denominations-for-film-and-tv-scenes',
     title: 'The Best Australian Banknote Denominations for Film & TV Scenes',
+    seoTitle: 'Best Australian Banknotes for Film & TV Scenes',
     excerpt: 'Why $50 and $100 prop notes dominate Australian screen production, and when the smaller denominations actually matter more.',
     category: 'Cinematography',
     date: '2026-05-20',
@@ -534,6 +546,7 @@ export const POSTS = [
   {
     slug: 'brief-history-of-australian-currency-notes-for-set-designers',
     title: 'A Brief History of Australian Currency Notes for Set Designers',
+    seoTitle: 'Australian Currency History for Set Designers',
     excerpt: "A quick primer on Australia's currency history for production designers dressing period sets accurately.",
     category: 'Art Department',
     date: '2026-05-30',
@@ -547,6 +560,7 @@ export const POSTS = [
   {
     slug: 'how-directors-use-prop-money-famous-film-and-tv-cash-scenes',
     title: 'How Directors Use Prop Money: Famous Film & TV Cash Scenes',
+    seoTitle: 'How Directors Use Prop Money in Film & TV',
     excerpt: 'What makes an iconic on-screen cash scene work, from the volume of notes on camera to how they move and sound.',
     category: 'Cinematography',
     date: '2026-06-09',
@@ -560,6 +574,7 @@ export const POSTS = [
   {
     slug: 'buying-film-props-in-australia-a-checklist-for-art-departments',
     title: 'Buying Film Props in Australia: A Checklist for Art Departments',
+    seoTitle: 'Buying Film Props in Australia: A Checklist',
     excerpt: 'A practical pre-order checklist for art department buyers sourcing prop currency and cash-handling props for an Australian shoot.',
     category: 'Art Department',
     date: '2026-06-19',
@@ -573,6 +588,7 @@ export const POSTS = [
   {
     slug: 'film-props-for-sale-what-to-look-for-before-you-order',
     title: 'Film Props for Sale: What to Look for Before You Order',
+    seoTitle: 'Film Props for Sale: What to Check First',
     excerpt: "A buyer's checklist for evaluating film prop currency listings before committing to an order for your production.",
     category: 'Buying Guide',
     date: '2026-06-29',
@@ -586,6 +602,7 @@ export const POSTS = [
   {
     slug: 'prop-cash-for-heist-and-bank-scenes-getting-the-volume-right',
     title: 'Prop Cash for Heist and Bank Scenes: Getting the Volume Right',
+    seoTitle: 'Prop Cash for Heist & Bank Scenes: How Much?',
     excerpt: 'How to plan bulk prop cash volume for vault reveals, bank robbery sequences, and other high-visibility cash scenes.',
     category: 'Production Planning',
     date: '2026-07-09',
@@ -599,6 +616,7 @@ export const POSTS = [
   {
     slug: 'prop-money-for-content-creators-social-media-and-photoshoot-guidelines',
     title: 'Prop Money for Content Creators: Social Media & Photoshoot Guidelines',
+    seoTitle: 'Prop Money for Content Creators: Guidelines',
     excerpt: 'What independent content creators and small studios need to know before featuring prop cash in photos or video content.',
     category: 'Photography',
     date: '2026-07-19',
@@ -612,6 +630,7 @@ export const POSTS = [
   {
     slug: 'cryptocurrency-payments-for-studios-how-the-discount-works',
     title: 'Cryptocurrency Payments for Studios: How the 10% Discount Works',
+    seoTitle: 'Crypto Payments for Studios: 10% Discount',
     excerpt: 'A quick guide to paying for prop money orders with Bitcoin, USDT, or Ethereum and the automatic 10% discount that applies.',
     category: 'Ordering & Payment',
     date: '2026-07-29',
@@ -625,6 +644,7 @@ export const POSTS = [
   {
     slug: 'toy-money-and-play-money-for-kids-games-and-learning',
     title: "Toy Money and Play Money for Kids' Games and Learning",
+    seoTitle: "Toy Money & Play Money for Kids' Games",
     excerpt: "Why toy and play money designed for children's games and classroom learning is a different product to cinema prop money.",
     category: 'Buying Guide',
     date: '2026-08-08',
@@ -638,6 +658,7 @@ export const POSTS = [
   {
     slug: 'shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia',
     title: 'Shipping and Dispatch: How Fast Can You Get Prop Money in Australia?',
+    seoTitle: 'Prop Money Shipping in Australia: How Fast?',
     excerpt: 'What to expect for dispatch timing, tracking, and delivery when ordering prop money for a tight production schedule.',
     category: 'Ordering & Payment',
     date: '2026-08-18',
@@ -651,6 +672,7 @@ export const POSTS = [
   {
     slug: 'prop-money-compliance-checklist-what-every-australian-production-must-know',
     title: 'Prop Money Compliance Checklist: What Every Australian Production Must Know',
+    seoTitle: 'Prop Money Compliance Checklist for Australia',
     excerpt: 'A condensed compliance checklist covering the Crimes (Currency) Act 1981 requirements every Australian production should confirm before filming.',
     category: 'Compliance & Legal',
     date: '2026-09-15',
@@ -665,6 +687,7 @@ export const POSTS = [
   {
     slug: 'local-vs-overseas-prop-money-suppliers-compared',
     title: 'Local vs Overseas Prop Money Suppliers: What Australian Productions Should Check',
+    seoTitle: 'Local vs Overseas Prop Money Suppliers',
     excerpt: 'Why sourcing prop money from an Australian supplier avoids the compliance, customs, and dispatch risks that come with overseas listings.',
     category: 'Buying Guide',
     date: '2026-09-22',

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import React from 'react';
+import { JsonLd } from '../../components/JsonLd.js';
 import { SITE } from '../../config/site.js';
 import { ComplianceContent } from '../../views/CompliancePage.js';
 
@@ -11,5 +12,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ComplianceContent />;
+  return (
+    <>
+      <JsonLd type="page" data={{ kind: 'WebPage', name: 'Prop Money Australia Laws', path: '/compliance/' }} />
+      <ComplianceContent />
+    </>
+  );
 }

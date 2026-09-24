@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import React from 'react';
+import { JsonLd } from '../../components/JsonLd.js';
 import { SITE } from '../../config/site.js';
 import { ContactContent } from '../../views/ContactPage.js';
 
@@ -11,5 +12,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ContactContent />;
+  return (
+    <>
+      <JsonLd type="page" data={{ kind: 'ContactPage', name: 'Contact PROPPS PTY LTD', path: '/contact/' }} />
+      <ContactContent />
+    </>
+  );
 }

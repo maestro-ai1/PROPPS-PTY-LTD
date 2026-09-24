@@ -310,7 +310,7 @@ export const HomeContent: React.FC = () => {
               {/* Product Frame standard 4:3 */}
               <div className="relative overflow-hidden">
                 <CategoryPhoto src={cat.image} alt={cat.name} />
-                <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#00b67a] text-white font-mono-code text-[9.5px] font-bold shadow-md">
+                <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#00b67a] text-[#04150e] font-mono-code text-[9.5px] font-bold shadow-md">
                   CINEMA GRADE
                 </div>
               </div>
@@ -517,7 +517,7 @@ export const HomeContent: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#17171A] via-[#101012] to-[#0A0A0C] border-2 border-[#D4AF37]/50 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="space-y-1.5 text-center md:text-left">
-            <div className="inline-block px-2 py-0.5 rounded bg-[#00b67a] text-white font-mono-code text-[9.5px] font-bold tracking-wider uppercase mb-1">
+            <div className="inline-block px-2 py-0.5 rounded bg-[#00b67a] text-[#04150e] font-mono-code text-[9.5px] font-bold tracking-wider uppercase mb-1">
               FAST SAME-DAY DISPATCH
             </div>
             <h3 className="font-serif-luxury text-lg sm:text-xl font-bold text-[#F8F6F0]">

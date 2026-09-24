@@ -17,15 +17,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, slug } = await params;
   const product = PRODUCTS.find((p) => p.slug === slug && p.category === category);
   if (!product) return {};
+  const url = `https://${SITE.domain}/shop/${product.category}/${product.slug}/`;
+  const image = `/images/products/${product.images[0]}`;
 
   return {
     title: product.name,
     description: product.shortDescription,
-    alternates: { canonical: `https://${SITE.domain}/shop/${product.category}/${product.slug}/` },
+    alternates: { canonical: url },
     openGraph: {
+      type: 'website',
+      url,
+      siteName: SITE.name,
+      locale: 'en_AU',
       title: product.name,
       description: product.shortDescription,
+      images: [{ url: image, alt: product.name }],
     },
+    twitter: { card: 'summary_large_image', title: product.name, description: product.shortDescription, images: [image] },
   };
 }
 

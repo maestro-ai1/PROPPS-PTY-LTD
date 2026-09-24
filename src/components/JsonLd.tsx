@@ -3,7 +3,7 @@ import React from 'react';
 import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ, SHOP } from '../config/site.js';
 
 interface JsonLdProps {
-  type: 'homepage' | 'product' | 'category' | 'faq' | 'about' | 'wholesale' | 'article' | 'breadcrumb';
+  type: 'homepage' | 'product' | 'category' | 'faq' | 'about' | 'wholesale' | 'article' | 'breadcrumb' | 'page';
   data?: any;
 }
 
@@ -205,8 +205,30 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
         item: `https://${SITE.domain}${item.href}`,
       })),
     };
-  } else if (type === 'wholesale') {
+  } else if (type === 'page' && data) {
+    const pageUrl = `https://${SITE.domain}${data.path}`;
     schema = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': data.kind || 'WebPage',
+          '@id': `${pageUrl}#webpage`,
+          url: pageUrl,
+          name: data.name,
+          inLanguage: 'en-AU',
+          isPartOf: { '@id': `https://${SITE.domain}/#website` },
+          about: { '@id': `https://${SITE.domain}/#organization` },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${SITE.domain}/` },
+            { '@type': 'ListItem', position: 2, name: data.name, item: pageUrl },
+          ],
+        },
+      ],
+    };
+  } else if (type === 'wholesale') {    schema = {
       '@context': 'https://schema.org',
       '@type': 'Service',
       serviceType: 'Wholesale cinema prop currency supply',

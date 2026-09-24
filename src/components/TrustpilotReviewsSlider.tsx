@@ -456,12 +456,16 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                   type="button"
                   onClick={() => setCurrentIndex(dotIdx)}
                   aria-label={`Go to slide ${dotIdx + 1}`}
-                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                    currentIndex === dotIdx
-                      ? 'w-5 bg-[#00b67a]'
-                      : 'w-1.5 bg-[#2C2822] hover:bg-[#4A4235]'
-                  }`}
-                />
+                  className="group flex h-6 min-w-6 items-center justify-center cursor-pointer"
+                >
+                  <span
+                    className={`block h-1.5 rounded-full transition-all ${
+                      currentIndex === dotIdx
+                        ? 'w-5 bg-[#00b67a]'
+                        : 'w-1.5 bg-[#2C2822] group-hover:bg-[#4A4235]'
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           )}

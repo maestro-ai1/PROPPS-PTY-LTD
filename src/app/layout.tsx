@@ -14,6 +14,14 @@ import './globals.css';
 
 const siteUrl = `https://${SITE.domain}`;
 
+// Default share image for every page that does not set its own.
+const OG_IMAGE = {
+  url: '/images/hero/hero-1.jpg',
+  width: 2048,
+  height: 1365,
+  alt: 'PROPPS PTY LTD - Australian cinema prop money',
+};
+
 // Self-hosted via next/font/google: downloaded and served from our own
 // domain at build time (no render-blocking third-party stylesheet request,
 // no separate DNS/connection cost). Replaces the earlier Google Fonts
@@ -50,10 +58,11 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: SITE.name,
     locale: 'en_AU',
-    images: ['/assets/propps-og-cover.png'],
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
+    images: [OG_IMAGE.url],
   },
   alternates: {
     canonical: siteUrl,
