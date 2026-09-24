@@ -48,9 +48,14 @@ export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl
   const lineRows = lines
     .filter((l) => l.value.trim())
     .map(
-      (l) => `<tr>
+      (l) =>
+        l.label
+          ? `<tr>
         <td valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${SANS};font-size:12.5px;color:#6F665F;width:34%;">${esc(l.label)}</td>
         <td valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;word-break:break-all;">${esc(l.value)}</td>
+      </tr>`
+          : `<tr>
+        <td colspan="2" valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;word-break:break-all;">${esc(l.value)}</td>
       </tr>`
     )
     .join('');
@@ -163,7 +168,7 @@ export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl
         ${
           termsHtml
             ? `<div style="margin:0 0 22px 0;padding:16px;background-color:#FAF8F5;border-radius:8px;border:1px solid #ECE5DC;">
-          <div style="font-family:${SANS};font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6F665F;margin-bottom:10px;">Important notice &amp; terms</div>
+          <div style="font-family:${SANS};font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6F665F;margin-bottom:10px;">Payment instructions</div>
           ${termsHtml}
         </div>`
             : ''

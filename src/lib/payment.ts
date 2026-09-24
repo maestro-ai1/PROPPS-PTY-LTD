@@ -73,3 +73,31 @@ export function applyDefaults(defaults: Partial<PayLinesByMethod> | null, ref: s
   }
   return base;
 }
+
+// The admin pastes free text; each non-empty line becomes one copyable row on
+// the client's invoice. "Label: value" is split; any other line is kept whole.
+export function parsePayText(text: string): PayLine[] {
+  const lines: PayLine[] = [];
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (!line || /:\s*$/.test(line)) continue;
+    const m = line.match(/^([^:]{1,40}):\s+(.+)$/);
+    lines.push(m ? { label: m[1].trim(), value: m[2].trim() } : { label: '', value: line });
+  }
+  return lines;
+}
+
+export function linesToText(lines: PayLine[]): string {
+  return lines.map((l) => (l.label ? `${l.label}: ${l.value}` : l.value)).join('\n');
+}
+
+export type PayTextByMethod = Record<PayMethodId, string>;
+
+export function blankPayText(ref: string): PayTextByMethod {
+  const lines = blankPayLines(ref);
+  return {
+    'bank-transfer': linesToText(lines['bank-transfer']),
+    payid: linesToText(lines.payid),
+    crypto: linesToText(lines.crypto),
+  };
+}

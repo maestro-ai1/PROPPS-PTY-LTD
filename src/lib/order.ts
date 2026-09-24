@@ -1,5 +1,5 @@
 // src/lib/order.ts
-import { REPLY, SITE, SHOP, ReplyPaymentMethod } from '../config/site.js';
+import { REPLY, SITE, SHOP, CONTACT, ReplyPaymentMethod } from '../config/site.js';
 import type { InvoiceRecord } from './payment.js';
 
 export interface OrderItem {
@@ -58,43 +58,28 @@ export function paymentMethodParts(
   return { opening, closing, methodObj: method };
 }
 
-export function paymentTermsLines(ref: string = 'YOUR-ORDER-REF', methodId?: string): string[] {
-  const method = REPLY.paymentMethods.find((m) => m.id === methodId);
-  const lines: string[] = [
-    `1. Complete payment within ${REPLY.deadlineHours} hours of placing this order to reserve your allocated production stock.`,
-    `2. Use your exact order number — ${ref} — as your payment reference description.`,
+// The single source of the short payment instructions shown to the customer
+// (invoice email, hosted invoice page, WhatsApp message). Plain text: HTML
+// renderers must entity-encode the @ (see paymentTermsHtml / encodeAt).
+export function paymentTermsLines(ref: string = 'YOUR-ORDER-REF', _methodId?: string): string[] {
+  const email = CONTACT.email.replace('&#64;', '@');
+  return [
+    `Payment must be made within ${REPLY.deadlineHours} hours of this invoice to reserve your stock.`,
+    `Use your order number ${ref} as the payment reference.`,
+    `After paying, send a screenshot of your payment by email to ${email} or on WhatsApp to ${CONTACT.whatsapp}.`,
   ];
-
-  if (method && method.instantRailNote) {
-    lines.push(`3. ${method.instantRailNote}`);
-  }
-
-  lines.push(`4. ${REPLY.dispatchLine}`);
-
-  const waClause = REPLY.channels.whatsapp
-    ? ` or WhatsApp (${REPLY.channels.whatsapp})`
-    : '';
-  lines.push(
-    `5. Once payment is sent, email your receipt screenshot to ${REPLY.channels.email}${waClause} for immediate dispatch confirmation.`
-  );
-
-  return lines;
 }
+
+export const encodeAt = (text: string) => text.replace(/@/g, '&#64;');
 
 export function paymentTermsHtml(ref: string = 'YOUR-ORDER-REF', methodId?: string): string {
   const lines = paymentTermsLines(ref, methodId);
   return `
     <ul style="margin: 0; padding: 0 0 0 20px; color: #3A322C; font-size: 13.5px; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-      ${lines
-        .map(
-          (line) =>
-            `<li style="margin-bottom: 8px; color: #2A221C;">${line}</li>`
-        )
-        .join('')}
+      ${lines.map((line) => `<li style="margin-bottom: 8px; color: #2A221C;">${encodeAt(line)}</li>`).join('')}
     </ul>
   `;
 }
-
 export function instructionsParts(
   opening: string,
   detail: string,

@@ -32,7 +32,7 @@ import {
   sendInvoice,
   getPaymentDefaultsClient,
 } from '../lib/orderStore.js';
-import { PAY_METHOD_IDS, PAY_METHOD_LABEL, applyDefaults, blankPayLines, type PayLine, type PayLinesByMethod, type PayMethodId } from '../lib/payment.js';
+import { PAY_METHOD_IDS, PAY_METHOD_LABEL, applyDefaults, blankPayText, linesToText, parsePayText, type PayLinesByMethod, type PayMethodId, type PayTextByMethod } from '../lib/payment.js';
 import {
   StoredEnquiry,
   getAllEnquiries,
@@ -64,10 +64,9 @@ export const AdminDashboardContent: React.FC = () => {
   const [selectedOrder, setSelectedOrder] = useState<StoredOrder | null>(null);
   const [selectedEnquiry, setSelectedEnquiry] = useState<StoredEnquiry | null>(null);
 
-  // Payment Composer State
-  const [payLines, setPayLines] = useState<PayLinesByMethod>(() => blankPayLines(''));
+  // Payment Composer State: one paste box per payment method
+  const [payText, setPayText] = useState<PayTextByMethod>(() => blankPayText(''));
   const [activeMethod, setActiveMethod] = useState<PayMethodId>('bank-transfer');
-  const [invoiceNote, setInvoiceNote] = useState('');
   const [saveDefaults, setSaveDefaults] = useState(true);
   const [emailSending, setEmailSending] = useState(false);
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
@@ -126,36 +125,26 @@ export const AdminDashboardContent: React.FC = () => {
     }
   };
 
-  // Open the invoice composer for an order: client details and the method the
-  // client chose are pre-filled; saved payment details are loaded if present.
+  // Open the invoice composer: client details and the method the client chose are
+  // pre-filled; saved payment details are loaded into the paste boxes.
   const handleStartPaymentEmail = async (order: StoredOrder) => {
     const ref = order.orderRef || order.ref;
     setSelectedOrder(order);
     setActiveMethod((PAY_METHOD_IDS as string[]).includes(order.paymentMethod) ? (order.paymentMethod as PayMethodId) : 'bank-transfer');
-    setPayLines(blankPayLines(ref));
-    setInvoiceNote('');
+    setPayText(blankPayText(ref));
     setInvoiceLink(order.invoice ? `https://${SITE.domain}/invoice/?t=${order.invoice.token}` : null);
     setActiveTab('send-payment');
     setEmailSuccess(null);
     const defaults = await getPaymentDefaultsClient();
-    if (order.invoice) {
-      const merged = applyDefaults(defaults, ref);
-      merged[order.invoice.method] = order.invoice.lines;
-      setPayLines(merged);
-    } else {
-      setPayLines(applyDefaults(defaults, ref));
-    }
+    const lines = applyDefaults(defaults, ref);
+    const text: PayTextByMethod = {
+      'bank-transfer': linesToText(lines['bank-transfer']),
+      payid: linesToText(lines.payid),
+      crypto: linesToText(lines.crypto),
+    };
+    if (order.invoice) text[order.invoice.method] = linesToText(order.invoice.lines);
+    setPayText(text);
   };
-
-  const updateLine = (index: number, patch: Partial<PayLine>) =>
-    setPayLines((prev) => ({
-      ...prev,
-      [activeMethod]: prev[activeMethod].map((l, i) => (i === index ? { ...l, ...patch } : l)),
-    }));
-  const addLine = () => setPayLines((prev) => ({ ...prev, [activeMethod]: [...prev[activeMethod], { label: '', value: '' }] }));
-  const removeLine = (index: number) =>
-    setPayLines((prev) => ({ ...prev, [activeMethod]: prev[activeMethod].filter((_, i) => i !== index) }));
-
   // Mark an order paid / dispatched. Marking paid emails the client a thank-you.
   const handleSetStatus = async (order: StoredOrder, status: StoredOrder['status']) => {
     if (status === 'paid' && !confirm('Mark as paid? This automatically emails the client a payment-received thank-you.')) return;
@@ -178,25 +167,19 @@ export const AdminDashboardContent: React.FC = () => {
   // Dispatch the invoice email (branded invoice + "open invoice & pay" page)
   const handleSendPaymentEmail = async () => {
     if (!selectedOrder) return;
-    const lines = payLines[activeMethod].filter((l) => l.label.trim() && l.value.trim());
-    if (lines.length < 2) {
-      alert('Fill in the payment details lines first (at least two lines).');
+    const lines = parsePayText(payText[activeMethod]);
+    if (lines.length === 0) {
+      alert('Paste or type the payment details in the box first.');
       return;
     }
     if (!selectedOrder.email) {
-      setEmailSuccess('This order has no customer email (WhatsApp order). Use the WhatsApp panel instead.');
+      setEmailSuccess('This order has no customer email (WhatsApp order). Use the WhatsApp option instead.');
       return;
     }
     setEmailSending(true);
     setEmailSuccess(null);
-    const result = await sendInvoice({
-      orderId: selectedOrder.id,
-      method: activeMethod,
-      lines,
-      note: invoiceNote,
-      saveDefaults,
-      allLines: payLines,
-    });
+    const allLines = Object.fromEntries(PAY_METHOD_IDS.map((id) => [id, parsePayText(payText[id])])) as PayLinesByMethod;
+    const result = await sendInvoice({ orderId: selectedOrder.id, method: activeMethod, lines, saveDefaults, allLines });
     setEmailSending(false);
     if (result.sent && result.order) {
       setSelectedOrder({ ...result.order, orderRef: result.order.ref, customerEmail: result.order.email, totalAmount: result.order.total });
@@ -204,7 +187,7 @@ export const AdminDashboardContent: React.FC = () => {
       setEmailSuccess(`Invoice emailed to ${selectedOrder.email}. Status is now payment-sent.`);
       await loadData();
     } else {
-      setEmailSuccess(`Invoice was NOT sent (${result.reason || 'unknown error'}). Check the email settings in Vercel, or use the WhatsApp panel.`);
+      setEmailSuccess(`Invoice was NOT sent (${result.reason || 'unknown error'}). Check the email settings in Vercel, or use WhatsApp.`);
     }
   };
   // Send enquiry reply
@@ -699,12 +682,13 @@ export const AdminDashboardContent: React.FC = () => {
           </div>
         )}
 
-        {/* TAB 4: INVOICE COMPOSER */}
+        {/* TAB 4: INVOICE COMPOSER (one paste box + live preview) */}
         {activeTab === 'send-payment' && selectedOrder && (() => {
           const ref = selectedOrder.orderRef || selectedOrder.ref;
-          const clientMethod = selectedOrder.invoice ? selectedOrder.paymentMethod : selectedOrder.paymentMethod;
+          const clientMethod = selectedOrder.paymentMethod as PayMethodId;
           const discount = activeMethod === 'crypto' ? Math.round(selectedOrder.subtotal * (SHOP.cryptoDiscount / 100)) : 0;
           const total = selectedOrder.subtotal + selectedOrder.shippingFee - discount;
+          const lines = parsePayText(payText[activeMethod]);
           const previewHtml = buildInvoiceHtml({
             order: {
               ref,
@@ -720,20 +704,18 @@ export const AdminDashboardContent: React.FC = () => {
               discount,
               total,
             },
-            lines: payLines[activeMethod],
-            note: invoiceNote,
+            lines,
             termsHtml: paymentTermsHtml(ref, activeMethod),
             openUrl: `https://${SITE.domain}/invoice/`,
             intro: `Thank you ${selectedOrder.customerName}. Your invoice and payment details are below.`,
           });
-          const inputCls = 'w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-lg px-3 py-2 text-xs font-mono-code text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none';
           return (
             <div className="space-y-6">
               <div className="flex items-center justify-between pb-4 border-b border-[#1E2B25]">
                 <div>
-                  <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">INVOICE · {ref}</h2>
+                  <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">REPLY · {ref}</h2>
                   <p className="text-xs text-[#9AA7A0] font-mono-code">
-                    Status: {selectedOrder.status} · Total: ${selectedOrder.totalAmount} AUD
+                    {selectedOrder.customerName} · ${total.toFixed(2)} AUD · status: {selectedOrder.status}
                   </p>
                 </div>
                 <button type="button" onClick={() => setActiveTab('orders')} className="text-xs font-mono-code text-[#C5A059] hover:underline">
@@ -749,31 +731,24 @@ export const AdminDashboardContent: React.FC = () => {
               )}
               {invoiceLink && (
                 <div className="p-4 rounded-xl bg-[#121A16] border border-[#2C3E36] text-xs font-mono-code space-y-2">
-                  <span className="text-[#C5A059] uppercase font-bold tracking-wider block">Client invoice page (copy / QR)</span>
+                  <span className="text-[#C5A059] uppercase font-bold tracking-wider block">Client invoice page</span>
                   <CopyField value={invoiceLink} />
                 </div>
               )}
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div className="space-y-6">
-                  {/* Auto-filled client details */}
-                  <div className="p-5 rounded-2xl bg-[#121A16] border border-[#2C3E36] space-y-3">
-                    <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059]">Client details (auto-filled)</span>
-                    <dl className="grid grid-cols-[110px_1fr] gap-x-3 gap-y-1.5 text-xs font-mono-code">
-                      <dt className="text-[#7A8782]">Name</dt><dd className="text-white">{selectedOrder.customerName}</dd>
-                      <dt className="text-[#7A8782]">Email</dt><dd className="text-white break-all">{selectedOrder.email || '(none - WhatsApp order)'}</dd>
-                      <dt className="text-[#7A8782]">Phone</dt><dd className="text-white">{selectedOrder.phone}</dd>
-                      <dt className="text-[#7A8782]">Address</dt><dd className="text-white whitespace-pre-wrap">{selectedOrder.address}</dd>
-                      <dt className="text-[#7A8782]">Items</dt>
-                      <dd className="text-white">{selectedOrder.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}</dd>
-                      <dt className="text-[#7A8782]">Client chose</dt>
-                      <dd className="text-[#E5C378] font-bold">{PAY_METHOD_LABEL[clientMethod as PayMethodId] || clientMethod}</dd>
-                    </dl>
+                <div className="space-y-5">
+                  {/* Customer (auto-filled) */}
+                  <div className="p-4 rounded-2xl bg-[#121A16] border border-[#2C3E36] text-xs font-mono-code space-y-1">
+                    <div className="text-white font-bold">{selectedOrder.customerName}</div>
+                    <div className="text-[#B4C0BA] break-all">{selectedOrder.email || '(no email - WhatsApp order)'} · {selectedOrder.phone}</div>
+                    <div className="text-[#B4C0BA] whitespace-pre-wrap">{selectedOrder.address}</div>
+                    <div className="text-[#9AA7A0]">{selectedOrder.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}</div>
                   </div>
 
-                  {/* Payment method tabs + line editor */}
-                  <div className="p-5 rounded-2xl bg-[#121A16] border border-[#2C3E36] space-y-4">
-                    <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059]">Payment details - type line by line</span>
+                  {/* Payment method chosen by the customer, others beside it */}
+                  <div className="space-y-2">
+                    <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] block">Payment method</span>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                       {PAY_METHOD_IDS.map((id) => (
                         <button
@@ -786,64 +761,70 @@ export const AdminDashboardContent: React.FC = () => {
                         >
                           <span className="block">{PAY_METHOD_LABEL[id]}</span>
                           {clientMethod === id && (
-                            <span className={`block mt-1 text-[9px] uppercase tracking-wider ${activeMethod === id ? 'text-[#0D1512]' : 'text-[#E5C378]'}`}>★ Client chose this</span>
+                            <span className={`block mt-1 text-[9px] uppercase tracking-wider ${activeMethod === id ? 'text-[#0D1512]' : 'text-[#E5C378]'}`}>★ Customer chose this</span>
                           )}
                         </button>
                       ))}
                     </div>
                     {activeMethod !== clientMethod && (
                       <p className="text-[11px] text-[#E5C378] font-mono-code">
-                        Client chose {PAY_METHOD_LABEL[clientMethod as PayMethodId] || clientMethod}. Invoicing {PAY_METHOD_LABEL[activeMethod]} instead
-                        {activeMethod === 'crypto' ? ` applies the ${SHOP.cryptoDiscount}% crypto discount` : ' removes any crypto discount'} (total ${total.toFixed(2)}).
+                        Customer chose {PAY_METHOD_LABEL[clientMethod] || clientMethod}. Invoicing {PAY_METHOD_LABEL[activeMethod]} changes the total to ${total.toFixed(2)}.
                       </p>
                     )}
-
-                    <div className="space-y-2">
-                      {payLines[activeMethod].map((line, i) => (
-                        <div key={i} className="grid grid-cols-[110px_1fr_auto] sm:grid-cols-[150px_1fr_auto] gap-2 items-center">
-                          <input value={line.label} onChange={(e) => updateLine(i, { label: e.target.value })} placeholder="Label" className={inputCls} />
-                          <input value={line.value} onChange={(e) => updateLine(i, { value: e.target.value })} placeholder="Type or paste value" className={inputCls} />
-                          <button type="button" onClick={() => removeLine(i)} className="p-1.5 text-[#889690] hover:text-[#E0533C]" title="Remove line">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
-                      ))}
-                      <button type="button" onClick={addLine} className="text-[11px] font-mono-code text-[#C5A059] hover:underline">+ Add line</button>
-                    </div>
-
-                    <textarea
-                      rows={2}
-                      value={invoiceNote}
-                      onChange={(e) => setInvoiceNote(e.target.value)}
-                      placeholder="Optional personal note to the client"
-                      className={inputCls}
-                    />
-                    <label className="flex items-center gap-2 text-[11px] font-mono-code text-[#9AA7A0]">
-                      <input type="checkbox" checked={saveDefaults} onChange={(e) => setSaveDefaults(e.target.checked)} />
-                      Remember these details for the next invoice
-                    </label>
-
-                    <button
-                      type="button"
-                      onClick={handleSendPaymentEmail}
-                      disabled={emailSending}
-                      className="w-full py-3.5 bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer font-mono-code disabled:opacity-60"
-                    >
-                      <Mail className="w-4 h-4" />
-                      <span>{emailSending ? 'Sending invoice...' : selectedOrder.invoice ? 'Resend invoice email' : 'Send invoice email'}</span>
-                    </button>
                   </div>
 
-                  <WhatsAppSendPanel
-                    order={selectedOrder}
-                    paymentDetails={payLines[activeMethod].filter((l) => l.value.trim()).map((l) => `${l.label}: ${l.value}`).join('\n')}
-                  />
+                  {/* The one paste box */}
+                  <div className="space-y-2">
+                    <label htmlFor="pay-details-box" className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] block">
+                      Payment details - type or paste here
+                    </label>
+                    <textarea
+                      id="pay-details-box"
+                      rows={9}
+                      value={payText[activeMethod]}
+                      onChange={(e) => setPayText((prev) => ({ ...prev, [activeMethod]: e.target.value }))}
+                      placeholder={'One detail per line, e.g.\nBSB: 123-456\nAccount number: 12345678'}
+                      className="w-full bg-[#0A0F0D] border-2 border-[#2C3E36] rounded-xl p-4 text-sm font-mono-code text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none"
+                    />
+                    <p className="text-[11px] text-[#7A8782] font-mono-code">
+                      Lines like &quot;BSB: 123-456&quot; get a Copy button for your customer. Lines ending in a colon with nothing after it are ignored.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[#0F1714] border border-[#22302A] text-xs font-mono-code text-[#9AA7A0] space-y-1">
+                    <span className="text-[#C5A059] font-bold uppercase tracking-wider block text-[11px]">Instructions added automatically</span>
+                    {paymentTermsLines(ref, activeMethod).map((line, i) => (
+                      <div key={i}>• {line}</div>
+                    ))}
+                  </div>
+
+                  <label className="flex items-center gap-2 text-[11px] font-mono-code text-[#9AA7A0]">
+                    <input type="checkbox" checked={saveDefaults} onChange={(e) => setSaveDefaults(e.target.checked)} />
+                    Remember these details for the next order
+                  </label>
+
+                  <button
+                    type="button"
+                    onClick={handleSendPaymentEmail}
+                    disabled={emailSending}
+                    className="w-full py-4 bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512] font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer font-mono-code disabled:opacity-60"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>{emailSending ? 'Sending...' : selectedOrder.invoice ? 'Resend to customer' : 'Send to customer'}</span>
+                  </button>
+
+                  <details className="rounded-xl bg-[#121A16] border border-[#22302A]">
+                    <summary className="cursor-pointer p-3 text-xs font-mono-code text-[#9AA7A0]">Send by WhatsApp instead</summary>
+                    <div className="p-3 pt-0">
+                      <WhatsAppSendPanel order={selectedOrder} paymentDetails={payText[activeMethod]} />
+                    </div>
+                  </details>
                 </div>
 
-                {/* Live preview of the exact email the client receives */}
+                {/* Live preview of exactly what the customer receives */}
                 <div className="space-y-2">
                   <span className="text-xs font-mono-code text-[#C5A059] uppercase font-bold tracking-wider block">
-                    Live invoice preview (what the client receives)
+                    Preview - what the customer receives
                   </span>
                   <iframe
                     title="Invoice email preview"

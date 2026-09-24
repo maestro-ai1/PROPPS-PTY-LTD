@@ -5,7 +5,7 @@ import QRCode from 'qrcode';
 import { Copy, Check, QrCode, ShieldCheck } from 'lucide-react';
 import { SITE, CONTACT, REPLY } from '../config/site.js';
 import { PAY_METHOD_LABEL, type PayLine, type PayMethodId } from '../lib/payment.js';
-import { paymentTermsLines } from '../lib/order.js';
+import { paymentTermsLines, encodeAt } from '../lib/order.js';
 
 interface InvoiceData {
   ref: string;
@@ -81,7 +81,7 @@ const LineRow: React.FC<{ line: PayLine; autoQr?: boolean }> = ({ line, autoQr }
   const [showQr, setShowQr] = useState(Boolean(autoQr));
   return (
     <div className="py-3 border-b border-[#EAE3DC] last:border-b-0">
-      <div className="text-[11px] font-bold uppercase tracking-wider text-[#6F665F] mb-1">{line.label}</div>
+      {line.label && <div className="text-[11px] font-bold uppercase tracking-wider text-[#6F665F] mb-1">{line.label}</div>}
       <div className="flex items-center gap-2">
         <div className="flex-1 min-w-0 font-mono text-[15px] font-semibold text-[#1A1414] break-all select-all">{line.value}</div>
         <button
@@ -162,7 +162,7 @@ export const InvoicePageContent: React.FC = () => {
   const due = new Date(data.issued + REPLY.deadlineHours * 3600 * 1000).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
   const issued = new Date(data.issued).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
   const filled = data.lines.filter((l) => l.value.trim());
-  const allText = `${PAY_METHOD_LABEL[data.method]}\nAmount: ${money(data.total)} AUD\n${filled.map((l) => `${l.label}: ${l.value}`).join('\n')}`;
+  const allText = `${PAY_METHOD_LABEL[data.method]}\nAmount: ${money(data.total)} AUD\n${filled.map((l) => (l.label ? `${l.label}: ${l.value}` : l.value)).join('\n')}`;
 
   return (
     <main className="px-3 sm:px-4 py-8 bg-[#F4F0EA] min-h-screen">
@@ -293,10 +293,10 @@ export const InvoicePageContent: React.FC = () => {
           )}
 
           <section className="rounded-xl bg-[#FAF8F5] border border-[#ECE5DC] p-4">
-            <h2 className="text-[11px] font-bold uppercase tracking-wider text-[#6F665F] mb-2">Important notice &amp; terms</h2>
+            <h2 className="text-[11px] font-bold uppercase tracking-wider text-[#6F665F] mb-2">Payment instructions</h2>
             <ul className="list-disc pl-5 space-y-1.5 text-[13px] text-[#2A221C]">
               {paymentTermsLines(data.ref, data.method).map((line, i) => (
-                <li key={i} dangerouslySetInnerHTML={{ __html: line }} />
+                <li key={i} dangerouslySetInnerHTML={{ __html: encodeAt(line) }} />
               ))}
             </ul>
           </section>

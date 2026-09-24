@@ -13,7 +13,7 @@ function cleanLines(input: unknown): PayLine[] {
   return input
     .slice(0, 12)
     .map((l: any) => ({ label: clean(l?.label, 60), value: clean(l?.value, 200) }))
-    .filter((l) => l.label && l.value);
+    .filter((l) => l.value);
 }
 
 export async function POST(request: Request) {
