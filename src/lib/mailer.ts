@@ -33,7 +33,7 @@ export async function sendMail(opts: MailerOptions): Promise<MailerResult> {
   const from = (typeof process !== 'undefined' ? process.env?.EMAIL_FROM : undefined) || 'noreply@proppsptyltd.com.au';
 
   if (!host || !user || !pass) {
-    // Graceful return - never throws
+    console.error('[mailer] not configured: missing EMAIL_SERVER_HOST/USER/PASSWORD');
     return {
       sent: false,
       reason: 'not-configured',
@@ -41,8 +41,7 @@ export async function sendMail(opts: MailerOptions): Promise<MailerResult> {
   }
 
   try {
-    const pkg = 'nodemailer';
-    const nodemailer = (await import(/* @vite-ignore */ pkg)).default || (await import(/* @vite-ignore */ pkg));
+    const nodemailer = (await import('nodemailer')).default;
     const port = Number(process.env?.EMAIL_SERVER_PORT) || 465;
     const secure = process.env?.EMAIL_SERVER_SECURE === 'true' || port === 465;
 
@@ -72,6 +71,7 @@ export async function sendMail(opts: MailerOptions): Promise<MailerResult> {
     };
   } catch (err: unknown) {
     const errorMsg = err instanceof Error ? err.message : String(err);
+    console.error('[mailer] send failed:', errorMsg);
     return {
       sent: false,
       reason: 'error',
