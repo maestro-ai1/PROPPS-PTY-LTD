@@ -1,5 +1,6 @@
 // src/lib/order.ts
 import { REPLY, SITE, SHOP, ReplyPaymentMethod } from '../config/site.js';
+import type { InvoiceRecord } from './payment.js';
 
 export interface OrderItem {
   slug: string;
@@ -31,6 +32,9 @@ export interface StoredOrder {
   paymentMethod: string;
   channel: 'whatsapp' | 'email';
   status: 'pending' | 'payment-sent' | 'paid' | 'dispatched' | 'cancelled';
+  invoice?: InvoiceRecord;
+  paymentNotifiedAt?: number;
+  paidAt?: number;
   createdAt: number;
 }
 

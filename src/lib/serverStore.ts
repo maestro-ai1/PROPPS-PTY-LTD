@@ -3,6 +3,7 @@
 // Redis credentials nothing is stored, and callers fall back to email-only.
 import { redisCommand, getRedisCredentials } from './redis.js';
 import type { StoredOrder } from './order.js';
+import type { PayLinesByMethod } from './payment.js';
 import type { StoredEnquiry } from './enquiryStore.js';
 
 const ORDERS_KEY = 'propps:orders';
@@ -65,4 +66,39 @@ export async function removeOrder(id: string): Promise<void> {
 
 export async function removeEnquiry(id: string): Promise<void> {
   await writeList(ENQUIRIES_KEY, (await listEnquiries()).filter((e) => e.id !== id && e.ref !== id));
+}
+
+export async function getOrder(idOrRef: string): Promise<StoredOrder | null> {
+  return (await listOrders()).find((o) => o.id === idOrRef || o.ref === idOrRef) ?? null;
+}
+
+export async function getOrderByToken(token: string): Promise<StoredOrder | null> {
+  if (!token || token.length < 20) return null;
+  return (await listOrders()).find((o) => o.invoice?.token === token) ?? null;
+}
+
+// Merge fields into a stored order (used for invoice, paid and notified markers).
+export async function updateOrder(id: string, patch: Partial<StoredOrder>): Promise<StoredOrder | null> {
+  const list = await listOrders();
+  const index = list.findIndex((o) => o.id === id || o.ref === id);
+  if (index === -1) return null;
+  list[index] = { ...list[index], ...patch };
+  await writeList(ORDERS_KEY, list);
+  return list[index];
+}
+
+const PAYMENT_DEFAULTS_KEY = 'propps:payment-defaults';
+
+export async function getPaymentDefaults(): Promise<Partial<PayLinesByMethod> | null> {
+  const raw = await redisCommand(['GET', PAYMENT_DEFAULTS_KEY]);
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+export async function setPaymentDefaults(defaults: Partial<PayLinesByMethod>): Promise<void> {
+  await redisCommand(['SET', PAYMENT_DEFAULTS_KEY, JSON.stringify(defaults)]);
 }

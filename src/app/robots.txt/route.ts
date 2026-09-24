@@ -26,6 +26,7 @@ export function GET() {
 Allow: /
 Disallow: /thank-you-order/
 Disallow: /admin/
+Disallow: /invoice/
 Disallow: /api/
 
 Content-Signal: search=yes, ai-input=yes, ai-train=no

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { isAdminRequest } from '../../../../../lib/adminAuth.js';
-import { patchOrder, removeOrder } from '../../../../../lib/serverStore.js';
+import { getOrder, patchOrder, removeOrder, updateOrder } from '../../../../../lib/serverStore.js';
+import { sendThankYouEmail } from '../../../../../lib/notify.js';
 
 export const runtime = 'nodejs';
 
@@ -15,8 +16,16 @@ export async function PATCH(request: Request, { params }: Ctx) {
   const { id } = await params;
   const { status } = await request.json().catch(() => ({ status: '' }));
   if (!STATUSES.includes(status)) return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
+  const before = await getOrder(id);
   const order = await patchOrder(id, status);
-  return order ? NextResponse.json({ order }) : NextResponse.json({ error: 'Not found' }, { status: 404 });
+  if (!order) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+
+  let thankYouSent: boolean | undefined;
+  if (status === 'paid' && before?.status !== 'paid') {
+    const saved = await updateOrder(order.id, { paidAt: Date.now() });
+    thankYouSent = (await sendThankYouEmail(saved ?? order).catch(() => ({ sent: false }))).sent;
+  }
+  return NextResponse.json({ order, thankYouSent });
 }
 
 export async function DELETE(request: Request, { params }: Ctx) {

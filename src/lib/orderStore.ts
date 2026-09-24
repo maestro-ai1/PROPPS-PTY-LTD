@@ -3,6 +3,7 @@
 // server (/api/order, /api/admin/orders) - never in browser storage.
 import { StoredOrder } from './order.js';
 import { adminFetch } from './adminClient.js';
+import type { PayLine, PayLinesByMethod, PayMethodId } from './payment.js';
 
 export interface SubmitOrderResult {
   ok: boolean;
@@ -58,6 +59,42 @@ export async function updateOrderStatus(
   });
   if (!res.ok) return null;
   return (await res.json()).order ?? null;
+}
+
+export async function setOrderStatus(
+  id: string,
+  status: StoredOrder['status']
+): Promise<{ order: StoredOrder | null; thankYouSent?: boolean }> {
+  const res = await adminFetch(`/api/admin/orders/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ status }),
+  });
+  if (!res.ok) return { order: null };
+  const data = await res.json();
+  return { order: data.order ?? null, thankYouSent: data.thankYouSent };
+}
+
+export async function getPaymentDefaultsClient(): Promise<Partial<PayLinesByMethod> | null> {
+  const res = await adminFetch('/api/admin/payment-defaults');
+  if (!res.ok) return null;
+  return (await res.json()).defaults ?? null;
+}
+
+export async function sendInvoice(payload: {
+  orderId: string;
+  method: PayMethodId;
+  lines: PayLine[];
+  note?: string;
+  saveDefaults?: boolean;
+  allLines?: PayLinesByMethod;
+}): Promise<{ sent: boolean; reason?: string; order?: StoredOrder }> {
+  try {
+    const res = await adminFetch('/api/admin/send-invoice', { method: 'POST', body: JSON.stringify(payload) });
+    const data = await res.json().catch(() => ({}));
+    return { sent: res.ok && data.sent === true, reason: data.reason || data.error, order: data.order };
+  } catch {
+    return { sent: false, reason: 'network' };
+  }
 }
 
 export { getOrders as getAllOrders };

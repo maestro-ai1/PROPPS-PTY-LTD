@@ -18,9 +18,11 @@ export interface InvoiceOrder {
 
 export interface InvoiceOpts {
   order: InvoiceOrder;
-  paymentHtml: string;
+  lines: { label: string; value: string }[];
   termsHtml?: string;
   intro?: string;
+  note?: string;
+  openUrl?: string;
 }
 
 const esc = (s: string) =>
@@ -42,7 +44,23 @@ export function brandSealHtml(size = 46): string {
   return `<table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td align="center" valign="middle" width="${size}" height="${size}" style="width:${size}px;height:${size}px;background-color:#1C1A14;border:2px solid #D4AF37;border-radius:11px;font-family:${SERIF};font-size:${Math.round(size * 0.52)}px;font-weight:700;color:#D4AF37;line-height:${size - 4}px;">P</td></tr></table>`;
 }
 
-export function buildInvoiceHtml({ order, paymentHtml, termsHtml, intro }: InvoiceOpts): string {
+export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl }: InvoiceOpts): string {
+  const lineRows = lines
+    .filter((l) => l.value.trim())
+    .map(
+      (l) => `<tr>
+        <td valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${SANS};font-size:12.5px;color:#6F665F;width:34%;">${esc(l.label)}</td>
+        <td valign="top" style="padding:8px 0;border-bottom:1px solid #EAE3DC;font-family:${MONO};font-size:13px;font-weight:600;color:#1A1414;word-break:break-all;">${esc(l.value)}</td>
+      </tr>`
+    )
+    .join('');
+  const paymentHtml = `<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">${lineRows}</table>`;
+  const openButton = openUrl
+    ? `<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin:4px 0 22px 0;"><tr><td align="center">
+        <a href="${esc(openUrl)}" target="_blank" style="display:inline-block;padding:14px 30px;background-color:${GOLD};color:#0D1512;text-decoration:none;font-family:${SANS};font-weight:700;font-size:14px;letter-spacing:0.5px;border-radius:8px;">Open invoice &amp; pay</a>
+        <div style="font-family:${SANS};font-size:11.5px;color:#6F665F;margin-top:9px;">Copy each payment detail with one tap, or scan a QR code.</div>
+      </td></tr></table>`
+    : '';
   const dateStr = new Date(order.date || Date.now()).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' });
   const due = new Date(new Date(order.date || Date.now()).getTime() + REPLY.deadlineHours * 3600 * 1000).toLocaleDateString('en-AU', {
     day: 'numeric',
@@ -135,6 +153,9 @@ export function buildInvoiceHtml({ order, paymentHtml, termsHtml, intro }: Invoi
             ${esc(CONTACT.address)} &nbsp;&middot;&nbsp; ${CONTACT.email}
           </td>
         </tr></table>
+
+        ${openButton}
+        ${note ? `<p style="margin:0 0 18px 0;font-family:${SANS};font-size:13.5px;line-height:1.6;color:#3A322C;">${esc(note).replace(/\n/g, '<br>')}</p>` : ''}
 
         <div style="font-family:${SANS};font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:${GOLD};padding-bottom:8px;border-bottom:2px solid ${GOLD};">How to pay - ${esc(METHOD_LABEL[order.paymentMethod] || order.paymentMethod)}</div>
         <div style="margin:12px 0 22px 0;padding:14px 16px;background-color:#F8F6F2;border-left:3px solid ${GOLD};border-radius:4px;font-family:${SANS};font-size:13.5px;line-height:1.7;color:#1A1414;">${paymentHtml}</div>

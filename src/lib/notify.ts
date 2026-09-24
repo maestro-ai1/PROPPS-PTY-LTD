@@ -1,8 +1,10 @@
 // SERVER-ONLY helpers shared by /api/order, /api/contact and /api/wholesale.
-import { SITE, SHOP, PRODUCTS } from '../config/site.js';
+import { SITE, SHOP, PRODUCTS, REPLY } from '../config/site.js';
 import { sendMail } from './mailer.js';
 import { buildEmailHtml, EmailRow } from './emailTemplate.js';
-import { generateOrderRef, StoredOrder } from './order.js';
+import { generateOrderRef, StoredOrder, paymentTermsHtml } from './order.js';
+import { buildInvoiceHtml } from './invoiceTemplate.js';
+import type { InvoiceRecord } from './payment.js';
 import type { StoredEnquiry } from './enquiryStore.js';
 
 // Where owner notifications go. Set NOTIFY_EMAIL in Vercel env vars.
@@ -223,6 +225,115 @@ export async function sendEnquiryEmail(enq: StoredEnquiry) {
     }),
     text: `${enq.subject}\n\nFrom: ${enq.name} <${enq.email}> ${enq.phone ?? ''}\n\n${enq.message}\n\nAdmin: ${adminUrl()}`,
     replyTo: enq.email,
+  });
+  return { sent: result.sent, reason: result.error || result.reason };
+}
+
+export const invoiceUrl = (token: string) => `https://${SITE.domain}/invoice/?t=${encodeURIComponent(token)}`;
+
+export function orderInvoiceView(order: StoredOrder, invoice: InvoiceRecord) {
+  return {
+    ref: order.ref,
+    date: new Date(invoice.sentAt).toISOString(),
+    customerName: order.customerName,
+    email: order.email,
+    phone: order.phone,
+    address: order.address,
+    paymentMethod: invoice.method,
+    items: order.items,
+    subtotal: invoice.subtotal,
+    shippingFee: invoice.shippingFee,
+    discount: invoice.discount,
+    total: invoice.total,
+  };
+}
+
+export function buildInvoiceEmail(order: StoredOrder, invoice: InvoiceRecord): string {
+  return buildInvoiceHtml({
+    order: orderInvoiceView(order, invoice),
+    lines: invoice.lines,
+    note: invoice.note,
+    termsHtml: paymentTermsHtml(order.ref, invoice.method),
+    openUrl: invoiceUrl(invoice.token),
+    intro: `Thank you ${order.customerName}. Your invoice and payment details are below.`,
+  });
+}
+
+export async function sendInvoiceEmail(order: StoredOrder, invoice: InvoiceRecord) {
+  const lineText = invoice.lines.filter((l) => l.value.trim()).map((l) => `${l.label}: ${l.value}`).join('\n');
+  return sendMail({
+    to: order.email,
+    subject: `Invoice ${order.ref} - ${money(invoice.total)} - ${SITE.name}`,
+    html: buildInvoiceEmail(order, invoice),
+    text: `Invoice ${order.ref} - ${money(invoice.total)}\n\n${lineText}\n\nOpen your invoice: ${invoiceUrl(invoice.token)}\n\n${SITE.name} - ABN ${REPLY.bizNumber.value}`,
+    replyTo: getNotifyEmail(),
+  });
+}
+
+// Client pressed "I have made the payment": alert the owner, reassure the client.
+export async function sendPaymentNotifiedEmails(order: StoredOrder) {
+  const to = getNotifyEmail();
+  const total = money(order.invoice?.total ?? order.total);
+  if (to) {
+    await sendMail({
+      to,
+      subject: `Client says paid: ${order.ref} - ${total}`,
+      html: buildEmailHtml({
+        title: `Payment notification ${order.ref}`,
+        preheader: `${order.customerName} says they have paid ${total}`,
+        intro: 'The client pressed "I have made the payment". Check your bank or wallet, then mark the order as paid in the portal to send the thank-you email.',
+        refBadge: order.ref,
+        rows: [
+          { label: 'Customer', value: order.customerName },
+          { label: 'Email', value: order.email },
+          { label: 'Payment method', value: order.invoice?.method ?? order.paymentMethod },
+          { label: 'Amount', value: total, highlight: true, mono: true },
+        ],
+        cta: { label: 'Open Admin Portal', url: adminUrl() },
+      }),
+      text: `${order.customerName} says they paid ${total} for ${order.ref}. Verify, then mark as paid: ${adminUrl()}`,
+      replyTo: order.email || undefined,
+    });
+  }
+  if (order.email) {
+    await sendMail({
+      to: order.email,
+      subject: `Thank you - payment notification received (${order.ref})`,
+      html: buildEmailHtml({
+        title: 'Thank you - we have your payment notification',
+        preheader: `Order ${order.ref}: we are confirming your payment`,
+        intro: `Thank you ${order.customerName}. We have been told your payment of ${total} is on its way. Our Melbourne dispatch desk will confirm it shortly and email you as soon as your order is packed for Australia Post Express.`,
+        refBadge: order.ref,
+        rows: [],
+      }),
+      text: `Thank you ${order.customerName}. We have your payment notification for ${order.ref} and will confirm it shortly.`,
+      replyTo: to,
+    });
+  }
+}
+
+// Owner confirmed the money arrived (status set to paid).
+export async function sendThankYouEmail(order: StoredOrder) {
+  if (!order.email) return { sent: false, reason: 'no customer email' };
+  const total = money(order.invoice?.total ?? order.total);
+  const result = await sendMail({
+    to: order.email,
+    subject: `Payment received - thank you (${order.ref})`,
+    html: buildEmailHtml({
+      title: 'Payment received - thank you',
+      preheader: `Order ${order.ref} is confirmed and being prepared`,
+      intro: `Thank you ${order.customerName}. We have received your payment and your order is confirmed. It will be packed and dispatched from Melbourne via Australia Post Express with tracking and signature on delivery.`,
+      refBadge: order.ref,
+      rows: [
+        { label: 'Order', heading: true },
+        ...order.items.map((i) => ({ label: `${i.quantity} x ${i.name}`, value: money(i.price * i.quantity), mono: true })),
+        { label: 'Amount paid', value: total, highlight: true, mono: true },
+        { label: 'Delivery address', value: order.address },
+      ],
+      footer: `Questions? Reply to this email or WhatsApp ${REPLY.channels.whatsapp}.`,
+    }),
+    text: `Thank you ${order.customerName}. Payment of ${total} received for order ${order.ref}. We will email you when it is dispatched.`,
+    replyTo: getNotifyEmail(),
   });
   return { sent: result.sent, reason: result.error || result.reason };
 }
