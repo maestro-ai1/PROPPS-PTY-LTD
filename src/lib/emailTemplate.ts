@@ -1,6 +1,7 @@
 // src/lib/emailTemplate.ts
 // WebForge v10.0 Mandatory LIGHT shell email builder
 import { SITE, REPLY } from '../config/site.js';
+import { brandSealHtml } from './invoiceTemplate.js';
 
 export interface EmailRow {
   label: string;
@@ -151,7 +152,8 @@ export function buildEmailHtml(opts: EmailTemplateOpts): string {
             <td style="padding: 26px 32px; background-color: ${headerDark}; border-bottom: 3px solid ${accent};">
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td>
+                  <td width="58" valign="middle">${brandSealHtml(44)}</td>
+<td valign="middle">
                     <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 22px; font-weight: 700; color: #FFFFFF; letter-spacing: 1.5px; text-transform: uppercase;">
                       ${escapeHtml(SITE.name)}
                     </div>

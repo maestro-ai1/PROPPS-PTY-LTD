@@ -42,6 +42,7 @@ import {
   instructionsParts,
 } from '../lib/order.js';
 import { buildEmailHtml } from '../lib/emailTemplate.js';
+import { buildInvoiceHtml } from '../lib/invoiceTemplate.js';
 import { adminSendMail } from '../lib/adminClient.js';
 import { SITE, REPLY, CRYPTO_WALLETS } from '../config/site.js';
 
@@ -157,22 +158,26 @@ export const AdminDashboardContent: React.FC = () => {
       `Complete payment within ${REPLY.deadlineHours} hours to confirm your Australia Post Express allocation.`
     );
 
-    const emailHtml = buildEmailHtml({
-      title: `Payment Instructions — Order ${selectedOrder.orderRef}`,
-      preheader: `Payment details for order ${selectedOrder.orderRef} (${SITE.name})`,
-      intro: `Your prop order has been confirmed by our Melbourne fulfillment desk. Please remit payment using the instructions below.`,
-      refBadge: selectedOrder.orderRef,
-      rows: [
-        { label: 'Order Reference', value: selectedOrder.orderRef, mono: true },
-        { label: 'Customer Name', value: selectedOrder.customerName },
-        { label: 'Payment Method', value: selectedOrder.paymentMethod },
-        { label: 'Payment Details', html: parts.html, block: true },
-        { label: 'Amount Due', value: `$${selectedOrder.totalAmount} AUD`, highlight: true, mono: true },
-      ],
-      afterRows: paymentTermsHtml(),
-      footer: `Dispatched from Eltham VIC 3093 · Crimes (Currency) Act 1981 Section 22 Compliant`,
+    const ref = selectedOrder.orderRef || selectedOrder.ref;
+    const emailHtml = buildInvoiceHtml({
+      order: {
+        ref,
+        date: selectedOrder.date,
+        customerName: selectedOrder.customerName,
+        email: selectedOrder.customerEmail || selectedOrder.email,
+        phone: selectedOrder.phone,
+        address: selectedOrder.address,
+        paymentMethod: selectedOrder.paymentMethod,
+        items: selectedOrder.items,
+        subtotal: selectedOrder.subtotal,
+        shippingFee: selectedOrder.shippingFee,
+        discount: selectedOrder.discount,
+        total: selectedOrder.total ?? selectedOrder.totalAmount,
+      },
+      intro: 'Thank you for your order. Your invoice and payment instructions are below.',
+      paymentHtml: parts.html,
+      termsHtml: paymentTermsHtml(ref, selectedOrder.paymentMethod),
     });
-
     const recipient = selectedOrder.customerEmail || selectedOrder.email;
     if (!recipient) {
       setEmailSending(false);
