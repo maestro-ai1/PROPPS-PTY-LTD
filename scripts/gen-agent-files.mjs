@@ -175,7 +175,7 @@ const serverCard = {
     version: "1.0.0",
     description: TAGLINE,
     homepage: `https://${DOMAIN}`,
-    contact: { email: `dispatch@${DOMAIN}`, whatsapp: "+61420128746" }
+    contact: { email: `sales@${DOMAIN}`, whatsapp: "+61420128746" }
   },
   transport: { type: "http", endpoint: `https://${DOMAIN}/api/mcp` },
   capabilities: {
@@ -228,7 +228,7 @@ const acpJson = {
   },
   contact: {
     whatsapp: "https://wa.me/61420128746",
-    email: `dispatch@${DOMAIN}`
+    email: `sales@${DOMAIN}`
   },
   legal: {
     age_restriction: "18+",

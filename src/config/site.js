@@ -18,7 +18,7 @@ export const SITE = {
 
 export const CONTACT = {
   abn: '72 642 507 042',
-  email: 'orders&#64;proppsptyltd.com.au',
+  email: 'sales&#64;proppsptyltd.com.au',
   phone: '+61 3 9000 0000',
   whatsapp: '+61 420 128 746',
   address: 'Suite 4, 95 Main Road, Eltham, VIC 3093, Australia',
@@ -36,7 +36,7 @@ export const SHOP = {
 
 export const FORMS = {
   provider: 'smtp',
-  smtpFrom: 'orders@proppsptyltd.com.au',
+  smtpFrom: 'sales@proppsptyltd.com.au',
   web3formsKey: '',
   resendFrom: '',
   turnstileSiteKey: '',
@@ -49,7 +49,7 @@ export const REPLY = {
   headerTagline: 'Australian Prop Money · Eltham, Melbourne VIC 3093',
   dispatchLine: 'Dispatched via Australia Post Express with end-to-end tracking, fast and safe delivery. Refunded if not satisfied.',
   bizNumber: { label: 'ABN', value: '72 642 507 042' },
-  channels: { email: 'orders&#64;proppsptyltd.com.au', whatsapp: '+61420128746', whatsappCountryCode: '61' },
+  channels: { email: 'sales&#64;proppsptyltd.com.au', whatsapp: '+61420128746', whatsappCountryCode: '61' },
   deadlineHours: 48,
   paymentMethods: [
     {

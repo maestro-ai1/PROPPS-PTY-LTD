@@ -3,20 +3,22 @@
 
 import React, { useState } from 'react';
 import { MessageCircle, Phone, Mail, Send, CheckCircle } from 'lucide-react';
-import { SITE } from '../config/site.js';
+import { SITE, CONTACT } from '../config/site.js';
 import { saveEnquiry } from '../lib/enquiryStore.js';
 
 const WHATSAPP_NUMBER = '+61420128746';
 const PHONE_NUMBER = '+61420128746';
 
 export const ContactContent: React.FC = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', website: '' });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setError(null);
 
     try {
       await saveEnquiry({
@@ -25,10 +27,12 @@ export const ContactContent: React.FC = () => {
         type: 'contact',
         subject: `Website message from ${formData.name}`,
         message: formData.message,
+        website: formData.website,
       });
       setSuccess(true);
+      setFormData({ name: '', email: '', message: '', website: '' });
     } catch (err) {
-      console.error('Contact submit error:', err);
+      setError(err instanceof Error ? err.message : 'Message could not be sent.');
     } finally {
       setSubmitting(false);
     }
@@ -70,7 +74,10 @@ export const ContactContent: React.FC = () => {
           <Mail className="w-5 h-5 text-[#C5A059] shrink-0" />
           <div>
             <span className="text-[10px] font-mono-code uppercase text-[#889690] block">Email</span>
-            <span className="text-sm font-mono-code text-[#889690]">Coming soon</span>
+            <span
+              className="text-sm font-mono-code text-white font-semibold"
+              dangerouslySetInnerHTML={{ __html: CONTACT.email }}
+            />
           </div>
         </div>
       </div>
@@ -91,6 +98,16 @@ export const ContactContent: React.FC = () => {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3">
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={formData.website}
+              onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+              className="hidden"
+            />
             <input
               type="text"
               required
@@ -115,6 +132,19 @@ export const ContactContent: React.FC = () => {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className="w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none"
             />
+            {error && (
+              <p role="alert" className="text-xs text-[#E0533C] font-mono-code">
+                {error}{' '}
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-[#25D366]"
+                >
+                  Message us on WhatsApp
+                </a>
+              </p>
+            )}
             <button
               type="submit"
               disabled={submitting}

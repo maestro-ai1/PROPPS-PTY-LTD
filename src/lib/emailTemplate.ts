@@ -100,7 +100,7 @@ export function buildEmailHtml(opts: EmailTemplateOpts): string {
               ${
                 opts.cta
                   ? `
-                <a href="${opts.cta.url}" target="_blank" style="display: inline-block; padding: 13px 26px; background-color: ${accent}; color: #0D1512; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 6px; letter-spacing: 0.5px; margin: 0 6px 8px 6px;">
+                <a href="${escapeHtml(opts.cta.url)}" target="_blank" style="display: inline-block; padding: 13px 26px; background-color: ${accent}; color: #0D1512; text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 6px; letter-spacing: 0.5px; margin: 0 6px 8px 6px;">
                   ${escapeHtml(opts.cta.label)}
                 </a>
               `
@@ -109,7 +109,7 @@ export function buildEmailHtml(opts: EmailTemplateOpts): string {
               ${
                 opts.secondaryCta
                   ? `
-                <a href="${opts.secondaryCta.url}" target="_blank" style="display: inline-block; padding: 12px 24px; background-color: transparent; border: 1.5px solid ${accent}; color: ${accent}; text-decoration: none; font-weight: 600; font-size: 13px; border-radius: 6px; margin: 0 6px 8px 6px;">
+                <a href="${escapeHtml(opts.secondaryCta.url)}" target="_blank" style="display: inline-block; padding: 12px 24px; background-color: transparent; border: 1.5px solid ${accent}; color: ${accent}; text-decoration: none; font-weight: 600; font-size: 13px; border-radius: 6px; margin: 0 6px 8px 6px;">
                   ${escapeHtml(opts.secondaryCta.label)}
                 </a>
               `

@@ -4,7 +4,7 @@ import { Lock, KeyRound, ShieldAlert, ArrowRight } from 'lucide-react';
 import { SITE } from '../../config/site.js';
 
 interface PasscodeGateProps {
-  onUnlock: (passcode: string) => boolean;
+  onUnlock: (passcode: string) => boolean | Promise<boolean>;
   error?: string | null;
 }
 

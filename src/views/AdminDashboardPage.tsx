@@ -42,7 +42,7 @@ import {
   instructionsParts,
 } from '../lib/order.js';
 import { buildEmailHtml } from '../lib/emailTemplate.js';
-import { sendMail } from '../lib/mailer.js';
+import { adminSendMail } from '../lib/adminClient.js';
 import { SITE, REPLY, CRYPTO_WALLETS } from '../config/site.js';
 
 export const AdminDashboardContent: React.FC = () => {
@@ -63,7 +63,7 @@ export const AdminDashboardContent: React.FC = () => {
   // Payment Composer State
   const [composerMode, setComposerMode] = useState<'template' | 'paste'>('template');
   const [paymentDetailText, setPaymentDetailText] = useState(
-    `BSB: 063-000\nAccount: 1234 5678\nAccount Name: PROPPS PTY LTD\nReference: `
+    `BSB: [ENTER BSB]\nAccount: [ENTER ACCOUNT NUMBER]\nAccount Name: PROPPS PTY LTD\nReference: `
   );
   const [emailSending, setEmailSending] = useState(false);
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
@@ -126,7 +126,10 @@ export const AdminDashboardContent: React.FC = () => {
   const handleStartPaymentEmail = (order: StoredOrder) => {
     setSelectedOrder(order);
     if (order.paymentMethod === 'bank-transfer' || order.paymentMethod === 'payid') {
-      setPaymentDetailText(`PayID: dispatch@propps.com.au\nBank: Commonwealth Bank of Australia\nBSB: 063-000\nAccount Number: 1092 8493\nAccount Name: PROPPS PTY LTD\nReference: ${order.orderRef}`);
+      // Deliberately blank template: real bank/PayID details must be typed in
+      // by the owner - never pre-filled with placeholder numbers that could be
+      // emailed to a customer by mistake.
+      setPaymentDetailText(`PayID: [ENTER YOUR PAYID]\nBank: [ENTER BANK NAME]\nBSB: [ENTER BSB]\nAccount Number: [ENTER ACCOUNT NUMBER]\nAccount Name: PROPPS PTY LTD\nReference: ${order.orderRef || order.ref}`);
     } else {
       setPaymentDetailText(`Cryptocurrency Transfer (10% Discount Applied):\nUSDT (TRC20): ${CRYPTO_WALLETS.usdtTrc20}\nBitcoin: ${CRYPTO_WALLETS.bitcoin}\nEthereum: ${CRYPTO_WALLETS.ethereum}\nReference: ${order.orderRef}`);
     }
@@ -170,18 +173,30 @@ export const AdminDashboardContent: React.FC = () => {
       footer: `Dispatched from Eltham VIC 3093 · Crimes (Currency) Act 1981 Section 22 Compliant`,
     });
 
-    const result = await sendMail({
-      to: selectedOrder.customerEmail || selectedOrder.email || 'customer@example.com',
+    const recipient = selectedOrder.customerEmail || selectedOrder.email;
+    if (!recipient) {
+      setEmailSending(false);
+      setEmailSuccess('This order has no customer email (WhatsApp order). Use the WhatsApp reply panel instead.');
+      return;
+    }
+
+    const result = await adminSendMail({
+      to: recipient,
       subject: `Payment Instructions for Order ${selectedOrder.orderRef || selectedOrder.ref} — ${SITE.name}`,
       html: emailHtml,
       text: `${parts.text}\n\n${paymentTermsLines().join('\n')}`,
     });
 
-    // Mark order status as payment-sent
-    await updateOrderStatus(selectedOrder.id, 'payment-sent');
-    await loadData();
+    if (result.sent) {
+      await updateOrderStatus(selectedOrder.id, 'payment-sent');
+      await loadData();
+    }
     setEmailSending(false);
-    setEmailSuccess(result.sent ? 'Email dispatched to customer!' : 'Logged to order. Note: SMTP env vars are pending, so email was recorded locally and simulated.');
+    setEmailSuccess(
+      result.sent
+        ? 'Email dispatched to customer!'
+        : `Email was NOT sent (${result.reason || 'unknown error'}). Check the email settings in Vercel, or use the WhatsApp panel.`
+    );
   };
 
   // Send enquiry reply
@@ -199,17 +214,22 @@ export const AdminDashboardContent: React.FC = () => {
       footer: `PROPPS PTY LTD · Melbourne VIC 3093 Australia`,
     });
 
-    await sendMail({
+    const result = await adminSendMail({
       to: selectedEnquiry.email,
       subject: `Re: ${selectedEnquiry.subject || 'Production Inquiry'} — ${SITE.name}`,
       html: emailHtml,
       text: replyMessage,
     });
 
-    await updateEnquiryStatus(selectedEnquiry.id, 'replied');
-    await loadData();
+    if (result.sent) {
+      await updateEnquiryStatus(selectedEnquiry.id, 'replied');
+      await loadData();
+    }
     setReplySending(false);
-    setReplySuccess(true);
+    setReplySuccess(result.sent);
+    if (!result.sent) {
+      alert(`Reply was NOT sent (${result.reason || 'unknown error'}). Check the email settings in Vercel.`);
+    }
   };
 
   return (

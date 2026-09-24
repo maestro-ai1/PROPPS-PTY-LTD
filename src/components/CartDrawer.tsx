@@ -60,6 +60,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Calculations
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -101,7 +102,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       ref,
       date: new Date().toISOString(),
       customerName: formData.name,
-      email: formData.email || 'orders-via-whatsapp@proppsptyltd.com.au',
+      email: formData.email,
       phone: formData.phone,
       address: formData.address,
       city: '',
@@ -171,11 +172,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       createdAt: Date.now(),
     };
 
-    await saveOrder(newOrder);
+    const result = await saveOrder(newOrder);
     setIsSubmitting(false);
+    if (!result.ok) {
+      setSubmitError(result.error || 'Your order could not be sent. Please try WhatsApp Order instead.');
+      return;
+    }
+    setSubmitError(null);
     clearCart();
     if (onOrderCompleted) {
-      onOrderCompleted(newOrder);
+      onOrderCompleted({ ...newOrder, ref: result.ref || newOrder.ref });
     }
     onClose();
   };
@@ -488,6 +494,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 <span className="text-[#C5A059]">${finalTotal.toFixed(2)} AUD</span>
               </div>
             </div>
+
+            {submitError && (
+              <p role="alert" className="text-xs text-[#E0533C] font-mono-code flex items-start gap-1.5">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                <span>{submitError}</span>
+              </p>
+            )}
 
             {/* Action Buttons */}
             <div className="grid grid-cols-2 gap-2.5 pt-1">

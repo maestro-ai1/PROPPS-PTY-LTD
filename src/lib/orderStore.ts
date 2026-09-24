@@ -1,182 +1,63 @@
 // src/lib/orderStore.ts
+// Browser-side client for the order API. Orders are stored and emailed by the
+// server (/api/order, /api/admin/orders) - never in browser storage.
 import { StoredOrder } from './order.js';
-import { redisCommand, getRedisCredentials } from './redis.js';
+import { adminFetch } from './adminClient.js';
 
-const REDIS_KEY = 'propps:orders';
-const LOCAL_STORAGE_KEY = 'propps_stored_orders';
+export interface SubmitOrderResult {
+  ok: boolean;
+  ref?: string;
+  emailed?: boolean;
+  error?: string;
+}
 
-// Initial realistic orders for Australian film productions
-const SEED_ORDERS: StoredOrder[] = [
-  {
-    id: 'ord_1',
-    ref: 'PRP-9J42K1',
-    date: new Date(Date.now() - 3600000 * 5).toISOString(),
-    customerName: 'Marcus Vance (Apex Cinema Productions)',
-    email: 'm.vance@apexcinema.com.au',
-    phone: '+61 412 884 921',
-    address: 'Docklands Studios, Stage 3, 476 Docklands Dr',
-    city: 'Docklands',
-    state: 'VIC',
-    postcode: '3008',
-    notes: 'Require non-glare notes for 4K Arri Alexa camera close-ups on casino table scene.',
-    items: [
-      {
-        slug: 'aud-100-full-print-strapped-bundle',
-        name: 'AUD $100 Cinema Series 100-Note Strapped Bundle',
-        price: 320,
-        quantity: 2,
-      },
-      {
-        slug: 'aud-50-full-print-strapped-bundle',
-        name: 'AUD $50 Cinema Series 100-Note Strapped Bundle',
-        price: 310,
-        quantity: 2,
-      },
-    ],
-    subtotal: 1260,
-    shippingFee: 0, // Free over $500
-    discount: 0,
-    total: 1260,
-    paymentMethod: 'bank-transfer',
-    channel: 'email',
-    status: 'pending',
-    createdAt: Date.now() - 3600000 * 5,
-  },
-  {
-    id: 'ord_2',
-    ref: 'PRP-7L88M3',
-    date: new Date(Date.now() - 3600000 * 22).toISOString(),
-    customerName: 'Chloe Sutherland (Swinburne Film Thesis)',
-    email: 'chloe.suth@student.swin.edu.au',
-    phone: '+61 403 912 443',
-    address: '14 Burwood Road',
-    city: 'Hawthorn',
-    state: 'VIC',
-    postcode: '3122',
-    notes: 'Short film bank robbery sequence. Urgent dispatch requested.',
-    items: [
-      {
-        slug: 'aud-mixed-denomination-master-pack',
-        name: 'AUD Mixed Denomination Studio Master Pack ($5, $10, $20, $50, $100)',
-        price: 480,
-        quantity: 1,
-      },
-    ],
-    subtotal: 480,
-    shippingFee: 20,
-    discount: 48, // 10% crypto discount applied
-    total: 452,
-    paymentMethod: 'crypto',
-    channel: 'whatsapp',
-    status: 'payment-sent',
-    createdAt: Date.now() - 3600000 * 22,
-  },
-  {
-    id: 'ord_3',
-    ref: 'PRP-4X19T7',
-    date: new Date(Date.now() - 3600000 * 48).toISOString(),
-    customerName: 'Damian Cross (Outlaw Theatrical Co)',
-    email: 'props@outlawtheatre.com.au',
-    phone: '+61 422 109 883',
-    address: '78 George Street, The Rocks',
-    city: 'Sydney',
-    state: 'NSW',
-    postcode: '2000',
-    notes: 'Touring stage play in Sydney and Brisbane.',
-    items: [
-      {
-        slug: 'film-directors-aluminium-cash-briefcase-kit',
-        name: "The Director's Aluminium Vault Case Kit",
-        price: 1250,
-        quantity: 1,
-      },
-    ],
-    subtotal: 1250,
-    shippingFee: 0,
-    discount: 0,
-    total: 1250,
-    paymentMethod: 'payid',
-    channel: 'email',
-    status: 'dispatched',
-    createdAt: Date.now() - 3600000 * 48,
-  },
-];
-
-function getLocalOrders(): StoredOrder[] {
-  if (typeof window === 'undefined') return SEED_ORDERS;
-  const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-  if (!stored) {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(SEED_ORDERS));
-    return SEED_ORDERS;
-  }
+// Public: called by the cart at checkout (both WhatsApp and email channels).
+export async function saveOrder(order: StoredOrder): Promise<SubmitOrderResult> {
   try {
-    return JSON.parse(stored);
+    const res = await fetch('/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ref: order.ref,
+        customerName: order.customerName,
+        email: order.email,
+        phone: order.phone,
+        address: order.address,
+        paymentMethod: order.paymentMethod,
+        channel: order.channel,
+        items: order.items.map((i) => ({ slug: i.slug, quantity: i.quantity })),
+        website: '',
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok && data.ok !== false, ref: data.ref, emailed: data.emailed, error: data.error };
   } catch {
-    return SEED_ORDERS;
+    return { ok: false, error: 'Network error' };
   }
 }
 
-function saveLocalOrders(orders: StoredOrder[]): void {
-  if (typeof window === 'undefined') return;
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(orders));
-}
-
+// Admin (passcode-gated)
 export async function getOrders(): Promise<StoredOrder[]> {
-  const creds = getRedisCredentials();
-  if (creds) {
-    const raw = await redisCommand(['GET', REDIS_KEY]);
-    if (raw) {
-      try {
-        return JSON.parse(raw);
-      } catch (e) {
-        console.error('Failed to parse redis orders', e);
-      }
-    }
-  }
-  return getLocalOrders();
-}
-
-export async function saveOrder(order: StoredOrder): Promise<void> {
-  const orders = await getOrders();
-  const index = orders.findIndex((o) => o.id === order.id || o.ref === order.ref);
-  let updated: StoredOrder[];
-  if (index >= 0) {
-    updated = [...orders];
-    updated[index] = order;
-  } else {
-    updated = [order, ...orders];
-  }
-
-  saveLocalOrders(updated);
-
-  const creds = getRedisCredentials();
-  if (creds) {
-    await redisCommand(['SET', REDIS_KEY, JSON.stringify(updated)]);
-  }
+  const res = await adminFetch('/api/admin/orders');
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.orders ?? [];
 }
 
 export async function deleteOrder(id: string): Promise<void> {
-  const orders = await getOrders();
-  const updated = orders.filter((o) => o.id !== id && o.ref !== id);
-  saveLocalOrders(updated);
-
-  const creds = getRedisCredentials();
-  if (creds) {
-    await redisCommand(['SET', REDIS_KEY, JSON.stringify(updated)]);
-  }
+  await adminFetch(`/api/admin/orders/${encodeURIComponent(id)}`, { method: 'DELETE' });
 }
 
 export async function updateOrderStatus(
   id: string,
   status: StoredOrder['status']
 ): Promise<StoredOrder | null> {
-  const orders = await getOrders();
-  const order = orders.find((o) => o.id === id || o.ref === id);
-  if (!order) return null;
-
-  order.status = status;
-  await saveOrder(order);
-  return order;
+  const res = await adminFetch(`/api/admin/orders/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ status }),
+  });
+  if (!res.ok) return null;
+  return (await res.json()).order ?? null;
 }
 
 export { getOrders as getAllOrders };
