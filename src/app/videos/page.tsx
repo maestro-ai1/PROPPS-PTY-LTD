@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { JsonLd } from '../../components/JsonLd.js';
+import { VIDEO_FAQS } from '../../config/site.js';
 import { SITE } from '../../config/site.js';
 import { VideosContent } from '../../views/VideosPage.js';
 
@@ -14,6 +15,7 @@ export default function Page() {
   return (
     <>
       <JsonLd type="page" data={{ kind: 'WebPage', name: 'Props Money Denominations Review', path: '/videos/' }} />
+      <JsonLd type="faq" data={VIDEO_FAQS} />
       <VideosContent />
     </>
   );

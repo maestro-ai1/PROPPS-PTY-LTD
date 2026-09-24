@@ -4,9 +4,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, Percent, ShoppingBag, MessageCircle, ArrowLeft, Check, FileCheck } from 'lucide-react';
-import { PRODUCTS, CATEGORIES, SITE } from '../config/site.js';
+import { PRODUCTS, CATEGORIES, SITE, PRODUCT_FAQS } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { Breadcrumb } from '../components/Breadcrumb.js';
+import { FaqSection } from '../components/FaqSection.js';
 import { waLink } from '../lib/whatsapp.js';
 import { useApp } from '../context/AppContext.js';
 
@@ -240,6 +241,13 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
           )}
         </div>
       </div>
+
+      {/* Product FAQs (5 unique questions per product) */}
+      {PRODUCT_FAQS[product.slug] && (
+        <div className="pt-12 border-t border-[#1E2B25]">
+          <FaqSection id="product-faq-heading" heading={`Frequently Asked Questions: ${product.name}`} items={PRODUCT_FAQS[product.slug]} />
+        </div>
+      )}
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (

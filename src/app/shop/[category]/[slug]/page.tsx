@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { SITE, PRODUCTS } from '../../../../config/site.js';
+import { SITE, PRODUCTS, PRODUCT_FAQS } from '../../../../config/site.js';
 import { JsonLd } from '../../../../components/JsonLd.js';
 import { ProductDetailContent } from '../../../../views/ProductDetailPage.js';
 
@@ -45,6 +45,7 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <JsonLd type="product" data={product} />
+      {PRODUCT_FAQS[product.slug] && <JsonLd type="faq" data={PRODUCT_FAQS[product.slug]} />}
       <ProductDetailContent product={product} />
     </>
   );

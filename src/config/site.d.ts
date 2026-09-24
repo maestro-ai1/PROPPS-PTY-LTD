@@ -148,3 +148,11 @@ export declare const COMPLIANCE: {
   ageMinimum: number;
   disclaimer: string;
 };
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export declare const PRODUCT_FAQS: Record<string, FaqItem[]>;
+export declare const VIDEO_FAQS: FaqItem[];

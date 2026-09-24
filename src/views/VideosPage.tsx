@@ -1,5 +1,7 @@
 // src/views/VideosPage.tsx
 import React from 'react';
+import { VIDEO_FAQS } from '../config/site.js';
+import { FaqSection } from '../components/FaqSection.js';
 
 const YOUTUBE_VIDEO_ID = '5akeQV8ZNas';
 const VIDEO_TITLE = 'Review Props Money Denominations: 5s, 10s, 20, 50s, 100s';
@@ -19,6 +21,10 @@ export const VideosContent: React.FC = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         />
+      </div>
+
+      <div className="pt-10">
+        <FaqSection id="video-faq-heading" heading="Prop Money Video: Frequently Asked Questions" items={VIDEO_FAQS} />
       </div>
     </div>
   );

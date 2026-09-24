@@ -128,10 +128,11 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
       category: data.category,
     };
   } else if (type === 'faq') {
+    const faqItems: Array<{ question: string; answer: string }> = data ?? FAQ;
     schema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: FAQ.map((item) => ({
+      mainEntity: faqItems.map((item) => ({
         '@type': 'Question',
         name: item.question,
         acceptedAnswer: {

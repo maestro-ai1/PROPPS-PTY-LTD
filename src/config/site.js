@@ -742,6 +742,260 @@ export const FAQ = [
   }
 ]
 
+// Product-page and video-page FAQs. Each product gets 5 questions built around
+// DIFFERENT low-KD / high-volume keywords from the keyword bank (see
+// docs/keyword-map.md). Numbers come from SHOP/BUNDLE_TIERS so they never drift.
+const legal = (what) => `Yes. Buying ${what} for legitimate film, television, theatre, photography, advertising or training use is legal in Australia when the notes are clearly marked and never made to deceive. Every PROPPS note carries mandatory SPECIMEN markings in line with Crimes (Currency) Act 1981 Section 22 and RBA reproduction guidelines. It is non-legal tender and must never be spent or passed off as real money.`
+const FAQ_SHIP = `Orders ship by Australia Post Express with signature on delivery from Eltham, Melbourne VIC 3093, usually within 24 business hours of payment confirmation. The minimum order is $${SHOP.minOrder} AUD. Delivery is free at $${SHOP.freeShippingThreshold} AUD and above, or a flat $${SHOP.shippingFee} AUD below that.`
+const FAQ_PAY = `Pay by bank transfer (EFT/Osko), PayID or cryptocurrency (Bitcoin, USDT TRC20 or Ethereum). Crypto payments get an automatic ${SHOP.cryptoDiscount}% discount. After you order, we email an invoice with an "Open invoice & pay" page where each payment detail can be copied with one tap or scanned as a QR code.`
+const FAQ_BUNDLES = `Pick a bundle size on this page, from a Starter Stack ($${BUNDLE_TIERS[0].faceValue.toLocaleString('en-AU')} face value, $${BUNDLE_TIERS[0].price} AUD) up to ${BUNDLE_TIERS[5].label} ($${BUNDLE_TIERS[5].faceValue.toLocaleString('en-AU')} face value, $${BUNDLE_TIERS[5].price.toLocaleString('en-AU')} AUD). Different denominations can be combined on one order. For studio-scale quantities, ask about wholesale tiers of 10% to 30% off.`
+
+export const PRODUCT_FAQS = {
+  '5-australian-prop-money-for-sale': [
+    {
+      question: 'What is an Australian five dollar note prop used for?',
+      answer: `Our Australian five dollar note prop is a double-sided, non-legal-tender reproduction made for film, television, theatre, photography and training scenes where small cash exchanges need to look right on camera. It suits till drawers, tip jars, market stalls and pocket money moments. Every note carries mandatory SPECIMEN markings.`
+    },
+    {
+      question: 'Is it legal to buy a 5 dollar note Australia prop?',
+      answer: legal('a 5 dollar note prop')
+    },
+    {
+      question: 'What is the Australian $5 note prop printed on?',
+      answer: `The Australian $5 note prop is printed double-sided on matte archival paper rather than polymer. The matte finish avoids glare under studio lighting, handles naturally in counting scenes, and stays clearly distinguishable from genuine currency.`
+    },
+    {
+      question: 'How do bundles work for the Australian 5 dollar note?',
+      answer: FAQ_BUNDLES
+    },
+    {
+      question: 'Can I order five dollar note Australia props online with express delivery?',
+      answer: `Yes, order online or via WhatsApp. ${FAQ_SHIP}`
+    }
+  ],
+  '10-australian-prop-money-for-sale': [
+    {
+      question: 'What is a 10 dollar Australian note prop used for?',
+      answer: `The 10 dollar Australian note prop is a non-legal-tender, double-sided reproduction for productions that need everyday cash: bar tabs, taxi fares, market purchases and small payoffs. It is made for film, TV, theatre, photography and training use only, with SPECIMEN markings on every note.`
+    },
+    {
+      question: 'Is an Australian $10 note prop legal to own and film with?',
+      answer: legal('an Australian $10 note prop')
+    },
+    {
+      question: 'Can I buy 10 dollar notes Australia props in bulk?',
+      answer: `Yes. ${FAQ_BUNDLES}`
+    },
+    {
+      question: 'How realistic is the $10 note Australia prop on camera?',
+      answer: `It is printed in high-definition on both sides on matte archival paper, so it reads as convincing cash in close-ups without the reflective sheen that causes glare under lights. It is deliberately not made of polymer, which keeps it clearly a prop.`
+    },
+    {
+      question: 'How fast can 10$ note Australia props be delivered?',
+      answer: FAQ_SHIP
+    }
+  ],
+  '20-australian-prop-money-for-sale': [
+    {
+      question: 'What is the Australian twenty dollar prop note for?',
+      answer: `The Australian twenty dollar prop note is a double-sided, non-legal-tender reproduction for scenes with mid-range cash: payments, tips, deals and wallet shots. It is supplied for film, television, theatre, photography and training productions, with SPECIMEN markings on every note.`
+    },
+    {
+      question: 'Is the Australian 20 dollar note prop legal tender?',
+      answer: `No. It is strictly non-legal tender and must never be spent, circulated or used to deceive anyone. It is legal to own as a marked prop for production use, and every note carries SPECIMEN markings in line with Crimes (Currency) Act 1981 Section 22.`
+    },
+    {
+      question: 'What does the Australian $20 note prop look like on camera?',
+      answer: `It has a high-definition double-sided print on premium matte archival paper, which photographs cleanly under studio and location lighting without the glare that polymer notes can cause. The specimen markings keep it compliant while it still reads as realistic cash on screen.`
+    },
+    {
+      question: 'Can I get aus 20 dollar note props for a stage or theatre show?',
+      answer: `Yes. Our aus 20 dollar note props suit stage use because the matte paper does not glare under stage lighting. Order a Starter Stack for a small cast, or larger bundles for long runs. Studio and theatre buyers can also ask about wholesale tiers.`
+    },
+    {
+      question: 'How do I pay for Australian 20 dollar bill props?',
+      answer: FAQ_PAY
+    }
+  ],
+  '50-australian-prop-money-for-sale': [
+    {
+      question: 'What is the 50 dollar note Australia prop used for?',
+      answer: `The 50 dollar note Australia prop is a go-to denomination for deals, payoffs and cash-handling scenes in film, television, theatre and photography. It is a non-legal-tender, double-sided reproduction with SPECIMEN markings on every note.`
+    },
+    {
+      question: 'Is buying an aus 50 dollar note prop legal?',
+      answer: legal('an aus 50 dollar note prop')
+    },
+    {
+      question: 'How is the Australian 50 dollar note prop different from real money?',
+      answer: `It is printed on matte archival paper instead of polymer and carries prominent non-negotiable SPECIMEN markings, so it cannot pass as genuine currency. That difference is what keeps it compliant with Crimes (Currency) Act 1981 Section 22 and RBA reproduction guidelines.`
+    },
+    {
+      question: 'Do you sell a 50 dollar bill Australia prop for photo shoots?',
+      answer: `Yes. Photographers and content creators buy the 50 dollar bill Australia prop for editorial, commercial and social media shoots. It is made for photography and other legitimate simulation use, not for spending. Choose a bundle size on this page, from a Starter Stack up to studio-scale quantities.`
+    },
+    {
+      question: 'What is the minimum order for Australian $50 note props?',
+      answer: FAQ_SHIP
+    }
+  ],
+  '100-australian-prop-money-for-sale': [
+    {
+      question: 'What is a 100 dollar note Australia prop?',
+      answer: `The 100 dollar note Australia prop is a double-sided, non-legal-tender reproduction of a $100 design, made for film, television, theatre, photography and training scenes. It is our best-selling denomination for large payoffs, heist reveals and stacked cash, with SPECIMEN markings on every note.`
+    },
+    {
+      question: 'Are Australian 100 dollar note props legal to buy?',
+      answer: legal('Australian 100 dollar note props')
+    },
+    {
+      question: 'Why is the aus 100 dollar note prop so popular with productions?',
+      answer: `Higher denominations fill a frame with visible value quickly, so art departments use the aus 100 dollar note prop for briefcase, table and stack shots. The double-sided print and matte archival paper look convincing on camera and avoid glare.`
+    },
+    {
+      question: 'What bundle sizes are available for the Australian 100 dollar banknote prop?',
+      answer: FAQ_BUNDLES
+    },
+    {
+      question: 'Can I pay for Australian $100 note props with crypto?',
+      answer: FAQ_PAY
+    }
+  ],
+  'film-and-tv-prop-currency-pack': [
+    {
+      question: 'Where can I buy film props in Australia for a cash scene?',
+      answer: `You can buy film props online from PROPPS PTY LTD in Melbourne. The Film & TV Prop Currency Pack is curated for cash-handling, transaction and reveal scenes, with non-legal-tender SPECIMEN markings on every note. ${FAQ_SHIP}`
+    },
+    {
+      question: 'Are your film props for sale or for prop hire in Melbourne?',
+      answer: `We sell prop currency rather than hiring it out. Buying means the notes are yours to dress, handle and reshoot with, and you never have to return cash that gets worn or marked during a shoot. Production companies can request wholesale pricing for larger orders.`
+    },
+    {
+      question: 'Do you have movie set props for sale beyond cash?',
+      answer: `Our specialty is cinema-grade Australian prop currency, so we focus on cash for scenes rather than general furniture or set dressing. If your art department needs notes in volume, we supply single stacks through to studio-scale quantities.`
+    },
+    {
+      question: 'Is movie prop money Australia safe to use on camera?',
+      answer: `Yes, when it is clearly marked. Our movie prop money carries mandatory SPECIMEN indicators and is printed on matte archival paper that avoids reflections. Use it only for production, never as real money.`
+    },
+    {
+      question: 'Can production companies get film props for sale in bulk?',
+      answer: `Yes. Film and TV productions can order bulk quantities with tiered wholesale discounts of 10% to 30% off. ${FAQ_BUNDLES}`
+    }
+  ],
+  'bulk-money-stack-pack': [
+    {
+      question: 'What is a stack of Australian money prop?',
+      answer: `It is a bundle of non-legal-tender prop notes strapped together the way cash is banded for bank and vault scenes. The Bulk Money Stack Pack gives production designers large visible cash volumes for heist, vault and bank sequences, with SPECIMEN markings on every note.`
+    },
+    {
+      question: 'How many stacks of Australian money do I need for a heist scene?',
+      answer: `It depends on the shot. Hero stacks visible in close-up need only a few, while a vault wall or a briefcase full of cash needs many more, because most of the volume sits in the background. Start with a Starter Stack, then scale up to 5, 10 or 50 Stacks for wide shots.`
+    },
+    {
+      question: 'Are prop bundles of money Australia strapped like real bank bundles?',
+      answer: `They are supplied as strapped stacks for a realistic on-camera look, while still being obviously non-legal tender. Every note carries SPECIMEN markings, and the paper is matte archival stock rather than polymer.`
+    },
+    {
+      question: 'Can I order bulk prop money in Australia for an escape room or theatre?',
+      answer: `Yes. Escape rooms, theatres, training providers and studios order bulk prop money regularly. ${FAQ_BUNDLES}`
+    },
+    {
+      question: 'Is a money stack Australia prop legal to own?',
+      answer: legal('a money stack prop')
+    }
+  ],
+  'photography-prop-currency-set': [
+    {
+      question: 'Can I use prop money for a photoshoot?',
+      answer: `Yes. The Photography Prop Currency Set is made for editorial, commercial, product and social media shoots. Use it as clearly marked prop currency, never as real money, and keep the SPECIMEN markings visible.`
+    },
+    {
+      question: 'Will prop dollar bills look real in close-up photography?',
+      answer: `They are printed in high definition on both sides on matte archival paper, so they hold detail in close-ups and avoid the reflections that spoil shots. The SPECIMEN markings are part of the design and keep the set compliant.`
+    },
+    {
+      question: 'Is imitation money legal for commercial and social media content?',
+      answer: `Imitation money is legal for content when it is clearly marked and not used to deceive. Our set carries SPECIMEN markings. Creators should avoid presenting it as real cash in a misleading way, for example in giveaway or scam-style videos.`
+    },
+    {
+      question: 'What makes realistic money good for photography?',
+      answer: `Matte, non-reflective paper with a sharp double-sided print. Glossy or polymer-like surfaces catch strobes and window light. Our archival paper stays even under flash, so a fanned stack or a single note photographs cleanly.`
+    },
+    {
+      question: 'How do I get prop cash for a shoot on a tight deadline?',
+      answer: `Order online or by WhatsApp and choose Australia Post Express. ${FAQ_SHIP}`
+    }
+  ],
+  'event-and-party-prop-cash-pack': [
+    {
+      question: 'Where can I buy play money Australia for a party or event?',
+      answer: `The Event & Party Prop Cash Pack is novelty prop cash for parties, themed events and entertainment. Order online from Melbourne. ${FAQ_SHIP}`
+    },
+    {
+      question: 'Is this Australian play money suitable for childrens play money games?',
+      answer: `It is realistic-looking prop cash designed for events and themed entertainment, not a toy for unsupervised young children. For kids' games and learning, read our guide to toy and play money, and keep any prop currency for adult-supervised use.`
+    },
+    {
+      question: 'Is toy money Australia the same as prop money?',
+      answer: `Not quite. Australian toy money is usually brightly coloured and clearly unlike real notes, while prop money is a realistic reproduction for productions. Both must be clearly non-legal tender. Our pack sits at the realistic end, with SPECIMEN markings on every note.`
+    },
+    {
+      question: 'Can I use Australia play money as a bucks-night or party prop?',
+      answer: `Yes, as a prop only. Never spend it or hand it to a business or machine as real cash, and keep the SPECIMEN markings visible.`
+    },
+    {
+      question: 'Can I order novelty prop money Australia in bulk for an event?',
+      answer: `Yes. Event planners can order larger bundles for themed nights, festivals and promotions. ${FAQ_BUNDLES}`
+    }
+  ],
+  'custom-and-branded-prop-currency': [
+    {
+      question: 'Can you do custom prop money printing in Australia?',
+      answer: `Yes. We produce custom and branded prop currency for agencies, brands and special productions. Contact our studio with your idea, and we will discuss denominations, artwork and branding. Every custom note keeps mandatory non-legal-tender markings.`
+    },
+    {
+      question: 'What is branded prop currency for campaigns?',
+      answer: `Branded prop currency is made-to-order cash with your artwork, logo or campaign theme, used for promotions, events, product launches and film-style content. It is designed to be clearly a prop, never a copy that could be mistaken for genuine currency.`
+    },
+    {
+      question: 'Is custom prop money legal in Australia?',
+      answer: `Yes, provided it is not made to deceive and follows Crimes (Currency) Act 1981 Section 22 and RBA reproduction guidelines. We will not produce anything that could pass as genuine legal tender. Every design keeps mandatory specimen markings.`
+    },
+    {
+      question: 'How do I order prop money online for a custom job?',
+      answer: `Send a message through our contact form or WhatsApp with your concept, quantity and deadline. We reply with a quote and next steps. Standard orders have a $${SHOP.minOrder} AUD minimum, and payment options include bank transfer, PayID and crypto.`
+    },
+    {
+      question: 'Can I buy branded prop money for an agency in bulk?',
+      answer: `Yes. Agencies and brands can request quantity pricing. ${FAQ_BUNDLES}`
+    }
+  ]
+}
+
+export const VIDEO_FAQS = [
+  {
+    question: 'Which denominations are shown in the prop money video?',
+    answer: `The video reviews every Australian prop note denomination we supply: the $5, $10, $20, $50 and $100. Each is a double-sided, non-legal-tender reproduction with SPECIMEN markings, made for film, TV, theatre, photography and training use.`
+  },
+  {
+    question: 'What is props money and who uses it?',
+    answer: `Props money is reproduction currency made for productions rather than spending. Film and TV art departments, theatre companies, photographers, content creators and training providers use it whenever a scene needs cash that looks right on camera.`
+  },
+  {
+    question: 'How realistic does Australian prop money look on camera?',
+    answer: `Australian prop money from PROPPS is printed in high definition on both sides on matte archival paper, so it reads as convincing cash in close-ups without glare. The mandatory SPECIMEN markings keep it clearly non-legal tender.`
+  },
+  {
+    question: 'Where can I buy the prop cash shown in the video?',
+    answer: `You can buy every denomination in the video online at PROPPS PTY LTD, straight from our shop. ${FAQ_SHIP}`
+  },
+  {
+    question: 'Are the notes in the video legal tender or just prop dollars?',
+    answer: `They are prop dollars only. They are non-legal tender, must never be spent, and are supplied strictly for motion picture, television, theatre, photography and training use, with SPECIMEN markings on every note.`
+  }
+]
+
 export const COMPLIANCE = {
   bannedTerms: [
     'counterfeit',
