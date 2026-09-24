@@ -1,93 +1,78 @@
 // src/views/AdminDashboardPage.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import {
-  Lock,
-  Package,
-  Inbox,
-  Send,
-  Trash2,
-  CheckCircle,
-  Clock,
-  MessageCircle,
-  Mail,
-  Copy,
-  ExternalLink,
-  ChevronRight,
-  RefreshCw,
-  LogOut,
-  Building,
-  DollarSign,
-} from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Trash2, ArrowLeft, RefreshCw, Copy, Check, Mail, MessageCircle } from 'lucide-react';
 import { useAdminPasscode } from '../lib/useAdminPasscode.js';
 import { PasscodeGate } from '../components/admin/PasscodeGate.js';
-import { WhatsAppSendPanel } from '../components/admin/WhatsAppSendPanel.js';
-import { CopyField } from '../components/CopyField.js';
-import { StoredOrder } from '../lib/order.js';
+import { StoredOrder, paymentTermsLines, paymentTermsHtml } from '../lib/order.js';
+import { getAllOrders, deleteOrder, setOrderStatus, sendInvoice, getPaymentDefaultsClient } from '../lib/orderStore.js';
+import { StoredEnquiry, getAllEnquiries, deleteEnquiry, updateEnquiryStatus } from '../lib/enquiryStore.js';
 import {
-  getAllOrders,
-  deleteOrder,
-  setOrderStatus,
-  sendInvoice,
-  getPaymentDefaultsClient,
-} from '../lib/orderStore.js';
-import { PAY_METHOD_IDS, PAY_METHOD_LABEL, applyDefaults, blankPayText, linesToText, parsePayText, type PayLinesByMethod, type PayMethodId, type PayTextByMethod } from '../lib/payment.js';
-import {
-  StoredEnquiry,
-  getAllEnquiries,
-  deleteEnquiry,
-  updateEnquiryStatus,
-} from '../lib/enquiryStore.js';
-import {
-  paymentTermsLines,
-  paymentTermsHtml,
-  instructionsParts,
-} from '../lib/order.js';
+  PAY_METHOD_IDS,
+  PAY_METHOD_LABEL,
+  applyDefaults,
+  blankPayText,
+  linesToText,
+  parsePayText,
+  type PayLinesByMethod,
+  type PayMethodId,
+  type PayTextByMethod,
+} from '../lib/payment.js';
 import { buildEmailHtml } from '../lib/emailTemplate.js';
 import { buildInvoiceHtml } from '../lib/invoiceTemplate.js';
 import { adminSendMail } from '../lib/adminClient.js';
-import { SITE, REPLY, SHOP } from '../config/site.js';
+import { waLink, waPaymentDetailsMessage } from '../lib/whatsapp.js';
+import { SITE, SHOP } from '../config/site.js';
+
+type Tab = 'dashboard' | 'orders' | 'enquiries' | 'order' | 'enquiry';
+
+const STATUS_STYLE: Record<string, string> = {
+  pending: 'bg-[#2A2413] text-[#E5C378] border-[#C5A059]/50',
+  'payment-sent': 'bg-[#122A1E] text-[#56C48B] border-[#56C48B]/50',
+  paid: 'bg-[#56C48B] text-[#0D1512] border-[#56C48B]',
+  dispatched: 'bg-[#12222A] text-[#6CB6E8] border-[#6CB6E8]/50',
+  cancelled: 'bg-[#2A1414] text-[#E0533C] border-[#E0533C]/50',
+  new: 'bg-[#2A2413] text-[#E5C378] border-[#C5A059]/50',
+  replied: 'bg-[#122A1E] text-[#56C48B] border-[#56C48B]/50',
+  archived: 'bg-[#1C1C1C] text-[#889690] border-[#3A3A3A]',
+};
+
+const badge = 'px-2 py-0.5 rounded border text-[10px] font-bold uppercase tracking-wider';
+const label = 'block text-[11px] font-bold uppercase tracking-widest text-[#889690] mb-1.5';
+const field =
+  'w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl px-4 py-3 text-base text-[#F8F6F0] focus:border-[#C5A059] focus:outline-none';
+const when = (ts: number) =>
+  new Date(ts).toLocaleString('en-AU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
 
 export const AdminDashboardContent: React.FC = () => {
   const { isUnlocked, unlock, lock, error } = useAdminPasscode();
 
-  // Navigation tab inside admin
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'orders' | 'enquiries' | 'send-payment' | 'reply-enquiry'>('dashboard');
-
-  // State data
+  const [tab, setTab] = useState<Tab>('dashboard');
   const [orders, setOrders] = useState<StoredOrder[]>([]);
   const [enquiries, setEnquiries] = useState<StoredEnquiry[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Selected item for payment / reply composers
-  const [selectedOrder, setSelectedOrder] = useState<StoredOrder | null>(null);
-  const [selectedEnquiry, setSelectedEnquiry] = useState<StoredEnquiry | null>(null);
-
-  // Payment Composer State: one paste box per payment method
+  // Send payment details
+  const [order, setOrder] = useState<StoredOrder | null>(null);
+  const [method, setMethod] = useState<PayMethodId>('bank-transfer');
+  const [mode, setMode] = useState<'template' | 'paste'>('template');
+  const [templates, setTemplates] = useState<PayTextByMethod>(() => blankPayText(''));
   const [payText, setPayText] = useState<PayTextByMethod>(() => blankPayText(''));
-  const [activeMethod, setActiveMethod] = useState<PayMethodId>('bank-transfer');
-  const [saveDefaults, setSaveDefaults] = useState(true);
-  const [emailSending, setEmailSending] = useState(false);
-  const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
-  const [invoiceLink, setInvoiceLink] = useState<string | null>(null);
-  // Enquiry Reply State
-  const [replyMessage, setReplyMessage] = useState('');
-  const [replySending, setReplySending] = useState(false);
-  const [replySuccess, setReplySuccess] = useState(false);
+  const [note, setNote] = useState('');
+  const [sending, setSending] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const [copied, setCopied] = useState<string | null>(null);
 
-  // Fetch orders & enquiries
+  // Enquiry reply
+  const [enquiry, setEnquiry] = useState<StoredEnquiry | null>(null);
+  const [reply, setReply] = useState('');
+
   const loadData = async () => {
     setLoading(true);
     try {
       const [o, e] = await Promise.all([getAllOrders(), getAllEnquiries()]);
-      const normalizedOrders: StoredOrder[] = o.map((ord) => ({
-        ...ord,
-        orderRef: ord.orderRef || ord.ref,
-        customerEmail: ord.customerEmail || ord.email,
-        totalAmount: ord.totalAmount ?? ord.total,
-      }));
-      setOrders(normalizedOrders);
+      setOrders(o);
       setEnquiries(e);
     } catch (err) {
       console.error('Failed to load admin data:', err);
@@ -97,843 +82,534 @@ export const AdminDashboardContent: React.FC = () => {
   };
 
   useEffect(() => {
-    if (isUnlocked) {
-      loadData();
-    }
+    if (isUnlocked) loadData();
   }, [isUnlocked]);
 
-  // If not unlocked, render PasscodeGate
-  if (!isUnlocked) {
-    return <PasscodeGate onUnlock={unlock} error={error} />;
-  }
+  if (!isUnlocked) return <PasscodeGate onUnlock={unlock} error={error} />;
 
-  // Handle Order Deletion
-  const handleDeleteOrder = async (id: string) => {
-    if (confirm('Are you sure you want to delete this order?')) {
-      await deleteOrder(id);
-      await loadData();
-      if (selectedOrder?.id === id) setSelectedOrder(null);
+  const pendingCount = orders.filter((o) => o.status === 'pending' || o.status === 'payment-sent').length;
+  const newCount = enquiries.filter((e) => e.status === 'new').length;
+  const claimedPaid = orders.filter((o) => o.paymentNotifiedAt && o.status !== 'paid' && o.status !== 'dispatched' && o.status !== 'cancelled').length;
+
+  const copy = async (key: string, text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(key);
+      setTimeout(() => setCopied(null), 1800);
+    } catch {
+      /* clipboard unavailable */
     }
   };
 
-  // Handle Enquiry Deletion
-  const handleDeleteEnquiry = async (id: string) => {
-    if (confirm('Are you sure you want to delete this enquiry?')) {
-      await deleteEnquiry(id);
-      await loadData();
-      if (selectedEnquiry?.id === id) setSelectedEnquiry(null);
-    }
-  };
-
-  // Open the invoice composer: client details and the method the client chose are
-  // pre-filled; saved payment details are loaded into the paste boxes.
-  const handleStartPaymentEmail = async (order: StoredOrder) => {
-    const ref = order.orderRef || order.ref;
-    setSelectedOrder(order);
-    setActiveMethod((PAY_METHOD_IDS as string[]).includes(order.paymentMethod) ? (order.paymentMethod as PayMethodId) : 'bank-transfer');
-    setPayText(blankPayText(ref));
-    setInvoiceLink(order.invoice ? `https://${SITE.domain}/invoice/?t=${order.invoice.token}` : null);
-    setActiveTab('send-payment');
-    setEmailSuccess(null);
-    const defaults = await getPaymentDefaultsClient();
-    const lines = applyDefaults(defaults, ref);
+  // ---- Orders -------------------------------------------------------------
+  const openOrder = async (o: StoredOrder) => {
+    setOrder(o);
+    setMethod((PAY_METHOD_IDS as string[]).includes(o.paymentMethod) ? (o.paymentMethod as PayMethodId) : 'bank-transfer');
+    setMode('template');
+    setNote('');
+    setMessage(null);
+    const blank = blankPayText(o.ref);
+    setTemplates(blank);
+    setPayText(blank);
+    setTab('order');
+    const lines: PayLinesByMethod = applyDefaults(await getPaymentDefaultsClient(), o.ref);
     const text: PayTextByMethod = {
       'bank-transfer': linesToText(lines['bank-transfer']),
       payid: linesToText(lines.payid),
       crypto: linesToText(lines.crypto),
     };
-    if (order.invoice) text[order.invoice.method] = linesToText(order.invoice.lines);
+    if (o.invoice) text[o.invoice.method] = linesToText(o.invoice.lines);
+    setTemplates(text);
     setPayText(text);
   };
-  // Mark an order paid / dispatched. Marking paid emails the client a thank-you.
-  const handleSetStatus = async (order: StoredOrder, status: StoredOrder['status']) => {
-    if (status === 'paid' && !confirm('Mark as paid? This automatically emails the client a payment-received thank-you.')) return;
-    const { order: saved, thankYouSent } = await setOrderStatus(order.id, status);
-    if (!saved) {
+
+  const removeOrder = async (id: string) => {
+    if (!confirm('Delete this order?')) return;
+    await deleteOrder(id);
+    await loadData();
+  };
+
+  const chooseMode = (next: 'template' | 'paste') => {
+    setMode(next);
+    setPayText((prev) => ({ ...prev, [method]: next === 'template' ? templates[method] : '' }));
+  };
+
+  const totalFor = (o: StoredOrder, m: PayMethodId) =>
+    o.subtotal + o.shippingFee - (m === 'crypto' ? Math.round(o.subtotal * (SHOP.cryptoDiscount / 100)) : 0);
+
+  const sendToCustomer = async () => {
+    if (!order) return;
+    const lines = parsePayText(payText[method]);
+    if (lines.length === 0) {
+      alert('Type or paste the payment details first.');
+      return;
+    }
+    setSending(true);
+    setMessage(null);
+    const allLines = Object.fromEntries(PAY_METHOD_IDS.map((id) => [id, parsePayText(payText[id])])) as PayLinesByMethod;
+    const result = await sendInvoice({ orderId: order.id, method, lines, note, saveDefaults: true, allLines });
+    setSending(false);
+    if (result.sent && result.order) {
+      setOrder(result.order);
+      setMessage(`Sent to ${order.email}. Status is now payment-sent.`);
+      await loadData();
+    } else {
+      setMessage(`NOT sent (${result.reason || 'unknown error'}). Try again, or send by WhatsApp below.`);
+    }
+  };
+
+  const setStatus = async (status: StoredOrder['status']) => {
+    if (!order) return;
+    if (status === 'paid' && !confirm('Mark as paid? The customer is automatically emailed a payment-received thank-you.')) return;
+    const res = await setOrderStatus(order.id, status);
+    if (!res.order) {
       alert('Could not update the order.');
       return;
     }
+    setOrder(res.order);
     await loadData();
-    if (status === 'paid') alert(thankYouSent ? 'Marked paid. Thank-you email sent to the client.' : 'Marked paid, but the thank-you email could not be sent.');
-  };
-  // Open Enquiry Reply Composer
-  const handleStartEnquiryReply = (enquiry: StoredEnquiry) => {
-    setSelectedEnquiry(enquiry);
-    setReplyMessage(`Dear ${enquiry.name},\n\nThank you for contacting PROPPS PTY LTD regarding your production requirements.\n\nOur Melbourne studio dispatch team has reviewed your inquiry...`);
-    setActiveTab('reply-enquiry');
-    setReplySuccess(false);
+    setMessage(
+      status === 'paid'
+        ? res.thankYouSent
+          ? 'Marked paid. Thank-you email sent to the customer.'
+          : 'Marked paid, but the thank-you email could not be sent.'
+        : `Status is now ${status}.`
+    );
   };
 
-  // Dispatch the invoice email (branded invoice + "open invoice & pay" page)
-  const handleSendPaymentEmail = async () => {
-    if (!selectedOrder) return;
-    const lines = parsePayText(payText[activeMethod]);
-    if (lines.length === 0) {
-      alert('Paste or type the payment details in the box first.');
-      return;
-    }
-    if (!selectedOrder.email) {
-      setEmailSuccess('This order has no customer email (WhatsApp order). Use the WhatsApp option instead.');
-      return;
-    }
-    setEmailSending(true);
-    setEmailSuccess(null);
-    const allLines = Object.fromEntries(PAY_METHOD_IDS.map((id) => [id, parsePayText(payText[id])])) as PayLinesByMethod;
-    const result = await sendInvoice({ orderId: selectedOrder.id, method: activeMethod, lines, saveDefaults, allLines });
-    setEmailSending(false);
-    if (result.sent && result.order) {
-      setSelectedOrder({ ...result.order, orderRef: result.order.ref, customerEmail: result.order.email, totalAmount: result.order.total });
-      setInvoiceLink(result.order.invoice ? `https://${SITE.domain}/invoice/?t=${result.order.invoice.token}` : null);
-      setEmailSuccess(`Invoice emailed to ${selectedOrder.email}. Status is now payment-sent.`);
-      await loadData();
-    } else {
-      setEmailSuccess(`Invoice was NOT sent (${result.reason || 'unknown error'}). Check the email settings in Vercel, or use WhatsApp.`);
-    }
+  // ---- Enquiries ----------------------------------------------------------
+  const openEnquiry = (e: StoredEnquiry) => {
+    setEnquiry(e);
+    setReply(`Dear ${e.name},\n\nThank you for contacting ${SITE.name}.\n\n\n\nKind regards,\n${SITE.name}`);
+    setMessage(null);
+    setTab('enquiry');
   };
-  // Send enquiry reply
-  const handleSendEnquiryReply = async () => {
-    if (!selectedEnquiry) return;
-    setReplySending(true);
 
-    const emailHtml = buildEmailHtml({
-      title: `Reply to your inquiry — ${SITE.name}`,
-      intro: `Thank you for contacting our Melbourne studio. Please find our response below:`,
-      rows: [
-        { label: 'Inquiry Reference', value: selectedEnquiry.id, mono: true },
-        { label: 'Response', value: replyMessage, block: true },
-      ],
-      footer: `PROPPS PTY LTD · Melbourne VIC 3093 Australia`,
-    });
+  const removeEnquiry = async (id: string) => {
+    if (!confirm('Delete this enquiry?')) return;
+    await deleteEnquiry(id);
+    await loadData();
+  };
 
+  const sendReply = async () => {
+    if (!enquiry) return;
+    setSending(true);
+    setMessage(null);
     const result = await adminSendMail({
-      to: selectedEnquiry.email,
-      subject: `Re: ${selectedEnquiry.subject || 'Production Inquiry'} — ${SITE.name}`,
-      html: emailHtml,
-      text: replyMessage,
+      to: enquiry.email,
+      subject: `Re: ${enquiry.subject || 'Your enquiry'} — ${SITE.name}`,
+      html: buildEmailHtml({
+        title: `Reply to your enquiry`,
+        intro: `Thank you for contacting ${SITE.name}. Our reply is below.`,
+        rows: [
+          { label: 'Reference', value: enquiry.ref, mono: true },
+          { label: 'Reply', value: reply, block: true },
+        ],
+      }),
+      text: reply,
     });
-
+    setSending(false);
     if (result.sent) {
-      await updateEnquiryStatus(selectedEnquiry.id, 'replied');
+      await updateEnquiryStatus(enquiry.id, 'replied');
       await loadData();
-    }
-    setReplySending(false);
-    setReplySuccess(result.sent);
-    if (!result.sent) {
-      alert(`Reply was NOT sent (${result.reason || 'unknown error'}). Check the email settings in Vercel.`);
+      setMessage(`Reply sent to ${enquiry.email}.`);
+    } else {
+      setMessage(`NOT sent (${result.reason || 'unknown error'}).`);
     }
   };
 
-  return (
-    <div className="min-h-screen bg-[#090D0B] text-[#B4C0BA] pb-20">
-      {/* Admin Top Navigation Bar */}
-      <div className="bg-[#0E1513] border-b border-[#1E2B25] sticky top-20 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-[#141E1A] border border-[#C5A059] flex items-center justify-center text-[#C5A059] font-serif-luxury font-bold text-xs">
-                  P
-                </div>
-                <span className="font-serif-luxury font-bold text-sm text-[#F8F6F0]">
-                  {SITE.name} PORTAL
-                </span>
+  // ---- Screens ------------------------------------------------------------
+  const navBtn = (id: Tab, text: string, active: boolean) => (
+    <button
+      type="button"
+      onClick={() => setTab(id)}
+      className={`min-h-12 rounded-xl border px-1 text-[10.5px] font-bold uppercase tracking-wide transition-colors ${
+        active ? 'border-[#C5A059] text-[#E5C378] bg-[#1A1710]' : 'border-[#22302A] text-[#F8F6F0] bg-[#0E1513] hover:border-[#C5A059]/60'
+      }`}
+    >
+      {text}
+    </button>
+  );
+
+  const orderScreen = () => {
+    if (!order) return null;
+    const total = totalFor(order, method);
+    const isChosen = (id: PayMethodId) => order.paymentMethod === id;
+    const lines = parsePayText(payText[method]);
+    const previewHtml = buildInvoiceHtml({
+      order: {
+        ref: order.ref,
+        date: order.invoice ? new Date(order.invoice.sentAt).toISOString() : new Date().toISOString(),
+        customerName: order.customerName,
+        email: order.email,
+        phone: order.phone,
+        address: order.address,
+        paymentMethod: method,
+        items: order.items,
+        subtotal: order.subtotal,
+        shippingFee: order.shippingFee,
+        discount: method === 'crypto' ? Math.round(order.subtotal * (SHOP.cryptoDiscount / 100)) : 0,
+        total,
+      },
+      lines,
+      note,
+      termsHtml: paymentTermsHtml(order.ref, method),
+      openUrl: `https://${SITE.domain}/invoice/`,
+      intro: `Thank you ${order.customerName}. Your invoice and payment details are below.`,
+    });
+    const waMessage = waPaymentDetailsMessage({ ...order, paymentMethod: method, total }, payText[method]);
+    const invoiceLink = order.invoice ? `https://${SITE.domain}/invoice/?t=${order.invoice.token}` : null;
+
+    return (
+      <div className="space-y-5">
+        <button type="button" onClick={() => setTab('orders')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#22302A] px-4 text-xs font-bold uppercase tracking-wider text-[#F8F6F0]">
+          <ArrowLeft className="h-4 w-4" /> All orders
+        </button>
+        <div>
+          <h2 className="font-serif-luxury text-2xl font-bold text-[#F8F6F0]">SEND PAYMENT DETAILS</h2>
+          <p className="text-sm text-[#889690]">Fill in the details, review the preview below, then send.</p>
+        </div>
+
+        {message && (
+          <div className={`rounded-xl border p-4 text-sm ${message.startsWith('NOT') ? 'border-[#E0533C] text-[#E0533C]' : 'border-[#56C48B] text-[#56C48B]'}`}>
+            {message}
+          </div>
+        )}
+
+        <div className="space-y-4 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 sm:p-5">
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <span className={label}>Order #</span>
+              <input readOnly value={order.ref} className={field} />
+            </div>
+            <div>
+              <span className={label}>Amount due</span>
+              <input readOnly value={`$${total.toFixed(2)}`} className={field} />
+            </div>
+          </div>
+          <div>
+            <span className={label}>Customer name</span>
+            <input readOnly value={order.customerName} className={field} />
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div>
+              <span className={label}>Customer email *</span>
+              <input readOnly value={order.email || '(none - WhatsApp order)'} className={field} />
+            </div>
+            <div>
+              <span className={label}>Customer phone</span>
+              <input readOnly value={order.phone} className={field} />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="pay-method" className={label}>
+              Payment method
+            </label>
+            <select id="pay-method" value={method} onChange={(e) => setMethod(e.target.value as PayMethodId)} className={field}>
+              {PAY_METHOD_IDS.map((id) => (
+                <option key={id} value={id}>
+                  {PAY_METHOD_LABEL[id]}
+                  {isChosen(id) ? '  (customer chose this)' : ''}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <div className="mb-1.5 flex items-center justify-between">
+              <label htmlFor="pay-details" className="text-[11px] font-bold uppercase tracking-widest text-[#889690]">
+                Payment details *
+              </label>
+              <div className="flex overflow-hidden rounded-lg border border-[#2C3E36] text-[11px] font-bold uppercase">
+                {(['template', 'paste'] as const).map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => chooseMode(m)}
+                    className={`min-h-9 px-3 ${mode === m ? 'bg-[#C5A059] text-[#0D1512]' : 'bg-[#0A0F0D] text-[#B4C0BA]'}`}
+                  >
+                    {m}
+                  </button>
+                ))}
               </div>
-
-              {/* Navigation Tabs */}
-              <nav className="hidden sm:flex items-center gap-1 text-xs font-mono-code">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('dashboard')}
-                  className={`px-3 py-1.5 rounded-lg transition-colors ${
-                    activeTab === 'dashboard'
-                      ? 'bg-[#1C2A24] text-[#C5A059] font-bold'
-                      : 'text-[#889690] hover:text-white'
-                  }`}
-                >
-                  Dashboard
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('orders')}
-                  className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 ${
-                    activeTab === 'orders'
-                      ? 'bg-[#1C2A24] text-[#C5A059] font-bold'
-                      : 'text-[#889690] hover:text-white'
-                  }`}
-                >
-                  <span>Orders</span>
-                  <span className="px-1.5 py-0.2 rounded-full bg-[#121A16] text-[10px] text-[#C5A059] border border-[#22302A]">
-                    {orders.length}
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('enquiries')}
-                  className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 ${
-                    activeTab === 'enquiries'
-                      ? 'bg-[#1C2A24] text-[#C5A059] font-bold'
-                      : 'text-[#889690] hover:text-white'
-                  }`}
-                >
-                  <span>Enquiries</span>
-                  <span className="px-1.5 py-0.2 rounded-full bg-[#121A16] text-[10px] text-[#C5A059] border border-[#22302A]">
-                    {enquiries.length}
-                  </span>
-                </button>
-              </nav>
             </div>
+            <textarea
+              id="pay-details"
+              rows={8}
+              value={payText[method]}
+              onChange={(e) => setPayText((prev) => ({ ...prev, [method]: e.target.value }))}
+              placeholder={'One detail per line, e.g.\nBSB: 123-456\nAccount number: 12345678'}
+              className={`${field} font-mono text-sm`}
+            />
+            <p className="mt-1.5 text-xs text-[#66736D]">Auto-filled from your saved details for this method - edit freely. Each line gets a Copy button for the customer.</p>
+          </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={loadData}
-                disabled={loading}
-                className="p-2 text-[#889690] hover:text-[#C5A059] rounded-lg hover:bg-[#141E1A]"
-                title="Refresh Data"
-              >
-                <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-              </button>
-
-              <button
-                type="button"
-                onClick={lock}
-                className="px-3 py-1.5 rounded-lg bg-[#141E1A] hover:bg-[#1C2A24] border border-[#22302A] text-xs font-mono-code text-[#E0533C] flex items-center gap-1.5"
-              >
-                <LogOut className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Lock Portal</span>
-              </button>
+          <div className="rounded-xl border border-[#22302A] bg-[#0A0F0D] p-4">
+            <div className="mb-2 flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-[#889690]">
+              <span>Payment terms</span>
+              <span className="text-[#66736D]">always included</span>
             </div>
+            <ul className="list-disc space-y-1.5 pl-5 text-sm text-[#B4C0BA]">
+              {paymentTermsLines(order.ref, method).map((l, i) => (
+                <li key={i}>{l}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <label htmlFor="pay-note" className={label}>
+              Notes (optional)
+            </label>
+            <textarea id="pay-note" rows={2} value={note} onChange={(e) => setNote(e.target.value)} placeholder="e.g. estimated dispatch date" className={field} />
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <span className={label}>Email preview</span>
+          <iframe title="Email preview" srcDoc={previewHtml} sandbox="" className="h-[760px] w-full rounded-2xl border border-[#D5CDBD] bg-[#F4F0EA]" />
+        </div>
+
+        <button
+          type="button"
+          onClick={sendToCustomer}
+          disabled={sending || !order.email}
+          className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#C5A059] px-4 text-sm font-extrabold uppercase tracking-wider text-[#0D1512] hover:bg-[#D4AF37] disabled:opacity-50"
+        >
+          <Mail className="h-5 w-5 shrink-0" />
+          <span className="truncate">{sending ? 'Sending...' : order.email ? `${order.invoice ? 'Resend' : 'Send'} to ${order.email}` : 'No email - use WhatsApp'}</span>
+        </button>
+
+        <div className="flex items-center gap-3 text-[11px] uppercase tracking-widest text-[#66736D]">
+          <span className="h-px flex-1 bg-[#22302A]" /> or send via whatsapp <span className="h-px flex-1 bg-[#22302A]" />
+        </div>
+
+        <div className="space-y-3">
+          <span className={label}>WhatsApp message preview</span>
+          <div className="max-h-56 overflow-y-auto whitespace-pre-wrap rounded-xl border border-[#22302A] bg-[#0A0F0D] p-4 text-sm text-[#B4C0BA]">{waMessage}</div>
+          <div className="grid grid-cols-2 gap-3">
+            <a
+              href={waLink(order.phone, waMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-extrabold uppercase tracking-wider text-[#0B100E]"
+            >
+              <MessageCircle className="h-4 w-4" /> Open WhatsApp
+            </a>
+            <button
+              type="button"
+              onClick={() => copy('wa', waMessage)}
+              className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#2C3E36] px-3 text-xs font-bold uppercase tracking-wider text-[#F8F6F0]"
+            >
+              {copied === 'wa' ? <Check className="h-4 w-4 text-[#56C48B]" /> : <Copy className="h-4 w-4 text-[#C5A059]" />} {copied === 'wa' ? 'Copied' : 'Copy text'}
+            </button>
+          </div>
+        </div>
+
+        {invoiceLink && (
+          <div className="space-y-2 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4">
+            <span className={label}>Customer invoice link</span>
+            <div className="break-all rounded-lg bg-[#0A0F0D] p-3 text-xs text-[#B4C0BA]">{invoiceLink}</div>
+            <button type="button" onClick={() => copy('link', invoiceLink)} className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#2C3E36] text-xs font-bold uppercase tracking-wider text-[#F8F6F0]">
+              {copied === 'link' ? <Check className="h-4 w-4 text-[#56C48B]" /> : <Copy className="h-4 w-4 text-[#C5A059]" />} {copied === 'link' ? 'Copied' : 'Copy link'}
+            </button>
+          </div>
+        )}
+
+        <div className="space-y-3 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4">
+          <div className="flex items-center justify-between">
+            <span className={`${label} mb-0`}>Order status</span>
+            <span className={`${badge} ${STATUS_STYLE[order.status]}`}>{order.status}</span>
+          </div>
+          {order.paymentNotifiedAt && order.status !== 'paid' && order.status !== 'dispatched' && (
+            <p className="text-sm font-semibold text-[#56C48B]">Customer says they have paid - check your bank, then mark as paid.</p>
+          )}
+          <div className="grid grid-cols-2 gap-3">
+            <button type="button" onClick={() => setStatus('paid')} disabled={order.status === 'paid' || order.status === 'dispatched'} className="min-h-12 rounded-xl bg-[#56C48B] text-xs font-extrabold uppercase tracking-wider text-[#0D1512] disabled:opacity-40">
+              Mark paid
+            </button>
+            <button type="button" onClick={() => setStatus('dispatched')} disabled={order.status === 'dispatched'} className="min-h-12 rounded-xl border border-[#6CB6E8] text-xs font-extrabold uppercase tracking-wider text-[#6CB6E8] disabled:opacity-40">
+              Mark dispatched
+            </button>
           </div>
         </div>
       </div>
+    );
+  };
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* TAB 1: OVERVIEW DASHBOARD */}
-        {activeTab === 'dashboard' && (
-          <div className="space-y-8">
-            {/* Metric Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="p-6 rounded-2xl bg-[#121A16] border border-[#22302A] space-y-2">
-                <span className="text-xs font-mono-code uppercase text-[#9AA7A0]">
-                  Total Prop Orders
-                </span>
-                <div className="flex items-baseline justify-between">
-                  <span className="font-mono-code text-3xl font-extrabold text-[#C5A059]">
-                    {orders.length}
-                  </span>
-                  <Package className="w-6 h-6 text-[#4E5C56]" />
-                </div>
-                <p className="text-[11px] text-[#889690] font-mono-code">
-                  WhatsApp &amp; Email Checkout Records
-                </p>
-              </div>
-
-              <div className="p-6 rounded-2xl bg-[#121A16] border border-[#22302A] space-y-2">
-                <span className="text-xs font-mono-code uppercase text-[#9AA7A0]">
-                  Studio Inquiries
-                </span>
-                <div className="flex items-baseline justify-between">
-                  <span className="font-mono-code text-3xl font-extrabold text-[#E5C378]">
-                    {enquiries.length}
-                  </span>
-                  <Inbox className="w-6 h-6 text-[#4E5C56]" />
-                </div>
-                <p className="text-[11px] text-[#889690] font-mono-code">
-                  Contact Form &amp; Wholesale Requests
-                </p>
-              </div>
-
-              <div className="p-6 rounded-2xl bg-[#121A16] border border-[#22302A] space-y-2">
-                <span className="text-xs font-mono-code uppercase text-[#9AA7A0]">
-                  Storage Mode
-                </span>
-                <div className="flex items-baseline justify-between">
-                  <span className="font-mono-code text-xl font-bold text-[#56C48B]">
-                    Active &amp; Ready
-                  </span>
-                  <Building className="w-6 h-6 text-[#4E5C56]" />
-                </div>
-                <p className="text-[11px] text-[#889690] font-mono-code">
-                  Melbourne VIC 3093 Hub
-                </p>
-              </div>
-            </div>
-
-            {/* Quick Actions & Recent Activity */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Recent Orders List */}
-              <div className="p-6 rounded-2xl bg-[#121A16] border border-[#22302A] space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-[#1E2B25]">
-                  <h3 className="font-serif-luxury text-sm font-bold text-[#F8F6F0] uppercase tracking-wider">
-                    Recent Orders
-                  </h3>
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('orders')}
-                    className="text-xs font-mono-code text-[#C5A059] hover:underline"
-                  >
-                    View All ({orders.length}) →
-                  </button>
-                </div>
-
-                {orders.length === 0 ? (
-                  <p className="text-xs text-[#889690] py-6 text-center font-mono-code">
-                    No orders registered yet. Checkout an item to see it here!
-                  </p>
-                ) : (
-                  <div className="space-y-2">
-                    {orders.slice(0, 4).map((ord) => (
-                      <div
-                        key={ord.id}
-                        className="p-3 bg-[#0D1512] rounded-xl border border-[#1E2B25] flex items-center justify-between"
-                      >
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono-code font-bold text-xs text-[#C5A059]">
-                              {ord.orderRef}
-                            </span>
-                            <span
-                              className={`text-[9px] font-mono-code px-1.5 py-0.5 rounded uppercase font-bold ${
-                                ord.channel === 'whatsapp'
-                                  ? 'bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/40'
-                                  : 'bg-[#1C2A24] text-[#E5C378] border border-[#2C3E36]'
-                              }`}
-                            >
-                              {ord.channel}
-                            </span>
-                          </div>
-                          <span className="text-[11px] text-[#9AA7A0] block mt-0.5">
-                            {ord.customerName} · ${ord.totalAmount} AUD
-                          </span>
-                        </div>
-
-                        <button
-                          type="button"
-                          onClick={() => handleStartPaymentEmail(ord)}
-                          className="px-2.5 py-1 bg-[#1C2A24] hover:bg-[#263830] text-[#C5A059] text-[11px] font-mono-code rounded border border-[#2C3E36]"
-                        >
-                          Payment Details →
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Recent Enquiries List */}
-              <div className="p-6 rounded-2xl bg-[#121A16] border border-[#22302A] space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-[#1E2B25]">
-                  <h3 className="font-serif-luxury text-sm font-bold text-[#F8F6F0] uppercase tracking-wider">
-                    Recent Enquiries
-                  </h3>
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('enquiries')}
-                    className="text-xs font-mono-code text-[#C5A059] hover:underline"
-                  >
-                    View All ({enquiries.length}) →
-                  </button>
-                </div>
-
-                {enquiries.length === 0 ? (
-                  <p className="text-xs text-[#889690] py-6 text-center font-mono-code">
-                    No inquiries received yet.
-                  </p>
-                ) : (
-                  <div className="space-y-2">
-                    {enquiries.slice(0, 4).map((enq) => (
-                      <div
-                        key={enq.id}
-                        className="p-3 bg-[#0D1512] rounded-xl border border-[#1E2B25] flex items-center justify-between"
-                      >
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-xs text-[#F8F6F0]">
-                              {enq.name}
-                            </span>
-                            <span className="text-[9px] font-mono-code px-1.5 py-0.5 rounded bg-[#1C2A24] text-[#C5A059] border border-[#2C3E36] uppercase">
-                              {enq.type}
-                            </span>
-                          </div>
-                          <span className="text-[11px] text-[#9AA7A0] block mt-0.5 truncate max-w-xs">
-                            {enq.subject || enq.message}
-                          </span>
-                        </div>
-
-                        <button
-                          type="button"
-                          onClick={() => handleStartEnquiryReply(enq)}
-                          className="px-2.5 py-1 bg-[#1C2A24] hover:bg-[#263830] text-[#C5A059] text-[11px] font-mono-code rounded border border-[#2C3E36]"
-                        >
-                          Reply →
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+  const enquiryScreen = () => {
+    if (!enquiry) return null;
+    const previewHtml = buildEmailHtml({
+      title: 'Reply to your enquiry',
+      intro: `Thank you for contacting ${SITE.name}. Our reply is below.`,
+      rows: [
+        { label: 'Reference', value: enquiry.ref, mono: true },
+        { label: 'Reply', value: reply, block: true },
+      ],
+    });
+    return (
+      <div className="space-y-5">
+        <button type="button" onClick={() => setTab('enquiries')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#22302A] px-4 text-xs font-bold uppercase tracking-wider text-[#F8F6F0]">
+          <ArrowLeft className="h-4 w-4" /> All enquiries
+        </button>
+        <h2 className="font-serif-luxury text-2xl font-bold text-[#F8F6F0]">REPLY TO {enquiry.name.toUpperCase()}</h2>
+        {message && (
+          <div className={`rounded-xl border p-4 text-sm ${message.startsWith('NOT') ? 'border-[#E0533C] text-[#E0533C]' : 'border-[#56C48B] text-[#56C48B]'}`}>{message}</div>
         )}
+        <div className="space-y-2 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 text-sm">
+          <div className="break-all text-[#B4C0BA]">{enquiry.email}{enquiry.phone ? ` · ${enquiry.phone}` : ''}</div>
+          {enquiry.company && <div className="text-[#889690]">{enquiry.company}</div>}
+          <div className="whitespace-pre-wrap text-[#F8F6F0]">{enquiry.message}</div>
+        </div>
+        <div>
+          <label htmlFor="reply-box" className={label}>
+            Your reply
+          </label>
+          <textarea id="reply-box" rows={9} value={reply} onChange={(e) => setReply(e.target.value)} className={field} />
+        </div>
+        <div className="space-y-2">
+          <span className={label}>Email preview</span>
+          <iframe title="Reply preview" srcDoc={previewHtml} sandbox="" className="h-[520px] w-full rounded-2xl border border-[#D5CDBD] bg-[#F4F0EA]" />
+        </div>
+        <button type="button" onClick={sendReply} disabled={sending} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#C5A059] px-4 text-sm font-extrabold uppercase tracking-wider text-[#0D1512] hover:bg-[#D4AF37] disabled:opacity-50">
+          <Mail className="h-5 w-5 shrink-0" />
+          <span className="truncate">{sending ? 'Sending...' : `Send reply to ${enquiry.email}`}</span>
+        </button>
+      </div>
+    );
+  };
 
-        {/* TAB 2: ORDERS TABLE */}
-        {activeTab === 'orders' && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
-                  STORED PRODUCTION ORDERS ({orders.length})
-                </h2>
-                <p className="text-xs text-[#9AA7A0] font-mono-code">
-                  Saved via WhatsApp and Email checkout with live status tracking.
-                </p>
-              </div>
-            </div>
+  return (
+    <div className="mx-auto min-h-screen max-w-2xl space-y-5 px-4 py-6 text-[#B4C0BA]">
+      <div className="flex items-center justify-between">
+        <h1 className="font-serif-luxury text-3xl font-bold text-[#F8F6F0]">DASHBOARD</h1>
+        <button type="button" onClick={loadData} aria-label="Refresh" className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#22302A] text-[#C5A059]">
+          <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+        </button>
+      </div>
 
-            {orders.length === 0 ? (
-              <div className="p-12 text-center bg-[#121A16] rounded-2xl border border-[#22302A] space-y-2">
-                <Package className="w-8 h-8 text-[#4E5C56] mx-auto" />
-                <p className="text-sm font-semibold text-[#F8F6F0]">No Orders in Storage</p>
-                <p className="text-xs text-[#9AA7A0]">Add props to cart and complete checkout to generate records.</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto rounded-2xl border border-[#22302A] bg-[#121A16]">
-                <table className="w-full text-left text-xs font-mono-code">
-                  <thead className="bg-[#0D1512] text-[#889690] uppercase border-b border-[#1E2B25]">
-                    <tr>
-                      <th className="p-4">Ref &amp; Date</th>
-                      <th className="p-4">Customer</th>
-                      <th className="p-4">Items / Total</th>
-                      <th className="p-4">Payment / Channel</th>
-                      <th className="p-4">Status</th>
-                      <th className="p-4 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#1A2520]">
-                    {orders.map((ord) => (
-                      <tr key={ord.id} className="hover:bg-[#141E1A] transition-colors">
-                        <td className="p-4">
-                          <span className="font-bold text-[#C5A059] block">{ord.orderRef}</span>
-                          <span className="text-[10px] text-[#7A8782] block">
-                            {new Date(ord.createdAt).toLocaleDateString()}
-                          </span>
-                        </td>
-                        <td className="p-4">
-                          <span className="font-semibold text-white block">{ord.customerName}</span>
-                          <span className="text-[10px] text-[#9AA7A0] block">{ord.customerEmail}</span>
-                          <span className="text-[10px] text-[#7A8782] block">{ord.phone}</span>
-                        </td>
-                        <td className="p-4">
-                          <span className="font-bold text-white block">${ord.totalAmount} AUD</span>
-                          <span className="text-[10px] text-[#9AA7A0] block">
-                            {ord.items.map((i: { quantity: number; name: string }) => `${i.quantity}x ${i.name}`).join(', ')}
-                          </span>
-                        </td>
-                        <td className="p-4">
-                          <span className="block mb-1 text-[11px] font-bold text-[#E5C378]">
-                            {PAY_METHOD_LABEL[ord.paymentMethod as PayMethodId] || ord.paymentMethod}
-                          </span>
-                          <span
-                            className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                              ord.channel === 'whatsapp'
-                                ? 'bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/40'
-                                : 'bg-[#1C2A24] text-[#E5C378] border border-[#2C3E36]'
-                            }`}
-                          >
-                            {ord.channel}
-                          </span>
-                        </td>
-                        <td className="p-4">
-                          <span
-                            className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                              ord.status === 'payment-sent'
-                                ? 'bg-[#56C48B]/20 text-[#56C48B] border border-[#56C48B]/40'
-                                : 'bg-[#1C2A24] text-[#C5A059] border border-[#2C3E36]'
-                            }`}
-                          >
-                            {ord.status}
-                          </span>
-                          {ord.paymentNotifiedAt && ord.status !== 'paid' && ord.status !== 'dispatched' && (
-                            <span className="block mt-1 text-[10px] font-bold text-[#56C48B]">Client says PAID - verify</span>
-                          )}
-                        </td>
-                        <td className="p-4 text-right">
-                          <div className="flex items-center justify-end gap-2">
-                            <button
-                              type="button"
-                              onClick={() => handleStartPaymentEmail(ord)}
-                              className="px-2.5 py-1.5 bg-[#C5A059] hover:bg-[#D4AF37] text-[#0D1512] font-bold rounded text-[11px] cursor-pointer"
-                            >
-                              {ord.invoice ? 'Invoice' : 'Send Invoice'}
-                            </button>
-                            {(ord.status === 'payment-sent' || ord.status === 'pending') && (
-                              <button type="button" onClick={() => handleSetStatus(ord, 'paid')} className="px-2.5 py-1.5 bg-[#56C48B] hover:bg-[#6fd6a0] text-[#0D1512] font-bold rounded text-[11px] cursor-pointer">Mark Paid</button>
-                            )}
-                            {ord.status === 'paid' && (
-                              <button type="button" onClick={() => handleSetStatus(ord, 'dispatched')} className="px-2.5 py-1.5 bg-[#1C2A24] border border-[#56C48B] text-[#56C48B] font-bold rounded text-[11px] cursor-pointer">Mark Dispatched</button>
-                            )}
-                            <button
-                              type="button"
-                              onClick={() => handleDeleteOrder(ord.id)}
-                              className="p-1.5 text-[#889690] hover:text-[#E0533C] rounded hover:bg-[#1C2A24]"
-                              title="Delete Order"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+      <nav aria-label="Admin sections" className="grid grid-cols-4 gap-2">
+        {navBtn('dashboard', 'Dashboard', tab === 'dashboard')}
+        {navBtn('orders', 'Orders', tab === 'orders' || tab === 'order')}
+        {navBtn('enquiries', 'Enquiries', tab === 'enquiries' || tab === 'enquiry')}
+        <button type="button" onClick={lock} className="min-h-12 rounded-xl border border-[#E0533C]/60 px-1 text-[10.5px] font-bold uppercase tracking-wide text-[#E0533C]">
+          Sign out
+        </button>
+      </nav>
+
+      {tab === 'dashboard' && (
+        <div className="space-y-4">
+          {claimedPaid > 0 && (
+            <button type="button" onClick={() => setTab('orders')} className="w-full rounded-xl border border-[#56C48B] bg-[#122A1E] p-4 text-left text-sm font-semibold text-[#56C48B]">
+              {claimedPaid} customer{claimedPaid > 1 ? 's say' : ' says'} they have paid - tap to check
+            </button>
+          )}
+          <div className="grid grid-cols-2 gap-3">
+            <button type="button" onClick={() => setTab('orders')} className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-5 text-center hover:border-[#C5A059]/60">
+              <div className="text-3xl">📦</div>
+              <div className="mt-2 text-4xl font-bold text-[#F8F6F0]">{orders.length}</div>
+              <div className="text-xs uppercase tracking-widest text-[#889690]">Orders</div>
+              <span className={`${badge} mt-3 inline-block ${STATUS_STYLE.pending}`}>{pendingCount} pending</span>
+            </button>
+            <button type="button" onClick={() => setTab('enquiries')} className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-5 text-center hover:border-[#C5A059]/60">
+              <div className="text-3xl">💬</div>
+              <div className="mt-2 text-4xl font-bold text-[#F8F6F0]">{enquiries.length}</div>
+              <div className="text-xs uppercase tracking-widest text-[#889690]">Enquiries</div>
+              <span className={`${badge} mt-3 inline-block ${STATUS_STYLE.new}`}>{newCount} new</span>
+            </button>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* TAB 3: ENQUIRIES TABLE */}
-        {activeTab === 'enquiries' && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
-                  ENQUIRIES &amp; WHOLESALE REQUESTS ({enquiries.length})
-                </h2>
-                <p className="text-xs text-[#9AA7A0] font-mono-code">
-                  Direct customer contact form submissions and B2B wholesale studio quotes.
-                </p>
+      {tab === 'orders' && (
+        <div className="space-y-3">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[#C5A059]">Orders ({orders.length})</h2>
+          {orders.length === 0 && <p className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-6 text-center text-sm text-[#889690]">No orders yet.</p>}
+          {orders.map((o) => (
+            <div
+              key={o.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => openOrder(o)}
+              onKeyDown={(e) => e.key === 'Enter' && openOrder(o)}
+              className="relative cursor-pointer rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 transition-colors hover:border-[#C5A059]/60"
+            >
+              <div className="flex flex-wrap items-center gap-2 pr-10">
+                <span className="text-sm font-bold text-[#E5C378]">{o.ref}</span>
+                <span className={`${badge} ${STATUS_STYLE[o.status]}`}>{o.status}</span>
+                <span className={`${badge} ${o.channel === 'whatsapp' ? 'border-[#25D366]/50 bg-[#10261A] text-[#25D366]' : 'border-[#2C3E36] bg-[#141E1A] text-[#B4C0BA]'}`}>{o.channel}</span>
+                {o.paymentNotifiedAt && o.status !== 'paid' && o.status !== 'dispatched' && <span className={`${badge} border-[#56C48B] bg-[#56C48B] text-[#0D1512]`}>says paid</span>}
               </div>
-            </div>
-
-            {enquiries.length === 0 ? (
-              <div className="p-12 text-center bg-[#121A16] rounded-2xl border border-[#22302A] space-y-2">
-                <Inbox className="w-8 h-8 text-[#4E5C56] mx-auto" />
-                <p className="text-sm font-semibold text-[#F8F6F0]">No Enquiries Logged</p>
-              </div>
-            ) : (
-              <div className="overflow-x-auto rounded-2xl border border-[#22302A] bg-[#121A16]">
-                <table className="w-full text-left text-xs font-mono-code">
-                  <thead className="bg-[#0D1512] text-[#889690] uppercase border-b border-[#1E2B25]">
-                    <tr>
-                      <th className="p-4">Sender</th>
-                      <th className="p-4">Type / Subject</th>
-                      <th className="p-4">Message</th>
-                      <th className="p-4">Status</th>
-                      <th className="p-4 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#1A2520]">
-                    {enquiries.map((enq) => (
-                      <tr key={enq.id} className="hover:bg-[#141E1A] transition-colors">
-                        <td className="p-4">
-                          <span className="font-bold text-white block">{enq.name}</span>
-                          <span className="text-[10px] text-[#9AA7A0] block">{enq.email}</span>
-                          <span className="text-[10px] text-[#7A8782] block">{enq.phone}</span>
-                        </td>
-                        <td className="p-4">
-                          <span className="px-1.5 py-0.5 rounded bg-[#1C2A24] text-[9px] text-[#C5A059] uppercase font-bold border border-[#2C3E36] inline-block mb-1">
-                            {enq.type}
-                          </span>
-                          <span className="text-xs text-white block font-semibold">
-                            {enq.subject || 'No subject'}
-                          </span>
-                        </td>
-                        <td className="p-4 max-w-xs">
-                          <p className="text-xs text-[#9AA7A0] line-clamp-2 whitespace-pre-wrap">
-                            {enq.message}
-                          </p>
-                        </td>
-                        <td className="p-4">
-                          <span
-                            className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                              enq.status === 'replied'
-                                ? 'bg-[#56C48B]/20 text-[#56C48B] border border-[#56C48B]/40'
-                                : 'bg-[#1C2A24] text-[#C5A059] border border-[#2C3E36]'
-                            }`}
-                          >
-                            {enq.status}
-                          </span>
-                        </td>
-                        <td className="p-4 text-right">
-                          <div className="flex items-center justify-end gap-2">
-                            <button
-                              type="button"
-                              onClick={() => handleStartEnquiryReply(enq)}
-                              className="px-2.5 py-1.5 bg-[#C5A059] hover:bg-[#D4AF37] text-[#0D1512] font-bold rounded text-[11px] cursor-pointer"
-                            >
-                              Compose Reply
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => handleDeleteEnquiry(enq.id)}
-                              className="p-1.5 text-[#889690] hover:text-[#E0533C] rounded hover:bg-[#1C2A24]"
-                              title="Delete"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* TAB 4: INVOICE COMPOSER (one paste box + live preview) */}
-        {activeTab === 'send-payment' && selectedOrder && (() => {
-          const ref = selectedOrder.orderRef || selectedOrder.ref;
-          const clientMethod = selectedOrder.paymentMethod as PayMethodId;
-          const discount = activeMethod === 'crypto' ? Math.round(selectedOrder.subtotal * (SHOP.cryptoDiscount / 100)) : 0;
-          const total = selectedOrder.subtotal + selectedOrder.shippingFee - discount;
-          const lines = parsePayText(payText[activeMethod]);
-          const previewHtml = buildInvoiceHtml({
-            order: {
-              ref,
-              date: selectedOrder.invoice ? new Date(selectedOrder.invoice.sentAt).toISOString() : new Date().toISOString(),
-              customerName: selectedOrder.customerName,
-              email: selectedOrder.email,
-              phone: selectedOrder.phone,
-              address: selectedOrder.address,
-              paymentMethod: activeMethod,
-              items: selectedOrder.items,
-              subtotal: selectedOrder.subtotal,
-              shippingFee: selectedOrder.shippingFee,
-              discount,
-              total,
-            },
-            lines,
-            termsHtml: paymentTermsHtml(ref, activeMethod),
-            openUrl: `https://${SITE.domain}/invoice/`,
-            intro: `Thank you ${selectedOrder.customerName}. Your invoice and payment details are below.`,
-          });
-          return (
-            <div className="space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-[#1E2B25]">
-                <div>
-                  <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">REPLY · {ref}</h2>
-                  <p className="text-xs text-[#9AA7A0] font-mono-code">
-                    {selectedOrder.customerName} · ${total.toFixed(2)} AUD · status: {selectedOrder.status}
-                  </p>
-                </div>
-                <button type="button" onClick={() => setActiveTab('orders')} className="text-xs font-mono-code text-[#C5A059] hover:underline">
-                  ← Back to Orders
-                </button>
-              </div>
-
-              {emailSuccess && (
-                <div className="p-4 rounded-xl bg-[#14231C] border border-[#56C48B] text-xs font-mono-code text-[#56C48B] flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 shrink-0" />
-                  <span>{emailSuccess}</span>
-                </div>
-              )}
-              {invoiceLink && (
-                <div className="p-4 rounded-xl bg-[#121A16] border border-[#2C3E36] text-xs font-mono-code space-y-2">
-                  <span className="text-[#C5A059] uppercase font-bold tracking-wider block">Client invoice page</span>
-                  <CopyField value={invoiceLink} />
-                </div>
-              )}
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div className="space-y-5">
-                  {/* Customer (auto-filled) */}
-                  <div className="p-4 rounded-2xl bg-[#121A16] border border-[#2C3E36] text-xs font-mono-code space-y-1">
-                    <div className="text-white font-bold">{selectedOrder.customerName}</div>
-                    <div className="text-[#B4C0BA] break-all">{selectedOrder.email || '(no email - WhatsApp order)'} · {selectedOrder.phone}</div>
-                    <div className="text-[#B4C0BA] whitespace-pre-wrap">{selectedOrder.address}</div>
-                    <div className="text-[#9AA7A0]">{selectedOrder.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}</div>
-                  </div>
-
-                  {/* Payment method chosen by the customer, others beside it */}
-                  <div className="space-y-2">
-                    <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] block">Payment method</span>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                      {PAY_METHOD_IDS.map((id) => (
-                        <button
-                          key={id}
-                          type="button"
-                          onClick={() => setActiveMethod(id)}
-                          className={`px-3 py-2 rounded-lg border text-left text-[11px] font-mono-code transition-colors ${
-                            activeMethod === id ? 'bg-[#C5A059] text-[#0D1512] border-[#C5A059] font-bold' : 'bg-[#0A0F0D] text-[#B4C0BA] border-[#2C3E36] hover:border-[#C5A059]'
-                          }`}
-                        >
-                          <span className="block">{PAY_METHOD_LABEL[id]}</span>
-                          {clientMethod === id && (
-                            <span className={`block mt-1 text-[9px] uppercase tracking-wider ${activeMethod === id ? 'text-[#0D1512]' : 'text-[#E5C378]'}`}>★ Customer chose this</span>
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                    {activeMethod !== clientMethod && (
-                      <p className="text-[11px] text-[#E5C378] font-mono-code">
-                        Customer chose {PAY_METHOD_LABEL[clientMethod] || clientMethod}. Invoicing {PAY_METHOD_LABEL[activeMethod]} changes the total to ${total.toFixed(2)}.
-                      </p>
-                    )}
-                  </div>
-
-                  {/* The one paste box */}
-                  <div className="space-y-2">
-                    <label htmlFor="pay-details-box" className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] block">
-                      Payment details - type or paste here
-                    </label>
-                    <textarea
-                      id="pay-details-box"
-                      rows={9}
-                      value={payText[activeMethod]}
-                      onChange={(e) => setPayText((prev) => ({ ...prev, [activeMethod]: e.target.value }))}
-                      placeholder={'One detail per line, e.g.\nBSB: 123-456\nAccount number: 12345678'}
-                      className="w-full bg-[#0A0F0D] border-2 border-[#2C3E36] rounded-xl p-4 text-sm font-mono-code text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none"
-                    />
-                    <p className="text-[11px] text-[#7A8782] font-mono-code">
-                      Lines like &quot;BSB: 123-456&quot; get a Copy button for your customer. Lines ending in a colon with nothing after it are ignored.
-                    </p>
-                  </div>
-
-                  <div className="p-4 rounded-xl bg-[#0F1714] border border-[#22302A] text-xs font-mono-code text-[#9AA7A0] space-y-1">
-                    <span className="text-[#C5A059] font-bold uppercase tracking-wider block text-[11px]">Instructions added automatically</span>
-                    {paymentTermsLines(ref, activeMethod).map((line, i) => (
-                      <div key={i}>• {line}</div>
-                    ))}
-                  </div>
-
-                  <label className="flex items-center gap-2 text-[11px] font-mono-code text-[#9AA7A0]">
-                    <input type="checkbox" checked={saveDefaults} onChange={(e) => setSaveDefaults(e.target.checked)} />
-                    Remember these details for the next order
-                  </label>
-
-                  <button
-                    type="button"
-                    onClick={handleSendPaymentEmail}
-                    disabled={emailSending}
-                    className="w-full py-4 bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512] font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer font-mono-code disabled:opacity-60"
-                  >
-                    <Mail className="w-4 h-4" />
-                    <span>{emailSending ? 'Sending...' : selectedOrder.invoice ? 'Resend to customer' : 'Send to customer'}</span>
-                  </button>
-
-                  <details className="rounded-xl bg-[#121A16] border border-[#22302A]">
-                    <summary className="cursor-pointer p-3 text-xs font-mono-code text-[#9AA7A0]">Send by WhatsApp instead</summary>
-                    <div className="p-3 pt-0">
-                      <WhatsAppSendPanel order={selectedOrder} paymentDetails={payText[activeMethod]} />
-                    </div>
-                  </details>
-                </div>
-
-                {/* Live preview of exactly what the customer receives */}
-                <div className="space-y-2">
-                  <span className="text-xs font-mono-code text-[#C5A059] uppercase font-bold tracking-wider block">
-                    Preview - what the customer receives
-                  </span>
-                  <iframe
-                    title="Invoice email preview"
-                    srcDoc={previewHtml}
-                    sandbox=""
-                    className="w-full h-[1100px] rounded-2xl border border-[#D5CDBD] bg-[#F4F0EA]"
-                  />
-                </div>
-              </div>
-            </div>
-          );
-        })()}
-        {/* TAB 5: REPLY TO ENQUIRY COMPOSER */}
-        {activeTab === 'reply-enquiry' && selectedEnquiry && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-[#1E2B25]">
-              <div>
-                <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
-                  REPLY TO ENQUIRY · {selectedEnquiry.name}
-                </h2>
-                <p className="text-xs text-[#9AA7A0] font-mono-code">
-                  Recipient: {selectedEnquiry.email} · Subject: {selectedEnquiry.subject}
-                </p>
-              </div>
-
               <button
                 type="button"
-                onClick={() => setActiveTab('enquiries')}
-                className="text-xs font-mono-code text-[#C5A059] hover:underline"
+                aria-label="Delete order"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeOrder(o.id);
+                }}
+                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center text-[#66736D] hover:text-[#E0533C]"
               >
-                ← Back to Enquiries
+                <Trash2 className="h-4 w-4" />
               </button>
-            </div>
-
-            {replySuccess && (
-              <div className="p-4 rounded-xl bg-[#14231C] border border-[#56C48B] text-xs font-mono-code text-[#56C48B] flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 shrink-0" />
-                <span>Reply dispatched to customer!</span>
+              <div className="mt-2 text-lg font-semibold text-[#F8F6F0]">{o.customerName}</div>
+              <div className="break-all text-sm text-[#889690]">
+                {o.email || 'no email'} · {o.phone}
               </div>
-            )}
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-              {/* Left Column: Form */}
-              <div className="p-6 rounded-2xl bg-[#121A16] border border-[#2C3E36] space-y-4">
-                <div className="p-3 bg-[#0A0F0D] rounded-xl border border-[#22302A] text-xs space-y-1">
-                  <span className="text-[10px] font-mono-code text-[#889690] uppercase block">
-                    Original Message:
-                  </span>
-                  <p className="text-[#B4C0BA] whitespace-pre-wrap">
-                    {selectedEnquiry.message}
-                  </p>
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-mono-code uppercase text-[#B4C0BA] mb-1">
-                    Your Response Body
-                  </label>
-                  <textarea
-                    rows={8}
-                    value={replyMessage}
-                    onChange={(e) => setReplyMessage(e.target.value)}
-                    className="w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl p-3.5 text-xs text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none"
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleSendEnquiryReply}
-                  disabled={replySending}
-                  className="w-full py-3.5 bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer font-mono-code"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>{replySending ? 'Sending Response...' : 'Send Branded Reply'}</span>
-                </button>
-              </div>
-
-              {/* Right Column: Preview */}
-              <div className="space-y-2">
-                <span className="text-xs font-mono-code text-[#C5A059] uppercase font-bold tracking-wider block">
-                  Live Branded Email Preview
-                </span>
-
-                <div className="p-4 bg-[#F4F0EA] rounded-2xl shadow-xl border border-[#D5CDBD] text-[#1A1414]">
-                  <div className="bg-white rounded-xl p-5 space-y-4 text-xs font-sans">
-                    <div className="bg-[#141010] p-4 rounded-lg text-center">
-                      <span className="font-serif-luxury font-black text-lg text-white tracking-wider block">
-                        {SITE.name}
-                      </span>
-                    </div>
-
-                    <div className="space-y-1">
-                      <h4 className="font-bold text-sm text-[#1A1414]">
-                        Response to your inquiry
-                      </h4>
-                      <div className="p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-lg whitespace-pre-wrap text-[#2C2420]">
-                        {replyMessage}
-                      </div>
-                    </div>
-
-                    <div className="text-[10px] text-center text-[#7F746E] pt-2 border-t border-[#EAE3DC]">
-                      PROPPS PTY LTD · Melbourne VIC 3093 Australia
-                    </div>
-                  </div>
+              <div className="mt-2 text-xs text-[#66736D]">{o.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}</div>
+              <div className="mt-2 flex items-end justify-between">
+                <span className="text-xs text-[#889690]">{PAY_METHOD_LABEL[o.paymentMethod as PayMethodId] || o.paymentMethod}</span>
+                <div className="text-right">
+                  <div className="text-lg font-bold text-[#F8F6F0]">${o.total.toFixed(2)}</div>
+                  <div className="text-[11px] text-[#66736D]">{when(o.createdAt)}</div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
+
+      {tab === 'enquiries' && (
+        <div className="space-y-3">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[#C5A059]">Enquiries ({enquiries.length})</h2>
+          {enquiries.length === 0 && <p className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-6 text-center text-sm text-[#889690]">No enquiries yet.</p>}
+          {enquiries.map((e) => (
+            <div
+              key={e.id}
+              role="button"
+              tabIndex={0}
+              onClick={() => openEnquiry(e)}
+              onKeyDown={(ev) => ev.key === 'Enter' && openEnquiry(e)}
+              className="relative cursor-pointer rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 transition-colors hover:border-[#C5A059]/60"
+            >
+              <div className="flex flex-wrap items-center gap-2 pr-10">
+                <span className={`${badge} ${STATUS_STYLE[e.status]}`}>{e.status}</span>
+                <span className={`${badge} border-[#2C3E36] bg-[#141E1A] text-[#B4C0BA]`}>{e.type}</span>
+                <span className="text-xs text-[#66736D]">{when(e.createdAt)}</span>
+              </div>
+              <button
+                type="button"
+                aria-label="Delete enquiry"
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                  removeEnquiry(e.id);
+                }}
+                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center text-[#66736D] hover:text-[#E0533C]"
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
+              <div className="mt-2 text-lg font-semibold text-[#F8F6F0]">{e.name}</div>
+              <div className="break-all text-sm text-[#889690]">
+                {e.email}
+                {e.phone ? ` · ${e.phone}` : ''}
+              </div>
+              <div className="mt-2 line-clamp-2 text-sm text-[#66736D]">{e.message}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {tab === 'order' && orderScreen()}
+      {tab === 'enquiry' && enquiryScreen()}
     </div>
   );
 };
