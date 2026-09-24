@@ -70,3 +70,37 @@ export async function redisCommand(command: string[]): Promise<any> {
     return null;
   }
 }
+
+// Like redisCommand, but throws on any failure so callers never report a write
+// as saved when it was not.
+export async function redisStrict(command: string[]): Promise<any> {
+  const creds = getRedisCredentials();
+  if (!creds) throw new Error('Redis not configured');
+  const res = await fetch(creds.url, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${creds.token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(command),
+  });
+  if (!res.ok) throw new Error(`Redis error ${res.status}`);
+  const data = await res.json();
+  if (data.error) throw new Error(String(data.error));
+  return data.result;
+}
+
+// Fixed-window rate limiter. Fails open (allows) when Redis is unavailable so a
+// storage outage never blocks real customers.
+export async function rateLimit(key: string, max: number, windowSeconds: number): Promise<boolean> {
+  try {
+    if (!getRedisCredentials()) return true;
+    const count = Number(await redisStrict(['INCR', `propps:rl:${key}`]));
+    if (count === 1) await redisStrict(['EXPIRE', `propps:rl:${key}`, String(windowSeconds)]);
+    return count <= max;
+  } catch {
+    return true;
+  }
+}
+
+export function clientIp(request: Request): string {
+  const fwd = request.headers.get('x-forwarded-for') || '';
+  return fwd.split(',')[0].trim() || request.headers.get('x-real-ip') || 'unknown';
+}

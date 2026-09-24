@@ -1,9 +1,13 @@
+import { rateLimit, clientIp } from '../../../../lib/redis.js';
 import { NextResponse } from 'next/server';
 import { checkAdminPasscode, getAdminPasscode } from '../../../../lib/adminAuth.js';
 
 export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
+  if (!(await rateLimit(`login:${clientIp(request)}`, 10, 600))) {
+    return NextResponse.json({ ok: false, error: 'Too many attempts. Wait a few minutes.' }, { status: 429 });
+  }
   if (!getAdminPasscode()) {
     return NextResponse.json({ ok: false, error: 'Admin passcode is not configured.' }, { status: 503 });
   }

@@ -1,3 +1,4 @@
+import { rateLimit, clientIp } from '../../../lib/redis.js';
 import { NextResponse } from 'next/server';
 import { buildEnquiry, sendEnquiryEmail } from '../../../lib/notify.js';
 import { addEnquiry, storageEnabled } from '../../../lib/serverStore.js';
@@ -5,6 +6,9 @@ import { addEnquiry, storageEnabled } from '../../../lib/serverStore.js';
 export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
+  if (!(await rateLimit(`wholesale:${clientIp(request)}`, 5, 600))) {
+    return NextResponse.json({ ok: false, error: 'Too many requests. Please wait a few minutes and try again, or use WhatsApp.' }, { status: 429 });
+  }
   let body: any;
   try {
     body = await request.json();

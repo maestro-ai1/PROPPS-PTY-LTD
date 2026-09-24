@@ -1,3 +1,4 @@
+import { rateLimit, clientIp } from '../../../../../lib/redis.js';
 import { NextResponse } from 'next/server';
 import { getOrderByToken, updateOrder } from '../../../../../lib/serverStore.js';
 import { sendPaymentNotifiedEmails } from '../../../../../lib/notify.js';
@@ -9,6 +10,7 @@ interface Ctx {
 }
 
 export async function POST(_request: Request, { params }: Ctx) {
+  if (!(await rateLimit(`paid:${clientIp(_request)}`, 10, 600))) return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
   const { token } = await params;
   const order = await getOrderByToken(token);
   if (!order || !order.invoice) return NextResponse.json({ error: 'Invoice not found' }, { status: 404 });
