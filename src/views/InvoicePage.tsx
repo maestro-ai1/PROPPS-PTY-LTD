@@ -77,8 +77,8 @@ const QrImage: React.FC<{ value: string }> = ({ value }) => {
   ) : null;
 };
 
-const LineRow: React.FC<{ line: PayLine }> = ({ line }) => {
-  const [showQr, setShowQr] = useState(false);
+const LineRow: React.FC<{ line: PayLine; autoQr?: boolean }> = ({ line, autoQr }) => {
+  const [showQr, setShowQr] = useState(Boolean(autoQr));
   return (
     <div className="py-3 border-b border-[#EAE3DC] last:border-b-0">
       <div className="text-[11px] font-bold uppercase tracking-wider text-[#6F665F] mb-1">{line.label}</div>
@@ -96,7 +96,10 @@ const LineRow: React.FC<{ line: PayLine }> = ({ line }) => {
       </div>
       {showQr && (
         <div className="mt-3 flex justify-center">
-          <QrImage value={line.value} />
+          <div className="flex flex-col items-center gap-1">
+            <QrImage value={line.value} />
+            <span className="text-[11px] text-[#6F665F]">Scan to pay {line.label}</span>
+          </div>
         </div>
       )}
     </div>
@@ -244,7 +247,7 @@ export const InvoicePageContent: React.FC = () => {
                 </div>
               </div>
               {filled.map((l, i) => (
-                <LineRow key={`${l.label}-${i}`} line={l} />
+                <LineRow key={`${l.label}-${i}`} line={l} autoQr={data.method === 'crypto' && l.label.trim().toLowerCase() !== 'reference'} />
               ))}
             </div>
 
