@@ -2,7 +2,7 @@
 import { SITE, SHOP, PRODUCTS, REPLY } from '../config/site.js';
 import { sendMail } from './mailer.js';
 import { buildEmailHtml, EmailRow } from './emailTemplate.js';
-import { generateOrderRef, StoredOrder, paymentTermsHtml } from './order.js';
+import { generateOrderRef, isValidOrderRef, StoredOrder, paymentTermsHtml } from './order.js';
 import { buildInvoiceHtml } from './invoiceTemplate.js';
 import type { InvoiceRecord } from './payment.js';
 import type { StoredEnquiry } from './enquiryStore.js';
@@ -75,7 +75,7 @@ export function buildOrderFromRequest(body: any): { order?: StoredOrder; error?:
   // request completes, so it already carries a client-generated ref; keep
   // that same ref so the WhatsApp message and the stored/emailed order match.
   const clientRef = typeof body?.ref === 'string' ? body.ref.trim() : '';
-  const ref = /^[A-Z]{2,5}-[A-Z0-9]{6}$/.test(clientRef) ? clientRef : generateOrderRef();
+  const ref = isValidOrderRef(clientRef) ? clientRef : generateOrderRef();
   return {
     order: {
       id: `ord_${now}_${Math.random().toString(36).slice(2, 6)}`,
@@ -277,7 +277,7 @@ export interface ProofFile {
   contentType: string;
 }
 
-export async function sendPaymentNotifiedEmails(order: StoredOrder, proof?: ProofFile) {
+export async function sendPaymentNotifiedEmails(order: StoredOrder, proof?: ProofFile, note?: string) {
   const to = getNotifyEmail();
   const total = money(order.invoice?.total ?? order.total);
   let ownerSent = false;
@@ -298,6 +298,7 @@ export async function sendPaymentNotifiedEmails(order: StoredOrder, proof?: Proo
           { label: 'Email', value: order.email },
           { label: 'Payment method', value: order.invoice?.method ?? order.paymentMethod },
           { label: 'Amount', value: total, highlight: true, mono: true },
+          ...(note ? [{ label: 'Customer note', value: note, block: true }] : []),
         ],
         cta: { label: 'Open Admin Portal', url: adminUrl() },
       }),

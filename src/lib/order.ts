@@ -38,15 +38,14 @@ export interface StoredOrder {
   createdAt: number;
 }
 
+// Short, easy-to-quote order number: 2 letters + 4 digits, e.g. PP4827.
 export function generateOrderRef(): string {
-  const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
-  let random = '';
-  for (let i = 0; i < 6; i++) {
-    random += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return `${REPLY.orderPrefix}-${random}`;
+  const digits = Math.floor(1000 + Math.random() * 9000);
+  return `${REPLY.orderPrefix}${digits}`;
 }
 
+// New short format, plus the older PRP-XXXXXX style still present on stored orders.
+export const isValidOrderRef = (ref: string) => /^[A-Z]{2}[0-9]{4}$/.test(ref) || /^[A-Z]{2,5}-[A-Z0-9]{6}$/.test(ref);
 export function paymentMethodParts(
   methodId: string,
   amount: string,

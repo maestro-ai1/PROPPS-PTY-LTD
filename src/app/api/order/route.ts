@@ -1,7 +1,8 @@
 import { rateLimit, clientIp } from '../../../lib/redis.js';
 import { NextResponse } from 'next/server';
 import { buildOrderFromRequest, sendOrderEmails } from '../../../lib/notify.js';
-import { addOrder, storageEnabled } from '../../../lib/serverStore.js';
+import { addOrder, getOrder, storageEnabled } from '../../../lib/serverStore.js';
+import { generateOrderRef } from '../../../lib/order.js';
 
 export const runtime = 'nodejs';
 
@@ -17,10 +18,18 @@ export async function POST(request: Request) {
   }
 
   // Honeypot: real visitors never fill this hidden field.
-  if (body?.website) return NextResponse.json({ ok: true, ref: 'PRP-000000', emailed: false });
+  if (body?.website) return NextResponse.json({ ok: true, ref: 'PP0000', emailed: false });
 
   const { order, error } = buildOrderFromRequest(body);
   if (!order) return NextResponse.json({ ok: false, error }, { status: 400 });
+
+  // Short numbers can collide: make sure this one is not already in use.
+  if (storageEnabled()) {
+    for (let i = 0; i < 8 && (await getOrder(order.ref)); i++) {
+      order.ref = generateOrderRef();
+      order.orderRef = order.ref;
+    }
+  }
 
   let stored = false;
   try {

@@ -77,11 +77,12 @@ export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl
       </tr>`;
 
   const invoiceUrl = openUrl || `https://${SITE.domain}/invoice/`;
-  const uploadUrl = `${invoiceUrl}#confirm`;
+  const uploadUrl = invoiceUrl.replace('/invoice/', '/confirm/');
+  const mailUrl = `mailto:${CONTACT.email.replace('&#64;', '@')}?subject=${encodeURIComponent(`Payment for order ${order.ref}`)}`;
   const waUrl = paymentWhatsAppLink(order.ref, order.total);
-  const btn = (href: string, text: string, filled: boolean) =>
-    `<a href="${esc(href)}" target="_blank" style="display:inline-block;margin:0 5px 8px 5px;padding:13px 22px;font-family:${SANS};font-size:13.5px;font-weight:700;text-decoration:none;border-radius:8px;${
-      filled ? `background-color:${GOLD};color:#0D1512;` : `background-color:#25D366;color:#06210F;`
+  const btn = (href: string, text: string, filled: boolean, outline = false) =>
+    `<a href="${encodeAt(esc(href))}" target="_blank" style="display:inline-block;margin:0 5px 8px 5px;padding:13px 20px;font-family:${SANS};font-size:13.5px;font-weight:700;text-decoration:none;border-radius:8px;${
+      filled ? `background-color:${GOLD};color:#0D1512;` : outline ? `background-color:#FFFFFF;color:#8A6B25;border:1.5px solid ${GOLD};` : `background-color:#25D366;color:#06210F;`
     }">${text}</a>`;
 
   return `<!DOCTYPE html>
@@ -149,7 +150,7 @@ export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl
         ${heading('Confirm your payment')}
         <p style="margin:10px 0 12px 0;font-family:${SANS};font-size:13px;line-height:1.55;color:#3A322C;">${encodeAt(esc(paymentConfirmLine()))}</p>
         <div style="text-align:center;margin:0 0 6px 0;">
-          ${btn(uploadUrl, 'Upload confirmation', true)}${btn(waUrl, 'Confirm via WhatsApp', false)}
+          ${btn(uploadUrl, "I've paid - Upload confirmation", true)}${btn(waUrl, 'Confirm via WhatsApp', false)}${btn(mailUrl, 'Reply by email', false, true)}
         </div>
       </td></tr>
 

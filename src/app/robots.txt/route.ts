@@ -27,6 +27,7 @@ Allow: /
 Disallow: /thank-you-order/
 Disallow: /admin/
 Disallow: /invoice/
+Disallow: /confirm/
 Disallow: /api/
 
 Content-Signal: search=yes, ai-input=yes, ai-train=no

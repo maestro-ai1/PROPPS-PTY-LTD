@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 import { Copy, Check, QrCode, Upload, MessageCircle } from 'lucide-react';
 import { SITE, CONTACT, REPLY } from '../config/site.js';
@@ -25,7 +25,6 @@ interface InvoiceData {
 }
 
 const money = (n: number) => `$${Number(n).toFixed(2)}`;
-const MAX_BYTES = 4 * 1024 * 1024;
 
 async function copyText(text: string): Promise<boolean> {
   try {
@@ -115,9 +114,7 @@ export const InvoicePageContent: React.FC = () => {
   const [token, setToken] = useState('');
   const [data, setData] = useState<InvoiceData | null>(null);
   const [state, setState] = useState<'loading' | 'ready' | 'missing'>('loading');
-  const [upload, setUpload] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
-  const [uploadMsg, setUploadMsg] = useState('');
-  const fileRef = useRef<HTMLInputElement>(null);
+  const [notified, setNotified] = useState(false);
 
   useEffect(() => {
     const t = new URLSearchParams(window.location.search).get('t') || '';
@@ -131,39 +128,11 @@ export const InvoicePageContent: React.FC = () => {
         if (!res.ok) throw new Error('missing');
         const json = (await res.json()) as InvoiceData;
         setData(json);
-        if (json.paymentNotified) setUpload('done');
+        if (json.paymentNotified) setNotified(true);
         setState('ready');
       })
       .catch(() => setState('missing'));
   }, []);
-
-  const onFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    e.target.value = '';
-    if (!file) return;
-    if (file.size > MAX_BYTES) {
-      setUpload('error');
-      setUploadMsg('That file is over 4 MB. Please use a smaller screenshot, or the WhatsApp button.');
-      return;
-    }
-    setUpload('sending');
-    setUploadMsg('');
-    try {
-      const body = new FormData();
-      body.append('file', file);
-      const res = await fetch(`/api/invoice/${encodeURIComponent(token)}/proof/`, { method: 'POST', body });
-      const json = await res.json().catch(() => ({}));
-      if (res.ok && json.ok) {
-        setUpload('done');
-      } else {
-        setUpload('error');
-        setUploadMsg(json.error || 'Upload failed. Please use the WhatsApp button.');
-      }
-    } catch {
-      setUpload('error');
-      setUploadMsg('Network problem. Please try again, or use the WhatsApp button.');
-    }
-  };
 
   if (state === 'loading') {
     return <main className="flex min-h-[60vh] items-center justify-center text-sm text-[#B4C0BA]">Loading your invoice...</main>;
@@ -274,43 +243,31 @@ export const InvoicePageContent: React.FC = () => {
             <section id="confirm" aria-labelledby="confirm-heading" className="space-y-3">
               <Heading id="confirm-heading">Confirm your payment</Heading>
               <p className="text-[13px] text-[#3A322C]" dangerouslySetInnerHTML={{ __html: encodeAt(paymentConfirmLine()) }} />
-
-              {upload === 'done' ? (
+              {notified && (
                 <div className="rounded-xl border border-[#56C48B] bg-[#E8F5EC] p-3 text-sm font-semibold text-[#1E6B3E]">
-                  Thank you - we have your payment confirmation. We will verify it and email you when your order is dispatched.
-                </div>
-              ) : (
-                <div className="grid gap-2 sm:grid-cols-2">
-                  <input ref={fileRef} type="file" accept="image/*,application/pdf" onChange={onFile} className="sr-only" aria-label="Upload payment confirmation" />
-                  <button
-                    type="button"
-                    onClick={() => fileRef.current?.click()}
-                    disabled={upload === 'sending'}
-                    className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#C5A059] px-4 text-sm font-bold text-[#0D1512] hover:bg-[#D4AF37] disabled:opacity-60"
-                  >
-                    <Upload className="h-4 w-4" />
-                    {upload === 'sending' ? 'Uploading...' : 'Upload confirmation'}
-                  </button>
-                  <a
-                    href={waUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-sm font-bold text-[#06210F]"
-                  >
-                    <MessageCircle className="h-4 w-4" />
-                    Confirm via WhatsApp
-                  </a>
+                  We have your payment confirmation. We will verify it and email you when your order is dispatched.
                 </div>
               )}
-              {upload === 'error' && <p className="text-sm font-semibold text-[#B3261E]">{uploadMsg}</p>}
-              {upload === 'done' && (
-                <a href={waUrl} target="_blank" rel="noopener noreferrer" className="block text-center text-xs font-semibold text-[#1E6B3E] underline">
-                  Also message us on WhatsApp
+              <div className="grid gap-2 sm:grid-cols-2">
+                <a
+                  href={`/confirm/?t=${encodeURIComponent(token)}`}
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#C5A059] px-4 text-sm font-bold text-[#0D1512] hover:bg-[#D4AF37]"
+                >
+                  <Upload className="h-4 w-4" />
+                  I&apos;ve paid - Upload confirmation
                 </a>
-              )}
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 text-sm font-bold text-[#06210F]"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Confirm via WhatsApp
+                </a>
+              </div>
             </section>
           )}
-
           <p className="text-center text-[11px] leading-relaxed text-[#6F665F]">
             Non-legal tender reproduction props for motion picture, television, theatre, visual arts and simulation use only, marked SPECIMEN in accordance with the Crimes (Currency) Act 1981 Section 22.
           </p>

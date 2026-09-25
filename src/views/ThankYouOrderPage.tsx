@@ -39,7 +39,7 @@ export const ThankYouOrderContent: React.FC = () => {
               Official Order Reference
             </span>
             <div className="mt-1">
-              <CopyField value={orderRef || 'PRP-ORDER-PENDING'} label="Order Reference" />
+              <CopyField value={orderRef || 'PP-PENDING'} label="Order Reference" />
             </div>
           </div>
 

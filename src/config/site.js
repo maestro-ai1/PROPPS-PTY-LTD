@@ -45,7 +45,7 @@ export const FORMS = {
 export const REPLY = {
   brand: { primary: '#C5A059', headerDark: '#0D1512' },
   currency: { code: 'AUD', symbol: '$' },
-  orderPrefix: 'PRP',
+  orderPrefix: 'PP',
   headerTagline: 'Australian Prop Money · Eltham, Melbourne VIC 3093',
   dispatchLine: 'Dispatched via Australia Post Express with end-to-end tracking, fast and safe delivery. Refunded if not satisfied.',
   bizNumber: { label: 'ABN', value: '72 642 507 042' },

@@ -10,6 +10,7 @@ import { CartDrawerMount } from '../components/CartDrawerMount.js';
 import { SearchModalMount } from '../components/SearchModalMount.js';
 import { WhatsAppLiveChat } from '../components/WhatsAppLiveChat.js';
 import { ReviewPopup } from '../components/ReviewPopup.js';
+import { HideOnPrivatePages } from '../components/HideOnPrivatePages.js';
 import './globals.css';
 
 const siteUrl = `https://${SITE.domain}`;
@@ -97,7 +98,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CartDrawerMount />
           <SearchModalMount />
           <WhatsAppLiveChat />
-          <ReviewPopup />
+          <HideOnPrivatePages>
+            <ReviewPopup />
+          </HideOnPrivatePages>
         </AppProvider>
       </body>
     </html>
