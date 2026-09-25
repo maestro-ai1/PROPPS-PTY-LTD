@@ -1,6 +1,6 @@
 import { rateLimit, clientIp } from '../../../lib/redis.js';
-import { NextResponse } from 'next/server';
-import { buildOrderFromRequest, sendOrderEmails } from '../../../lib/notify.js';
+import { NextResponse, after } from 'next/server';
+import { buildOrderFromRequest, sendOrderEmails, getNotifyEmail } from '../../../lib/notify.js';
 import { addOrder, getOrder, storageEnabled } from '../../../lib/serverStore.js';
 import { generateOrderRef } from '../../../lib/order.js';
 
@@ -41,6 +41,20 @@ export async function POST(request: Request) {
     console.error('[order] storage failed', err);
   }
 
+  // Saved: answer the customer straight away and send the emails right after the
+  // response (after() keeps the serverless function alive until they are sent).
+  if (stored) {
+    after(async () => {
+      try {
+        await sendOrderEmails(order);
+      } catch (err) {
+        console.error('[order] email failed', err);
+      }
+    });
+    return NextResponse.json({ ok: true, ref: order.ref, emailed: Boolean(getNotifyEmail()), stored: true });
+  }
+
+  // Not saved (no storage): the email is the only record, so wait for it.
   let emailed = false;
   try {
     emailed = (await sendOrderEmails(order)).ownerSent;

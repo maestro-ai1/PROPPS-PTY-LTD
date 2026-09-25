@@ -119,6 +119,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       const params = new URLSearchParams({
         ref: order.ref,
         email: order.email || '',
+        channel: order.channel,
       });
       router.push(`/thank-you-order?${params.toString()}`);
     },

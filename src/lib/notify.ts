@@ -165,10 +165,10 @@ export async function sendOrderEmails(order: StoredOrder) {
     const origin = `https://${SITE.domain}`;
     const customer = await sendMail({
       to: order.email,
-      subject: `Order ${order.ref} received - ${SITE.name}`,
+      subject: `Order placed - ${order.ref} - ${SITE.name}`,
       html: buildEmailHtml({
-        title: `We received your order ${order.ref}`,
-        preheader: `Order ${order.ref} received - payment details coming next`,
+        title: `Your order has been placed - ${order.ref}`,
+        preheader: `Order ${order.ref} placed - payment details coming next`,
         intro: `Thank you ${order.customerName}. Your order is registered. We will email your invoice and payment details shortly. Once you have paid, use the buttons below to upload your payment screenshot or confirm on WhatsApp so we can dispatch.`,
         refBadge: order.ref,
         rows: customerRows,

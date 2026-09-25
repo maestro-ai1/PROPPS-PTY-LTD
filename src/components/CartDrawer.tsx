@@ -77,115 +77,119 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   if (!isOpen) return null;
 
-  const validateDetails = () => {
+  const FIELD_LABELS: Record<string, string> = {
+    name: 'full name',
+    phone: 'mobile phone',
+    email: 'email address',
+    address: 'delivery address',
+  };
+
+  // Returns true when the details are complete. Otherwise shows a summary right
+  // above the buttons (the form itself scrolls out of view on small screens) and
+  // scrolls to the first field that needs attention.
+  const validateDetails = (requireEmail: boolean) => {
     const errors: Record<string, string> = {};
     if (!formData.name.trim()) errors.name = 'Full name is required';
-    if (!formData.phone.trim()) errors.phone = 'Australian contact number is required';
+    if (!formData.phone.trim()) errors.phone = 'Contact number is required';
+    const email = formData.email.trim();
+    if (requireEmail && !email) {
+      errors.email = 'Email is required so we can send your order confirmation and invoice';
+    } else if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Please enter a valid email address';
+    }
     if (!formData.address.trim()) errors.address = 'Delivery address is required';
     setFormErrors(errors);
-    return Object.keys(errors).length === 0;
+
+    const keys = Object.keys(errors);
+    if (keys.length > 0) {
+      setSubmitError(`Please complete: ${keys.map((k) => FIELD_LABELS[k]).join(', ')}.`);
+      requestAnimationFrame(() => {
+        const first = document.querySelector<HTMLElement>('[data-invalid="true"]');
+        first?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        first?.focus({ preventScroll: true });
+      });
+      return false;
+    }
+    setSubmitError(null);
+    return true;
   };
+
+  const updateField = (field: 'name' | 'phone' | 'email' | 'address', value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormErrors((prev) => ({ ...prev, [field]: '' }));
+    setSubmitError(null);
+  };
+
+  const buildOrder = (channel: 'whatsapp' | 'email'): StoredOrder => ({
+    id: `ord_${Date.now()}`,
+    ref: generateOrderRef(),
+    date: new Date().toISOString(),
+    customerName: formData.name.trim(),
+    email: formData.email.trim(),
+    phone: formData.phone.trim(),
+    address: formData.address.trim(),
+    city: '',
+    state: '',
+    postcode: '',
+    items: cart,
+    subtotal,
+    shippingFee,
+    discount: cryptoDiscount,
+    total: finalTotal,
+    paymentMethod: selectedPayment,
+    channel,
+    status: 'pending',
+    createdAt: Date.now(),
+  });
 
   // WhatsApp Checkout (Synchronous window.open rule)
   const handleWhatsAppCheckout = () => {
-    if (!minOrderMet) return;
+    if (!minOrderMet || isSubmitting) return;
     if (checkoutMode === 'cart') {
       setCheckoutMode('details');
       return;
     }
+    if (!validateDetails(false)) return;
 
-    if (!validateDetails()) return;
-
-    const ref = generateOrderRef();
-    const newOrder: StoredOrder = {
-      id: `ord_${Date.now()}`,
-      ref,
-      date: new Date().toISOString(),
-      customerName: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      address: formData.address,
-      city: '',
-      state: '',
-      postcode: '',
-      items: cart,
-      subtotal,
-      shippingFee,
-      discount: cryptoDiscount,
-      total: finalTotal,
-      paymentMethod: selectedPayment,
-      channel: 'whatsapp',
-      status: 'pending',
-      createdAt: Date.now(),
-    };
+    const newOrder = buildOrder('whatsapp');
 
     // Mandatory WebForge Rule: window.open MUST be called synchronously
-    const link = waOrderLink(newOrder);
-    window.open(link, '_blank');
+    window.open(waOrderLink(newOrder), '_blank');
 
-    // Async save order and clear cart afterwards
-    saveOrder(newOrder).then(() => {
-      clearCart();
-      if (onOrderCompleted) {
-        onOrderCompleted(newOrder);
-      }
-      onClose();
-    });
+    // Save the order, then show the "order placed" page with the order number.
+    setIsSubmitting(true);
+    saveOrder(newOrder)
+      .then((result) => {
+        clearCart();
+        onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref });
+        onClose();
+      })
+      .finally(() => setIsSubmitting(false));
   };
 
   // Standard Email / Invoice Checkout
-  const handleEmailCheckout = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!minOrderMet) return;
+  const handleEmailCheckout = async (e?: React.SyntheticEvent) => {
+    e?.preventDefault();
+    if (!minOrderMet || isSubmitting) return;
     if (checkoutMode === 'cart') {
       setCheckoutMode('details');
       return;
     }
-
-    if (!validateDetails()) return;
-    if (!formData.email.trim()) {
-      setFormErrors((prev) => ({ ...prev, email: 'Email address is required for official invoice' }));
-      return;
-    }
+    if (!validateDetails(true)) return;
 
     setIsSubmitting(true);
-    const ref = generateOrderRef();
-    const newOrder: StoredOrder = {
-      id: `ord_${Date.now()}`,
-      ref,
-      date: new Date().toISOString(),
-      customerName: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      address: formData.address,
-      city: '',
-      state: '',
-      postcode: '',
-      items: cart,
-      subtotal,
-      shippingFee,
-      discount: cryptoDiscount,
-      total: finalTotal,
-      paymentMethod: selectedPayment,
-      channel: 'email',
-      status: 'pending',
-      createdAt: Date.now(),
-    };
-
+    setSubmitError(null);
+    const newOrder = buildOrder('email');
     const result = await saveOrder(newOrder);
     setIsSubmitting(false);
     if (!result.ok) {
-      setSubmitError(result.error || 'Your order could not be sent. Please try WhatsApp Order instead.');
+      setSubmitError(result.error || 'Your order could not be sent. Please try again, or use WhatsApp Order.');
       return;
     }
-    setSubmitError(null);
     clearCart();
-    if (onOrderCompleted) {
-      onOrderCompleted({ ...newOrder, ref: result.ref || newOrder.ref });
-    }
+    onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref });
     onClose();
   };
-
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/70 backdrop-blur-sm animate-fade-in">
       <div className="w-full max-w-lg bg-[#0F1714] text-[#E8ECE9] h-full flex flex-col shadow-2xl border-l border-[#2C3E36]">
@@ -392,7 +396,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </div>
           ) : (
             /* Delivery & Dispatch Details Form */
-            <form onSubmit={handleEmailCheckout} className="space-y-3.5 text-xs">
+            <form onSubmit={handleEmailCheckout} noValidate className="space-y-3.5 text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-[#22302A]">
                 <span className="font-serif-luxury font-bold text-sm text-[#F8F6F0]">
                   DISPATCH &amp; CONTACT INFORMATION
@@ -406,63 +410,53 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 </button>
               </div>
 
-              <div>
-                <label className="block text-[#9AA7A0] mb-1 font-medium">Full Name *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. Liam Hemsworth"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                />
-                {formErrors.name && (
-                  <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.name}</span>
-                )}
-              </div>
+              {(
+                [
+                  { key: 'name', label: 'Full Name *', type: 'text', placeholder: 'e.g. Liam Hemsworth' },
+                  { key: 'phone', label: 'Mobile Phone *', type: 'tel', placeholder: '0400 000 000' },
+                  { key: 'email', label: 'Email Address * (order confirmation & invoice)', type: 'email', placeholder: 'propps@studio.com.au' },
+                ] as const
+              ).map((f) => (
+                <div key={f.key}>
+                  <label htmlFor={`checkout-${f.key}`} className="block text-[#9AA7A0] mb-1 font-medium">
+                    {f.label}
+                  </label>
+                  <input
+                    id={`checkout-${f.key}`}
+                    type={f.type}
+                    placeholder={f.placeholder}
+                    value={formData[f.key]}
+                    onChange={(e) => updateField(f.key, e.target.value)}
+                    data-invalid={formErrors[f.key] ? 'true' : undefined}
+                    aria-invalid={formErrors[f.key] ? true : undefined}
+                    className={`w-full bg-[#121A16] border rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:outline-none ${
+                      formErrors[f.key] ? 'border-[#E0533C] focus:border-[#E0533C]' : 'border-[#2C3E36] focus:border-[#C5A059]'
+                    }`}
+                  />
+                  {f.key === 'email' && !formErrors.email && (
+                    <span className="text-[#6E7B75] text-[10px] mt-0.5 block">Optional if you order via WhatsApp.</span>
+                  )}
+                  {formErrors[f.key] && <span className="text-[#E0533C] text-[11px] mt-0.5 block">{formErrors[f.key]}</span>}
+                </div>
+              ))}
 
               <div>
-                <label className="block text-[#9AA7A0] mb-1 font-medium">Mobile Phone *</label>
-                <input
-                  type="tel"
-                  required
-                  placeholder="0400 000 000"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                />
-                {formErrors.phone && (
-                  <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.phone}</span>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-[#9AA7A0] mb-1 font-medium">Email Address</label>
-                <input
-                  type="email"
-                  placeholder="propps@studio.com.au"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
-                />
-                {formErrors.email && (
-                  <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.email}</span>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-[#9AA7A0] mb-1 font-medium">Delivery Address *</label>
+                <label htmlFor="checkout-address" className="block text-[#9AA7A0] mb-1 font-medium">
+                  Delivery Address *
+                </label>
                 <textarea
+                  id="checkout-address"
                   rows={2}
-                  required
                   placeholder="Street, suburb, state, postcode"
                   value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  className="w-full bg-[#121A16] border border-[#2C3E36] rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:border-[#C5A059] focus:outline-none"
+                  onChange={(e) => updateField('address', e.target.value)}
+                  data-invalid={formErrors.address ? 'true' : undefined}
+                  aria-invalid={formErrors.address ? true : undefined}
+                  className={`w-full bg-[#121A16] border rounded-lg px-3 py-2 text-white placeholder-[#58645F] focus:outline-none ${
+                    formErrors.address ? 'border-[#E0533C] focus:border-[#E0533C]' : 'border-[#2C3E36] focus:border-[#C5A059]'
+                  }`}
                 />
-                {formErrors.address && (
-                  <span className="text-[#E0533C] text-[10px] mt-0.5 block">{formErrors.address}</span>
-                )}
+                {formErrors.address && <span className="text-[#E0533C] text-[11px] mt-0.5 block">{formErrors.address}</span>}
               </div>
             </form>
           )}
@@ -496,7 +490,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </div>
 
             {submitError && (
-              <p role="alert" className="text-xs text-[#E0533C] font-mono-code flex items-start gap-1.5">
+              <p role="alert" className="text-xs text-[#E0533C] font-mono-code flex items-start gap-1.5 rounded-lg border border-[#E0533C]/40 bg-[#2A1414] p-2.5">
                 <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
                 <span>{submitError}</span>
               </p>
@@ -507,7 +501,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               {/* WhatsApp Checkout (Immediate window.open) */}
               <button
                 type="button"
-                disabled={!minOrderMet}
+                disabled={!minOrderMet || isSubmitting}
                 onClick={handleWhatsAppCheckout}
                 className="py-3 px-3 bg-[#25D366] hover:bg-[#20BA5A] disabled:opacity-40 disabled:cursor-not-allowed text-[#0B100E] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
                 title={!minOrderMet ? `Minimum order is $${SHOP.minOrder} AUD` : 'Submit order via WhatsApp'}
@@ -520,20 +514,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <button
                 type="button"
                 disabled={!minOrderMet || isSubmitting}
-                onClick={(e) => {
-                  if (checkoutMode === 'cart') {
-                    setCheckoutMode('details');
-                  } else {
-                    handleEmailCheckout(e);
-                  }
-                }}
+                onClick={(e) => handleEmailCheckout(e)}
                 className="py-3 px-3 bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] disabled:opacity-40 disabled:cursor-not-allowed text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <CreditCard className="w-4 h-4 shrink-0" />
                 <span className="truncate">
-                  {checkoutMode === 'cart' ? 'Proceed to Details' : 'Confirm Order'}
+                  {isSubmitting ? 'Placing your order...' : checkoutMode === 'cart' ? 'Proceed to Details' : 'Confirm Order'}
                 </span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                {!isSubmitting && <ArrowRight className="w-3.5 h-3.5" />}
               </button>
             </div>
 

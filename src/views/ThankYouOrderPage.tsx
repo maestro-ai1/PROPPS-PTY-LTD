@@ -4,13 +4,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { CheckCircle2, Mail } from 'lucide-react';
+import { CheckCircle2, Mail, MessageCircle } from 'lucide-react';
 import { CopyField } from '../components/CopyField.js';
+import { CONTACT } from '../config/site.js';
 
 export const ThankYouOrderContent: React.FC = () => {
   const searchParams = useSearchParams();
   const orderRef = searchParams.get('ref') || '';
   const customerEmail = searchParams.get('email') || '';
+  const viaWhatsApp = searchParams.get('channel') === 'whatsapp';
+
+  const waHref = `https://wa.me/${CONTACT.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
+    `Hi PROPPS PTY LTD, I have just placed order ${orderRef}.`
+  )}`;
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-16 sm:py-24 text-center space-y-8">
@@ -20,14 +26,23 @@ export const ThankYouOrderContent: React.FC = () => {
       </div>
 
       <div className="space-y-3">
-        <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#C5A059] block">
-          Order Successfully Transmitted
+        <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#56C48B] block">
+          Order Placed
         </span>
         <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#F8F6F0]">
-          THANK YOU FOR YOUR PRODUCTION ORDER
+          THANK YOU - YOUR ORDER HAS BEEN PLACED
         </h1>
         <p className="text-xs sm:text-sm text-[#B4C0BA] max-w-lg mx-auto leading-relaxed">
-          Your order draft has been received by our Melbourne dispatch desk. Please watch your inbox for your official payment-details email.
+          {viaWhatsApp
+            ? 'We have opened WhatsApp with your order details - please press Send so our Melbourne dispatch desk receives it. We will reply with your payment details.'
+            : 'Your order has been received by our Melbourne dispatch desk. We will email your invoice and payment details next.'}
+          {customerEmail && (
+            <>
+              {' '}
+              A confirmation email with your order number has been sent to{' '}
+              <span className="text-white font-mono-code break-all">{customerEmail}</span>.
+            </>
+          )}
         </p>
       </div>
 
@@ -36,47 +51,58 @@ export const ThankYouOrderContent: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#1E2B25]">
           <div>
             <span className="text-[10px] font-mono-code text-[#889690] uppercase block">
-              Official Order Reference
+              Your Order Number
             </span>
             <div className="mt-1">
-              <CopyField value={orderRef || 'PP-PENDING'} label="Order Reference" />
+              <CopyField value={orderRef || 'PP-PENDING'} label="Order Number" />
             </div>
           </div>
 
           <div>
             <span className="text-[10px] font-mono-code text-[#889690] uppercase block">
-              Registered Notification Email
+              {customerEmail ? 'Confirmation Sent To' : 'Order Channel'}
             </span>
-            <span className="font-mono-code text-xs text-[#E5C378]">
-              {customerEmail || 'Provided at checkout'}
+            <span className="font-mono-code text-xs text-[#E5C378] break-all">
+              {customerEmail || (viaWhatsApp ? 'WhatsApp' : 'Provided at checkout')}
             </span>
           </div>
         </div>
 
-        {/* What Happens Next Guidance (Strict Section P: Watch for email only) */}
         <div className="space-y-3 pt-1">
           <p className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-2">
             <Mail className="w-4 h-4" />
-            <span>Next Steps in Fulfillment</span>
+            <span>What Happens Next</span>
           </p>
           <ul className="text-xs text-[#9AA7A0] space-y-2">
             <li className="flex items-start gap-2">
               <span className="text-[#C5A059] font-bold">1.</span>
-              <span>
-                Our dispatch desk is reviewing your order details and reserve stock allocation in our Melbourne warehouse.
-              </span>
+              <span>Our dispatch desk is reviewing your order and reserving your stock in Melbourne.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-[#C5A059] font-bold">2.</span>
               <span>
-                <strong>Watch for payment-details email:</strong> An invoice containing your verified payment routing will arrive at{' '}
-                <span className="text-white font-mono-code">{customerEmail || 'your email address'}</span> shortly.
+                {viaWhatsApp && !customerEmail ? (
+                  <>
+                    <strong>Watch WhatsApp:</strong> we will send your invoice and payment details in the chat.
+                  </>
+                ) : (
+                  <>
+                    <strong>Watch your email:</strong> your invoice and payment details will arrive
+                    {customerEmail ? (
+                      <>
+                        {' '}
+                        at <span className="text-white font-mono-code break-all">{customerEmail}</span>
+                      </>
+                    ) : null}{' '}
+                    shortly.
+                  </>
+                )}
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-[#C5A059] font-bold">3.</span>
               <span>
-                Once verified, your parcel will be sealed in discreet packaging and dispatched via Australia Post Express with signature on delivery.
+                Once payment is received and confirmed, your parcel is packed discreetly and dispatched via Australia Post Express with signature on delivery.
               </span>
             </li>
           </ul>
@@ -84,6 +110,17 @@ export const ThankYouOrderContent: React.FC = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        {viaWhatsApp && (
+          <a
+            href={waHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#25D366] text-[#0B100E] font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center flex items-center justify-center gap-2"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Open WhatsApp
+          </a>
+        )}
         <Link
           href="/shop"
           className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center"

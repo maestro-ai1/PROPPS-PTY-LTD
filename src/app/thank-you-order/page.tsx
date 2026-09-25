@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import { ThankYouOrderContent } from '../../views/ThankYouOrderPage.js';
 
 export const metadata: Metadata = {
-  title: 'Order Received',
+  title: 'Order Placed',
   robots: { index: false, follow: false },
 };
 
