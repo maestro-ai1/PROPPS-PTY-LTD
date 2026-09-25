@@ -80,7 +80,7 @@ export const getOrder = findOrder;
 
 export async function getOrderByToken(token: string): Promise<StoredOrder | null> {
   if (!token || token.length < 20) return null;
-  return (await listOrders()).find((o) => o.invoice?.token === token) ?? null;
+  return (await listOrders()).find((o) => o.invoice?.token === token || o.confirmToken === token) ?? null;
 }
 
 // Merge fields into a stored order (invoice, paid and notified markers).

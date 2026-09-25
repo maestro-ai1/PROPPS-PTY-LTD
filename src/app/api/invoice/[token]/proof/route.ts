@@ -27,7 +27,7 @@ export async function POST(request: Request, { params }: Ctx) {
   }
   const { token } = await params;
   const order = await getOrderByToken(token);
-  if (!order || !order.invoice) return NextResponse.json({ ok: false, error: 'Invoice not found' }, { status: 404 });
+  if (!order) return NextResponse.json({ ok: false, error: 'Invoice not found' }, { status: 404 });
 
   const form = await request.formData().catch(() => null);
   const file = form?.get('file');

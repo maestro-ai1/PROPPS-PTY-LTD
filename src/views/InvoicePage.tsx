@@ -14,6 +14,7 @@ interface InvoiceData {
   address: string;
   status: string;
   paymentNotified: boolean;
+  pending?: boolean;
   items: { name: string; price: number; quantity: number }[];
   subtotal: number;
   shippingFee: number;
@@ -145,6 +146,17 @@ export const InvoicePageContent: React.FC = () => {
           <p className="text-sm text-[#B4C0BA]">
             This invoice link is not valid. Please use the button in your invoice email, or contact us on WhatsApp {CONTACT.whatsapp}.
           </p>
+        </div>
+      </main>
+    );
+  }
+
+  if (data.pending) {
+    return (
+      <main className="flex min-h-[60vh] items-center justify-center px-4">
+        <div className="max-w-md space-y-3 text-center">
+          <h1 className="font-serif-luxury text-2xl text-white">Your invoice is being prepared</h1>
+          <p className="text-sm text-[#B4C0BA]">We will email your invoice and payment details for order {data.ref} shortly.</p>
         </div>
       </main>
     );

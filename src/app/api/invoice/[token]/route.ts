@@ -11,10 +11,17 @@ interface Ctx {
 export async function GET(_request: Request, { params }: Ctx) {
   const { token } = await params;
   const order = await getOrderByToken(token);
-  if (!order || !order.invoice) {
+  if (!order) {
     return NextResponse.json({ error: 'Invoice not found' }, { status: 404, headers: { 'Cache-Control': 'no-store' } });
   }
   const inv = order.invoice;
+  if (!inv) {
+    // Order exists but payment details have not been sent yet: expose only what the confirm page needs.
+    return NextResponse.json(
+      { pending: true, ref: order.ref, total: order.total, status: order.status, paymentNotified: Boolean(order.paymentNotifiedAt), items: [], lines: [] },
+      { headers: { 'Cache-Control': 'no-store' } }
+    );
+  }
   return NextResponse.json(
     {
       ref: order.ref,

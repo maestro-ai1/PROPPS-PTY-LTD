@@ -1,8 +1,10 @@
 // SERVER-ONLY helpers shared by /api/order, /api/contact and /api/wholesale.
-import { SITE, SHOP, PRODUCTS, REPLY } from '../config/site.js';
+import { randomBytes } from 'node:crypto';
+import { SITE, SHOP, PRODUCTS, REPLY, CONTACT } from '../config/site.js';
 import { sendMail } from './mailer.js';
 import { buildEmailHtml, EmailRow } from './emailTemplate.js';
-import { generateOrderRef, isValidOrderRef, StoredOrder, paymentTermsHtml } from './order.js';
+import { generateOrderRef, isValidOrderRef, StoredOrder, paymentTermsHtml, paymentWhatsAppLink } from './order.js';
+import { PAY_METHOD_LABEL, type PayMethodId } from './payment.js';
 import { buildInvoiceHtml } from './invoiceTemplate.js';
 import type { InvoiceRecord } from './payment.js';
 import type { StoredEnquiry } from './enquiryStore.js';
@@ -99,6 +101,7 @@ export function buildOrderFromRequest(body: any): { order?: StoredOrder; error?:
       paymentMethod,
       channel,
       status: 'pending',
+      confirmToken: randomBytes(24).toString('hex'),
       createdAt: now,
     },
   };
@@ -150,22 +153,36 @@ export async function sendOrderEmails(order: StoredOrder) {
 
   let customerSent = false;
   if (order.email) {
+    const customerRows: EmailRow[] = [
+      { label: 'Your order', heading: true },
+      ...order.items.map((i) => ({ label: `${i.quantity} x ${i.name}`, value: money(i.price * i.quantity), mono: true })),
+      { label: 'Shipping', value: order.shippingFee > 0 ? money(order.shippingFee) : 'FREE', mono: true },
+      ...(order.discount > 0 ? [{ label: 'Crypto discount', value: `-${money(order.discount)}`, mono: true }] : []),
+      { label: 'Payment method', value: PAY_METHOD_LABEL[order.paymentMethod as PayMethodId] || order.paymentMethod },
+      { label: 'Delivery address', value: order.address },
+      { label: 'Total', value: money(order.total), highlight: true },
+    ];
+    const origin = `https://${SITE.domain}`;
     const customer = await sendMail({
       to: order.email,
       subject: `Order ${order.ref} received - ${SITE.name}`,
       html: buildEmailHtml({
-        title: 'We received your order',
-        preheader: `Order ${order.ref} received`,
-        intro: `Thank you ${order.customerName}. Your order is registered. Please watch for a separate email with payment details from our dispatch desk.`,
+        title: `We received your order ${order.ref}`,
+        preheader: `Order ${order.ref} received - payment details coming next`,
+        intro: `Thank you ${order.customerName}. Your order is registered. We will email your invoice and payment details shortly. Once you have paid, use the buttons below to upload your payment screenshot or confirm on WhatsApp so we can dispatch.`,
         refBadge: order.ref,
-        rows,
+        rows: customerRows,
+        footerButtons: [
+          ...(order.confirmToken ? [{ label: "I've paid - Upload confirmation", url: `${origin}/confirm/?t=${order.confirmToken}`, variant: 'gold' as const }] : []),
+          { label: 'Confirm via WhatsApp', url: paymentWhatsAppLink(order.ref, order.total, 'question'), variant: 'green' as const },
+          { label: 'Reply by email', url: `mailto:${CONTACT.email.replace('&#64;', '@')}?subject=${encodeURIComponent(`Order ${order.ref}`)}`, variant: 'outline' as const },
+        ],
       }),
-      text: `Thank you ${order.customerName}. Order ${order.ref} is registered. Watch for a payment details email from us.`,
+      text: `Thank you ${order.customerName}. Order ${order.ref} is registered (${money(order.total)}). We will email your payment details shortly. After paying, upload your screenshot: ${origin}/confirm/?t=${order.confirmToken ?? ''}`,
       replyTo: to,
     });
     customerSent = customer.sent;
   }
-
   return { ownerSent: owner.sent, customerSent, reason: owner.error || owner.reason };
 }
 

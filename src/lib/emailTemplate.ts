@@ -2,6 +2,7 @@
 // WebForge v10.0 Mandatory LIGHT shell email builder
 import { SITE, REPLY } from '../config/site.js';
 import { brandSealHtml } from './invoiceTemplate.js';
+import { encodeAt } from './order.js';
 
 export interface EmailRow {
   label: string;
@@ -23,6 +24,7 @@ export interface EmailTemplateOpts {
   cta?: { label: string; url: string };
   secondaryCta?: { label: string; url: string };
   footer?: string;
+  footerButtons?: { label: string; url: string; variant: 'gold' | 'green' | 'outline' }[];
   primaryColor?: string;
 }
 
@@ -121,6 +123,20 @@ export function buildEmailHtml(opts: EmailTemplateOpts): string {
         </table>
       `
       : '';
+
+  const footerButtonsHtml = (opts.footerButtons || []).length
+    ? `<div style="margin: 0 0 14px 0;">${(opts.footerButtons || [])
+        .map((b) => {
+          const style =
+            b.variant === 'gold'
+              ? `background-color: ${accent}; color: #0D1512;`
+              : b.variant === 'green'
+                ? 'background-color: #25D366; color: #06210F;'
+                : `background-color: #FFFFFF; color: #8A6B25; border: 1.5px solid ${accent};`;
+          return `<a href="${encodeAt(escapeHtml(b.url))}" target="_blank" style="display: inline-block; margin: 0 4px 8px 4px; padding: 12px 18px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; text-decoration: none; border-radius: 8px; ${style}">${escapeHtml(b.label)}</a>`;
+        })
+        .join('')}</div>`
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -239,6 +255,7 @@ export function buildEmailHtml(opts: EmailTemplateOpts): string {
           <!-- Light Footer -->
           <tr>
             <td style="padding: 22px 32px; background-color: #F7F4F0; border-top: 1px solid #EAE3DC; text-align: center;">
+              ${footerButtonsHtml}
               <p style="margin: 0 0 6px 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11.5px; color: #6F665F; line-height: 1.5;">
                 ${escapeHtml(SITE.name)} · Melbourne, Victoria Australia<br>
                 For motion picture, theatrical, television, and visual arts simulation only. Non-legal tender.

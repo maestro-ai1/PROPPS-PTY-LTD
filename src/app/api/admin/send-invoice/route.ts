@@ -47,7 +47,7 @@ export async function POST(request: Request) {
   const total = order.subtotal + order.shippingFee - discount;
 
   const invoice: InvoiceRecord = {
-    token: order.invoice?.token ?? randomBytes(24).toString('hex'),
+    token: order.invoice?.token ?? order.confirmToken ?? randomBytes(24).toString('hex'),
     method,
     lines,
     note: cleanText(body.note, 1000) || undefined,

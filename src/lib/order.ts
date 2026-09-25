@@ -33,6 +33,7 @@ export interface StoredOrder {
   channel: 'whatsapp' | 'email';
   status: 'pending' | 'payment-sent' | 'paid' | 'dispatched' | 'cancelled';
   invoice?: InvoiceRecord;
+  confirmToken?: string;
   paymentNotifiedAt?: number;
   paidAt?: number;
   createdAt: number;
@@ -74,9 +75,13 @@ export function paymentConfirmLine(): string {
   return `After paying, send a screenshot of your payment by email to ${email} or on WhatsApp to ${CONTACT.whatsapp} so we can confirm and dispatch.`;
 }
 
-export function paymentWhatsAppLink(ref: string, total: number): string {
+export function paymentWhatsAppLink(ref: string, total: number, intent: 'paid' | 'question' = 'paid'): string {
   const digits = CONTACT.whatsapp.replace(/\D/g, '');
-  const text = `Hi ${SITE.name}, I have paid order ${ref} ($${Number(total).toFixed(2)} AUD). Payment screenshot attached.`;
+  const amount = `($${Number(total).toFixed(2)} AUD)`;
+  const text =
+    intent === 'paid'
+      ? `Hi ${SITE.name}, I have paid order ${ref} ${amount}. Payment screenshot attached.`
+      : `Hi ${SITE.name}, I have a question about my order ${ref} ${amount}.`;
   return `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
 }
 export const encodeAt = (text: string) => text.replace(/@/g, '&#64;');
