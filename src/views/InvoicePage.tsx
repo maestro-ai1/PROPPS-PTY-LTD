@@ -218,7 +218,7 @@ export const InvoicePageContent: React.FC = () => {
               </div>
             )}
             <div className="mt-3 text-[11.5px] text-[#6F665F]">
-              <strong className="text-[#3A322C]">{SITE.name}</strong> · {REPLY.bizNumber.label} {REPLY.bizNumber.value} · {CONTACT.hq}
+              <strong className="text-[#3A322C]">{SITE.name}</strong> · {REPLY.bizNumber ? `${REPLY.bizNumber.label} ${REPLY.bizNumber.value} · ` : ''}{CONTACT.hq}
             </div>
           </div>
 

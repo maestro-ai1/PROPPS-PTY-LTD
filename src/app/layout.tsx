@@ -84,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <script src="/js/webmcp.js" defer />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#0b100e] text-[#e8ece9] antialiased selection:bg-[#c5a059] selection:text-[#0d1512]">
+      <body className="min-h-screen flex flex-col bg-white text-[#1A1414] antialiased selection:bg-[#D4AF37] selection:text-white">
         <a href="#main" className="skip-link">
           Skip to main content
         </a>

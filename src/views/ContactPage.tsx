@@ -40,7 +40,7 @@ export const ContactContent: React.FC = () => {
 
   return (
     <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-8">
-      <h1 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#F8F6F0] text-center">
+      <h1 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#1A1414] text-center">
         CONTACT {SITE.name}
       </h1>
 
@@ -50,32 +50,32 @@ export const ContactContent: React.FC = () => {
           href={`https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 p-3.5 rounded-xl bg-[#141E1A] border border-[#25D366]/30 hover:border-[#25D366]/60 transition-colors"
+          className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-[#EAE3DC] hover:border-[#00b67a]/60 transition-colors shadow-sm"
         >
-          <MessageCircle className="w-5 h-5 text-[#25D366] shrink-0" />
+          <MessageCircle className="w-5 h-5 text-[#00b67a] shrink-0" />
           <div>
-            <span className="text-[10px] font-mono-code uppercase text-[#889690] block">WhatsApp</span>
-            <span className="text-sm font-mono-code text-white font-semibold">{WHATSAPP_NUMBER}</span>
+            <span className="text-[10px] font-mono-code uppercase text-[#6F665F] block">WhatsApp</span>
+            <span className="text-sm font-mono-code text-[#1A1414] font-semibold">{WHATSAPP_NUMBER}</span>
           </div>
         </a>
 
         <a
           href={`tel:${PHONE_NUMBER}`}
-          className="flex items-center gap-3 p-3.5 rounded-xl bg-[#121A16] border border-[#2C3E36] hover:border-[#C5A059]/60 transition-colors"
+          className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-[#EAE3DC] hover:border-[#D4AF37]/60 transition-colors shadow-sm"
         >
-          <Phone className="w-5 h-5 text-[#C5A059] shrink-0" />
+          <Phone className="w-5 h-5 text-[#D4AF37] shrink-0" />
           <div>
-            <span className="text-[10px] font-mono-code uppercase text-[#889690] block">Direct Call</span>
-            <span className="text-sm font-mono-code text-white font-semibold">{PHONE_NUMBER}</span>
+            <span className="text-[10px] font-mono-code uppercase text-[#6F665F] block">Direct Call</span>
+            <span className="text-sm font-mono-code text-[#1A1414] font-semibold">{PHONE_NUMBER}</span>
           </div>
         </a>
 
-        <div className="flex items-center gap-3 p-3.5 rounded-xl bg-[#121A16] border border-[#2C3E36]">
-          <Mail className="w-5 h-5 text-[#C5A059] shrink-0" />
+        <div className="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-[#EAE3DC] shadow-sm">
+          <Mail className="w-5 h-5 text-[#D4AF37] shrink-0" />
           <div>
-            <span className="text-[10px] font-mono-code uppercase text-[#889690] block">Email</span>
+            <span className="text-[10px] font-mono-code uppercase text-[#6F665F] block">Email</span>
             <span
-              className="text-sm font-mono-code text-white font-semibold"
+              className="text-sm font-mono-code text-[#1A1414] font-semibold"
               dangerouslySetInnerHTML={{ __html: CONTACT.email }}
             />
           </div>
@@ -83,15 +83,15 @@ export const ContactContent: React.FC = () => {
       </div>
 
       {/* Compact message form */}
-      <div className="p-5 sm:p-6 rounded-2xl bg-[#121A16] border border-[#2C3E36]">
+      <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#EAE3DC] shadow-xl">
         {success ? (
           <div className="py-6 text-center space-y-3">
-            <CheckCircle className="w-8 h-8 text-[#56C48B] mx-auto" />
-            <p className="text-sm text-[#F8F6F0] font-semibold">Message sent</p>
+            <CheckCircle className="w-8 h-8 text-[#00b67a] mx-auto" />
+            <p className="text-sm text-[#1A1414] font-semibold">Message sent</p>
             <button
               type="button"
               onClick={() => setSuccess(false)}
-              className="text-xs font-mono-code text-[#C5A059] hover:underline"
+              className="text-xs font-mono-code text-[#D4AF37] hover:underline"
             >
               Send another message
             </button>
@@ -114,7 +114,7 @@ export const ContactContent: React.FC = () => {
               placeholder="Your name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none"
+              className="w-full bg-white border border-[#EAE3DC] rounded-xl px-3.5 py-2.5 text-xs text-[#1A1414] placeholder-[#BDB8B0] focus:border-[#D4AF37] focus:outline-none"
             />
             <input
               type="email"
@@ -122,7 +122,7 @@ export const ContactContent: React.FC = () => {
               placeholder="Your email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none"
+              className="w-full bg-white border border-[#EAE3DC] rounded-xl px-3.5 py-2.5 text-xs text-[#1A1414] placeholder-[#BDB8B0] focus:border-[#D4AF37] focus:outline-none"
             />
             <textarea
               rows={3}
@@ -130,7 +130,7 @@ export const ContactContent: React.FC = () => {
               placeholder="Your message"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-[#4E5C56] focus:border-[#C5A059] focus:outline-none"
+              className="w-full bg-white border border-[#EAE3DC] rounded-xl px-3.5 py-2.5 text-xs text-[#1A1414] placeholder-[#BDB8B0] focus:border-[#D4AF37] focus:outline-none"
             />
             {error && (
               <p role="alert" className="text-xs text-[#E0533C] font-mono-code">
@@ -139,7 +139,7 @@ export const ContactContent: React.FC = () => {
                   href={`https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline text-[#25D366]"
+                  className="underline text-[#00b67a]"
                 >
                   Message us on WhatsApp
                 </a>
@@ -148,7 +148,7 @@ export const ContactContent: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3 bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow flex items-center justify-center gap-2 font-mono-code"
+              className="w-full py-3 white-gold-btn font-bold text-xs uppercase tracking-wider rounded-xl shadow flex items-center justify-center gap-2 font-mono-code border border-[#D4AF37]/50"
             >
               <Send className="w-3.5 h-3.5" />
               <span>{submitting ? 'Sending...' : 'Send Message'}</span>

@@ -38,14 +38,7 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
             name: 'Australia',
           },
           numberOfItems: PRODUCTS.length,
-          knowsAbout: [
-            'Australian Prop Money',
-            'Cinema Reproduction Currency',
-            'Film Production Props',
-            'Television Studio Cash Props',
-            'Theatrical Stage Currency',
-            'RBA Reproduction Currency Guidelines',
-          ],
+          knowsAbout: SITE.keywords,
           priceRange: '$$',
           brand: {
             '@type': 'Brand',

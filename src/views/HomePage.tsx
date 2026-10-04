@@ -91,7 +91,7 @@ export const HomeContent: React.FC = () => {
   return (
     <div className="space-y-12 sm:space-y-16">
       {/* SECTION 1: HERO VIEWPORT - AUSTRALIAN PROP MONEY GOLD & WHITE LUXURY THEME */}
-      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden border-b border-[#2C2822] bg-[#0D0D0E] px-4 py-14 sm:py-20">
+      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden border-b border-[#EAE3DC] bg-[#F9F7F2] px-4 py-14 sm:py-20">
         {/* Photo background layer — crossfades with heroSlide */}
         {heroImages.map((src, idx) => (
           <div
@@ -133,9 +133,9 @@ export const HomeContent: React.FC = () => {
 
         <div className="relative z-10 max-w-5xl mx-auto text-center space-y-5" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.65)' }}>
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#181611] border border-[#D4AF37]/70 shadow-lg">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#D4AF37] shadow-lg">
             <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-            <span className="text-[11px] font-mono-code font-bold tracking-widest uppercase text-[#F5E5B8]">
+            <span className="text-[11px] font-mono-code font-bold tracking-widest uppercase text-[#B08A3A]">
               {heroSlides[heroSlide].badge}
             </span>
           </div>
@@ -173,7 +173,7 @@ export const HomeContent: React.FC = () => {
 
             <Link
               href="/wholesale"
-              className="w-full sm:w-auto px-6 py-3.5 bg-[#141416] hover:bg-[#1E1E22] border border-[#2C2822] hover:border-white text-white font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-[#F9F7F2] border border-[#EAE3DC] hover:border-[#D4AF37] text-[#1A1414] font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
             >
               <span>Studio B2B</span>
               <Film className="w-3.5 h-3.5 text-[#D4AF37]" />
@@ -193,7 +193,7 @@ export const HomeContent: React.FC = () => {
               <Link
                 key={idx}
                 href={chip.path}
-                className="px-3 py-1.5 rounded-lg bg-[#121214] hover:bg-[#1C1B1F] border border-[#2C2822] hover:border-[#D4AF37] text-[#EDEBE6] hover:text-white text-xs font-mono-code transition-all flex items-center gap-1.5 shadow-sm group"
+                className="px-3 py-1.5 rounded-lg bg-white hover:bg-[#F9F7F2] border border-[#EAE3DC] hover:border-[#D4AF37] text-[#6F665F] hover:text-[#1A1414] text-xs font-mono-code transition-all flex items-center gap-1.5 shadow-sm group"
               >
                 <span>{chip.label}</span>
                 {chip.badge && (
@@ -213,7 +213,7 @@ export const HomeContent: React.FC = () => {
                 type="button"
                 onClick={() => setHeroSlide(idx)}
                 className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                  heroSlide === idx ? 'w-8 bg-[#D4AF37]' : 'w-2 bg-[#38242A] hover:bg-[#5C3B44]'
+                  heroSlide === idx ? 'w-8 bg-[#D4AF37]' : 'w-2 bg-[#EAE3DC] hover:bg-[#D4AF37]/50'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -225,57 +225,57 @@ export const HomeContent: React.FC = () => {
       {/* SECTION 2: 4-PILLAR TRUST BAR (GOLD & WHITE LUXURY TILES) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-          <div className="p-4 rounded-xl bg-gradient-to-br from-[#161517] to-[#0F0E10] border border-[#2C2822] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-md">
-            <div className="w-10 h-10 rounded-lg bg-[#1F1E22] border border-[#00b67a]/40 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5 text-[#00E599]" />
+          <div className="p-4 rounded-xl bg-white border border-[#EAE3DC] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-sm">
+            <div className="w-10 h-10 rounded-lg bg-[#F9F7F2] border border-[#00b67a]/40 flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5 text-[#00b67a]" />
             </div>
             <div>
-              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-[#1A1414]">
                 100% Legal Specimen Props
               </p>
-              <p className="text-[11px] text-[#A8A49D] mt-0.5">
+              <p className="text-[11px] text-[#6F665F] mt-0.5">
                 Clearly marked cinema specimen for film & stage.
               </p>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-gradient-to-br from-[#161517] to-[#0F0E10] border border-[#2C2822] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-md">
-            <div className="w-10 h-10 rounded-lg bg-[#1F1E22] border border-[#D4AF37]/50 flex items-center justify-center shrink-0 text-[#D4AF37]">
+          <div className="p-4 rounded-xl bg-white border border-[#EAE3DC] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-sm">
+            <div className="w-10 h-10 rounded-lg bg-[#F9F7F2] border border-[#D4AF37]/50 flex items-center justify-center shrink-0 text-[#D4AF37]">
               <Truck className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <div>
-              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-[#1A1414]">
                 AusPost Express Dispatch
               </p>
-              <p className="text-[11px] text-[#A8A49D] mt-0.5">
+              <p className="text-[11px] text-[#6F665F] mt-0.5">
                 Same-day dispatch before 2PM with tracking.
               </p>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-gradient-to-br from-[#161517] to-[#0F0E10] border border-[#2C2822] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-md">
-            <div className="w-10 h-10 rounded-lg bg-[#1F1E22] border border-[#D4AF37]/50 flex items-center justify-center shrink-0 text-[#D4AF37]">
-              <Percent className="w-5 h-5 text-[#F5E5B8]" />
+          <div className="p-4 rounded-xl bg-white border border-[#EAE3DC] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-sm">
+            <div className="w-10 h-10 rounded-lg bg-[#F9F7F2] border border-[#D4AF37]/50 flex items-center justify-center shrink-0 text-[#D4AF37]">
+              <Percent className="w-5 h-5 text-[#C5A059]" />
             </div>
             <div>
-              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-[#1A1414]">
                 10% Crypto Discount
               </p>
-              <p className="text-[11px] text-[#A8A49D] mt-0.5">
+              <p className="text-[11px] text-[#6F665F] mt-0.5">
                 Instant 10% deduction on Bitcoin & USDT.
               </p>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-gradient-to-br from-[#161517] to-[#0F0E10] border border-[#2C2822] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-md">
-            <div className="w-10 h-10 rounded-lg bg-[#1F1E22] border border-[#D4AF37]/50 flex items-center justify-center shrink-0 text-[#D4AF37]">
+          <div className="p-4 rounded-xl bg-white border border-[#EAE3DC] hover:border-[#D4AF37] transition-all flex items-center gap-3.5 shadow-sm">
+            <div className="w-10 h-10 rounded-lg bg-[#F9F7F2] border border-[#D4AF37]/50 flex items-center justify-center shrink-0 text-[#D4AF37]">
               <Building2 className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <div>
-              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-white">
+              <p className="font-serif-luxury font-bold text-xs uppercase tracking-wider text-[#1A1414]">
                 Melbourne VIC Studio
               </p>
-              <p className="text-[11px] text-[#A8A49D] mt-0.5">
+              <p className="text-[11px] text-[#6F665F] mt-0.5">
                 Supplying Australia's top film & TV productions.
               </p>
             </div>
@@ -285,12 +285,12 @@ export const HomeContent: React.FC = () => {
 
       {/* SECTION 3: CATEGORY SHOWCASE (COMPACT UNIFORM TILES) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 border-b border-[#38242A] pb-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 border-b border-[#EAE3DC] pb-3">
           <div>
             <span className="text-[10.5px] font-mono-code font-bold uppercase tracking-widest text-[#D4AF37] block mb-1">
               Cinema & Television Catalog
             </span>
-            <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#F8F6F0]">
+            <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#1A1414]">
               EXPLORE PROP CURRENCY CATEGORIES
             </h2>
           </div>
@@ -305,27 +305,27 @@ export const HomeContent: React.FC = () => {
             <Link
               key={cat.slug}
               href={`/shop/${cat.slug}`}
-              className="luxury-card rounded-xl overflow-hidden group flex flex-col justify-between"
+              className="luxury-card rounded-xl overflow-hidden group flex flex-col justify-between bg-white border border-[#EAE3DC] shadow-sm"
             >
               {/* Product Frame standard 4:3 */}
               <div className="relative overflow-hidden">
                 <CategoryPhoto src={cat.image} alt={cat.name} />
-                <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#00b67a] text-[#04150e] font-mono-code text-[9.5px] font-bold shadow-md">
+                <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-[#00b67a] text-white font-mono-code text-[9.5px] font-bold shadow-md">
                   CINEMA GRADE
                 </div>
               </div>
 
               <div className="p-4 flex-1 flex flex-col justify-between space-y-2">
                 <div>
-                  <h3 className="font-serif-luxury text-sm font-bold text-[#F8F6F0] group-hover:text-[#D4AF37] transition-colors">
+                  <h3 className="font-serif-luxury text-sm font-bold text-[#1A1414] group-hover:text-[#D4AF37] transition-colors">
                     {cat.name}
                   </h3>
-                  <p className="text-[11.5px] text-[#A69C9F] leading-relaxed line-clamp-2 mt-1">
+                  <p className="text-[11.5px] text-[#6F665F] leading-relaxed line-clamp-2 mt-1">
                     {cat.description}
                   </p>
                 </div>
 
-                <div className="pt-2.5 border-t border-[#2C2822] flex items-center justify-between text-xs font-mono-code text-[#D4AF37]">
+                <div className="pt-2.5 border-t border-[#F7F4F0] flex items-center justify-between text-xs font-mono-code text-[#D4AF37]">
                   <span>Explore Props</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -337,48 +337,48 @@ export const HomeContent: React.FC = () => {
 
       {/* SECTION 4: FEATURED & BEST SELLING PROPS (COMPACT & UNIFORM) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 border-b border-[#2C2822] pb-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 border-b border-[#EAE3DC] pb-3">
           <div>
             <span className="text-[10.5px] font-mono-code font-bold uppercase tracking-widest text-[#D4AF37] block mb-1">
               Best Selling Studio Props
             </span>
-            <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-white">
+            <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#1A1414]">
               FEATURED PRODUCTION PACKS
             </h2>
           </div>
-          <p className="text-[11px] text-[#A8A49D] font-mono-code max-w-xs text-left sm:text-right">
+          <p className="text-[11px] text-[#6F665F] font-mono-code max-w-xs text-left sm:text-right">
             Pre-strapped and vacuum-sealed for camera-ready realism.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredProducts.map((product) => (
-            <div key={product.slug} className="luxury-card rounded-xl overflow-hidden flex flex-col justify-between">
+            <div key={product.slug} className="luxury-card rounded-xl overflow-hidden flex flex-col justify-between bg-white border border-[#EAE3DC] shadow-sm">
               <Link href={`/shop/${product.category}/${product.slug}`} className="relative block">
                 <ProductPhoto src={product.images[0]} alt={product.name} badge={product.badge} />
               </Link>
 
               <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
                 <Link href={`/shop/${product.category}/${product.slug}`} className="space-y-1 block">
-                  <h3 className="font-serif-luxury text-sm font-bold text-white hover:text-[#D4AF37] transition-colors leading-snug">
+                  <h3 className="font-serif-luxury text-sm font-bold text-[#1A1414] hover:text-[#D4AF37] transition-colors leading-snug">
                     {product.name}
                   </h3>
-                  <p className="text-[11px] text-[#A8A49D] leading-relaxed line-clamp-2">
+                  <p className="text-[11px] text-[#6F665F] leading-relaxed line-clamp-2">
                     {product.shortDescription}
                   </p>
                 </Link>
 
-                <div className="pt-2.5 border-t border-[#2C2822] space-y-2.5">
+                <div className="pt-2.5 border-t border-[#F7F4F0] space-y-2.5">
                   <div className="flex items-center justify-between font-mono-code">
                     <div>
                       <span className="text-sm font-bold text-[#D4AF37]">
                         From ${product.price} AUD
                       </span>
-                      <span className="text-[9.5px] text-[#F5E5B8] block font-semibold">
+                      <span className="text-[9.5px] text-[#C5A059] block font-semibold">
                         Crypto: ${(product.price * 0.9).toFixed(0)} AUD (-10%)
                       </span>
                     </div>
-                    <span className="text-[9.5px] text-[#00E599] font-bold bg-[#00b67a]/15 px-2 py-0.5 rounded border border-[#00b67a]/40">
+                    <span className="text-[9.5px] text-[#00b67a] font-bold bg-[#00b67a]/10 px-2 py-0.5 rounded border border-[#00b67a]/30">
                       DISPATCH 24H
                     </span>
                   </div>
@@ -386,7 +386,7 @@ export const HomeContent: React.FC = () => {
                   <div className="grid grid-cols-2 gap-2">
                     <Link
                       href={`/shop/${product.category}/${product.slug}`}
-                      className="py-2 px-2.5 bg-[#17161A] hover:bg-[#222126] text-white text-xs font-semibold rounded-lg border border-[#2C2822] hover:border-white transition-colors text-center"
+                      className="py-2 px-2.5 bg-[#F9F7F2] hover:bg-white text-[#1A1414] text-xs font-semibold rounded-lg border border-[#EAE3DC] hover:border-[#D4AF37] transition-colors text-center"
                     >
                       Specs
                     </Link>
@@ -414,27 +414,27 @@ export const HomeContent: React.FC = () => {
 
       {/* SECTION 5: "ABOUT PROPPS PTY LTD" AUTHORITY LAYER (12 SIGNALS) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 sm:p-10 rounded-2xl bg-gradient-to-b from-[#170E12] via-[#10080B] to-[#0A0507] border border-[#38242A] shadow-2xl relative overflow-hidden space-y-6">
+        <div className="p-6 sm:p-10 rounded-2xl bg-gradient-to-b from-[#FAF9F6] via-white to-[#F9F7F2] border border-[#EAE3DC] shadow-xl relative overflow-hidden space-y-6">
           <div className="max-w-3xl space-y-2">
             <span className="text-xs font-mono-code font-bold tracking-widest text-[#D4AF37] uppercase block">
               Authority, Origin &amp; Compliance Standards
             </span>
-            <h2 className="font-serif-luxury text-xl sm:text-3xl font-bold text-[#F8F6F0] leading-tight">
+            <h2 className="font-serif-luxury text-xl sm:text-3xl font-bold text-[#1A1414] leading-tight">
               ENGINEERED IN MELBOURNE FOR AUSTRALIAN CINEMA &amp; TELEVISION
             </h2>
-            <p className="text-xs sm:text-sm text-[#D1C7CA] leading-relaxed">
-              Founded in {BRAND.foundingYear} in {BRAND.foundingLocation}, <strong className="text-white">{SITE.name}</strong> operates as Australia's dedicated production prop currency manufacturing laboratory. We serve cinema directors, art departments, theatrical companies, and commercial studios with compliant, camera-ready reproduction currency.
+            <p className="text-xs sm:text-sm text-[#4F4640] leading-relaxed">
+              Founded in {BRAND.foundingYear} in {BRAND.foundingLocation}, <strong className="text-[#1A1414]">{SITE.name}</strong> operates as Australia's dedicated production prop currency manufacturing laboratory. We serve cinema directors, art departments, theatrical companies, and commercial studios with compliant, camera-ready reproduction currency.
             </p>
           </div>
 
           {/* 4 Core Differentiation Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
             {BRAND.differentiation.map((diff, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-[#140C0F] border border-[#2B181E] space-y-2">
-                <div className="w-7 h-7 rounded-lg bg-[#24131A] border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] text-xs font-bold font-mono-code">
+              <div key={idx} className="p-4 rounded-xl bg-white border border-[#EAE3DC] space-y-2 shadow-sm">
+                <div className="w-7 h-7 rounded-lg bg-[#F9F7F2] border border-[#D4AF37]/50 flex items-center justify-center text-[#D4AF37] text-xs font-bold font-mono-code">
                   0{idx + 1}
                 </div>
-                <p className="text-[11.5px] text-[#E8ECE9] leading-relaxed font-medium">
+                <p className="text-[11.5px] text-[#2C2420] leading-relaxed font-medium">
                   {diff}
                 </p>
               </div>
@@ -442,28 +442,28 @@ export const HomeContent: React.FC = () => {
           </div>
 
           {/* Scale & Footprint Metrics */}
-          <div className="pt-5 border-t border-[#29171D] grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          <div className="pt-5 border-t border-[#EAE3DC] grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             <div>
               <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#D4AF37] block">500+</span>
-              <span className="text-[10px] text-[#A69C9F] uppercase tracking-wider font-mono-code mt-0.5 block">
+              <span className="text-[10px] text-[#6F665F] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Australian Productions Supplied
               </span>
             </div>
             <div>
               <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#00b67a] block">100%</span>
-              <span className="text-[10px] text-[#A69C9F] uppercase tracking-wider font-mono-code mt-0.5 block">
+              <span className="text-[10px] text-[#6F665F] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Legal Specimen Compliance
               </span>
             </div>
             <div>
               <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#D4AF37] block">24hr</span>
-              <span className="text-[10px] text-[#A69C9F] uppercase tracking-wider font-mono-code mt-0.5 block">
+              <span className="text-[10px] text-[#6F665F] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Express Melbourne Dispatch
               </span>
             </div>
             <div>
-              <span className="font-mono-code text-xl sm:text-2xl font-bold text-white block">VIC 3093</span>
-              <span className="text-[10px] text-[#A8A49D] uppercase tracking-wider font-mono-code mt-0.5 block">
+              <span className="font-mono-code text-xl sm:text-2xl font-bold text-[#1A1414] block">VIC 3093</span>
+              <span className="text-[10px] text-[#6F665F] uppercase tracking-wider font-mono-code mt-0.5 block">
                 Australian Studio HQ
               </span>
             </div>
@@ -477,10 +477,10 @@ export const HomeContent: React.FC = () => {
           <span className="text-xs font-mono-code font-bold tracking-widest text-[#D4AF37] uppercase block">
             Common Inquiries
           </span>
-          <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-white">
+          <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#1A1414]">
             FREQUENTLY ASKED QUESTIONS
           </h2>
-          <p className="text-xs text-[#A8A49D]">
+          <p className="text-xs text-[#6F665F]">
             Direct answers regarding legal compliance, ordering thresholds, and studio dispatch.
           </p>
         </div>
@@ -489,21 +489,21 @@ export const HomeContent: React.FC = () => {
           {FAQ.map((item, idx) => {
             const isOpen = activeFaq === idx;
             return (
-              <div key={idx} className="rounded-xl bg-[#141417] border border-[#2C2822] overflow-hidden transition-colors">
+              <div key={idx} className="rounded-xl bg-white border border-[#EAE3DC] overflow-hidden transition-colors shadow-sm">
                 <button
                   type="button"
                   onClick={() => setActiveFaq(isOpen ? null : idx)}
                   aria-expanded={isOpen}
                   className="w-full p-3.5 sm:p-4 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                 >
-                  <span className="font-semibold text-xs sm:text-sm text-white">{item.question}</span>
-                  <span className="w-5 h-5 rounded-full bg-[#201F1A] flex items-center justify-center text-[#D4AF37] text-xs font-bold shrink-0">
+                  <span className="font-semibold text-xs sm:text-sm text-[#1A1414]">{item.question}</span>
+                  <span className="w-5 h-5 rounded-full bg-[#F9F7F2] flex items-center justify-center text-[#D4AF37] text-xs font-bold shrink-0">
                     {isOpen ? '−' : '+'}
                   </span>
                 </button>
 
                 {isOpen && (
-                  <div className="px-4 pb-4 pt-1 text-xs text-[#C4C0B8] leading-relaxed border-t border-[#2C2822] animate-fade-in">
+                  <div className="px-4 pb-4 pt-1 text-xs text-[#4F4640] leading-relaxed border-t border-[#F7F4F0] animate-fade-in">
                     {item.answer}
                   </div>
                 )}
@@ -515,15 +515,15 @@ export const HomeContent: React.FC = () => {
 
       {/* SECTION 7: DIRECT DISPATCH DESK / WHATSAPP BANNER (GOLD & WHITE) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#17171A] via-[#101012] to-[#0A0A0C] border-2 border-[#D4AF37]/50 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#F9F7F2] via-white to-[#F9F7F2] border-2 border-[#D4AF37]/50 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1.5 text-center md:text-left">
-            <div className="inline-block px-2 py-0.5 rounded bg-[#00b67a] text-[#04150e] font-mono-code text-[9.5px] font-bold tracking-wider uppercase mb-1">
+            <div className="inline-block px-2 py-0.5 rounded bg-[#00b67a] text-white font-mono-code text-[9.5px] font-bold tracking-wider uppercase mb-1">
               FAST SAME-DAY DISPATCH
             </div>
-            <h3 className="font-serif-luxury text-lg sm:text-xl font-bold text-[#F8F6F0]">
+            <h3 className="font-serif-luxury text-lg sm:text-xl font-bold text-[#1A1414]">
               NEED CUSTOM SERIALS OR BULK FILM PACKS?
             </h3>
-            <p className="text-xs text-[#D1C7CA] max-w-xl">
+            <p className="text-xs text-[#4F4640] max-w-xl">
               Connect directly with our Melbourne prop dispatch desk for tailored studio quotes, custom weathered props, or same-day courier dispatch across Australia.
             </p>
           </div>
@@ -531,7 +531,7 @@ export const HomeContent: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-2.5 shrink-0">
             <Link
               href="/contact"
-              className="px-5 py-3 bg-[#1E1116] hover:bg-[#2C1820] text-white font-serif-luxury font-bold text-xs uppercase tracking-wider rounded-xl border border-[#38242A] hover:border-[#D4AF37] transition-colors"
+              className="px-5 py-3 bg-white hover:bg-[#F9F7F2] text-[#1A1414] font-serif-luxury font-bold text-xs uppercase tracking-wider rounded-xl border border-[#EAE3DC] hover:border-[#D4AF37] transition-colors shadow-sm"
             >
               Contact Dispatch Desk
             </Link>

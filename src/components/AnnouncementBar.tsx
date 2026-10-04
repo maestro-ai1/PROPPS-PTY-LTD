@@ -37,24 +37,24 @@ export const AnnouncementBar: React.FC = () => {
   const CurrentIcon = slides[current].icon;
 
   return (
-    <div className="bg-gradient-to-r from-[#17140B] via-[#2A2312] to-[#17140B] border-b border-[#D4AF37]/50 text-xs py-1.5 px-4 select-none relative overflow-hidden shadow-md">
+    <div className="bg-gradient-to-r from-[#F9F7F2] via-[#F7F4F0] to-[#F9F7F2] border-b border-[#D4AF37]/40 text-xs py-1.5 px-4 select-none relative overflow-hidden shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <button
           onClick={() => setCurrent((prev) => (prev - 1 + slides.length) % slides.length)}
-          className="text-[#D4AF37] hover:text-white px-2 py-0.5 text-xs transition-colors focus:outline-none cursor-pointer"
+          className="text-[#D4AF37] hover:text-[#1A1414] px-2 py-0.5 text-xs transition-colors focus:outline-none cursor-pointer"
           aria-label="Previous announcement"
         >
           ‹
         </button>
 
-        <div className="flex items-center gap-2 text-center justify-center font-mono-code text-[11px] tracking-wider text-white font-semibold transition-all duration-300">
+        <div className="flex items-center gap-2 text-center justify-center font-mono-code text-[11px] tracking-wider text-[#1A1414] font-semibold transition-all duration-300">
           <CurrentIcon className="w-3.5 h-3.5 shrink-0 text-[#D4AF37]" />
           <span className="truncate">{slides[current].text}</span>
         </div>
 
         <button
           onClick={() => setCurrent((prev) => (prev + 1) % slides.length)}
-          className="text-[#D4AF37] hover:text-white px-2 py-0.5 text-xs transition-colors focus:outline-none cursor-pointer"
+          className="text-[#D4AF37] hover:text-[#1A1414] px-2 py-0.5 text-xs transition-colors focus:outline-none cursor-pointer"
           aria-label="Next announcement"
         >
           ›

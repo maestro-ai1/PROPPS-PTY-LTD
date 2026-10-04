@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Prop Money Australia | Shop Cinema Currency',
   description:
     'Shop prop money Australia: New Notes, Money Stacks, Film & TV, Photography, Event & Custom Props. Buy prop money online with fast Melbourne dispatch.',
+  keywords: SITE.keywords,
   alternates: { canonical: `https://${SITE.domain}/shop/` },
 };
 

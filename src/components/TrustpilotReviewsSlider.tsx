@@ -155,10 +155,9 @@ export const TrustpilotReviewsSlider: React.FC = () => {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Trustpilot-Themed Header Banner (Gold & White Theme with Trustpilot Green) */}
-      <div className="rounded-2xl bg-gradient-to-b from-[#151518] via-[#101012] to-[#0A0A0C] border-2 border-[#2C2822] p-5 sm:p-6 shadow-2xl relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#00b67a]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="rounded-2xl bg-gradient-to-b from-white via-[#F9F7F2] to-white border-2 border-[#EAE3DC] p-5 sm:p-6 shadow-xl relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[550px] h-[320px] bg-[#D4AF37]/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[300px] bg-white/10 rounded-full blur-[130px] pointer-events-none" />
 
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 relative z-10">
           {/* Left: Overall Trustpilot Metric */}
@@ -168,28 +167,28 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                 <span className="inline-block w-2 h-2 rounded-full bg-[#00b67a] animate-pulse" />
                 Verified Production Reviews
               </span>
-              <span className="text-[#3A3830]">•</span>
-              <div className="inline-flex items-center gap-1.5 bg-[#17171A] px-2.5 py-0.5 rounded border border-[#2C2822]">
+              <span className="text-[#EAE3DC]">•</span>
+              <div className="inline-flex items-center gap-1.5 bg-white px-2.5 py-0.5 rounded border border-[#EAE3DC]">
                 <div className="w-3.5 h-3.5 bg-[#00b67a] flex items-center justify-center rounded-[2px]">
                   <Star className="w-2.5 h-2.5 fill-white text-white" />
                 </div>
-                <span className="text-xs font-bold tracking-tight text-white font-sans">
+                <span className="text-xs font-bold tracking-tight text-[#1A1414] font-sans">
                   Trustpilot
                 </span>
               </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-              <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-white">
+              <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#1A1414]">
                 {REVIEWS_STATS.trustScore}
               </h2>
               {renderTrustpilotStars(5)}
-              <div className="text-xs sm:text-sm text-[#A8A49D] font-medium">
-                <strong className="text-white font-mono-code text-base font-bold">
+              <div className="text-xs sm:text-sm text-[#6F665F] font-medium">
+                <strong className="text-[#1A1414] font-mono-code text-base font-bold">
                   {REVIEWS_STATS.averageRating}
                 </strong>{' '}
                 out of 5 on{' '}
-                <strong className="text-white font-semibold font-sans">Trustpilot</strong>{' '}
+                <strong className="text-[#1A1414] font-semibold font-sans">Trustpilot</strong>{' '}
                 based on{' '}
                 <strong className="text-[#D4AF37] font-mono-code">
                   {reviews.length + 172} reviews
@@ -197,7 +196,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-xs text-[#A8A49D] max-w-xl">
+            <p className="text-xs text-[#6F665F] max-w-xl">
               Authentic Australian studio feedback from prop masters, art directors, theatrical coordinators, and independent filmmakers nationwide.
             </p>
           </div>
@@ -207,7 +206,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
             <button
               type="button"
               onClick={() => setShowStatsModal(true)}
-              className="px-3.5 py-2 rounded-xl bg-[#1A1A1E] hover:bg-[#25252A] text-white text-xs font-mono-code font-semibold border border-[#2C2822] hover:border-[#D4AF37]/50 flex items-center gap-2 transition-all cursor-pointer shadow-sm"
+              className="px-3.5 py-2 rounded-xl bg-white hover:bg-[#F9F7F2] text-[#1A1414] text-xs font-mono-code font-semibold border border-[#EAE3DC] hover:border-[#D4AF37]/50 flex items-center gap-2 transition-all cursor-pointer shadow-sm"
             >
               <SlidersHorizontal className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Rating Breakdown</span>
@@ -225,7 +224,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
         </div>
 
         {/* Category & Star Filter Tabs */}
-        <div className="mt-4 pt-4 border-t border-[#23211D] flex flex-wrap items-center justify-between gap-2.5">
+        <div className="mt-4 pt-4 border-t border-[#F7F4F0] flex flex-wrap items-center justify-between gap-2.5">
           {/* Category Pills */}
           <div className="flex flex-wrap items-center gap-1.5">
             {[
@@ -244,8 +243,8 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                   onClick={() => setActiveCategory(tab.id)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
                     isActive
-                      ? 'bg-[#00b67a]/20 text-[#00b67a] border border-[#00b67a]/60 shadow-sm font-semibold'
-                      : 'bg-[#151518] text-[#A8A49D] hover:text-white border border-[#25231F]'
+                      ? 'bg-[#00b67a]/10 text-[#00b67a] border border-[#00b67a]/40 shadow-sm font-semibold'
+                      : 'bg-white text-[#6F665F] hover:text-[#1A1414] border border-[#EAE3DC]'
                   }`}
                 >
                   <Icon className="w-3 h-3 text-[#D4AF37]" />
@@ -257,7 +256,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
 
           {/* Star Filter Pills (including critical 1-3★) */}
           <div className="flex items-center gap-1">
-            <span className="text-[10.5px] text-[#8C8880] font-mono-code mr-1 hidden sm:inline">
+            <span className="text-[10.5px] text-[#6F665F] font-mono-code mr-1 hidden sm:inline">
               Filter:
             </span>
             <button
@@ -265,8 +264,8 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               onClick={() => setActiveRatingFilter('all')}
               className={`px-2 py-0.5 rounded text-[10.5px] font-mono-code transition-colors cursor-pointer ${
                 activeRatingFilter === 'all'
-                  ? 'bg-[#232018] text-[#D4AF37] font-bold border border-[#D4AF37]/50'
-                  : 'text-[#8C8880] hover:text-white'
+                  ? 'bg-[#F9F7F2] text-[#D4AF37] font-bold border border-[#D4AF37]/50'
+                  : 'text-[#6F665F] hover:text-[#1A1414]'
               }`}
             >
               All
@@ -276,8 +275,8 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               onClick={() => setActiveRatingFilter(5)}
               className={`px-2 py-0.5 rounded text-[10.5px] font-mono-code flex items-center gap-1 transition-colors cursor-pointer ${
                 activeRatingFilter === 5
-                  ? 'bg-[#00b67a]/20 text-[#00b67a] font-bold border border-[#00b67a]/40'
-                  : 'text-[#8C8880] hover:text-white'
+                  ? 'bg-[#00b67a]/10 text-[#00b67a] font-bold border border-[#00b67a]/30'
+                  : 'text-[#6F665F] hover:text-[#1A1414]'
               }`}
             >
               <span>5★</span>
@@ -287,8 +286,8 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               onClick={() => setActiveRatingFilter(4)}
               className={`px-2 py-0.5 rounded text-[10.5px] font-mono-code flex items-center gap-1 transition-colors cursor-pointer ${
                 activeRatingFilter === 4
-                  ? 'bg-[#00b67a]/20 text-[#00b67a] font-bold border border-[#00b67a]/40'
-                  : 'text-[#8C8880] hover:text-white'
+                  ? 'bg-[#00b67a]/10 text-[#00b67a] font-bold border border-[#00b67a]/30'
+                  : 'text-[#6F665F] hover:text-[#1A1414]'
               }`}
             >
               <span>4★</span>
@@ -298,8 +297,8 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               onClick={() => setActiveRatingFilter('critical')}
               className={`px-2 py-0.5 rounded text-[10.5px] font-mono-code flex items-center gap-1 transition-colors cursor-pointer ${
                 activeRatingFilter === 'critical'
-                  ? 'bg-[#00b67a]/20 text-[#00b67a] font-bold border border-[#00b67a]/60'
-                  : 'text-[#8C8880] hover:text-[#00b67a]'
+                  ? 'bg-[#00b67a]/10 text-[#00b67a] font-bold border border-[#00b67a]/40'
+                  : 'text-[#6F665F] hover:text-[#00b67a]'
               }`}
               title="Includes authentic 3★, 2★, and 1★ customer reviews and studio resolutions"
             >
@@ -312,8 +311,8 @@ export const TrustpilotReviewsSlider: React.FC = () => {
       {/* REVOLUTIONARY CAROUSEL CONTAINER (COMPACTED & PERFECTLY ALIGNED) */}
       <div className="relative">
         {filteredReviews.length === 0 ? (
-          <div className="p-8 text-center rounded-2xl bg-[#140D10] border border-[#2D1B22] space-y-2">
-            <p className="text-xs text-[#A89C9F]">
+          <div className="p-8 text-center rounded-2xl bg-white border border-[#EAE3DC] space-y-2 shadow-sm">
+            <p className="text-xs text-[#6F665F]">
               No reviews match this specific filter combination.
             </p>
             <button
@@ -343,15 +342,15 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                     className="flex-shrink-0 w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)] flex flex-col"
                   >
                     {/* Compact Card with Fixed Height & Aligned Structure */}
-                    <div className="h-[270px] w-full rounded-2xl bg-gradient-to-b from-[#151518] to-[#0E0E10] hover:from-[#1A1A1E] hover:to-[#121215] border border-[#2C2822] hover:border-[#00b67a]/60 p-4 sm:p-5 shadow-lg transition-all duration-200 flex flex-col justify-between group overflow-hidden relative">
+                    <div className="h-[270px] w-full rounded-2xl bg-white hover:bg-[#F9F7F2] border border-[#EAE3DC] hover:border-[#00b67a]/40 p-4 sm:p-5 shadow-lg transition-all duration-200 flex flex-col justify-between group overflow-hidden relative">
                       {/* Top Accent Line */}
-                      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent group-hover:via-[#00b67a] transition-all" />
+                      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37]/20 to-transparent group-hover:via-[#00b67a] transition-all" />
 
                       {/* Header block: Star Rating & Date */}
                       <div>
                         <div className="flex items-center justify-between gap-2 mb-2">
                           {renderTrustpilotStars(review.rating)}
-                          <span className="text-[10px] font-mono-code text-[#8C8880]">
+                          <span className="text-[10px] font-mono-code text-[#6F665F]">
                             {review.date}
                           </span>
                         </div>
@@ -363,37 +362,37 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                         </div>
 
                         {/* Title - strictly single line clamp for uniform height */}
-                        <h3 className="font-serif-luxury text-sm font-bold text-white leading-snug line-clamp-1 group-hover:text-[#D4AF37] transition-colors mb-1.5" title={review.title}>
+                        <h3 className="font-serif-luxury text-sm font-bold text-[#1A1414] leading-snug line-clamp-1 group-hover:text-[#D4AF37] transition-colors mb-1.5" title={review.title}>
                           "{review.title}"
                         </h3>
 
                         {/* Comment Body - strictly 3 line clamp */}
-                        <p className="text-[11.5px] text-[#C4C0B8] leading-relaxed line-clamp-3">
+                        <p className="text-[11.5px] text-[#4F4640] leading-relaxed line-clamp-3">
                           {review.comment}
                         </p>
                       </div>
 
                       {/* Company Reply snippet if present */}
                       {review.companyReply && (
-                        <div className="my-1 px-2 py-1 rounded bg-[#0A0A0C] border-l-2 border-[#00b67a] text-[10px] text-[#00b67a] line-clamp-1 flex items-center gap-1">
+                        <div className="my-1 px-2 py-1 rounded bg-[#F9F7F2] border-l-2 border-[#00b67a] text-[10px] text-[#00b67a] line-clamp-1 flex items-center gap-1">
                           <CornerDownRight className="w-2.5 h-2.5 shrink-0 text-[#00b67a]" />
                           <span className="font-bold text-[#00b67a]">Reply:</span>
-                          <span className="truncate text-[#BDB8B0]">{review.companyReply.text}</span>
+                          <span className="truncate text-[#6F665F]">{review.companyReply.text}</span>
                         </div>
                       )}
 
                       {/* Pinned Bottom Footer */}
-                      <div className="mt-auto pt-2.5 border-t border-[#23211D] space-y-1">
+                      <div className="mt-auto pt-2.5 border-t border-[#F7F4F0] space-y-1">
                         <div className="flex items-center justify-between gap-1">
-                          <span className="font-semibold text-xs text-white truncate">
+                          <span className="font-semibold text-xs text-[#1A1414] truncate">
                             {review.author}
                           </span>
-                          <span className="text-[9px] font-mono-code px-1.5 py-0.5 rounded bg-[#1C1A14] text-[#D4AF37] border border-[#D4AF37]/30 uppercase shrink-0">
+                          <span className="text-[9px] font-mono-code px-1.5 py-0.5 rounded bg-[#F9F7F2] text-[#D4AF37] border border-[#D4AF37]/20 uppercase shrink-0">
                             {review.category.replace('-', ' ')}
                           </span>
                         </div>
 
-                        <div className="flex items-center justify-between text-[10.5px] text-[#8C8880]">
+                        <div className="flex items-center justify-between text-[10.5px] text-[#6F665F]">
                           <span className="truncate">{review.role}</span>
                           <span className="font-mono-code shrink-0">{review.location}</span>
                         </div>
@@ -421,7 +420,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               onClick={handlePrev}
               disabled={filteredReviews.length <= cardsPerPage}
               aria-label="Previous reviews slide"
-              className="w-9 h-9 rounded-xl bg-[#170E12] hover:bg-[#25151C] disabled:opacity-30 disabled:cursor-not-allowed border border-[#2D1B22] flex items-center justify-center text-[#F8F6F0] hover:text-[#D4AF37] transition-colors cursor-pointer shadow-md"
+              className="w-9 h-9 rounded-xl bg-white hover:bg-[#F9F7F2] disabled:opacity-30 disabled:cursor-not-allowed border border-[#EAE3DC] flex items-center justify-center text-[#1A1414] hover:text-[#D4AF37] transition-colors cursor-pointer shadow-md"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -430,7 +429,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               onClick={handleNext}
               disabled={filteredReviews.length <= cardsPerPage}
               aria-label="Next reviews slide"
-              className="w-9 h-9 rounded-xl bg-[#170E12] hover:bg-[#25151C] disabled:opacity-30 disabled:cursor-not-allowed border border-[#2D1B22] flex items-center justify-center text-[#F8F6F0] hover:text-[#D4AF37] transition-colors cursor-pointer shadow-md"
+              className="w-9 h-9 rounded-xl bg-white hover:bg-[#F9F7F2] disabled:opacity-30 disabled:cursor-not-allowed border border-[#EAE3DC] flex items-center justify-center text-[#1A1414] hover:text-[#D4AF37] transition-colors cursor-pointer shadow-md"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -439,7 +438,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsPaused(!isPaused)}
-              className="px-2.5 py-1.5 rounded-xl bg-[#170E12] hover:bg-[#25151C] border border-[#2D1B22] text-[10.5px] font-mono-code text-[#8C7D82] hover:text-[#D4AF37] flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="px-2.5 py-1.5 rounded-xl bg-white hover:bg-[#F9F7F2] border border-[#EAE3DC] text-[10.5px] font-mono-code text-[#6F665F] hover:text-[#D4AF37] flex items-center gap-1.5 transition-colors cursor-pointer"
               title={isPaused ? 'Resume auto-sliding' : 'Pause auto-sliding'}
             >
               {isPaused ? <Play className="w-3 h-3" /> : <Pause className="w-3 h-3" />}
@@ -470,9 +469,9 @@ export const TrustpilotReviewsSlider: React.FC = () => {
             </div>
           )}
 
-          <div className="text-[11px] font-mono-code text-[#8C8880]">
+          <div className="text-[11px] font-mono-code text-[#6F665F]">
             Showing{' '}
-            <strong className="text-white">
+            <strong className="text-[#1A1414]">
               {Math.min(currentIndex + cardsPerPage, filteredReviews.length)}
             </strong>{' '}
             of <strong className="text-[#D4AF37]">{filteredReviews.length}</strong> reviews
@@ -482,12 +481,12 @@ export const TrustpilotReviewsSlider: React.FC = () => {
 
       {/* RATING BREAKDOWN STATS MODAL (Gold & White Theme with Trustpilot Green) */}
       {showStatsModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-md bg-[#141417] border-2 border-[#2C2822] rounded-2xl p-5 sm:p-6 space-y-5 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-md bg-white border-2 border-[#EAE3DC] rounded-2xl p-5 sm:p-6 space-y-5 shadow-2xl relative">
             <button
               type="button"
               onClick={() => setShowStatsModal(false)}
-              className="absolute top-4 right-4 text-[#8C8880] hover:text-[#D4AF37] p-1 rounded-lg"
+              className="absolute top-4 right-4 text-[#6F665F] hover:text-[#D4AF37] p-1 rounded-lg"
             >
               <X className="w-5 h-5" />
             </button>
@@ -496,19 +495,19 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               <span className="text-xs font-mono-code text-[#D4AF37] font-bold uppercase tracking-wider">
                 Audited Performance
               </span>
-              <h3 className="font-serif-luxury text-lg font-bold text-white">
+              <h3 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
                 Rating Distribution &amp; Criteria
               </h3>
             </div>
 
             {/* Big Summary Score */}
-            <div className="flex items-center gap-4 p-3.5 rounded-xl bg-[#0B0B0D] border border-[#23211D]">
+            <div className="flex items-center gap-4 p-3.5 rounded-xl bg-[#F9F7F2] border border-[#EAE3DC]">
               <div className="text-3xl font-mono-code font-bold text-[#D4AF37]">
                 {REVIEWS_STATS.averageRating}
               </div>
               <div className="space-y-0.5">
                 {renderTrustpilotStars(5)}
-                <p className="text-xs text-[#A8A49D]">
+                <p className="text-xs text-[#6F665F]">
                   Overall Trustpilot TrustScore based on 184 client evaluations
                 </p>
               </div>
@@ -524,10 +523,10 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                 { star: 1, pct: 2, count: 3 },
               ].map((item) => (
                 <div key={item.star} className="flex items-center gap-2.5 text-xs font-mono-code">
-                  <span className="w-12 text-[#9E9094] flex items-center gap-1">
+                  <span className="w-12 text-[#6F665F] flex items-center gap-1">
                     {item.star} <Star className="w-3 h-3 fill-[#00b67a] text-[#00b67a]" />
                   </span>
-                  <div className="flex-1 h-2.5 rounded-full bg-[#1E1E22] overflow-hidden">
+                  <div className="flex-1 h-2.5 rounded-full bg-[#F7F4F0] overflow-hidden">
                     <div
                       className={`h-full rounded-full ${
                         item.star >= 4 ? 'bg-[#00b67a]' : item.star === 3 ? 'bg-[#D4AF37]' : 'bg-[#00b67a]/60'
@@ -535,7 +534,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                       style={{ width: `${item.pct}%` }}
                     />
                   </div>
-                  <span className="w-14 text-right text-[#B5A8AB]">
+                  <span className="w-14 text-right text-[#6F665F]">
                     {item.pct}% ({item.count})
                   </span>
                 </div>
@@ -543,21 +542,21 @@ export const TrustpilotReviewsSlider: React.FC = () => {
             </div>
 
             {/* Department Breakdown */}
-            <div className="pt-3 border-t border-[#23211D] grid grid-cols-2 gap-2.5 text-xs">
-              <div className="p-2.5 rounded-lg bg-[#18181C] border border-[#262420]">
-                <span className="text-[#8C8880] block text-[10.5px]">Product Quality</span>
+            <div className="pt-3 border-t border-[#F7F4F0] grid grid-cols-2 gap-2.5 text-xs">
+              <div className="p-2.5 rounded-lg bg-white border border-[#EAE3DC]">
+                <span className="text-[#6F665F] block text-[10.5px]">Product Quality</span>
                 <span className="font-mono-code text-sm font-bold text-[#D4AF37]">4.9 / 5.0</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-[#18181C] border border-[#262420]">
-                <span className="text-[#8C8880] block text-[10.5px]">Customer Service</span>
+              <div className="p-2.5 rounded-lg bg-white border border-[#EAE3DC]">
+                <span className="text-[#6F665F] block text-[10.5px]">Customer Service</span>
                 <span className="font-mono-code text-sm font-bold text-[#D4AF37]">4.8 / 5.0</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-[#18181C] border border-[#262420]">
-                <span className="text-[#8C8880] block text-[10.5px]">Shipping Reliability</span>
+              <div className="p-2.5 rounded-lg bg-white border border-[#EAE3DC]">
+                <span className="text-[#6F665F] block text-[10.5px]">Shipping Reliability</span>
                 <span className="font-mono-code text-sm font-bold text-[#D4AF37]">4.4 / 5.0</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-[#18181C] border border-[#262420]">
-                <span className="text-[#8C8880] block text-[10.5px]">Wholesale B2B</span>
+              <div className="p-2.5 rounded-lg bg-white border border-[#EAE3DC]">
+                <span className="text-[#6F665F] block text-[10.5px]">Wholesale B2B</span>
                 <span className="font-mono-code text-sm font-bold text-[#D4AF37]">4.9 / 5.0</span>
               </div>
             </div>
@@ -565,7 +564,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
             <button
               type="button"
               onClick={() => setShowStatsModal(false)}
-              className="w-full py-2 rounded-xl bg-[#202025] hover:bg-[#2A2A30] text-xs font-mono-code text-white font-semibold border border-[#2C2822] cursor-pointer"
+              className="w-full py-2 rounded-xl bg-[#F9F7F2] hover:bg-white text-xs font-mono-code text-[#1A1414] font-semibold border border-[#EAE3DC] cursor-pointer"
             >
               Close Breakdown
             </button>
@@ -575,12 +574,12 @@ export const TrustpilotReviewsSlider: React.FC = () => {
 
       {/* WRITE A REVIEW MODAL (Gold & White Theme with Trustpilot Green) */}
       {showReviewModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in overflow-y-auto">
-          <div className="w-full max-w-lg bg-[#141417] border-2 border-[#2C2822] rounded-2xl p-5 sm:p-6 space-y-5 shadow-2xl relative my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
+          <div className="w-full max-w-lg bg-white border-2 border-[#EAE3DC] rounded-2xl p-5 sm:p-6 space-y-5 shadow-2xl relative my-8">
             <button
               type="button"
               onClick={() => setShowReviewModal(false)}
-              className="absolute top-4 right-4 text-[#8C8880] hover:text-[#D4AF37] p-1 rounded-lg"
+              className="absolute top-4 right-4 text-[#6F665F] hover:text-[#D4AF37] p-1 rounded-lg"
             >
               <X className="w-5 h-5" />
             </button>
@@ -589,21 +588,21 @@ export const TrustpilotReviewsSlider: React.FC = () => {
               <span className="text-xs font-mono-code text-[#D4AF37] font-bold uppercase tracking-wider">
                 Production Community Feedback
               </span>
-              <h3 className="font-serif-luxury text-xl font-bold text-white">
+              <h3 className="font-serif-luxury text-xl font-bold text-[#1A1414]">
                 Write a Verified Client Review
               </h3>
-              <p className="text-xs text-[#A8A49D]">
+              <p className="text-xs text-[#6F665F]">
                 Share your candid production experience regarding print quality, dispatch speed, or support.
               </p>
             </div>
 
             {submittedReview ? (
-              <div className="p-6 text-center rounded-xl bg-[#0B0B0D] border border-[#D4AF37]/40 space-y-2.5">
+              <div className="p-6 text-center rounded-xl bg-[#F9F7F2] border border-[#D4AF37]/40 space-y-2.5">
                 <CheckCircle2 className="w-10 h-10 text-[#00b67a] mx-auto animate-bounce" />
-                <h4 className="font-serif-luxury text-base font-bold text-white">
+                <h4 className="font-serif-luxury text-base font-bold text-[#1A1414]">
                   Review Published &amp; Added to Slider!
                 </h4>
-                <p className="text-xs text-[#A8A49D]">
+                <p className="text-xs text-[#6F665F]">
                   Thank you for contributing to our verified Australian studio community.
                 </p>
               </div>
@@ -623,13 +622,13 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                         className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer ${
                           star <= newRating
                             ? 'bg-[#00b67a] text-white shadow-md'
-                            : 'bg-[#1E1E22] text-[#6E6A60] hover:bg-[#28282E]'
+                            : 'bg-[#F9F7F2] text-[#6F665F] hover:bg-white border border-[#EAE3DC]'
                         }`}
                       >
                         <Star className="w-4 h-4 fill-current" />
                       </button>
                     ))}
-                    <span className="text-xs font-mono-code text-white ml-2">
+                    <span className="text-xs font-mono-code text-[#1A1414] ml-2">
                       {newRating === 5
                         ? '5 - Excellent / Camera-Ready'
                         : newRating === 4
@@ -651,7 +650,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                   <select
                     value={newCategory}
                     onChange={(e: any) => setNewCategory(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#18181C] border border-[#2C2822] text-xs text-white focus:border-[#00b67a] focus:outline-none"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#EAE3DC] text-xs text-[#1A1414] focus:border-[#00b67a] focus:outline-none"
                   >
                     <option value="product-quality">Product Quality &amp; Visual Realism</option>
                     <option value="customer-service">Customer Services &amp; Support</option>
@@ -663,7 +662,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                 {/* Name & Role */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <div>
-                    <label className="block text-xs font-mono-code text-[#B5A8AB] mb-1">
+                    <label className="block text-xs font-mono-code text-[#6F665F] mb-1">
                       Your Name *
                     </label>
                     <input
@@ -672,11 +671,11 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                       placeholder="e.g. Cameron Davies"
                       value={newAuthor}
                       onChange={(e) => setNewAuthor(e.target.value)}
-                      className="w-full px-3 py-1.5 rounded-xl bg-[#18181C] border border-[#2C2822] text-xs text-white focus:border-[#00b67a] focus:outline-none"
+                      className="w-full px-3 py-1.5 rounded-xl bg-white border border-[#EAE3DC] text-xs text-[#1A1414] focus:border-[#00b67a] focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono-code text-[#B5A8AB] mb-1">
+                    <label className="block text-xs font-mono-code text-[#6F665F] mb-1">
                       Role / Department
                     </label>
                     <input
@@ -684,14 +683,14 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                       placeholder="e.g. Art Director / Prop Master"
                       value={newRole}
                       onChange={(e) => setNewRole(e.target.value)}
-                      className="w-full px-3 py-1.5 rounded-xl bg-[#18181C] border border-[#2C2822] text-xs text-white focus:border-[#00b67a] focus:outline-none"
+                      className="w-full px-3 py-1.5 rounded-xl bg-white border border-[#EAE3DC] text-xs text-[#1A1414] focus:border-[#00b67a] focus:outline-none"
                     />
                   </div>
                 </div>
 
                 {/* Location */}
                 <div>
-                  <label className="block text-xs font-mono-code text-[#B5A8AB] mb-1">
+                  <label className="block text-xs font-mono-code text-[#6F665F] mb-1">
                     Production Location (City, State)
                   </label>
                   <input
@@ -699,13 +698,13 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                     placeholder="e.g. Sydney, NSW"
                     value={newLocation}
                     onChange={(e) => setNewLocation(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-xl bg-[#18181C] border border-[#2C2822] text-xs text-white focus:border-[#00b67a] focus:outline-none"
+                    className="w-full px-3 py-1.5 rounded-xl bg-white border border-[#EAE3DC] text-xs text-[#1A1414] focus:border-[#00b67a] focus:outline-none"
                   />
                 </div>
 
                 {/* Headline */}
                 <div>
-                  <label className="block text-xs font-mono-code text-[#B5A8AB] mb-1">
+                  <label className="block text-xs font-mono-code text-[#6F665F] mb-1">
                     Review Headline *
                   </label>
                   <input
@@ -714,13 +713,13 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                     placeholder="e.g. Perfect coloration under 4K studio lenses"
                     value={newTitle}
                     onChange={(e) => setNewTitle(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-xl bg-[#18181C] border border-[#2C2822] text-xs text-white focus:border-[#00b67a] focus:outline-none"
+                    className="w-full px-3 py-1.5 rounded-xl bg-white border border-[#EAE3DC] text-xs text-[#1A1414] focus:border-[#00b67a] focus:outline-none"
                   />
                 </div>
 
                 {/* Detailed Comment */}
                 <div>
-                  <label className="block text-xs font-mono-code text-[#B5A8AB] mb-1">
+                  <label className="block text-xs font-mono-code text-[#6F665F] mb-1">
                     Detailed Review *
                   </label>
                   <textarea
@@ -729,7 +728,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                     placeholder="Describe how the props performed on camera, the packaging, dispatch speed, or how customer support assisted you..."
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-[#18181C] border border-[#2C2822] text-xs text-white focus:border-[#00b67a] focus:outline-none"
+                    className="w-full px-3 py-2 rounded-xl bg-white border border-[#EAE3DC] text-xs text-[#1A1414] focus:border-[#00b67a] focus:outline-none"
                   />
                 </div>
 
@@ -737,7 +736,7 @@ export const TrustpilotReviewsSlider: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowReviewModal(false)}
-                    className="px-3.5 py-2 rounded-xl bg-[#18181C] text-xs text-[#B5A8AB] hover:text-white cursor-pointer"
+                    className="px-3.5 py-2 rounded-xl bg-[#F9F7F2] text-xs text-[#6F665F] hover:text-[#1A1414] cursor-pointer"
                   >
                     Cancel
                   </button>

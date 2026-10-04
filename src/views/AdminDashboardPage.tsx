@@ -28,20 +28,20 @@ import { SITE, SHOP } from '../config/site.js';
 type Tab = 'dashboard' | 'orders' | 'enquiries' | 'order' | 'enquiry';
 
 const STATUS_STYLE: Record<string, string> = {
-  pending: 'bg-[#2A2413] text-[#E5C378] border-[#C5A059]/50',
-  'payment-sent': 'bg-[#122A1E] text-[#56C48B] border-[#56C48B]/50',
-  paid: 'bg-[#56C48B] text-[#0D1512] border-[#56C48B]',
-  dispatched: 'bg-[#12222A] text-[#6CB6E8] border-[#6CB6E8]/50',
-  cancelled: 'bg-[#2A1414] text-[#E0533C] border-[#E0533C]/50',
-  new: 'bg-[#2A2413] text-[#E5C378] border-[#C5A059]/50',
-  replied: 'bg-[#122A1E] text-[#56C48B] border-[#56C48B]/50',
-  archived: 'bg-[#1C1C1C] text-[#889690] border-[#3A3A3A]',
+  pending: 'bg-[#F9F7F2] text-[#D4AF37] border-[#D4AF37]/50',
+  'payment-sent': 'bg-[#F1F9F5] text-[#00b67a] border-[#00b67a]/50',
+  paid: 'bg-[#00b67a] text-white border-[#00b67a]',
+  dispatched: 'bg-[#F0F7FF] text-[#0070F3] border-[#0070F3]/50',
+  cancelled: 'bg-[#FFF5F5] text-[#E0533C] border-[#E0533C]/50',
+  new: 'bg-[#F9F7F2] text-[#D4AF37] border-[#D4AF37]/50',
+  replied: 'bg-[#F1F9F5] text-[#00b67a] border-[#00b67a]/50',
+  archived: 'bg-[#F7F4F0] text-[#6F665F] border-[#EAE3DC]',
 };
 
 const badge = 'px-2 py-0.5 rounded border text-[10px] font-bold uppercase tracking-wider';
-const label = 'block text-[11px] font-bold uppercase tracking-widest text-[#889690] mb-1.5';
+const label = 'block text-[11px] font-bold uppercase tracking-widest text-[#6F665F] mb-1.5';
 const field =
-  'w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl px-4 py-3 text-base text-[#F8F6F0] focus:border-[#C5A059] focus:outline-none';
+  'w-full bg-white border border-[#EAE3DC] rounded-xl px-4 py-3 text-base text-[#1A1414] focus:border-[#D4AF37] focus:outline-none';
 const when = (ts: number) =>
   new Date(ts).toLocaleString('en-AU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
 
@@ -224,7 +224,7 @@ export const AdminDashboardContent: React.FC = () => {
       type="button"
       onClick={() => setTab(id)}
       className={`min-h-12 rounded-xl border px-1 text-[10.5px] font-bold uppercase tracking-wide transition-colors ${
-        active ? 'border-[#C5A059] text-[#E5C378] bg-[#1A1710]' : 'border-[#22302A] text-[#F8F6F0] bg-[#0E1513] hover:border-[#C5A059]/60'
+        active ? 'border-[#D4AF37] text-[#D4AF37] bg-[#F9F7F2]' : 'border-[#EAE3DC] text-[#6F665F] bg-white hover:border-[#D4AF37]/60'
       }`}
     >
       {text}
@@ -262,21 +262,21 @@ export const AdminDashboardContent: React.FC = () => {
 
     return (
       <div className="space-y-5">
-        <button type="button" onClick={() => setTab('orders')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#22302A] px-4 text-xs font-bold uppercase tracking-wider text-[#F8F6F0]">
+        <button type="button" onClick={() => setTab('orders')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#EAE3DC] px-4 text-xs font-bold uppercase tracking-wider text-[#1A1414] bg-white hover:bg-[#F9F7F2]">
           <ArrowLeft className="h-4 w-4" /> All orders
         </button>
         <div>
-          <h2 className="font-serif-luxury text-2xl font-bold text-[#F8F6F0]">SEND PAYMENT DETAILS</h2>
-          <p className="text-sm text-[#889690]">Fill in the details, review the preview below, then send.</p>
+          <h2 className="font-serif-luxury text-2xl font-bold text-[#1A1414]">SEND PAYMENT DETAILS</h2>
+          <p className="text-sm text-[#6F665F]">Fill in the details, review the preview below, then send.</p>
         </div>
 
         {message && (
-          <div className={`rounded-xl border p-4 text-sm ${message.startsWith('NOT') ? 'border-[#E0533C] text-[#E0533C]' : 'border-[#56C48B] text-[#56C48B]'}`}>
+          <div className={`rounded-xl border p-4 text-sm ${message.startsWith('NOT') ? 'border-[#E0533C] text-[#E0533C] bg-[#FFF5F5]' : 'border-[#00b67a] text-[#00b67a] bg-[#F1F9F5]'}`}>
             {message}
           </div>
         )}
 
-        <div className="space-y-4 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 sm:p-5">
+        <div className="space-y-4 rounded-2xl border border-[#EAE3DC] bg-white p-4 sm:p-5 shadow-sm">
           <div className="grid grid-cols-2 gap-3">
             <div>
               <span className={label}>Order #</span>
@@ -318,16 +318,16 @@ export const AdminDashboardContent: React.FC = () => {
 
           <div>
             <div className="mb-1.5 flex items-center justify-between">
-              <label htmlFor="pay-details" className="text-[11px] font-bold uppercase tracking-widest text-[#889690]">
+              <label htmlFor="pay-details" className="text-[11px] font-bold uppercase tracking-widest text-[#6F665F]">
                 Payment details *
               </label>
-              <div className="flex overflow-hidden rounded-lg border border-[#2C3E36] text-[11px] font-bold uppercase">
+              <div className="flex overflow-hidden rounded-lg border border-[#EAE3DC] text-[11px] font-bold uppercase">
                 {(['template', 'paste'] as const).map((m) => (
                   <button
                     key={m}
                     type="button"
                     onClick={() => chooseMode(m)}
-                    className={`min-h-9 px-3 ${mode === m ? 'bg-[#C5A059] text-[#0D1512]' : 'bg-[#0A0F0D] text-[#B4C0BA]'}`}
+                    className={`min-h-9 px-3 ${mode === m ? 'bg-[#D4AF37] text-white' : 'bg-white text-[#6F665F]'}`}
                   >
                     {m}
                   </button>
@@ -342,20 +342,20 @@ export const AdminDashboardContent: React.FC = () => {
               placeholder={'One detail per line, e.g.\nBSB: 123-456\nAccount number: 12345678'}
               className={`${field} font-mono text-sm`}
             />
-            <p className="mt-1.5 text-xs text-[#66736D]">Auto-filled from your saved details for this method - edit freely. Each line gets a Copy button for the customer.</p>
+            <p className="mt-1.5 text-xs text-[#6F665F]">Auto-filled from your saved details for this method - edit freely. Each line gets a Copy button for the customer.</p>
           </div>
 
-          <div className="rounded-xl border border-[#22302A] bg-[#0A0F0D] p-4">
-            <div className="mb-2 flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-[#889690]">
+          <div className="rounded-xl border border-[#EAE3DC] bg-[#F9F7F2] p-4">
+            <div className="mb-2 flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-[#6F665F]">
               <span>Payment terms</span>
-              <span className="text-[#66736D]">always included</span>
+              <span className="text-[#D4AF37]">always included</span>
             </div>
-            <ul className="list-disc space-y-1.5 pl-5 text-sm text-[#B4C0BA]">
+            <ul className="list-disc space-y-1.5 pl-5 text-sm text-[#4F4640]">
               {paymentTermsLines(order.ref, method).map((l, i) => (
                 <li key={i}>{l}</li>
               ))}
             </ul>
-            <p className="mt-3 text-sm text-[#889690]">{paymentConfirmLine()}</p>
+            <p className="mt-3 text-sm text-[#6F665F]">{paymentConfirmLine()}</p>
           </div>
 
           <div>
@@ -368,68 +368,68 @@ export const AdminDashboardContent: React.FC = () => {
 
         <div className="space-y-2">
           <span className={label}>Email preview</span>
-          <iframe title="Email preview" srcDoc={previewHtml} sandbox="" className="h-[760px] w-full rounded-2xl border border-[#D5CDBD] bg-[#F4F0EA]" />
+          <iframe title="Email preview" srcDoc={previewHtml} sandbox="" className="h-[760px] w-full rounded-2xl border border-[#EAE3DC] bg-[#F4F0EA]" />
         </div>
 
         <button
           type="button"
           onClick={sendToCustomer}
           disabled={sending || !order.email}
-          className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#C5A059] px-4 text-sm font-extrabold uppercase tracking-wider text-[#0D1512] hover:bg-[#D4AF37] disabled:opacity-50"
+          className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl white-gold-btn px-4 text-sm font-extrabold uppercase tracking-wider shadow-lg disabled:opacity-50"
         >
           <Mail className="h-5 w-5 shrink-0" />
           <span className="truncate">{sending ? 'Sending...' : order.email ? `${order.invoice ? 'Resend' : 'Send'} to ${order.email}` : 'No email - use WhatsApp'}</span>
         </button>
 
-        <div className="flex items-center gap-3 text-[11px] uppercase tracking-widest text-[#66736D]">
-          <span className="h-px flex-1 bg-[#22302A]" /> or send via whatsapp <span className="h-px flex-1 bg-[#22302A]" />
+        <div className="flex items-center gap-3 text-[11px] uppercase tracking-widest text-[#6F665F]">
+          <span className="h-px flex-1 bg-[#EAE3DC]" /> or send via whatsapp <span className="h-px flex-1 bg-[#EAE3DC]" />
         </div>
 
         <div className="space-y-3">
           <span className={label}>WhatsApp message preview</span>
-          <div className="max-h-56 overflow-y-auto whitespace-pre-wrap rounded-xl border border-[#22302A] bg-[#0A0F0D] p-4 text-sm text-[#B4C0BA]">{waMessage}</div>
+          <div className="max-h-56 overflow-y-auto whitespace-pre-wrap rounded-xl border border-[#EAE3DC] bg-white p-4 text-sm text-[#4F4640]">{waMessage}</div>
           <div className="grid grid-cols-2 gap-3">
             <a
               href={waLink(order.phone, waMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-extrabold uppercase tracking-wider text-[#0B100E]"
+              className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-extrabold uppercase tracking-wider text-white hover:bg-[#128C7E]"
             >
               <MessageCircle className="h-4 w-4" /> Open WhatsApp
             </a>
             <button
               type="button"
               onClick={() => copy('wa', waMessage)}
-              className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#2C3E36] px-3 text-xs font-bold uppercase tracking-wider text-[#F8F6F0]"
+              className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#EAE3DC] px-3 text-xs font-bold uppercase tracking-wider text-[#1A1414] bg-white hover:bg-[#F9F7F2]"
             >
-              {copied === 'wa' ? <Check className="h-4 w-4 text-[#56C48B]" /> : <Copy className="h-4 w-4 text-[#C5A059]" />} {copied === 'wa' ? 'Copied' : 'Copy text'}
+              {copied === 'wa' ? <Check className="h-4 w-4 text-[#00b67a]" /> : <Copy className="h-4 w-4 text-[#D4AF37]" />} {copied === 'wa' ? 'Copied' : 'Copy text'}
             </button>
           </div>
         </div>
 
         {invoiceLink && (
-          <div className="space-y-2 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4">
+          <div className="space-y-2 rounded-2xl border border-[#EAE3DC] bg-[#F9F7F2] p-4">
             <span className={label}>Customer invoice link</span>
-            <div className="break-all rounded-lg bg-[#0A0F0D] p-3 text-xs text-[#B4C0BA]">{invoiceLink}</div>
-            <button type="button" onClick={() => copy('link', invoiceLink)} className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#2C3E36] text-xs font-bold uppercase tracking-wider text-[#F8F6F0]">
-              {copied === 'link' ? <Check className="h-4 w-4 text-[#56C48B]" /> : <Copy className="h-4 w-4 text-[#C5A059]" />} {copied === 'link' ? 'Copied' : 'Copy link'}
+            <div className="break-all rounded-lg bg-white border border-[#EAE3DC] p-3 text-xs text-[#4F4640]">{invoiceLink}</div>
+            <button type="button" onClick={() => copy('link', invoiceLink)} className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#EAE3DC] text-xs font-bold uppercase tracking-wider text-[#1A1414] bg-white hover:bg-[#F7F4F0]">
+              {copied === 'link' ? <Check className="h-4 w-4 text-[#00b67a]" /> : <Copy className="h-4 w-4 text-[#D4AF37]" />} {copied === 'link' ? 'Copied' : 'Copy link'}
             </button>
           </div>
         )}
 
-        <div className="space-y-3 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4">
+        <div className="space-y-3 rounded-2xl border border-[#EAE3DC] bg-white p-4 shadow-sm">
           <div className="flex items-center justify-between">
             <span className={`${label} mb-0`}>Order status</span>
             <span className={`${badge} ${STATUS_STYLE[order.status]}`}>{order.status}</span>
           </div>
           {order.paymentNotifiedAt && order.status !== 'paid' && order.status !== 'dispatched' && (
-            <p className="text-sm font-semibold text-[#56C48B]">Customer says they have paid - check your bank, then mark as paid.</p>
+            <p className="text-sm font-semibold text-[#00b67a]">Customer says they have paid - check your bank, then mark as paid.</p>
           )}
           <div className="grid grid-cols-2 gap-3">
-            <button type="button" onClick={() => setStatus('paid')} disabled={order.status === 'paid' || order.status === 'dispatched'} className="min-h-12 rounded-xl bg-[#56C48B] text-xs font-extrabold uppercase tracking-wider text-[#0D1512] disabled:opacity-40">
+            <button type="button" onClick={() => setStatus('paid')} disabled={order.status === 'paid' || order.status === 'dispatched'} className="min-h-12 rounded-xl bg-[#00b67a] text-xs font-extrabold uppercase tracking-wider text-white disabled:opacity-40">
               Mark paid
             </button>
-            <button type="button" onClick={() => setStatus('dispatched')} disabled={order.status === 'dispatched'} className="min-h-12 rounded-xl border border-[#6CB6E8] text-xs font-extrabold uppercase tracking-wider text-[#6CB6E8] disabled:opacity-40">
+            <button type="button" onClick={() => setStatus('dispatched')} disabled={order.status === 'dispatched'} className="min-h-12 rounded-xl border border-[#0070F3] text-[#0070F3] text-xs font-extrabold uppercase tracking-wider bg-white disabled:opacity-40">
               Mark dispatched
             </button>
           </div>
@@ -450,17 +450,17 @@ export const AdminDashboardContent: React.FC = () => {
     });
     return (
       <div className="space-y-5">
-        <button type="button" onClick={() => setTab('enquiries')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#22302A] px-4 text-xs font-bold uppercase tracking-wider text-[#F8F6F0]">
+        <button type="button" onClick={() => setTab('enquiries')} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[#EAE3DC] px-4 text-xs font-bold uppercase tracking-wider text-[#1A1414] bg-white hover:bg-[#F9F7F2]">
           <ArrowLeft className="h-4 w-4" /> All enquiries
         </button>
-        <h2 className="font-serif-luxury text-2xl font-bold text-[#F8F6F0]">REPLY TO {enquiry.name.toUpperCase()}</h2>
+        <h2 className="font-serif-luxury text-2xl font-bold text-[#1A1414]">REPLY TO {enquiry.name.toUpperCase()}</h2>
         {message && (
-          <div className={`rounded-xl border p-4 text-sm ${message.startsWith('NOT') ? 'border-[#E0533C] text-[#E0533C]' : 'border-[#56C48B] text-[#56C48B]'}`}>{message}</div>
+          <div className={`rounded-xl border p-4 text-sm ${message.startsWith('NOT') ? 'border-[#E0533C] text-[#E0533C] bg-[#FFF5F5]' : 'border-[#00b67a] text-[#00b67a] bg-[#F1F9F5]'}`}>{message}</div>
         )}
-        <div className="space-y-2 rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 text-sm">
-          <div className="break-all text-[#B4C0BA]">{enquiry.email}{enquiry.phone ? ` · ${enquiry.phone}` : ''}</div>
-          {enquiry.company && <div className="text-[#889690]">{enquiry.company}</div>}
-          <div className="whitespace-pre-wrap text-[#F8F6F0]">{enquiry.message}</div>
+        <div className="space-y-2 rounded-2xl border border-[#EAE3DC] bg-white p-4 text-sm shadow-sm">
+          <div className="break-all text-[#6F665F]">{enquiry.email}{enquiry.phone ? ` · ${enquiry.phone}` : ''}</div>
+          {enquiry.company && <div className="text-[#6F665F] font-bold">{enquiry.company}</div>}
+          <div className="whitespace-pre-wrap text-[#4F4640] pt-2 border-t border-[#F7F4F0] mt-2">{enquiry.message}</div>
         </div>
         <div>
           <label htmlFor="reply-box" className={label}>
@@ -470,9 +470,9 @@ export const AdminDashboardContent: React.FC = () => {
         </div>
         <div className="space-y-2">
           <span className={label}>Email preview</span>
-          <iframe title="Reply preview" srcDoc={previewHtml} sandbox="" className="h-[520px] w-full rounded-2xl border border-[#D5CDBD] bg-[#F4F0EA]" />
+          <iframe title="Reply preview" srcDoc={previewHtml} sandbox="" className="h-[520px] w-full rounded-2xl border border-[#EAE3DC] bg-[#F4F0EA]" />
         </div>
-        <button type="button" onClick={sendReply} disabled={sending} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#C5A059] px-4 text-sm font-extrabold uppercase tracking-wider text-[#0D1512] hover:bg-[#D4AF37] disabled:opacity-50">
+        <button type="button" onClick={sendReply} disabled={sending} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl white-gold-btn px-4 text-sm font-extrabold uppercase tracking-wider shadow-lg disabled:opacity-50">
           <Mail className="h-5 w-5 shrink-0" />
           <span className="truncate">{sending ? 'Sending...' : `Send reply to ${enquiry.email}`}</span>
         </button>
@@ -481,10 +481,10 @@ export const AdminDashboardContent: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto min-h-screen max-w-2xl space-y-5 px-4 py-6 text-[#B4C0BA]">
+    <div className="mx-auto min-h-screen max-w-2xl space-y-5 px-4 py-6 text-[#4F4640]">
       <div className="flex items-center justify-between">
-        <h1 className="font-serif-luxury text-3xl font-bold text-[#F8F6F0]">DASHBOARD</h1>
-        <button type="button" onClick={loadData} aria-label="Refresh" className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#22302A] text-[#C5A059]">
+        <h1 className="font-serif-luxury text-3xl font-bold text-[#1A1414]">DASHBOARD</h1>
+        <button type="button" onClick={loadData} aria-label="Refresh" className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#EAE3DC] bg-white text-[#D4AF37] hover:bg-[#F9F7F2]">
           <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
         </button>
       </div>
@@ -493,7 +493,7 @@ export const AdminDashboardContent: React.FC = () => {
         {navBtn('dashboard', 'Dashboard', tab === 'dashboard')}
         {navBtn('orders', 'Orders', tab === 'orders' || tab === 'order')}
         {navBtn('enquiries', 'Enquiries', tab === 'enquiries' || tab === 'enquiry')}
-        <button type="button" onClick={lock} className="min-h-12 rounded-xl border border-[#E0533C]/60 px-1 text-[10.5px] font-bold uppercase tracking-wide text-[#E0533C]">
+        <button type="button" onClick={lock} className="min-h-12 rounded-xl border border-[#E0533C]/60 px-1 text-[10.5px] font-bold uppercase tracking-wide text-[#E0533C] bg-white hover:bg-[#FFF5F5]">
           Sign out
         </button>
       </nav>
@@ -501,21 +501,21 @@ export const AdminDashboardContent: React.FC = () => {
       {tab === 'dashboard' && (
         <div className="space-y-4">
           {claimedPaid > 0 && (
-            <button type="button" onClick={() => setTab('orders')} className="w-full rounded-xl border border-[#56C48B] bg-[#122A1E] p-4 text-left text-sm font-semibold text-[#56C48B]">
+            <button type="button" onClick={() => setTab('orders')} className="w-full rounded-xl border border-[#00b67a] bg-[#F1F9F5] p-4 text-left text-sm font-semibold text-[#00b67a]">
               {claimedPaid} customer{claimedPaid > 1 ? 's say' : ' says'} they have paid - tap to check
             </button>
           )}
           <div className="grid grid-cols-2 gap-3">
-            <button type="button" onClick={() => setTab('orders')} className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-5 text-center hover:border-[#C5A059]/60">
+            <button type="button" onClick={() => setTab('orders')} className="rounded-2xl border border-[#EAE3DC] bg-white p-5 text-center hover:border-[#D4AF37]/60 shadow-sm">
               <div className="text-3xl">📦</div>
-              <div className="mt-2 text-4xl font-bold text-[#F8F6F0]">{orders.length}</div>
-              <div className="text-xs uppercase tracking-widest text-[#889690]">Orders</div>
+              <div className="mt-2 text-4xl font-bold text-[#1A1414]">{orders.length}</div>
+              <div className="text-xs uppercase tracking-widest text-[#6F665F]">Orders</div>
               <span className={`${badge} mt-3 inline-block ${STATUS_STYLE.pending}`}>{pendingCount} pending</span>
             </button>
-            <button type="button" onClick={() => setTab('enquiries')} className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-5 text-center hover:border-[#C5A059]/60">
+            <button type="button" onClick={() => setTab('enquiries')} className="rounded-2xl border border-[#EAE3DC] bg-white p-5 text-center hover:border-[#D4AF37]/60 shadow-sm">
               <div className="text-3xl">💬</div>
-              <div className="mt-2 text-4xl font-bold text-[#F8F6F0]">{enquiries.length}</div>
-              <div className="text-xs uppercase tracking-widest text-[#889690]">Enquiries</div>
+              <div className="mt-2 text-4xl font-bold text-[#1A1414]">{enquiries.length}</div>
+              <div className="text-xs uppercase tracking-widest text-[#6F665F]">Enquiries</div>
               <span className={`${badge} mt-3 inline-block ${STATUS_STYLE.new}`}>{newCount} new</span>
             </button>
           </div>
@@ -524,8 +524,8 @@ export const AdminDashboardContent: React.FC = () => {
 
       {tab === 'orders' && (
         <div className="space-y-3">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-[#C5A059]">Orders ({orders.length})</h2>
-          {orders.length === 0 && <p className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-6 text-center text-sm text-[#889690]">No orders yet.</p>}
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[#D4AF37]">Orders ({orders.length})</h2>
+          {orders.length === 0 && <p className="rounded-2xl border border-[#EAE3DC] bg-white p-6 text-center text-sm text-[#6F665F]">No orders yet.</p>}
           {orders.map((o) => (
             <div
               key={o.id}
@@ -533,13 +533,13 @@ export const AdminDashboardContent: React.FC = () => {
               tabIndex={0}
               onClick={() => openOrder(o)}
               onKeyDown={(e) => e.key === 'Enter' && openOrder(o)}
-              className="relative cursor-pointer rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 transition-colors hover:border-[#C5A059]/60"
+              className="relative cursor-pointer rounded-2xl border border-[#EAE3DC] bg-white p-4 transition-colors hover:border-[#D4AF37]/60 shadow-sm hover:shadow-md"
             >
               <div className="flex flex-wrap items-center gap-2 pr-10">
-                <span className="text-sm font-bold text-[#E5C378]">{o.ref}</span>
+                <span className="text-sm font-bold text-[#D4AF37]">{o.ref}</span>
                 <span className={`${badge} ${STATUS_STYLE[o.status]}`}>{o.status}</span>
-                <span className={`${badge} ${o.channel === 'whatsapp' ? 'border-[#25D366]/50 bg-[#10261A] text-[#25D366]' : 'border-[#2C3E36] bg-[#141E1A] text-[#B4C0BA]'}`}>{o.channel}</span>
-                {o.paymentNotifiedAt && o.status !== 'paid' && o.status !== 'dispatched' && <span className={`${badge} border-[#56C48B] bg-[#56C48B] text-[#0D1512]`}>says paid</span>}
+                <span className={`${badge} ${o.channel === 'whatsapp' ? 'border-[#25D366]/50 bg-[#F0FFF4] text-[#00b67a]' : 'border-[#EAE3DC] bg-[#F9F7F2] text-[#6F665F]'}`}>{o.channel}</span>
+                {o.paymentNotifiedAt && o.status !== 'paid' && o.status !== 'dispatched' && <span className={`${badge} border-[#00b67a] bg-[#00b67a] text-white`}>says paid</span>}
               </div>
               <button
                 type="button"
@@ -548,20 +548,20 @@ export const AdminDashboardContent: React.FC = () => {
                   e.stopPropagation();
                   removeOrder(o.id);
                 }}
-                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center text-[#66736D] hover:text-[#E0533C]"
+                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center text-[#6F665F] hover:text-[#E0533C]"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
-              <div className="mt-2 text-lg font-semibold text-[#F8F6F0]">{o.customerName}</div>
-              <div className="break-all text-sm text-[#889690]">
+              <div className="mt-2 text-lg font-semibold text-[#1A1414]">{o.customerName}</div>
+              <div className="break-all text-sm text-[#6F665F]">
                 {o.email || 'no email'} · {o.phone}
               </div>
-              <div className="mt-2 text-xs text-[#66736D]">{o.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}</div>
+              <div className="mt-2 text-xs text-[#6F665F]">{o.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}</div>
               <div className="mt-2 flex items-end justify-between">
-                <span className="text-xs text-[#889690]">{PAY_METHOD_LABEL[o.paymentMethod as PayMethodId] || o.paymentMethod}</span>
+                <span className="text-xs text-[#6F665F] font-mono-code">{PAY_METHOD_LABEL[o.paymentMethod as PayMethodId] || o.paymentMethod}</span>
                 <div className="text-right">
-                  <div className="text-lg font-bold text-[#F8F6F0]">${o.total.toFixed(2)}</div>
-                  <div className="text-[11px] text-[#66736D]">{when(o.createdAt)}</div>
+                  <div className="text-lg font-bold text-[#1A1414]">${o.total.toFixed(2)}</div>
+                  <div className="text-[11px] text-[#6F665F] font-mono-code">{when(o.createdAt)}</div>
                 </div>
               </div>
             </div>
@@ -571,8 +571,8 @@ export const AdminDashboardContent: React.FC = () => {
 
       {tab === 'enquiries' && (
         <div className="space-y-3">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-[#C5A059]">Enquiries ({enquiries.length})</h2>
-          {enquiries.length === 0 && <p className="rounded-2xl border border-[#22302A] bg-[#0E1513] p-6 text-center text-sm text-[#889690]">No enquiries yet.</p>}
+          <h2 className="text-sm font-bold uppercase tracking-widest text-[#D4AF37]">Enquiries ({enquiries.length})</h2>
+          {enquiries.length === 0 && <p className="rounded-2xl border border-[#EAE3DC] bg-white p-6 text-center text-sm text-[#6F665F]">No enquiries yet.</p>}
           {enquiries.map((e) => (
             <div
               key={e.id}
@@ -580,12 +580,12 @@ export const AdminDashboardContent: React.FC = () => {
               tabIndex={0}
               onClick={() => openEnquiry(e)}
               onKeyDown={(ev) => ev.key === 'Enter' && openEnquiry(e)}
-              className="relative cursor-pointer rounded-2xl border border-[#22302A] bg-[#0E1513] p-4 transition-colors hover:border-[#C5A059]/60"
+              className="relative cursor-pointer rounded-2xl border border-[#EAE3DC] bg-white p-4 transition-colors hover:border-[#D4AF37]/60 shadow-sm"
             >
               <div className="flex flex-wrap items-center gap-2 pr-10">
                 <span className={`${badge} ${STATUS_STYLE[e.status]}`}>{e.status}</span>
-                <span className={`${badge} border-[#2C3E36] bg-[#141E1A] text-[#B4C0BA]`}>{e.type}</span>
-                <span className="text-xs text-[#66736D]">{when(e.createdAt)}</span>
+                <span className={`${badge} border-[#EAE3DC] bg-[#F9F7F2] text-[#6F665F]`}>{e.type}</span>
+                <span className="text-xs text-[#6F665F] font-mono-code">{when(e.createdAt)}</span>
               </div>
               <button
                 type="button"
@@ -594,16 +594,16 @@ export const AdminDashboardContent: React.FC = () => {
                   ev.stopPropagation();
                   removeEnquiry(e.id);
                 }}
-                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center text-[#66736D] hover:text-[#E0533C]"
+                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center text-[#6F665F] hover:text-[#E0533C]"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
-              <div className="mt-2 text-lg font-semibold text-[#F8F6F0]">{e.name}</div>
-              <div className="break-all text-sm text-[#889690]">
+              <div className="mt-2 text-lg font-semibold text-[#1A1414]">{e.name}</div>
+              <div className="break-all text-sm text-[#6F665F]">
                 {e.email}
                 {e.phone ? ` · ${e.phone}` : ''}
               </div>
-              <div className="mt-2 line-clamp-2 text-sm text-[#66736D]">{e.message}</div>
+              <div className="mt-2 line-clamp-2 text-sm text-[#4F4640]">{e.message}</div>
             </div>
           ))}
         </div>

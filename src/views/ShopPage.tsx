@@ -48,14 +48,14 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
       />
 
       {/* Page Header */}
-      <div className="border-b border-[#1E2B25] pb-6 space-y-2">
-        <span className="text-[11px] font-mono-code font-bold uppercase tracking-widest text-[#C5A059] block">
+      <div className="border-b border-[#EAE3DC] pb-6 space-y-2">
+        <span className="text-[11px] font-mono-code font-bold uppercase tracking-widest text-[#D4AF37] block">
           Australian Cinema Specimen Catalog
         </span>
-        <h1 className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#F8F6F0]">
+        <h1 className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#1A1414]">
           {currentCatObj ? (currentCatObj.h1 ?? currentCatObj.name).toUpperCase() : 'PROP MONEY AUSTRALIA — FULL CATALOG'}
         </h1>
-        <p className="text-xs sm:text-sm text-[#9AA7A0] max-w-3xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#6F665F] max-w-3xl leading-relaxed">
           {currentCatObj
             ? currentCatObj.description
             : 'Explore Australia’s standard in compliant reproduction currency, 100-note strapped bundles, bank bricks, and turnkey director heist kits.'}
@@ -70,8 +70,8 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
             href="/shop"
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
               !category
-                ? 'bg-[#C5A059] text-[#0D1512] font-bold shadow'
-                : 'bg-[#141E1A] text-[#B4C0BA] hover:bg-[#1C2A24] border border-[#22302A]'
+                ? 'bg-[#D4AF37] text-white font-bold shadow'
+                : 'bg-[#F9F7F2] text-[#6F665F] hover:bg-white border border-[#EAE3DC]'
             }`}
           >
             All Props ({PRODUCTS.length})
@@ -83,8 +83,8 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
               href={`/shop/${cat.slug}`}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
                 category === cat.slug
-                  ? 'bg-[#C5A059] text-[#0D1512] font-bold shadow'
-                  : 'bg-[#141E1A] text-[#B4C0BA] hover:bg-[#1C2A24] border border-[#22302A]'
+                  ? 'bg-[#D4AF37] text-white font-bold shadow'
+                  : 'bg-[#F9F7F2] text-[#6F665F] hover:bg-white border border-[#EAE3DC]'
               }`}
             >
               {cat.name}
@@ -94,11 +94,11 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
 
         {/* Sort Select */}
         <div className="flex items-center gap-2 text-xs font-mono-code shrink-0">
-          <span className="text-[#889690]">SORT BY:</span>
+          <span className="text-[#6F665F]">SORT BY:</span>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="bg-[#141E1A] border border-[#2C3E36] rounded-lg px-3 py-1.5 text-white focus:outline-none focus:border-[#C5A059]"
+            className="bg-white border border-[#EAE3DC] rounded-lg px-3 py-1.5 text-[#1A1414] focus:outline-none focus:border-[#D4AF37]"
           >
             <option value="featured">Featured First</option>
             <option value="price-asc">Price: Low to High</option>
@@ -120,33 +120,33 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
               </Link>
 
               {/* Card Content */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-4 bg-white">
                 <Link href={productHref} className="block space-y-1.5">
-                  <h2 className="font-serif-luxury text-sm font-bold text-[#F8F6F0] hover:text-[#E5C378] transition-colors leading-snug">
+                  <h2 className="font-serif-luxury text-sm font-bold text-[#1A1414] hover:text-[#D4AF37] transition-colors leading-snug">
                     {product.name}
                   </h2>
-                  <p className="text-xs text-[#9AA7A0] leading-relaxed line-clamp-2">
+                  <p className="text-xs text-[#6F665F] leading-relaxed line-clamp-2">
                     {product.shortDescription}
                   </p>
                 </Link>
 
-                <div className="pt-3 border-t border-[#22302A] space-y-3">
+                <div className="pt-3 border-t border-[#F7F4F0] space-y-3">
                   <div className="flex items-center justify-between font-mono-code">
                     <div>
-                      <span className="text-base font-bold text-[#C5A059]">
+                      <span className="text-base font-bold text-[#D4AF37]">
                         From ${product.price} AUD
                       </span>
-                      <span className="text-[10px] text-[#6E7B75] block">
+                      <span className="text-[10px] text-[#6F665F] block">
                         crypto: ${(product.price * 0.9).toFixed(0)} AUD
                       </span>
                     </div>
-                    <span className="text-[10px] text-[#56C48B] font-semibold">MELBOURNE STOCK</span>
+                    <span className="text-[10px] text-[#00b67a] font-semibold">MELBOURNE STOCK</span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <Link
                       href={productHref}
-                      className="py-2.5 px-3 bg-[#1C2A24] hover:bg-[#263830] text-[#F8F6F0] text-xs font-semibold rounded-lg border border-[#2C3E36] transition-colors text-center"
+                      className="py-2.5 px-3 bg-[#F9F7F2] hover:bg-white text-[#1A1414] text-xs font-semibold rounded-lg border border-[#EAE3DC] transition-colors text-center"
                     >
                       Specifications
                     </Link>
@@ -156,8 +156,8 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
                       onClick={() => handleAdd(product)}
                       className={`py-2.5 px-3 font-bold text-xs uppercase tracking-wider rounded-lg transition-transform active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer shadow ${
                         isAdded
-                          ? 'bg-[#56C48B] text-[#0D1512]'
-                          : 'bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512]'
+                          ? 'bg-[#00b67a] text-white'
+                          : 'bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#C5A059] hover:to-[#D4AF37] text-white'
                       }`}
                     >
                       {isAdded ? (

@@ -64,7 +64,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
       />
 
       {/* Back button */}
-      <Link href="/shop" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#C5A059] hover:underline">
+      <Link href="/shop" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#D4AF37] hover:underline">
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Prop Catalog</span>
       </Link>
@@ -73,12 +73,12 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
         {/* Left Column: Real Product Photography */}
         <div className="space-y-4">
-          <div className="luxury-card rounded-2xl overflow-hidden border-2 border-[#C5A059]/30">
+          <div className="luxury-card rounded-2xl overflow-hidden border-2 border-[#EAE3DC]">
             <ProductPhoto src={product.images[0]} alt={product.name} badge={product.badge} priority />
           </div>
 
-          <div className="p-4 bg-[#121A16] rounded-xl border border-[#22302A] flex items-center justify-between text-xs font-mono-code text-[#9AA7A0]">
-            <span className="flex items-center gap-1.5 text-[#56C48B]">
+          <div className="p-4 bg-[#F9F7F2] rounded-xl border border-[#EAE3DC] flex items-center justify-between text-xs font-mono-code text-[#6F665F]">
+            <span className="flex items-center gap-1.5 text-[#00b67a]">
               <ShieldCheck className="w-4 h-4" />
               RBA Specimen Compliant
             </span>
@@ -90,35 +90,35 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
         <div className="space-y-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded bg-[#1C2A24] border border-[#2C3E36] text-[10px] font-mono-code uppercase tracking-wider text-[#C5A059]">
+              <span className="px-2 py-0.5 rounded bg-[#F9F7F2] border border-[#EAE3DC] text-[10px] font-mono-code uppercase tracking-wider text-[#D4AF37]">
                 {categoryObj?.name || 'Australian Prop'}
               </span>
               {product.badge && (
-                <span className="px-2 py-0.5 rounded bg-[#C5A059] text-[#0D1512] text-[10px] font-mono-code font-bold uppercase">
+                <span className="px-2 py-0.5 rounded bg-[#D4AF37] text-white text-[10px] font-mono-code font-bold uppercase">
                   {product.badge}
                 </span>
               )}
             </div>
 
             {/* Exactly One H1 for the Product Page */}
-            <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#F8F6F0] leading-tight">
+            <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#1A1414] leading-tight">
               {product.name}
             </h1>
 
-            <p className="text-sm text-[#B4C0BA] leading-relaxed">{product.description}</p>
+            <p className="text-sm text-[#6F665F] leading-relaxed">{product.description}</p>
           </div>
 
           {/* Price Box */}
-          <div className="p-5 rounded-2xl bg-[#141E1A] border border-[#2C3E36] space-y-2">
+          <div className="p-5 rounded-2xl bg-[#F9F7F2] border border-[#EAE3DC] space-y-2">
             <div className="flex items-baseline gap-3">
-              <span className="font-mono-code text-3xl font-extrabold text-[#C5A059]">
+              <span className="font-mono-code text-3xl font-extrabold text-[#D4AF37]">
                 ${unitPrice} AUD
               </span>
-              <span className="text-xs text-[#9AA7A0] font-mono-code">EXPRESS DISPATCH</span>
+              <span className="text-xs text-[#6F665F] font-mono-code">EXPRESS DISPATCH</span>
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-mono-code text-[#E5C378]">
-              <Percent className="w-3.5 h-3.5 text-[#C5A059]" />
+            <div className="flex items-center gap-2 text-xs font-mono-code text-[#D4AF37]">
+              <Percent className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Pay via Crypto &amp; save 10%: ${(unitPrice * 0.9).toFixed(0)} AUD</span>
             </div>
           </div>
@@ -126,7 +126,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
           {/* Bundle Size Selector */}
           {bundles && bundles.length > 0 && (
             <div className="space-y-2.5">
-              <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] block">
+              <span className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#D4AF37] block">
                 Select Bundle Size
               </span>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -139,15 +139,15 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
                       onClick={() => setSelectedBundleId(bundle.id)}
                       className={`p-3 rounded-xl border text-left transition-all ${
                         isSelected
-                          ? 'bg-[#1C2A24] border-[#C5A059] shadow ring-1 ring-[#C5A059]'
-                          : 'bg-[#121A16] border-[#22302A] hover:border-[#2C3E36]'
+                          ? 'bg-white border-[#D4AF37] shadow ring-1 ring-[#D4AF37]'
+                          : 'bg-[#F9F7F2] border-[#EAE3DC] hover:border-[#D4AF37]/50'
                       }`}
                     >
-                      <span className="text-xs font-bold text-[#F8F6F0] block">{bundle.label}</span>
-                      <span className="text-[10px] text-[#9AA7A0] font-mono-code block">
+                      <span className="text-xs font-bold text-[#1A1414] block">{bundle.label}</span>
+                      <span className="text-[10px] text-[#6F665F] font-mono-code block">
                         ${bundle.faceValue.toLocaleString()} face value
                       </span>
-                      <span className="text-sm font-mono-code font-bold text-[#C5A059] block mt-1">
+                      <span className="text-sm font-mono-code font-bold text-[#D4AF37] block mt-1">
                         ${bundle.price} AUD
                       </span>
                     </button>
@@ -160,22 +160,22 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
           {/* Quantity & Add to Cart Controls */}
           <div className="space-y-4 pt-2">
             <div className="flex items-center gap-4">
-              <div className="flex items-center bg-[#121A16] border border-[#2C3E36] rounded-xl p-1">
+              <div className="flex items-center bg-[#F9F7F2] border border-[#EAE3DC] rounded-xl p-1">
                 <button
                   type="button"
                   onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                  className="w-10 h-10 flex items-center justify-center text-white hover:text-[#C5A059] text-base font-bold"
+                  className="w-10 h-10 flex items-center justify-center text-[#1A1414] hover:text-[#D4AF37] text-base font-bold"
                   aria-label="Decrease quantity"
                 >
                   −
                 </button>
-                <span className="w-12 text-center font-mono-code font-bold text-sm text-[#F8F6F0]">
+                <span className="w-12 text-center font-mono-code font-bold text-sm text-[#1A1414]">
                   {quantity}
                 </span>
                 <button
                   type="button"
                   onClick={() => setQuantity((prev) => prev + 1)}
-                  className="w-10 h-10 flex items-center justify-center text-white hover:text-[#C5A059] text-base font-bold"
+                  className="w-10 h-10 flex items-center justify-center text-[#1A1414] hover:text-[#D4AF37] text-base font-bold"
                   aria-label="Increase quantity"
                 >
                   +
@@ -187,8 +187,8 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
                 onClick={handleAdd}
                 className={`flex-1 py-4 px-6 font-bold text-xs uppercase tracking-wider rounded-xl transition-all active:scale-98 flex items-center justify-center gap-2 cursor-pointer shadow-xl ${
                   added
-                    ? 'bg-[#56C48B] text-[#0D1512]'
-                    : 'bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512]'
+                    ? 'bg-[#00b67a] text-white'
+                    : 'bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#C5A059] hover:to-[#D4AF37] text-white'
                 }`}
               >
                 {added ? (
@@ -205,8 +205,8 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
               </button>
             </div>
 
-            <p className="text-[10px] text-[#6E7B75] font-mono-code text-center flex items-center justify-center gap-1.5">
-              <ShieldCheck className="w-3 h-3 text-[#56C48B]" />
+            <p className="text-[10px] text-[#6F665F] font-mono-code text-center flex items-center justify-center gap-1.5">
+              <ShieldCheck className="w-3 h-3 text-[#00b67a]" />
               Non-legal-tender specimen prop currency, Section 22 Crimes (Currency) Act 1981 compliant
             </p>
 
@@ -214,7 +214,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
             <button
               type="button"
               onClick={handleWhatsAppInquiry}
-              className="w-full py-3.5 px-4 bg-[#121A16] hover:bg-[#1A2520] border border-[#25D366]/40 text-[#25D366] font-mono-code font-bold text-xs uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3.5 px-4 bg-[#F9F7F2] hover:bg-white border border-[#25D366]/40 text-[#25D366] font-mono-code font-bold text-xs uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Inquire via WhatsApp</span>
@@ -223,17 +223,17 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
 
           {/* Technical Specifications Table */}
           {product.details && (
-            <div className="p-5 rounded-2xl bg-[#0F1714] border border-[#22302A] space-y-3">
-              <h2 className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-2">
+            <div className="p-5 rounded-2xl bg-[#F9F7F2] border border-[#EAE3DC] space-y-3">
+              <h2 className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#D4AF37] flex items-center gap-2">
                 <FileCheck className="w-4 h-4" />
                 <span>Production &amp; Camera Specifications</span>
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono-code">
                 {Object.entries(product.details).map(([key, val]) => (
-                  <div key={key} className="p-2.5 bg-[#141E1A] rounded-lg border border-[#1E2B25]">
-                    <span className="text-[#889690] uppercase block text-[10px]">{key}</span>
-                    <span className="text-[#F8F6F0] font-semibold block mt-0.5">{val}</span>
+                  <div key={key} className="p-2.5 bg-white rounded-lg border border-[#F7F4F0]">
+                    <span className="text-[#6F665F] uppercase block text-[10px]">{key}</span>
+                    <span className="text-[#1A1414] font-semibold block mt-0.5">{val}</span>
                   </div>
                 ))}
               </div>
@@ -244,19 +244,19 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
 
       {/* Product FAQs (5 unique questions per product) */}
       {PRODUCT_FAQS[product.slug] && (
-        <div className="pt-12 border-t border-[#1E2B25]">
+        <div className="pt-12 border-t border-[#EAE3DC]">
           <FaqSection id="product-faq-heading" heading={`Frequently Asked Questions: ${product.name}`} items={PRODUCT_FAQS[product.slug]} />
         </div>
       )}
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <div className="pt-12 border-t border-[#1E2B25] space-y-6">
+        <div className="pt-12 border-t border-[#EAE3DC] space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0]">
+            <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">
               RELATED PROP SPECIMENS
             </h2>
-            <Link href="/shop" className="text-xs font-mono-code text-[#C5A059] hover:underline">
+            <Link href="/shop" className="text-xs font-mono-code text-[#D4AF37] hover:underline">
               Browse All Props →
             </Link>
           </div>
@@ -266,14 +266,14 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
               <Link
                 key={rel.slug}
                 href={`/shop/${rel.category}/${rel.slug}`}
-                className="luxury-card rounded-2xl overflow-hidden group block"
+                className="luxury-card rounded-2xl overflow-hidden group block bg-white"
               >
                 <ProductPhoto src={rel.images[0]} alt={rel.name} />
                 <div className="p-4 space-y-1">
-                  <h3 className="font-serif-luxury text-xs font-bold text-[#F8F6F0] group-hover:text-[#E5C378] transition-colors truncate">
+                  <h3 className="font-serif-luxury text-xs font-bold text-[#1A1414] group-hover:text-[#D4AF37] transition-colors truncate">
                     {rel.name}
                   </h3>
-                  <span className="font-mono-code text-xs font-bold text-[#C5A059] block">
+                  <span className="font-mono-code text-xs font-bold text-[#D4AF37] block">
                     From ${rel.price} AUD
                   </span>
                 </div>

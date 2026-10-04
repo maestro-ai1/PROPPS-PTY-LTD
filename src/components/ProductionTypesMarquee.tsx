@@ -18,9 +18,9 @@ export const ProductionTypesMarquee: React.FC = () => {
   const track = [...PRODUCTION_TYPES, ...PRODUCTION_TYPES];
 
   return (
-    <section className="border-t border-[#2C2822] py-10 sm:py-12 overflow-hidden">
+    <section className="border-t border-[#EAE3DC] py-10 sm:py-12 overflow-hidden bg-[#F9F7F2]">
       <div className="max-w-3xl mx-auto px-4 text-center mb-6">
-        <p className="text-xs sm:text-sm text-[#A8A49D] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#6F665F] leading-relaxed">
           Crafted for content that matches the production quality and creative standards of modern streaming networks.
         </p>
       </div>
@@ -30,7 +30,7 @@ export const ProductionTypesMarquee: React.FC = () => {
           {track.map((type, idx) => (
             <span
               key={`${type}-${idx}`}
-              className="font-serif-luxury text-base sm:text-lg font-bold uppercase tracking-widest text-[#4E5C56] whitespace-nowrap"
+              className="font-serif-luxury text-base sm:text-lg font-bold uppercase tracking-widest text-[#C5A059] whitespace-nowrap"
             >
               {type}
             </span>

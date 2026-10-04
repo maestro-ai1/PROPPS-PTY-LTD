@@ -10,9 +10,9 @@ import { CONTACT } from '../config/site.js';
 
 export const ThankYouOrderContent: React.FC = () => {
   const searchParams = useSearchParams();
-  const orderRef = searchParams.get('ref') || '';
-  const customerEmail = searchParams.get('email') || '';
-  const viaWhatsApp = searchParams.get('channel') === 'whatsapp';
+  const orderRef = searchParams?.get('ref') || '';
+  const customerEmail = searchParams?.get('email') || '';
+  const viaWhatsApp = searchParams?.get('channel') === 'whatsapp';
 
   const waHref = `https://wa.me/${CONTACT.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(
     `Hi PROPPS PTY LTD, I have just placed order ${orderRef}.`
@@ -21,18 +21,18 @@ export const ThankYouOrderContent: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto px-4 py-16 sm:py-24 text-center space-y-8">
       {/* Success Badge */}
-      <div className="w-20 h-20 rounded-full bg-[#14231C] border-2 border-[#56C48B] flex items-center justify-center text-[#56C48B] mx-auto shadow-2xl animate-fade-in">
+      <div className="w-20 h-20 rounded-full bg-[#F1F9F5] border-2 border-[#00b67a] flex items-center justify-center text-[#00b67a] mx-auto shadow-sm animate-fade-in">
         <CheckCircle2 className="w-10 h-10" />
       </div>
 
       <div className="space-y-3">
-        <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#56C48B] block">
+        <span className="text-xs font-mono-code font-bold uppercase tracking-widest text-[#00b67a] block">
           Order Placed
         </span>
-        <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#F8F6F0]">
+        <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#1A1414]">
           THANK YOU - YOUR ORDER HAS BEEN PLACED
         </h1>
-        <p className="text-xs sm:text-sm text-[#B4C0BA] max-w-lg mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#6F665F] max-w-lg mx-auto leading-relaxed">
           {viaWhatsApp
             ? 'We have opened WhatsApp with your order details - please press Send so our Melbourne dispatch desk receives it. We will reply with your payment details.'
             : 'Your order has been received by our Melbourne dispatch desk. We will email your invoice and payment details next.'}
@@ -40,17 +40,17 @@ export const ThankYouOrderContent: React.FC = () => {
             <>
               {' '}
               A confirmation email with your order number has been sent to{' '}
-              <span className="text-white font-mono-code break-all">{customerEmail}</span>.
+              <span className="text-[#1A1414] font-mono-code break-all">{customerEmail}</span>.
             </>
           )}
         </p>
       </div>
 
       {/* Order Reference Pill with CopyField */}
-      <div className="p-6 rounded-2xl bg-[#121A16] border border-[#2C3E36] text-left space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#1E2B25]">
+      <div className="p-6 rounded-2xl bg-[#F9F7F2] border border-[#EAE3DC] text-left space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#EAE3DC]">
           <div>
-            <span className="text-[10px] font-mono-code text-[#889690] uppercase block">
+            <span className="text-[10px] font-mono-code text-[#6F665F] uppercase block">
               Your Order Number
             </span>
             <div className="mt-1">
@@ -59,27 +59,27 @@ export const ThankYouOrderContent: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-[10px] font-mono-code text-[#889690] uppercase block">
+            <span className="text-[10px] font-mono-code text-[#6F665F] uppercase block">
               {customerEmail ? 'Confirmation Sent To' : 'Order Channel'}
             </span>
-            <span className="font-mono-code text-xs text-[#E5C378] break-all">
+            <span className="font-mono-code text-xs text-[#D4AF37] break-all">
               {customerEmail || (viaWhatsApp ? 'WhatsApp' : 'Provided at checkout')}
             </span>
           </div>
         </div>
 
         <div className="space-y-3 pt-1">
-          <p className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#C5A059] flex items-center gap-2">
+          <p className="text-xs font-mono-code font-bold uppercase tracking-wider text-[#D4AF37] flex items-center gap-2">
             <Mail className="w-4 h-4" />
             <span>What Happens Next</span>
           </p>
-          <ul className="text-xs text-[#9AA7A0] space-y-2">
+          <ul className="text-xs text-[#6F665F] space-y-2">
             <li className="flex items-start gap-2">
-              <span className="text-[#C5A059] font-bold">1.</span>
+              <span className="text-[#D4AF37] font-bold">1.</span>
               <span>Our dispatch desk is reviewing your order and reserving your stock in Melbourne.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-[#C5A059] font-bold">2.</span>
+              <span className="text-[#D4AF37] font-bold">2.</span>
               <span>
                 {viaWhatsApp && !customerEmail ? (
                   <>
@@ -91,7 +91,7 @@ export const ThankYouOrderContent: React.FC = () => {
                     {customerEmail ? (
                       <>
                         {' '}
-                        at <span className="text-white font-mono-code break-all">{customerEmail}</span>
+                        at <span className="text-[#1A1414] font-mono-code break-all">{customerEmail}</span>
                       </>
                     ) : null}{' '}
                     shortly.
@@ -100,7 +100,7 @@ export const ThankYouOrderContent: React.FC = () => {
               </span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-[#C5A059] font-bold">3.</span>
+              <span className="text-[#D4AF37] font-bold">3.</span>
               <span>
                 Once payment is received and confirmed, your parcel is packed discreetly and dispatched via Australia Post Express with signature on delivery.
               </span>
@@ -115,7 +115,7 @@ export const ThankYouOrderContent: React.FC = () => {
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-3.5 bg-[#25D366] text-[#0B100E] font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-3.5 bg-[#25D366] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center flex items-center justify-center gap-2"
           >
             <MessageCircle className="w-4 h-4" />
             Open WhatsApp
@@ -123,14 +123,14 @@ export const ThankYouOrderContent: React.FC = () => {
         )}
         <Link
           href="/shop"
-          className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#C5A059] to-[#E5C378] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center"
+          className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center"
         >
           Return to Cinema Catalog
         </Link>
 
         <Link
           href="/"
-          className="w-full sm:w-auto px-6 py-3.5 bg-[#141E1A] hover:bg-[#1C2A24] text-[#F8F6F0] text-xs font-mono-code rounded-xl border border-[#2C3E36] transition-colors text-center"
+          className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-[#F9F7F2] text-[#1A1414] text-xs font-mono-code rounded-xl border border-[#EAE3DC] transition-colors text-center"
         >
           Return to Home
         </Link>

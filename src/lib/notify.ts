@@ -282,7 +282,7 @@ export async function sendInvoiceEmail(order: StoredOrder, invoice: InvoiceRecor
     to: order.email,
     subject: `Invoice ${order.ref} - ${money(invoice.total)} - ${SITE.name}`,
     html: buildInvoiceEmail(order, invoice),
-    text: `Invoice ${order.ref} - ${money(invoice.total)}\n\n${lineText}\n\nOpen your invoice: ${invoiceUrl(invoice.token)}\n\n${SITE.name} - ABN ${REPLY.bizNumber.value}`,
+    text: `Invoice ${order.ref} - ${money(invoice.total)}\n\n${lineText}\n\nOpen your invoice: ${invoiceUrl(invoice.token)}\n\n${SITE.name}${REPLY.bizNumber ? ` - ${REPLY.bizNumber.label} ${REPLY.bizNumber.value}` : ''}`,
     replyTo: getNotifyEmail(),
   });
 }
@@ -361,7 +361,7 @@ export async function sendThankYouEmail(order: StoredOrder) {
         { label: 'Amount paid', value: total, highlight: true, mono: true },
         { label: 'Delivery address', value: order.address },
       ],
-      footer: `Questions? Reply to this email or WhatsApp ${REPLY.channels.whatsapp}.`,
+      footer: `Questions? Reply to this email${REPLY.channels.whatsapp ? ` or WhatsApp ${REPLY.channels.whatsapp}` : ''}.`,
     }),
     text: `Thank you ${order.customerName}. Payment of ${total} received for order ${order.ref}. We will email you when it is dispatched.`,
     replyTo: getNotifyEmail(),

@@ -131,7 +131,7 @@ export function buildInvoiceHtml({ order, lines, termsHtml, intro, note, openUrl
         </table>
 
         <div style="margin:0 0 20px 0;font-family:${SANS};font-size:11.5px;color:#6F665F;">
-          <strong style="color:#3A322C;">${esc(SITE.name)}</strong> &middot; ${esc(REPLY.bizNumber.label)} ${esc(REPLY.bizNumber.value)} &middot; ${esc(CONTACT.hq)}
+          <strong style="color:#3A322C;">${esc(SITE.name)}</strong> &middot; ${REPLY.bizNumber ? `${esc(REPLY.bizNumber.label)} ${esc(REPLY.bizNumber.value)} &middot; ` : ''}${esc(CONTACT.hq)}
         </div>
 
         ${heading(`Pay by ${esc(METHOD_LABEL[order.paymentMethod] || order.paymentMethod)}`)}

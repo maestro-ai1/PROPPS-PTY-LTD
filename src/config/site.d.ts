@@ -12,6 +12,7 @@ export declare const SITE: {
   gscVerification: string;
   indexNowKey: string;
   cartKey: string;
+  keywords: string[];
 };
 
 export declare const CONTACT: {
@@ -132,6 +133,7 @@ export interface Post {
   relatedProducts?: string[];
   relatedCategories?: string[];
   relatedPage?: { href: string; label: string };
+  tags?: string[];
 }
 
 export declare const POSTS: Post[];
@@ -155,4 +157,5 @@ export interface FaqItem {
 }
 
 export declare const PRODUCT_FAQS: Record<string, FaqItem[]>;
+export declare const BLOG_FAQ: FaqItem[];
 export declare const VIDEO_FAQS: FaqItem[];

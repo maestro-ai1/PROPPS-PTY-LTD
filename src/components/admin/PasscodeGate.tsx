@@ -18,22 +18,22 @@ export const PasscodeGate: React.FC<PasscodeGateProps> = ({ onUnlock, error }) =
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-[#121A16] border border-[#2C3E36] rounded-2xl p-6 sm:p-8 shadow-2xl relative text-center">
+      <div className="w-full max-w-md bg-white border border-[#EAE3DC] rounded-2xl p-6 sm:p-8 shadow-2xl relative text-center">
         {/* Lock Icon */}
-        <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-[#1A2520] border border-[#C5A059] flex items-center justify-center text-[#C5A059]">
+        <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-[#F9F7F2] border border-[#D4AF37] flex items-center justify-center text-[#D4AF37]">
           <Lock className="w-7 h-7" />
         </div>
 
-        <h2 className="font-serif-luxury text-xl font-bold text-[#F8F6F0] mb-1">
+        <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414] mb-1">
           {SITE.name} REPLY PORTAL
         </h2>
-        <p className="text-xs text-[#9AA7A0] mb-6 font-mono-code">
+        <p className="text-xs text-[#6F665F] mb-6 font-mono-code">
           PASSCODE-PROTECTED DISPATCH &amp; REPLIES DASHBOARD
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-[#B4C0BA] mb-1.5 font-mono-code">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-[#6F665F] mb-1.5 font-mono-code">
               Security Passcode
             </label>
             <div className="relative">
@@ -44,9 +44,9 @@ export const PasscodeGate: React.FC<PasscodeGateProps> = ({ onUnlock, error }) =
                 placeholder="Enter admin passcode"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                className="w-full bg-[#0A0F0D] border border-[#2C3E36] rounded-xl px-4 py-3 text-white placeholder-[#4E5C56] font-mono-code focus:border-[#C5A059] focus:outline-none"
+                className="w-full bg-white border border-[#EAE3DC] rounded-xl px-4 py-3 text-[#1A1414] placeholder-[#BDB8B0] font-mono-code focus:border-[#D4AF37] focus:outline-none"
               />
-              <KeyRound className="w-4 h-4 text-[#C5A059] absolute right-3.5 top-3.5" />
+              <KeyRound className="w-4 h-4 text-[#D4AF37] absolute right-3.5 top-3.5" />
             </div>
             {error && (
               <p className="text-xs text-[#E0533C] mt-2 flex items-center gap-1 font-mono-code">
@@ -58,7 +58,7 @@ export const PasscodeGate: React.FC<PasscodeGateProps> = ({ onUnlock, error }) =
 
           <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-[#C5A059] to-[#E5C378] hover:from-[#D4AF37] hover:to-[#F3D798] text-[#0D1512] font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer font-mono-code"
+            className="w-full py-3 white-gold-btn font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer font-mono-code border border-[#D4AF37]/50"
           >
             <span>Unlock Dashboard Hub</span>
             <ArrowRight className="w-4 h-4" />
