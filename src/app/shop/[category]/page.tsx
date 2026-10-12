@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const image = `/images/categories/${cat.image}`;
 
   return {
-    title: cat.seoTitle ?? cat.name,
+    title: { absolute: (cat.seoTitle ?? cat.name).length + 10 <= 60 ? `${cat.seoTitle ?? cat.name} | PROPPS` : (cat.seoTitle ?? cat.name) },
     description: cat.seoDescription ?? cat.description,
     alternates: { canonical: url },
     openGraph: {

@@ -143,7 +143,7 @@ export default function Page() {
       <ul className="mb-4 list-disc pl-5 text-xs">
         <li><b>Shop:</b> australian prop money for sale (T), aud prop money (C), australian prop money realistic (C) in the buy-intent slot; vol/KD n/a, Semrush request.</li>
         <li><b>$100 product:</b> primary "$100 prop money" (T/C, n/a). Keep 100 dollar note australia (1600/18) as supporting.</li>
-        <li><b>Held for owner:</b> "1 1 prop money" implies full-size reproduction, which touches the Section 22 size rule. Not mapped.</li>
+        <li><b>Dropped:</b> "1 1 prop money" removed from the site (size-compliance risk).</li>
         <li><b>Variants not targeted:</b> prop aus money, prop money aud (same concept as aud/aus/au), fake money prop money.</li>
         <li><b>Volume fix (from bank, KD 19 or lower):</b> play money 720/19 (C), australian play money 320/11, toy money australia 170/9, childrens play money 90/10, imitation money 1300/25 (I/T). Map to /shop/event-and-party-props/ and its blog. These are the only legitimate T/C terms with real volume.</li>
       </ul>

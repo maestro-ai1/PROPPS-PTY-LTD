@@ -6,7 +6,7 @@ import { PolicyContent } from '../../views/PolicyPage.js';
 
 export const metadata: Metadata = {
   title: 'Refund & Replacement Policy',
-  description: 'PROPPS PTY LTD refund, damage replacement, and cancellation policy under Australian Consumer Law.',
+  description: 'PROPPS PTY LTD refund, damage replacement and cancellation policy under Australian Consumer Law, including how to report a problem with your order.',
   alternates: { canonical: `https://${SITE.domain}/refund-policy/` },
 };
 

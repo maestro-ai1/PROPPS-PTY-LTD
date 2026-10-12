@@ -54,11 +54,11 @@ export default function Page() {
     ['pass', 'Product meta 110-158 with price + keyword', '10 / 10 (was 3 / 10)'],
     ['pass', 'Category pages not thin', '259-427 words (was 91-101)'],
     ['pass', 'Exactly one H1, canonical, HTTP 200', '82 / 82 URLs'],
-    ['pass', 'Informational terms only on blogs; new 10 posts unique', '10 / 10 unique primaries'],
-    ['warn', 'No keyword stuffing', '19 posts de-bolded; 11 still say "fake" 3+ times'],
-    ['warn', 'Blog depth', '11 of 53 posts under 200 words; 17 metas under 110'],
+    ['pass', 'Informational terms only on blogs; buy path from legal posts', '10 / 10 unique primaries; compliance page + 3 legal posts now link to the shop'],
+    ['pass', 'No keyword stuffing', '19 posts de-bolded, tags capped at 5, surplus "fake" wording replaced (max 2 per post)'],
+    ['pass', 'Blog depth and metas', '0 of 53 posts under 190 words (was 11 under 200); every blog meta 110-158'],
     ['warn', 'Every keyword backed by bank data', '10 buy terms have data (20-30/mo); 3 blog + About/Contact n/a'],
-    ['warn', 'Title length 60 or fewer', '30 titles over 60 (brand suffix on blog posts)'],
+    ['pass', 'Title length 60 or fewer', 'Blog, category, wholesale and compliance titles capped at 60'],
   ];
   const pass = scorecard.filter((s) => s[0] === 'pass').length;
 
@@ -68,6 +68,7 @@ export default function Page() {
     ['Duplicate keyword primaries', 8, 0, 8, 'URLs-groups'],
     ['Category words (min)', 91, 259, 300, 'words'],
     ['Posts with bolded keyword runs', 19, 0, 19, 'posts'],
+    ['Blog posts under 200 words', 11, 0, 11, 'posts'],
     ['Duplicate URLs / slugs', 1, 0, 1, 'slug'],
   ];
 
@@ -237,7 +238,7 @@ export default function Page() {
         <ol className="list-decimal pl-5 text-sm">
           <li>Thin and short-meta older posts (11 under 200 words, 17 metas under 110).</li>
           <li>Owner call: robots says ai-train=no but allows training crawlers.</li>
-          <li>Held: "1 1 prop money" (size compliance) and any "polymer" terms (site uses paper).</li>
+          <li>Dropped: "1 1 prop money" (size compliance). Not targeted: any "polymer" terms (site uses paper).</li>
           <li>Semrush volume needed: music-video, double-sided, Melbourne/Sydney, wholesale, custom printing terms.</li>
           <li>Contact phone is still a placeholder; nothing deployed yet.</li>
         </ol>

@@ -7,7 +7,7 @@ import { FaqContent } from '../../views/FaqPage.js';
 export const metadata: Metadata = {
   title: 'FAQ — Orders, Compliance & Shipping',
   description:
-    'Answers on Australian prop money legality, Crimes (Currency) Act 1981 compliance, minimum order thresholds, crypto discounts, and Australia Post Express shipping.',
+    'Answers on Australian prop money legality, Crimes (Currency) Act 1981 compliance, minimum order, crypto discounts and Australia Post Express shipping.',
   alternates: { canonical: `https://${SITE.domain}/faq/` },
 };
 

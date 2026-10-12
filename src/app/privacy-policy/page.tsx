@@ -6,7 +6,7 @@ import { PolicyContent } from '../../views/PolicyPage.js';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'How PROPPS PTY LTD collects, uses, and protects customer data under the Privacy Act 1988 (Cth).',
+  description: 'How PROPPS PTY LTD collects, uses and protects customer data under the Privacy Act 1988 (Cth), including order, contact and payment information.',
   alternates: { canonical: `https://${SITE.domain}/privacy-policy/` },
 };
 

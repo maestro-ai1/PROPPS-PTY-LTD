@@ -19,10 +19,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return {};
   const url = `https://${SITE.domain}/blog/${post.slug}/`;
   const image = `/images/blog/${post.image}`;
+  // Golden rule: title 60 or fewer (brand suffix only if it fits), meta 110-158 characters.
+  const baseTitle = post.seoTitle ?? post.title;
+  const withBrand = `${baseTitle} | PROPPS`;
+  const seoTitle = withBrand.length <= 60 ? withBrand : baseTitle;
+  const padded = post.excerpt.length >= 110 ? post.excerpt : `${post.excerpt} Practical guidance from PROPPS, the Melbourne prop currency studio.`;
+  const seoDescription = padded.length > 158 ? `${padded.slice(0, 155).replace(/\s+\S*$/, '')}...` : padded;
 
   return {
-    title: post.seoTitle ?? post.title,
-    description: post.excerpt,
+    title: { absolute: seoTitle },
+    description: seoDescription,
     alternates: { canonical: url },
     openGraph: {
       type: 'article',

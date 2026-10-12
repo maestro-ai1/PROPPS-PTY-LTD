@@ -6,7 +6,7 @@ import { PolicyContent } from '../../views/PolicyPage.js';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions of Sale',
-  description: 'Legally binding terms governing the purchase and intended use of PROPPS PTY LTD reproduction currency props.',
+  description: 'Legally binding terms governing the purchase and intended use of PROPPS PTY LTD reproduction currency props, including minimum order and payment terms.',
   alternates: { canonical: `https://${SITE.domain}/terms-and-conditions/` },
 };
 

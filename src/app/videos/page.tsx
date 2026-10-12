@@ -7,7 +7,7 @@ import { VideosContent } from '../../views/VideosPage.js';
 
 export const metadata: Metadata = {
   title: 'Props Money Denominations Review',
-  description: 'Video review of PROPPS PTY LTD prop money across all denominations: $5, $10, $20, $50, and $100.',
+  description: 'Video review of PROPPS PTY LTD prop money across every denomination: $5, $10, $20, $50 and $100, shown double-sided under studio lighting.',
   alternates: { canonical: `https://${SITE.domain}/videos/` },
 };
 

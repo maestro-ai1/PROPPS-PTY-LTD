@@ -19,6 +19,17 @@ export const ComplianceContent: React.FC = () => {
         <p className="text-xs sm:text-sm text-[#6F665F] max-w-2xl mx-auto leading-relaxed">
           Comprehensive legal guidelines governing the design, manufacture, purchase, and on-camera utilization of reproduction Australian currency props.
         </p>
+        <p className="text-xs sm:text-sm text-[#1A1414] max-w-2xl mx-auto leading-relaxed">
+          Looking for compliant, specimen-marked notes for a production?{' '}
+          <Link href="/shop/new-notes" className="font-semibold text-[#B08A3A] underline">
+            Shop New Notes
+          </Link>{' '}
+          or{' '}
+          <Link href="/shop" className="font-semibold text-[#B08A3A] underline">
+            view the full catalog
+          </Link>
+          .
+        </p>
       </div>
 
       {/* Mandatory Statutory Warning Box */}
