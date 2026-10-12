@@ -46,7 +46,7 @@ export function GET() {
 Allow: /
 ${disallows}
 
-Content-Signal: search=yes, ai-input=yes, ai-train=no
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 # Search engine crawlers
 ${group(SEARCH_CRAWLERS)}

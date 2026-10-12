@@ -237,7 +237,7 @@ export default function Page() {
         <h2 className="mb-2 text-lg font-bold">6. Open items before you conclude</h2>
         <ol className="list-decimal pl-5 text-sm">
           <li>Thin and short-meta older posts (11 under 200 words, 17 metas under 110).</li>
-          <li>Owner call: robots says ai-train=no but allows training crawlers.</li>
+          <li>Resolved: robots now says ai-train=yes, consistent with allowing training crawlers.</li>
           <li>Dropped: "1 1 prop money" (size compliance). Not targeted: any "polymer" terms (site uses paper).</li>
           <li>Semrush volume needed: music-video, double-sided, Melbourne/Sydney, wholesale, custom printing terms.</li>
           <li>Contact phone is still a placeholder; nothing deployed yet.</li>

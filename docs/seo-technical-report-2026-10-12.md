@@ -24,5 +24,5 @@ External tools below ran against the LIVE site (old deploy), so they do not yet 
 
 ## Open
 - 11 posts under 200 words; 17 blog metas under 110; 11 posts still say "fake" 3+ times.
-- robots: `ai-train=no` signal vs Allow for training crawlers is an owner policy decision.
+- robots: `ai-train=yes` signal vs Allow for training crawlers is an owner policy decision.
 - Contact phone placeholder.
