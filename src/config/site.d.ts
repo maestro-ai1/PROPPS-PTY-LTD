@@ -93,6 +93,7 @@ export interface Category {
 }
 
 export declare const CATEGORIES: Category[];
+export declare const CATEGORY_BODY: Record<string, string[]>;
 
 export interface BundleTier {
   id: string;

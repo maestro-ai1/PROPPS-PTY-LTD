@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 // Private, task-focused pages (admin, invoice, payment confirmation) should not
 // show marketing popups over the form the visitor is filling in.
-const PRIVATE_PREFIXES = ['/admin', '/invoice', '/confirm'];
+const PRIVATE_PREFIXES = ['/admin', '/invoice', '/confirm', '/keyword-map'];
 
 export const HideOnPrivatePages: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname() || '/';

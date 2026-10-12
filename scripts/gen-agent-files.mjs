@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SITE, CATEGORIES, PRODUCTS, POSTS, SHOP, BRAND } from '../src/config/site.js';
+import { SITE, CATEGORIES, PRODUCTS, POSTS, SHOP, BRAND, FAQ } from '../src/config/site.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -83,6 +83,7 @@ ${categoryLines}
 ## Production Guides (Blog)
 ${blogLines}
 - [All Guides](https://${DOMAIN}/blog/): Full production, compliance, and cinematography guide index
+- [Full content as Markdown](https://${DOMAIN}/llms-full.txt): Every product, FAQ and guide in one document
 
 ## Optional & Agent Specifications
 - [API Catalog](https://${DOMAIN}/.well-known/api-catalog): Linkset endpoints
@@ -91,6 +92,60 @@ ${blogLines}
 - [Auth Specification](https://${DOMAIN}/auth.md): Open public access guidelines
 `;
 fs.writeFileSync(path.join(rootDir, 'public', 'llms.txt'), llmsTxt);
+
+// 2b. public/llms-full.txt - the whole catalogue and every guide as one clean Markdown document.
+const stripMd = (s) => String(s).replace(/\\n/g, '\n');
+const productBlocks = PRODUCTS.map((p) => {
+  const cat = CATEGORIES.find((c) => c.slug === p.category);
+  return [
+    `### ${p.name}`,
+    `- URL: https://${DOMAIN}/shop/${p.category}/${p.slug}/`,
+    `- Category: ${cat ? cat.name : p.category}`,
+    `- From: $${p.price} AUD (bundle sizes available)`,
+    `- Summary: ${p.shortDescription}`,
+    '',
+    stripMd(p.description || ''),
+  ].join('\n');
+}).join('\n\n');
+const guideBlocks = [...POSTS]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .map((post) =>
+    [
+      `### ${post.title}`,
+      `- URL: https://${DOMAIN}/blog/${post.slug}/`,
+      `- Published: ${post.date}`,
+      '',
+      stripMd(post.content).replace(/\*\*/g, ''),
+    ].join('\n'),
+  )
+  .join('\n\n');
+const faqBlocks = (FAQ || []).map((f) => `### ${f.question}\n${f.answer}`).join('\n\n');
+
+const llmsFull = `# ${NAME} - full content
+
+> ${BRAND.description}
+
+Short index: https://${DOMAIN}/llms.txt
+
+## Facts
+- Brand: ${NAME}, ${BRAND.foundingLocation}, founded ${BRAND.foundingYear}
+- Products are non-legal tender reproduction props for film, television, theatre, photography and training. Every note carries specimen markings (Crimes (Currency) Act 1981, Section 22).
+- Minimum order $${SHOP.minOrder} AUD; free Express shipping from $${SHOP.freeShippingThreshold} AUD, otherwise $${SHOP.shippingFee} AUD; ${SHOP.cryptoDiscount}% discount on crypto payments.
+- Dispatch by Australia Post Express with signature on delivery.
+
+## Categories
+${CATEGORIES.map((c) => `### ${c.name}\n- URL: https://${DOMAIN}/shop/${c.slug}/\n- ${c.description}`).join('\n\n')}
+
+## Products
+${productBlocks}
+
+## Frequently asked questions
+${faqBlocks}
+
+## Guides
+${guideBlocks}
+`;
+fs.writeFileSync(path.join(rootDir, 'public', 'llms-full.txt'), llmsFull);
 
 // 3. public/auth.md (Must start with exactly # Auth.md)
 const authMd = `# Auth.md
@@ -399,6 +454,7 @@ const vercelJson = {
     { source: "/.well-known/ai-catalog.json", headers: [{ key: "Content-Type", value: "application/json" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/auth.md", headers: [{ key: "Content-Type", value: "text/markdown; charset=utf-8" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/llms.txt", headers: [{ key: "Content-Type", value: "text/plain; charset=utf-8" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
+    { source: "/llms-full.txt", headers: [{ key: "Content-Type", value: "text/plain; charset=utf-8" }, { key: "Access-Control-Allow-Origin", value: "*" }] },
     { source: "/api/:path*", headers: [{ key: "Access-Control-Allow-Origin", value: "*" }, { key: "Access-Control-Allow-Methods", value: "GET, POST, OPTIONS" }, { key: "Access-Control-Allow-Headers", value: "Content-Type, Accept, Mcp-Session-Id" }] }
   ]
 };

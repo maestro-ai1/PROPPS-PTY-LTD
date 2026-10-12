@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, Check } from 'lucide-react';
-import { PRODUCTS, CATEGORIES } from '../config/site.js';
+import { PRODUCTS, CATEGORIES, CATEGORY_BODY } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { Breadcrumb } from '../components/Breadcrumb.js';
 import { useApp } from '../context/AppContext.js';
@@ -53,12 +53,12 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
           Australian Cinema Specimen Catalog
         </span>
         <h1 className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#1A1414]">
-          {currentCatObj ? (currentCatObj.h1 ?? currentCatObj.name).toUpperCase() : 'PROP MONEY AUSTRALIA — FULL CATALOG'}
+          {currentCatObj ? (currentCatObj.h1 ?? currentCatObj.name).toUpperCase() : 'AUSTRALIAN PROP MONEY FOR SALE — FULL CATALOG'}
         </h1>
         <p className="text-xs sm:text-sm text-[#6F665F] max-w-3xl leading-relaxed">
           {currentCatObj
             ? currentCatObj.description
-            : 'Explore Australia’s standard in compliant reproduction currency, 100-note strapped bundles, bank bricks, and turnkey director heist kits.'}
+            : 'Buy prop money online from a Melbourne studio: specimen-marked notes from $5 to $100, strapped money stacks and film packs. Orders start at $300 AUD, ship by Express Post and are free to deliver from $500. Not sure what you need? Prop money is not the same as the fake money you see in novelty shops, so check our compliance page or contact the studio.'}
         </p>
       </div>
 
@@ -180,6 +180,25 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
         })}
       </div>
 
+      {currentCatObj && CATEGORY_BODY[currentCatObj.slug as keyof typeof CATEGORY_BODY] && (
+        <section className="space-y-3 border-t border-[#EAE3DC] pt-6 max-w-3xl">
+          <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">
+            About {currentCatObj.name}
+          </h2>
+          {CATEGORY_BODY[currentCatObj.slug as keyof typeof CATEGORY_BODY].map((para: string) => (
+            <p key={para.slice(0, 24)} className="text-sm text-[#6F665F] leading-relaxed">
+              {para}
+            </p>
+          ))}
+          <p className="text-sm text-[#6F665F] leading-relaxed">
+            How ordering works: add your items to the cart, then pay by bank transfer, PayID or crypto (10% off). We
+            email an invoice and dispatch within 24 business hours of payment confirmation by Australia Post Express,
+            signature required. Not sure what you need? Message the studio on WhatsApp or use the contact page and we
+            will help you size the order. All products are non-legal tender props made for film, television, theatre,
+            photography and training.
+          </p>
+        </section>
+      )}
     </div>
   );
 };

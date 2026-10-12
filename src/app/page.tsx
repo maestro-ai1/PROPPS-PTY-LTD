@@ -5,9 +5,9 @@ import { JsonLd } from '../components/JsonLd.js';
 import { HomeContent } from '../views/HomePage.js';
 
 export const metadata: Metadata = {
-  title: 'Prop Money Australia | Cinema-Grade Currency – PROPPS PTY LTD',
+  title: { absolute: 'Australian Prop Money for Film & TV | PROPPS Melbourne' },
   description:
-    'Buy prop money Australia for film, TV, and theatre productions. Cinema-grade specimen currency with fast Melbourne dispatch and a 10% crypto discount.',
+    'Cinema-grade Australian prop money for film, TV, theatre and photo shoots. Specimen-marked, made in Melbourne, Express dispatch nationwide. From $300.',
   keywords: SITE.keywords,
 };
 

@@ -20,20 +20,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `https://${SITE.domain}/shop/${product.category}/${product.slug}/`;
   const image = `/images/products/${product.images[0]}`;
 
+  const label = product.name.replace(/ For Sale$/i, '');
+  const KW: Record<string, string> = {
+    '100-australian-prop-money-for-sale': '100 dollar note Australia prop notes',
+    '50-australian-prop-money-for-sale': '50 dollar note Australia prop notes',
+  };
+  const what = KW[product.slug] ?? label;
+  const title = `${product.name} | Buy Online Australia`;
+  const description = `Buy ${what} online from $${product.price} AUD. Specimen-marked, Express Post from Melbourne, free delivery over $500, orders from $300.`;
+
   return {
-    title: product.name,
-    description: product.shortDescription,
+    title: { absolute: title },
+    description,
     alternates: { canonical: url },
     openGraph: {
       type: 'website',
       url,
       siteName: SITE.name,
       locale: 'en_AU',
-      title: product.name,
-      description: product.shortDescription,
+      title,
+      description,
       images: [{ url: image, alt: product.name }],
     },
-    twitter: { card: 'summary_large_image', title: product.name, description: product.shortDescription, images: [image] },
+    twitter: { card: 'summary_large_image', title, description, images: [image] },
   };
 }
 

@@ -1,6 +1,15 @@
 // src/components/JsonLd.tsx
 import React from 'react';
-import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ, SHOP } from '../config/site.js';
+import { SITE, BRAND, PRODUCTS, CATEGORIES, FAQ, SHOP, CONTACT } from '../config/site.js';
+
+const TELEPHONE = CONTACT.phone.replace(/\s+/g, '');
+const CONTACT_POINT = {
+  '@type': 'ContactPoint',
+  telephone: TELEPHONE,
+  contactType: 'sales',
+  areaServed: 'AU',
+  availableLanguage: 'en-AU',
+};
 
 interface JsonLdProps {
   type: 'homepage' | 'product' | 'category' | 'faq' | 'about' | 'wholesale' | 'article' | 'breadcrumb' | 'page';
@@ -20,6 +29,8 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
           name: SITE.name,
           description: BRAND.description,
           url: `https://${SITE.domain}/`,
+          telephone: TELEPHONE,
+          contactPoint: CONTACT_POINT,
           foundingDate: BRAND.foundingYear,
           foundingLocation: {
             '@type': 'Place',
@@ -145,6 +156,8 @@ export const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
         '@id': `https://${SITE.domain}/#organization`,
         name: SITE.name,
         description: BRAND.description,
+        telephone: TELEPHONE,
+        contactPoint: CONTACT_POINT,
         foundingDate: BRAND.foundingYear,
         foundingLocation: { '@type': 'Place', name: BRAND.foundingLocation },
         address: {

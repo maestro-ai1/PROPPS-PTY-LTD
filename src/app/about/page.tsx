@@ -5,9 +5,9 @@ import { JsonLd } from '../../components/JsonLd.js';
 import { AboutContent } from '../../views/AboutPage.js';
 
 export const metadata: Metadata = {
-  title: 'About Us — Melbourne Prop Currency Since 2019',
+  title: { absolute: 'About PROPPS | Melbourne Prop Money Makers Since 2019' },
   description:
-    'PROPPS PTY LTD is Australia’s dedicated cinema-grade reproduction currency manufacturer, founded 2019 in Eltham VIC. Section 22 Crimes (Currency) Act 1981 compliant.',
+    'PROPPS PTY LTD makes specimen-marked Australian prop currency in Eltham, Melbourne. 500+ productions supplied since 2019. Meet the team and our standards.',
   alternates: { canonical: `https://${SITE.domain}/about/` },
 };
 

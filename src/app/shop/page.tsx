@@ -4,9 +4,9 @@ import { SITE } from '../../config/site.js';
 import { ShopContent } from '../../views/ShopPage.js';
 
 export const metadata: Metadata = {
-  title: 'Prop Money Australia | Shop Cinema Currency',
+  title: { absolute: 'Australian Prop Money for Sale | Shop Online | PROPPS' },
   description:
-    'Shop prop money Australia: New Notes, Money Stacks, Film & TV, Photography, Event & Custom Props. Buy prop money online with fast Melbourne dispatch.',
+    'Buy prop money online: $5 to $100 specimen notes, money stacks and film packs. Order prop money in AUD with Express Post, free delivery over $500.',
   keywords: SITE.keywords,
   alternates: { canonical: `https://${SITE.domain}/shop/` },
 };

@@ -42,7 +42,7 @@ export const SITE = {
 export const CONTACT = {
   abn: '72 642 507 042',
   email: 'sales&#64;proppsptyltd.com.au',
-  phone: '+61 3 9000 0000',
+  phone: '+61 420 128 746',
   whatsapp: '+61 420 128 746',
   address: 'Suite 4, 95 Main Road, Eltham, VIC 3093, Australia',
   hq: 'Eltham, VIC 3093, Melbourne, Australia',
@@ -192,6 +192,40 @@ export const CATEGORIES = [
     seoDescription: 'Custom prop money printing Australia for agencies and brand campaigns. Bespoke branded prop currency manufactured to the same specimen compliance standard.'
   }
 ]
+
+// Buyer-facing body copy shown under each category's product grid (adds the buy-intent
+// content the golden rule asks for; one mapped keyword per paragraph, used once).
+export const CATEGORY_BODY = {
+  'new-notes': [
+    'Choose a denomination from $5 to $100 and pick the bundle size that suits your scene, from a Starter Stack for a wallet shot to a 100-stack run for a vault reveal. Every note is printed double-sided on matte archival paper and carries specimen markings, so it reads well on camera and stays clearly non-tender.',
+    'Orders start at $300 AUD, ship by Australia Post Express with signature on delivery, and are free to deliver from $500. Pay by bank transfer, PayID or crypto for 10% off.',
+  ],
+  'film-and-tv-props': [
+    'If you want to buy film props that hold up under studio lighting, start here. These packs are built for art departments: matte, non-reflective paper, double-sided print and consistent bundles that match from take to take, so continuity stays simple.',
+    'Film props for sale here are made and dispatched from our Eltham, Melbourne studio. Orders start at $300 AUD, dispatch usually leaves within 24 business hours of payment, and larger studio runs can be quoted on the wholesale page.',
+    'Every pack carries specimen markings in line with the Crimes (Currency) Act 1981, so you can add the order to your production legal file with confidence.',
+  ],
+  'money-stacks': [
+    'Money stacks are strapped and counted so the art department can place them rather than build them. They suit heist scenes, bank vaults, desk spreads and any frame where a big visible cash volume sells the story.',
+    'Prop bundles of money come in sizes from a single stack up to full vault quantities. Larger runs qualify for wholesale tiers of 10% to 30% off, and orders over $500 ship free by Express Post.',
+    'Use a stack in the foreground for close-ups and fill the background with the same bundle type to keep the look consistent across takes.',
+  ],
+  'photography-props': [
+    'Photographers use prop money for editorial, product and advertising shoots where cash needs to look real in print without the legal risk. Our photography sets are matte, glare-free and double-sided, so they photograph cleanly under strobes and continuous light.',
+    'For a prop money photoshoot, a single set of fanned notes plus one strapped stack covers most set-ups. Orders start at $300 AUD and ship by Express Post, so you can book the studio with notes in hand.',
+    'All notes carry specimen markings, which keeps campaign images on the right side of the Crimes (Currency) Act.',
+  ],
+  'event-and-party-props': [
+    'Play money for events, parties and themed entertainment should be fun, clearly not real and easy to hand around. These packs use the same print quality as our film range with visible specimen markings, so guests can throw them, stack them and take photos without any confusion.',
+    'Popular uses include casino nights, proposal reveals, themed parties and kids games. For a larger run, ask about wholesale rates on the wholesale page.',
+    'Orders start at $300 AUD and ship by Australia Post Express from Melbourne, with free delivery from $500.',
+  ],
+  'custom-and-branded-props': [
+    'Custom prop money printing lets agencies and brands put their own artwork on specimen-compliant notes for campaigns, product launches, giveaways and stage sets. We handle the design brief, the compliance markings and the print run from our Melbourne studio.',
+    'Typical briefs include branded currency for a launch, themed notes for a conference or stage show, and bespoke packs for a television segment. Tell us the quantity, the artwork and the deadline and we will quote.',
+    'Every custom run is held to the same specimen standard as the standard range, so it stays non-legal tender and safe to use on camera.',
+  ],
+};
 
 // Shared bundle-size pricing tiers, selectable on every "New Notes" product.
 export const BUNDLE_TIERS = [
@@ -733,7 +767,7 @@ export const POSTS = [
     image: 'blog-100-fan-handheld.jpg',
     tags: ['australian prop money', 'prop money australia', 'realistic fake money australia', 'au prop money', 'props money', 'aus prop money', 'australian fake money', 'movie money', 'film props', 'set design'],
     relatedCategories: ['new-notes', 'film-and-tv-props'],
-    content: `In the early days of Australian filmmaking, "stage money" was often crude and obviously artificial. However, with the advent of 4K and 8K digital sensors, the demand for **realistic fake money Australia** has skyrocketed. Modern directors require **australian prop money** that can withstand extreme close-ups without revealing its non-legal-tender nature to the viewer.\n\nAt PROPPS PTY LTD, we have tracked this evolution by moving away from standard paper to premium 120gsm archival stocks that mimic the weight and handling of real notes. This **au prop money** is now a staple in high-budget streaming series where the **props money** handles the same as circulated currency, allowing actors to perform counting scenes with natural fluidity. Whether it is **aus prop money** for a quick exchange or a full vault of **australian fake money**, the standard for realism has never been higher.`
+    content: `In the early days of Australian filmmaking, "stage money" was often crude and obviously artificial. However, with the advent of 4K and 8K digital sensors, the demand for realistic fake money Australia has skyrocketed. Modern directors require australian prop money that can withstand extreme close-ups without revealing its non-legal-tender nature to the viewer.\n\nAt PROPPS PTY LTD, we have tracked this evolution by moving away from standard paper to premium 120gsm archival stocks that mimic the weight and handling of real notes. This au prop money is now a staple in high-budget streaming series where the props money handles the same as circulated currency, allowing actors to perform counting scenes with natural fluidity. Whether it is aus prop money for a quick exchange or a full vault of australian fake money, the standard for realism has never been higher.`
   },
   {
     slug: 'choosing-realistic-fake-money-australia',
@@ -746,7 +780,7 @@ export const POSTS = [
     image: 'blog-fanned-50-stack.jpg',
     tags: ['realistic fake money australia', 'fake australian money prop', 'australian fake money', 'prop money au', 'au prop money', '$100 prop money', '1 1 prop money', 'aud prop money', 'australia fake money', 'prop money australia'],
     relatedCategories: ['new-notes', 'money-stacks'],
-    content: `When sourcing a **fake australian money prop**, the first consideration is the camera distance. For background filler, a standard bundle might suffice, but for "hero" shots, you need **realistic fake money australia** that features high-definition dual-sided printing. Many productions opt for **australian fake money** in the $50 and $100 denominations, as these provide the most visual "pop" under studio lights.\n\nSelecting **prop money au** that is 1:1 in size but compliant with the Crimes Act is a delicate balance. Our **au prop money** is engineered to look identical on camera while remaining clearly non-legal tender to the touch. When buying **$100 prop money**, consider the bundle size—a "Starter Stack" of **aud prop money** might be perfect for a wallet shot, while a "100 Stack" is necessary for a heist reveal. Always ensure your **australia fake money** comes from a reputable Melbourne studio to ensure local compliance.`
+    content: `When sourcing a fake australian money prop, the first consideration is the camera distance. For background filler, a standard bundle might suffice, but for "hero" shots, you need realistic fake money australia that features high-definition dual-sided printing. Many productions opt for australian fake money in the $50 and $100 denominations, as these provide the most visual "pop" under studio lights.\n\nSelecting prop money au that is 1:1 in size but compliant with the Crimes Act is a delicate balance. Our au prop money is engineered to look identical on camera while remaining clearly non-legal tender to the touch. When buying $100 prop money, consider the bundle size—a "Starter Stack" of aud prop money might be perfect for a wallet shot, while a "100 Stack" is necessary for a heist reveal. Always ensure your australia fake money comes from a reputable Melbourne studio to ensure local compliance.`
   },
   {
     slug: 'why-au-prop-money-essential-tabletop-scenes',
@@ -759,7 +793,7 @@ export const POSTS = [
     image: 'blog-bundled-stacks.jpg',
     tags: ['au prop money', 'prop money au', 'australian prop money', 'fake note australia', 'prop australian money', 'prop money aud', 'fake $100 australia', 'artificial money', 'props money', 'australian prop money realistic'],
     relatedCategories: ['photography-props', 'new-notes'],
-    content: `Tabletop scenes, such as high-stakes poker games or shady underworld deals, put **au prop money** under the literal microscope. Using a low-quality **fake note australia** can break the immersion immediately if the texture or colour is off. This is why professional **prop money au** uses matte-finish paper that absorbs light rather than reflecting it, unlike real polymer notes or cheap **artificial money**.\n\nWhen a character fans out a **fake $100 australia** note, the camera captures the micro-details of the print. Our **prop australian money** is designed to maintain these details while ensuring the mandatory "SPECIMEN" markings are visible but not distracting to the narrative. For any production using **prop money aud**, the handling feel is just as important as the look—actors need **australian prop money realistic** enough to count and toss without hesitation.`
+    content: `Tabletop scenes, such as high-stakes poker games or shady underworld deals, put au prop money under the literal microscope. Using a low-quality fake note australia can break the immersion immediately if the texture or colour is off. This is why professional prop money au uses matte-finish paper that absorbs light rather than reflecting it, unlike real polymer notes or cheap artificial money.\n\nWhen a character fans out a fake $100 australia note, the camera captures the micro-details of the print. Our prop australian money is designed to maintain these details while ensuring the mandatory "SPECIMEN" markings are visible but not distracting to the narrative. For any production using prop money aud, the handling feel is just as important as the look—actors need australian prop money realistic enough to count and toss without hesitation.`
   },
   {
     slug: 'legal-framework-props-money-australian-film',
@@ -773,7 +807,7 @@ export const POSTS = [
     tags: ['props money', 'prop money au', 'aus prop money', 'australian prop money', 'australia fake money', 'prop aus money', 'australian fake money', 'fake note australia', 'compliance', 'film legal'],
     relatedCategories: ['new-notes'],
     relatedProducts: ['100-australian-prop-money-for-sale'],
-    content: `The term **props money** might sound like a simple toy, but in Australia, it is a highly regulated product. The Crimes (Currency) Act 1981 specifies that any **australian fake money** must not be capable of deceiving a reasonable person into believing it is genuine legal tender. This is why every **prop money au** note we produce features prominent, indelible specimen markings.\n\nWhether you are using **aus prop money** for a TV commercial or a theatrical play, the legal responsibility lies with the production company. Using non-compliant **australia fake money** can lead to severe legal complications. Our **prop aus money** is designed to satisfy both the aesthetic needs of the director and the legal requirements of the RBA. When you source your **fake note australia** from PROPPS PTY LTD, you receive a product that is certified for legitimate artistic use.`
+    content: `The term props money might sound like a simple toy, but in Australia, it is a highly regulated product. The Crimes (Currency) Act 1981 specifies that any australian fake money must not be capable of deceiving a reasonable person into believing it is genuine legal tender. This is why every prop money au note we produce features prominent, indelible specimen markings.\n\nWhether you are using aus prop money for a TV commercial or a theatrical play, the legal responsibility lies with the production company. Using non-compliant australia fake money can lead to severe legal complications. Our prop aus money is designed to satisfy both the aesthetic needs of the director and the legal requirements of the RBA. When you source your fake note australia from PROPPS PTY LTD, you receive a product that is certified for legitimate artistic use.`
   },
   {
     slug: 'visual-impact-100-prop-money-stack',
@@ -786,7 +820,7 @@ export const POSTS = [
     image: 'blog-100-fan-handheld.jpg',
     tags: ['$100 prop money', 'fake $100 australia', 'australian prop money', 'realistic fake money australia', 'au prop money', '1 1 prop money', 'prop australian money', 'money stacks', 'set dressing', 'visual arts'],
     relatedCategories: ['money-stacks', 'new-notes'],
-    content: `Nothing says "high stakes" like a fanned **fake $100 australia** note or a thick **$100 prop money** stack. In the visual arts, the $100 denomination is a powerful symbol of wealth, power, and risk. To achieve this look, many art directors use **1 1 prop money**—meaning the notes are the exact same dimensions as real currency—to ensure they fit perfectly into wallets, briefcases, and safes.\n\nWhen stacking **australian prop money**, the band or "strap" used to hold the notes together adds to the authenticity. We provide **realistic fake money australia** bundles that come pre-strapped with compliant bank bands. This saves the art department hours of prep time and ensures the **prop australian money** looks like it just came from a secure vault. For scenes requiring massive volume, mixing **au prop money** with filler bundles can create the illusion of millions of dollars at a fraction of the cost.`
+    content: `Nothing says "high stakes" like a fanned fake $100 australia note or a thick $100 prop money stack. In the visual arts, the $100 denomination is a powerful symbol of wealth, power, and risk. To achieve this look, many art directors use 1 1 prop money—meaning the notes are the exact same dimensions as real currency—to ensure they fit perfectly into wallets, briefcases, and safes.\n\nWhen stacking australian prop money, the band or "strap" used to hold the notes together adds to the authenticity. We provide realistic fake money australia bundles that come pre-strapped with compliant bank bands. This saves the art department hours of prep time and ensures the prop australian money looks like it just came from a secure vault. For scenes requiring massive volume, mixing au prop money with filler bundles can create the illusion of millions of dollars at a fraction of the cost.`
   },
   {
     slug: 'difference-1-1-prop-money-novelty-notes',
@@ -799,7 +833,7 @@ export const POSTS = [
     image: 'blog-20-50-handful.jpg',
     tags: ['1 1 prop money', 'realistic fake money australia', 'australian prop money', 'fake australian money prop', 'prop money au', 'au prop money', 'aud prop money', 'props money', 'another word for fake money', 'professional props'],
     relatedCategories: ['new-notes', 'event-and-party-props'],
-    content: `To the untrained eye, any **fake australian money prop** might look fine, but for professional cinematography, the distinction between **1 1 prop money** and novelty "play" money is critical. Novelty notes are often smaller, single-sided, or printed on cheap glossy paper. In contrast, **realistic fake money australia** is designed to mimic the exact dimensions and "feel" of real notes while maintaining its prop status.\n\nUsing **1 1 prop money** ensures that the notes behave correctly when handled by actors. They have the right "snap" and don't slide around like plastic-coated **artificial money**. For any production where the **props money** is a central plot point, investing in high-quality **australian prop money** is non-negotiable. It is the difference between a scene that feels grounded in reality and one that feels like a caricature. Remember, **another word for fake money** in our industry is "cinema currency"—and it should be treated with the same respect as any other high-end prop.`
+    content: `To the untrained eye, any fake australian money prop might look fine, but for professional cinematography, the distinction between 1 1 prop money and novelty "play" money is critical. Novelty notes are often smaller, single-sided, or printed on cheap glossy paper. In contrast, realistic fake money australia is designed to mimic the exact dimensions and "feel" of real notes while maintaining its prop status.\n\nUsing 1 1 prop money ensures that the notes behave correctly when handled by actors. They have the right "snap" and don't slide around like plastic-coated artificial money. For any production where the props money is a central plot point, investing in high-quality australian prop money is non-negotiable. It is the difference between a scene that feels grounded in reality and one that feels like a caricature. Remember, another word for fake money in our industry is "cinema currency"—and it should be treated with the same respect as any other high-end prop.`
   },
   {
     slug: 'best-practices-handling-fake-note-australia-props',
@@ -812,7 +846,7 @@ export const POSTS = [
     image: 'blog-bundled-stacks.jpg',
     tags: ['fake note australia', 'australian fake money', 'prop money au', 'au prop money', 'australian prop money', 'props money', 'aus prop money', 'prop money australia', 'set management', 'actor tips'],
     relatedCategories: ['film-and-tv-props'],
-    content: `When **fake note australia** props arrive on set, they should be treated as high-value assets. Even though they are **australian fake money**, losing them or having them found by the public can cause unnecessary concern or legal inquiry. We recommend that the Prop Master maintains a "sign-out" sheet for all **prop money au** used during the day's shoot.\n\nActors should also be briefed on the handling of **au prop money**. While our **australian prop money** is durable, excessive crumpling can wear down the print over multiple takes. For scenes where the **props money** needs to look weathered, we recommend our "Distressed" bundles rather than trying to age them on set with water or chemicals, which can damage the archival paper. By following these best practices, your **prop money australia** will stay camera-ready throughout the entire production schedule.`
+    content: `When fake note australia props arrive on set, they should be treated as high-value assets. Even though they are australian fake money, losing them or having them found by the public can cause unnecessary concern or legal inquiry. We recommend that the Prop Master maintains a "sign-out" sheet for all prop money au used during the day's shoot.\n\nActors should also be briefed on the handling of au prop money. While our australian prop money is durable, excessive crumpling can wear down the print over multiple takes. For scenes where the props money needs to look weathered, we recommend our "Distressed" bundles rather than trying to age them on set with water or chemicals, which can damage the archival paper. By following these best practices, your prop money australia will stay camera-ready throughout the entire production schedule.`
   },
   {
     slug: 'why-australian-prop-money-for-sale-needs-markings',
@@ -838,7 +872,7 @@ export const POSTS = [
     image: 'blog-100-fan-handheld.jpg',
     tags: ['prop australian money', 'fake australian money prop', 'realistic fake money australia', 'au prop money', 'australian prop money', 'prop money aud', 'fake note australia', 'lighting tips', 'cinematography', '4k filming'],
     relatedCategories: ['photography-props'],
-    content: `Filming **prop australian money** in 4K resolution requires a different approach than standard video. High-resolution sensors pick up every fibre of the paper, meaning your **fake australian money prop** needs to have a superior print quality. The main challenge is managing reflections—polymer notes are notoriously difficult to light because of their glossy surface. Our **realistic fake money australia** solves this by using a matte-finish archival paper.\n\nTo make your **au prop money** look even more convincing, use soft, directional lighting. A side-light will catch the subtle texture of our **australian prop money**, creating shadows that mimic the intaglio printing of real banknotes. If you are using a **fake note australia** in a dark scene, a small rim light can help define the edges of the note against the background. Always do a test shot with your **prop money aud** during pre-production to ensure the colours calibrate correctly with your camera's LUT.`
+    content: `Filming prop australian money in 4K resolution requires a different approach than standard video. High-resolution sensors pick up every fibre of the paper, meaning your fake australian money prop needs to have a superior print quality. The main challenge is managing reflections—polymer notes are notoriously difficult to light because of their glossy surface. Our realistic fake money australia solves this by using a matte-finish archival paper.\n\nTo make your au prop money look even more convincing, use soft, directional lighting. A side-light will catch the subtle texture of our australian prop money, creating shadows that mimic the intaglio printing of real banknotes. If you are using a fake note australia in a dark scene, a small rim light can help define the edges of the note against the background. Always do a test shot with your prop money aud during pre-production to ensure the colours calibrate correctly with your camera's LUT.`
   },
   {
     slug: 'art-departments-guide-prop-money-aging',
@@ -851,7 +885,7 @@ export const POSTS = [
     image: 'blog-bundled-stacks.jpg',
     tags: ['australian prop money realistic', 'prop money au', 'au prop money', 'australian prop money', 'realistic fake money australia', 'fake note australia', 'aus prop money', 'aging props', 'art department', 'set dressing'],
     relatedCategories: ['money-stacks', 'film-and-tv-props'],
-    content: `A brand new, crisp **australian prop money realistic** stack can sometimes look too perfect for a gritty underworld scene. Art departments often need their **prop money au** to look like it has been "around the block." While we offer pre-distressed bundles, achieving your own custom aging for **au prop money** can be done with a few professional secrets.\n\nOne common technique is the "hand-roll"—gently rolling individual **australian prop money** notes in your palms to break the paper's stiffness without creating sharp creases. For a stained look, a very light misting of tea or coffee can add a subtle yellowing to a **fake note australia**, though this must be done sparingly to avoid soaking the archival paper. Our **aus prop money** is designed to take these modifications well, allowing your team to create the exact level of wear needed for the character's backstory. Remember to always keep a few pristine **realistic fake money australia** notes for "mint condition" shots.`
+    content: `A brand new, crisp australian prop money realistic stack can sometimes look too perfect for a gritty underworld scene. Art departments often need their prop money au to look like it has been "around the block." While we offer pre-distressed bundles, achieving your own custom aging for au prop money can be done with a few professional secrets.\n\nOne common technique is the "hand-roll"—gently rolling individual australian prop money notes in your palms to break the paper's stiffness without creating sharp creases. For a stained look, a very light misting of tea or coffee can add a subtle yellowing to a fake note australia, though this must be done sparingly to avoid soaking the archival paper. Our aus prop money is designed to take these modifications well, allowing your team to create the exact level of wear needed for the character's backstory. Remember to always keep a few pristine realistic fake money australia notes for "mint condition" shots.`
   },
   {
     slug: 'prop-money-australia-vs-overseas-listings',
@@ -864,7 +898,7 @@ export const POSTS = [
     image: 'blog-fanned-50-stack.jpg',
     tags: ['prop money australia', 'australian prop money', 'realistic fake money australia', 'au prop money', 'australia fake money', 'prop money au', 'aus prop money', 'local props', 'shipping risks', 'compliance'],
     relatedCategories: ['new-notes'],
-    content: `When searching for **prop money australia**, you will inevitably encounter overseas sellers offering "cheap" alternatives. However, importing **australia fake money** carries significant risks, including customs seizure and non-compliance with the Crimes Act. Professional productions always choose local **au prop money** because it guarantees 100% legal compliance and fast, trackable dispatch.\n\nOur **australian prop money** is manufactured right here in Melbourne, meaning no international wait times or border issues. When you buy **prop money au** from an Australian studio, you are also supporting the local film industry. For those needing **realistic fake money australia** on a deadline, our **aus prop money** is dispatched via Express Post, arriving long before an overseas parcel would even clear customs.`
+    content: `When searching for prop money australia, you will inevitably encounter overseas sellers offering "cheap" alternatives. However, importing australia fake money carries significant risks, including customs seizure and non-compliance with the Crimes Act. Professional productions always choose local au prop money because it guarantees 100% legal compliance and fast, trackable dispatch.\n\nOur australian prop money is manufactured right here in Melbourne, meaning no international wait times or border issues. When you buy prop money au from an Australian studio, you are also supporting the local film industry. For those needing realistic fake money australia on a deadline, our aus prop money is dispatched via Express Post, arriving long before an overseas parcel would even clear customs.`
   },
   {
     slug: 'realistic-fake-money-australia-photography-tips',
@@ -877,7 +911,7 @@ export const POSTS = [
     image: 'blog-50-fan-handheld.jpg',
     tags: ['realistic fake money australia', 'fake note australia', 'australian prop money', 'prop money australia', 'au prop money', 'prop money aud', 'fake $100 australia', 'photography tips', 'macro shots', 'studio lighting'],
     relatedCategories: ['photography-props'],
-    content: `Capturing **realistic fake money australia** on camera requires an eye for detail. The first tip is to avoid direct flash; the matte surface of our **australian prop money** is designed to look best under diffused, naturalistic light. If you are shooting a **fake note australia** in a macro setup, try using a shallow depth of field to keep the "SPECIMEN" markings in the soft-focus areas.\n\nWhen arranging your **prop money australia**, fanning the notes manually creates a more organic look than a perfect machine-stacked pile. For a high-impact shot, placing a **fake $100 australia** note in the foreground can lead the viewer's eye. Our **au prop money** is specifically engineered for these types of high-resolution shoots, ensuring your **prop money aud** looks authentic even in the tightest of close-ups.`
+    content: `Capturing realistic fake money australia on camera requires an eye for detail. The first tip is to avoid direct flash; the matte surface of our australian prop money is designed to look best under diffused, naturalistic light. If you are shooting a fake note australia in a macro setup, try using a shallow depth of field to keep the "SPECIMEN" markings in the soft-focus areas.\n\nWhen arranging your prop money australia, fanning the notes manually creates a more organic look than a perfect machine-stacked pile. For a high-impact shot, placing a fake $100 australia note in the foreground can lead the viewer's eye. Our au prop money is specifically engineered for these types of high-resolution shoots, ensuring your prop money aud looks authentic even in the tightest of close-ups.`
   },
   {
     slug: 'au-prop-money-theatrical-productions',
@@ -890,7 +924,7 @@ export const POSTS = [
     image: 'blog-20-50-handful.jpg',
     tags: ['au prop money', 'props money', 'australian prop money', 'prop australian money', 'realistic fake money australia', 'aus prop money', 'prop money au', 'theatre props', 'stage design', 'prop master'],
     relatedCategories: ['film-and-tv-props', 'event-and-party-props'],
-    content: `In theatre, props must be durable enough for nightly use while being clearly identifiable from the back of the house. **AU prop money** from PROPPS PTY LTD is the industry standard for Australian stage productions. Unlike cheap paper, our **props money** has the right thickness to be fanned, counted, and thrown during a performance without tearing or losing its shape.\n\nStage managers appreciate that our **australian prop money** is non-reflective, ensuring it doesn't glare under heavy stage lighting. Whether the script calls for a single **prop australian money** note or a suitcase full of **aus prop money**, we provide the volume and quality needed. Furthermore, our **prop money au** is strictly compliant, giving production companies peace of mind that their **realistic fake money australia** won't be mistaken for anything other than a professional prop.`
+    content: `In theatre, props must be durable enough for nightly use while being clearly identifiable from the back of the house. AU prop money from PROPPS PTY LTD is the industry standard for Australian stage productions. Unlike cheap paper, our props money has the right thickness to be fanned, counted, and thrown during a performance without tearing or losing its shape.\n\nStage managers appreciate that our australian prop money is non-reflective, ensuring it doesn't glare under heavy stage lighting. Whether the script calls for a single prop australian money note or a suitcase full of aus prop money, we provide the volume and quality needed. Furthermore, our prop money au is strictly compliant, giving production companies peace of mind that their realistic fake money australia won't be mistaken for anything other than a professional prop.`
   },
   {
     slug: 'prop-money-au-for-education-and-training',
@@ -903,7 +937,7 @@ export const POSTS = [
     image: 'blog-bundled-stacks.jpg',
     tags: ['prop money au', 'realistic fake money australia', 'australian prop money', 'au prop money', 'fake note australia', 'prop money aud', 'fake $100 australia', 'training props', 'simulation', 'education'],
     relatedCategories: ['new-notes'],
-    content: `Beyond the screen, **prop money au** plays a vital role in professional training simulations. Financial institutions use **realistic fake money australia** to train staff in cash handling and fraud detection, while police academies use **australian prop money** for crime scene investigations. The accuracy of our **au prop money** ensures that these simulations are as close to reality as possible.\n\nDuring a training exercise, a **fake note australia** must have the correct weight and dimensions to be effective. We supply **prop money aud** that helps trainees identify the visual differences between props and real currency, emphasizing the importance of specimen markings. Our **fake $100 australia** stacks are particularly popular for larger scale drills, providing a cost-effective way to simulate high-value assets without the risk of using real cash.`
+    content: `Beyond the screen, prop money au plays a vital role in professional training simulations. Financial institutions use realistic fake money australia to train staff in cash handling and fraud detection, while police academies use australian prop money for crime scene investigations. The accuracy of our au prop money ensures that these simulations are as close to reality as possible.\n\nDuring a training exercise, a fake note australia must have the correct weight and dimensions to be effective. We supply prop money aud that helps trainees identify the visual differences between props and real currency, emphasizing the importance of specimen markings. Our fake $100 australia stacks are particularly popular for larger scale drills, providing a cost-effective way to simulate high-value assets without the risk of using real cash.`
   },
   {
     slug: 'aus-prop-money-social-media-content-creation',
@@ -916,7 +950,7 @@ export const POSTS = [
     image: 'blog-100-fan-handheld.jpg',
     tags: ['aus prop money', 'prop money au', 'australian prop money', 'realistic fake money australia', 'au prop money', 'props money', 'fake $100 australia', 'content creation', 'instagram props', 'viral content'],
     relatedCategories: ['photography-props'],
-    content: `For content creators, **aus prop money** is an essential tool for "lifestyle" and "wealth" themed content. Whether you're filming a skit or a luxury-themed photoshoot, using high-quality **prop money au** adds an immediate layer of production value. Our **australian prop money** looks incredible on Instagram and TikTok, providing that visual "flex" without any of the legal risks associated with unmarked notes.\n\nUsing **realistic fake money australia** protects your account from being flagged for misleading content, as the "SPECIMEN" markings are clearly visible to platforms. We recommend fanning out a stack of **au prop money** to create a sense of abundance. Our **props money** is priced for independent creators, and a single order of **fake $100 australia** notes can be reused for dozens of different shoots, making it a smart investment for any serious studio.`
+    content: `For content creators, aus prop money is an essential tool for "lifestyle" and "wealth" themed content. Whether you're filming a skit or a luxury-themed photoshoot, using high-quality prop money au adds an immediate layer of production value. Our australian prop money looks incredible on Instagram and TikTok, providing that visual "flex" without any of the legal risks associated with unmarked notes.\n\nUsing realistic fake money australia protects your account from being flagged for misleading content, as the "SPECIMEN" markings are clearly visible to platforms. We recommend fanning out a stack of au prop money to create a sense of abundance. Our props money is priced for independent creators, and a single order of fake $100 australia notes can be reused for dozens of different shoots, making it a smart investment for any serious studio.`
   },
   {
     slug: 'australian-prop-money-for-sale-melbourne-studio',
@@ -929,7 +963,7 @@ export const POSTS = [
     image: 'blog-fanned-50-stack.jpg',
     tags: ['australian prop money for sale', 'prop money australia', 'australian prop money', 'realistic fake money australia', 'au prop money', 'prop money au', 'aus prop money', 'melbourne props', 'local studio', 'fast delivery'],
     relatedCategories: ['new-notes', 'money-stacks'],
-    content: `When you see **australian prop money for sale** online, check where it is shipping from. Sourcing your **prop money australia** from our Melbourne studio offers unparalleled advantages. First, you get the benefit of local customer support—we understand the specific needs of the Australian production community. Second, our **australian prop money** is already in stock and ready for immediate dispatch via AusPost Express.\n\nBuying **realistic fake money australia** locally also means you have a direct contact for custom requests or wholesale quotes. Our **au prop money** is trusted by local art directors because we stand by the quality of every note. Whether you are looking for **prop money au** or **aus prop money**, choosing a local supplier ensures your production stays on track and within legal guidelines. Shop our full range of **australian prop money for sale** today for the fastest domestic delivery.`
+    content: `When you see australian prop money for sale online, check where it is shipping from. Sourcing your prop money australia from our Melbourne studio offers unparalleled advantages. First, you get the benefit of local customer support—we understand the specific needs of the Australian production community. Second, our australian prop money is already in stock and ready for immediate dispatch via AusPost Express.\n\nBuying realistic fake money australia locally also means you have a direct contact for custom requests or wholesale quotes. Our au prop money is trusted by local art directors because we stand by the quality of every note. Whether you are looking for prop money au or aus prop money, choosing a local supplier ensures your production stays on track and within legal guidelines. Shop our full range of australian prop money for sale today for the fastest domestic delivery.`
   },
   {
     slug: 'props-money-bulk-ordering-wholesale',
@@ -942,7 +976,7 @@ export const POSTS = [
     image: 'blog-bundled-stacks.jpg',
     tags: ['props money', 'australian prop money', 'prop money australia', 'realistic fake money australia', 'au prop money', 'aus prop money', 'prop money au', 'wholesale props', 'bulk ordering', 'production savings'],
     relatedCategories: ['wholesale'],
-    content: `For large-scale productions, buying **props money** individually isn't cost-effective. We offer tiered wholesale rates for **australian prop money** that can save your production thousands. Our bulk **prop money australia** packages are designed for heist movies, vault scenes, and music videos where massive volumes of cash are required. The more **realistic fake money australia** you order, the lower the per-note cost becomes.\n\nOur studio dispatch desk works with line producers to create custom **au prop money** orders that fit their specific budget. We can provide mix-and-match bundles of **aus prop money**, combining different denominations to create a varied, realistic look. When you order **prop money au** in bulk, you also get priority packing and shipping. If your production needs **props money** in high volume, contact our Melbourne desk for a tailored wholesale quote today.`
+    content: `For large-scale productions, buying props money individually isn't cost-effective. We offer tiered wholesale rates for australian prop money that can save your production thousands. Our bulk prop money australia packages are designed for heist movies, vault scenes, and music videos where massive volumes of cash are required. The more realistic fake money australia you order, the lower the per-note cost becomes.\n\nOur studio dispatch desk works with line producers to create custom au prop money orders that fit their specific budget. We can provide mix-and-match bundles of aus prop money, combining different denominations to create a varied, realistic look. When you order prop money au in bulk, you also get priority packing and shipping. If your production needs props money in high volume, contact our Melbourne desk for a tailored wholesale quote today.`
   },
   {
     slug: 'realistic-fake-money-australia-under-studio-lights',
@@ -955,7 +989,7 @@ export const POSTS = [
     image: 'blog-100-fan-handheld.jpg',
     tags: ['realistic fake money australia', 'au prop money', 'australian prop money', 'prop money australia', 'fake note australia', 'prop australian money', 'prop money aud', 'studio lighting', 'cinematography', 'glare reduction'],
     relatedCategories: ['photography-props', 'new-notes'],
-    content: `Standard polymer currency is a cinematographer's nightmare due to its highly reflective surface. This is where **realistic fake money australia** from PROPPS PTY LTD shines—or rather, doesn't shine. Our **au prop money** is printed on 120gsm matte archival paper specifically chosen for its ability to look authentic without creating distracting flares or hotspots. This makes it the only choice for professional studio lighting.\n\nUnder bright LED or HMI lights, our **australian prop money** maintains its colour saturation and texture. Even in a high-contrast scene, the **prop money australia** looks like real circulated cash. When a character pulls out a **fake note australia**, the matte finish ensures the camera focus stays on the action, not the glare. Art directors consistently choose our **prop australian money** because it is "camera-ready" straight out of the box. For your next high-key shoot, trust only **prop money aud** engineered for the studio environment.`
+    content: `Standard polymer currency is a cinematographer's nightmare due to its highly reflective surface. This is where realistic fake money australia from PROPPS PTY LTD shines—or rather, doesn't shine. Our au prop money is printed on 120gsm matte archival paper specifically chosen for its ability to look authentic without creating distracting flares or hotspots. This makes it the only choice for professional studio lighting.\n\nUnder bright LED or HMI lights, our australian prop money maintains its colour saturation and texture. Even in a high-contrast scene, the prop money australia looks like real circulated cash. When a character pulls out a fake note australia, the matte finish ensures the camera focus stays on the action, not the glare. Art directors consistently choose our prop australian money because it is "camera-ready" straight out of the box. For your next high-key shoot, trust only prop money aud engineered for the studio environment.`
   },
   {
     slug: 'prop-australian-money-history-and-design',
@@ -968,7 +1002,7 @@ export const POSTS = [
     image: 'blog-fanned-50-stack.jpg',
     tags: ['prop australian money', 'au prop money', 'australian prop money', 'realistic fake money australia', 'prop money au', 'aus prop money', 'props money', 'design standards', 'currency history', 'film props'],
     relatedCategories: ['new-notes'],
-    content: `Creating **prop australian money** is about more than just copying a design; it's about respecting the visual history of our currency while adhering to modern legal standards. Our **au prop money** collection is inspired by the vibrant colours and intricate patterns of Australian banknotes, from the $5 to the $100. We ensure that our **australian prop money** captures the "spirit" of the currency while being clearly marked as a reproduction.\n\nThis balance is what makes our **realistic fake money australia** so effective in period pieces and modern dramas alike. Our design team carefully places the specimen markings to be visible to the user but subtle enough for the lens. When you handle our **prop money au**, you feel the effort that went into its creation. For art departments that care about historical accuracy and design integrity, our **aus prop money** and **props money** offer the perfect solution. Every note in our **prop australian money** range is a tribute to the world-class design of Australian currency.`
+    content: `Creating prop australian money is about more than just copying a design; it's about respecting the visual history of our currency while adhering to modern legal standards. Our au prop money collection is inspired by the vibrant colours and intricate patterns of Australian banknotes, from the $5 to the $100. We ensure that our australian prop money captures the "spirit" of the currency while being clearly marked as a reproduction.\n\nThis balance is what makes our realistic fake money australia so effective in period pieces and modern dramas alike. Our design team carefully places the specimen markings to be visible to the user but subtle enough for the lens. When you handle our prop money au, you feel the effort that went into its creation. For art departments that care about historical accuracy and design integrity, our aus prop money and props money offer the perfect solution. Every note in our prop australian money range is a tribute to the world-class design of Australian currency.`
   },
   {
     slug: 'prop-money-aud-for-independent-filmmakers',
@@ -981,22 +1015,158 @@ export const POSTS = [
     image: 'blog-bundled-stacks.jpg',
     tags: ['prop money aud', 'au prop money', 'australian prop money', 'realistic fake money australia', 'prop money au', 'aus prop money', 'props money', 'indie film', 'low budget props', 'filmmaking tips'],
     relatedCategories: ['new-notes', 'money-stacks'],
-    content: `Independent filmmakers often operate on tight budgets where every dollar counts. However, skimping on **prop money aud** is a common mistake that can lower the perceived quality of a production. We offer "Starter Stacks" of **au prop money** specifically for indie creators, providing a small but high-quality selection of notes for key scenes. Our **australian prop money** gives your film a professional edge without breaking the bank.\n\nIndie directors can also use **realistic fake money australia** to create the illusion of larger sums by placing the hero notes on top of filler paper in a briefcase. Our **prop money au** is durable enough to survive a full indie shoot and several reshoots. By using **aus prop money** that is compliant and high-quality, you avoid any potential legal delays that could derail a low-budget production. For indie crews, our **props money** is the most reliable and affordable way to get **prop money aud** that looks like a million bucks on screen.`
+    content: `Independent filmmakers often operate on tight budgets where every dollar counts. However, skimping on prop money aud is a common mistake that can lower the perceived quality of a production. We offer "Starter Stacks" of au prop money specifically for indie creators, providing a small but high-quality selection of notes for key scenes. Our australian prop money gives your film a professional edge without breaking the bank.\n\nIndie directors can also use realistic fake money australia to create the illusion of larger sums by placing the hero notes on top of filler paper in a briefcase. Our prop money au is durable enough to survive a full indie shoot and several reshoots. By using aus prop money that is compliant and high-quality, you avoid any potential legal delays that could derail a low-budget production. For indie crews, our props money is the most reliable and affordable way to get prop money aud that looks like a million bucks on screen.`
   },
+  // ---- 2026-10-12 golden-rule batch: 10 posts, one primary keyword each, no stuffing ----
   {
-    slug: 'local-vs-overseas-prop-money-suppliers-compared',
-    title: 'Local vs Overseas Prop Money Suppliers: What Australian Productions Should Check',
-    seoTitle: 'Local vs Overseas Prop Money Suppliers',
-    excerpt: 'Why sourcing prop money from an Australian supplier avoids the compliance, customs, and dispatch risks that come with overseas listings.',
+    slug: 'can-you-buy-prop-money-in-australia',
+    title: 'Can You Buy Prop Money in Australia? What You Can Order and What to Check',
+    seoTitle: 'Can You Buy Prop Money in Australia?',
+    excerpt: 'Yes, you can buy prop money in Australia when it is clearly marked and made for production use. Here is what to look for before you order.',
     category: 'Buying Guide',
-    date: '2026-09-22',
+    date: '2026-10-04',
     readTime: '4 min read',
-    image: 'blog-50-fan-handheld.jpg',
-    imageAlt: 'Realistic prop money for sale — fanned Australian $50 specimen prop notes from a local Melbourne supplier',
+    image: 'blog-fanned-50-stack.jpg',
+    imageAlt: 'Fanned $50 specimen prop notes marked for motion picture use, ready to order in Australia',
     relatedCategories: ['new-notes'],
     relatedProducts: ['50-australian-prop-money-for-sale', '100-australian-prop-money-for-sale'],
-    relatedPage: { href: '/compliance', label: 'Read our full RBA specimen compliance guide' },
-    content: `A "realistic prop money for sale" search turns up plenty of overseas marketplace listings alongside Australian suppliers, and the price difference can look tempting — until you factor in what an overseas listing usually can't guarantee.\n\nWhat local sourcing gets you that an overseas import often doesn't:\n1. **Confirmed compliance with Australian law.** A supplier based here builds every note around the [Crimes (Currency) Act 1981](https://www.legislation.gov.au/) from the first print run — an overseas seller has no obligation to.\n2. **No customs delay risk.** Reproduction currency can be flagged at the border, which is the last thing you want two days before a shoot.\n3. **Local recourse.** An ABN-registered Australian business gives you a real point of contact for reorders, replacements, or a compliance letter for your production's legal file — not a support ticket into a different time zone.\n4. **Faster, trackable dispatch.** [Australia Post Express](https://auspost.com.au/) with signature on delivery beats waiting on an international parcel with no local tracking.\n\nOur [New Notes range](/shop/new-notes/) is manufactured and dispatched entirely from our Melbourne, VIC studio — see our [compliance page](/compliance/) for the full specimen-marking standard every note is held to.`
+    relatedPage: { href: '/shop/new-notes', label: 'Shop New Notes prop money' },
+    content: `Can you buy prop money in Australia? Yes. Production companies, photographers, theatres and trainers buy it every week, provided the notes are clearly marked as reproductions and are never made to pass as real currency.\n\nWhat a legitimate order looks like:\n1. **Visible specimen markings** on every note, so no one could mistake it for legal tender.\n2. **A local supplier** with an ABN who can give you paperwork for your production file.\n3. **Paper, not polymer.** Real Australian notes are polymer, so reproduction on matte paper stays easy to tell apart by touch.\n4. **A clear use.** Film, television, theatre, photography, advertising or training.\n\nOrders from PROPPS start at $300 AUD, ship by Australia Post Express with signature on delivery, and are free to deliver from $500. Start with the [New Notes range](/shop/new-notes/), or read the [compliance guide](/compliance/) first if your legal team needs it.`
+  },
+  {
+    slug: 'is-it-illegal-to-buy-prop-money-australia',
+    title: 'Is It Illegal to Buy Prop Money in Australia? The Plain-English Answer',
+    seoTitle: 'Is It Illegal to Buy Prop Money in Australia?',
+    excerpt: 'Buying clearly marked prop money for production use is lawful. Spending it, or making it look real, is where the Crimes (Currency) Act applies.',
+    category: 'Compliance & Legal',
+    date: '2026-10-05',
+    readTime: '4 min read',
+    image: 'blog-bundled-stacks.jpg',
+    imageAlt: 'Bundled specimen prop currency stacks carrying compliance markings',
+    relatedCategories: ['new-notes'],
+    relatedProducts: ['100-australian-prop-money-for-sale'],
+    relatedPage: { href: '/compliance', label: 'Read our full compliance guide' },
+    content: `Is it illegal to buy prop money? Not when it is clearly marked and bought for a legitimate purpose such as a shoot, a stage show or training. The law is aimed at reproductions that could deceive someone into accepting them as real.\n\nThree things keep a prop on the right side of the line:\n1. **Marked as a reproduction.** Every PROPPS note carries SPECIMEN markings in line with Section 22 of the Crimes (Currency) Act 1981 and RBA reproduction guidelines.\n2. **Never spent.** Prop notes are non-legal tender and must not be handed over as payment.\n3. **Used for the right job.** Productions, photography, theatre and simulation training.\n\nPeople often group prop notes with fake money in general, but the difference is intent and markings. If you want the full detail, our [compliance page](/compliance/) sets out the standard each note is held to.`
+  },
+  {
+    slug: 'cheap-prop-money-what-you-are-really-paying-for',
+    title: 'Cheap Prop Money: What You Are Really Paying For (and What You Give Up)',
+    seoTitle: 'Cheap Prop Money: What You Are Paying For',
+    excerpt: 'Cheap prop money can be fine for the background of a shot. Here is where the price difference shows up on camera.',
+    category: 'Buying Guide',
+    date: '2026-10-06',
+    readTime: '4 min read',
+    image: 'blog-20-50-handful.jpg',
+    imageAlt: 'A handful of $20 and $50 specimen prop notes showing print detail',
+    relatedCategories: ['new-notes', 'money-stacks'],
+    relatedProducts: ['20-australian-prop-money-for-sale', '50-australian-prop-money-for-sale'],
+    relatedPage: { href: '/shop/money-stacks', label: 'See money stacks' },
+    content: `Cheap prop money has a place. For a drawer that never opens or a bundle sitting far from lens, a basic print is enough.\n\nThe gap shows up when the camera gets close:\n1. **Print resolution.** Low-resolution scans go soft in a close-up.\n2. **Paper finish.** Glossy stock throws glare under lights; matte archival paper does not.\n3. **One side only.** Single-sided notes give themselves away the moment someone flips a stack.\n4. **Compliance.** Imitation money from an overseas listing may have no specimen markings at all.\n\nA sensible approach is to buy premium notes for the hero shot and a simpler stack for filler. Our [Money Stacks](/shop/money-stacks/) range is built for the volume end, and the [$50](/shop/new-notes/50-australian-prop-money-for-sale/) and [$100](/shop/new-notes/100-australian-prop-money-for-sale/) notes are made for the close-up.`
+  },
+  {
+    slug: 'high-quality-prop-money-how-to-judge-it-on-camera',
+    title: 'High Quality Prop Money: How to Judge It Before Your Shoot',
+    seoTitle: 'High Quality Prop Money: How to Judge It',
+    excerpt: 'Print, paper, edges and handling: four quick checks that tell you whether prop money will hold up in front of a lens.',
+    category: 'Cinematography & Lighting',
+    date: '2026-10-07',
+    readTime: '4 min read',
+    image: 'blog-50-fan-handheld.jpg',
+    imageAlt: 'Handheld fan of $50 specimen prop notes shown for print quality',
+    relatedCategories: ['new-notes', 'film-and-tv-props'],
+    relatedProducts: ['50-australian-prop-money-for-sale'],
+    relatedPage: { href: '/shop/film-and-tv-props', label: 'Browse Film & TV props' },
+    content: `High quality prop money is easy to spot once you know what to look for.\n\n1. **Print detail.** Fine line work should stay crisp when you view a note at arm's length.\n2. **Paper.** A matte, non-reflective stock handles naturally and avoids hot spots under studio lights.\n3. **Both sides.** Double-sided printing matters whenever an actor fans or flips notes.\n4. **Handling.** Notes should survive repeated takes without curling or tearing.\n\nIf you are comparing suppliers, ask for a close-up photo of the actual notes rather than a render. PROPPS notes are printed double-sided on 120gsm archival paper and carry specimen markings, so they read well on camera and stay clearly non-tender. Browse the [Film & TV range](/shop/film-and-tv-props/) to see them.`
+  },
+  {
+    slug: 'buying-prop-money-for-a-production-step-by-step',
+    title: 'Buying Prop Money for a Production: A Step-by-Step Order Guide',
+    seoTitle: 'Buying Prop Money for a Production: Step by Step',
+    excerpt: 'From working out how much you need to dispatch and payment, here is how a typical production order runs, step by step, from Melbourne.',
+    category: 'Buying Guide',
+    date: '2026-10-08',
+    readTime: '5 min read',
+    image: 'blog-bundled-stacks.jpg',
+    imageAlt: 'Bundled prop money stacks packed for a production order',
+    relatedCategories: ['new-notes', 'money-stacks'],
+    relatedProducts: ['100-australian-prop-money-for-sale'],
+    relatedPage: { href: '/shop', label: 'Start your order' },
+    content: `Buying prop money for a production takes about ten minutes when you know the steps.\n\n1. **Count the shots.** Decide what appears on camera: a wallet, a table spread or a full vault.\n2. **Pick denominations.** $50 and $100 notes read best on screen; smaller notes suit tills and tips.\n3. **Choose bundle sizes.** Starter Stacks suit close-ups, larger stacks suit reveals.\n4. **Order.** Minimum order is $300 AUD and delivery is free from $500. Pay by bank transfer, PayID or crypto (10% off).\n5. **Dispatch.** Orders go by Australia Post Express with signature on delivery, usually within 24 business hours of payment.\n\nIf you would rather talk it through, [contact the studio](/contact/) or go straight to the [shop](/shop/).`
+  },
+  {
+    slug: '100-dollar-prop-money-which-bundle-size',
+    title: '100 Dollar Prop Money: Which Bundle Size Suits Which Scene',
+    seoTitle: '100 Dollar Prop Money: Choosing a Bundle Size',
+    excerpt: 'The $100 note is the most visual of the range. Here is how to pick a bundle size for wallet shots, table spreads and vault reveals.',
+    category: 'Buying Guide',
+    date: '2026-10-09',
+    readTime: '4 min read',
+    image: 'blog-100-fan-handheld.jpg',
+    imageAlt: 'Handheld fan of $100 specimen prop notes',
+    relatedCategories: ['new-notes'],
+    relatedProducts: ['100-australian-prop-money-for-sale'],
+    relatedPage: { href: '/shop/new-notes/100-australian-prop-money-for-sale', label: 'Buy $100 prop notes' },
+    content: `For most productions, 100 dollar prop money does the heavy lifting: the denomination reads clearly on camera and signals value at a glance.\n\nChoosing a size:\n- **Wallet or hand shot:** a Starter Stack is plenty.\n- **Table spread or desk scene:** one or two stacks give a natural pile.\n- **Heist or vault reveal:** go to 5 stacks or more so the bundles fill the frame.\n\nKeep a few loose notes on hand for continuity. Every note carries specimen markings, so it stays non-legal tender. See the [$100 prop notes](/shop/new-notes/100-australian-prop-money-for-sale/) for sizes and pricing.`
+  },
+  {
+    slug: 'ready-prop-money-stacks-for-fast-turnaround',
+    title: 'Ready Prop Money: Stacks That Arrive Set-Ready for Fast Turnarounds',
+    seoTitle: 'Ready Prop Money for Fast Turnarounds',
+    excerpt: 'When the call sheet changes the night before, pre-strapped prop money stacks save the art department hours and keep continuity simple.',
+    category: 'Art Department',
+    date: '2026-10-10',
+    readTime: '3 min read',
+    image: 'blog-bundled-stacks.jpg',
+    imageAlt: 'Strapped specimen prop money stacks ready for set',
+    relatedCategories: ['money-stacks'],
+    relatedProducts: ['bulk-money-stack-pack'],
+    relatedPage: { href: '/shop/money-stacks', label: 'Shop money stacks' },
+    content: `Ready prop money means stacks that are already counted and strapped, so the art department can place them rather than build them.\n\nWhy it helps on a tight schedule:\n1. **Less prep.** No counting or banding on the morning of the shoot.\n2. **Consistent look.** Matching stacks make continuity simpler between takes.\n3. **Fast dispatch.** Orders leave our Melbourne studio by Express Post within 24 business hours of payment.\n\nBrowse [Money Stacks](/shop/money-stacks/) to see the sizes, or ask about [wholesale rates](/wholesale/) for larger runs.`
+  },
+  {
+    slug: 'prop-money-for-music-videos-australia',
+    title: 'Prop Money for Music Videos in Australia: What Works on Camera',
+    seoTitle: 'Prop Money for Music Videos in Australia',
+    excerpt: 'Music video shoots are quick and close-up. Here is which prop notes work on camera, how to light them and how to keep it compliant.',
+    category: 'Production Guide',
+    date: '2026-10-11',
+    readTime: '4 min read',
+    image: 'blog-fanned-50-stack.jpg',
+    imageAlt: 'Fanned $50 specimen prop notes suited to music video shoots',
+    relatedCategories: ['photography-props', 'event-and-party-props'],
+    relatedProducts: ['photography-prop-currency-set'],
+    relatedPage: { href: '/shop/photography-props', label: 'Shop photography props' },
+    content: `Prop money for music videos has to look good fast. Shoots are short, framing is tight and notes are often thrown, fanned or held to camera.\n\nWhat tends to work:\n1. **Double-sided notes** that survive being flipped and fanned.\n2. **Matte paper** that avoids glare under LED and strobe lighting.\n3. **Loose notes plus one stack**, so there is enough to throw without running out.\n\nKeep the markings visible and never hand notes to the public as real money. For stills and clips, our [photography range](/shop/photography-props/) is the place to start.`
+  },
+  {
+    slug: 'double-sided-prop-banknotes-aud-why-both-sides-matter',
+    title: 'Double-Sided Prop Banknotes (AUD): Why Both Sides Matter on Set',
+    seoTitle: 'Double-Sided Prop Banknotes AUD: Why It Matters',
+    excerpt: 'A note that is blank or wrong on the back gives itself away. Here is when double-sided printing earns its keep.',
+    category: 'Cinematography & Lighting',
+    date: '2026-10-11',
+    readTime: '3 min read',
+    image: 'blog-20-50-handful.jpg',
+    imageAlt: 'Double-sided $20 and $50 specimen prop banknotes',
+    relatedCategories: ['new-notes'],
+    relatedProducts: ['20-australian-prop-money-for-sale'],
+    relatedPage: { href: '/shop/new-notes', label: 'See double-sided notes' },
+    content: `Double-sided prop banknotes cost slightly more to make, and they pay for themselves the first time a note is flipped on camera.\n\nWhere both sides matter:\n- **Counting scenes**, where the back is visible as notes are fanned.\n- **Handoffs**, where a note is turned over in a hand.\n- **Close-ups** at 4K, where a blank back is obvious.\n\nPROPPS notes are printed on both sides in high definition and carry specimen markings throughout. See the [New Notes range](/shop/new-notes/) for every denomination.`
+  },
+  {
+    slug: 'movie-prop-cash-melbourne-and-sydney-delivery',
+    title: 'Movie Prop Cash in Melbourne and Sydney: Ordering and Delivery',
+    seoTitle: 'Movie Prop Cash: Melbourne and Sydney Delivery',
+    excerpt: 'Based in Melbourne and shipping Australia-wide: how movie prop cash gets to your set in Melbourne, Sydney or beyond.',
+    category: 'Buying Guide',
+    date: '2026-10-12',
+    readTime: '3 min read',
+    image: 'blog-50-fan-handheld.jpg',
+    imageAlt: 'Specimen prop cash notes packed for dispatch from Melbourne',
+    relatedCategories: ['film-and-tv-props'],
+    relatedProducts: ['film-and-tv-prop-currency-pack'],
+    relatedPage: { href: '/shop/film-and-tv-props', label: 'Shop Film & TV props' },
+    content: `Movie prop cash ordered from PROPPS is made and packed in Eltham, Melbourne, then sent by Australia Post Express with signature on delivery.\n\nWhat that means for your schedule:\n1. **Melbourne productions** get the shortest transit from our studio.\n2. **Sydney and interstate sets** are covered by the same Express service.\n3. **Dispatch** usually leaves within 24 business hours of payment confirmation.\n4. **Order size.** $300 AUD minimum, free delivery from $500.\n\nPlan the order a few days ahead of your shoot, pick your denominations in the [Film & TV range](/shop/film-and-tv-props/), and [contact us](/contact/) if you need a quote for a larger run.`
   }
 ];
 

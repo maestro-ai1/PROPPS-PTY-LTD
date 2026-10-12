@@ -5,9 +5,9 @@ import { SITE } from '../../config/site.js';
 import { ContactContent } from '../../views/ContactPage.js';
 
 export const metadata: Metadata = {
-  title: 'Contact Melbourne Dispatch Desk',
+  title: { absolute: 'Contact PROPPS | Prop Money Quotes & Trade Orders' },
   description:
-    'Contact PROPPS PTY LTD in Eltham, Melbourne VIC for order status, custom film props, bulk studio invoices, or compliance documentation.',
+    'Request a prop money quote or trade order from PROPPS in Eltham, Melbourne. Replies by form, WhatsApp or email. Wholesale and studio invoices welcome.',
   alternates: { canonical: `https://${SITE.domain}/contact/` },
 };
 

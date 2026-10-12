@@ -11,7 +11,13 @@ import { SearchModalMount } from '../components/SearchModalMount.js';
 import { WhatsAppLiveChat } from '../components/WhatsAppLiveChat.js';
 import { ReviewPopup } from '../components/ReviewPopup.js';
 import { HideOnPrivatePages } from '../components/HideOnPrivatePages.js';
+import dynamic from 'next/dynamic';
 import './globals.css';
+
+// Keyword-mapping overlay: on for local dev and Vercel preview builds, never on production.
+// Loaded as a separate chunk so the internal keyword data is never in the production page bundles.
+const KeywordMapPanel = dynamic(() => import('../components/KeywordMapPanel.js').then((m) => m.KeywordMapPanel));
+const SHOW_KEYWORD_MAP = process.env.VERCEL_ENV !== 'production' && process.env.SHOW_KEYWORD_MAP !== '0';
 
 const siteUrl = `https://${SITE.domain}`;
 
@@ -101,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <HideOnPrivatePages>
             <ReviewPopup />
           </HideOnPrivatePages>
+          {SHOW_KEYWORD_MAP && <KeywordMapPanel />}
         </AppProvider>
       </body>
     </html>

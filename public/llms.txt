@@ -34,6 +34,7 @@
 - [Props Money: A Guide to Bulk Ordering and Wholesale Studio Rates](https://proppsptyltd.com.au/blog/props-money-bulk-ordering-wholesale/): How to save on production costs with bulk props money and wholesale australian prop money.
 - [Why Buy Australian Prop Money for Sale from a Melbourne Studio?](https://proppsptyltd.com.au/blog/australian-prop-money-for-sale-melbourne-studio/): The benefits of sourcing australian prop money for sale from a local Melbourne fulfillment desk.
 - [All Guides](https://proppsptyltd.com.au/blog/): Full production, compliance, and cinematography guide index
+- [Full content as Markdown](https://proppsptyltd.com.au/llms-full.txt): Every product, FAQ and guide in one document
 
 ## Optional & Agent Specifications
 - [API Catalog](https://proppsptyltd.com.au/.well-known/api-catalog): Linkset endpoints

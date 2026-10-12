@@ -31,7 +31,7 @@ export const HomeContent: React.FC = () => {
 
   const heroSlides = [
     {
-      title: 'PROP MONEY AUSTRALIA — CINEMA-GRADE CURRENCY FOR FILM & TV',
+      title: 'AUSTRALIAN PROP MONEY — CINEMA-GRADE CURRENCY FOR FILM & TV',
       subtitle:
         'Engineered specifically for television series, feature films, theatre productions, commercial visual arts, and training simulations across Australia.',
       ctaText: 'Explore Prop Catalog',

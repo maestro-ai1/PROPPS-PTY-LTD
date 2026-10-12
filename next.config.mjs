@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
+  // Hide Next.js's floating "N" dev badge (dev only; no effect on production).
+  devIndicators: false,
   images: {
     formats: ['image/avif', 'image/webp'],
   },
