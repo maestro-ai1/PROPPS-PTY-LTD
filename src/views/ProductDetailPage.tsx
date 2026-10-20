@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, Percent, ShoppingBag, MessageCircle, ArrowLeft, Check, FileCheck } from 'lucide-react';
-import { PRODUCTS, CATEGORIES, SITE, PRODUCT_FAQS } from '../config/site.js';
+import { PRODUCTS, CATEGORIES, SITE, PRODUCT_FAQS, PRODUCT_SEO } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { Breadcrumb } from '../components/Breadcrumb.js';
 import { FaqSection } from '../components/FaqSection.js';
@@ -102,7 +102,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
 
             {/* Exactly One H1 for the Product Page */}
             <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#1A1414] leading-tight">
-              {product.name}
+              {PRODUCT_SEO[product.slug]?.h1 ?? product.name}
             </h1>
 
             <p className="text-sm text-[#6F665F] leading-relaxed">{product.description}</p>

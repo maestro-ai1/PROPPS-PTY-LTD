@@ -43,6 +43,11 @@ export const ContactContent: React.FC = () => {
       <h1 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#1A1414] text-center">
         CONTACT {SITE.name}
       </h1>
+      <p className="text-sm text-[#6F665F] leading-relaxed text-center">
+        Looking for a prop shop in Melbourne, or want to buy prop money near you? PROPPS is based in Eltham, Melbourne and
+        dispatches Australia wide by Australia Post Express. Call or WhatsApp {PHONE_NUMBER}, or send a message below with
+        your scene, quantity and deadline.
+      </p>
 
       {/* Contact methods */}
       <div className="space-y-3">

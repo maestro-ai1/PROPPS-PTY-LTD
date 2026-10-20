@@ -471,6 +471,25 @@ export const HomeContent: React.FC = () => {
         </div>
       </section>
 
+      {/* SECTION 5b: WHAT WE SUPPLY (keyword-bearing copy for the homepage secondaries) */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+        <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#1A1414]">
+          Prop money Australia: what we make and who it is for
+        </h2>
+        <p className="text-sm text-[#6F665F] leading-relaxed">
+          PROPPS makes specimen-marked prop money Australia wide for film, television, theatre, photography and training.
+          If you have searched for prop cash, prop dollar notes, props money or au props, you are in the right place: the
+          range runs from single $5 notes to vault-sized stacks, all printed on matte paper and never spendable.
+        </p>
+        <p className="text-sm text-[#6F665F] leading-relaxed">
+          Start with the <Link href="/shop/new-notes/" className="text-[#D4AF37] underline">New Notes range</Link>, see{' '}
+          <Link href="/shop/money-stacks/" className="text-[#D4AF37] underline">money stacks</Link> for big scenes, or read our{' '}
+          <Link href="/compliance/" className="text-[#D4AF37] underline">compliance guide</Link> and the{' '}
+          <Link href="/blog/can-you-buy-prop-money-in-australia/" className="text-[#D4AF37] underline">can you buy prop money</Link>{' '}
+          answer first.
+        </p>
+      </section>
+
       {/* SECTION 6: FAQ ACCORDION (COMPACT) */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="text-center space-y-1.5">

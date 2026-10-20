@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { SITE, PRODUCTS, PRODUCT_FAQS } from '../../../../config/site.js';
+import { SITE, PRODUCTS, PRODUCT_FAQS, PRODUCT_SEO } from '../../../../config/site.js';
 import { JsonLd } from '../../../../components/JsonLd.js';
 import { ProductDetailContent } from '../../../../views/ProductDetailPage.js';
 
@@ -21,12 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const image = `/images/products/${product.images[0]}`;
 
   const label = product.name.replace(/ For Sale$/i, '');
-  const KW: Record<string, string> = {
-    '100-australian-prop-money-for-sale': '100 dollar note Australia prop notes',
-    '50-australian-prop-money-for-sale': '50 dollar note Australia prop notes',
-  };
-  const what = KW[product.slug] ?? label;
-  const title = `${product.name} | Buy Online Australia`;
+  const seo = PRODUCT_SEO[product.slug];
+  const what = seo?.what ?? label;
+  const title = seo?.title ?? `${product.name} | Buy Online Australia`;
   const description = `Buy ${what} online from $${product.price} AUD. Specimen-marked, Express Post from Melbourne, free delivery over $500, orders from $300.`;
 
   return {

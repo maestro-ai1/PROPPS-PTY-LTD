@@ -94,6 +94,7 @@ export interface Category {
 
 export declare const CATEGORIES: Category[];
 export declare const CATEGORY_BODY: Record<string, string[]>;
+export declare const PRODUCT_SEO: Record<string, { h1: string; title: string; what: string }>;
 export declare const CATEGORY_SECTIONS: Record<string, Array<{ h2: string; paras: string[] }>>;
 export declare const CATEGORY_FAQS: Record<string, Array<{ q: string; a: string; link: { href: string; label: string } }>>;
 

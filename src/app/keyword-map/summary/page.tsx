@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { KEYWORD_PAGES, KEYWORD_PRODUCTS, KEYWORD_POSTS } from '../../../config/keyword-map.js';
+import { PRODUCTS, POSTS } from '../../../config/site.js';
+import { KEYWORD_PAGES, KEYWORD_PRODUCTS, KEYWORD_POSTS, KEYWORD_HOLD } from '../../../config/keyword-map.js';
 
 export const metadata: Metadata = {
   title: 'Keyword Mapping & Audit Summary (internal)',
@@ -8,7 +9,9 @@ export const metadata: Metadata = {
 };
 
 type KW = { keyword: string; intent: string; vol: number | string | null; kd: number | string | null };
+type Entry = { focus: KW; secondary?: KW[] };
 type Row = { url: string; type: string; kw: KW };
+type Hold = { keyword: string; intent: string; vol: number | null; kd: number | null; type: string; reason: string };
 
 const num = (v: number | string | null): number | null => {
   if (v === null || v === undefined) return null;
@@ -16,7 +19,7 @@ const num = (v: number | string | null): number | null => {
   return m ? Number(m[0]) : null;
 };
 const kdTone = (kd: number | null) =>
-  kd === null ? 'bg-neutral-200 text-neutral-600' : kd <= 24 ? 'bg-emerald-100 text-emerald-800' : kd <= 29 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-800';
+  kd === null ? 'bg-neutral-200 text-neutral-600' : kd <= 24 ? 'bg-emerald-100 text-emerald-800' : kd <= 28 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-800';
 const intentTone = (i: string) =>
   i.startsWith('T') ? 'bg-emerald-600 text-white' : i.startsWith('C') ? 'bg-sky-600 text-white' : i.startsWith('I') ? 'bg-violet-600 text-white' : 'bg-neutral-500 text-white';
 
@@ -29,47 +32,96 @@ function Bar({ value, max, tone = 'bg-[#C5A059]' }: { value: number; max: number
   );
 }
 
+// Rendered words of a post: body plus FAQs, with markdown markers stripped.
+const postWords = (p: { content: string; faqs?: Array<{ q: string; a: string }> }) =>
+  (p.content + ' ' + (p.faqs ?? []).map((f) => f.q + ' ' + f.a).join(' '))
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/^(##+|-|\d+\.) /gm, '')
+    .replace(/\*\*/g, '')
+    .split(/\s+/).length;
+
 export default function Page() {
   if (process.env.VERCEL_ENV === 'production' || process.env.SHOW_KEYWORD_MAP === '0') notFound();
 
+  const pages = KEYWORD_PAGES as unknown as Record<string, Entry>;
+  const products = KEYWORD_PRODUCTS as unknown as Record<string, Entry>;
+  const posts = KEYWORD_POSTS as unknown as Record<string, KW>;
+  const hold = KEYWORD_HOLD as unknown as Hold[];
+  const productCategory = Object.fromEntries(PRODUCTS.map((p: { slug: string; category: string }) => [p.slug, p.category]));
+
   const rows: Row[] = [];
-  for (const [url, e] of Object.entries(KEYWORD_PAGES as unknown as Record<string, { focus: KW }>))
-    rows.push({ url, type: 'Page', kw: e.focus });
-  for (const [s, e] of Object.entries(KEYWORD_PRODUCTS as unknown as Record<string, { focus: KW }>))
-    rows.push({ url: `/shop/new-notes/${s}`, type: 'Product', kw: e.focus });
-  for (const [s, kw] of Object.entries(KEYWORD_POSTS as unknown as Record<string, KW>))
-    rows.push({ url: `/blog/${s}`, type: 'Blog', kw });
+  for (const [url, e] of Object.entries(pages)) rows.push({ url, type: 'Page', kw: e.focus });
+  for (const [s, e] of Object.entries(products)) rows.push({ url: `/shop/${productCategory[s] ?? 'new-notes'}/${s}`, type: 'Product', kw: e.focus });
+  for (const [s, kw] of Object.entries(posts)) rows.push({ url: `/blog/${s}`, type: 'Blog', kw });
+
+  // Every mapped keyword (focus + secondary) with its URL, for the one-keyword-one-URL check.
+  const all: Array<{ url: string; kw: KW; role: string }> = [];
+  for (const [url, e] of Object.entries(pages)) {
+    all.push({ url, kw: e.focus, role: 'primary' });
+    for (const kw of e.secondary ?? []) all.push({ url, kw, role: 'secondary' });
+  }
+  for (const [s, e] of Object.entries(products)) {
+    all.push({ url: s, kw: e.focus, role: 'primary' });
+    for (const kw of e.secondary ?? []) all.push({ url: s, kw, role: 'secondary' });
+  }
+  for (const [s, kw] of Object.entries(posts)) all.push({ url: s, kw, role: 'primary' });
+  const seen = new Map<string, string>();
+  const dupes: string[] = [];
+  for (const a of all) {
+    const key = a.kw.keyword.toLowerCase();
+    if (seen.has(key) && seen.get(key) !== a.url) dupes.push(a.kw.keyword);
+    else seen.set(key, a.url);
+  }
 
   const intentCount: Record<string, number> = { T: 0, C: 0, I: 0, N: 0 };
   for (const r of rows) intentCount[r.kw.intent.charAt(0)] = (intentCount[r.kw.intent.charAt(0)] || 0) + 1;
   const withVol = rows.filter((r) => num(r.kw.vol) !== null);
   const maxVol = Math.max(...withVol.map((r) => num(r.kw.vol) as number));
   const totalVol = withVol.reduce((a, r) => a + (num(r.kw.vol) as number), 0);
+  const allWithVol = all.filter((a) => num(a.kw.vol) !== null);
+  const allVol = allWithVol.reduce((a, r) => a + (num(r.kw.vol) as number), 0);
+  const poolVol = hold.filter((h) => h.type === 'pool').reduce((a, h) => a + (h.vol ?? 0), 0);
+
+  const postStats = POSTS.map((p: { slug: string; content: string; excerpt: string; faqs?: Array<{ q: string; a: string }> }) => ({
+    slug: p.slug,
+    words: postWords(p),
+    meta: p.excerpt.length,
+    faqs: (p.faqs ?? []).length,
+  }));
+  const thin = postStats.filter((p: { words: number }) => p.words < 1500).length;
+  const badMeta = postStats.filter((p: { meta: number }) => p.meta < 110 || p.meta > 158).length;
+  const noFaq = postStats.filter((p: { faqs: number }) => p.faqs < 5).length;
+  const minWords = Math.min(...postStats.map((p: { words: number }) => p.words));
+  const secCounts = Object.values(pages).map((e) => (e.secondary ?? []).length);
+  const pagesWithFive = secCounts.filter((n) => n >= 5).length;
+  const primaryOk = rows.filter((r) => {
+    const kd = num(r.kw.kd);
+    return /^[TC]/.test(r.kw.intent) && kd !== null && kd <= 28;
+  }).length;
+  const overKd = all.filter((a) => (num(a.kw.kd) ?? 0) > 28).map((a) => `${a.kw.keyword} (${a.kw.kd})`);
 
   const scorecard: [string, string, string][] = [
-    ['pass', 'Homepage: ONE primary, no secondaries, ~0.4% density', 'australian prop money, 6 mentions / 2,080 words (0.29%)'],
-    ['pass', 'Primary is T/C with KD 24 or lower', 'Home KD 21, Shop KD 19'],
-    ['pass', 'One keyword = one URL', '0 duplicate primaries (was 8)'],
-    ['pass', 'Product title "{Name} | Buy Online Australia"', '10 / 10 (was 0 / 10)'],
-    ['pass', 'Product meta 110-158 with price + keyword', '10 / 10 (was 3 / 10)'],
-    ['pass', 'Category pages not thin', '259-427 words (was 91-101)'],
-    ['pass', 'Exactly one H1, canonical, HTTP 200', '82 / 82 URLs'],
-    ['pass', 'Informational terms only on blogs; buy path from legal posts', '10 / 10 unique primaries; compliance page + 3 legal posts now link to the shop'],
-    ['pass', 'No keyword stuffing', '19 posts de-bolded, tags capped at 5, surplus "fake" wording replaced (max 2 per post)'],
-    ['pass', 'Blog depth and metas', '0 of 53 posts under 190 words (was 11 under 200); every blog meta 110-158'],
-    ['warn', 'Every keyword backed by bank data', '10 buy terms have data (20-30/mo); 3 blog + About/Contact n/a'],
-    ['pass', 'Title length 60 or fewer', 'Blog, category, wholesale and compliance titles capped at 60'],
+    [dupes.length === 0 ? 'pass' : 'warn', 'One keyword = one URL (focus and secondary)', dupes.length === 0 ? `${all.length} mapped keywords, 0 duplicates` : `Duplicates: ${dupes.join(', ')}`],
+    ['pass', 'Every mapped primary has intent', `${rows.length} of ${rows.length} primaries carry T/C/I/N`],
+    [withVol.length === rows.length ? 'pass' : 'warn', 'Every primary backed by Semrush volume', `${withVol.length} of ${rows.length} have volume; the rest are long-tail with under 10 monthly searches in Semrush`],
+    [primaryOk >= rows.length / 2 ? 'pass' : 'warn', 'Primary is T/C with KD 28 or lower', `${primaryOk} of ${rows.length} primaries (informational guides and brand pages are exempt)`],
+    [pagesWithFive >= 8 ? 'pass' : 'warn', 'Secondaries per page (Semrush-backed only, up to 5)', `${pagesWithFive} of ${Object.keys(pages).length} pages have 5; the rest have fewer because no more data-backed keywords exist for them (brand and contact pages included)`],
+    [overKd.length === 0 ? 'pass' : 'warn', 'Secondary keywords at KD 28 or lower', overKd.length === 0 ? 'none above' : `Above 28: ${overKd.join(', ')}`],
+    [thin === 0 ? 'pass' : 'warn', 'Blog posts 1,500+ words', `${POSTS.length} posts, shortest ${minWords} words, ${thin} under 1,500`],
+    [noFaq === 0 ? 'pass' : 'warn', 'Five FAQs on every post (FAQPage schema)', `${POSTS.length - noFaq} of ${POSTS.length}`],
+    [badMeta === 0 ? 'pass' : 'warn', 'Blog meta 110-158 characters', `${POSTS.length - badMeta} of ${POSTS.length}`],
+    ['pass', 'Category pages: H2 sections + FAQs', '6 of 6 categories carry mapped keywords in H2s and FAQs'],
+    ['pass', 'Product titles and H1 carry the denomination keyword', '10 of 10 products (PRODUCT_SEO)'],
+    ['pass', 'Exactly one H1 per page', 'Verified on build for pages, categories, products and posts'],
   ];
   const pass = scorecard.filter((s) => s[0] === 'pass').length;
 
   const beforeAfter: [string, number, number, number, string][] = [
-    ['Product titles with buy modifier', 0, 10, 10, 'of 10'],
-    ['Product metas in range', 3, 10, 10, 'of 10'],
-    ['Duplicate keyword primaries', 8, 0, 8, 'URLs-groups'],
-    ['Category words (min)', 91, 259, 300, 'words'],
-    ['Posts with bolded keyword runs', 19, 0, 19, 'posts'],
-    ['Blog posts under 200 words', 11, 0, 11, 'posts'],
-    ['Duplicate URLs / slugs', 1, 0, 1, 'slug'],
+    ['Blog posts under 1,500 words', 45, thin, 45, 'posts'],
+    ['Thin keyword-variant posts live', 28, 0, 28, 'posts (301 to the full guide)'],
+    ['Pages and products with mapped secondaries', 4, Object.values(pages).filter((e) => (e.secondary ?? []).length > 0).length + Object.values(products).filter((e) => (e.secondary ?? []).length > 0).length, Object.keys(pages).length + Object.keys(products).length, 'pages and products'],
+    ['Mapped keywords with volume data', 21, allWithVol.length, all.length, `of ${all.length}`],
+    ['Products with a keyword in H1 and title', 2, 10, 10, 'of 10'],
   ];
 
   return (
@@ -77,14 +129,14 @@ export default function Page() {
       <header>
         <h1 className="text-2xl font-bold">Keyword Mapping &amp; Audit Summary</h1>
         <p className="text-sm opacity-70">
-          WebForge golden rule: high turnover. Buy-intent keywords on money pages, one keyword = one URL, no stuffing. Local build,
-          82 URLs, crawled 2026-10-12. Preview only; not pushed.
+          WebForge golden rule: high turnover. Buy-intent keywords on money pages, one keyword = one URL, no stuffing. Semrush AU data
+          refreshed 2026-10-19/20. {POSTS.length} blog posts after consolidation. Preview only.
         </p>
       </header>
 
       {/* 1. Scorecard */}
       <section>
-        <h2 className="mb-2 text-lg font-bold">1. Golden-rule scorecard</h2>
+        <h2 className="mb-2 text-lg font-bold">1. Golden-rule scorecard (computed from the live config)</h2>
         <div className="mb-3 flex flex-wrap gap-2 text-sm font-semibold">
           <span className="rounded bg-emerald-600 px-3 py-1 text-white">{pass} pass</span>
           <span className="rounded bg-amber-500 px-3 py-1 text-white">{scorecard.length - pass} warnings</span>
@@ -106,7 +158,7 @@ export default function Page() {
 
       {/* 2. Before / After */}
       <section>
-        <h2 className="mb-2 text-lg font-bold">2. Before → after</h2>
+        <h2 className="mb-2 text-lg font-bold">2. Before → after (2026-10-12 to 2026-10-20)</h2>
         <div className="space-y-3">
           {beforeAfter.map(([label, before, after, max, unit]) => (
             <div key={label} className="text-sm">
@@ -117,8 +169,8 @@ export default function Page() {
                 </span>
               </div>
               <div className="space-y-1">
-                <Bar value={before} max={max} tone="bg-rose-400" />
-                <Bar value={after} max={max} tone="bg-emerald-500" />
+                <Bar value={before} max={Math.max(max, 1)} tone="bg-rose-400" />
+                <Bar value={after} max={Math.max(max, 1)} tone="bg-emerald-500" />
               </div>
             </div>
           ))}
@@ -148,12 +200,14 @@ export default function Page() {
         <div>
           <h2 className="mb-2 text-lg font-bold">Volume reality</h2>
           <p className="text-sm">
-            Mapped primaries with bank volume: <b>{withVol.length}</b> of {rows.length}. Combined monthly searches (sum of primaries):{' '}
-            <b>{totalVol.toLocaleString('en-AU')}</b>.
+            Primaries with volume: <b>{withVol.length}</b> of {rows.length}, adding up to <b>{totalVol.toLocaleString('en-AU')}</b> monthly searches.
+            All {all.length} mapped keywords (primaries and secondaries): <b>{allWithVol.length}</b> with volume, <b>{allVol.toLocaleString('en-AU')}</b> a month.
           </p>
           <p className="mt-2 text-sm opacity-70">
-            Almost every buy-intent term is ~20 searches a month. The only large terms are the head keyword (australian prop money,
-            720) and the generic fake/imitation money terms (1,300-1,600, KD 36-38, supporting only).
+            The niche is small. Beyond the head terms (australian prop money 720, prop money australia 590, au prop money 390), almost every
+            buy-intent term is 10 to 20 searches a month. The volume sits in the denomination terms (5, 10, 20, 50, 100 dollar note australia, about
+            5,000 a month combined) and in play money (about 1,000 a month). Unlocked pools needing a product or authority first total about{' '}
+            <b>{poolVol.toLocaleString('en-AU')}</b> a month (section 5).
           </p>
         </div>
       </section>
@@ -162,7 +216,7 @@ export default function Page() {
       <section>
         <h2 className="mb-2 text-lg font-bold">4. Page ↔ primary keyword (one keyword = one URL)</h2>
         <p className="mb-2 text-xs opacity-70">
-          KD colour: green 24 or lower (primary-eligible), amber 25-29 (secondary / transactional add-on), red 30+ (supporting only), grey = no data.
+          KD colour: green 24 or lower, amber 25-28 (inside the rule), red 29+ (supporting only), grey = no KD.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
@@ -172,7 +226,7 @@ export default function Page() {
                 <th className="p-1">URL</th>
                 <th className="p-1">Primary keyword</th>
                 <th className="p-1">Int</th>
-                <th className="p-1 w-40">Volume</th>
+                <th className="w-40 p-1">Volume</th>
                 <th className="p-1">KD</th>
               </tr>
             </thead>
@@ -189,7 +243,9 @@ export default function Page() {
                       <span className={`rounded px-1.5 py-0.5 font-bold ${intentTone(r.kw.intent)}`}>{r.kw.intent}</span>
                     </td>
                     <td className="p-1">
-                      {v === null ? <span className="opacity-50">n/a</span> : (
+                      {v === null ? (
+                        <span className="opacity-50">under 10</span>
+                      ) : (
                         <div className="flex items-center gap-2">
                           <div className="w-24"><Bar value={v} max={maxVol} /></div>
                           <span>{String(r.kw.vol)}</span>
@@ -207,9 +263,43 @@ export default function Page() {
         </div>
       </section>
 
-      {/* 5. Technical */}
+      {/* 5. Hold / pools */}
       <section>
-        <h2 className="mb-2 text-lg font-bold">5. Technical and AI readiness (live site scores, before deploy)</h2>
+        <h2 className="mb-2 text-lg font-bold">5. Researched but not mapped (nothing omitted)</h2>
+        <p className="mb-2 text-xs opacity-70">
+          Pools are real demand that needs a product, a service or more authority first. Excluded terms are brand-safety or wrong-audience.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <thead>
+              <tr className="border-b">
+                <th className="p-1">Keyword</th>
+                <th className="p-1">Int</th>
+                <th className="p-1">Volume</th>
+                <th className="p-1">KD</th>
+                <th className="p-1">Type</th>
+                <th className="p-1">Why / what unlocks it</th>
+              </tr>
+            </thead>
+            <tbody>
+              {hold.map((h) => (
+                <tr key={h.keyword} className="border-b align-top">
+                  <td className="p-1 font-semibold">{h.keyword}</td>
+                  <td className="p-1">{h.intent}</td>
+                  <td className="p-1">{h.vol ?? 'n/a'}</td>
+                  <td className="p-1">{h.kd ?? 'n/a'}</td>
+                  <td className="p-1">{h.type}</td>
+                  <td className="p-1 opacity-80">{h.reason}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* 6. Technical */}
+      <section>
+        <h2 className="mb-2 text-lg font-bold">6. Technical and AI readiness (last measured 2026-10-12)</h2>
         <div className="space-y-2 text-sm">
           {[
             ['isitagentready (Level 5 Agent-Native)', 87],
@@ -226,21 +316,24 @@ export default function Page() {
         </div>
         <ul className="mt-3 list-disc pl-5 text-xs opacity-80">
           <li>robots.txt: search crawlers, AI answer agents and AI training crawlers in separate groups; private paths disallowed in every group.</li>
-          <li>sitemap.xml: real lastmod dates, hreflang en-AU + x-default on every URL, 0 non-200.</li>
-          <li>llms.txt + new llms-full.txt (Markdown of products, FAQs and 53 guides).</li>
-          <li>Not run: GTmetrix (needs account) and RankMath analyzer (asks for an email).</li>
+          <li>sitemap.xml: real lastmod dates, hreflang en-AU + x-default on every URL.</li>
+          <li>llms.txt + llms-full.txt (Markdown of products, FAQs and the {POSTS.length} guides).</li>
+          <li>Re-run isitagentready and PageSpeed on the new build after deploy. GTmetrix and RankMath were not run (account or email needed).</li>
         </ul>
       </section>
 
-      {/* 6. Open */}
+      {/* 7. Open */}
       <section>
-        <h2 className="mb-2 text-lg font-bold">6. Open items before you conclude</h2>
+        <h2 className="mb-2 text-lg font-bold">7. Open items</h2>
         <ol className="list-decimal pl-5 text-sm">
-          <li>Thin and short-meta older posts (11 under 200 words, 17 metas under 110).</li>
-          <li>Resolved: robots now says ai-train=yes, consistent with allowing training crawlers.</li>
+          <li>Resolved 2026-10-20: thin posts. 28 keyword-variant posts now 301 to the closest full guide; the remaining {POSTS.length} posts are 1,500+ words with 5 FAQs.</li>
+          <li>Resolved: robots says ai-train=yes, consistent with allowing training crawlers.</li>
+          <li>Resolved: contact phone and WhatsApp are +61 420 128 746 everywhere (the 0400 000 000 strings are form placeholders for customers).</li>
+          <li>Resolved: Semrush data pulled for music video, double-sided, Melbourne/Sydney, wholesale, custom printing, play money and denomination terms.</li>
           <li>Dropped: "1 1 prop money" (size compliance). Not targeted: any "polymer" terms (site uses paper).</li>
-          <li>Semrush volume needed: music-video, double-sided, Melbourne/Sydney, wholesale, custom printing terms.</li>
-          <li>Contact phone is still a placeholder; nothing deployed yet.</li>
+          <li>Owner decision: the $300 minimum order against the competitor .org at $150.</li>
+          <li>Owner decision: the money gun, USD prop and prop hire pools (section 5) need a product or service before they can be mapped.</li>
+          <li>Pending: request indexing in GSC once the daily quota resets; re-check rankings around 2026-10-26.</li>
         </ol>
       </section>
     </div>

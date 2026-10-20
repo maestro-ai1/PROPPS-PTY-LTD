@@ -1,0 +1,215 @@
+// Batch 3a (2026-10-20): lighting, art department, play money vs prop money.
+// Apply: node scripts/apply-posts-rewrite.cjs scripts/posts-batch3a.cjs
+const B = (...blocks) => blocks.join('\n\n');
+const RBA = 'https://www.rba.gov.au/banknotes/';
+
+module.exports = [
+  // ------------------------------------------------------------ lighting
+  {
+    slug: 'lighting-prop-money-for-camera-avoiding-glare',
+    readTime: '9 min read',
+    excerpt:
+      'Realistic prop money only reads on camera if the lighting is right. Learn how to light prop notes, avoid glare and test before the shoot. Plan your cash shot.',
+    content: B(
+      `Cash is one of the hardest props to light. It is small, it is printed in fine detail, it is often handled by an actor in a close-up, and the paper reflects light in ways that a script supervisor will never notice but a lens always will. Realistic prop money can look flat, shiny or fake purely because of how it was lit, even when the notes themselves are excellent. This guide is written for directors of photography, gaffers and art departments. It covers what makes notes catch light, how to place the key and fill, how to test before the day, and the handling habits that keep a stack looking right across a long shoot. All PROPPS notes are specimen-marked, non-legal tender props.`,
+      `## The short answer`,
+      `Use soft, large, angled light, keep reflections off the lens axis, test the exact notes under the exact lights at working distance, and choose matte paper so there is less glare to fight in the first place. If a note shows a hot spot in your test, change the angle of the light before you change the note.`,
+      `## Why prop money reads badly on camera`,
+      `Three things go wrong most often.`,
+      `- **Specular glare.** A glossy or lightly coated stock acts like a small mirror. A single hard source produces a bright patch that hides the print and flags the note as a prop.\n- **Flat, even lighting.** A bank of diffused fill from the front removes the subtle shadows between notes in a stack. A stack then reads as a single block of paper rather than a bundle of notes.\n- **Wrong colour balance.** Banknote inks are saturated. Mixed colour temperatures, for example a tungsten practical beside a daylight window, push the greens and golds in different directions and the cash stops matching the rest of the frame.`,
+      `Realistic prop money starts with the paper. PROPPS notes are printed double-sided on 120gsm matte archival paper, which removes most specular glare before a light is switched on. That is a deliberate choice for the camera, and it is also why the notes are easy to tell apart from genuine polymer notes by touch.`,
+      `## Choosing the light`,
+      `### Soft and large`,
+      `A large soft source close to the subject wraps around a stack and keeps highlights gentle. A softbox, a bounced source or a window with diffusion all work. A small hard source is the quickest way to create a hot spot.`,
+      `### Angle it off the lens axis`,
+      `Reflections follow the angle of incidence. Place the key so that light striking the note bounces away from the camera, not into it. A useful starting point is to put the key at roughly 45 degrees to the table and to the side of the camera, then adjust while watching the monitor.`,
+      `### Use negative fill to keep the print dark where it should be`,
+      `Banknote print is detailed. Too much fill lifts the shadows and flattens the engraving. A black flag or a dark card opposite the key restores depth and makes the stack read as three-dimensional.`,
+      `### Keep practicals honest`,
+      `If a lamp in the frame is warm, match the key to it or gel the key. Cash looks wrong when the colour of the light on the notes does not match the colour of the light on the actor.`,
+      `## Close-ups, inserts and hero notes`,
+      `A hero note for an insert needs more care than a stack in the background.`,
+      `1. Choose the cleanest, flattest note from the order and keep it separate from the working stock.\n2. Light it on a table first, with the camera at the planned lens height, before the actor's hand is in the shot.\n3. Check both sides, because many scenes flip or fan notes. PROPPS prints both sides to the same standard.\n4. Keep fingerprints off the surface. Oil from the skin picks up as shine under a low angle.\n5. Replace the hero note after a few takes. Handling softens the corners and the camera will see it.`,
+      `## Stacks, bundles and the money shot`,
+      `A stack has to look like many notes, not one. Light from the side so the edges of the notes show as fine lines, and let a little shadow fall between bundles. For a vault or a table spread, treat the money as a texture: raking light shows the layers, while flat frontal light hides them. Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) explains how many stacks the camera actually sees, which saves you lighting more than you need to.`,
+      `Use hero stacks of $100 and $50 notes in the foreground, because their colours read strongly, and mix in smaller denominations for tills and wallets. The [best Australian banknote denominations for film and TV](/blog/best-australian-banknote-denominations-for-film-and-tv-scenes/) guide shows how to choose.`,
+      `## A five-minute test before the shoot`,
+      `Run this test on the day before, or at the start of the call.`,
+      `1. Set up the actual lights, flags and practicals for the scene.\n2. Place the notes where they will sit, at the planned height.\n3. Look through the lens or on the monitor at the planned distance for wide, medium and close.\n4. Tilt the stack slowly and watch for hot spots.\n5. Fan a note and flip it, as the actor will.\n6. Photograph it on the camera you will use and check the result on the monitor, not on a phone.\n7. Adjust the light, not the notes, until the print reads cleanly.`,
+      `## Lenses, cameras and sensor differences`,
+      `A long lens compresses a stack and exaggerates the effect of a single reflection, while a wide lens shows more of the table and more of the light stand reflections. Shooting at a high resolution reveals paper grain and print detail that a lower resolution hides, so test at the delivery resolution. If you shoot on a camera with limited dynamic range, keep the highlights on the notes under control, because a clipped highlight on a white border cannot be recovered. A fast lens at a shallow depth of field softens background stacks, which lets you spend less on them.`,
+      `## Colour and exposure tips`,
+      `- Expose for skin and let the notes fall where they fall. Cash that is brighter than the face pulls the eye away from the actor.\n- Keep the notes within one stop of the surface they sit on, so they do not glow.\n- If you are shooting a green or gold dominant frame, check that the note colours are not being absorbed into the background.\n- Match colour temperature across the frame and avoid mixed sources on the cash.\n- If you use a polariser, test it. A polariser can cut reflections, but it can also change the apparent saturation of the print.`,
+      `## Handling and continuity`,
+      `Realistic prop money only keeps looking realistic if it is handled with care. Store the notes flat, dry and out of direct heat, because paper that has been in a hot car curls at the edges and catches light differently. Keep a spare stack sealed. Use gloves for hero notes. For repeated takes, rotate the stock so the same notes are not handled every time. For ageing and weathering, read our [art department guide](/blog/art-department-guide-weathering-prop-cash/).`,
+      `## Compliance on set`,
+      `Lighting a note so it looks real is part of the job, but the notes must stay clearly marked props. Every PROPPS note carries permanent specimen markings, is printed on paper rather than polymer and is sold as a non-legal tender reproduction for motion pictures, television, theatre, visual arts and simulation training. Never spend them or present them as real cash in publicity material. The [Reserve Bank](${RBA}) publishes guidance on banknote reproductions, and our [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) explains the standard.`,
+      `## Where to go next`,
+      `See how the notes look in the [New Notes range](/shop/new-notes/), compare the print quality in our [guide to judging high quality prop money](/blog/high-quality-prop-money-how-to-judge-it-on-camera/), or [contact the studio](/contact/) with your lighting setup and we will help you choose.`
+    ),
+    faqs: [
+      {
+        q: 'How do I stop prop money looking shiny on camera?',
+        a: 'Use matte paper, large soft light and an angle that bounces reflections away from the lens. Test the exact notes under the exact lights before the shoot. See the [New Notes range](/shop/new-notes/) for matte, double-sided stock.',
+      },
+      {
+        q: 'What is the best light for a cash close-up?',
+        a: 'A large soft source at around 45 degrees to the table, with negative fill on the opposite side, keeps highlights gentle and shows the fine print. Check hero notes on a table before the actor is in frame.',
+      },
+      {
+        q: 'Does realistic prop money need a special lighting setup?',
+        a: 'No special rig is needed, but cash is detailed and reflective, so test at working distance. Our [guide to high quality prop money](/blog/high-quality-prop-money-how-to-judge-it-on-camera/) lists what to check.',
+      },
+      {
+        q: 'How many stacks do I need to light for a vault scene?',
+        a: 'Light what the camera sees. Count visible stacks, add a few hidden ones and keep one sealed as a reserve. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/).',
+      },
+      {
+        q: 'Are lit-up prop notes still legal to use?',
+        a: 'Yes, as long as they are specimen-marked props and are never presented as real cash. See our [compliance page](/compliance/) for the standard PROPPS builds to.',
+      },
+    ],
+  },
+
+  // ------------------------------------------------------------ art department
+  {
+    slug: 'art-department-guide-weathering-prop-cash',
+    readTime: '9 min read',
+    excerpt:
+      'Art department guide to dressing prop cash on screen: weathering, ageing, continuity and hero versus background notes. Plan your cash scenes today.',
+    content: B(
+      `Brand-new notes straight from the box rarely look right on screen. Real cash has been in pockets, bags, drawers and tills. It has creases, a little grime on the edges and a slight curl. An art department that dresses prop cash for sale on screen has to decide how worn each stack should be, how to keep the wear consistent across takes and how to avoid damaging the notes that need to stay clean for the hero shot. This guide is written for prop masters, art directors and set decorators. It covers weathering and ageing methods that are safe for paper notes, continuity rules, how to plan hero and background stock, and the compliance habits that protect the production. All PROPPS notes are specimen-marked, non-legal tender props.`,
+      `## The short answer`,
+      `Age the background, protect the hero, and keep a log. Weather a limited number of stacks to a consistent standard, keep a clean reserve for close-ups and for reshoots, and record what you did so the next day of shooting matches. Never age a note in a way that removes or covers its specimen markings.`,
+      `## Why weathering matters`,
+      `Cash tells the audience who a character is. A freshly strapped bundle on a mobster's table says something different from a roll of soft, creased notes in a market stallholder's apron. The details the camera sees are the top note, the edges of a stack and the way a note bends when it is counted. Getting those right makes a scene look lived in without anyone noticing why.`,
+      `## What the camera sees`,
+      `Before you weather anything, work out what will be seen.`,
+      `- **Top note and edges.** These are the parts that carry the story. A stack is a surface and a side, not a block of paper.\n- **Hands.** When an actor counts or fans notes, the notes bend, and the camera picks up creases and corners.\n- **Depth.** In a wide shot, a bundle of notes in the background reads as colour and shape. It does not need the same treatment as the hero stack.`,
+      `That is why a prop master rarely weathers every note. Weather the notes that will be handled and seen, and leave the rest clean.`,
+      `## Weathering methods that work on paper notes`,
+      `PROPPS notes are printed on matte archival paper, which takes light weathering well. These methods are common in art departments. Always test on a spare note first.`,
+      `1. **Handling and rolling.** Fold, crease and roll the notes by hand. This is the safest and most natural method and it keeps the print intact.\n2. **Light edge toning.** A dry tea or coffee wash, applied sparingly with a cloth, adds warmth to the edges. Let it dry fully before stacking.\n3. **Dry dust and grime.** A fine, dry pigment on the edges mimics the dirt that gathers in a till. Seal nothing and keep it light.\n4. **Corner softening.** Rub the corners gently with fine paper to round them off. Real notes round at the corners first.\n5. **Bundling and strapping wear.** Leave a strapped stack in place for a day so the strap leaves a faint line, and the stack gains a slight memory of its shape.`,
+      `Avoid anything that obscures the printed specimen markings, anything wet enough to curl the paper permanently and anything that could stain a hero note you still need clean.`,
+      `## Plan hero stock and background stock`,
+      `A simple way to organise a scene is to split the cash into three groups.`,
+      `- **Hero notes.** Clean, flat and handled as little as possible. These are for inserts and close-ups. Keep a spare.\n- **Working stock.** Lightly weathered notes for hands, drawers and counting.\n- **Background stock.** Strapped stacks and bundles used for volume. Matching stacks keep continuity simple. Our [ready prop money stacks](/blog/ready-prop-money-stacks-for-fast-turnaround/) arrive counted and strapped for this.`,
+      `Tag the groups so no one swaps a hero note into the working pile. For how many stacks to order, read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/).`,
+      `## Continuity rules`,
+      `Cash scenes are shot in pieces, often over several days, so continuity is the main risk.`,
+      `1. **Photograph the stack** before the first take, from the angles the camera uses.\n2. **Weather in batches.** Treat the whole quantity for a scene at the same time, so it matches.\n3. **Log the process.** Note the method, the date and the quantity. A reshoot a month later will need it.\n4. **Count in and out.** Count the notes at the start and end of each day. This is good practice for continuity and for compliance.\n5. **Keep a sealed reserve.** A clean spare lets you replace a damaged hero note without a rush order.`,
+      `## A weathering workflow for a one-day shoot`,
+      `When there is only one day, keep the process short and repeatable.`,
+      `1. **Morning before call:** weather the working stock by hand. Roll, crease and soften corners on the notes that will be counted or fanned.\n2. **At the first set-up:** photograph a hero stack and a working stack from the camera angle, and tag them.\n3. **Between set-ups:** reset stacks from the same batch, not from new stock. Swap in clean notes only for the hero insert.\n4. **At lunch:** check the working stock for damage and replace anything torn.\n5. **At wrap:** count, bag and label the notes, and write down what was used.`,
+      `## Common weathering mistakes`,
+      `- **Over-ageing.** Notes that look filthy read as costume jewellery. Real cash is mostly just soft.\n- **Ageing everything.** The background does not need it and the clean notes are your safety net.\n- **Wet methods that curl the paper.** Curl does not reverse and the camera will see it.\n- **Skipping the log.** A reshoot without a record means guessing what the notes looked like.\n- **Covering the markings.** Never age a note in a way that hides its specimen markings.`,
+      `## Stage and theatre use`,
+      `Theatre cash is seen from a distance and handled nightly, so it needs to survive repeated use rather than look perfectly aged. Choose durable notes, weather lightly and expect to replace stock during a run. The same count-in, count-out habit applies backstage. Our [event and party props](/shop/event-and-party-props/) suit lighter stage use.`,
+      `## Period and set dressing details`,
+      `Period work adds another layer. A scene set decades ago may need older-looking notes, different bundle styles and different wear patterns. Talk to the set decorator about what the character would plausibly carry, and match the wear to the setting: soft, folded notes in a worn wallet, crisp strapped bundles from a bank, loose notes in a tin. Small touches such as a rubber band, a paper clip or a folded receipt make a stack read as belonging to a person rather than to a props department.`,
+      `Think about the end of the scene too. When the shoot wraps, decide what happens to the weathered notes: keep them as a ready set for a pickup day, retire them, or return them to the studio. Weathered notes cannot be made new again, so label the box clearly and keep the log with it.`,
+      `## Directing the cash scene`,
+      `Directors use cash to shape a scene: a bag of notes opened slowly, a stack slid across a table, a till drawer that is almost empty. Talk to the art department early about what the camera will see, how the money moves and how many takes there will be. The answers decide how many stacks to buy and how much to weather. If you shoot a reveal, such as a vault or a briefcase of cash, read our guide to [prop cash for heist and bank scenes](/blog/prop-cash-for-heist-and-bank-scenes-getting-the-volume-right/).`,
+      `## Compliance while you work`,
+      `Weathering is a creative step, but the notes are still reproductions. Every PROPPS note carries permanent specimen markings, is printed on paper rather than polymer and is sold as a non-legal tender prop for motion pictures, television, theatre, visual arts and simulation training. Keep the markings visible, keep the notes under the prop master's control, keep the invoice on file and never spend them. Read the [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the [compliance page](/compliance/) for the full standard.`,
+      `## Where to go next`,
+      `Order notes for your hero and working stock from the [New Notes range](/shop/new-notes/), add counted stacks from [Money Stacks](/shop/money-stacks/), or [contact the studio](/contact/) with your shot list.`
+    ),
+    faqs: [
+      {
+        q: 'How do I weather prop cash for sale on screen?',
+        a: 'Fold, roll and handle the notes, tone the edges lightly and soften the corners. Test on a spare note and never cover the specimen markings. See the [New Notes range](/shop/new-notes/) for matte paper notes that take light weathering.',
+      },
+      {
+        q: 'Should every note in a stack be weathered?',
+        a: 'No. Weather the notes the camera sees and handles, and leave the background clean. Keep a clean hero note and a sealed reserve.',
+      },
+      {
+        q: 'How do I keep weathered prop money consistent across takes?',
+        a: 'Weather the whole quantity in one batch, photograph the stack and log the method. Count notes in and out each day. Our [ready stacks guide](/blog/ready-prop-money-stacks-for-fast-turnaround/) shows how matching stacks help.',
+      },
+      {
+        q: 'Can I age prop money without breaking compliance?',
+        a: 'Yes, as long as the specimen markings stay visible and the notes are never presented as real cash. Read our [compliance page](/compliance/).',
+      },
+      {
+        q: 'How many notes should I age for a heist scene?',
+        a: 'Age the stacks in the foreground and leave the background clean. Our guide to [prop cash for heist and bank scenes](/blog/prop-cash-for-heist-and-bank-scenes-getting-the-volume-right/) explains the volume.',
+      },
+    ],
+  },
+
+  // ------------------------------------------------------------ play vs prop
+  {
+    slug: 'play-money-vs-prop-money-which-one-do-you-need',
+    readTime: '9 min read',
+    excerpt:
+      'Pretend money or prop money? Learn how play money and prop money differ for games, parties and film, and which suits your job. Choose with confidence.',
+    content: B(
+      `Pretend money and prop money look similar in a product listing, but they are made for different jobs. One is designed to look obviously unlike real currency so children can play and adults can run a game. The other is designed to read correctly on camera while staying marked and different in the hand. Buy the wrong one and you either get a shot that looks cheap or a party prop that is more realistic than it needs to be. This guide explains the difference between play money and prop money, how to choose for a game, a party, a classroom, a shoot or a stage show, what each costs and what the law cares about. It is general information, not legal advice.`,
+      `## The short answer`,
+      `Choose play money for games, classrooms and parties, where it should look clearly not real. Choose prop money for film, television, theatre and photography, where the money has to read as real through a lens. Prop money is always specimen-marked, printed on paper and never spendable, and play money is designed so there is no chance of confusing it with real notes.`,
+      `## What play money is for`,
+      `Play money, also sold as pretend money and toy money, is built for imagination and learning. Typical features:`,
+      `- **Bright, obviously different colours and designs.** Nobody mistakes it for real currency.\n- **Simple, durable stock.** It is meant to be handled, thrown and counted by children.\n- **Low cost and large quantities.** A classroom or a party needs hundreds of notes.\n- **No attempt to match real notes.** There is no need for fine print or accurate colour.`,
+      `Play money suits board games, shop role-play, school fairs, fundraisers and casino-style party nights. If you only need the money to be fun and clearly pretend, it is the right choice and the lowest-risk one. Our [event and party props](/shop/event-and-party-props/) include play money in packs that are clearly marked.`,
+      `## What prop money is for`,
+      `Prop money is reproduction currency made for scenes where the audience must believe the cash. Typical features:`,
+      `- **Print detail that holds up at working distance.** Fine lines stay crisp through a lens.\n- **Colours that match the denomination on camera.** Saturated golds and greens read correctly under studio light.\n- **Matte paper.** It avoids glare. PROPPS prints on 120gsm archival paper.\n- **Specimen markings.** Every note carries permanent markings so it is a prop, not a decoy.\n- **Double-sided print.** A flipped or fanned stack still looks right.`,
+      `Prop money suits film, television, theatre, photography and training. Browse the [New Notes range](/shop/new-notes/) to see it.`,
+      `## Side by side`,
+      `- **Look.** Play money looks like a game. Prop money looks like cash on camera.\n- **Legal risk.** Play money is very low. Prop money is low when it is specimen-marked and used as a prop, and it must never be spent.\n- **Durability.** Play money is built for rough play. Prop money is built for takes and handling by actors.\n- **Price per note.** Play money is cheaper. Prop money costs more because of print quality and paper.\n- **Use.** Play money for games and learning. Prop money for the screen and the stage.`,
+      `## How to choose for your job`,
+      `### A children's game or classroom`,
+      `Choose play money. It is designed for the purpose and nobody could mistake it for real currency. Our guide to [toy money and play money for kids](/blog/toy-money-and-play-money-for-kids-games-and-learning/) covers games and learning.`,
+      `### A party or event`,
+      `Choose play money for casino nights, fundraisers and games. If you want a more realistic look for photos, choose marked prop money and keep it out of circulation. Our [novelty money guide](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/) explains what is safe.`,
+      `### A film, TV or stage scene`,
+      `Choose prop money. The camera will show the print and the colour, and a play money note will look wrong in a close-up. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) to size the order.`,
+      `### A photo shoot or social video`,
+      `Choose prop money, and read the [guide for content creators](/blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/) so you present it as a prop, not as real cash.`,
+      `## Five buying scenarios`,
+      `**1. A school fair stall.** A teacher needs a few hundred notes for a shop role-play. Play money is the right choice: it is cheap, obviously pretend and designed for small hands. Nobody needs fine print.`,
+      `**2. A casino night fundraiser.** Guests will stack, bet and bank chips of play money. Bright, bold notes in several colours work well. If you want photos that look glamorous, a small stack of marked prop notes for the winners' table can be added without risk, as long as it never leaves the venue.`,
+      `**3. A short film with a bank scene.** The camera will show a teller counting notes in close-up. Choose prop money. The detail, colour and paper are what make the scene believable, and a play money note will look like a toy.`,
+      `**4. A product photo shoot.** The cash is a visual element in a studio. Choose matte, glare-free prop money so the highlights stay clean under strobes. Our [photography guide](/blog/prop-money-for-photography-realistic-cash-shots-without-the-risk/) explains how.`,
+      `**5. A stage show.** The audience is at a distance, so colour and durability matter more than fine print. Prop money is the safer choice for visual impact, while play money can work for comedic or children's productions.`,
+      `## Safety and handling`,
+      `Keep both types of money in the control of one person during an event or a shoot, count it in and out, and store it away from the public. Play money that is left lying around is harmless. Prop money that is left in a pocket or a bag is the kind of thing that can cause a misunderstanding. Brief everyone who will touch the notes, and keep the supplier invoice with the production file.`,
+      `## What the law cares about`,
+      `The Commonwealth Crimes (Currency) Act 1981 is aimed at counterfeit currency and at reproductions that could deceive a reasonable person. Play money rarely raises a question because it looks nothing like real notes. Prop money is lawful when it is clearly marked, differs from genuine notes and is used for a legitimate purpose. Never spend either. Read our [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the [compliance page](/compliance/) for how PROPPS builds to the standard.`,
+      `## What each costs`,
+      `Play money is sold in large, low-cost packs because the print is simple and the paper is basic. Prop money is priced on print quality, paper weight, double-sided alignment, counting and strapping, paperwork and delivery. At PROPPS, orders start at $300 AUD and delivery is free from $500 AUD, with stacks sized from a Starter Stack up to 100 Stacks. If you only need a few hundred notes for a game, play money is far cheaper. If you need a hero stack that reads in a close-up, the extra cost buys the detail the camera sees. Our guide to [cheap prop money](/blog/cheap-prop-money-what-you-are-really-paying-for/) explains the trade-offs.`,
+      `## When to use both`,
+      `Some jobs call for both. A film set might use play money in the background of a children's party scene and prop money for the hero stack on the kitchen table. A fundraiser might use play money for the games and marked prop notes for a photo wall. Keep them in separate containers and label them so nobody mixes them up.`,
+      `## Common mistakes`,
+      `- **Using play money in a close-up.** It will read as a toy.\n- **Using prop money as a party favour.** It is more realistic than a party needs and may be mistaken for real money by someone who does not know the context.\n- **Spending either.** Neither should ever be offered as payment.\n- **Removing markings.** Do not cut, crop or cover specimen markings.\n- **Ordering at the last minute.** Express Post is fast, but a signature is required on delivery.`,
+      `## Ordering`,
+      `PROPPS orders start at $300 AUD, ship by Australia Post Express with signature on delivery and are free to deliver from $500 AUD. Crypto payments receive a 10% discount. For larger runs, see the [wholesale page](/wholesale/).`,
+      `## Where to go next`,
+      `For games and parties, see [event and party props](/shop/event-and-party-props/). For film, television, theatre and photography, see the [New Notes range](/shop/new-notes/). If you are unsure, [contact the studio](/contact/) and tell us the job.`
+    ),
+    faqs: [
+      {
+        q: 'What is the difference between play money and prop money?',
+        a: 'Play money looks obviously unlike real notes and suits games, classrooms and parties. Prop money reads as real on camera while staying specimen-marked. See the [event and party props](/shop/event-and-party-props/) for play money and the [New Notes range](/shop/new-notes/) for prop money.',
+      },
+      {
+        q: 'Is pretend money safe for kids?',
+        a: 'Yes. Pretend money is designed to look clearly unlike real currency. Our packs carry visible markings and are non-legal tender.',
+      },
+      {
+        q: 'Can I use play money in a film?',
+        a: 'Only for background shots where it will not be seen closely. For close-ups, use prop money. Our [guide to realistic prop money lighting](/blog/lighting-prop-money-for-camera-avoiding-glare/) explains why.',
+      },
+      {
+        q: 'Is prop money more expensive than play money?',
+        a: 'Yes, because of print quality, paper and specimen marking. Prop money orders start at $300 AUD with PROPPS. See [cheap prop money and what you are really paying for](/blog/cheap-prop-money-what-you-are-really-paying-for/).',
+      },
+      {
+        q: 'Is it legal to buy play money or prop money?',
+        a: 'Yes, when it is clearly marked or obviously not real, and used for a legitimate purpose. Never spend either. Read our [compliance page](/compliance/).',
+      },
+    ],
+  },
+];

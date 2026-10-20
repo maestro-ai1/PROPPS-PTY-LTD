@@ -200,6 +200,32 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
         </section>
       )}
 
+      {!currentCatObj && (
+        <section className="space-y-3 border-t border-[#EAE3DC] pt-6 max-w-3xl">
+          <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">
+            Australia prop money for sale: how to buy
+          </h2>
+          <p className="text-sm text-[#6F665F] leading-relaxed">
+            Buying prop money online from PROPPS is simple. Choose the range, pick a stack size and check out: orders for aus
+            prop money start at $300 AUD, ship by Australia Post Express with signature on delivery and are free to deliver
+            from $500. Buying prop money for a shoot, a stage show or a training exercise? Every product is a specimen-marked,
+            non-legal tender prop.
+          </p>
+          <p className="text-sm text-[#6F665F] leading-relaxed">
+            Prop money for sale here covers $5 to $100 notes, film packs, money stacks, photography sets, event packs and
+            custom runs. Not sure where to start? Read{' '}
+            <Link href="/blog/where-to-buy-prop-money-in-australia-legally/" className="text-[#D4AF37] underline">
+              where to buy prop money legally
+            </Link>{' '}
+            or{' '}
+            <Link href="/contact/" className="text-[#D4AF37] underline">
+              contact the studio
+            </Link>
+            .
+          </p>
+        </section>
+      )}
+
       {currentCatObj && CATEGORY_SECTIONS[currentCatObj.slug] && (
         <div className="space-y-6 max-w-3xl">
           {CATEGORY_SECTIONS[currentCatObj.slug].map((section) => (

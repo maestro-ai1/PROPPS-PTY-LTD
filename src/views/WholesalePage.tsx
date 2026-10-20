@@ -380,6 +380,23 @@ export const WholesaleContent: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Wholesale keyword copy (wholesale prop money, bulk prop money, supplier, manufacturer) */}
+      <section className="space-y-3 max-w-3xl">
+        <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">
+          Wholesale prop money and bulk prop money for production companies
+        </h2>
+        <p className="text-sm text-[#6F665F] leading-relaxed">
+          PROPPS is an Australian prop money supplier and manufacturer working directly with line producers, prop masters
+          and art directors. Wholesale prop money suits series work, multi-day shoots and studio accounts: order the whole
+          block once and every stack matches from episode to episode.
+        </p>
+        <p className="text-sm text-[#6F665F] leading-relaxed">
+          Bulk prop money and prop banknotes are quoted on quantity, with tiers of 10% to 30% off larger runs. If you are
+          looking for a film prop supplier in Australia for the cash scenes, tell us your shot list through the form or on
+          WhatsApp and we will size the order.
+        </p>
+      </section>
     </div>
   );
 };
