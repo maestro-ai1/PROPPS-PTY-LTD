@@ -32,7 +32,7 @@ export const CryptoCheckoutContent: React.FC = () => {
   const [info, setInfo] = useState<Info | null>(null);
   const [state, setState] = useState<'loading' | 'ready' | 'missing'>('loading');
   const [coin, setCoin] = useState<CoinId>('btc');
-  const [qr, setQr] = useState('');
+  const [qrData, setQrData] = useState<{ addr: string; url: string }>({ addr: '', url: '' });
   const [copied, setCopied] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState('');
@@ -64,8 +64,8 @@ export const CryptoCheckoutContent: React.FC = () => {
     if (!address) return;
     let live = true;
     QRCode.toDataURL(address, { margin: 1, width: 260, errorCorrectionLevel: 'M' })
-      .then((u) => live && setQr(u))
-      .catch(() => live && setQr(''));
+      .then((u) => live && setQrData({ addr: address, url: u }))
+      .catch(() => live && setQrData({ addr: '', url: '' }));
     return () => {
       live = false;
     };
@@ -147,6 +147,7 @@ export const CryptoCheckoutContent: React.FC = () => {
   }
 
   const paid = info.status === 'paid' || info.status === 'dispatched';
+  const qr = qrData.addr === address ? qrData.url : '';
   const active = COINS.find((c) => c.id === coin)!;
   const wa = paymentWhatsAppLink(info.ref, info.total);
 
@@ -188,7 +189,6 @@ export const CryptoCheckoutContent: React.FC = () => {
                     aria-selected={coin === c.id}
                     onClick={() => {
                       setCoin(c.id);
-                      setQr('');
                       setCopied(false);
                     }}
                     className={`min-h-11 rounded-lg px-1 text-xs font-bold transition-colors sm:text-sm ${
