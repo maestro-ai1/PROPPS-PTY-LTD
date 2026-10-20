@@ -210,46 +210,76 @@ export const BlogListContent: React.FC = () => {
   );
 };
 
-// Authors write links inline as [label](url). Internal hrefs (starting with
-// "/") render as next/link; external hrefs open in a new tab with a
-// dofollow rel — these are curated authoritative citations (RBA,
-// legislation.gov.au, etc.), not user content, so no nofollow is applied.
-const LINK_PATTERN = /(\[[^\]]+\]\([^)]+\))/g;
+// Authors write inline markup in post content: [label](url) links and **bold**.
+// Internal hrefs (starting with "/") render as next/link; external hrefs open in a new tab with a
+// dofollow rel — these are curated authoritative citations (RBA, legislation.gov.au, etc.),
+// not user content, so no nofollow is applied.
+const INLINE_PATTERN = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*)/g;
 const LINK_MATCH = /^\[([^\]]+)\]\(([^)]+)\)$/;
+const BOLD_MATCH = /^\*\*([^*]+)\*\*$/;
+const LINK_CLASS = 'text-[#D4AF37] underline hover:text-[#C5A059] transition-colors';
 
-function renderParagraph(text: string, key: number) {
-  const parts = text.split(LINK_PATTERN);
-  return (
-    <p key={key}>
-      {parts.map((part, i) => {
-        const match = part.match(LINK_MATCH);
-        if (!match) return <React.Fragment key={i}>{part}</React.Fragment>;
-        const [, label, href] = match;
-        if (href.startsWith('http')) {
-          return (
-            <a
-              key={i}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#D4AF37] underline hover:text-[#C5A059] transition-colors"
-            >
-              {label}
-            </a>
-          );
-        }
-        return (
-          <Link
-            key={i}
-            href={href}
-            className="text-[#D4AF37] underline hover:text-[#C5A059] transition-colors"
-          >
-            {label}
-          </Link>
-        );
-      })}
-    </p>
-  );
+function renderInline(text: string) {
+  return text.split(INLINE_PATTERN).map((part, i) => {
+    const bold = part.match(BOLD_MATCH);
+    if (bold) return <strong key={i}>{bold[1]}</strong>;
+    const match = part.match(LINK_MATCH);
+    if (!match) return <React.Fragment key={i}>{part}</React.Fragment>;
+    const [, label, href] = match;
+    if (href.startsWith('http')) {
+      return (
+        <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={LINK_CLASS}>
+          {label}
+        </a>
+      );
+    }
+    return (
+      <Link key={i} href={href} className={LINK_CLASS}>
+        {label}
+      </Link>
+    );
+  });
+}
+
+const headingId = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+// A block is a blank-line-separated chunk: "## H2", "### H3", a "- " list, a "1. " list, or a paragraph.
+function renderBlock(block: string, key: number) {
+  if (block.startsWith('## ')) {
+    const text = block.slice(3);
+    return (
+      <h2 key={key} id={headingId(text)} className="font-serif-luxury text-xl font-bold text-[#1A1414] pt-4 scroll-mt-24">
+        {text}
+      </h2>
+    );
+  }
+  if (block.startsWith('### ')) {
+    return (
+      <h3 key={key} className="font-serif-luxury text-base font-bold text-[#1A1414] pt-2">
+        {block.slice(4)}
+      </h3>
+    );
+  }
+  const lines = block.split('\n');
+  if (lines.length > 1 && lines.every((l) => l.startsWith('- '))) {
+    return (
+      <ul key={key} className="list-disc pl-5 space-y-1">
+        {lines.map((l, i) => (
+          <li key={i}>{renderInline(l.slice(2))}</li>
+        ))}
+      </ul>
+    );
+  }
+  if (lines.length > 1 && lines.every((l) => /^\d+\. /.test(l))) {
+    return (
+      <ol key={key} className="list-decimal pl-5 space-y-1">
+        {lines.map((l, i) => (
+          <li key={i}>{renderInline(l.replace(/^\d+\. /, ''))}</li>
+        ))}
+      </ol>
+    );
+  }
+  return <p key={key}>{renderInline(block)}</p>;
 }
 
 interface BlogPostContentProps {
@@ -263,6 +293,10 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
   const relatedCategories = (post.relatedCategories ?? [])
     .map((slug) => CATEGORIES.find((c) => c.slug === slug))
     .filter((c): c is (typeof CATEGORIES)[number] => Boolean(c));
+
+  const blocks = post.content.split('\n\n');
+  const tocItems = blocks.filter((b) => b.startsWith('## ')).map((b) => b.slice(3));
+  if (post.faqs && post.faqs.length > 0) tocItems.push('Frequently asked questions');
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8">
@@ -283,6 +317,12 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             <Calendar className="w-3.5 h-3.5" />
             {post.date}
           </span>
+          {post.updated && (
+            <>
+              <span>·</span>
+              <span className="text-[#6F665F]">Updated {post.updated}</span>
+            </>
+          )}
           <span>·</span>
           <span className="flex items-center gap-1 text-[#6F665F]">
             <Clock className="w-3.5 h-3.5" />
@@ -299,9 +339,38 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
 
       <BlogPhoto src={post.image} alt={post.imageAlt ?? post.title} priority />
 
+      {tocItems.length >= 3 && (
+        <nav aria-label="Table of contents" className="rounded-xl border border-[#EAE3DC] bg-[#F9F7F2] p-4">
+          <p className="font-mono-code text-xs font-bold text-[#D4AF37] mb-2">IN THIS GUIDE</p>
+          <ol className="list-decimal pl-5 space-y-1 text-sm text-[#6F665F]">
+            {tocItems.map((t) => (
+              <li key={t}>
+                <a href={`#${t === 'Frequently asked questions' ? 'post-faqs' : headingId(t)}`} className={LINK_CLASS}>
+                  {t}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
       <article className="prose max-w-none text-[#6F665F] text-sm leading-relaxed space-y-4">
-        {post.content.split('\n\n').map((para, i) => renderParagraph(para, i))}
+        {blocks.map((block, i) => renderBlock(block, i))}
       </article>
+
+      {post.faqs && post.faqs.length > 0 && (
+        <section className="space-y-4" aria-labelledby="post-faqs">
+          <h2 id="post-faqs" className="font-serif-luxury text-xl font-bold text-[#1A1414] scroll-mt-24">
+            Frequently asked questions
+          </h2>
+          {post.faqs.map((f) => (
+            <div key={f.q} className="space-y-1">
+              <h3 className="font-serif-luxury text-base font-bold text-[#1A1414]">{f.q}</h3>
+              <p className="text-sm text-[#6F665F] leading-relaxed">{renderInline(f.a)}</p>
+            </div>
+          ))}
+        </section>
+      )}
 
       {relatedProducts.length > 0 && (
         <div className="pt-8 border-t border-[#EAE3DC] space-y-5">

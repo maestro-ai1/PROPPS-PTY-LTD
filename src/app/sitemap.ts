@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Real content dates (never build time): pages edited in the 2026-10-12 SEO pass vs untouched pages.
   const edited = new Date('2026-10-12');
   const stable = new Date('2026-09-24');
+  const modifiedDate = (d?: string) => (d ? new Date(d) : undefined);
   const alt = (path: string) => ({ languages: { 'en-AU': `${base}${path}`, 'x-default': `${base}${path}` } });
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -17,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/wholesale/`, lastModified: stable, changeFrequency: 'monthly', priority: 0.7 , alternates: alt('/wholesale/') },
     { url: `${base}/blog/`, lastModified: edited, changeFrequency: 'weekly', priority: 0.6 , alternates: alt('/blog/') },
     { url: `${base}/videos/`, lastModified: stable, changeFrequency: 'monthly', priority: 0.5 , alternates: alt('/videos/') },
-    { url: `${base}/compliance/`, lastModified: stable, changeFrequency: 'yearly', priority: 0.5 , alternates: alt('/compliance/') },
+    { url: `${base}/compliance/`, lastModified: new Date('2026-10-20'), changeFrequency: 'yearly', priority: 0.5 , alternates: alt('/compliance/') },
     { url: `${base}/shipping-policy/`, lastModified: stable, changeFrequency: 'yearly', priority: 0.3 , alternates: alt('/shipping-policy/') },
     { url: `${base}/refund-policy/`, lastModified: stable, changeFrequency: 'yearly', priority: 0.3 , alternates: alt('/refund-policy/') },
     { url: `${base}/privacy-policy/`, lastModified: stable, changeFrequency: 'yearly', priority: 0.3 , alternates: alt('/privacy-policy/') },
@@ -44,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogRoutes: MetadataRoute.Sitemap = POSTS.map((post) => ({
     url: `${base}/blog/${post.slug}/`,
-    lastModified: post.date ? new Date(post.date) : stable,
+    lastModified: modifiedDate(post.updated ?? post.date) ?? stable,
     alternates: alt(`/blog/${post.slug}/`),
     changeFrequency: 'monthly',
     priority: 0.5,

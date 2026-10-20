@@ -335,7 +335,7 @@ export const Nav: React.FC = () => {
             </Link>
 
             <Link
-              href="/compliance"
+              href="/compliance/"
               onClick={closeMobile}
               className="block w-full text-left px-3 py-1.5 text-xs text-[#6F665F] hover:text-[#1A1414]"
             >

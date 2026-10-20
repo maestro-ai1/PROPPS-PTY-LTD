@@ -5,9 +5,9 @@ import { SITE } from '../../config/site.js';
 import { ComplianceContent } from '../../views/CompliancePage.js';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Prop Money Australia Laws | Compliance Guide' },
+  title: { absolute: 'Prop Money Australia Laws: Is It Legal? Section 22 Guide' },
   description:
-    'Prop money Australia laws explained: Crimes (Currency) Act 1981 Section 22 and RBA reproduction currency guidelines for legally compliant prop currency.',
+    'Prop money Australia laws in plain English: Crimes (Currency) Act 1981 Section 22, RBA rules and the markings that keep prop notes lawful. Read the guide.',
   alternates: { canonical: `https://${SITE.domain}/compliance/` },
 };
 

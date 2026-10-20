@@ -52,6 +52,12 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <JsonLd type="article" data={post} />
+      {post.faqs && post.faqs.length > 0 && (
+        <JsonLd type="faq" data={post.faqs.map((f) => ({
+            question: f.q,
+            answer: f.a.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, ''),
+          }))} />
+      )}
       <BlogPostContent post={post} />
     </>
   );

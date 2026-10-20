@@ -127,10 +127,13 @@ export interface Post {
   excerpt: string;
   category: string;
   date: string;
+  /** ISO date shown as "Updated", also used for dateModified and the sitemap. */
+  updated?: string;
   readTime: string;
   image: string;
   imageAlt?: string;
   content: string;
+  faqs?: Array<{ q: string; a: string }>;
   relatedProducts?: string[];
   relatedCategories?: string[];
   relatedPage?: { href: string; label: string };

@@ -151,7 +151,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li className="pt-2 border-t border-[#EAE3DC]">
-                <Link href="/compliance" className="hover:text-[#D4AF37] transition-colors text-left w-full text-[11px] text-[#6F665F] block">
+                <Link href="/compliance/" className="hover:text-[#D4AF37] transition-colors text-left w-full text-[11px] text-[#6F665F] block">
                   RBA Specimen Guidelines
                 </Link>
               </li>
