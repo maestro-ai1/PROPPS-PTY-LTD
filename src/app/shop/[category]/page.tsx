@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { SITE, CATEGORIES, PRODUCTS } from '../../../config/site.js';
+import { SITE, CATEGORIES, PRODUCTS, CATEGORY_FAQS } from '../../../config/site.js';
 import { JsonLd } from '../../../components/JsonLd.js';
 import { ShopContent } from '../../../views/ShopPage.js';
 
@@ -47,6 +47,9 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <JsonLd type="category" data={{ ...cat, products }} />
+      {CATEGORY_FAQS[cat.slug] && (
+        <JsonLd type="faq" data={CATEGORY_FAQS[cat.slug].map((f) => ({ question: f.q, answer: f.a }))} />
+      )}
       <ShopContent category={cat.slug} />
     </>
   );

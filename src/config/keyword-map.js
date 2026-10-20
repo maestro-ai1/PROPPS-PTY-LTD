@@ -16,12 +16,13 @@ export const KEYWORD_PAGES = {
   '/about': { focus: k('propps pty ltd', 'N', null, null), secondary: [k('aus prop money', 'C', 90, 16), k('au props', 'C', 50, 4)] },
   '/contact': { focus: k('contact propps', 'N', null, null), secondary: [k('prop money au', 'C', 70, 24)] },
   '/shop/new-notes': {
-    focus: k('buy prop money australia', 'T', 20, null),
-    secondary: [k('fake australian money prop', 'C', 140, 25), k('prop money au', 'C', 70, 24), k('au prop money', 'C', '260-390', '26-28'), k('imitation money', 'I/T', 1300, 25)],
+    // 2026-10-20 Semrush refresh: au prop money 390/KD19 is the largest easy commercial term (.org #4), so it is the primary.
+    focus: k('au prop money', 'C', 390, 19),
+    secondary: [k('prop australian money', 'C', 140, 21), k('fake australian money prop', 'C', 140, 28), k('prop money au', 'C', 70, 22), k('high quality prop money', 'T', 20, 4), k('buy prop money australia', 'T', 20, null)],
   },
   '/shop/film-and-tv-props': {
-    focus: k('buy film props', 'T', 90, 28),
-    secondary: [k('film props for sale', 'T', 90, 31), k('movie prop money australia', 'C', null, null), k('cinema prop currency australia', 'C', null, null)],
+    focus: k('buy film props', 'T', 90, 21),
+    secondary: [k('movie set props for sale', 'T', 90, 24), k('realistic money', 'C', 210, 28), k('film props for sale', 'T', 90, 31), k('movie prop money australia', 'C', null, null), k('cinema prop currency australia', 'C', null, null)],
   },
   '/shop/money-stacks': {
     focus: k('prop bundles of money australia', 'C', null, null),

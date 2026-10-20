@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, Check } from 'lucide-react';
-import { PRODUCTS, CATEGORIES, CATEGORY_BODY } from '../config/site.js';
+import { PRODUCTS, CATEGORIES, CATEGORY_BODY, CATEGORY_SECTIONS, CATEGORY_FAQS } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { Breadcrumb } from '../components/Breadcrumb.js';
 import { useApp } from '../context/AppContext.js';
@@ -197,6 +197,40 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
             will help you size the order. All products are non-legal tender props made for film, television, theatre,
             photography and training.
           </p>
+        </section>
+      )}
+
+      {currentCatObj && CATEGORY_SECTIONS[currentCatObj.slug] && (
+        <div className="space-y-6 max-w-3xl">
+          {CATEGORY_SECTIONS[currentCatObj.slug].map((section) => (
+            <section key={section.h2} className="space-y-2">
+              <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">{section.h2}</h2>
+              {section.paras.map((para) => (
+                <p key={para.slice(0, 24)} className="text-sm text-[#6F665F] leading-relaxed">
+                  {para}
+                </p>
+              ))}
+            </section>
+          ))}
+        </div>
+      )}
+
+      {currentCatObj && CATEGORY_FAQS[currentCatObj.slug] && (
+        <section className="space-y-4 max-w-3xl border-t border-[#EAE3DC] pt-6" aria-labelledby="category-faqs">
+          <h2 id="category-faqs" className="font-serif-luxury text-xl font-bold text-[#1A1414]">
+            Frequently asked questions
+          </h2>
+          {CATEGORY_FAQS[currentCatObj.slug].map((faq) => (
+            <div key={faq.q} className="space-y-1">
+              <h3 className="font-serif-luxury text-base font-bold text-[#1A1414]">{faq.q}</h3>
+              <p className="text-sm text-[#6F665F] leading-relaxed">
+                {faq.a}{' '}
+                <Link href={faq.link.href} className="text-[#D4AF37] underline hover:text-[#C5A059] transition-colors">
+                  {faq.link.label}
+                </Link>
+              </p>
+            </div>
+          ))}
         </section>
       )}
     </div>
