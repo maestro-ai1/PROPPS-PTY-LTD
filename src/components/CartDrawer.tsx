@@ -1,5 +1,6 @@
 // src/components/CartDrawer.tsx
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import {
   X,
   Plus,
@@ -8,16 +9,11 @@ import {
   ShoppingBag,
   Truck,
   ShieldCheck,
-  MessageCircle,
-  CreditCard,
   ArrowRight,
   AlertCircle,
-  Percent,
 } from 'lucide-react';
-import { SITE, SHOP, REPLY } from '../config/site.js';
-import { StoredOrder, generateOrderRef } from '../lib/order.js';
-import { waOrderLink } from '../lib/whatsapp.js';
-import { saveOrder } from '../lib/orderStore.js';
+import { SHOP } from '../config/site.js';
+import type { StoredOrder } from '../lib/order.js';
 
 export interface CartItem {
   slug: string;
@@ -47,149 +43,24 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onNavigateToOrderForm,
   onOrderCompleted,
 }) => {
-  const [checkoutMode, setCheckoutMode] = useState<'cart' | 'details'>('cart');
-  const [selectedPayment, setSelectedPayment] = useState<'bank-transfer' | 'payid' | 'crypto'>('bank-transfer');
+  const router = useRouter();
 
-  // Customer form details (kept simple and brief - just what's needed to dispatch)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-  });
-
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
-  // Calculations
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const minOrderMet = subtotal >= SHOP.minOrder;
   const minOrderRemaining = Math.max(0, SHOP.minOrder - subtotal);
-
   const freeShippingMet = subtotal >= SHOP.freeShippingThreshold;
   const freeShippingRemaining = Math.max(0, SHOP.freeShippingThreshold - subtotal);
   const shippingFee = freeShippingMet || subtotal === 0 ? 0 : SHOP.shippingFee;
 
-  const isCrypto = selectedPayment === 'crypto';
-  const cryptoDiscount = isCrypto ? Math.round(subtotal * (SHOP.cryptoDiscount / 100)) : 0;
-  const finalTotal = subtotal + shippingFee - cryptoDiscount;
-
   if (!isOpen) return null;
 
-  const FIELD_LABELS: Record<string, string> = {
-    name: 'full name',
-    phone: 'mobile phone',
-    email: 'email address',
-    address: 'delivery address',
-  };
-
-  // Returns true when the details are complete. Otherwise shows a summary right
-  // above the buttons (the form itself scrolls out of view on small screens) and
-  // scrolls to the first field that needs attention.
-  const validateDetails = (requireEmail: boolean) => {
-    const errors: Record<string, string> = {};
-    if (!formData.name.trim()) errors.name = 'Full name is required';
-    if (!formData.phone.trim()) errors.phone = 'Contact number is required';
-    const email = formData.email.trim();
-    if (requireEmail && !email) {
-      errors.email = 'Email is required so we can send your order confirmation and invoice';
-    } else if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errors.email = 'Please enter a valid email address';
-    }
-    if (!formData.address.trim()) errors.address = 'Delivery address is required';
-    setFormErrors(errors);
-
-    const keys = Object.keys(errors);
-    if (keys.length > 0) {
-      setSubmitError(`Please complete: ${keys.map((k) => FIELD_LABELS[k]).join(', ')}.`);
-      requestAnimationFrame(() => {
-        const first = document.querySelector<HTMLElement>('[data-invalid="true"]');
-        first?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        first?.focus({ preventScroll: true });
-      });
-      return false;
-    }
-    setSubmitError(null);
-    return true;
-  };
-
-  const updateField = (field: 'name' | 'phone' | 'email' | 'address', value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    setFormErrors((prev) => ({ ...prev, [field]: '' }));
-    setSubmitError(null);
-  };
-
-  const buildOrder = (channel: 'whatsapp' | 'email'): StoredOrder => ({
-    id: `ord_${Date.now()}`,
-    ref: generateOrderRef(),
-    date: new Date().toISOString(),
-    customerName: formData.name.trim(),
-    email: formData.email.trim(),
-    phone: formData.phone.trim(),
-    address: formData.address.trim(),
-    city: '',
-    state: '',
-    postcode: '',
-    items: cart,
-    subtotal,
-    shippingFee,
-    discount: cryptoDiscount,
-    total: finalTotal,
-    paymentMethod: selectedPayment,
-    channel,
-    status: 'pending',
-    createdAt: Date.now(),
-  });
-
-  // WhatsApp Checkout (Synchronous window.open rule)
-  const handleWhatsAppCheckout = () => {
-    if (!minOrderMet || isSubmitting) return;
-    if (checkoutMode === 'cart') {
-      setCheckoutMode('details');
-      return;
-    }
-    if (!validateDetails(false)) return;
-
-    const newOrder = buildOrder('whatsapp');
-
-    // Mandatory WebForge Rule: window.open MUST be called synchronously
-    window.open(waOrderLink(newOrder), '_blank');
-
-    // Save the order, then show the "order placed" page with the order number.
-    setIsSubmitting(true);
-    saveOrder(newOrder)
-      .then((result) => {
-        clearCart();
-        onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref, confirmToken: result.token });
-        onClose();
-      })
-      .finally(() => setIsSubmitting(false));
-  };
-
-  // Standard Email / Invoice Checkout
-  const handleEmailCheckout = async (e?: React.SyntheticEvent) => {
-    e?.preventDefault();
-    if (!minOrderMet || isSubmitting) return;
-    if (checkoutMode === 'cart') {
-      setCheckoutMode('details');
-      return;
-    }
-    if (!validateDetails(true)) return;
-
-    setIsSubmitting(true);
-    setSubmitError(null);
-    const newOrder = buildOrder('email');
-    const result = await saveOrder(newOrder);
-    setIsSubmitting(false);
-    if (!result.ok) {
-      setSubmitError(result.error || 'Your order could not be sent. Please try again, or use WhatsApp Order.');
-      return;
-    }
-    clearCart();
-    onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref, confirmToken: result.token });
+  // The full-page checkout (contact, delivery, payment, place order) lives at /checkout/.
+  const goToCheckout = () => {
+    if (!minOrderMet) return;
     onClose();
+    router.push('/checkout/');
   };
+
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-fade-in">
       <div className="w-full max-w-lg bg-white text-[#1A1414] h-full flex flex-col shadow-2xl border-l border-[#EAE3DC]">
@@ -281,7 +152,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 Browse Prop Catalog
               </button>
             </div>
-          ) : checkoutMode === 'cart' ? (
+          ) : (
             /* Items List */
             <div className="space-y-3">
               {cart.map((item) => (
@@ -337,128 +208,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 </div>
               ))}
 
-              {/* Payment Rail Selector */}
-              <div className="mt-6 pt-4 border-t border-[#EAE3DC]">
-                <span className="text-xs font-bold text-[#1A1414] tracking-wide uppercase font-serif-luxury block mb-2">
-                  Select Intended Payment Method
-                </span>
-                <div className="grid grid-cols-3 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedPayment('bank-transfer')}
-                    className={`p-2.5 rounded-lg border text-left flex flex-col justify-between transition-all ${
-                      selectedPayment === 'bank-transfer'
-                        ? 'bg-white border-[#D4AF37] text-[#1A1414] shadow ring-1 ring-[#D4AF37]'
-                        : 'bg-[#F9F7F2] border-[#EAE3DC] text-[#6F665F] hover:border-[#D4AF37]/50'
-                    }`}
-                  >
-                    <span className="text-[11px] font-bold">Bank EFT</span>
-                    <span className="text-[9px] font-mono-code mt-1 text-[#D4AF37]">Osko / 24/7</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setSelectedPayment('payid')}
-                    className={`p-2.5 rounded-lg border text-left flex flex-col justify-between transition-all ${
-                      selectedPayment === 'payid'
-                        ? 'bg-white border-[#D4AF37] text-[#1A1414] shadow ring-1 ring-[#D4AF37]'
-                        : 'bg-[#F9F7F2] border-[#EAE3DC] text-[#6F665F] hover:border-[#D4AF37]/50'
-                    }`}
-                  >
-                    <span className="text-[11px] font-bold">PayID</span>
-                    <span className="text-[9px] font-mono-code mt-1 text-[#D4AF37]">Instant AU</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setSelectedPayment('crypto')}
-                    className={`p-2.5 rounded-lg border text-left flex flex-col justify-between transition-all relative overflow-hidden ${
-                      selectedPayment === 'crypto'
-                        ? 'bg-white border-[#D4AF37] text-[#1A1414] shadow ring-1 ring-[#D4AF37]'
-                        : 'bg-[#F9F7F2] border-[#EAE3DC] text-[#6F665F] hover:border-[#D4AF37]/50'
-                    }`}
-                  >
-                    <div className="absolute top-0 right-0 bg-[#D4AF37] text-white font-black text-[8px] px-1 font-mono-code">
-                      -10%
-                    </div>
-                    <span className="text-[11px] font-bold">Crypto</span>
-                    <span className="text-[9px] font-mono-code mt-1 text-[#D4AF37]">BTC / USDT</span>
-                  </button>
-                </div>
-
-                {isCrypto && (
-                  <div className="mt-2 p-2 bg-[#F9F7F2] rounded-md border border-[#D4AF37]/40 flex items-center gap-2 text-[11px] text-[#D4AF37]">
-                    <Percent className="w-3.5 h-3.5 shrink-0 text-[#D4AF37]" />
-                    <span>10% Crypto discount applied! You save ${cryptoDiscount} AUD.</span>
-                  </div>
-                )}
-              </div>
             </div>
-          ) : (
-            /* Delivery & Dispatch Details Form */
-            <form onSubmit={handleEmailCheckout} noValidate className="space-y-3.5 text-xs">
-              <div className="flex items-center justify-between pb-2 border-b border-[#EAE3DC]">
-                <span className="font-serif-luxury font-bold text-sm text-[#1A1414]">
-                  DISPATCH &amp; CONTACT INFORMATION
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setCheckoutMode('cart')}
-                  className="text-xs text-[#D4AF37] hover:underline"
-                >
-                  ← Back to cart
-                </button>
-              </div>
-
-              {(
-                [
-                  { key: 'name', label: 'Full Name *', type: 'text', placeholder: 'e.g. Liam Hemsworth' },
-                  { key: 'phone', label: 'Mobile Phone *', type: 'tel', placeholder: '0400 000 000' },
-                  { key: 'email', label: 'Email Address * (order confirmation & invoice)', type: 'email', placeholder: 'propps@studio.com.au' },
-                ] as const
-              ).map((f) => (
-                <div key={f.key}>
-                  <label htmlFor={`checkout-${f.key}`} className="block text-[#6F665F] mb-1 font-medium">
-                    {f.label}
-                  </label>
-                  <input
-                    id={`checkout-${f.key}`}
-                    type={f.type}
-                    placeholder={f.placeholder}
-                    value={formData[f.key]}
-                    onChange={(e) => updateField(f.key, e.target.value)}
-                    data-invalid={formErrors[f.key] ? 'true' : undefined}
-                    aria-invalid={formErrors[f.key] ? true : undefined}
-                    className={`w-full bg-white border rounded-lg px-3 py-2 text-[#1A1414] placeholder-[#A8A49D] focus:outline-none ${
-                      formErrors[f.key] ? 'border-red-500 focus:border-red-500' : 'border-[#EAE3DC] focus:border-[#D4AF37]'
-                    }`}
-                  />
-                  {f.key === 'email' && !formErrors.email && (
-                    <span className="text-[#6F665F] text-[10px] mt-0.5 block">Optional if you order via WhatsApp.</span>
-                  )}
-                  {formErrors[f.key] && <span className="text-red-500 text-[11px] mt-0.5 block">{formErrors[f.key]}</span>}
-                </div>
-              ))}
-
-              <div>
-                <label htmlFor="checkout-address" className="block text-[#6F665F] mb-1 font-medium">
-                  Delivery Address *
-                </label>
-                <textarea
-                  id="checkout-address"
-                  rows={2}
-                  placeholder="Street, suburb, state, postcode"
-                  value={formData.address}
-                  onChange={(e) => updateField('address', e.target.value)}
-                  data-invalid={formErrors.address ? 'true' : undefined}
-                  aria-invalid={formErrors.address ? true : undefined}
-                  className={`w-full bg-white border rounded-lg px-3 py-2 text-[#1A1414] placeholder-[#A8A49D] focus:outline-none ${
-                    formErrors.address ? 'border-red-500 focus:border-red-500' : 'border-[#EAE3DC] focus:border-[#D4AF37]'
-                  }`}
-                />
-                {formErrors.address && <span className="text-red-500 text-[11px] mt-0.5 block">{formErrors.address}</span>}
-              </div>
-            </form>
           )}
         </div>
 
@@ -477,53 +227,25 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   {shippingFee === 0 ? 'FREE' : `$${shippingFee.toFixed(2)} AUD`}
                 </span>
               </div>
-              {cryptoDiscount > 0 && (
-                <div className="flex justify-between text-[#D4AF37]">
-                  <span>CRYPTO DISCOUNT (10%)</span>
-                  <span>-${cryptoDiscount.toFixed(2)} AUD</span>
-                </div>
-              )}
               <div className="flex justify-between text-base font-bold text-[#1A1414] pt-2 border-t border-[#EAE3DC]">
-                <span>TOTAL DUE</span>
-                <span className="text-[#D4AF37]">${finalTotal.toFixed(2)} AUD</span>
+                <span>TOTAL</span>
+                <span className="text-[#D4AF37]">${(subtotal + shippingFee).toFixed(2)} AUD</span>
               </div>
             </div>
 
-            {submitError && (
-              <p role="alert" className="text-xs text-red-600 font-mono-code flex items-start gap-1.5 rounded-lg border border-red-200 bg-red-50 p-2.5">
-                <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                <span>{submitError}</span>
-              </p>
-            )}
-
-            {/* Action Buttons */}
-            <div className="grid grid-cols-2 gap-2.5 pt-1">
-              {/* WhatsApp Checkout (Immediate window.open) */}
-              <button
-                type="button"
-                disabled={!minOrderMet || isSubmitting}
-                onClick={handleWhatsAppCheckout}
-                className="py-3 px-3 bg-[#25D366] hover:bg-[#20BA5A] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
-                title={!minOrderMet ? `Minimum order is $${SHOP.minOrder} AUD` : 'Submit order via WhatsApp'}
-              >
-                <MessageCircle className="w-4 h-4 shrink-0" />
-                <span className="truncate">WhatsApp Order</span>
-              </button>
-
-              {/* Email / Invoice Form Checkout */}
-              <button
-                type="button"
-                disabled={!minOrderMet || isSubmitting}
-                onClick={(e) => handleEmailCheckout(e)}
-                className="py-3 px-3 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#C5A059] hover:to-[#D4AF37] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <CreditCard className="w-4 h-4 shrink-0" />
-                <span className="truncate">
-                  {isSubmitting ? 'Placing your order...' : checkoutMode === 'cart' ? 'Proceed to Details' : 'Confirm Order'}
-                </span>
-                {!isSubmitting && <ArrowRight className="w-3.5 h-3.5" />}
-              </button>
-            </div>
+            <p className="text-[11px] text-[#6F665F] text-center">Pay by PayID, bank transfer or crypto (10% off) at checkout.</p>
+            <button
+              type="button"
+              disabled={!minOrderMet}
+              onClick={goToCheckout}
+              className="w-full min-h-12 py-3 px-3 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] hover:from-[#C5A059] hover:to-[#D4AF37] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+              title={!minOrderMet ? `Minimum order is $${SHOP.minOrder} AUD` : 'Go to checkout'}
+            >
+              Checkout <ArrowRight className="w-4 h-4" />
+            </button>
+            <button type="button" onClick={onClose} className="w-full text-xs text-[#6F665F] hover:text-[#1A1414] underline">
+              Continue shopping
+            </button>
 
             <p className="text-[10px] text-[#6F665F] text-center font-mono-code">
               Dispatched from Melbourne VIC 3093 with tracking &amp; signature.

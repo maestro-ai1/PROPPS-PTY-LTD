@@ -33,7 +33,7 @@ const AI_TRAINING_CRAWLERS = [
 
 // A crawler that matches a specific group ignores the "*" group, so every group
 // repeats the private-path Disallows (otherwise GPTBot etc. could crawl /admin/).
-const PRIVATE = ['/thank-you-order/', '/admin/', '/invoice/', '/confirm/', '/order/', '/api/'];
+const PRIVATE = ['/thank-you-order/', '/admin/', '/invoice/', '/confirm/', '/order/', '/checkout/', '/api/'];
 
 const disallows = PRIVATE.map((p) => `Disallow: ${p}`).join('\n');
 const group = (agents: string[]) =>
