@@ -110,6 +110,8 @@ export const CRYPTO_WALLETS = {
   usdtTrc20: 'TXsafxfWLDFPdU8aNNec7fTZH4jkKfWYDP',
   bitcoin: 'bc1q26x7nc3r2vjzyzjvv2mzg56sudtwum4xteg3hd',
   ethereum: '0xaF80aa1ca688A1318e1F39E273cAf5895bE12749',
+  // Same address as ethereum: USDT on the ERC20 (Ethereum) network.
+  usdtErc20: '0xaF80aa1ca688A1318e1F39E273cAf5895bE12749',
 }
 
 export const BRAND = {

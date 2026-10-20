@@ -51,7 +51,7 @@ export async function POST(request: Request) {
         console.error('[order] email failed', err);
       }
     });
-    return NextResponse.json({ ok: true, ref: order.ref, emailed: Boolean(getNotifyEmail()), stored: true });
+    return NextResponse.json({ ok: true, ref: order.ref, emailed: Boolean(getNotifyEmail()), stored: true, ...(order.paymentMethod === 'crypto' ? { token: order.confirmToken } : {}) });
   }
 
   // Not saved (no storage): the email is the only record, so wait for it.

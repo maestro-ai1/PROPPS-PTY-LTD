@@ -70,6 +70,7 @@ export declare const CRYPTO_WALLETS: {
   usdtTrc20: string;
   bitcoin: string;
   ethereum: string;
+  usdtErc20: string;
 };
 
 export declare const BRAND: {

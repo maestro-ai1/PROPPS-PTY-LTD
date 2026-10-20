@@ -8,6 +8,7 @@ import type { PayLine, PayLinesByMethod, PayMethodId } from './payment.js';
 export interface SubmitOrderResult {
   ok: boolean;
   ref?: string;
+  token?: string;
   emailed?: boolean;
   error?: string;
 }
@@ -31,7 +32,7 @@ export async function saveOrder(order: StoredOrder): Promise<SubmitOrderResult> 
       }),
     });
     const data = await res.json().catch(() => ({}));
-    return { ok: res.ok && data.ok !== false, ref: data.ref, emailed: data.emailed, error: data.error };
+    return { ok: res.ok && data.ok !== false, ref: data.ref, token: data.token, emailed: data.emailed, error: data.error };
   } catch {
     return { ok: false, error: 'Network error' };
   }

@@ -116,6 +116,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const onOrderCompleted = useCallback(
     (order: StoredOrder) => {
       setIsCartOpen(false);
+      // Crypto orders go straight to the wallet page (PayID / bank keep the thank-you page).
+      if (order.paymentMethod === 'crypto' && order.confirmToken) {
+        router.push(`/order/crypto/?t=${encodeURIComponent(order.confirmToken)}`);
+        return;
+      }
       const params = new URLSearchParams({
         ref: order.ref,
         email: order.email || '',

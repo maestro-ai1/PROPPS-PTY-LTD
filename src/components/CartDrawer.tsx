@@ -161,7 +161,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     saveOrder(newOrder)
       .then((result) => {
         clearCart();
-        onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref });
+        onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref, confirmToken: result.token });
         onClose();
       })
       .finally(() => setIsSubmitting(false));
@@ -187,7 +187,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       return;
     }
     clearCart();
-    onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref });
+    onOrderCompleted?.({ ...newOrder, ref: result.ref || newOrder.ref, confirmToken: result.token });
     onClose();
   };
   return (

@@ -163,17 +163,22 @@ export async function sendOrderEmails(order: StoredOrder) {
       { label: 'Total', value: money(order.total), highlight: true },
     ];
     const origin = `https://${SITE.domain}`;
+    const isCrypto = order.paymentMethod === 'crypto' && Boolean(order.confirmToken);
+    const cryptoUrl = `${origin}/order/crypto/?t=${order.confirmToken ?? ''}`;
     const customer = await sendMail({
       to: order.email,
       subject: `Order placed - ${order.ref} - ${SITE.name}`,
       html: buildEmailHtml({
         title: `Your order has been placed - ${order.ref}`,
-        preheader: `Order ${order.ref} placed - payment details coming next`,
-        intro: `Thank you ${order.customerName}. Your order is registered. We will email your invoice and payment details shortly. Once you have paid, use the buttons below to upload your payment screenshot or confirm on WhatsApp so we can dispatch.`,
+        preheader: isCrypto ? `Order ${order.ref} placed - pay with crypto` : `Order ${order.ref} placed - payment details coming next`,
+        intro: isCrypto
+          ? `Thank you ${order.customerName}. Your order is registered. Use the button below to open your crypto payment page (Bitcoin or USDT), pay, then upload your payment screenshot and we will confirm by email.`
+          : `Thank you ${order.customerName}. Your order is registered. We will email your invoice and payment details shortly. Once you have paid, use the buttons below to upload your payment screenshot or confirm on WhatsApp so we can dispatch.`,
         refBadge: order.ref,
         rows: customerRows,
         footerButtons: [
-          ...(order.confirmToken ? [{ label: "I've paid - Upload confirmation", url: `${origin}/confirm/?t=${order.confirmToken}`, variant: 'gold' as const }] : []),
+          ...(isCrypto ? [{ label: 'Pay with crypto', url: cryptoUrl, variant: 'gold' as const }] : []),
+          ...(order.confirmToken && !isCrypto ? [{ label: "I've paid - Upload confirmation", url: `${origin}/confirm/?t=${order.confirmToken}`, variant: 'gold' as const }] : []),
           { label: 'Confirm via WhatsApp', url: paymentWhatsAppLink(order.ref, order.total, 'question'), variant: 'green' as const },
           { label: 'Reply by email', url: `mailto:${CONTACT.email.replace('&#64;', '@')}?subject=${encodeURIComponent(`Order ${order.ref}`)}`, variant: 'outline' as const },
         ],
@@ -302,7 +307,7 @@ export async function sendPaymentNotifiedEmails(order: StoredOrder, proof?: Proo
     ownerSent = (
       await sendMail({
       to,
-      subject: `Client says paid: ${order.ref} - ${total}`,
+      subject: `Client says paid: ${order.ref} - ${total}${order.paymentMethod === 'crypto' ? ' (crypto)' : ''}`,
       html: buildEmailHtml({
         title: `Payment notification ${order.ref}`,
         preheader: `${order.customerName} says they have paid ${total}`,
