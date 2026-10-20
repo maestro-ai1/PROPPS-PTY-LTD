@@ -5,7 +5,7 @@ let src = fs.readFileSync(file, 'utf8')
 const crlf = src.includes('\r\n')
 src = src.replace(/\r\n/g, '\n')
 const UPDATED = '2026-10-20'
-for (const p of require('./posts-rewrite-2026-10-20.cjs')) {
+for (const p of require(require('path').resolve(process.argv[2] || 'scripts/posts-rewrite-2026-10-20.cjs'))) {
   const start = src.indexOf(`slug: '${p.slug}'`)
   if (start < 0) throw new Error('slug not found: ' + p.slug)
   const next = src.indexOf('\n  {\n    slug:', start)
