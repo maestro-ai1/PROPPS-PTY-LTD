@@ -68,7 +68,7 @@ export const FaqContent: React.FC = () => {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
-            href="/contact"
+            href="/contact/"
             className="w-full sm:w-auto px-6 py-3 bg-white text-xs font-mono-code text-[#D4AF37] rounded-xl border border-[#EAE3DC] hover:bg-[#F9F7F2] text-center shadow-sm"
           >
             Submit an Inquiry

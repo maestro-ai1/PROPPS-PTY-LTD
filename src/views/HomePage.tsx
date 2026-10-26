@@ -102,7 +102,7 @@ export const HomeContent: React.FC = () => {
           >
             <Image
               src={src}
-              alt=""
+              alt={idx === 0 ? 'Australian prop money: specimen-marked prop notes' : `Australian prop money - view ${idx + 1}`}
               fill
               priority={idx === 0}
               sizes="100vw"
@@ -164,7 +164,7 @@ export const HomeContent: React.FC = () => {
             </Link>
 
             <Link
-              href="/shop"
+              href="/shop/"
               className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#C5A059] hover:from-[#F3E5AB] hover:to-[#D4AF37] text-[#0A0A0B] font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg border border-[#FFE799]"
             >
               <span>View Best Sellers</span>
@@ -172,7 +172,7 @@ export const HomeContent: React.FC = () => {
             </Link>
 
             <Link
-              href="/wholesale"
+              href="/wholesale/"
               className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-[#F9F7F2] border border-[#EAE3DC] hover:border-[#D4AF37] text-[#1A1414] font-serif-luxury font-bold text-xs tracking-wider uppercase rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
             >
               <span>Studio B2B</span>
@@ -294,7 +294,7 @@ export const HomeContent: React.FC = () => {
               EXPLORE PROP CURRENCY CATEGORIES
             </h2>
           </div>
-          <Link href="/shop" className="text-xs font-mono-code font-bold text-[#D4AF37] hover:underline flex items-center gap-1">
+          <Link href="/shop/" className="text-xs font-mono-code font-bold text-[#D4AF37] hover:underline flex items-center gap-1">
             <span>View All Categories</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </Link>
@@ -471,23 +471,56 @@ export const HomeContent: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 5b: WHAT WE SUPPLY (keyword-bearing copy for the homepage secondaries) */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+      {/* SECTION 5b: WHAT WE SUPPLY + HUB LINKS (head term -> every range, denomination and buying guide) */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         <h2 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#1A1414]">
           Prop money Australia: what we make and who it is for
         </h2>
         <p className="text-sm text-[#6F665F] leading-relaxed">
           PROPPS makes specimen-marked prop money Australia wide for film, television, theatre, photography and training.
-          If you have searched for prop cash, prop dollar notes, props money or au props, you are in the right place: the
-          range runs from single $5 notes to vault-sized stacks, all printed on matte paper and never spendable.
+          If you have searched for{' '}
+          <Link href="/blog/prop-dollar-vs-prop-cash-vs-prop-money/" className="text-[#D4AF37] underline">prop cash or prop dollar notes</Link>,
+          props money or au props, you are in the right place: the range runs from single $5 notes to vault-sized stacks,
+          all printed on matte paper and never spendable. Our studio in Eltham, Melbourne has supplied props Australia wide
+          to more than 500 productions since 2019.
         </p>
+
+        <h3 className="font-serif-luxury text-base font-bold text-[#1A1414]">Shop Australian prop money by range</h3>
+        <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-[#6F665F] list-disc pl-5">
+          <li><Link href="/shop/new-notes/" className="text-[#D4AF37] underline">AU prop money: the New Notes range</Link>, $5 to $100</li>
+          <li><Link href="/shop/film-and-tv-props/" className="text-[#D4AF37] underline">Buy film props</Link> and movie set props for sale</li>
+          <li><Link href="/shop/money-stacks/" className="text-[#D4AF37] underline">Prop money stacks</Link> and bundles for big scenes</li>
+          <li><Link href="/shop/photography-props/" className="text-[#D4AF37] underline">Photography props Australia</Link> for cash-style shots</li>
+          <li><Link href="/shop/event-and-party-props/" className="text-[#D4AF37] underline">Play money Australia</Link> for events and games</li>
+          <li><Link href="/shop/custom-and-branded-props/" className="text-[#D4AF37] underline">Custom prop money</Link> for brands and agencies</li>
+          <li><Link href="/wholesale/" className="text-[#D4AF37] underline">Wholesale prop money</Link> for studios, 10% to 30% off</li>
+          <li><Link href="/shop/" className="text-[#D4AF37] underline">Australian prop money for sale</Link>: the full shop</li>
+        </ul>
+
+        <h3 className="font-serif-luxury text-base font-bold text-[#1A1414]">Choose a denomination</h3>
         <p className="text-sm text-[#6F665F] leading-relaxed">
-          Start with the <Link href="/shop/new-notes/" className="text-[#D4AF37] underline">New Notes range</Link>, see{' '}
-          <Link href="/shop/money-stacks/" className="text-[#D4AF37] underline">money stacks</Link> for big scenes, or read our{' '}
-          <Link href="/compliance/" className="text-[#D4AF37] underline">compliance guide</Link> and the{' '}
-          <Link href="/blog/can-you-buy-prop-money-in-australia/" className="text-[#D4AF37] underline">can you buy prop money</Link>{' '}
-          answer first.
+          <Link href="/shop/new-notes/5-australian-prop-money-for-sale/" className="text-[#D4AF37] underline">$5</Link>,{' '}
+          <Link href="/shop/new-notes/10-australian-prop-money-for-sale/" className="text-[#D4AF37] underline">$10</Link>,{' '}
+          <Link href="/shop/new-notes/20-australian-prop-money-for-sale/" className="text-[#D4AF37] underline">$20</Link>,{' '}
+          <Link href="/shop/new-notes/50-australian-prop-money-for-sale/" className="text-[#D4AF37] underline">$50</Link> and{' '}
+          <Link href="/shop/new-notes/100-australian-prop-money-for-sale/" className="text-[#D4AF37] underline">$100 prop notes</Link>,
+          each with specimen markings. Not sure which suits your scene? Read{' '}
+          <Link href="/blog/best-australian-banknote-denominations-for-film-and-tv-scenes/" className="text-[#D4AF37] underline">the best denominations for film and TV</Link>.
         </p>
+
+        <h3 className="font-serif-luxury text-base font-bold text-[#1A1414]">Buying guides and legal answers</h3>
+        <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-[#6F665F] list-disc pl-5">
+          <li><Link href="/blog/can-you-buy-prop-money-in-australia/" className="text-[#D4AF37] underline">Can you buy prop money in Australia?</Link></li>
+          <li><Link href="/blog/where-to-buy-prop-money-in-australia-legally/" className="text-[#D4AF37] underline">Where to buy prop money legally</Link></li>
+          <li><Link href="/blog/realistic-prop-money-australia-what-realistic-should-mean/" className="text-[#D4AF37] underline">Realistic prop money: what it should mean</Link></li>
+          <li><Link href="/blog/props-for-filming-ordering-prop-currency-for-a-shoot/" className="text-[#D4AF37] underline">Props for filming: how to order</Link></li>
+          <li><Link href="/blog/cheap-prop-money-what-you-are-really-paying-for/" className="text-[#D4AF37] underline">Cheap prop money: what you pay for</Link></li>
+          <li><Link href="/blog/monetary-toys-and-play-money-sets-for-kids/" className="text-[#D4AF37] underline">Monetary toys and play money sets</Link></li>
+          <li><Link href="/blog/is-it-illegal-to-buy-prop-money-australia/" className="text-[#D4AF37] underline">Is it illegal to buy prop money?</Link></li>
+          <li><Link href="/compliance/" className="text-[#D4AF37] underline">Prop money Australia laws: compliance guide</Link></li>
+          <li><Link href="/shipping-policy/" className="text-[#D4AF37] underline">Express Post shipping and dispatch</Link></li>
+          <li><Link href="/refund-policy/" className="text-[#D4AF37] underline">Refunds in 3 to 8 business days</Link></li>
+        </ul>
       </section>
 
       {/* SECTION 6: FAQ ACCORDION (COMPACT) */}
@@ -549,7 +582,7 @@ export const HomeContent: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-2.5 shrink-0">
             <Link
-              href="/contact"
+              href="/contact/"
               className="px-5 py-3 bg-white hover:bg-[#F9F7F2] text-[#1A1414] font-serif-luxury font-bold text-xs uppercase tracking-wider rounded-xl border border-[#EAE3DC] hover:border-[#D4AF37] transition-colors shadow-sm"
             >
               Contact Dispatch Desk

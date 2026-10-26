@@ -174,13 +174,13 @@ export const AboutContent: React.FC = () => {
         </p>
         <div className="flex justify-center gap-4">
           <Link
-            href="/shop"
+            href="/shop/"
             className="px-6 py-3 white-gold-btn font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code border border-[#D4AF37]/50"
           >
             Browse Cinema Shop
           </Link>
           <Link
-            href="/compliance"
+            href="/compliance/"
             className="px-6 py-3 bg-white text-[#1A1414] text-xs font-bold uppercase tracking-wider rounded-xl border border-[#EAE3DC] font-mono-code shadow-sm"
           >
             Legal Compliance

@@ -25,7 +25,7 @@ export const ComplianceContent: React.FC = () => {
             Shop New Notes
           </Link>{' '}
           or{' '}
-          <Link href="/shop" className="font-semibold text-[#B08A3A] underline">
+          <Link href="/shop/" className="font-semibold text-[#B08A3A] underline">
             view the full catalog
           </Link>
           .
@@ -148,7 +148,7 @@ export const ComplianceContent: React.FC = () => {
           Questions regarding legal documentation or compliance paperwork for your insurer?
         </p>
         <Link
-          href="/contact"
+          href="/contact/"
           className="inline-block px-6 py-2.5 bg-white hover:bg-[#F9F7F2] text-xs font-mono-code text-[#D4AF37] rounded-lg border border-[#EAE3DC] shadow-sm"
         >
           Contact Legal &amp; Dispatch Desk →

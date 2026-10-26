@@ -4,6 +4,14 @@ import Link from 'next/link';
 import { Truck, RefreshCw, Lock, ArrowLeft, CheckCircle2, AlertTriangle, Scale } from 'lucide-react';
 import { SITE, CONTACT } from '../config/site.js';
 
+export const REFUND_FAQS = [
+  { q: 'How long does a refund take?', a: 'Approved refunds are returned to your original payment method within 3 to 8 business days. Bank and PayID refunds sit at the quicker end; cryptocurrency depends on the network.' },
+  { q: 'Can I cancel an order and get my money back?', a: 'Yes, in full, if the parcel has not been dispatched. Most paid orders leave Melbourne within 24 business hours, so email us as soon as you can.' },
+  { q: 'What if my prop money arrives damaged?', a: 'Email photos and your order reference within 48 hours of delivery. We send a replacement by Express Post at no cost, or refund the affected items within 3 to 8 business days.' },
+  { q: 'Do you refund a change of mind?', a: 'Yes, for sealed, unopened stock returned to our Melbourne depot. The return postage is paid by the buyer, and the 3 to 8 business days start once we receive the parcel.' },
+  { q: 'Are custom or branded notes refundable?', a: 'Custom aged, weathered and branded orders are made to your brief, so they are refundable only for defects or damage under Australian Consumer Law.' },
+];
+
 export type PolicyType = 'shipping' | 'refund' | 'privacy' | 'terms';
 
 const POLICY_PATHS: Record<PolicyType, string> = {
@@ -102,16 +110,16 @@ export const PolicyContent: React.FC<PolicyContentProps> = ({ policyType }) => {
           REFUND &amp; REPLACEMENT POLICY
         </h1>
         <p className="text-xs sm:text-sm text-[#6F665F]">
-          Clear, fair refund, return, and damaged shipment replacement policies under Commonwealth standards.
+          Approved refunds reach you within 3 to 8 business days. Last updated 26 October 2026.
         </p>
       </div>
 
       <div className="p-4 rounded-xl bg-[#F1F9F5] border border-[#00b67a]/40 flex items-start gap-3">
         <CheckCircle2 className="w-5 h-5 text-[#00b67a] shrink-0 mt-0.5" />
         <div className="text-xs space-y-1">
-          <span className="font-bold text-[#1A1414] block">30-Day Defect &amp; Damage Guarantee</span>
+          <span className="font-bold text-[#1A1414] block">3 to 8 business day refunds, 30-day defect guarantee</span>
           <p className="text-[#00b67a] leading-relaxed">
-            If your order arrives damaged in transit or features printing blemishes not consistent with our quality standards, we offer immediate priority replacement or full refund under Australian Consumer Law.
+            Once we approve a refund, the money is returned to you within 3 to 8 business days. If your order arrives damaged in transit or with printing faults that do not meet our standards, we offer a priority replacement or a full refund under Australian Consumer Law.
           </p>
         </div>
       </div>
@@ -119,36 +127,82 @@ export const PolicyContent: React.FC<PolicyContentProps> = ({ policyType }) => {
       <div className="max-w-none text-[#6F665F] text-xs sm:text-sm leading-relaxed space-y-6">
         <section className="space-y-3">
           <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
-            1. Transit Damage or Manufacturing Defects
+            1. Refund Timeline: 3 to 8 Business Days
           </h2>
           <p>
-            While our prop bills are packaged in rigid protective envelopes and sealed acrylic containers, packages can occasionally sustain carrier trauma. If your cinema stacks arrive crushed, water-damaged, or torn, notify our dispatch team within 48 hours of delivery:
+            Refunds are paid back to the method you used to pay, in Australian dollars. After we approve a refund (or confirm that a cancelled order was not yet dispatched), allow <strong>3 to 8 business days</strong> for the funds to reach you. The exact time inside that window depends on your bank or, for cryptocurrency, the network and your wallet. Business days are Monday to Friday, excluding Australian national public holidays.
+          </p>
+          <ol className="list-decimal pl-5 space-y-1 text-xs text-[#6F665F]">
+            <li><strong>Day 0:</strong> you email us your order reference and, for damage, photos.</li>
+            <li><strong>Within 1 business day:</strong> we confirm the claim and tell you whether it is a refund or a replacement.</li>
+            <li><strong>Within 3 to 8 business days of approval:</strong> the refund lands in your account or wallet.</li>
+          </ol>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
+            2. Transit Damage or Manufacturing Defects
+          </h2>
+          <p>
+            Our prop notes ship in rigid protective packaging, but parcels can still be damaged by the carrier. If your stacks arrive crushed, water-damaged or torn, tell us within 48 hours of delivery:
           </p>
           <ul className="list-disc pl-5 space-y-1 text-xs text-[#6F665F]">
-            <li>Take clear photographs of the outer postal satchel and damaged inner stacks.</li>
-            <li>Email our team at <span dangerouslySetInnerHTML={{ __html: CONTACT.email }} /> with your Order Reference Number.</li>
-            <li>We will dispatch a replacement parcel via Express Post within 24 hours at zero additional cost to you.</li>
+            <li>Take clear photographs of the outer satchel and the damaged stacks.</li>
+            <li>Email us at <span dangerouslySetInnerHTML={{ __html: CONTACT.email }} /> with your order reference number.</li>
+            <li>We will send a replacement by Express Post at no cost to you, or refund the affected items in full, within the 3 to 8 business day window above.</li>
           </ul>
         </section>
 
         <section className="space-y-3">
           <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
-            2. Production Schedule Cancellations
+            3. Cancelling Before Dispatch
           </h2>
           <p>
-            Orders can be cancelled with a 100% full refund prior to postal dispatch. Once a parcel has been collected by Australia Post or courier, cancellations cannot be processed until the unopened parcel is returned to our Melbourne warehouse.
-          </p>
-          <p>
-            Returned stock must remain sealed in original heat-shrunk wrapping and bank straps. Return postage for voluntary changes of mind is the responsibility of the purchaser.
+            Orders can be cancelled for a 100% refund before the parcel is dispatched. Because most paid orders leave our Eltham, Melbourne depot within 24 business hours, contact us as soon as possible. Once Australia Post has collected the parcel, the order can only be refunded after the unopened parcel is returned to us.
           </p>
         </section>
 
         <section className="space-y-3">
           <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
-            3. Custom Aged &amp; Weathered Orders
+            4. Change of Mind Returns
           </h2>
           <p>
-            Bespoke distressing services, hand-weathered cartel bundles, and custom laser-engraved director briefcase plates involve custom artisanal hand-crafting and cannot be restocked for general sale once completed.
+            Returned stock must be sealed in its original wrapping and bank straps. Return postage for a change of mind is paid by the purchaser, and the refund timeline starts when we receive and check the returned parcel. Notes remain non-legal tender specimen props and must never be spent; see our <Link href="/compliance/" className="text-[#D4AF37] underline">compliance page</Link>.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
+            5. Custom Aged, Weathered &amp; Branded Orders
+          </h2>
+          <p>
+            Bespoke distressing, hand-weathered bundles and custom branded notes are made to your brief and cannot be restocked for general sale. They are refundable only for defects or damage under Australian Consumer Law. See <Link href="/shop/custom-and-branded-props/" className="text-[#D4AF37] underline">custom and branded props</Link>.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
+            6. Your Rights Under Australian Consumer Law
+          </h2>
+          <p>
+            Our goods come with guarantees that cannot be excluded under the Australian Consumer Law. You are entitled to a replacement or refund for a major failure and compensation for other reasonably foreseeable loss or damage. Read more on the <a href="https://www.accc.gov.au/consumers/buying-products-and-services/consumer-guarantees" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] underline">ACCC consumer guarantees page</a>.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">
+            Refund Questions
+          </h2>
+          <dl className="space-y-3">
+            {REFUND_FAQS.map((f) => (
+              <div key={f.q}>
+                <dt className="font-bold text-[#1A1414]">{f.q}</dt>
+                <dd>{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+          <p>
+            Need help? See our <Link href="/shipping-policy/" className="text-[#D4AF37] underline">shipping policy</Link>, the <Link href="/faq/" className="text-[#D4AF37] underline">FAQ</Link> or <Link href="/contact/" className="text-[#D4AF37] underline">contact us</Link>. Ready to order again? <Link href="/shop/" className="text-[#D4AF37] underline">Shop prop money</Link>.
           </p>
         </section>
       </div>

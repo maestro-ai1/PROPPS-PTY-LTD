@@ -61,38 +61,38 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/shop" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/shop/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Shop Props</span>
                 </Link>
               </li>
               <li>
-                <Link href="/videos" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/videos/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Prop Videos Showcase</span>
                   <span className="px-1.5 py-0.2 rounded bg-[#00b67a] text-white text-[9px] font-mono-code font-bold">4K</span>
                 </Link>
               </li>
               <li>
-                <Link href="/wholesale" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/wholesale/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Wholesale &amp; Bulk Quotes</span>
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/about/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">About Our Mission</span>
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/blog/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Production Blog &amp; Tutorials</span>
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/faq/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">FAQ</span>
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/contact/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Contact Us</span>
                 </Link>
               </li>
@@ -127,25 +127,25 @@ export const Footer: React.FC = () => {
             </p>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/shipping-policy" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/shipping-policy/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Shipping Policy</span>
                   <span className="text-[10px] font-mono-code text-[#6F665F]">Express</span>
                 </Link>
               </li>
               <li>
-                <Link href="/refund-policy" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/refund-policy/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Refund Policy</span>
                   <span className="text-[10px] font-mono-code text-[#00b67a]">30-Day ACL</span>
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/privacy-policy/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Privacy Policy</span>
                   <span className="text-[10px] font-mono-code text-[#6F665F]">Cth 1988</span>
                 </Link>
               </li>
               <li>
-                <Link href="/terms-and-conditions" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                <Link href="/terms-and-conditions/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Terms &amp; Conditions</span>
                   <span className="text-[10px] font-mono-code text-[#6F665F]">Statutory</span>
                 </Link>

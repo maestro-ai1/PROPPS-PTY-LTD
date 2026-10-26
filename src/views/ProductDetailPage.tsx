@@ -64,7 +64,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
       />
 
       {/* Back button */}
-      <Link href="/shop" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#D4AF37] hover:underline">
+      <Link href="/shop/" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#D4AF37] hover:underline">
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Prop Catalog</span>
       </Link>
@@ -256,7 +256,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
             <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">
               RELATED PROP SPECIMENS
             </h2>
-            <Link href="/shop" className="text-xs font-mono-code text-[#D4AF37] hover:underline">
+            <Link href="/shop/" className="text-xs font-mono-code text-[#D4AF37] hover:underline">
               Browse All Props →
             </Link>
           </div>

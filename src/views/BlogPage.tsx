@@ -51,7 +51,7 @@ export const BlogListContent: React.FC = () => {
           {currentPosts.map((post) => (
             <Link
               key={post.slug}
-              href={`/blog/${post.slug}`}
+              href={`/blog/${post.slug}/`}
               className="luxury-card rounded-2xl overflow-hidden flex flex-col justify-between group bg-white border border-[#EAE3DC] shadow-sm hover:shadow-xl transition-all"
             >
               <div className="aspect-[16/10] overflow-hidden">
@@ -190,7 +190,7 @@ export const BlogListContent: React.FC = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10 pt-2">
           <Link
-            href="/shop"
+            href="/shop/"
             className="px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] text-[#1A1414] font-black text-xs uppercase tracking-widest rounded-xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all font-mono-code"
           >
             Browse Cinema Shop
@@ -261,6 +261,32 @@ function renderBlock(block: string, key: number) {
     );
   }
   const lines = block.split('\n');
+  if (lines.length > 2 && lines.every((l) => l.startsWith('|')) && /^\|[\s:|-]+\|$/.test(lines[1])) {
+    const cells = (l: string) => l.replace(/^\||\|$/g, '').split('|').map((c) => c.trim());
+    const head = cells(lines[0]);
+    return (
+      <div key={key} className="overflow-x-auto rounded-xl border border-[#EAE3DC]">
+        <table className="w-full text-left text-xs sm:text-sm">
+          <thead className="bg-[#F9F7F2] text-[#1A1414]">
+            <tr>
+              {head.map((h, i) => (
+                <th key={i} className="px-3 py-2 font-bold">{renderInline(h)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {lines.slice(2).map((l, r) => (
+              <tr key={r} className="border-t border-[#EAE3DC]">
+                {cells(l).map((c, i) => (
+                  <td key={i} className="px-3 py-2 align-top">{renderInline(c)}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
   if (lines.length > 1 && lines.every((l) => l.startsWith('- '))) {
     return (
       <ul key={key} className="list-disc pl-5 space-y-1">
@@ -294,6 +320,20 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
     .map((slug) => CATEGORIES.find((c) => c.slug === slug))
     .filter((c): c is (typeof CATEGORIES)[number] => Boolean(c));
 
+  const cats = post.relatedCategories ?? [];
+  const relatedGuides = POSTS.filter((p) => p.slug !== post.slug)
+    .map((p) => ({ p, score: (p.relatedCategories ?? []).filter((c) => cats.includes(c)).length }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || (b.p.date < a.p.date ? -1 : 1))
+    .slice(0, 2)
+    .map((x) => x.p);
+  // two more guides picked by a stable rotation so inbound links spread across every post, not just the newest
+  const at = POSTS.findIndex((p) => p.slug === post.slug);
+  for (const step of [5, 11, 17]) {
+    const pick = POSTS[(at + step) % POSTS.length];
+    if (relatedGuides.length < 4 && pick.slug !== post.slug && !relatedGuides.some((g) => g.slug === pick.slug)) relatedGuides.push(pick);
+  }
+
   const blocks = post.content.split('\n\n');
   const tocItems = blocks.filter((b) => b.startsWith('## ')).map((b) => b.slice(3));
   if (post.faqs && post.faqs.length > 0) tocItems.push('Frequently asked questions');
@@ -302,7 +342,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8">
       <Breadcrumb items={[{ name: 'Blog', href: '/blog' }, { name: post.title, href: `/blog/${post.slug}` }]} />
 
-      <Link href="/blog" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#D4AF37] hover:underline">
+      <Link href="/blog/" className="inline-flex items-center gap-2 text-xs font-mono-code text-[#D4AF37] hover:underline">
         <ArrowLeft className="w-4 h-4" />
         <span>Return to Production Guides</span>
       </Link>
@@ -381,7 +421,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
             {relatedProducts.map((rel) => (
               <Link
                 key={rel.slug}
-                href={`/shop/${rel.category}/${rel.slug}`}
+                href={`/shop/${rel.category}/${rel.slug}/`}
                 className="luxury-card rounded-2xl overflow-hidden group block bg-white"
               >
                 <ProductPhoto src={rel.images[0]} alt={rel.name} />
@@ -404,12 +444,25 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
           {relatedCategories.map((cat) => (
             <Link
               key={cat.slug}
-              href={`/shop/${cat.slug}`}
+              href={`/shop/${cat.slug}/`}
               className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#F9F7F2] text-[#6F665F] hover:bg-white border border-[#EAE3DC] transition-all"
             >
               Explore {cat.name} →
             </Link>
           ))}
+        </div>
+      )}
+
+      {relatedGuides.length > 0 && (
+        <div className="pt-8 border-t border-[#EAE3DC] space-y-3">
+          <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">MORE GUIDES</h2>
+          <ul className="list-disc pl-5 space-y-1.5 text-sm">
+            {relatedGuides.map((g) => (
+              <li key={g.slug}>
+                <Link href={`/blog/${g.slug}/`} className={LINK_CLASS}>{g.title}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
@@ -424,7 +477,7 @@ export const BlogPostContent: React.FC<BlogPostContentProps> = ({ post }) => {
 
       <div className="pt-8 border-t border-[#EAE3DC] flex justify-between items-center">
         <Link
-          href="/shop"
+          href="/shop/"
           className="px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code"
         >
           Explore Cinema Props Catalog →

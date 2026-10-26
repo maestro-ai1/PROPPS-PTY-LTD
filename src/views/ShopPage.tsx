@@ -4,7 +4,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { ShoppingBag, Check } from 'lucide-react';
-import { PRODUCTS, CATEGORIES, CATEGORY_BODY, CATEGORY_SECTIONS, CATEGORY_FAQS } from '../config/site.js';
+import { PRODUCTS, CATEGORIES, CATEGORY_BODY, CATEGORY_SECTIONS, CATEGORY_FAQS, POSTS } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { Breadcrumb } from '../components/Breadcrumb.js';
 import { useApp } from '../context/AppContext.js';
@@ -67,7 +67,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
         {/* Category Pills — real links so every category is its own indexable URL */}
         <div className="flex flex-wrap items-center gap-2">
           <Link
-            href="/shop"
+            href="/shop/"
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all ${
               !category
                 ? 'bg-[#D4AF37] text-white font-bold shadow'
@@ -259,6 +259,27 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
           ))}
         </section>
       )}
+
+      {currentCatObj && (() => {
+        const guides = POSTS.filter((p) => (p.relatedCategories ?? []).includes(currentCatObj.slug))
+          .sort((a, b) => (b.date < a.date ? -1 : 1)).slice(0, 5);
+        return guides.length > 0 ? (
+          <section className="space-y-3 max-w-3xl border-t border-[#EAE3DC] pt-6" aria-labelledby="category-guides">
+            <h2 id="category-guides" className="font-serif-luxury text-xl font-bold text-[#1A1414]">
+              Buying guides for {currentCatObj.name}
+            </h2>
+            <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#6F665F]">
+              {guides.map((g) => (
+                <li key={g.slug}>
+                  <Link href={`/blog/${g.slug}/`} className="text-[#D4AF37] underline hover:text-[#C5A059] transition-colors">
+                    {g.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null;
+      })()}
     </div>
   );
 };

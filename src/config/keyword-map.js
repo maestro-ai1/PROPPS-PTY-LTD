@@ -10,7 +10,7 @@ const k = (keyword, intent, vol, kd) => ({ keyword, intent, vol, kd })
 export const KEYWORD_PAGES = {
   '/': {
     focus: k('australian prop money', 'C', 720, 21),
-    secondary: [k('prop money australia', 'C', 590, 27), k('prop cash', 'I', 90, 26), k('prop dollar', 'I', 110, 28), k('props money', 'C', 50, 19), k('au props', 'C', 50, 4)],
+    secondary: [k('prop money australia', 'C', 590, 27), k('props australia', 'C', 110, 25), k('props money', 'C', 50, 19), k('au props', 'C', 50, 4), k('props for sale australia', 'T', null, null)],
   },
   '/shop': {
     focus: k('australian prop money for sale', 'T', 20, 19),
@@ -31,7 +31,7 @@ export const KEYWORD_PAGES = {
   },
   '/shop/film-and-tv-props': {
     focus: k('buy film props', 'T', 90, 21),
-    secondary: [k('movie set props for sale', 'T', 90, 24), k('realistic money', 'C', 210, 28), k('movie prop money', 'C', 20, 16), k('buy movie props online australia', 'T', null, 11), k('prop money for movies', 'T', null, 15)],
+    secondary: [k('movie set props for sale', 'T', 90, 24), k('realistic money', 'C', 210, 28), k('movie prop money', 'C', 20, 16), k('buy movie props online australia', 'T', null, 11), k('movie props for sale australia', 'T', 40, null)],
   },
   '/shop/money-stacks': {
     focus: k('prop money stacks', 'I/C', 20, 17),
@@ -95,7 +95,7 @@ export const KEYWORD_PRODUCTS = {
   },
   'event-and-party-prop-cash-pack': {
     focus: k('kids play money', 'C', 20, 14),
-    secondary: [k('money for pretend play', 'T', null, 14)],
+    secondary: [k('money for pretend play', 'T', null, 14), k('money toy', 'I/T', 50, 7), k('$50 play money', 'C', 20, null), k('$100 play money', 'C', 20, null), k('10 dollar play money', 'C', 20, null)],
   },
   'custom-and-branded-prop-currency': {
     focus: k('custom prop notes', 'C', null, 10),
@@ -130,6 +130,11 @@ export const KEYWORD_POSTS = {
   'prop-money-for-content-creators-social-media-and-photoshoot-guidelines': k('prop money for content creators', 'C', null, 11),
   'shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia': k('buy prop money near me', 'T', 20, 7),
   'local-vs-overseas-prop-money-suppliers-compared': k('australian dollar prop notes', 'C', null, 27),
+  // 2026-10-26 batch (Semrush AU, same day)
+  'prop-dollar-vs-prop-cash-vs-prop-money': k('prop dollar', 'I', 110, 28),
+  'realistic-prop-money-australia-what-realistic-should-mean': k('realistic fake money australia', 'C', 170, 23),
+  'props-for-filming-ordering-prop-currency-for-a-shoot': k('props for filming', 'C', 50, 28),
+  'monetary-toys-and-play-money-sets-for-kids': k('monetary toys', 'C', 170, 8),
 }
 
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).
@@ -148,6 +153,8 @@ export const KEYWORD_HOLD = [
   { keyword: 'money forgery', intent: 'I', vol: 1600, kd: 39, type: 'excluded', reason: 'Crime-intent informational term, brand-safety risk' },
   { keyword: 'counterfeit / detector / how-to-spot cluster', intent: 'I', vol: null, kd: null, type: 'excluded', reason: 'Wrong audience; excluded since 2026-09-23' },
   { keyword: 'fake money printable / template / to print', intent: 'I', vol: 40, kd: 25, type: 'excluded', reason: 'DIY intent, the opposite of a sale' },
+  { keyword: 'theatrical props / stage prop', intent: 'C', vol: 140, kd: 37, type: 'pool', reason: 'KD 37 on stage prop; theatrical props 110/18 is generic props we do not stock beyond currency. Held for an owner stock decision' },
+  { keyword: 'fake $100 australia / fake note australia', intent: 'I', vol: 110, kd: 21, type: 'excluded', reason: 'Counterfeit-detection and crime intent; wrong audience' },
   { keyword: 'prop buy', intent: 'T', vol: 320, kd: 5, type: 'excluded', reason: 'Likely prop-trading intent, not props. Not used' },
   { keyword: 'alibaba prop money', intent: 'C', vol: 20, kd: 19, type: 'excluded', reason: 'Competitor brand query' },
 ]

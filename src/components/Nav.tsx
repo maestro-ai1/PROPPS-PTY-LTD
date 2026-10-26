@@ -61,7 +61,7 @@ export const Nav: React.FC = () => {
             {/* 2. SHOP with Dropdown */}
             <div className="relative group">
               <Link
-                href="/shop"
+                href="/shop/"
                 className={`flex items-center gap-1 text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
                   pathname.startsWith('/shop')
                     ? 'text-[#D4AF37] border-[#D4AF37]'
@@ -92,7 +92,7 @@ export const Nav: React.FC = () => {
                 ))}
                 <div className="pt-1.5 mt-1 border-t border-[#F7F4F0]">
                   <Link
-                    href="/shop"
+                    href="/shop/"
                     className="block w-full text-center py-1 text-[11px] font-bold text-[#D4AF37] hover:underline"
                   >
                     View All Cinema Prop Catalog →
@@ -103,7 +103,7 @@ export const Nav: React.FC = () => {
 
             {/* 3. VIDEOS */}
             <Link
-              href="/videos"
+              href="/videos/"
               className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
                 pathname === '/videos'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
@@ -115,7 +115,7 @@ export const Nav: React.FC = () => {
 
             {/* 3b. WHOLESALE */}
             <Link
-              href="/wholesale"
+              href="/wholesale/"
               className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
                 pathname === '/wholesale'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
@@ -127,7 +127,7 @@ export const Nav: React.FC = () => {
 
             {/* 4. BLOG (also matches GLOG / Guides) */}
             <Link
-              href="/blog"
+              href="/blog/"
               className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
                 pathname.startsWith('/blog')
                   ? 'text-[#D4AF37] border-[#D4AF37]'
@@ -140,7 +140,7 @@ export const Nav: React.FC = () => {
 
             {/* 5. FAQ */}
             <Link
-              href="/faq"
+              href="/faq/"
               className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
                 pathname === '/faq'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
@@ -152,7 +152,7 @@ export const Nav: React.FC = () => {
 
             {/* 5b. ABOUT */}
             <Link
-              href="/about"
+              href="/about/"
               className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
                 pathname === '/about'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
@@ -164,7 +164,7 @@ export const Nav: React.FC = () => {
 
             {/* 6. CONTACT */}
             <Link
-              href="/contact"
+              href="/contact/"
               className={`text-xs uppercase tracking-widest font-bold transition-all py-1.5 border-b-2 ${
                 pathname === '/contact'
                   ? 'text-[#D4AF37] border-[#D4AF37]'
@@ -189,7 +189,7 @@ export const Nav: React.FC = () => {
 
             {/* Admin Portal Quick Link */}
             <Link
-              href="/admin"
+              href="/admin/"
               className={`p-1.5 px-2.5 rounded-lg border text-xs font-mono-code flex items-center gap-1.5 transition-colors ${
                 pathname.startsWith('/admin')
                   ? 'bg-[#F9F7F2] border-[#D4AF37] text-[#D4AF37]'
@@ -252,7 +252,7 @@ export const Nav: React.FC = () => {
           </Link>
 
           <Link
-            href="/shop"
+            href="/shop/"
             onClick={closeMobile}
             className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
               pathname.startsWith('/shop') ? 'bg-[#F9F7F2] text-[#D4AF37]' : 'text-[#6F665F] hover:bg-[#F9F7F2]'
@@ -275,7 +275,7 @@ export const Nav: React.FC = () => {
           </div>
 
           <Link
-            href="/videos"
+            href="/videos/"
             onClick={closeMobile}
             className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
               pathname === '/videos' ? 'bg-[#F9F7F2] text-[#D4AF37]' : 'text-[#6F665F] hover:bg-[#F9F7F2]'
@@ -285,7 +285,7 @@ export const Nav: React.FC = () => {
           </Link>
 
           <Link
-            href="/blog"
+            href="/blog/"
             onClick={closeMobile}
             className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
               pathname.startsWith('/blog') ? 'bg-[#F9F7F2] text-[#D4AF37]' : 'text-[#6F665F] hover:bg-[#F9F7F2]'
@@ -295,7 +295,7 @@ export const Nav: React.FC = () => {
           </Link>
 
           <Link
-            href="/faq"
+            href="/faq/"
             onClick={closeMobile}
             className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
               pathname === '/faq' ? 'bg-[#F9F7F2] text-[#D4AF37]' : 'text-[#6F665F] hover:bg-[#F9F7F2]'
@@ -305,7 +305,7 @@ export const Nav: React.FC = () => {
           </Link>
 
           <Link
-            href="/contact"
+            href="/contact/"
             onClick={closeMobile}
             className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold font-mono-code transition-colors ${
               pathname === '/contact' ? 'bg-[#F9F7F2] text-[#D4AF37]' : 'text-[#6F665F] hover:bg-[#F9F7F2]'
@@ -327,7 +327,7 @@ export const Nav: React.FC = () => {
             </Link>
 
             <Link
-              href="/wholesale"
+              href="/wholesale/"
               onClick={closeMobile}
               className="block w-full text-left px-3 py-1.5 text-xs text-[#6F665F] hover:text-[#1A1414]"
             >
@@ -343,7 +343,7 @@ export const Nav: React.FC = () => {
             </Link>
 
             <Link
-              href="/about"
+              href="/about/"
               onClick={closeMobile}
               className="block w-full text-left px-3 py-1.5 text-xs text-[#6F665F] hover:text-[#1A1414]"
             >
@@ -351,7 +351,7 @@ export const Nav: React.FC = () => {
             </Link>
 
             <Link
-              href="/contact"
+              href="/contact/"
               onClick={closeMobile}
               className="block w-full text-left px-3 py-1.5 text-xs text-[#6F665F] hover:text-[#1A1414]"
             >
@@ -360,7 +360,7 @@ export const Nav: React.FC = () => {
           </div>
 
           <Link
-            href="/admin"
+            href="/admin/"
             onClick={closeMobile}
             className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-[#D4AF37] bg-white border border-[#D4AF37]/40 flex items-center justify-between"
           >

@@ -122,7 +122,7 @@ export const ThankYouOrderContent: React.FC = () => {
           </a>
         )}
         <Link
-          href="/shop"
+          href="/shop/"
           className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#C5A059] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow font-mono-code text-center"
         >
           Return to Cinema Catalog
