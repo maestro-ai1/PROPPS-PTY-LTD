@@ -8,6 +8,8 @@ import { PRODUCTS, CATEGORIES, SITE, PRODUCT_FAQS, PRODUCT_SEO } from '../config
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { Breadcrumb } from '../components/Breadcrumb.js';
 import { FaqSection } from '../components/FaqSection.js';
+import { InlineLinks } from '../components/InlineLinks.js';
+import { PRODUCT_COPY } from '../config/product-copy.js';
 import { waLink } from '../lib/whatsapp.js';
 import { useApp } from '../context/AppContext.js';
 
@@ -241,6 +243,22 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
           )}
         </div>
       </div>
+
+      {/* Keyword-bearing product copy with outbound and internal links */}
+      {PRODUCT_COPY[product.slug as keyof typeof PRODUCT_COPY] && (
+        <div className="pt-12 border-t border-[#EAE3DC] space-y-8 max-w-3xl">
+          {PRODUCT_COPY[product.slug as keyof typeof PRODUCT_COPY].map((section) => (
+            <section key={section.h2} className="space-y-2">
+              <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">{section.h2}</h2>
+              {section.paras.map((para) => (
+                <p key={para.slice(0, 30)} className="text-sm text-[#6F665F] leading-relaxed">
+                  <InlineLinks text={para} />
+                </p>
+              ))}
+            </section>
+          ))}
+        </div>
+      )}
 
       {/* Product FAQs (5 unique questions per product) */}
       {PRODUCT_FAQS[product.slug] && (

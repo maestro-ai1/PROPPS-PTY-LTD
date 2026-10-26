@@ -7,6 +7,7 @@ import { ShoppingBag, Check } from 'lucide-react';
 import { PRODUCTS, CATEGORIES, CATEGORY_BODY, CATEGORY_SECTIONS, CATEGORY_FAQS, POSTS } from '../config/site.js';
 import { ProductPhoto } from '../components/ProductPhoto.js';
 import { Breadcrumb } from '../components/Breadcrumb.js';
+import { InlineLinks } from '../components/InlineLinks.js';
 import { useApp } from '../context/AppContext.js';
 
 interface ShopContentProps {
@@ -233,7 +234,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
               <h2 className="font-serif-luxury text-xl font-bold text-[#1A1414]">{section.h2}</h2>
               {section.paras.map((para) => (
                 <p key={para.slice(0, 24)} className="text-sm text-[#6F665F] leading-relaxed">
-                  {para}
+                  <InlineLinks text={para} />
                 </p>
               ))}
             </section>

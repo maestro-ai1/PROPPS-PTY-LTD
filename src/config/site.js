@@ -256,6 +256,26 @@ export const CATEGORY_SECTIONS = {
       "paras": [
         "Some buyers search for fake Australian money prop. To be clear about what we sell: these are non-legal tender reproduction props made solely for motion pictures, television, theatre, visual arts and simulation training. They are never to be spent, handed over as payment or presented as real cash. Read the compliance guide for the standard each note is built to."
       ]
+    },
+    {
+      "h2": "Prop Australian money versus a real banknote",
+      "paras": [
+        "Prop Australian money from PROPPS is built to be convincing on camera and obviously a reproduction in the hand. Genuine Australian banknotes are polymer with embedded security features. Ours are printed on matte archival paper, carry permanent specimen markings and are never spendable. The Reserve Bank explains how reproductions must differ on its [banknote pages](https://www.rba.gov.au/banknotes/), and our [compliance page](/compliance/) sets out the markings on every note.",
+        "The offences sit in the Commonwealth [Crimes (Currency) Act 1981](https://www.legislation.gov.au/). For the full plain-English version, read [Crimes Act and RBA prop money rules explained](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the guide to [the legal difference between fake money and prop money](/blog/fake-money-vs-prop-money-the-legal-difference-in-australia/)."
+      ]
+    },
+    {
+      "h2": "Prop money AU: pricing, delivery and payment",
+      "paras": [
+        "Orders for prop money AU wide start at $300 AUD and delivery is free from $500 AUD. Pay by bank transfer, PayID or cryptocurrency, which receives a 10% discount. Parcels leave our Eltham, Melbourne depot by [Australia Post Express](https://auspost.com.au/) with a signature on delivery, usually within 24 business hours of payment. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for refunds within 3 to 8 business days.",
+        "Not sure which denomination you need? Compare the [$5](/shop/new-notes/5-australian-prop-money-for-sale/), [$10](/shop/new-notes/10-australian-prop-money-for-sale/), [$20](/shop/new-notes/20-australian-prop-money-for-sale/), [$50](/shop/new-notes/50-australian-prop-money-for-sale/) and [$100](/shop/new-notes/100-australian-prop-money-for-sale/) notes, or read [which denominations suit film and TV](/blog/best-australian-banknote-denominations-for-film-and-tv-scenes/)."
+      ]
+    },
+    {
+      "h2": "Realistic prop money for Australian productions",
+      "paras": [
+        "Buyers who search for realistic fake money in Australia usually want props that read well on a lens. That is a lighting, print and finish question, and our guide to [what realistic should and should not mean](/blog/realistic-prop-money-australia-what-realistic-should-mean/) answers it. To judge quality before you buy, use the [on-camera quality checklist](/blog/high-quality-prop-money-how-to-judge-it-on-camera/)."
+      ]
     }
   ],
   "film-and-tv-props": [
