@@ -144,6 +144,7 @@ export const KEYWORD_POSTS = {
   'fake-money-for-parties-casino-nights-birthdays-weddings': k('fake money for party', 'C', 20, null),
   'australian-polymer-prop-money-vs-paper-prop-notes': k('australian polymer prop money', 'C', 10, null),
   'australian-play-money-where-to-buy-and-what-to-check': k('australian play money set', 'C', 20, null),
+  'fake-money-for-classroom-play-money-lessons-by-year-level': k('fake money for classroom', 'C', 20, null),
 }
 
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).

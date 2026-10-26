@@ -31,7 +31,7 @@ The honest read is that these six posts are long-tail and trust builders, not vo
 | Parties | fake money for party / casino party / birthday / wedding / decoration | New post |
 | Material | australian polymer prop money (for sale), polymer vs paper, does prop money feel real | New post, homepage FAQ |
 | Legal | is prop money legal in australia, can you spend prop money, is play money illegal | Already covered by three legal posts, /compliance/ and the homepage FAQ |
-| Classroom | fake money for classroom / teachers / math / counting | Queued (partly covered by the monetary toys and play money posts) |
+| Classroom | fake money for classroom / teachers / math / counting | New post (Semrush: 10 to 20 searches a month each, no KD) |
 | DIY and printable | how to make prop money, printable, template, to print | Excluded (opposite of a sale); one H2 in the play money post covers printable vs ready-made |
 | Other currencies | prop money canada / uk / usd / euro | Excluded (AUD only, no stock) |
 | Craft and no-stock | money gun, bouquet, cakes, nail art, halloween | Held (money gun 1,000/28 is the owner stock decision) |
@@ -45,5 +45,4 @@ The honest read is that these six posts are long-tail and trust builders, not vo
 - Images: every post now has its own cover (35 posts, 35 distinct files), cut from the shop's own photographs and checked by eye for text and watermarks.
 
 ## Next
-1. Classroom play money post.
-2. Request indexing for the 6 new URLs (quota resets daily; see memory).
+1. Request indexing for the 6 new URLs (quota resets daily; see memory).

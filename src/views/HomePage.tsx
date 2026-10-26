@@ -521,6 +521,7 @@ export const HomeContent: React.FC = () => {
           <li><Link href="/blog/australian-play-money-where-to-buy-and-what-to-check/" className="text-[#D4AF37] underline">Australian play money: where to buy</Link></li>
           <li><Link href="/blog/fake-money-for-parties-casino-nights-birthdays-weddings/" className="text-[#D4AF37] underline">Fake money for parties and casino nights</Link></li>
           <li><Link href="/blog/can-you-take-prop-money-on-a-plane-in-australia/" className="text-[#D4AF37] underline">Can you take prop money on a plane?</Link></li>
+          <li><Link href="/blog/fake-money-for-classroom-play-money-lessons-by-year-level/" className="text-[#D4AF37] underline">Fake money for the classroom</Link></li>
           <li><Link href="/blog/monetary-toys-and-play-money-sets-for-kids/" className="text-[#D4AF37] underline">Monetary toys and play money sets</Link></li>
           <li><Link href="/blog/is-it-illegal-to-buy-prop-money-australia/" className="text-[#D4AF37] underline">Is it illegal to buy prop money?</Link></li>
           <li><Link href="/compliance/" className="text-[#D4AF37] underline">Prop money Australia laws: compliance guide</Link></li>

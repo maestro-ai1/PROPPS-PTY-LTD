@@ -49,7 +49,7 @@ const RANK = {
   add('prop.cash', 'I', 90, 28, 'excluded', 'Betting-site domain query, not ours');
   // Google Autocomplete (AU, hl=en gl=au) clusters reviewed 2026-10-26; volumes unverified. Full list: docs/google-autocomplete-au-2026-10-26.txt
   [
-    ['fake money for classroom / teachers / teaching / math / counting', 'C', null, null, 'queue', 'Next blog: classroom play money lessons by year level (partly covered by the monetary toys and play money posts)'],
+    ['fake money for classroom / teachers / teaching / math / counting', 'C', 20, null, 'blog', '/blog/fake-money-for-classroom-play-money-lessons-by-year-level/ (Semrush AU: fake money for classroom 20, for kids 20, for learning 20, money for classroom 20, teaching 10, classroom economy money 10)'],
     ['fake money for photos / photoshoot / pictures / vlogging', 'C', null, null, 'page secondary', '/shop/photography-props/ and /blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/'],
     ['fake money for casino party / decoration / birthday / wedding', 'C', null, null, 'blog', '/blog/fake-money-for-parties-casino-nights-birthdays-weddings/'],
     ['how much does prop money cost / how much is prop money / 1 million in prop money', 'I', null, null, 'blog + FAQ', '/blog/how-much-is-a-million-dollars-in-prop-money/ and the homepage FAQ'],
