@@ -515,6 +515,12 @@ export const HomeContent: React.FC = () => {
           <li><Link href="/blog/realistic-prop-money-australia-what-realistic-should-mean/" className="text-[#D4AF37] underline">Realistic prop money: what it should mean</Link></li>
           <li><Link href="/blog/props-for-filming-ordering-prop-currency-for-a-shoot/" className="text-[#D4AF37] underline">Props for filming: how to order</Link></li>
           <li><Link href="/blog/cheap-prop-money-what-you-are-really-paying-for/" className="text-[#D4AF37] underline">Cheap prop money: what you pay for</Link></li>
+          <li><Link href="/blog/prop-money-for-music-videos-in-australia/" className="text-[#D4AF37] underline">Prop money for music videos</Link></li>
+          <li><Link href="/blog/how-much-is-a-million-dollars-in-prop-money/" className="text-[#D4AF37] underline">How much is a million dollars in prop money?</Link></li>
+          <li><Link href="/blog/australian-polymer-prop-money-vs-paper-prop-notes/" className="text-[#D4AF37] underline">Polymer vs paper prop money</Link></li>
+          <li><Link href="/blog/australian-play-money-where-to-buy-and-what-to-check/" className="text-[#D4AF37] underline">Australian play money: where to buy</Link></li>
+          <li><Link href="/blog/fake-money-for-parties-casino-nights-birthdays-weddings/" className="text-[#D4AF37] underline">Fake money for parties and casino nights</Link></li>
+          <li><Link href="/blog/can-you-take-prop-money-on-a-plane-in-australia/" className="text-[#D4AF37] underline">Can you take prop money on a plane?</Link></li>
           <li><Link href="/blog/monetary-toys-and-play-money-sets-for-kids/" className="text-[#D4AF37] underline">Monetary toys and play money sets</Link></li>
           <li><Link href="/blog/is-it-illegal-to-buy-prop-money-australia/" className="text-[#D4AF37] underline">Is it illegal to buy prop money?</Link></li>
           <li><Link href="/compliance/" className="text-[#D4AF37] underline">Prop money Australia laws: compliance guide</Link></li>

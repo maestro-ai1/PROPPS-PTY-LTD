@@ -47,6 +47,24 @@ const RANK = {
   for (const h of km.KEYWORD_HOLD) add(h.keyword, h.intent, h.vol, h.kd, h.type === 'excluded' ? 'excluded' : 'hold', h.reason);
   add('prop cash', 'I', 90, 26, 'blog secondary', '/blog/prop-dollar-vs-prop-cash-vs-prop-money/');
   add('prop.cash', 'I', 90, 28, 'excluded', 'Betting-site domain query, not ours');
+  // Google Autocomplete (AU, hl=en gl=au) clusters reviewed 2026-10-26; volumes unverified. Full list: docs/google-autocomplete-au-2026-10-26.txt
+  [
+    ['fake money for classroom / teachers / teaching / math / counting', 'C', null, null, 'queue', 'Next blog: classroom play money lessons by year level (partly covered by the monetary toys and play money posts)'],
+    ['fake money for photos / photoshoot / pictures / vlogging', 'C', null, null, 'page secondary', '/shop/photography-props/ and /blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/'],
+    ['fake money for casino party / decoration / birthday / wedding', 'C', null, null, 'blog', '/blog/fake-money-for-parties-casino-nights-birthdays-weddings/'],
+    ['how much does prop money cost / how much is prop money / 1 million in prop money', 'I', null, null, 'blog + FAQ', '/blog/how-much-is-a-million-dollars-in-prop-money/ and the homepage FAQ'],
+    ['does prop money feel real / how realistic is prop money', 'I', null, null, 'blog + FAQ', 'Realistic post, polymer vs paper post and the homepage FAQ'],
+    ['can you spend prop money / can you buy stuff with prop money', 'I', null, null, 'FAQ', 'Homepage FAQ and /compliance/ (answer: no, never spendable)'],
+    ['australian play money kmart / big w / officeworks / coins / notes / pack', 'C', null, null, 'blog', '/blog/australian-play-money-where-to-buy-and-what-to-check/ (neutral comparison, no affiliation)'],
+    ['australian play money printable / free pdf / to print', 'I', null, null, 'excluded', 'DIY intent; one H2 in the play money post explains printable vs ready-made'],
+    ['how to make prop money / custom prop money template / is it legal to print prop money', 'I', null, null, 'excluded', 'DIY and legal-risk intent; the opposite of a sale'],
+    ['prop money canada / uk / usd / euro / pound / cad', 'C', null, null, 'excluded', 'No stock (AUD only); goes to the to-source list'],
+    ['fake money for money gun / bouquet / cakes / nail art / halloween', 'C', null, null, 'hold', 'No stock or craft use; money gun 1,000/28 is the owner stock decision'],
+    ['fake money for dementia / elderly / alzheimers / aged care', 'I', null, null, 'hold', 'Care-setting claims; needs owner review before any copy'],
+    ['best prop money for music videos / fake money for music video / rap videos', 'C', null, null, 'blog', '/blog/prop-money-for-music-videos-in-australia/'],
+    ['can you take prop money on a plane / is it legal to carry prop money', 'I', null, null, 'blog', '/blog/can-you-take-prop-money-on-a-plane-in-australia/'],
+    ['australian polymer prop money (for sale)', 'C', null, null, 'blog', '/blog/australian-polymer-prop-money-vs-paper-prop-notes/ (we sell paper, so the page explains why)'],
+  ].forEach(([k, i, v, d, t, r]) => add(k, i, v, d, t, r));
   // competitor keywords that were reviewed and deliberately not mapped
   [
     ['counterfeit money / how to spot fake cash / counterfeit aud cluster', 'I', 2400, 51, 'excluded', 'Counterfeit-detection audience and brand-safety risk; the .org ranks 18 to 56 on these, we do not compete'],

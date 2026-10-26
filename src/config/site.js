@@ -907,7 +907,7 @@ export const POSTS = [
     category: 'Compliance & Legal',
     date: '2026-02-15',
     readTime: '9 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'crimes-currency-act-1981-rba-prop-money-guidelines.webp',
     imageAlt: 'Prop money australia laws — bundled specimen prop currency stacks compliant with the Crimes (Currency) Act 1981',
     relatedCategories: ['new-notes'],
     relatedProducts: ['100-australian-prop-money-for-sale', '50-australian-prop-money-for-sale'],
@@ -945,7 +945,7 @@ export const POSTS = [
     category: 'Cinematography & Lighting',
     date: '2026-01-20',
     readTime: '9 min read',
-    image: 'blog-100-fan-handheld.jpg',
+    image: 'lighting-prop-money-for-camera-avoiding-glare.webp',
     imageAlt: 'Lighting prop money for camera — fanned $100 specimen prop notes for glare-free filming',
     relatedCategories: ['film-and-tv-props'],
     relatedProducts: [
@@ -986,7 +986,7 @@ export const POSTS = [
     category: 'Art Department',
     date: '2025-11-10',
     readTime: '9 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'art-department-guide-weathering-prop-cash.webp',
     imageAlt: 'Prop cash for film production — weathered bundled specimen prop currency stacks',
     relatedCategories: ['film-and-tv-props', 'money-stacks'],
     relatedProducts: ['film-and-tv-prop-currency-pack', 'bulk-money-stack-pack'],
@@ -1023,7 +1023,7 @@ export const POSTS = [
     category: 'Buying Guide',
     date: '2026-03-01',
     readTime: '9 min read',
-    image: 'blog-fanned-50-stack.jpg',
+    image: 'where-to-buy-prop-money-in-australia-legally.webp',
     imageAlt: 'Buy prop money australia — fanned $50 specimen prop note stack',
     relatedCategories: ['new-notes'],
     relatedProducts: ['100-australian-prop-money-for-sale', '50-australian-prop-money-for-sale'],
@@ -1061,7 +1061,7 @@ export const POSTS = [
     category: 'Buying Guide',
     date: '2026-03-11',
     readTime: '9 min read',
-    image: 'blog-20-50-handful.jpg',
+    image: 'play-money-vs-prop-money-which-one-do-you-need.webp',
     imageAlt: 'Play money australia vs prop money — handful of $20 and $50 specimen prop notes',
     relatedCategories: ['event-and-party-props', 'photography-props'],
     relatedProducts: ['event-and-party-prop-cash-pack', 'photography-prop-currency-set'],
@@ -1098,7 +1098,7 @@ export const POSTS = [
     category: 'Production Planning',
     date: '2026-03-21',
     readTime: '11 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'how-much-prop-money-do-you-need-for-a-scene.webp',
     imageAlt: 'Prop bundles of money australia — stacked specimen prop currency bundles for film scenes',
     relatedCategories: ['money-stacks'],
     relatedProducts: ['bulk-money-stack-pack', '100-australian-prop-money-for-sale'],
@@ -1135,7 +1135,7 @@ export const POSTS = [
     category: 'Photography',
     date: '2026-03-31',
     readTime: '11 min read',
-    image: 'blog-50-fan-handheld.jpg',
+    image: 'prop-money-for-photography-realistic-cash-shots-without-the-risk.webp',
     imageAlt: 'Prop money for photoshoot — handheld fan of $50 specimen prop notes',
     relatedCategories: ['photography-props'],
     relatedProducts: ['photography-prop-currency-set'],
@@ -1172,7 +1172,7 @@ export const POSTS = [
     category: 'Compliance & Legal',
     date: '2026-04-10',
     readTime: '10 min read',
-    image: 'blog-20-50-handful.jpg',
+    image: 'novelty-money-for-parties-and-events-whats-legal-in-australia.webp',
     imageAlt: 'Novelty prop money australia — mixed $20 and $50 specimen prop notes for party props',
     relatedCategories: ['event-and-party-props'],
     relatedProducts: ['event-and-party-prop-cash-pack'],
@@ -1209,7 +1209,7 @@ export const POSTS = [
     category: 'Custom Production',
     date: '2026-04-20',
     readTime: '11 min read',
-    image: 'blog-fanned-50-stack.jpg',
+    image: 'custom-and-branded-prop-currency-guide-for-agencies.webp',
     imageAlt: 'Custom prop money printing australia — fanned specimen $50 prop note stack',
     relatedCategories: ['custom-and-branded-props'],
     relatedProducts: ['custom-and-branded-prop-currency'],
@@ -1246,7 +1246,7 @@ export const POSTS = [
     category: 'Wholesale',
     date: '2026-04-30',
     readTime: '11 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'wholesale-prop-money-for-production-companies-bulk-pricing-explained.webp',
     imageAlt: 'Wholesale prop money australia — bulk bundled specimen prop currency stacks',
     relatedCategories: ['money-stacks'],
     relatedProducts: ['bulk-money-stack-pack'],
@@ -1283,7 +1283,7 @@ export const POSTS = [
     category: 'Compliance & Legal',
     date: '2026-05-10',
     readTime: '9 min read',
-    image: 'blog-100-fan-handheld.jpg',
+    image: 'fake-money-vs-prop-money-the-legal-difference-in-australia.webp',
     imageAlt: 'Imitation money vs prop money — fanned $100 specimen prop notes',
     relatedCategories: ['new-notes'],
     relatedProducts: ['5-australian-prop-money-for-sale', '10-australian-prop-money-for-sale'],
@@ -1321,7 +1321,7 @@ export const POSTS = [
     category: 'Cinematography',
     date: '2026-05-20',
     readTime: '12 min read',
-    image: 'blog-20-50-handful.jpg',
+    image: 'best-australian-banknote-denominations-for-film-and-tv-scenes.webp',
     imageAlt: 'Australian banknotes for film scenes — $20 and $50 specimen prop note denominations',
     relatedCategories: ['new-notes'],
     relatedProducts: ['100-australian-prop-money-for-sale', '50-australian-prop-money-for-sale'],
@@ -1358,7 +1358,7 @@ export const POSTS = [
     category: 'Art Department',
     date: '2026-05-30',
     readTime: '12 min read',
-    image: 'blog-fanned-50-stack.jpg',
+    image: 'brief-history-of-australian-currency-notes-for-set-designers.webp',
     imageAlt: 'Australian currency notes history — fanned $50 specimen prop note stack for set designers',
     relatedCategories: ['film-and-tv-props'],
     relatedProducts: ['film-and-tv-prop-currency-pack'],
@@ -1395,7 +1395,7 @@ export const POSTS = [
     category: 'Art Department',
     date: '2026-06-19',
     readTime: '12 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'buying-film-props-in-australia-a-checklist-for-art-departments.webp',
     imageAlt: 'Buy film props australia — bundled specimen prop currency stacks checklist',
     relatedCategories: ['film-and-tv-props'],
     relatedProducts: ['film-and-tv-prop-currency-pack'],
@@ -1432,7 +1432,7 @@ export const POSTS = [
     category: 'Production Planning',
     date: '2026-07-09',
     readTime: '12 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'prop-cash-for-heist-and-bank-scenes-getting-the-volume-right.webp',
     imageAlt: 'Money stack australia — bundled specimen prop currency stacks for heist scenes',
     relatedCategories: ['money-stacks'],
     relatedProducts: ['bulk-money-stack-pack'],
@@ -1469,7 +1469,7 @@ export const POSTS = [
     category: 'Photography',
     date: '2026-07-19',
     readTime: '13 min read',
-    image: 'blog-50-fan-handheld.jpg',
+    image: 'prop-money-for-content-creators-social-media-and-photoshoot-guidelines.webp',
     imageAlt: 'Fake australian money for content creators — handheld fan of $50 specimen prop notes',
     relatedCategories: ['photography-props'],
     relatedProducts: ['photography-prop-currency-set'],
@@ -1506,7 +1506,7 @@ export const POSTS = [
     category: 'Buying Guide',
     date: '2026-08-08',
     readTime: '10 min read',
-    image: 'blog-20-50-handful.jpg',
+    image: 'toy-money-and-play-money-for-kids-games-and-learning.webp',
     imageAlt: 'Toy money australia for kids games — handful of $20 and $50 specimen prop notes',
     relatedCategories: ['event-and-party-props'],
     relatedProducts: ['event-and-party-prop-cash-pack'],
@@ -1543,7 +1543,7 @@ export const POSTS = [
     category: 'Ordering & Payment',
     date: '2026-08-18',
     readTime: '12 min read',
-    image: 'blog-fanned-50-stack.jpg',
+    image: 'shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia.webp',
     imageAlt: 'Prop money near me fast dispatch — fanned $50 specimen prop note stack',
     relatedCategories: ['new-notes'],
     relatedProducts: ['100-australian-prop-money-for-sale'],
@@ -1580,7 +1580,7 @@ export const POSTS = [
     category: 'Buying Guide',
     date: '2026-09-22',
     readTime: '13 min read',
-    image: 'blog-50-fan-handheld.jpg',
+    image: 'local-vs-overseas-prop-money-suppliers-compared.webp',
     imageAlt: 'Realistic prop money for sale — fanned Australian $50 specimen prop notes from a local Melbourne supplier',
     relatedCategories: ['new-notes'],
     relatedProducts: ['50-australian-prop-money-for-sale', '100-australian-prop-money-for-sale'],
@@ -1619,7 +1619,7 @@ export const POSTS = [
     category: 'Buying Guide',
     date: '2026-10-04',
     readTime: '9 min read',
-    image: 'blog-fanned-50-stack.jpg',
+    image: 'can-you-buy-prop-money-in-australia.webp',
     imageAlt: 'Fanned $50 specimen prop notes marked for motion picture use, ready to order in Australia',
     relatedCategories: ['new-notes'],
     relatedProducts: ['50-australian-prop-money-for-sale', '100-australian-prop-money-for-sale'],
@@ -1657,7 +1657,7 @@ export const POSTS = [
     category: 'Compliance & Legal',
     date: '2026-10-05',
     readTime: '9 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'is-it-illegal-to-buy-prop-money-australia.webp',
     imageAlt: 'Bundled specimen prop currency stacks carrying compliance markings',
     relatedCategories: ['new-notes'],
     relatedProducts: ['100-australian-prop-money-for-sale'],
@@ -1695,7 +1695,7 @@ export const POSTS = [
     category: 'Buying Guide',
     date: '2026-10-06',
     readTime: '12 min read',
-    image: 'blog-20-50-handful.jpg',
+    image: 'cheap-prop-money-what-you-are-really-paying-for.webp',
     imageAlt: 'A handful of $20 and $50 specimen prop notes showing print detail',
     relatedCategories: ['new-notes', 'money-stacks'],
     relatedProducts: ['20-australian-prop-money-for-sale', '50-australian-prop-money-for-sale'],
@@ -1733,7 +1733,7 @@ export const POSTS = [
     category: 'Cinematography & Lighting',
     date: '2026-10-07',
     readTime: '9 min read',
-    image: 'blog-50-fan-handheld.jpg',
+    image: 'high-quality-prop-money-how-to-judge-it-on-camera.webp',
     imageAlt: 'Handheld fan of $50 specimen prop notes shown for print quality',
     relatedCategories: ['new-notes', 'film-and-tv-props'],
     relatedProducts: ['50-australian-prop-money-for-sale'],
@@ -1771,7 +1771,7 @@ export const POSTS = [
     category: 'Buying Guide',
     date: '2026-10-09',
     readTime: '9 min read',
-    image: 'blog-100-fan-handheld.jpg',
+    image: '100-dollar-prop-money-which-bundle-size.webp',
     imageAlt: 'Handheld fan of $100 specimen prop notes',
     relatedCategories: ['new-notes'],
     relatedProducts: ['100-australian-prop-money-for-sale'],
@@ -1809,7 +1809,7 @@ export const POSTS = [
     category: 'Art Department',
     date: '2026-10-10',
     readTime: '9 min read',
-    image: 'blog-bundled-stacks.jpg',
+    image: 'ready-prop-money-stacks-for-fast-turnaround.webp',
     imageAlt: 'Strapped specimen prop money stacks ready for set',
     relatedCategories: ['money-stacks'],
     relatedProducts: ['bulk-money-stack-pack'],
@@ -2024,6 +2024,284 @@ export const POSTS = [
       }
     ],
     "updated": "2026-10-26"
+  },
+  {
+    "slug": "prop-money-for-music-videos-in-australia",
+    "title": "Prop Money for Music Videos in Australia: What to Buy, How Much and How to Shoot It",
+    "seoTitle": "Prop Money for Music Videos in Australia: A Buyer Guide",
+    "excerpt": "Prop money for music videos needs the right look, volume and paperwork. See what to buy, how much to order and how to shoot cash safely in Australia.",
+    "category": "Production Planning",
+    "date": "2026-10-26",
+    "readTime": "9 min read",
+    "image": "prop-money-for-music-videos-in-australia.webp",
+    "imageAlt": "Prop money for music videos: fanned $100 specimen prop notes held in a hand",
+    "relatedCategories": [
+      "money-stacks",
+      "photography-props"
+    ],
+    "relatedProducts": [
+      "bulk-money-stack-pack",
+      "photography-prop-currency-set"
+    ],
+    "relatedPage": {
+      "href": "/shop/money-stacks/",
+      "label": "Shop prop money stacks for video shoots"
+    },
+    "content": "Cash is a music video staple: a fan of notes in a hand, a table of stacks, money thrown in the air. Searches like \"best prop money for music videos\" and \"fake money for music video\" come from artists, directors and small crews who need cash that looks right on camera and does not cause trouble afterwards. This guide explains what prop money for music videos should look like, how much to order, and how to shoot it safely in Australia.\n\nIt is general production advice, not legal advice. Every PROPPS note is a non-legal tender reproduction made for film, television, theatre, photography and training, and it carries specimen markings.\n\n## What makes prop money work in a music video\n\nMusic videos are shot fast, often handheld, often with colour grading. That changes what matters:\n\n- **Colour that survives grading.** Strong, distinct denominations ($100 green, $50 yellow-gold) hold up when the colourist pushes saturation.\n- **Matte paper.** Gloss throws highlights under LED panels and phone lights. Matte archival paper reads cleanly.\n- **Straps and stacks.** A strapped stack reads as a sum of money at any distance, so you need fewer notes for the same look.\n- **Durability.** Throwing, fanning and rain-of-cash shots damage notes quickly. Order more than you think.\n\nFor judging quality before you buy, read [how to judge high quality prop money on camera](/blog/high-quality-prop-money-how-to-judge-it-on-camera/) and [how cinematographers light prop money](/blog/lighting-prop-money-for-camera-avoiding-glare/).\n\n## How much to order\n\nCount by shot type, then add a margin.\n\n| Shot | What to order |\n|---|---|\n| Fan of notes in a hand | A bundle of one denomination from the [New Notes range](/shop/new-notes/) |\n| Table or bed covered in cash | Strapped stacks from the [bulk money stack pack](/shop/money-stacks/bulk-money-stack-pack/) |\n| Money thrown in the air | Loose notes, plus about 50% extra for damage |\n| Close-up of a single note | A hero note such as the [$100 prop note](/shop/new-notes/100-australian-prop-money-for-sale/) |\n| Social clip and stills | The [photography prop currency set](/shop/photography-props/photography-prop-currency-set/) |\n\nOur guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) walks through the counting method, and [prop cash for heist and bank scenes](/blog/prop-cash-for-heist-and-bank-scenes-getting-the-volume-right/) covers large volumes.\n\n## Shooting money safely and lawfully\n\nThe law cares about intent and presentation, not the camera. The Commonwealth [Crimes (Currency) Act 1981](https://www.legislation.gov.au/) targets making or possessing items that look like Australian currency without a lawful basis, and the Reserve Bank publishes [guidance on reproducing banknotes](https://www.rba.gov.au/banknotes/). In practice, a few habits keep a video clean:\n\n1. **Keep the notes marked.** Never remove or hide the specimen markings.\n2. **Never spend the notes.** Not as a joke, not as a test.\n3. **Do not frame it as real cash in captions.** A giveaway-style post with prop money invites complaints from platforms and police.\n4. **Keep the invoice.** Show it with the notes if you are asked on location.\n5. **Control the notes on set.** One person counts them out and in.\n\nContent creators should also read [prop money for content creators](/blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/) before publishing.\n\n## Shooting tips for artists and small crews\n\n**Light for the paper, not the print.** Keep the key light off-axis so the notes do not flare. A single soft source from the side shows texture and avoids glare.\n\n**Dress the notes.** Fresh notes look like a bank vault. For a street or party look, age them slightly. The [art department weathering guide](/blog/art-department-guide-weathering-prop-cash/) shows how.\n\n**Mix denominations.** A stack of all $100 notes can look staged. Mix $50 and $20 notes in the background and keep the hero denomination in the foreground. See [the best denominations for film and TV](/blog/best-australian-banknote-denominations-for-film-and-tv-scenes/).\n\n**Test before the day.** Shoot a few frames of the notes under your lights. Twenty minutes saves a reshoot.\n\n## Budget and ordering for a video shoot\n\nA small music video usually needs one bulk stack plus a few hero notes. Larger productions with several set-ups can ask about wholesale tiers of 10% to 30% off, explained in the [wholesale pricing guide](/blog/wholesale-prop-money-for-production-companies-bulk-pricing-explained/). Orders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. Parcels ship from Eltham, Melbourne by [Australia Post Express](https://auspost.com.au/) with a signature on delivery. Read the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.\n\nOrder before you need the notes in hand. A late parcel is the most common reason a shoot day starts without cash. Our guide to [ordering props for filming](/blog/props-for-filming-ordering-prop-currency-for-a-shoot/) gives a week-by-week schedule that works for a music video too.\n\n## Common mistakes in music video cash scenes\n\n## Planning the shoot day around the cash\n\nCash scenes eat time. Notes need to be counted out, arranged, restacked and counted back in, and every retake means resetting the pile. Build that into the schedule. A table set-up with a few strapped stacks takes about 15 minutes to dress. A bed covered in notes takes much longer, because each layer has to look natural from the camera angle. If you have a short location window, dress the cash set-up first and rehearse the performance after.\n\nKeep one person responsible for the notes. On a small music video that is usually the producer or the art director. They count the notes out in the morning, count them in at lunch and again at wrap. A discrepancy of a few notes is normal after throw shots, but a missing stack should be found before anyone leaves the location.\n\n## Lighting and lens choices that flatter cash\n\nA shallow depth of field makes a pile of notes look bigger, because the foreground stack stays sharp and the background melts into colour. A longer lens compresses the stacks so they look taller. For handheld fans of notes, a wide lens close to the hand exaggerates the fan and makes the notes look more plentiful. Use a soft source slightly above the notes to bring out texture without glare.\n\nIf you are shooting on a phone, watch autofocus. A fan of notes confuses it, and the focus can hunt between the notes and the background. Lock focus on the front note before the take. Our guide to [lighting prop money for camera](/blog/lighting-prop-money-for-camera-avoiding-glare/) goes deeper into the lighting side.\n\n## Location and public-place rules\n\nShooting cash in a public place raises questions from members of the public and sometimes the police. Tell the venue, and keep the supplier invoice and the specimen markings on hand. Do not shoot scenes that show prop notes being handed to strangers who are not part of the crew. Do not film in or near a bank, an ATM or a shop counter without the owner's permission. If a council permit is needed for the location, check it covers what you plan to do, and read the local guidance for film permits in your city.\n\nAvoid leaving notes visible in a parked car or an unattended bag on location. It is a safety habit as much as a legal one, because loose cash attracts attention even when it is a prop.\n\n## After the shoot: storing, reusing and disposing\n\nCount the notes back in and store them flat in the original bags. Notes that have been thrown, rained on or stepped on are best kept for background work. Notes you do not plan to reuse should be destroyed securely, not left at the location or put in a public bin. Keep the unused notes with the supplier invoice, because the next shoot will probably want the same look. If you plan to reorder, our [wholesale page](/wholesale/) lists tiers that reward repeat orders.\n\n## Quick reference for music video cash\n\nPick one hero denomination, buy strapped stacks for volume, order 50% extra for throw shots, test the notes under your lights and keep the invoice with the notes. If you follow those five steps, cash scenes run smoothly and the video looks the part.\n\n- Ordering exactly the number of notes the shot shows, with no margin for throws and retakes.\n- Using glossy novelty notes that glare under LED lights.\n- Shooting a close-up with a note whose printing is blurred.\n- Leaving the specimen marking out of frame in every shot, then posting stills that imply real cash.\n- Collecting the notes from a prop house on the morning of the shoot instead of ordering ahead.",
+    "faqs": [
+      {
+        "q": "What is the best prop money for music videos?",
+        "a": "Matte, double-sided notes in strong denominations such as $100 and $50, supplied as strapped stacks plus a few hero notes. See the [New Notes range](/shop/new-notes/) and [money stacks](/shop/money-stacks/)."
+      },
+      {
+        "q": "Can I use fake money in a music video in Australia?",
+        "a": "Yes, when the notes are clearly marked reproductions used as props and never as payment or to deceive. Keep the invoice and read our [compliance page](/compliance/)."
+      },
+      {
+        "q": "How much prop money do I need for a music video?",
+        "a": "A fan or table scene usually needs one bulk stack plus loose notes. Add about 50% extra for throws and retakes. Our [quantity guide](/blog/how-much-prop-money-do-you-need-for-a-scene/) has examples."
+      },
+      {
+        "q": "Will prop money look good on camera under LED lights?",
+        "a": "Matte paper avoids glare under LED panels and phone lights. Test a few frames before the shoot day. See [lighting prop money for camera](/blog/lighting-prop-money-for-camera-avoiding-glare/)."
+      },
+      {
+        "q": "How fast can I get prop money for a shoot?",
+        "a": "Paid orders usually leave Melbourne within 24 business hours by Express Post, with delivery by region in the [shipping policy](/shipping-policy/). Order before the shoot week."
+      }
+    ],
+    "updated": "2026-10-26"
+  },
+  {
+    "slug": "can-you-take-prop-money-on-a-plane-in-australia",
+    "title": "Can You Take Prop Money on a Plane in Australia? Domestic and International Rules",
+    "seoTitle": "Can You Take Prop Money on a Plane? Australian Guide",
+    "excerpt": "Can you take prop money on a plane? Learn how to pack and declare prop notes on domestic and international flights from Australia and what to carry.",
+    "category": "Compliance & Legal",
+    "date": "2026-10-26",
+    "readTime": "8 min read",
+    "image": "can-you-take-prop-money-on-a-plane-in-australia.webp",
+    "imageAlt": "Can you take prop money on a plane: strapped specimen prop notes packed for travel",
+    "relatedCategories": [
+      "new-notes",
+      "film-and-tv-props"
+    ],
+    "relatedProducts": [
+      "film-and-tv-prop-currency-pack",
+      "100-australian-prop-money-for-sale"
+    ],
+    "relatedPage": {
+      "href": "/compliance/",
+      "label": "Read our specimen compliance standard"
+    },
+    "content": "Productions and photographers often fly with cash props between cities, and the question comes up every time: can you take prop money on a plane? In most cases yes, on a domestic flight, as long as the notes are clearly marked reproductions, packed sensibly and accompanied by paperwork. International travel adds customs rules and different laws overseas. This guide sets out how to travel with prop money from Australia without delays.\n\nIt is general information, not legal advice. Airline and border rules change, so check the sources linked below before you fly.\n\n## The short answer\n\nYou can generally carry marked prop money in checked or cabin luggage on a domestic flight in Australia. Carry the supplier invoice, keep the specimen markings visible and expect the notes may be inspected at security. For international flights, check customs rules for both countries first. Some countries restrict reproduction currency, and a large stack of notes can draw questions even when it is a prop.\n\n## Domestic flights: how to pack and what to carry\n\n1. **Keep the notes in the original strapped stacks.** A neat, counted stack explains itself at the X-ray.\n2. **Carry the invoice and a one-line letter.** \"Reproduction currency for [production name], supplied by PROPPS PTY LTD\" is enough.\n3. **Check the airline's carry-on and checked rules.** Weight, size and valuables policies vary. The airline's website is the authority.\n4. **Do not scatter loose notes in a bag.** A crumpled, mixed pile looks like real cash.\n5. **Keep notes in your control.** Do not put a large stack in a bag you will leave unattended.\n\nIf a security officer asks, show the specimen markings and the invoice. That is what they are for. Our [compliance page](/compliance/) sets out the markings on every PROPPS note, and the guide to [prop money laws in Australia](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) explains the legal background.\n\n## International flights: check both ends\n\nTravelling outside Australia is different. Three things to check:\n\n- **Australian outbound rules.** The Australian Border Force explains what you must declare on [its travel pages](https://www.abf.gov.au/). AUSTRAC explains [cross-border currency reporting](https://www.austrac.gov.au/), which applies to genuine physical currency at or above a set threshold. A prop is not currency, but a large face value invites questions, so carry the invoice and the letter.\n- **Destination rules.** Some countries restrict or ban reproduction banknotes, particularly polymer designs that closely copy local notes. Check the destination's customs website.\n- **Return trip.** Re-entering Australia, declare the notes honestly and carry the same paperwork.\n\nIf you are unsure, the safer option is to ship the props to the shoot location with a tracked courier instead of carrying them. [Australia Post](https://auspost.com.au/) and other carriers can deliver to a production address with signature.\n\n## Shipping instead of flying with it\n\nFor many productions, posting the notes ahead is easier than carrying them. PROPPS ships from Eltham, Melbourne by Australia Post Express with a mandatory signature on delivery, usually within 24 business hours of payment. Delivery takes 1 day to Melbourne, 1 to 2 days to Sydney, Canberra, Brisbane and Adelaide, 2 to 3 days to Perth, Hobart and Darwin, and 3 to 5 days to remote sites. See the [shipping policy](/shipping-policy/) for detail, and our guide to [how fast you can get prop money in Australia](/blog/shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia/).\n\n## Why markings and paperwork matter at airports\n\nAirports are full of people whose job is to ask questions. A clearly marked specimen note and an invoice answer most of them in seconds. A note with no marking, bought from an anonymous overseas seller, does not. This is one reason we recommend [buying prop money from an Australian supplier you can identify](/blog/where-to-buy-prop-money-in-australia-legally/) and avoiding unmarked overseas listings, which are covered in our [local vs overseas comparison](/blog/local-vs-overseas-prop-money-suppliers-compared/).\n\n## A travel checklist for prop money\n\n| Item | Why |\n|---|---|\n| Supplier invoice | Proof of purpose and source |\n| One-line production letter | Explains the notes at a glance |\n| Notes in strapped stacks | Reads as a prop at X-ray |\n| Specimen markings visible | Shows it is a reproduction |\n| Airline policy checked | Avoids surprises at the gate |\n| Destination customs checked (international) | Some countries restrict reproductions |\n\n## What happens at airport security\n\nAirport screening looks at shape, density and contents on the X-ray. A bag with several strapped stacks of paper shows up as a dense, uniform block. That can prompt a hand search, and a security officer may ask what the notes are. The calm, quick answer is to say they are marked reproduction notes for a production, and to show the invoice and the specimen marking. Do not joke about the notes being real cash. Do not hide the stacks in a lining or a shoe.\n\nAllow extra time at the gate when you travel with a large volume of notes. A bag that needs a hand search is normal and not a sign of a problem. A traveller who has the paperwork ready and answers plainly is usually through in a few minutes.\n\n## Carrying notes for a photoshoot or a content shoot\n\nThe same rules apply to photographers and content creators who fly to a location. Carry a small, counted set in a sealed bag, with the invoice in the same bag. Do not mix the prop notes with real cash in a wallet or a handbag, because it creates two problems: the risk of spending a prop by mistake, and the risk of confusion if you are asked to show your cash. Our [photography prop currency set](/shop/photography-props/photography-prop-currency-set/) is sized for exactly this kind of trip, and the guide to [prop money for content creators](/blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/) covers publishing the results.\n\n## What to do if you are questioned\n\nStay calm and give short, factual answers. Say what the notes are, who supplied them and why you are carrying them. Show the invoice and point to the specimen marking on a note. If the officer wants to keep the notes for a check, ask for the officer's name and the reference of any record they keep, and contact the supplier. PROPPS can confirm an order by email if an officer asks. You do not need to argue. Marked, documented props are a normal part of film and photography work, and officers deal with them regularly.\n\n## Insurance and the production file\n\nIf you are travelling for a production, put a line about the notes in the production file or the call sheet, with the number of notes, the denominations and the supplier. Insurers and production managers like a record of what was carried, who carried it and when it was returned. It also makes the return trip easier, because you know the count you started with.\n\n## Packing tips\n\n- Use a hard, closable case or a sturdy bag, so the stacks keep their shape.\n- Keep a copy of the invoice inside and a second copy on your phone.\n- Photograph the notes and the markings before you leave, in case you need to show the condition later.\n- Carry the notes in your cabin bag if the shoot cannot go ahead without them, so a lost checked bag does not stop the day.\n- Never leave the bag unattended at a gate or in a taxi.\n\n## Special cases: theatre tours, events and training\n\nTheatre companies on tour often carry stage cash from city to city. Keep a master count in the tour bible, put the notes in a lockable prop box and carry the supplier invoice on the first page. Event companies that fly with casino-night or game-show props should treat the notes the same way, and trainers who run cash-handling exercises should record what leaves and returns with each course.\n\nFor a regular touring schedule, it can be cheaper to order a second set at the destination than to carry a set around. If you tour frequently, talk to us about delivery to venues along the route using the [contact page](/contact/).\n\nOrders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. Parcels ship from Eltham, Melbourne by [Australia Post Express](https://auspost.com.au/) with a signature on delivery. Read the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.",
+    "faqs": [
+      {
+        "q": "Can you take prop money on a plane in Australia?",
+        "a": "Generally yes on a domestic flight, if the notes are clearly marked reproductions, packed as strapped stacks and carried with the invoice. Check your airline rules before you fly."
+      },
+      {
+        "q": "Do I need to declare prop money at customs?",
+        "a": "For international travel, check the Australian Border Force and destination customs rules, and carry the invoice. A prop is not currency, but a large face value can draw questions. See our [compliance page](/compliance/)."
+      },
+      {
+        "q": "Should I post prop money instead of carrying it?",
+        "a": "Often yes. Express Post with signature delivers to a production address and avoids airport questions. See the [shipping policy](/shipping-policy/) for times by region."
+      },
+      {
+        "q": "What paperwork should I carry with prop money?",
+        "a": "The supplier invoice and a one-line production letter naming the project and supplier. Keep the specimen markings visible. Our [legal guide](/blog/is-it-illegal-to-buy-prop-money-australia/) explains why."
+      },
+      {
+        "q": "Is it illegal to carry prop money in public?",
+        "a": "Carrying clearly marked props for production use is lawful, but never use them as payment or show them as real cash. Read [can you buy prop money in Australia](/blog/can-you-buy-prop-money-in-australia/)."
+      }
+    ],
+    "updated": "2026-10-26"
+  },
+  {
+    "slug": "how-much-is-a-million-dollars-in-prop-money",
+    "title": "How Much Is a Million Dollars in Prop Money? Face Value, Stacks and Cost in Australia",
+    "seoTitle": "How Much Is a Million Dollars in Prop Money?",
+    "excerpt": "How much is a million dollars in prop money? See stacks, face value and cost from our published price tiers, plus ways to cut the cost.",
+    "category": "Ordering & Payment",
+    "date": "2026-10-26",
+    "readTime": "8 min read",
+    "image": "how-much-is-a-million-dollars-in-prop-money.webp",
+    "imageAlt": "How much is a million dollars in prop money: strapped specimen prop stacks of Australian notes",
+    "relatedCategories": [
+      "money-stacks",
+      "new-notes"
+    ],
+    "relatedProducts": [
+      "bulk-money-stack-pack",
+      "100-australian-prop-money-for-sale"
+    ],
+    "relatedPage": {
+      "href": "/wholesale/",
+      "label": "Ask about wholesale prop money tiers"
+    },
+    "content": "\"How much is a million dollars in prop money?\" is a question every heist film, bank scene and music video eventually asks. The answer has two parts: how much a stack of prop notes costs, and how many stacks it takes to fill the frame with a million dollars of face value. This guide uses our published price tiers to answer both, then shows how to get the look for less.\n\nThe face value on a prop note is not real money. Our notes are non-legal tender reproductions and must never be spent. The \"million dollars\" is the sum the audience sees on screen, nothing more.\n\n## The short answer\n\nAt our published tiers, 100 Stacks carries $200,000 of face value for $14,000 AUD. A million dollars of face value is therefore five of those runs: 500 stacks, or about $70,000 AUD before any wholesale discount. Cryptocurrency payments receive a further 10% off, and studio-scale orders can ask about wholesale tiers of 10% to 30% off.\n\n## Our price tiers at a glance\n\n| Bundle | Face value | Price (AUD) | Price per $1,000 of face value |\n|---|---|---|---|\n| Starter Stack | $1,500 | $115 | about $77 |\n| 1 Stack | $2,000 | $200 | $100 |\n| 5 Stacks | $10,000 | $850 | $85 |\n| 10 Stacks | $20,000 | $1,600 | $80 |\n| 50 Stacks | $100,000 | $7,500 | $75 |\n| 100 Stacks | $200,000 | $14,000 | $70 |\n\nThe bigger the run, the lower the cost per $1,000 of face value. The largest published bundle costs $70 per $1,000, so a million dollars of face value is about $70,000 at list price. Check the [bulk money stack pack](/shop/money-stacks/bulk-money-stack-pack/) for current prices.\n\n## How many notes is that?\n\nThe note count depends on the denomination. A million dollars in $100 notes is 10,000 notes. In $50 notes it is 20,000. In $20 notes it is 50,000. Mixed stacks fall in between. This is why the denomination matters as much as the bundle size.\n\n| Denomination | Notes for $1,000,000 face value |\n|---|---|\n| $100 | 10,000 |\n| $50 | 20,000 |\n| $20 | 50,000 |\n| $10 | 100,000 |\n| $5 | 200,000 |\n\nMost productions choose $100 and $50 notes for a million-dollar look, because fewer notes fill a bag or table. Compare them in the [New Notes range](/shop/new-notes/) and read [the best denominations for film and TV](/blog/best-australian-banknote-denominations-for-film-and-tv-scenes/).\n\n## Do you really need a million dollars of face value?\n\nUsually not. The camera sees the front stacks and the first layer of notes, not what is underneath. A common trick is a \"hero\" layer of real prop stacks on top and cheaper fillers underneath. Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) shows how to count what is actually visible, and [prop cash for heist and bank scenes](/blog/prop-cash-for-heist-and-bank-scenes-getting-the-volume-right/) covers vaults and bags in detail.\n\nA briefcase holds far less than people expect. A scene that needs \"one million in a case\" often needs only a few stacks arranged to fill the lid. Plan the shot first, then order.\n\n## Ways to bring the cost down\n\n1. **Count the visible stacks only.** Fill the rest with cheaper filler.\n2. **Pay with cryptocurrency.** It earns a 10% discount.\n3. **Ask about wholesale tiers.** Larger runs qualify for 10% to 30% off; see the [wholesale pricing guide](/blog/wholesale-prop-money-for-production-companies-bulk-pricing-explained/).\n4. **Mix denominations.** A $100-heavy top layer and $20s underneath is a normal real-world mix.\n5. **Reuse across scenes.** Keep the notes organised and count them back in at wrap.\n\nFor what the price includes, see [cheap prop money: what you are really paying for](/blog/cheap-prop-money-what-you-are-really-paying-for/).\n\n## Paperwork and delivery for a large order\n\nA large order is a good reason to keep the supplier invoice with the production file and to plan delivery. Parcels ship from Eltham by [Australia Post Express](https://auspost.com.au/) with signature on delivery. For orders of this size we recommend contacting us first so the packing, the delivery address and the lead time are agreed. Use the [contact page](/contact/) or the [wholesale page](/wholesale/).\n\n## What a million dollars of notes looks like physically\n\nTen thousand $100 notes make a stack roughly a metre tall if piled flat, and the weight is in the order of ten kilograms. Notes in strapped bundles of 100 make 100 bundles, which fit in a medium duffel bag or two small suitcases. These figures matter for the shot: a hero bag with a million dollars of $100 notes is physically heavy and bulky, and actors need to handle it believably. A bag filled with lighter filler and a top layer of real stacks looks the same on camera and is far easier to carry.\n\nIf your scene has an actor carrying the bag, test it first. A bag that looks heavy but is light, or one that is actually heavy but is carried like a light one, gives the game away. Our guide to [prop cash for heist and bank scenes](/blog/prop-cash-for-heist-and-bank-scenes-getting-the-volume-right/) covers how to plan weight and bulk.\n\n## Worked examples\n\n**A briefcase scene.** A standard briefcase holds only a handful of strapped bundles of 100 notes in a single layer, which is a few tens of thousands of dollars of face value in $100 notes. For a \"one million in a case\" line of dialogue, stage the case with four rows of stacks and let the dialogue do the rest. No one counts.\n\n**A vault shelf.** A shelf of strapped $100 bundles reads as a large sum. To suggest a million, fill several shelves with the same bundle and place the hero stack at the front where the camera can see the strap.\n\n**A duffel bag.** A duffel bag filled with a top layer of strapped $100 stacks and a lower layer of filler reads as millions. The first ten bundles are what the camera sees.\n\n**A table of cash.** A table covered in bundles photographs as a large sum with about 20 to 30 stacks, depending on the lens and the angle, and you can test it in a few minutes.\n\n## Mixing denominations to cut the cost\n\nA real cash drawer holds a mix of notes, and a mix looks more natural on screen than a single denomination. Use $100 notes for the stacks the camera sees most, and $50 and $20 notes in the secondary stacks. The face value of the whole pile may be lower than a million, but the look is the same. For help choosing, see [the best denominations for film and TV scenes](/blog/best-australian-banknote-denominations-for-film-and-tv-scenes/) and the guide to [choosing a $100 bundle size](/blog/100-dollar-prop-money-which-bundle-size/).\n\n## Is the price per stack the same for every denomination?\n\nOur published tiers set the price by bundle size, and the face value in each tier is what the audience reads. You can mix denominations within an order. For custom quantities beyond the published tiers, or for a specific mix, contact us on the [contact page](/contact/) and we will quote. Always check the live prices on the product page before you plan a budget, because prices and tiers can change.\n\n## Planning a budget in four steps\n\n1. **Decide what the camera will see.** Count the stacks in frame, not the total in the story.\n2. **Choose the denomination.** Use the table above to see how many notes each option needs.\n3. **Match a bundle size.** Use the price tiers to pick the nearest bundle, then add a margin of about 20% for damage and reshoots.\n4. **Apply discounts.** Check cryptocurrency and wholesale options before you finalise.\n\nA worked example: a heist scene needs a bag that reads as $500,000 in $100 notes. The camera sees about 12 strapped stacks in the open bag. Order one 5 Stacks bundle ($10,000 face value, $850) as a hero set plus a few extra bundles for the top layer, and fill the rest of the bag with filler. The cost is a small fraction of a literal $500,000 of face value and the shot looks identical.\n\nOrders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. Parcels ship from Eltham, Melbourne by [Australia Post Express](https://auspost.com.au/) with a signature on delivery. Read the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.",
+    "faqs": [
+      {
+        "q": "How much is a million dollars in prop money?",
+        "a": "At our published tiers, 500 stacks carry $1,000,000 of face value, about $70,000 AUD at list price before wholesale or crypto discounts. See the [bulk money stack pack](/shop/money-stacks/bulk-money-stack-pack/)."
+      },
+      {
+        "q": "How many $100 notes make a million dollars?",
+        "a": "A million dollars of face value is 10,000 notes of $100. In $50 notes it is 20,000. See the [New Notes range](/shop/new-notes/) for denominations."
+      },
+      {
+        "q": "Can I get a discount on a large prop money order?",
+        "a": "Yes. Cryptocurrency payments receive 10% off and studio-scale orders can ask about wholesale tiers of 10% to 30% off. See the [wholesale page](/wholesale/)."
+      },
+      {
+        "q": "Do I need the full face value on camera?",
+        "a": "Usually not. The lens sees the front stacks and top layer, so most scenes need far fewer notes. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/)."
+      },
+      {
+        "q": "Is a million dollars of prop money real cash?",
+        "a": "No. The face value is only what appears on screen. Prop notes are non-legal tender and must never be spent. See our [compliance page](/compliance/)."
+      }
+    ],
+    "updated": "2026-10-26"
+  },
+  {
+    "slug": "fake-money-for-parties-casino-nights-birthdays-weddings",
+    "title": "Fake Money for Parties in Australia: Casino Nights, Birthdays and Weddings",
+    "seoTitle": "Fake Money for Parties: Casino Nights and Weddings",
+    "excerpt": "Fake money for parties works best when clearly marked. See ideas for casino nights, birthdays and weddings, how much to buy and what is legal.",
+    "category": "Buying Guide",
+    "date": "2026-10-26",
+    "readTime": "8 min read",
+    "image": "fake-money-for-parties-casino-nights-birthdays-weddings.webp",
+    "imageAlt": "Fake money for party use: clearly marked specimen prop notes fanned on a table",
+    "relatedCategories": [
+      "event-and-party-props"
+    ],
+    "relatedProducts": [
+      "event-and-party-prop-cash-pack"
+    ],
+    "relatedPage": {
+      "href": "/shop/event-and-party-props/",
+      "label": "Shop play money for events and parties"
+    },
+    "content": "Fake money for a party is one of the easiest ways to lift a theme: poker chips need a bankroll, a casino night needs a cash prize, a wedding photo needs a bouquet of notes. The trick is picking money that looks great in photos but is clearly a prop. This guide covers ideas for casino nights, birthdays and weddings, how much to buy, and what the rules say in Australia.\n\nIt is general information, not legal advice. Every note we sell is a non-legal tender reproduction with specimen markings, which is what keeps party props on the right side of the law.\n\n## Party ideas that use fake money\n\n- **Casino night.** Give each guest a starting stack and let them play. Winners swap their winnings for a prize at the end of the night.\n- **Birthday party.** Use notes as table decoration, a treasure-hunt reward or a themed backdrop for photos.\n- **Wedding and hens or bucks nights.** Notes work as photo props, a \"dollar dance\" theme, or decor for a retro casino table. Keep them away from real tips and gifts so no one mixes them up.\n- **Kids and teen parties.** A pretend shop or bank game with play money keeps younger guests busy. See [monetary toys and play money sets](/blog/monetary-toys-and-play-money-sets-for-kids/).\n- **Fundraisers and raffles.** A table of notes sets the tone for a themed auction.\n\n## What to look for in party fake money\n\n1. **Clear markings.** A visible specimen marking makes it obvious the notes are not real.\n2. **Sturdy paper.** Party notes get dealt, folded and spilled. Matte archival paper survives longer than thin novelty stock.\n3. **A mix of denominations.** Casino games need small notes for betting and large ones for the cash-out.\n4. **Enough quantity.** Plan a stack per player at a casino table.\n5. **A supplier with an ABN and an invoice.** Venues and councils sometimes ask where the props came from.\n\nOur [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/) is built for this, and the full [play money range](/shop/event-and-party-props/) shows other sizes.\n\n## How much to buy\n\nA simple rule: one mixed stack per player for a casino night, one bundle per table for decoration, and a small bundle per child for a pretend shop. For a 40-guest casino evening with five tables, plan about eight stacks in total (one per table for the house, plus player stacks). Order a margin for lost and damaged notes.\n\n| Party | Suggested quantity |\n|---|---|\n| Casino night, 20 guests | 20 player stacks plus 2 house stacks |\n| Birthday decoration | 1 bundle per table |\n| Wedding photos | 1 fan plus 1 strapped stack |\n| Kids' pretend shop | 1 small bundle per child |\n\n## What the rules say in Australia\n\nReproducing Australian banknotes is regulated. The Reserve Bank explains how reproductions must differ from genuine notes on its [banknote pages](https://www.rba.gov.au/banknotes/), and the offences sit in the Commonwealth [Crimes (Currency) Act 1981](https://www.legislation.gov.au/). For parties, three habits keep things simple:\n\n- Use marked notes only.\n- Never use fake money as payment, a tip or a gift.\n- Keep party props out of tills, taxis and vending machines.\n\nRead more in our guide to [novelty money for parties and events](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/) and the [compliance page](/compliance/).\n\n## Photo and decor tips\n\nFan notes in a hand for a quick photo, or stack them in a glass bowl as a centrepiece. Matte notes photograph without glare, even with flash. For a wall display, tape a few notes inside a frame with a \"specimen\" marking visible. Avoid stuffing party props in a real wallet or handbag, where they can be mistaken for genuine cash.\n\nIf you are shooting a themed party for social media, read [prop money for content creators](/blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/) first.\n\n## Ordering for an event\n\nOrder two weeks before the party if you can. Orders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. Parcels ship from Eltham, Melbourne by [Australia Post Express](https://auspost.com.au/) with a signature on delivery. Read the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window. For a large venue or a series of events, ask about [wholesale rates](/wholesale/).\n\n## Play money or prop money for a party?\n\n## Running a casino night with fake money\n\nA good casino night follows a few simple rules. Give every player the same starting stack, so the game is fair. Set a clear exchange: for example, a stack of notes buys 20 chips from the house. Use a banker at each table to keep the counting honest. At the end of the night, winners swap their chips or notes for raffle tickets or prizes, and the notes are collected back for reuse. Do not allow real money to be bet or exchanged, because gambling laws apply to real stakes, and a prop-only game keeps things simple.\n\nGive each table a small float of low denominations for change. Mixed notes keep the game moving and make the table look right in photos. A neat stack of $100 notes at the dealer's position adds to the theme without being handled by players.\n\n## Birthday and themed party ideas\n\n- **Gangster and roaring-twenties themes.** Fan notes in a cigar box, stack them under a glass cloche as a centrepiece or tuck a few into a costume pocket.\n- **Treasure hunt.** Hide strapped bundles as the final prize, with a note inside as a clue.\n- **Dress-up and photo booth.** A fan of notes and a few stacks make a quick photo prop for guests.\n- **Milestone birthdays.** A banner or cake topper with a few notes folded around it gives a themed look without a lot of cost.\n\n## Weddings and hens and bucks events\n\nAt weddings, fake money is usually a photo prop or a game prize. A \"dollar dance\" theme works well with prop notes for the photos, but the real gifts should go in a separate, secure place so no one mixes the two. Hens and bucks nights use fake money for dares, auctions and mock casinos. Keep prop notes clearly separated from real cash and gifts, and keep a person in charge of the notes.\n\nIf your event is photographed professionally, tell the photographer the notes are props. The same rules apply as in any shoot, and our guide to [prop money for photography](/blog/prop-money-for-photography-realistic-cash-shots-without-the-risk/) has tips for lighting and presentation.\n\n## Keep it safe and keep it fun\n\nParty props get handled by many people and sometimes by guests who have had a drink. Three simple rules reduce risk. First, use marked notes only. Second, collect them at the end of the night, so no stray notes leave the venue. Third, never use them to pay for anything, even as a joke. A guest who tries to pay a taxi driver with a prop note is the exact situation the law is concerned about, so brief your guests when you hand them out.\n\n## Reusing and storing party props\n\nMatte archival paper survives several events if stored flat and dry. Count the notes after each event, bag them by denomination and keep the invoice. If you run themed events regularly, a bulk order costs less per note than repeated small orders. See [wholesale prop money](/wholesale/) for tiers.\n\n## Budget and timing for party fake money\n\nPlan the number of stacks first, then choose a bundle size that covers it with a small margin. Order at least two weeks before the event, because a late parcel is the most common reason a themed party loses its centrepiece. If the party is a recurring event, such as a monthly casino night at a venue, buy a bulk set once and reuse it. Matte archival paper handles dozens of games if it is stored flat and dry.\n\nDo not buy for a single guest list and nothing more. Guest numbers change, and a few spare stacks cost far less than running out mid-game. Keep the extra stacks sealed so they stay clean for the next event.\n\n## A simple casino night timeline\n\n| Time | What happens |\n|---|---|\n| Arrival | Guests receive a starting stack and a score card |\n| First hour | Tables open and games run |\n| Midway | A short break for food, notes counted by the bankers |\n| Final hour | Prize auction, using the notes as the only currency |\n| End | Notes collected, counted and stored for the next event |\n\nToy sets suit young children and classroom-style games. Film-grade specimen notes suit adult casino nights and photo shoots because they look better at arm's length. Our guide to [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/) helps you choose.",
+    "faqs": [
+      {
+        "q": "Is fake money legal to use at a party in Australia?",
+        "a": "Yes, when it is clearly marked and used as a prop only. Never use it as payment, a tip or a gift. See [novelty money for parties](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/)."
+      },
+      {
+        "q": "How much fake money do I need for a casino night?",
+        "a": "Plan one mixed stack per player plus a house stack for each table. Add a margin for lost and damaged notes. Browse the [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/)."
+      },
+      {
+        "q": "Can I use fake money at a wedding?",
+        "a": "Yes, as decor, a photo prop or a casino-table theme. Keep it away from real gifts and tips. See the [play money range](/shop/event-and-party-props/)."
+      },
+      {
+        "q": "What is the difference between play money and prop money?",
+        "a": "Play money is for games and learning, while prop money is a film-grade reproduction for photos and productions. Both must be clearly marked. Read [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/)."
+      },
+      {
+        "q": "How do I order party money in Australia?",
+        "a": "Order online from an Australian supplier with an ABN. PROPPS ships from Melbourne by Express Post with signature. See the [shipping policy](/shipping-policy/)."
+      }
+    ],
+    "updated": "2026-10-26"
+  },
+  {
+    "slug": "australian-polymer-prop-money-vs-paper-prop-notes",
+    "title": "Australian Polymer Prop Money vs Paper Prop Notes: Which Is Safer to Buy?",
+    "seoTitle": "Australian Polymer Prop Money vs Paper Prop Notes",
+    "excerpt": "Australian polymer prop money copies real notes closely and carries more legal risk. See how paper prop notes differ and what to check before you buy.",
+    "category": "Compliance & Legal",
+    "date": "2026-10-26",
+    "readTime": "9 min read",
+    "image": "australian-polymer-prop-money-vs-paper-prop-notes.webp",
+    "imageAlt": "Australian polymer prop money compared with paper specimen prop notes in a hand",
+    "relatedCategories": [
+      "new-notes",
+      "film-and-tv-props"
+    ],
+    "relatedProducts": [
+      "100-australian-prop-money-for-sale",
+      "50-australian-prop-money-for-sale"
+    ],
+    "relatedPage": {
+      "href": "/compliance/",
+      "label": "See how our paper specimen notes are marked"
+    },
+    "content": "Search for \"Australian polymer prop money\" and you will find overseas sellers offering polymer notes that copy real Australian banknotes. They look impressive in photos. They also sit much closer to the legal line than a paper prop with a clear specimen marking. This guide explains the difference between polymer and paper prop notes in Australia, why it matters for a production, and what to check before you buy.\n\nIt is general information, not legal advice. For a specific project, read the legislation and speak to your own lawyer.\n\n## The short answer\n\nFor most film, television, theatre and photography work, a paper reproduction with permanent specimen markings is the safer choice. Genuine Australian banknotes are polymer. A prop made of the same material and printed to copy the real design is much harder to tell apart from the real thing, which is exactly what the law and the Reserve Bank's guidance are concerned about.\n\n## Why material matters\n\nThe [Reserve Bank](https://www.rba.gov.au/banknotes/) publishes guidance on reproducing banknotes, and the offences are in the Commonwealth [Crimes (Currency) Act 1981](https://www.legislation.gov.au/). Both focus on whether a reproduction could be mistaken for a genuine note. Material is one of the clearest differences a person can feel in the hand:\n\n| | Paper specimen prop note | Polymer lookalike |\n|---|---|---|\n| Feels like | Paper | Plastic, close to a real note |\n| Specimen marking | Permanent, prominent | Often faint, small or missing |\n| Distinct from real notes | Yes, by material and marking | Much less |\n| Overseas shipping risk | Lower | Higher; parcels can be held at the border |\n| Typical use | Film, TV, theatre, photography | Often marketed with misleading claims |\n\n## Red flags in polymer prop listings\n\n- Claims that notes \"pass the pen test\", are \"undetectable\" or \"indistinguishable\".\n- Specimen markings described as \"optional\" or removable.\n- No Australian ABN, address or phone number.\n- Discreet or unmarked packaging sold as a benefit.\n- Delivery from overseas with no tracking or signature.\n\nAny one of these is a reason to walk away. Our guide to [the legal difference between fake money and prop money](/blog/fake-money-vs-prop-money-the-legal-difference-in-australia/) explains why, and [local vs overseas prop money suppliers](/blog/local-vs-overseas-prop-money-suppliers-compared/) compares the options.\n\n## What a compliant paper prop looks like\n\nA PROPPS note is printed double-sided on matte archival paper and carries permanent specimen markings. The size, material and treatment deliberately differ from a genuine note, so the prop reads as money on camera and as a reproduction in the hand. You can see the standard on our [compliance page](/compliance/), and the guide to [Crimes Act and RBA prop money rules](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) goes into detail.\n\nCompare the notes yourself in the [New Notes range](/shop/new-notes/), from the [$5](/shop/new-notes/5-australian-prop-money-for-sale/) to the [$100](/shop/new-notes/100-australian-prop-money-for-sale/).\n\n## Will paper look real enough on camera?\n\nYes. Cameras see colour, print detail and mass, not polymer. A matte paper note reads cleanly under studio and LED lights, and it avoids the glare polymer can throw. Read [how to judge high quality prop money on camera](/blog/high-quality-prop-money-how-to-judge-it-on-camera/) and [lighting prop money for camera](/blog/lighting-prop-money-for-camera-avoiding-glare/).\n\n## Overseas polymer: the shipping and customs problem\n\nPolymer lookalikes ordered from overseas can be seized or held at the border, delaying a shoot. Local supply avoids this, and an Australian supplier gives you an invoice, a contact and recourse if a count is wrong. Our post on [where to buy prop money legally](/blog/where-to-buy-prop-money-in-australia-legally/) sets out the steps.\n\n## A buyer checklist\n\n1. Ask for a close-up photo of an actual note, front and back, with the marking visible.\n2. Confirm the material and how it differs from a genuine note.\n3. Check for an ABN, a physical address and a phone number.\n4. Confirm signed-for delivery and an invoice.\n5. Read the refund terms.\n\n## What the law and the RBA focus on\n\nThe Commonwealth [Crimes (Currency) Act 1981](https://www.legislation.gov.au/) deals with making and possessing items that look like Australian currency without a lawful basis. The Reserve Bank's guidance on reproducing banknote images exists for a practical reason: genuine Australian notes have security features, and convincing copies cause problems for shops and banks. The factors that matter are how closely a reproduction copies a real note, how clearly it is marked, how it is described and what it is used for.\n\nA paper reproduction with a permanent marking does well on each factor. A polymer lookalike that copies the design closely, with faint marking and sales copy that boasts about realism, does badly on each. This is the plain reason we do not sell polymer notes and recommend against buying them online from unknown sellers.\n\n## What productions ask for, and what they actually need\n\nMany art departments ask for \"polymer so it feels real\". It is a reasonable instinct, but it solves a problem the camera does not have. A lens sees colour, print detail and the way light falls on the surface. It does not see polymer. The feel in the hand matters for a close-up when an actor handles the note, and a matte paper note handles convincingly in that situation too, because audiences do not hold the note themselves.\n\nIf a scene needs an actor to flick through a wad of notes, the sound can matter. Paper notes make a soft riffling sound that reads as cash on set microphones. A stack of plastic notes sounds different and can be picked up as \"wrong\" on a well-recorded track. Test the sound with your sound recordist before the day.\n\n## Insurance, locations and public places\n\nInsurers and location owners ask about the props that will be on set. A paper note with a clear marking and an invoice from an Australian supplier is a simple answer. A polymer note from an overseas listing with no invoice is a complicated one. Productions that shoot in banks, shops or public places should be especially careful, because staff and members of the public may see the notes and have no context. Keep the notes under control, brief the crew and keep the supplier details on hand.\n\n## Buying checklist for polymer claims\n\nIf you are still considering a polymer lookalike, ask the seller in writing: Where is the marking and how large is it? Who is the business and what is its ABN? How is the parcel shipped and who signs for it? What happens if it is held at the border? Honest sellers answer quickly and in detail. If the answers are vague, you have your answer.\n\nFor a clear alternative, our notes are available from the [$5](/shop/new-notes/5-australian-prop-money-for-sale/) to the [$100](/shop/new-notes/100-australian-prop-money-for-sale/) and in strapped stacks. The [film and TV prop currency pack](/shop/film-and-tv-props/film-and-tv-prop-currency-pack/) covers a full set.\n\n## Which one should your production choose?\n\nFor nearly all film, television, theatre and photography work, choose paper with a clear specimen marking from a supplier you can identify. It looks right on camera, handles well, ships without drama and makes the paperwork simple. Polymer lookalikes add legal and shipping risk with no benefit the lens can see. If a director insists on a feel-in-hand test, order a small sample set first and let the art department handle it. Most teams decide within a minute.\n\n## A short decision guide\n\n| Your situation | Best choice |\n|---|---|\n| Film, TV or theatre with insurance and a production file | Paper with specimen marking and an invoice |\n| Photoshoot or content shoot | Paper set from a local supplier |\n| Tight deadline in Australia | Local paper stock, shipped by Express Post |\n| Overseas listing with no marking or invoice | Walk away |\n| Anything marketed as undetectable | Walk away |\n\n## Summary\n\nPolymer is what real Australian notes are made of, and that is exactly why a polymer prop is risky. Paper reproductions with permanent specimen markings give productions the look they need and keep everyone, from the art department to the insurer, comfortable. Our [compliance page](/compliance/) and the guide to [where to buy prop money legally](/blog/where-to-buy-prop-money-in-australia-legally/) explain how to check any supplier.\n\nOrders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. Parcels ship from Eltham, Melbourne by [Australia Post Express](https://auspost.com.au/) with a signature on delivery. Read the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.",
+    "faqs": [
+      {
+        "q": "Is Australian polymer prop money legal?",
+        "a": "It depends on how closely it copies real notes and how it is marked. Polymer lookalikes carry more legal risk than paper reproductions with clear specimen markings. Read our [compliance page](/compliance/)."
+      },
+      {
+        "q": "Why are PROPPS notes paper and not polymer?",
+        "a": "Genuine Australian notes are polymer, so paper with a specimen marking keeps the prop clearly distinct. It also avoids glare on camera. See the [New Notes range](/shop/new-notes/)."
+      },
+      {
+        "q": "Will paper prop money look real on camera?",
+        "a": "Yes. Cameras see colour, detail and mass, and matte paper avoids glare. Read [how to judge high quality prop money](/blog/high-quality-prop-money-how-to-judge-it-on-camera/)."
+      },
+      {
+        "q": "Can overseas polymer prop money be stopped at the border?",
+        "a": "Yes, lookalike reproductions can be held by customs, delaying a shoot. An Australian supplier avoids that risk. See [local vs overseas suppliers](/blog/local-vs-overseas-prop-money-suppliers-compared/)."
+      },
+      {
+        "q": "What markings should a legal prop note have?",
+        "a": "Permanent, prominent specimen markings and clear differences from a genuine note. The Reserve Bank explains its approach on its [banknote pages](https://www.rba.gov.au/banknotes/)."
+      }
+    ],
+    "updated": "2026-10-26"
+  },
+  {
+    "slug": "australian-play-money-where-to-buy-and-what-to-check",
+    "title": "Australian Play Money: Where to Buy It and What to Check Before You Do",
+    "seoTitle": "Australian Play Money Set: Where to Buy and What to Check",
+    "excerpt": "Looking for an Australian play money set? Compare toy shops, school suppliers and specialist makers and see what to check on notes and packs.",
+    "category": "Buying Guide",
+    "date": "2026-10-26",
+    "readTime": "8 min read",
+    "image": "australian-play-money-where-to-buy-and-what-to-check.webp",
+    "imageAlt": "Australian play money set: specimen-marked play notes fanned in a hand for kids games",
+    "relatedCategories": [
+      "event-and-party-props"
+    ],
+    "relatedProducts": [
+      "event-and-party-prop-cash-pack"
+    ],
+    "relatedPage": {
+      "href": "/shop/event-and-party-props/",
+      "label": "Shop Australian play money"
+    },
+    "content": "Parents, teachers and party hosts search for an Australian play money set for the same reason: they want notes and coins that look Australian, feel sturdy and are clearly toys. Big retailers carry basic sets, school suppliers carry classroom packs and specialist makers carry film-grade notes. This guide compares where to buy Australian play money, and what to check on the notes, the pack and the markings before you spend.\n\nIt is general buying advice from a prop studio that makes specimen-marked notes. We are not affiliated with any retailer named below, and range and prices at shops change often, so check each store.\n\n## The main places to buy play money in Australia\n\n| Where | Typical strengths | Typical limits |\n|---|---|---|\n| Big-box toy and discount stores such as Kmart, Big W and Target | Low price, easy to find, good for a single child | Small packs, thin stock, limited denominations |\n| Office and stationery stores such as Officeworks | Classroom and teaching supplies | Often generic, not always Australian designs |\n| Educational suppliers | Class sets, durable coins | Higher price, school-only ranges |\n| Online marketplaces | Wide choice | Variable quality, unclear markings, slow overseas shipping |\n| Specialist makers such as PROPPS | Heavier paper, Australian denominations, clear markings, bulk quantities, invoice | Orders start at $300 AUD, so best for groups, events and schools |\n\nYour choice depends on the group size. One child's pretend shop is a toy-aisle purchase. A class, a fundraiser or a themed event usually needs more notes than a retail pack offers.\n\n## What to check on the notes\n\n1. **A clear play or specimen marking.** This makes the notes safe to use in games and classrooms. Reproductions of banknotes are regulated; the Reserve Bank explains its approach on its [banknote pages](https://www.rba.gov.au/banknotes/).\n2. **Australian denominations.** A set with $5, $10, $20, $50 and $100 notes lets children practise change-making in dollars.\n3. **Paper weight.** Thin notes tear in the first game.\n4. **Print quality.** Clear numbers and bright colours help young children tell values apart.\n5. **Pack size.** Count the notes per pack, not just the pack price.\n\n## What to check on the seller\n\n- An ABN and a physical address.\n- A clear return policy. Ours is set out on the [refund policy](/refund-policy/) page with refunds in 3 to 8 business days.\n- A stated delivery time and tracking. We dispatch by [Australia Post Express](https://auspost.com.au/) with signature.\n- An invoice for schools and councils.\n\n## Play money by age and use\n\n**Under 5.** Chunky coins and thick notes of low value. Keep small coins away from toddlers because they can be a choking hazard; see [Product Safety Australia](https://www.productsafety.gov.au/).\n\n**Ages 6 to 8.** A full mixed set for shop and cafe games.\n\n**Ages 9 to 12.** Larger quantities for budgeting, auctions and market-day maths. Our guide to [toy money and play money for kids' games and learning](/blog/toy-money-and-play-money-for-kids-games-and-learning/) has lesson ideas.\n\n**Parties and events.** Bulk packs for casino nights and treasure hunts. See [fake money for parties](/blog/fake-money-for-parties-casino-nights-birthdays-weddings/).\n\n## Printable play money: when it makes sense\n\nMany families search for printable play money. A printout is free and fine for a single lesson, but it is flimsy, uses colour ink, and needs cutting. If you run the activity more than once, a ready-made set is cheaper in the long run and lasts for years. A printout is also a poor fit for anything where the notes will be handled by a group.\n\n## Choosing between play money and prop money\n\nPlay money is made for games and learning. Prop money is made for film, television, theatre and photography. Both must be clearly marked and never spent. If you want a more realistic look for a school production or a themed event, see [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/) and [monetary toys and play money sets for kids](/blog/monetary-toys-and-play-money-sets-for-kids/).\n\n## How to order from PROPPS\n\n## Teaching with play money: ideas by year level\n\nPlay money is a flexible teaching tool across the primary years. In early years, sorting notes by colour and value builds number sense. In years 1 and 2, counting to a target amount and making simple change uses the lower denominations. By years 3 and 4, children can handle two-step problems such as \"you have $50 and spend $17.50, how much is left?\". In years 5 and 6, play money supports budgeting, percentages and simple profit-and-loss in a class market.\n\nA common approach is a class economy. Students earn notes for jobs, pay \"rent\" for desks and spend at a class shop. It makes maths concrete and teaches saving. It needs more notes than a family set, which is why teachers often look for bulk packs rather than retail boxes. The Australian Curriculum maths content on money and financial mathematics is available on the [Australian Curriculum website](https://www.australiancurriculum.edu.au/).\n\n## Storage and durability\n\nNotes last longest when stored flat, away from water and sorted by denomination. A ziplock bag per student set stops notes from being mixed, and a labelled tub holds the class float. Heavier paper survives repeated handling much better than thin stock, which tears at the folds. If a set will be used by many children over many terms, paper weight is the single most important feature, more than the artwork.\n\n## Common mistakes when buying play money\n\n- Buying one retail box for a whole class and running out in ten minutes.\n- Choosing a set with only high denominations, which makes change-making impossible.\n- Ignoring the marking, so the notes look too much like real ones.\n- Paying for overseas shipping and waiting weeks for notes that show foreign currency.\n- Forgetting to ask for an invoice when a school or council needs one.\n\n## Bulk, school and event orders\n\nPROPPS orders start at $300 AUD, which suits schools, venues and event companies buying for a group. We issue an invoice for your records and ship from Eltham, Melbourne by Express Post. For a regular supply across a year, ask about [wholesale tiers](/wholesale/), and for branded notes with your school or event name, see [custom and branded props](/shop/custom-and-branded-props/) and the [custom guide for agencies](/blog/custom-and-branded-prop-currency-guide-for-agencies/).\n\n## Safety reminders\n\nPlay money is for pretend use only. Never use it to pay in a real shop, a canteen or a vending machine, even as a lesson. Keep small coins away from under-threes. Always follow the age guidance on the pack and check product safety information on [Product Safety Australia](https://www.productsafety.gov.au/) when buying for young children.\n\n## A buyer comparison in five questions\n\n1. **How many children or guests?** Retail boxes suit one family. Groups need bulk.\n2. **Which denominations do the activities need?** A shop game needs small notes for change.\n3. **How long will it be used?** Heavier paper lasts for terms and years.\n4. **What marking is on the notes?** A clear play or specimen marking is non-negotiable.\n5. **Who is the seller?** An ABN, an address and an invoice make school purchasing simple.\n\nIf you answer those five questions before you shop, you will pick the right set the first time and avoid paying twice. For a wider look at how play money differs from film-grade notes, read [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/).\n\n## Where Australian designs matter\n\nChildren learn to recognise the colours and sizes of the notes they will see in real life, so Australian denominations are worth paying for. A set that shows only foreign currency teaches the wrong lesson, and a set with invented denominations makes real-world change-making harder to transfer. Look for a set that uses the familiar $5, $10, $20, $50 and $100 steps in the colours Australians recognise, while carrying a clear play or specimen marking so no one mistakes it for genuine money.\n\n## Cost per child\n\nCompare packs by cost per child, not by pack price. A cheap pack that covers two children costs more per head than a bulk set that covers thirty. Count the notes, divide by the number of children and compare. Include delivery in the total, and check whether the seller offers an invoice and a refund window. Our [refund policy](/refund-policy/) sets out ours.\n\nBrowse the [play money range](/shop/event-and-party-props/) and the [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/). Orders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. Parcels ship from Eltham, Melbourne by [Australia Post Express](https://auspost.com.au/) with a signature on delivery. Read the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.",
+    "faqs": [
+      {
+        "q": "Where can I buy Australian play money?",
+        "a": "Toy and discount stores sell small sets, school suppliers sell class packs, and specialist makers sell heavier, clearly marked sets in bulk. See our [play money range](/shop/event-and-party-props/)."
+      },
+      {
+        "q": "Is Australian play money legal?",
+        "a": "Yes, when it is clearly marked as play money or a specimen and never used as payment. The Reserve Bank explains its approach on its [banknote pages](https://www.rba.gov.au/banknotes/)."
+      },
+      {
+        "q": "What should an Australian play money set include?",
+        "a": "Notes in $5, $10, $20, $50 and $100 denominations, sturdy paper and a clear play marking. Read [monetary toys and play money sets](/blog/monetary-toys-and-play-money-sets-for-kids/)."
+      },
+      {
+        "q": "Is printable play money a good option?",
+        "a": "It is fine for one lesson, but it is flimsy and needs cutting. A ready-made set lasts longer. See [toy money for kids games and learning](/blog/toy-money-and-play-money-for-kids-games-and-learning/)."
+      },
+      {
+        "q": "Can schools order play money in bulk?",
+        "a": "Yes. PROPPS invoices with an ABN and ships by Express Post, with orders from $300 AUD. See the [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/)."
+      }
+    ],
+    "updated": "2026-10-26"
   }
 ];
 
@@ -2065,6 +2343,18 @@ export const FAQ = [
   {
     question: 'Where are you based and how fast is dispatch?',
     answer: 'We are based in Melbourne, Victoria (Eltham, VIC 3093). All orders are packaged discreetly in tamper-evident security boxes and dispatched via Express Australia Post within 24 business hours of payment confirmation.'
+  },
+  {
+    question: 'How much does prop money cost?',
+    answer: 'Orders start at $300 AUD. Published bundles run from a Starter Stack ($1,500 face value, $115) up to 100 Stacks ($200,000 face value, $14,000). Cryptocurrency payments get 10% off, and studio quantities can ask about wholesale tiers of 10% to 30% off.'
+  },
+  {
+    question: 'Does prop money feel like real money?',
+    answer: 'Our notes are printed double-sided on matte archival paper, so they read as money on camera but feel like paper, not polymer, in the hand. That difference, plus the specimen marking, keeps them clearly props.'
+  },
+  {
+    question: 'Can you take prop money on a plane in Australia?',
+    answer: 'Generally yes on domestic flights when the notes are clearly marked, packed as strapped stacks and carried with the supplier invoice. International travel needs customs checks at both ends. Check the airline rules before you fly.'
   }
 ]
 

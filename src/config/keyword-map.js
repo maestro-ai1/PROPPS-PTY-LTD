@@ -95,7 +95,7 @@ export const KEYWORD_PRODUCTS = {
   },
   'event-and-party-prop-cash-pack': {
     focus: k('kids play money', 'C', 20, 14),
-    secondary: [k('money for pretend play', 'T', null, 14), k('money toy', 'I/T', 50, 7), k('$50 play money', 'C', 20, null), k('$100 play money', 'C', 20, null), k('10 dollar play money', 'C', 20, null)],
+    secondary: [k('money for pretend play', 'T', null, 14), k('money toy', 'I/T', 50, 7), k('$50 play money', 'C', 20, null), k('australian play money for sale', 'T', null, null), k('buy kids play money', 'T', null, null)],
   },
   'custom-and-branded-prop-currency': {
     focus: k('custom prop notes', 'C', null, 10),
@@ -135,6 +135,13 @@ export const KEYWORD_POSTS = {
   'realistic-prop-money-australia-what-realistic-should-mean': k('realistic fake money australia', 'C', 170, 23),
   'props-for-filming-ordering-prop-currency-for-a-shoot': k('props for filming', 'C', 50, 28),
   'monetary-toys-and-play-money-sets-for-kids': k('monetary toys', 'C', 170, 8),
+  // 2026-10-26b batch: Google Autocomplete (AU) suggestions; volume/KD unverified (Semrush hourly limit hit), re-check in Semrush
+  'prop-money-for-music-videos-in-australia': k('prop money for music videos', 'C', null, null),
+  'can-you-take-prop-money-on-a-plane-in-australia': k('can you take prop money on a plane', 'I', null, null),
+  'how-much-is-a-million-dollars-in-prop-money': k('how much is a million dollars in prop money', 'I', null, null),
+  'fake-money-for-parties-casino-nights-birthdays-weddings': k('fake money for party', 'C', null, null),
+  'australian-polymer-prop-money-vs-paper-prop-notes': k('australian polymer prop money', 'C', null, null),
+  'australian-play-money-where-to-buy-and-what-to-check': k('australian play money set', 'C', null, null),
 }
 
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).

@@ -114,8 +114,8 @@ export const PRODUCT_COPY = {
     {
       h2: 'Kids play money and party cash',
       paras: [
-        'The Event & Party Prop Cash Pack is kids play money for games, classrooms and themed parties. It works as money for pretend play, a casino night prop or a table decoration, and it is clearly marked so no one mistakes it for real cash.',
-        'If you are choosing between toy sets and film-grade notes, read [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/) and the guide to [monetary toys and play money sets](/blog/monetary-toys-and-play-money-sets-for-kids/). More ideas are in [toy money for kids games and learning](/blog/toy-money-and-play-money-for-kids-games-and-learning/).',
+        'The Event & Party Prop Cash Pack is kids play money for games, classrooms and themed parties. It works as money for pretend play, a casino night prop or a table decoration, and it is clearly marked so no one mistakes it for real cash. If you searched for Australian play money for sale, or want to buy kids play money in a pack that lasts, this is the set.',
+        'If you are choosing between toy sets and film-grade notes, read [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/) and the guide to [monetary toys and play money sets](/blog/monetary-toys-and-play-money-sets-for-kids/). Comparing shops? See [where to buy Australian play money and what to check](/blog/australian-play-money-where-to-buy-and-what-to-check/). More ideas are in [toy money for kids games and learning](/blog/toy-money-and-play-money-for-kids-games-and-learning/).',
       ],
     },
     {
