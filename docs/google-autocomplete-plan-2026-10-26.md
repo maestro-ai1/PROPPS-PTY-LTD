@@ -1,8 +1,25 @@
 # Google Autocomplete (AU) keyword pass — 2026-10-26
 
 Method: Google's suggest endpoint with `hl=en&gl=au` (what Australians see as they type), 49 seeds x the alphabet = 1,296 queries, 2,968 suggestions, filtered to 1,293 niche-relevant phrases
-(`google-autocomplete-au-2026-10-26.txt`). Volume and KD are **not verified**: the Semrush hourly report limit was hit while checking them, so every row from this pass is marked
-"volume/KD unverified" in the ledger. Re-check in Semrush and demote any term over KD 28.
+(`google-autocomplete-au-2026-10-26.txt`). Volume and KD were then checked in Semrush Keyword Overview (AU, same day). Result: **the new primaries are tiny searches** and Semrush returns no KD for them
+(n/a means too small to measure), so none is measurably over KD 28. Under the ~50 volume floor they stay as blog and FAQ targets, never page or product primaries.
+
+| Keyword | Volume | KD |
+|---|---|---|
+| money toy | 50 | 7 |
+| australian play money (Keyword Magic) | 320 | 14 |
+| australian toy money (Keyword Magic) | 170 | 10 |
+| monetary toys (Keyword Magic) | 170 | 8 |
+| fake money for party | 20 | n/a |
+| how much does prop money cost | 20 | n/a |
+| australian play money set / notes | 20 | n/a |
+| prop money for music videos | 10 | n/a |
+| australian polymer prop money | 10 | n/a |
+| can you take prop money on a plane, fake money for music video, australian play money for sale / pack | 0 | n/a |
+| how much is a million dollars in prop money, buy kids play money, fake play money australia | no data | n/a |
+
+Change made: the two zero-volume play money secondaries on the event pack were replaced by **australian toy money (170/10)** and australian play money notes (20).
+The honest read is that these six posts are long-tail and trust builders, not volume drivers; the volume is in the head terms and the 170-to-320 play money pool.
 
 ## Clusters found (what Australians actually type)
 | Cluster | Examples | Where it went |
@@ -23,11 +40,10 @@ Method: Google's suggest endpoint with `hl=en&gl=au` (what Australians see as th
 ## Added to the site
 - 6 posts (1,500+ words each, TOC, 5 FAQs, outbound and internal links, own-photo cover): music videos, plane travel, a million dollars in prop money, parties, polymer vs paper, Australian play money.
 - Homepage: three new FAQs (cost, feel, plane) with FAQPage schema, and six new links in the buying guides hub.
-- Event pack product: secondaries and copy for australian play money for sale and buy kids play money, plus a link to the where-to-buy post.
+- Event pack product: secondaries and copy for australian toy money (170/10) and australian play money notes, plus a link to the where-to-buy post.
 - Ledger: 181 rows, including every cluster above.
 - Images: every post now has its own cover (35 posts, 35 distinct files), cut from the shop's own photographs and checked by eye for text and watermarks.
 
 ## Next
-1. After the Semrush limit resets, run the 6 new primaries plus the play money terms through Keyword Overview and fix any KD over 28.
-2. Classroom play money post.
-3. Request indexing for the 6 new URLs (quota resets daily; see memory).
+1. Classroom play money post.
+2. Request indexing for the 6 new URLs (quota resets daily; see memory).

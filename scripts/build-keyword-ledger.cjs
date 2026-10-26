@@ -77,7 +77,7 @@ const RANK = {
   const head = 'keyword,intent,volume,kd,destination,url_or_reason,org_pos,propsmoney_pos,our_pos,status';
   const lines = rows.map((r) => {
     const rk = RANK[r.keyword] || ['', '', ''];
-    const kdOk = r.kd == null ? 'KD unverified' : r.kd <= 28 ? 'KD ok' : 'KD over 28';
+    const kdOk = r.kd == null ? 'KD n/a (too small to measure)' : r.kd <= 28 ? 'KD ok' : 'KD over 28';
     return [r.keyword, r.intent, r.vol ?? '', r.kd ?? '', r.dest, r.url, ...rk, kdOk].map(esc).join(',');
   });
   fs.writeFileSync('docs/keyword-ledger-2026-10-26.csv', [head, ...lines].join('\n') + '\n');
