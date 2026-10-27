@@ -68,10 +68,10 @@ const RANK = {
   // Tags (2026-10-27): bank keywords that are not a primary or secondary become indexable tag pages (src/config/tags.js).
   // Volume/KD from the 2026-10-12 Semrush export where it lists the keyword; the rest come from the Google AU autocomplete bank (unverified).
   const tg = await import('../src/config/tags.js');
-  const TAGVOL = { 'fake money props': [20, 23], 'fake money prop money': [30, 18], 'fake australian money prop for sale': [20, 20], 'paper notes money': [50, 28], '$100 prop money': [20, 26],
-    // Semrush AU Keyword Overview, 2026-10-27 (KD n/a = too small to measure; no row = no data)
-    'best australian prop money': [20, null], 'fake money for kids': [20, null], 'most realistic prop money': [20, null], 'money props for movies': [10, null], 'buy realistic prop money': [0, null], 'fake money for wedding': [0, null] };
+  // Semrush AU Keyword Overview, refreshed with Update metrics on 2026-10-27 (null volume = n/a, under 10 a month)
+  const TAGVOL = {"$100 prop money":[20,21],"fake money props":[20,17],"fake money prop money":[30,19],"fake australian money prop for sale":[20,25],"paper notes money":[40,7],"best australian prop money":[20,12],"fake money for kids":[20,21],"most realistic prop money":[20,25],"money props for movies":[10,20],"buy realistic prop money":[0,15],"fake money for wedding":[0,20],"aged movie prop money":[null,11],"australian play money for kids":[null,26],"australian prop money for movies":[null,20],"close up realistic prop money":[null,27],"movie prop money bulk":[null,23],"movie grade prop money":[null,23]};
   tg.TAGS.forEach((t) => add(t.kw, 'C', (TAGVOL[t.kw] || [])[0] ?? null, (TAGVOL[t.kw] || [])[1] ?? null, 'tag', '/tags/' + t.slug + '/ (links to ' + t.target.href + ')'));
+  [['$20 bill prop money', 30], ['$50 bill prop money', 30], ['australian dollar prop money', 30], ['fake money for birthday party', 29], ['fake money for photos', 30]].forEach(([k, d]) => add(k, 'C', null, d, 'hold', 'KD ' + d + ', over 28 (Semrush AU refreshed 2026-10-27); tag page dropped, covered by the product and party/photo guides'));
   // competitor keywords that were reviewed and deliberately not mapped
   [
     ['counterfeit money / how to spot fake cash / counterfeit aud cluster', 'I', 2400, 51, 'excluded', 'Counterfeit-detection audience and brand-safety risk; the .org ranks 18 to 56 on these, we do not compete'],
