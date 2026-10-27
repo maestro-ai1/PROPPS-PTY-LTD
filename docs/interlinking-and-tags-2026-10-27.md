@@ -22,10 +22,15 @@ Source of truth: the keyword bank (`src/config/keyword-map.js`, `docs/keyword-le
 | fake money prop money | 30 / 18 | compliance |
 | fake australian money prop for sale | 20 / 20 | new notes |
 | paper notes money | 50 / 28 | polymer vs paper post |
-| 17 Google-bank tags (movie grade, most realistic, kids, party, wedding and so on) | unverified | see `tags.js` |
+| best australian prop money, fake money for kids, most realistic prop money | 20 / n/a | new notes, play money, realism post |
+| money props for movies | 10 / n/a | film range |
+| buy realistic prop money, fake money for wedding | 0 / n/a | shop, event range |
+| 11 other tags (movie grade, aged movie, australian prop money for movies, close up realistic, australian dollar, $50 and $20 bill, play money for kids, birthday party, photos, movie bulk) | no Semrush data | see tags.js |
 
 Ledger rebuilt: 204 rows (`node scripts/build-keyword-ledger.cjs`).
 
+## Semrush check (2026-10-27)
+All 17 unverified tags went through Keyword Overview (AU). None has a measurable KD (n/a on every row), so none is over KD 28 and none was dropped. Volumes are 0 to 20 a month, so tags are long-tail topic pages that pass link equity, not traffic drivers.
+
 ## Next
-- Semrush Keyword Overview on the 17 unverified tags (replace null volume/KD in the ledger; drop any over KD 28).
-- Request indexing for `/tags/` and the first few tag pages once the GSC quota is back.
+- Request indexing for /tags/ and the first few tag pages once the GSC quota is back.

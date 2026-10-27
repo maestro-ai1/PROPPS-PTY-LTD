@@ -68,7 +68,9 @@ const RANK = {
   // Tags (2026-10-27): bank keywords that are not a primary or secondary become indexable tag pages (src/config/tags.js).
   // Volume/KD from the 2026-10-12 Semrush export where it lists the keyword; the rest come from the Google AU autocomplete bank (unverified).
   const tg = await import('../src/config/tags.js');
-  const TAGVOL = { 'fake money props': [20, 23], 'fake money prop money': [30, 18], 'fake australian money prop for sale': [20, 20], 'paper notes money': [50, 28], '$100 prop money': [20, 26] };
+  const TAGVOL = { 'fake money props': [20, 23], 'fake money prop money': [30, 18], 'fake australian money prop for sale': [20, 20], 'paper notes money': [50, 28], '$100 prop money': [20, 26],
+    // Semrush AU Keyword Overview, 2026-10-27 (KD n/a = too small to measure; no row = no data)
+    'best australian prop money': [20, null], 'fake money for kids': [20, null], 'most realistic prop money': [20, null], 'money props for movies': [10, null], 'buy realistic prop money': [0, null], 'fake money for wedding': [0, null] };
   tg.TAGS.forEach((t) => add(t.kw, 'C', (TAGVOL[t.kw] || [])[0] ?? null, (TAGVOL[t.kw] || [])[1] ?? null, 'tag', '/tags/' + t.slug + '/ (links to ' + t.target.href + ')'));
   // competitor keywords that were reviewed and deliberately not mapped
   [
