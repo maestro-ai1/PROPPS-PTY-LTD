@@ -1,11 +1,13 @@
 import type { MetadataRoute } from 'next';
 import { SITE, CATEGORIES, PRODUCTS, POSTS } from '../config/site.js';
+import { TAGS } from '../config/tags.js';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = `https://${SITE.domain}`;
   // Real content dates (never build time): pages edited in the 2026-10-12 SEO pass vs untouched pages.
   const edited = new Date('2026-10-12');
   const stable = new Date('2026-09-24');
+  const tagsDate = new Date('2026-10-27');
   const modifiedDate = (d?: string) => (d ? new Date(d) : undefined);
   const alt = (path: string) => ({ languages: { 'en-AU': `${base}${path}`, 'x-default': `${base}${path}` } });
 
@@ -52,5 +54,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [`${base}/images/blog/${post.image}`],
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes];
+  const tagRoutes: MetadataRoute.Sitemap = [
+    { url: `${base}/tags/`, lastModified: tagsDate, changeFrequency: 'monthly', priority: 0.4, alternates: alt('/tags/') },
+    ...TAGS.map((t) => ({
+      url: `${base}/tags/${t.slug}/`,
+      lastModified: tagsDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+      alternates: alt(`/tags/${t.slug}/`),
+    })),
+  ];
+
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...tagRoutes];
 }

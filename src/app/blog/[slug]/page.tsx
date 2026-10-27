@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { SITE, POSTS } from '../../../config/site.js';
 import { JsonLd } from '../../../components/JsonLd.js';
 import { BlogPostContent } from '../../../views/BlogPage.js';
+import { RelatedBlocks } from '../../../components/RelatedBlocks.js';
+import { autoLinkContent } from '../../../config/keyword-links.js';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -58,7 +60,8 @@ export default async function Page({ params }: Props) {
             answer: f.a.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, ''),
           }))} />
       )}
-      <BlogPostContent post={post} />
+      <BlogPostContent post={{ ...post, content: autoLinkContent(post.content, `/blog/${post.slug}/`) }} />
+      <RelatedBlocks hostHref={`/blog/${post.slug}/`} kind="post" slug={post.slug} narrow />
     </>
   );
 }

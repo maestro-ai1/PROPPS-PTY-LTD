@@ -65,6 +65,11 @@ const RANK = {
     ['can you take prop money on a plane / is it legal to carry prop money', 'I', null, null, 'blog', '/blog/can-you-take-prop-money-on-a-plane-in-australia/'],
     ['australian polymer prop money (for sale)', 'C', null, null, 'blog', '/blog/australian-polymer-prop-money-vs-paper-prop-notes/ (we sell paper, so the page explains why)'],
   ].forEach(([k, i, v, d, t, r]) => add(k, i, v, d, t, r));
+  // Tags (2026-10-27): bank keywords that are not a primary or secondary become indexable tag pages (src/config/tags.js).
+  // Volume/KD from the 2026-10-12 Semrush export where it lists the keyword; the rest come from the Google AU autocomplete bank (unverified).
+  const tg = await import('../src/config/tags.js');
+  const TAGVOL = { 'fake money props': [20, 23], 'fake money prop money': [30, 18], 'fake australian money prop for sale': [20, 20], 'paper notes money': [50, 28], '$100 prop money': [20, 26] };
+  tg.TAGS.forEach((t) => add(t.kw, 'C', (TAGVOL[t.kw] || [])[0] ?? null, (TAGVOL[t.kw] || [])[1] ?? null, 'tag', '/tags/' + t.slug + '/ (links to ' + t.target.href + ')'));
   // competitor keywords that were reviewed and deliberately not mapped
   [
     ['counterfeit money / how to spot fake cash / counterfeit aud cluster', 'I', 2400, 51, 'excluded', 'Counterfeit-detection audience and brand-safety risk; the .org ranks 18 to 56 on these, we do not compete'],

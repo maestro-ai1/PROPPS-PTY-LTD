@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { SITE, CATEGORIES, PRODUCTS, CATEGORY_FAQS } from '../../../config/site.js';
 import { JsonLd } from '../../../components/JsonLd.js';
 import { ShopContent } from '../../../views/ShopPage.js';
+import { RelatedBlocks } from '../../../components/RelatedBlocks.js';
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -51,6 +52,7 @@ export default async function Page({ params }: Props) {
         <JsonLd type="faq" data={CATEGORY_FAQS[cat.slug].map((f) => ({ question: f.q, answer: f.a }))} />
       )}
       <ShopContent category={cat.slug} />
+      <RelatedBlocks hostHref={`/shop/${cat.slug}/`} kind="category" slug={cat.slug} />
     </>
   );
 }

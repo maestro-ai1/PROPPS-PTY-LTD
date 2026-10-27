@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { SITE, PRODUCTS, PRODUCT_FAQS, PRODUCT_SEO } from '../../../../config/site.js';
 import { JsonLd } from '../../../../components/JsonLd.js';
 import { ProductDetailContent } from '../../../../views/ProductDetailPage.js';
+import { RelatedBlocks } from '../../../../components/RelatedBlocks.js';
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -53,6 +54,7 @@ export default async function Page({ params }: Props) {
       <JsonLd type="product" data={product} />
       {PRODUCT_FAQS[product.slug] && <JsonLd type="faq" data={PRODUCT_FAQS[product.slug]} />}
       <ProductDetailContent product={product} />
+      <RelatedBlocks hostHref={`/shop/${product.category}/${product.slug}/`} kind="product" slug={product.slug} />
     </>
   );
 }

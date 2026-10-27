@@ -87,6 +87,11 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/tags/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                  <span className="group-hover:translate-x-1 transition-transform">Prop Money Topics</span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/faq/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">FAQ</span>
                 </Link>
