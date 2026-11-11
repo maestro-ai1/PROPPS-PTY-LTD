@@ -7,11 +7,15 @@ const postRedirects = JSON.parse(readFileSync(new URL('./src/config/post-redirec
 const nextConfig = {
   trailingSlash: true,
   async redirects() {
-    return Object.entries(postRedirects).map(([from, to]) => ({
-      source: `/blog/${from}`,
-      destination: `/blog/${to}/`,
-      permanent: true,
-    }));
+    return [
+      ...Object.entries(postRedirects).map(([from, to]) => ({
+        source: `/blog/${from}`,
+        destination: `/blog/${to}/`,
+        permanent: true,
+      })),
+      // 2026-11-11: the $100 prop money tag became a secondary keyword of the $100 product page
+      { source: '/tags/100-prop-money', destination: '/shop/new-notes/100-australian-prop-money-for-sale/', permanent: true },
+    ];
   },
   // Hide Next.js's floating "N" dev badge (dev only; no effect on production).
   devIndicators: false,

@@ -62,24 +62,25 @@ export const KEYWORD_PAGES = {
 // Product slug -> focus + secondary keywords
 export const KEYWORD_PRODUCTS = {
   '100-australian-prop-money-for-sale': {
-    focus: k('100 dollar note australia', 'C', 1900, 40),
-    secondary: [k('australian 100 dollar note', 'I', 1900, 27), k('$100 note', 'I', 1300, 30), k('100 dollar note', 'I/C', 880, 31), k('australian $100 note', 'I', 880, 18), k('100 australian dollar note', 'I', 480, 28)],
+    // 2026-11-11 option B: primary moved to the KD 27 variant (100 dollar note australia is KD 40); prop money phrase first. Over-KD variants are in the ledger as hold.
+    focus: k('australian 100 dollar note', 'I', 1900, 27),
+    secondary: [k('$100 prop money', 'C', 20, 21), k('australian $100 note', 'I', 880, 18), k('100 australian dollar note', 'I', 480, 28)],
   },
   '50-australian-prop-money-for-sale': {
     focus: k('50 dollar note australia', 'I', 1600, 27),
-    secondary: [k('50 note australia', 'I', 720, 22), k('$50 note', 'I', 590, 28), k('australian 50 dollar bill', 'I/C', 590, 17), k('$50 australian note', 'I', 320, 29), k('$50 prop money', 'I', 20, 23)],
+    secondary: [k('$50 prop money', 'I', 20, 23), k('50 note australia', 'I', 720, 22), k('$50 note', 'I', 590, 28), k('australian 50 dollar bill', 'I/C', 590, 17)],
   },
   '20-australian-prop-money-for-sale': {
     focus: k('20 dollar note australia', 'I', 880, 17),
-    secondary: [k('$20 note australia', 'I', 260, 21), k('$20 prop money', 'C', 10, 16), k('20 dollar prop money', 'T', 10, 25), k('australian 20 dollar note', 'I', 590, 16), k('20 note australia', 'I', 480, 25)],
+    secondary: [k('$20 prop money', 'C', 10, 16), k('20 dollar prop money', 'T', 10, 25), k('$20 note australia', 'I', 260, 21), k('australian 20 dollar note', 'I', 590, 16), k('20 note australia', 'I', 480, 25)],
   },
   '10-australian-prop-money-for-sale': {
-    focus: k('10 dollar note australia', 'I', 880, 29),
-    secondary: [k('$10 note australia', 'I', 480, 10), k('10 dollar prop money', 'C', null, 32), k('australian 10 dollar note', 'I', 1000, 27), k('10 note australia', 'I', 1000, 30), k('$10 prop money', 'C', null, 14)],
+    focus: k('australian 10 dollar note', 'I', 1000, 27), // was 10 dollar note australia (KD 29)
+    secondary: [k('$10 prop money', 'C', null, 14), k('$10 note australia', 'I', 480, 10)],
   },
   '5-australian-prop-money-for-sale': {
     focus: k('5 dollar note australia', 'I', 880, 26),
-    secondary: [k('$5 prop money', 'T', null, 12), k('5 dollar prop money', 'I/T', null, 30), k('australian 5 dollar note', 'I', 880, 25), k('5 note australia', 'I', 110, 20), k('new 5 dollar note australia', 'I', 320, 40)],
+    secondary: [k('$5 prop money', 'T', null, 12), k('australian 5 dollar note', 'I', 880, 25), k('5 note australia', 'I', 110, 20)],
   },
   'film-and-tv-prop-currency-pack': {
     focus: k('prop money for film', 'T', 0, 6),

@@ -655,9 +655,9 @@ export const PRODUCT_SEO = {
     "what": "5 dollar note Australia prop notes"
   },
   "10-australian-prop-money-for-sale": {
-    "h1": "10 Dollar Note Australia — Prop Money for Sale",
-    "title": "10 Dollar Note Australia | Prop Money for Sale",
-    "what": "10 dollar note Australia prop notes"
+    "h1": "Australian 10 Dollar Note — Prop Money for Sale",
+    "title": "Australian 10 Dollar Note | Prop Money for Sale",
+    "what": "Australian 10 dollar note prop notes"
   },
   "20-australian-prop-money-for-sale": {
     "h1": "20 Dollar Note Australia — Prop Money for Sale",
@@ -670,9 +670,9 @@ export const PRODUCT_SEO = {
     "what": "50 dollar note Australia prop notes"
   },
   "100-australian-prop-money-for-sale": {
-    "h1": "100 Dollar Note Australia — Prop Money for Sale",
-    "title": "100 Dollar Note Australia | Prop Money for Sale",
-    "what": "100 dollar note Australia prop notes"
+    "h1": "Australian 100 Dollar Note — Prop Money for Sale",
+    "title": "Australian 100 Dollar Note | Prop Money for Sale",
+    "what": "Australian 100 dollar note prop notes"
   },
   "film-and-tv-prop-currency-pack": {
     "h1": "Prop Money for Film — Film & TV Prop Currency Pack",

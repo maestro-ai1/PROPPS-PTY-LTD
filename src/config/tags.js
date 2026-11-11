@@ -70,13 +70,6 @@ const DEFS = [
     terms: ['buy', 'order', 'where to', 'legal', 'checkout'], cats: ['new-notes'], related: ['best-australian-prop-money', 'australian-dollar-prop-money'],
   },
   {
-    kw: '$100 prop money', title: '$100 Prop Money: Australian Hundred Dollar Notes',
-    desc: '$100 prop money in Australia: specimen-marked hundred dollar notes in bundles for film, photos and events. See sizes, prices and the bundle guide.',
-    paras: ['$100 prop money is the one cameras love, because a stack of hundred dollar notes reads as serious money from across a room. PROPPS sells it in bundle sizes from a few notes up to full stacks.', 'Use the guides below to choose a bundle size and to plan how many notes a scene really needs.'],
-    target: { href: '/shop/new-notes/100-australian-prop-money-for-sale/', label: 'View the $100 prop note' },
-    terms: ['$100', '100 dollar', 'hundred'], cats: [], related: ['50-bill-prop-money', '20-bill-prop-money', 'australian-dollar-prop-money'],
-  },
-  {
     kw: 'australian play money for kids', title: 'Australian Play Money for Kids: Notes for Learning',
     desc: 'Australian play money for kids: clearly marked notes for shop games, maths lessons and pretend play. Class and party quantities from Melbourne.',
     paras: ['Australian play money for kids works best when it looks like the notes children see their parents use, so counting and change-making feel real. Clear play markings keep it firmly in the game.', 'The pack and guides below cover pretend shops, classroom lessons and party games, plus what to check on age and safety.'],
@@ -150,7 +143,6 @@ const PRODUCT_MAP = {
   'close up realistic prop money': [FILM, PHOTO],
   'best australian prop money': [D(100), D(50), D(20)],
   'buy realistic prop money': [D(100), D(50), D(20)],
-  '$100 prop money': [D(100)],
   'australian play money for kids': [PLAY],
   'fake money for kids': [PLAY],
   'fake money for wedding': [PLAY, PHOTO],

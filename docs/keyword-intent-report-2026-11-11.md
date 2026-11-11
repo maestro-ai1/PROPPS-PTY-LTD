@@ -93,3 +93,10 @@ KD moves between refreshes (for example "prop money for photography" read 27 yes
 2. **/wholesale/:** swap primary and secondary: "bulk prop money" is T 10/18, "wholesale prop money" is I 10/23.
 3. **Products with 0 to 3 secondaries** (photography, custom, bulk, film): source the missing secondaries in Semrush.
 4. **KD over 28 blog primaries and tags** (list above): keep as long-tail posts, or retarget.
+
+## Option B applied (2026-11-11, later)
+- $100 page primary is now `australian 100 dollar note` (I, 1,900, KD 27; was 100 dollar note australia, KD 40). $10 page primary is now `australian 10 dollar note` (I, 1,000, KD 27; was KD 29).
+- The prop money phrase is the first secondary on every note page: $100 prop money (C 20/21), $50 prop money (I 20/23), $20 prop money (C 10/16) and 20 dollar prop money (T 10/25), $10 prop money (C n/a/14), $5 prop money (T n/a/12).
+- Secondaries over KD 28 are no longer mapped (held in the ledger, still used in copy): 100 dollar note australia 40, $100 note 30, 100 dollar note 31, $50 australian note 29, 10 dollar note australia 29, 10 note australia 30, 10 dollar prop money 32, 5 dollar prop money 30, new 5 dollar note australia 40. So the $100, $10 and $5 pages have 3, 2 and 3 secondaries, below the rule of 5, because the rest do not pass KD 28.
+- The "$100 prop money" tag page was retired (the keyword now belongs to the $100 product) and redirects to it. Sitemap is 82 URLs.
+- Wholesale left as is. Re-crawl: 82 pages, 2 failing (the two ranking legal posts), 0 broken links.
