@@ -680,14 +680,14 @@ export const PRODUCT_SEO = {
     "what": "prop money for film and TV"
   },
   "bulk-money-stack-pack": {
-    "h1": "Bulk Prop Money — Bulk Money Stack Pack",
-    "title": "Bulk Prop Money | Bulk Money Stack Pack",
-    "what": "bulk prop money stacks"
+    "h1": "Bulk Prop Money Australia — Bulk Money Stack Pack",
+    "title": "Bulk Prop Money Australia | Bulk Money Stack Pack",
+    "what": "bulk prop money Australia stacks"
   },
   "photography-prop-currency-set": {
-    "h1": "Prop Money for Photoshoot — Photography Prop Currency Set",
-    "title": "Prop Money for Photoshoot | Photography Prop Set",
-    "what": "prop money for photoshoot sets"
+    "h1": "Prop Money for Photography — Photography Prop Currency Set",
+    "title": "Prop Money for Photography | Photography Prop Set",
+    "what": "prop money for photography sets"
   },
   "event-and-party-prop-cash-pack": {
     "h1": "Kids Play Money — Event & Party Prop Cash Pack",
@@ -833,7 +833,7 @@ export const PRODUCTS = [
     featured: false,
     images: ['money-stacks.jpeg'],
     shortDescription: 'Bulk strapped prop currency stacks for scenes requiring large visible cash volumes.',
-    description: 'Bulk strapped prop currency stacks for scenes requiring large visible cash volumes, ideal for heist sequences, vault reveals, and bank scenes. Every note carries mandatory non-legal-tender specimen markings.',
+    description: 'Bulk prop money Australia productions order by the stack: strapped prop currency stacks for scenes requiring large visible cash volumes, ideal for heist sequences, vault reveals, and bank scenes. Every note carries mandatory non-legal-tender specimen markings.',
     bundles: BUNDLE_TIERS,
     details: {
       'use case': 'Heist, vault & bank scenes',
@@ -851,7 +851,7 @@ export const PRODUCTS = [
     featured: false,
     images: ['photography-props.jpeg'],
     shortDescription: 'Prop currency styled for editorial and commercial photography shoots — realistic on camera, specimen-marked, dispatched from Melbourne.',
-    description: 'Prop currency styled for print, editorial, and commercial photography shoots, delivering a realistic look for camera close-ups. Every note carries mandatory non-legal-tender specimen markings.',
+    description: 'Prop money for photography that looks right in frame: prop currency styled for print, editorial and commercial shoots, delivering a realistic look for camera close-ups. Every note carries mandatory non-legal-tender specimen markings.',
     bundles: BUNDLE_TIERS,
     details: {
       'use case': 'Editorial & commercial photography',

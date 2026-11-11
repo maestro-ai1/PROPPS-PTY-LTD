@@ -86,11 +86,11 @@ export const KEYWORD_PRODUCTS = {
     secondary: [k('film prop money', 'T', 20, 25), k('movie prop money australia', 'C', null, null), k('cinema prop currency australia', 'C', null, null)],
   },
   'bulk-money-stack-pack': {
-    focus: k('bag of prop money', 'I/C', null, 12),
+    focus: k('bulk prop money australia', 'C', null, 23), // 2026-11-11: was 'bag of prop money'; no bag is sold. Semrush AU (refreshed): n/a volume, KD 23
     secondary: [k('stack of prop money', 'T', null, 14), k('prop money briefcase', 'C', null, 6)],
   },
   'photography-prop-currency-set': {
-    focus: k('prop money for photography', 'T', null, 13),
+    focus: k('prop money for photography', 'T', null, 27), // Semrush AU 2026-11-11 (refreshed): n/a volume, KD 27 (was recorded as 13)
     secondary: [],
   },
   'event-and-party-prop-cash-pack': {

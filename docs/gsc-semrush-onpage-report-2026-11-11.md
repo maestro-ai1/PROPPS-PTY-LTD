@@ -42,3 +42,9 @@ The ebikedirect.eu repo generates title, H1, meta, first sentence, image alt and
 - Product main image alt is the mapped focus keyword. Breadcrumb schema added to /about/, /wholesale/, /faq/. `NextSteps` internal links on about, contact, wholesale, compliance. Guides with fewer than 2 authority links get a "Sources and further reading" section. Refund policy title no longer exceeds 60 characters.
 - Re-crawl (83 pages): 68 failing pages down to 4. 0 broken links, 0 orphans, 86 of 86 secondaries still linked from 2+ pages.
 - Left on purpose: bulk-money-stack-pack and photography-prop-currency-set (their mapped primaries "bag of prop money" and "prop money for photography" have no volume and the pages already rank on other terms: needs a keyword decision), and the two ranking legal posts.
+
+## Product keyword decision applied (2026-11-11)
+Semrush AU, refreshed with Update metrics. Neither product had a candidate with real volume, so the pick was by fit and by removing duplicates:
+- Bulk Money Stack Pack: primary `bulk prop money australia` (volume n/a, KD 23). Was "bag of prop money", but no bag is sold, and the old title reused the wholesale page's "bulk prop money". Options with volume (prop money bag 20/23, fake money stacks 20/23) rejected as misleading or wrong framing.
+- Photography Prop Currency Set: primary `prop money for photography` (volume n/a, KD 27; the map had recorded KD 13). The old title reused the photography category's "prop money for photoshoot".
+- Titles, H1s, metas and first paragraphs updated; ledger now 213 rows with the rejected options held. Re-crawl: 83 pages, 2 failing (the two ranking legal posts left alone on purpose), 0 broken links, 0 orphans.
