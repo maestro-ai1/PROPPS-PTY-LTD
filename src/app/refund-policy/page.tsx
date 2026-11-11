@@ -5,7 +5,7 @@ import { SITE } from '../../config/site.js';
 import { PolicyContent, REFUND_FAQS } from '../../views/PolicyPage.js';
 
 export const metadata: Metadata = {
-  title: 'Refund Policy: Refunds in 3 to 8 Business Days',
+  title: { absolute: 'Refund Policy: Refunds in 3 to 8 Business Days' },
   description: 'PROPPS refund policy: approved refunds reach you in 3 to 8 business days. Damage replacement, cancellations and returns under Australian Consumer Law.',
   alternates: { canonical: `https://${SITE.domain}/refund-policy/` },
 };

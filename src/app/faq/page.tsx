@@ -15,6 +15,7 @@ export default function Page() {
   return (
     <>
       <JsonLd type="faq" />
+      <JsonLd type="page" data={{ kind: 'WebPage', name: 'Frequently Asked Questions', path: '/faq/' }} />
       <FaqContent />
     </>
   );

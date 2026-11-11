@@ -59,7 +59,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
         <p className="text-xs sm:text-sm text-[#6F665F] max-w-3xl leading-relaxed">
           {currentCatObj
             ? currentCatObj.description
-            : 'Buy prop money online from a Melbourne studio: specimen-marked notes from $5 to $100, strapped money stacks and film packs. Orders start at $300 AUD, ship by Express Post and are free to deliver from $500. Not sure what you need? Prop money is not the same as the fake money you see in novelty shops, so check our compliance page or contact the studio.'}
+            : 'Australian prop money for sale from a Melbourne studio: specimen-marked notes from $5 to $100, strapped money stacks and film packs. Orders start at $300 AUD, ship by Express Post and are free to deliver from $500. Not sure what you need? Prop money is not the same as the fake money you see in novelty shops, so check our compliance page or contact the studio.'}
         </p>
       </div>
 

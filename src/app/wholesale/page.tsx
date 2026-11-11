@@ -3,6 +3,8 @@ import React from 'react';
 import { SITE } from '../../config/site.js';
 import { JsonLd } from '../../components/JsonLd.js';
 import { WholesaleContent } from '../../views/WholesalePage.js';
+import { PageTopics } from '../../components/PageTopics.js';
+import { NextSteps } from '../../components/NextSteps.js';
 
 export const metadata: Metadata = {
   title: { absolute: 'Wholesale Prop Money Australia | Bulk Pricing' },
@@ -16,7 +18,10 @@ export default function Page() {
   return (
     <>
       <JsonLd type="wholesale" />
+      <JsonLd type="page" data={{ kind: 'WebPage', name: 'Wholesale Prop Money Australia', path: '/wholesale/' }} />
       <WholesaleContent />
+      <PageTopics target="/wholesale" name="wholesale prop money" />
+      <NextSteps />
     </>
   );
 }

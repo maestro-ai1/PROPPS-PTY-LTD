@@ -33,7 +33,7 @@ export const HomeContent: React.FC = () => {
     {
       title: 'AUSTRALIAN PROP MONEY — CINEMA-GRADE CURRENCY FOR FILM & TV',
       subtitle:
-        'Engineered specifically for television series, feature films, theatre productions, commercial visual arts, and training simulations across Australia.',
+        'Australian prop money engineered for television series, feature films, theatre productions, commercial visual arts and training simulations across Australia.',
       ctaText: 'Explore Prop Catalog',
       ctaPath: '/shop',
       badge: 'Melbourne VIC 3093 Studio · Fast Express Dispatch',

@@ -18,7 +18,7 @@ export const AboutContent: React.FC = () => {
           ABOUT {SITE.name}
         </h1>
         <p className="text-xs sm:text-sm text-[#6F665F] max-w-2xl mx-auto leading-relaxed">
-          The authorized standard in cinema-grade reproduction currency, bespoke theatrical bank props, and law enforcement training specimens across the Commonwealth of Australia.
+          PROPPS is the authorized standard in cinema-grade reproduction currency, bespoke theatrical bank props, and law enforcement training specimens across the Commonwealth of Australia.
         </p>
       </div>
 

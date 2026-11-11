@@ -131,3 +131,22 @@ export function autoLinkContent(content, selfHref) {
     })
     .join('\n\n');
 }
+
+const EXTERNAL = /\]\(https?:\/\//g;
+/**
+ * Guides need at least 2 authority links (golden blog rule). When a post has fewer, a short "Sources and further reading"
+ * section with the RBA banknote pages and the Federal Register of Legislation is added at render time.
+ */
+export function ensureAuthorityLinks(content) {
+  const have = (content.match(EXTERNAL) || []).length;
+  if (have >= 2) return content;
+  const links = [];
+  if (!content.includes('rba.gov.au')) links.push('the [Reserve Bank of Australia banknote pages](https://www.rba.gov.au/banknotes/) for how Australian notes are protected');
+  if (!content.includes('legislation.gov.au')) links.push('the [Federal Register of Legislation](https://www.legislation.gov.au/) for the Crimes (Currency) Act 1981');
+  if (!content.includes('accc.gov.au')) links.push('the [ACCC consumer guides](https://www.accc.gov.au/consumers) for your rights when buying online');
+  const need = 2 - have;
+  const picked = links.slice(0, Math.max(need, 2));
+  if (picked.length === 0) return content;
+  const list = picked.length === 1 ? picked[0] : `${picked.slice(0, -1).join(', ')} and ${picked[picked.length - 1]}`;
+  return `${content}\n\n## Sources and further reading\n\nFor the official position, see ${list}. PROPPS notes are specimen-marked reproduction props, not legal tender.`;
+}

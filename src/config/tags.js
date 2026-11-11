@@ -37,7 +37,7 @@ const DEFS = [
   {
     kw: 'australian prop money for movies', title: 'Australian Prop Money for Movies and TV Productions',
     desc: 'Australian prop money for movies, TV and streaming: all five denominations, film packs and ordering guides. Specimen-marked and shipped from Melbourne.',
-    paras: ['Australian productions need Australian notes: the right colours, sizes and security-feature artwork for $5, $10, $20, $50 and $100, so a local audience believes the scene. Overseas stock rarely passes that test.', 'Browse the denominations and film packs below, then read the guides on which notes suit which scene and how to order for a shoot.'],
+    paras: ['Australian prop money for movies needs the right colours, sizes and security-feature artwork for $5, $10, $20, $50 and $100, so a local audience believes the scene. Overseas stock rarely passes that test.', 'Browse the denominations and film packs below, then read the guides on which notes suit which scene and how to order for a shoot.'],
     target: { href: '/shop/new-notes/', label: 'Shop Australian prop notes' },
     terms: ['denomination', 'australian production', 'film and tv', 'local', 'set designer'], cats: ['new-notes', 'film-and-tv-props'], related: ['money-props-for-movies', 'australian-dollar-prop-money'],
   },
@@ -51,7 +51,7 @@ const DEFS = [
   {
     kw: 'close up realistic prop money', title: 'Close Up Realistic Prop Money for Macro Shots',
     desc: 'Close up realistic prop money for tight shots: print detail, paper finish and lighting tips so notes hold up on a macro lens.',
-    paras: ['A close-up shot of a note shows print detail, edges and paper grain that a wide shot never reveals. For macro work choose sharp print, a believable finish and denominations that match the scene.', 'The lighting and judging guides below cover glare, angle and exposure, and the products are the denominations most often hired for insert shots.'],
+    paras: ['Close up realistic prop money matters because a close-up shot of a note shows print detail, edges and paper grain that a wide shot never reveals. For macro work choose sharp print, a believable finish and denominations that match the scene.', 'The lighting and judging guides below cover glare, angle and exposure, and the products are the denominations most often hired for insert shots.'],
     target: { href: '/blog/lighting-prop-money-for-camera-avoiding-glare/', label: 'Read the lighting guide' },
     terms: ['close-up', 'close up', 'glare', 'lighting', 'lens'], cats: ['film-and-tv-props'], related: ['most-realistic-prop-money', 'aged-movie-prop-money'],
   },
@@ -65,14 +65,14 @@ const DEFS = [
   {
     kw: 'buy realistic prop money', title: 'Buy Realistic Prop Money in Australia',
     desc: 'Buy realistic prop money in Australia: legal, specimen-marked notes shipped by Express Post with signature. Orders from $300 AUD.',
-    paras: ['Buying realistic prop money online should be simple and legal. PROPPS sells specimen-marked reproduction notes, invoices with an ABN and dispatches from Melbourne by Express Post with signature on delivery.', 'The guides below explain the legal position, how to order and what to check before you pay, so there are no surprises at checkout.'],
+    paras: ['Buy realistic prop money online the simple, legal way: PROPPS sells specimen-marked reproduction notes, invoices with an ABN and dispatches from Melbourne by Express Post with signature on delivery.', 'The guides below explain the legal position, how to order and what to check before you pay, so there are no surprises at checkout.'],
     target: { href: '/shop/', label: 'Browse the full shop' },
     terms: ['buy', 'order', 'where to', 'legal', 'checkout'], cats: ['new-notes'], related: ['best-australian-prop-money', 'australian-dollar-prop-money'],
   },
   {
     kw: '$100 prop money', title: '$100 Prop Money: Australian Hundred Dollar Notes',
     desc: '$100 prop money in Australia: specimen-marked hundred dollar notes in bundles for film, photos and events. See sizes, prices and the bundle guide.',
-    paras: ['The hundred dollar note is the one cameras love, because a stack of them reads as serious money from across a room. PROPPS sells it in bundle sizes from a few notes up to full stacks.', 'Use the guides below to choose a bundle size and to plan how many notes a scene really needs.'],
+    paras: ['$100 prop money is the one cameras love, because a stack of hundred dollar notes reads as serious money from across a room. PROPPS sells it in bundle sizes from a few notes up to full stacks.', 'Use the guides below to choose a bundle size and to plan how many notes a scene really needs.'],
     target: { href: '/shop/new-notes/100-australian-prop-money-for-sale/', label: 'View the $100 prop note' },
     terms: ['$100', '100 dollar', 'hundred'], cats: [], related: ['50-bill-prop-money', '20-bill-prop-money', 'australian-dollar-prop-money'],
   },
@@ -93,7 +93,7 @@ const DEFS = [
   {
     kw: 'fake money for wedding', title: 'Fake Money for Wedding Photos, Games and Decor',
     desc: 'Fake money for wedding photo props, dollar dances and decor: clearly marked notes and the legal guide for Australian couples and planners.',
-    paras: ['Weddings use play cash for photo props, themed tables and games. Choose clearly marked notes and keep them as decoration so there is never confusion with real money.', 'The guides below cover what is legal, how many notes a table or photo setup needs and where to order.'],
+    paras: ['Fake money for wedding photo props, themed tables and games works best when the notes are clearly marked and kept as decoration, so there is never confusion with real money.', 'The guides below cover what is legal, how many notes a table or photo setup needs and where to order.'],
     target: { href: '/shop/event-and-party-props/', label: 'Shop event and party props' },
     terms: ['wedding', 'party', 'event', 'photo'], cats: ['event-and-party-props', 'photography-props'], related: ['fake-money-for-birthday-party', 'fake-money-for-photos'],
   },
@@ -107,7 +107,7 @@ const DEFS = [
   {
     kw: 'fake money prop money', title: 'Fake Money Prop Money: Marked Australian Notes',
     desc: 'Fake money prop money in Australia: specimen-marked notes for film, photography and events, with the compliance guide and ordering details.',
-    paras: ['Fake money and prop money are often used as the same phrase, but only one is lawful: a clearly marked reproduction made for production use. This page collects the compliance explainers and the products that meet that standard.', 'If you are unsure what is allowed, start with the legal guides before you order.'],
+    paras: ['Fake money prop money is a phrase people use for cash in a scene, but only one version is lawful: a clearly marked reproduction made for production use. This page collects the compliance explainers and the products that meet that standard.', 'If you are unsure what is allowed, start with the legal guides before you order.'],
     target: { href: '/compliance/', label: 'Read our compliance page' },
     terms: ['legal', 'illegal', 'compliance', 'crimes currency', 'reserve bank'], cats: [], related: ['fake-money-props', 'fake-australian-money-prop-for-sale'],
   },
@@ -121,14 +121,14 @@ const DEFS = [
   {
     kw: 'paper notes money', title: 'Paper Notes Money: Prop Notes vs Polymer',
     desc: 'Paper notes money explained for prop use: why prop notes are paper, how that differs from polymer banknotes and what it means on camera.',
-    paras: ['Australian banknotes are polymer, but prop notes are printed on paper, because polymer reproduction is restricted. Paper is also easier to weather and light on set.', 'The guide below explains the difference in detail, and the products show the paper notes we make.'],
+    paras: ['Paper notes money for props differs from the real thing: Australian banknotes are polymer, but prop notes are printed on paper, because polymer reproduction is restricted. Paper is also easier to weather and light on set.', 'The guide below explains the difference in detail, and the products show the paper notes we make.'],
     target: { href: '/blog/australian-polymer-prop-money-vs-paper-prop-notes/', label: 'Read the polymer vs paper guide' },
     terms: ['polymer', 'paper'], cats: ['new-notes'], related: ['most-realistic-prop-money', 'australian-dollar-prop-money'],
   },
   {
-    kw: 'movie prop money bulk', title: 'Movie Prop Money in Bulk: Stacks and Wholesale',
-    desc: 'Movie prop money in bulk: stacks, bundles and wholesale pricing for productions that need volume. Quotes and planning guides inside.',
-    paras: ['Bulk movie prop money suits heist scenes, bank vaults and large set dressing. Ordering volume early saves time, and bundle sizes make the maths simple.', 'The stacks and wholesale guides below help you estimate quantity and budget, and the product is the ready-made option.'],
+    kw: 'movie prop money bulk', title: 'Movie Prop Money Bulk: Stacks and Wholesale',
+    desc: 'Movie prop money bulk orders: stacks, bundles and wholesale pricing for productions that need volume. Quotes and planning guides inside.',
+    paras: ['Movie prop money bulk orders suit heist scenes, bank vaults and large set dressing. Ordering volume early saves time, and bundle sizes make the maths simple.', 'The stacks and wholesale guides below help you estimate quantity and budget, and the product is the ready-made option.'],
     target: { href: '/shop/money-stacks/', label: 'Shop money stacks' },
     terms: ['bulk', 'wholesale', 'stack', 'heist', 'volume', 'million'], cats: ['money-stacks'], related: ['money-props-for-movies', 'movie-grade-prop-money'],
   },

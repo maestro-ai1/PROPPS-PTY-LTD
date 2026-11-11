@@ -15,9 +15,11 @@ import { useApp } from '../context/AppContext.js';
 
 interface ProductDetailContentProps {
   product: (typeof PRODUCTS)[number];
+  /** mapped primary keyword (keyword-map.js): the main image alt, as in the keyword rule */
+  focusKeyword?: string;
 }
 
-export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ product }) => {
+export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ product, focusKeyword }) => {
   const { addToCart } = useApp();
   const bundles = product.bundles;
   const [selectedBundleId, setSelectedBundleId] = useState(bundles?.[0]?.id);
@@ -76,7 +78,7 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
         {/* Left Column: Real Product Photography */}
         <div className="space-y-4">
           <div className="luxury-card rounded-2xl overflow-hidden border-2 border-[#EAE3DC]">
-            <ProductPhoto src={product.images[0]} alt={product.name} badge={product.badge} priority />
+            <ProductPhoto src={product.images[0]} alt={focusKeyword ?? product.name} badge={product.badge} priority />
           </div>
 
           <div className="p-4 bg-[#F9F7F2] rounded-xl border border-[#EAE3DC] flex items-center justify-between text-xs font-mono-code text-[#6F665F]">

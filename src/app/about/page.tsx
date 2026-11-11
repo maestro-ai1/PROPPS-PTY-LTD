@@ -3,9 +3,11 @@ import React from 'react';
 import { SITE } from '../../config/site.js';
 import { JsonLd } from '../../components/JsonLd.js';
 import { AboutContent } from '../../views/AboutPage.js';
+import { PageTopics } from '../../components/PageTopics.js';
+import { NextSteps } from '../../components/NextSteps.js';
 
 export const metadata: Metadata = {
-  title: { absolute: 'About PROPPS | Melbourne Prop Money Makers Since 2019' },
+  title: { absolute: 'PROPPS: About the Melbourne Prop Money Makers Since 2019' },
   description:
     'PROPPS PTY LTD makes specimen-marked Australian prop currency in Eltham, Melbourne. 500+ productions supplied since 2019. Meet the team and our standards.',
   alternates: { canonical: `https://${SITE.domain}/about/` },
@@ -15,7 +17,10 @@ export default function Page() {
   return (
     <>
       <JsonLd type="about" />
+      <JsonLd type="page" data={{ kind: 'AboutPage', name: 'About PROPPS PTY LTD', path: '/about/' }} />
       <AboutContent />
+      <PageTopics target="/about" name="PROPPS" />
+      <NextSteps />
     </>
   );
 }

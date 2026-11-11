@@ -17,7 +17,7 @@ export const ComplianceContent: React.FC = () => {
           PROP MONEY AUSTRALIA LAWS &amp; COMPLIANCE
         </h1>
         <p className="text-xs sm:text-sm text-[#6F665F] max-w-2xl mx-auto leading-relaxed">
-          Comprehensive legal guidelines governing the design, manufacture, purchase, and on-camera utilization of reproduction Australian currency props.
+          Prop money Australia laws in one place: the legal guidelines governing the design, manufacture, purchase and on-camera use of reproduction Australian currency props.
         </p>
         <p className="text-xs sm:text-sm text-[#1A1414] max-w-2xl mx-auto leading-relaxed">
           Looking for compliant, specimen-marked notes for a production?{' '}

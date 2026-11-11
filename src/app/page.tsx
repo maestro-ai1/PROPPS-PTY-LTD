@@ -3,6 +3,7 @@ import React from 'react';
 import { SITE } from '../config/site.js';
 import { JsonLd } from '../components/JsonLd.js';
 import { HomeContent } from '../views/HomePage.js';
+import { PageTopics } from '../components/PageTopics.js';
 
 export const metadata: Metadata = {
   title: { absolute: 'Australian Prop Money for Film & TV | PROPPS Melbourne' },
@@ -16,6 +17,7 @@ export default function Page() {
     <>
       <JsonLd type="homepage" />
       <HomeContent />
+      <PageTopics target="/" name="Australian prop money" />
     </>
   );
 }

@@ -5,6 +5,8 @@ import { SITE, PRODUCTS, PRODUCT_FAQS, PRODUCT_SEO } from '../../../../config/si
 import { JsonLd } from '../../../../components/JsonLd.js';
 import { ProductDetailContent } from '../../../../views/ProductDetailPage.js';
 import { RelatedBlocks } from '../../../../components/RelatedBlocks.js';
+import { PageTopics } from '../../../../components/PageTopics.js';
+import { KEYWORD_PRODUCTS } from '../../../../config/keyword-map.js';
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -53,7 +55,8 @@ export default async function Page({ params }: Props) {
     <>
       <JsonLd type="product" data={product} />
       {PRODUCT_FAQS[product.slug] && <JsonLd type="faq" data={PRODUCT_FAQS[product.slug]} />}
-      <ProductDetailContent product={product} />
+      <ProductDetailContent product={product} focusKeyword={KEYWORD_PRODUCTS[product.slug as keyof typeof KEYWORD_PRODUCTS]?.focus.keyword} />
+      <PageTopics target={product.slug} name={product.name} />
       <RelatedBlocks hostHref={`/shop/${product.category}/${product.slug}/`} kind="product" slug={product.slug} />
     </>
   );

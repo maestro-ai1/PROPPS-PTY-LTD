@@ -56,7 +56,7 @@ export const WholesaleContent: React.FC = () => {
           WHOLESALE PROP MONEY AUSTRALIA
         </h1>
         <p className="text-xs sm:text-sm text-[#4F4640] leading-relaxed">
-          Supplying Australian film productions, television studios, streaming networks, commercial art departments, and law enforcement training academies with compliant reproduction currency.
+          Wholesale prop money for Australian film productions, television studios, streaming networks, commercial art departments and law enforcement training academies, supplied as compliant reproduction currency.
         </p>
       </div>
 
