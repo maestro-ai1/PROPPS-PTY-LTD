@@ -1,7 +1,7 @@
 // src/config/keyword-map.js
 // Internal page -> keyword map shown by <KeywordMapPanel /> on preview/dev builds ONLY
 // (never rendered when VERCEL_ENV === 'production'). Intent: T / C / I / N.
-// Data: Semrush AU database, refreshed 2026-10-19/20 (bulk keyword overview + Keyword Magic "Update metrics"),
+// Data: Semrush AU, every keyword re-run with Update metrics on 2026-11-11 (intent, volume, KD as of that day); earlier banks 2026-10-19/20 (bulk keyword overview + Keyword Magic "Update metrics"),
 // plus the 2026-09-23/10-12 banks for terms not re-pulled. null = Semrush shows no volume (under ~10 a month) or no KD.
 // Golden rule: one keyword = one URL; primary T/C with the highest volume at KD 28 or below; 5 secondaries per page.
 // Exceptions are listed in KEYWORD_HOLD with the reason.
@@ -9,142 +9,142 @@ const k = (keyword, intent, vol, kd) => ({ keyword, intent, vol, kd })
 
 export const KEYWORD_PAGES = {
   '/': {
-    focus: k('australian prop money', 'C', 720, 21),
-    secondary: [k('prop money australia', 'C', 590, 27), k('props australia', 'C', 110, 25), k('props money', 'C', 50, 19), k('au props', 'C', 50, 4), k('props for sale australia', 'T', null, null)],
+    focus: k('australian prop money', 'I/C', 720, 4),
+    secondary: [k('prop money australia', 'C', 590, 27), k('props australia', 'N/C', 110, 18), k('props money', 'I/C', 50, 6), k('au props', 'C', 50, 12), k('props for sale australia', 'T', 20, 0)],
   },
   '/shop': {
-    focus: k('australian prop money for sale', 'T', 20, 19),
-    secondary: [k('australia prop money', 'C', 110, 27), k('aus prop money', 'C', 90, 16), k('buy prop money', 'T', 20, 19), k('buying prop money', 'T', 20, 1), k('prop money for sale', 'T', 20, 25)],
+    focus: k('australian prop money for sale', 'T', 30, 14),
+    secondary: [k('australia prop money', 'C', 110, 0), k('aus prop money', 'I', 90, 4), k('buy prop money', 'T', 20, 6), k('buying prop money', 'T', 20, 26), k('prop money for sale', 'T', 20, 4)],
   },
   '/about': {
-    focus: k('propps', 'N', 390, 24),
-    secondary: [k('money props', 'C', 10, 5), k('prop shop australia', 'C', null, 15)],
+    focus: k('propps', 'N', 390, 25),
+    secondary: [k('money props', 'C', 10, 4), k('prop shop australia', 'C', 0, 20)],
   },
   '/contact': {
-    focus: k('prop shop melbourne', 'T/N', 20, 6),
-    secondary: [k('prop money melbourne', 'C', null, null), k('prop money sydney', 'C', null, null), k('contact propps', 'N', null, null)],
+    focus: k('prop shop melbourne', 'I', 20, 19),
+    secondary: [k('prop money melbourne', 'I/T', null, 27), k('prop money sydney', 'I/T', null, 21), k('contact propps', 'T/N', null, 17)],
   },
   '/shop/new-notes': {
     // 2026-10-20: au prop money 390/KD19 is the largest easy commercial term (the .org is only #4), so it is the primary.
-    focus: k('au prop money', 'C', 390, 19),
-    secondary: [k('prop australian money', 'C', 140, 21), k('fake australian money prop', 'C', 140, 28), k('prop money au', 'C', 70, 22), k('best prop money', 'C', 20, 14), k('buy prop money australia', 'T', 20, null)],
+    focus: k('au prop money', 'C', 390, 0),
+    secondary: [k('prop australian money', 'I/C', 140, 2), k('fake australian money prop', 'I/C', 140, 25), k('prop money au', 'I/C', 70, 24), k('best prop money', 'I/C', 20, 23), k('buy prop money australia', 'T', 0, 16)],
   },
   '/shop/film-and-tv-props': {
-    focus: k('buy film props', 'T', 90, 21),
-    secondary: [k('movie set props for sale', 'T', 90, 24), k('realistic money', 'C', 210, 28), k('movie prop money', 'C', 20, 16), k('buy movie props online australia', 'T', null, 11), k('movie props for sale australia', 'T', 40, null)],
+    focus: k('buy film props', 'T', 90, 17),
+    secondary: [k('movie set props for sale', 'T', 90, 4), k('realistic money', 'C', 210, 28), k('movie prop money', 'T', 20, 9), k('buy movie props online australia', 'T', null, 9), k('movie props for sale australia', 'T', 40, 2)],
   },
   '/shop/money-stacks': {
-    focus: k('prop money stacks', 'I/C', 20, 17),
-    secondary: [k('money stack prop', 'T', 20, 14), k('bundle of prop money', 'T', null, 22), k('prop money bundles for sale', 'T', null, 23), k('money bundle prop', 'T', null, 13), k('cash bundle prop', 'I/T', null, 14)],
+    focus: k('prop money stacks', 'I/T', 20, 18),
+    secondary: [k('money stack prop', 'I/C', 20, 15), k('bundle of prop money', 'T', null, 26), k('prop money bundles for sale', 'T', null, 27), k('money bundle prop', 'I/T', null, 12), k('cash bundle prop', 'I', null, 31)],
   },
   '/shop/photography-props': {
-    focus: k('photography props australia', 'C', 20, 9),
-    secondary: [k('prop money for photoshoot', 'C', null, 26), k('prop dollar bills', 'T', 20, 21)],
+    focus: k('photography props australia', 'C', 20, 3),
+    secondary: [k('prop money for photoshoot', 'T', null, 19), k('prop dollar bills', 'T', 20, 9)],
   },
   '/shop/event-and-party-props': {
-    focus: k('play money australia', 'C', 90, 13),
-    secondary: [k('australian play money', 'C', 320, 11), k('play money', 'C', 720, 14), k('toy money', 'C', 170, 15), k('childrens play money', 'C', 90, 10), k('australia play money', 'C', 140, 10)],
+    focus: k('play money australia', 'C', 90, 14),
+    secondary: [k('australian play money', 'C', 320, 16), k('play money', 'C', 720, 17), k('toy money', 'C', 170, 17), k('childrens play money', 'T', 90, 10), k('australia play money', 'C', 140, 9)],
   },
   '/shop/custom-and-branded-props': {
-    focus: k('custom prop money', 'I/T', 20, 5),
-    secondary: [k('custom money printing', 'I', 20, 10), k('custom play money', 'C', 20, 15), k('personalised play money', 'I/T', null, 3), k('branded prop currency australia', 'C', null, null)],
+    focus: k('custom prop money', 'I/C', 20, 5),
+    secondary: [k('custom money printing', 'T', 20, 10), k('custom play money', 'C', 20, 23), k('personalised play money', 'I/C', 0, 8), k('branded prop currency australia', 'I', null, 26)],
   },
   '/wholesale': {
-    focus: k('wholesale prop money', 'I/C', 10, 6),
-    secondary: [k('bulk prop money', 'I/T', 10, 0), k('prop money supplier', 'I', null, 1), k('film prop supplier australia', 'C', null, 10), k('prop money manufacturer', 'I', null, null), k('prop banknotes', 'I/T', null, 15)],
+    focus: k('wholesale prop money', 'I', 10, 23),
+    secondary: [k('bulk prop money', 'T', 10, 18), k('prop money supplier', 'C', 0, 7), k('film prop supplier australia', 'C', null, 10), k('prop money manufacturer', 'C', null, 22), k('prop banknotes', 'T', 0, 9)],
   },
   '/compliance': {
-    focus: k('prop money australia laws', 'I', 20, null),
-    secondary: [k('crimes currency act 1981 section 22', 'I', null, null), k('is it legal to buy prop money', 'I', null, null), k('is it illegal to have prop money', 'I', null, null), k('rba reproduction currency guidelines', 'I', null, null), k('prop money legal australia', 'I', null, null)],
+    focus: k('prop money australia laws', 'I', 20, 20),
+    secondary: [k('crimes currency act 1981 section 22', 'I', null, 14), k('is it legal to buy prop money', 'T', 20, 24), k('is it illegal to have prop money', 'I', 20, 13), k('rba reproduction currency guidelines', 'N', null, 27), k('prop money legal australia', 'I', null, 28)],
   },
 }
 
 // Product slug -> focus + secondary keywords
 export const KEYWORD_PRODUCTS = {
   '100-australian-prop-money-for-sale': {
-    focus: k('100 dollar note australia', 'I/C', 1600, 18),
-    secondary: [k('australian 100 dollar note', 'I/C', 1600, 17), k('$100 note', 'I/C', 1300, 22), k('100 dollar note', 'I/C', 880, 24), k('australian $100 note', 'I/C', 720, 18), k('100 australian dollar note', 'I/C', 480, 17)],
+    focus: k('100 dollar note australia', 'C', 1900, 40),
+    secondary: [k('australian 100 dollar note', 'I', 1900, 27), k('$100 note', 'I', 1300, 30), k('100 dollar note', 'I/C', 880, 31), k('australian $100 note', 'I', 880, 18), k('100 australian dollar note', 'I', 480, 28)],
   },
   '50-australian-prop-money-for-sale': {
-    focus: k('50 dollar note australia', 'I/C', 1600, 29),
-    secondary: [k('50 note australia', 'I/C', 720, 20), k('$50 note', 'I/T', 590, 24), k('australian 50 dollar bill', 'I/T', 480, 25), k('$50 australian note', 'I/T', 320, 20), k('$50 prop money', 'T', 20, 14)],
+    focus: k('50 dollar note australia', 'I', 1600, 27),
+    secondary: [k('50 note australia', 'I', 720, 22), k('$50 note', 'I', 590, 28), k('australian 50 dollar bill', 'I/C', 590, 17), k('$50 australian note', 'I', 320, 29), k('$50 prop money', 'I', 20, 23)],
   },
   '20-australian-prop-money-for-sale': {
-    focus: k('20 dollar note australia', 'I', 880, 22),
-    secondary: [k('$20 note australia', 'I/C', 260, 17), k('$20 prop money', 'T', 10, 25), k('20 dollar prop money', 'T', null, null), k('australian 20 dollar note', 'I', null, null), k('20 note australia', 'I', null, null)],
+    focus: k('20 dollar note australia', 'I', 880, 17),
+    secondary: [k('$20 note australia', 'I', 260, 21), k('$20 prop money', 'C', 10, 16), k('20 dollar prop money', 'T', 10, 25), k('australian 20 dollar note', 'I', 590, 16), k('20 note australia', 'I', 480, 25)],
   },
   '10-australian-prop-money-for-sale': {
-    focus: k('10 dollar note australia', 'I', 880, 27),
-    secondary: [k('$10 note australia', 'I', 480, 18), k('10 dollar prop money', 'T', null, null), k('australian 10 dollar note', 'I', null, null), k('10 note australia', 'I', null, null), k('$10 prop money', 'T', null, null)],
+    focus: k('10 dollar note australia', 'I', 880, 29),
+    secondary: [k('$10 note australia', 'I', 480, 10), k('10 dollar prop money', 'C', null, 32), k('australian 10 dollar note', 'I', 1000, 27), k('10 note australia', 'I', 1000, 30), k('$10 prop money', 'C', null, 14)],
   },
   '5-australian-prop-money-for-sale': {
-    focus: k('5 dollar note australia', 'I', 880, 21),
-    secondary: [k('$5 prop money', 'T', null, 12), k('5 dollar prop money', 'T', null, null), k('australian 5 dollar note', 'I', null, null), k('5 note australia', 'I', null, null), k('new 5 dollar note australia', 'I', null, null)],
+    focus: k('5 dollar note australia', 'I', 880, 26),
+    secondary: [k('$5 prop money', 'T', null, 12), k('5 dollar prop money', 'I/T', null, 30), k('australian 5 dollar note', 'I', 880, 25), k('5 note australia', 'I', 110, 20), k('new 5 dollar note australia', 'I', 320, 40)],
   },
   'film-and-tv-prop-currency-pack': {
-    focus: k('prop money for film', 'T', null, 12),
-    secondary: [k('film prop money', 'T', 20, 25), k('movie prop money australia', 'C', null, null), k('cinema prop currency australia', 'C', null, null)],
+    focus: k('prop money for film', 'T', 0, 6),
+    secondary: [k('film prop money', 'I/C', 20, 20), k('movie prop money australia', 'C', 0, 12), k('cinema prop currency australia', 'I', null, 26)],
   },
   'bulk-money-stack-pack': {
-    focus: k('bulk prop money australia', 'C', null, 23), // 2026-11-11: was 'bag of prop money'; no bag is sold. Semrush AU (refreshed): n/a volume, KD 23
-    secondary: [k('stack of prop money', 'T', null, 14), k('prop money briefcase', 'C', null, 6)],
+    focus: k('bulk prop money australia', 'C', null, 26), // 2026-11-11: was 'bag of prop money'; no bag is sold. Semrush AU (refreshed): n/a volume, KD 23
+    secondary: [k('stack of prop money', 'I/C', 0, 17), k('prop money briefcase', 'C', 0, 6)],
   },
   'photography-prop-currency-set': {
-    focus: k('prop money for photography', 'T', null, 27), // Semrush AU 2026-11-11 (refreshed): n/a volume, KD 27 (was recorded as 13)
+    focus: k('prop money for photography', 'T', null, 13), // Semrush AU 2026-11-11 (refreshed): n/a volume, KD 27 (was recorded as 13)
     secondary: [],
   },
   'event-and-party-prop-cash-pack': {
-    focus: k('kids play money', 'C', 20, 14),
-    secondary: [k('money for pretend play', 'T', null, 14), k('money toy', 'I/T', 50, 7), k('$50 play money', 'C', 20, null), k('australian toy money', 'C', 170, 10), k('australian play money notes', 'C', 20, null)],
+    focus: k('kids play money', 'C', 20, 12),
+    secondary: [k('money for pretend play', 'C', null, 25), k('money toy', 'I/T', 50, 6), k('$50 play money', 'I', 20, 14), k('australian toy money', 'I/C', 170, 14), k('australian play money notes', 'C', 20, 15)],
   },
   'custom-and-branded-prop-currency': {
-    focus: k('custom prop notes', 'C', null, 10),
+    focus: k('custom prop notes', 'I/T', null, 13),
     secondary: [],
   },
 }
 
 // Blog slug -> primary keyword (one keyword = one URL; none of these is also a page or product keyword)
 export const KEYWORD_POSTS = {
-  'crimes-currency-act-1981-rba-prop-money-guidelines': k('crimes currency act prop money', 'I', null, null),
-  'fake-money-vs-prop-money-the-legal-difference-in-australia': k('fake money australia', 'I', 320, 27),
-  'can-you-buy-prop-money-in-australia': k('can you buy prop money', 'T', 20, 20),
-  'is-it-illegal-to-buy-prop-money-australia': k('is it illegal to buy prop money', 'T', 20, 24),
-  'where-to-buy-prop-money-in-australia-legally': k('where to buy prop money', 'T', 20, null),
+  'crimes-currency-act-1981-rba-prop-money-guidelines': k('crimes currency act prop money', 'I', null, 29),
+  'fake-money-vs-prop-money-the-legal-difference-in-australia': k('fake money australia', 'I', 320, 25),
+  'can-you-buy-prop-money-in-australia': k('can you buy prop money', 'T', 10, 10),
+  'is-it-illegal-to-buy-prop-money-australia': k('is it illegal to buy prop money', 'T', 20, 28),
+  'where-to-buy-prop-money-in-australia-legally': k('where to buy prop money', 'T', 20, 7),
   '100-dollar-prop-money-which-bundle-size': k('100 dollar prop money', 'T', 20, 25),
-  'ready-prop-money-stacks-for-fast-turnaround': k('ready prop money', 'C', 30, 10),
-  'high-quality-prop-money-how-to-judge-it-on-camera': k('high quality prop money', 'T', 20, 4),
-  'cheap-prop-money-what-you-are-really-paying-for': k('cheap prop money', 'T', 20, 28),
-  'lighting-prop-money-for-camera-avoiding-glare': k('realistic prop money', 'C', 20, 5),
-  'art-department-guide-weathering-prop-cash': k('prop cash for sale', 'T', 20, 18),
-  'play-money-vs-prop-money-which-one-do-you-need': k('pretend money', 'T', 20, 22),
-  'toy-money-and-play-money-for-kids-games-and-learning': k('toy money australia', 'C', 170, 9),
-  'novelty-money-for-parties-and-events-whats-legal-in-australia': k('novelty prop money australia', 'C', null, null),
-  'how-much-prop-money-do-you-need-for-a-scene': k('prop money cost', 'T', 10, 25),
-  'prop-money-for-photography-realistic-cash-shots-without-the-risk': k('photoshoot props australia', 'C', null, 17),
-  'custom-and-branded-prop-currency-guide-for-agencies': k('custom prop money printing australia', 'T', null, null),
-  'wholesale-prop-money-for-production-companies-bulk-pricing-explained': k('prop money price', 'T', 10, 18),
-  'best-australian-banknote-denominations-for-film-and-tv-scenes': k('australian banknotes', 'I', 1000, 28),
-  'brief-history-of-australian-currency-notes-for-set-designers': k('old australian money notes', 'I/C', 320, 21),
-  'buying-film-props-in-australia-a-checklist-for-art-departments': k('movie props australia', 'C', 20, 1),
-  'prop-cash-for-heist-and-bank-scenes-getting-the-volume-right': k('money stack australia', 'C', 20, null),
-  'prop-money-for-content-creators-social-media-and-photoshoot-guidelines': k('prop money for content creators', 'C', null, 11),
-  'shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia': k('buy prop money near me', 'T', 20, 7),
-  'local-vs-overseas-prop-money-suppliers-compared': k('australian dollar prop notes', 'C', null, 27),
+  'ready-prop-money-stacks-for-fast-turnaround': k('ready prop money', 'I', 20, 23),
+  'high-quality-prop-money-how-to-judge-it-on-camera': k('high quality prop money', 'T', 20, 24),
+  'cheap-prop-money-what-you-are-really-paying-for': k('cheap prop money', 'T', 20, 2),
+  'lighting-prop-money-for-camera-avoiding-glare': k('realistic prop money', 'C', 20, 13),
+  'art-department-guide-weathering-prop-cash': k('prop cash for sale', 'T', 20, 23),
+  'play-money-vs-prop-money-which-one-do-you-need': k('pretend money', 'I/T', 20, 11),
+  'toy-money-and-play-money-for-kids-games-and-learning': k('toy money australia', 'I/C', 170, 9),
+  'novelty-money-for-parties-and-events-whats-legal-in-australia': k('novelty prop money australia', 'C', null, 17),
+  'how-much-prop-money-do-you-need-for-a-scene': k('prop money cost', 'I/T', 10, 25),
+  'prop-money-for-photography-realistic-cash-shots-without-the-risk': k('photoshoot props australia', 'C', null, 13),
+  'custom-and-branded-prop-currency-guide-for-agencies': k('custom prop money printing australia', 'C', null, 32),
+  'wholesale-prop-money-for-production-companies-bulk-pricing-explained': k('prop money price', 'T', 10, 14),
+  'best-australian-banknote-denominations-for-film-and-tv-scenes': k('australian banknotes', 'I', 1000, 35),
+  'brief-history-of-australian-currency-notes-for-set-designers': k('old australian money notes', 'T', 320, 18),
+  'buying-film-props-in-australia-a-checklist-for-art-departments': k('movie props australia', 'I/C', 20, 3),
+  'prop-cash-for-heist-and-bank-scenes-getting-the-volume-right': k('money stack australia', 'I', 20, 23),
+  'prop-money-for-content-creators-social-media-and-photoshoot-guidelines': k('prop money for content creators', 'C', null, 14),
+  'shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia': k('buy prop money near me', 'T', 20, 19),
+  'local-vs-overseas-prop-money-suppliers-compared': k('australian dollar prop notes', 'I', null, 20),
   // 2026-10-26 batch (Semrush AU, same day)
-  'prop-dollar-vs-prop-cash-vs-prop-money': k('prop dollar', 'I', 110, 28),
-  'realistic-prop-money-australia-what-realistic-should-mean': k('realistic fake money australia', 'C', 170, 23),
-  'props-for-filming-ordering-prop-currency-for-a-shoot': k('props for filming', 'C', 50, 28),
-  'monetary-toys-and-play-money-sets-for-kids': k('monetary toys', 'C', 170, 8),
+  'prop-dollar-vs-prop-cash-vs-prop-money': k('prop dollar', 'I', 110, 20),
+  'realistic-prop-money-australia-what-realistic-should-mean': k('realistic fake money australia', 'C', 170, 18),
+  'props-for-filming-ordering-prop-currency-for-a-shoot': k('props for filming', 'I/C', 20, 44),
+  'monetary-toys-and-play-money-sets-for-kids': k('monetary toys', 'C', 140, 7),
   // 2026-10-26b batch: Google Autocomplete (AU) suggestions, checked in Semrush Keyword Overview the same day.
   // Volumes are 0 to 20 a month and Semrush returns no KD for them (n/a = too small to measure), so none is measurably over 28.
   // Under the ~50 volume floor they live as blog and FAQ targets only, never as page or product primaries.
-  'prop-money-for-music-videos-in-australia': k('prop money for music videos', 'C', 10, null),
-  'can-you-take-prop-money-on-a-plane-in-australia': k('can you take prop money on a plane', 'I', 0, null),
-  'how-much-is-a-million-dollars-in-prop-money': k('how much is a million dollars in prop money', 'I', null, null),
-  'fake-money-for-parties-casino-nights-birthdays-weddings': k('fake money for party', 'C', 20, null),
-  'australian-polymer-prop-money-vs-paper-prop-notes': k('australian polymer prop money', 'C', 10, null),
-  'australian-play-money-where-to-buy-and-what-to-check': k('australian play money set', 'C', 20, null),
-  'fake-money-for-classroom-play-money-lessons-by-year-level': k('fake money for classroom', 'C', 20, null),
+  'prop-money-for-music-videos-in-australia': k('prop money for music videos', 'C', 10, 16),
+  'can-you-take-prop-money-on-a-plane-in-australia': k('can you take prop money on a plane', 'I', 0, 21),
+  'how-much-is-a-million-dollars-in-prop-money': k('how much is a million dollars in prop money', 'I', null, 28),
+  'fake-money-for-parties-casino-nights-birthdays-weddings': k('fake money for party', 'I/T', 20, 20),
+  'australian-polymer-prop-money-vs-paper-prop-notes': k('australian polymer prop money', 'I/C', 10, 4),
+  'australian-play-money-where-to-buy-and-what-to-check': k('australian play money set', 'I/T', 20, 9),
+  'fake-money-for-classroom-play-money-lessons-by-year-level': k('fake money for classroom', 'T', 20, 14),
 }
 
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).
