@@ -125,6 +125,20 @@ const DEFS = [
     target: { href: '/shop/money-stacks/', label: 'Shop money stacks' },
     terms: ['bulk', 'wholesale', 'stack', 'heist', 'volume', 'million'], cats: ['money-stacks'], related: ['money-props-for-movies', 'movie-grade-prop-money'],
   },
+  {
+    kw: 'buy prop money online', title: 'Buy Prop Money Online in Australia',
+    desc: 'Buy prop money online from an Australian supplier: specimen-marked notes, Express Post with signature, orders from $300 AUD. Guides and range inside.',
+    paras: ['Buying prop money online is simple when the seller is clear about what the notes are: reproduction props with specimen markings, made for the screen, the stage and the camera. PROPPS invoices with an ABN and dispatches from Melbourne by Express Post with signature on delivery.', 'The range and guides below cover denominations, bundle sizes, delivery times and the legal position, so you know exactly what you are ordering before you pay.'],
+    target: { href: '/shop/', label: 'Browse the full shop' },
+    terms: ['buy', 'order', 'where to', 'online', 'legal', 'checkout'], cats: ['new-notes'], related: ['buy-realistic-prop-money', 'best-australian-prop-money'],
+  },
+  {
+    kw: 'prop notes for sale', title: 'Prop Notes for Sale: Australian Denominations',
+    desc: 'Prop notes for sale in $5, $10, $20, $50 and $100 Australian denominations. Specimen-marked reproduction props shipped by Express Post from Melbourne.',
+    paras: ['Prop notes for sale at PROPPS cover every Australian denomination, from the $5 to the $100. Each note is a specimen-marked reproduction made for film, television, theatre and photography, never for spending.', 'Pick a single denomination or a mixed bundle below, then read the guides on judging quality on camera and working out how many notes a scene needs.'],
+    target: { href: '/shop/new-notes/', label: 'Shop Australian prop notes' },
+    terms: ['notes', 'denomination', 'buy', 'order', 'bundle', 'quality'], cats: ['new-notes'], related: ['best-australian-prop-money', 'buy-realistic-prop-money'],
+  },
 ];
 
 
@@ -151,6 +165,8 @@ const PRODUCT_MAP = {
   'fake australian money prop for sale': [D(100), D(50), D(20), D(10), D(5)],
   'paper notes money': [D(100), D(50)],
   'movie prop money bulk': [STACK, FILM],
+  'buy prop money online': [D(100), D(50), D(20), D(10)],
+  'prop notes for sale': [D(100), D(50), D(20), D(10), D(5)],
 };
 
 const slugify = (s) => s.toLowerCase().replace(/\$/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

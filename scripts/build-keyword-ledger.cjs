@@ -76,6 +76,18 @@ const RANK = {
   [['bag of prop money', 'I/C', null, 10, 'We sell strapped stacks, not bags; kept as copy wording only. Replaced as bulk pack primary by bulk prop money australia'], ['prop money bag', 'C', 20, 23, 'Has volume but no bag is sold, so a title would mislead'], ['fake money stacks', 'C', 20, 23, 'Has volume but wrong framing for a product title (fake money)'], ['full stack prop money', 'C', null, 19, 'Fits the bulk pack, no volume; spare'], ['prop cash stacks', 'C', null, 27, 'Fits the bulk pack, no volume; spare'], ['money photoshoot props', 'C', null, 21, 'Fits the photography set, no volume; spare'], ['photography prop money', 'C', null, 28, 'Borderline KD, no volume; spare'], ['prop money for photos', 'C', null, 30, 'KD 30, over 28'], ['prop money photography', 'C', null, 32, 'KD 32, over 28']].forEach(([k, i, v, d, r]) => add(k, i, v, d, 'hold', r + ' (Semrush AU 2026-11-11)'));
   // denomination option B, 2026-11-11 (Semrush AU, refreshed): variants over KD 28 are not mapped; they stay in copy only
   [['100 dollar note australia', 'C', 1900, 40, 'KD 40; was the $100 primary'], ['$100 note', 'I', 1300, 30, 'KD 30'], ['100 dollar note', 'I/C', 880, 31, 'KD 31'], ['$50 australian note', 'I', 320, 29, 'KD 29'], ['10 dollar note australia', 'I', 880, 29, 'KD 29; was the $10 primary'], ['10 note australia', 'I', 1000, 30, 'KD 30'], ['10 dollar prop money', 'C', null, 32, 'KD 32'], ['5 dollar prop money', 'I/T', null, 30, 'KD 30'], ['new 5 dollar note australia', 'I', 320, 40, 'KD 40']].forEach(([k, i, v, d, r]) => add(k, i, v, d, 'hold', r + ' (Semrush AU 2026-11-11); in copy only'));
+  // Google AU suggestions pass 2026-11-13 (Semrush AU, refreshed): every keyword not mapped above is recorded here with its reason
+  {
+    const csv = fs.readFileSync('docs/google-suggest-au-2026-11-13-report.csv', 'utf8').split(String.fromCharCode(10)).map((l) => l.trim()).slice(1).filter(Boolean);
+    const seen = new Set(rows.map((r) => r.keyword));
+    for (const line of csv) {
+      const c = line.match(/"((?:[^"]|"")*)"/g).map((x) => x.slice(1, -1));
+      const [kw, intent, , vol, kd, status] = c;
+      if (seen.has(kw) || status.startsWith('USE')) continue;
+      const type = status.startsWith('excluded') ? 'excluded' : status.startsWith('hold') ? 'hold' : 'copy';
+      add(kw, intent, vol === 'n/a' ? null : Number(vol), kd === 'n/a' ? null : Number(kd), type, 'Google AU suggestions 2026-11-13: ' + status);
+    }
+  }
   // competitor keywords that were reviewed and deliberately not mapped
   [
     ['counterfeit money / how to spot fake cash / counterfeit aud cluster', 'I', 2400, 51, 'excluded', 'Counterfeit-detection audience and brand-safety risk; the .org ranks 18 to 56 on these, we do not compete'],

@@ -18,11 +18,11 @@ export const KEYWORD_PAGES = {
   },
   '/about': {
     focus: k('propps', 'N', 390, 25),
-    secondary: [k('money props', 'C', 10, 4), k('prop shop australia', 'C', 0, 20)],
+    secondary: [k('money props', 'C', 10, 4), k('prop shop australia', 'C', 0, 20), k('prop money store', 'C', 20, 14), k('prop money aud', 'I/C', 50, 13), k('best prop money to buy', 'C', 10, 24)],
   },
   '/contact': {
     focus: k('prop shop melbourne', 'I', 20, 19),
-    secondary: [k('prop money melbourne', 'I/T', null, 27), k('prop money sydney', 'I/T', null, 21), k('contact propps', 'T/N', null, 17)],
+    secondary: [k('prop money melbourne', 'I/T', null, 27), k('prop money sydney', 'I/T', null, 21), k('contact propps', 'T/N', null, 17), k('fake money sydney', 'I/T', 30, 26)],
   },
   '/shop/new-notes': {
     // 2026-10-20: au prop money 390/KD19 is the largest easy commercial term (the .org is only #4), so it is the primary.
@@ -35,7 +35,7 @@ export const KEYWORD_PAGES = {
   },
   '/shop/money-stacks': {
     focus: k('prop money stacks', 'I/T', 20, 18),
-    secondary: [k('money stack prop', 'I/C', 20, 15), k('bundle of prop money', 'T', null, 26), k('prop money bundles for sale', 'T', null, 27), k('money bundle prop', 'I/T', null, 12), k('cash bundle prop', 'I', null, 31)],
+    secondary: [k('money stack prop', 'I/C', 20, 15), k('bundle of prop money', 'T', null, 26), k('prop money bundles for sale', 'T', null, 27), k('money bundle prop', 'I/T', null, 12), k('fake stack of cash', 'I/C', 10, 22)],
   },
   '/shop/photography-props': {
     focus: k('photography props australia', 'C', 20, 3),
@@ -64,7 +64,7 @@ export const KEYWORD_PRODUCTS = {
   '100-australian-prop-money-for-sale': {
     // 2026-11-11 option B: primary moved to the KD 27 variant (100 dollar note australia is KD 40); prop money phrase first. Over-KD variants are in the ledger as hold.
     focus: k('australian 100 dollar note', 'I', 1900, 27),
-    secondary: [k('$100 prop money', 'C', 20, 21), k('australian $100 note', 'I', 880, 18), k('100 australian dollar note', 'I', 480, 28)],
+    secondary: [k('$100 prop money', 'C', 20, 21), k('australian $100 note', 'I', 880, 18), k('100 australian dollar note', 'I', 480, 28), k('100 dollar bill prop money', 'T', 10, 17), k('movie prop money 100 dollar bill', 'I/T', 10, 21)],
   },
   '50-australian-prop-money-for-sale': {
     focus: k('50 dollar note australia', 'I', 1600, 27),
@@ -76,19 +76,19 @@ export const KEYWORD_PRODUCTS = {
   },
   '10-australian-prop-money-for-sale': {
     focus: k('australian 10 dollar note', 'I', 1000, 27), // was 10 dollar note australia (KD 29)
-    secondary: [k('$10 prop money', 'C', null, 14), k('$10 note australia', 'I', 480, 10)],
+    secondary: [k('$10 prop money', 'C', null, 14), k('$10 note australia', 'I', 480, 10), k('fake money aud', 'I/C', 20, 26), k('buy prop notes', 'T', 10, 18), k('buy fake money online', 'T', 20, 17)],
   },
   '5-australian-prop-money-for-sale': {
     focus: k('5 dollar note australia', 'I', 880, 26),
-    secondary: [k('$5 prop money', 'T', null, 12), k('australian 5 dollar note', 'I', 880, 25), k('5 note australia', 'I', 110, 20)],
+    secondary: [k('$5 prop money', 'T', null, 12), k('australian 5 dollar note', 'I', 880, 25), k('5 note australia', 'I', 110, 20), k('real prop money for sale', 'T', 20, 6), k('realistic fake money australia for sale', 'T', 20, 11)],
   },
   'film-and-tv-prop-currency-pack': {
     focus: k('prop money for film', 'T', 0, 6),
-    secondary: [k('film prop money', 'I/C', 20, 20), k('movie prop money australia', 'C', 0, 12), k('cinema prop currency australia', 'I', null, 26)],
+    secondary: [k('film prop money', 'I/C', 20, 20), k('movie prop money australia', 'C', 0, 12), k('cinema prop currency australia', 'I', null, 26), k('movie prop money for sale', 'T', 20, 21), k('prop money aged', 'C', 10, 18)],
   },
   'bulk-money-stack-pack': {
     focus: k('bulk prop money australia', 'C', null, 26), // 2026-11-11: was 'bag of prop money'; no bag is sold. Semrush AU (refreshed): n/a volume, KD 23
-    secondary: [k('stack of prop money', 'I/C', 0, 17), k('prop money briefcase', 'C', 0, 6)],
+    secondary: [k('stack of prop money', 'I/C', 0, 17), k('prop money briefcase', 'C', 0, 6), k('buy fake money stacks', 'T', 20, 14), k('fake cash stacks', 'C', 20, 23), k('fake cash bundles', 'T', 10, 23)],
   },
   'photography-prop-currency-set': {
     focus: k('prop money for photography', 'T', null, 13), // Semrush AU 2026-11-11 (refreshed): n/a volume, KD 27 (was recorded as 13)
@@ -96,7 +96,7 @@ export const KEYWORD_PRODUCTS = {
   },
   'event-and-party-prop-cash-pack': {
     focus: k('kids play money', 'C', 20, 12),
-    secondary: [k('money for pretend play', 'C', null, 25), k('money toy', 'I/T', 50, 6), k('$50 play money', 'I', 20, 14), k('australian toy money', 'I/C', 170, 14), k('australian play money notes', 'C', 20, 15)],
+    secondary: [k('play money set', 'I/T', 20, 6), k('money toy', 'I/T', 50, 6), k('$50 play money', 'I', 20, 14), k('australian toy money', 'I/C', 170, 14), k('australian play money notes', 'C', 20, 15)],
   },
   'custom-and-branded-prop-currency': {
     focus: k('custom prop notes', 'I/T', null, 13),
@@ -167,5 +167,10 @@ export const KEYWORD_HOLD = [
   { keyword: 'theatrical props / stage prop', intent: 'C', vol: 140, kd: 37, type: 'pool', reason: 'KD 37 on stage prop; theatrical props 110/18 is generic props we do not stock beyond currency. Held for an owner stock decision' },
   { keyword: 'fake $100 australia / fake note australia', intent: 'I', vol: 110, kd: 21, type: 'excluded', reason: 'Counterfeit-detection and crime intent; wrong audience' },
   { keyword: 'prop buy', intent: 'T', vol: 320, kd: 5, type: 'excluded', reason: 'Likely prop-trading intent, not props. Not used' },
+  // 2026-11-13 Google AU suggestions pass (docs/google-suggest-au-2026-11-13-report.md): kept as copy wording only, no slot.
+  { keyword: 'australian play money coins', intent: 'C', vol: 20, kd: 8, type: 'copy', reason: 'Every secondary slot on the play money pages is taken by higher-volume terms; used as wording in the event pack and play money post copy' },
+  { keyword: '20 dollar bill prop money', intent: 'I/T', vol: 10, kd: 24, type: 'copy', reason: 'Near-duplicate of 20 dollar prop money (mapped on the $20 note page); copy wording only' },
+  { keyword: 'money for pretend play', intent: 'C', vol: null, kd: 25, type: 'copy', reason: 'Swapped out of the event pack secondaries for play money set (20/6); copy wording only' },
+  { keyword: 'cash bundle prop', intent: 'I', vol: null, kd: 31, type: 'copy', reason: 'KD 31, swapped out of the money stacks secondaries for fake stack of cash (10/22); copy wording only' },
   { keyword: 'alibaba prop money', intent: 'C', vol: 20, kd: 19, type: 'excluded', reason: 'Competitor brand query' },
 ]
