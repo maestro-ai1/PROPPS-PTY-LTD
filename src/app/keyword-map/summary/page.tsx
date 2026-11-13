@@ -98,7 +98,8 @@ export default function Page() {
     const kd = num(r.kw.kd);
     return /^[TC]/.test(r.kw.intent) && kd !== null && kd <= 28;
   }).length;
-  const overKd = all.filter((a) => (num(a.kw.kd) ?? 0) > 28).map((a) => `${a.kw.keyword} (${a.kw.kd})`);
+  const overKd = all.filter((a) => a.role === 'secondary' && (num(a.kw.kd) ?? 0) > 28).map((a) => `${a.kw.keyword} (${a.kw.kd})`);
+  const blogOverKd = Object.values(posts).filter((p) => (num(p.kd) ?? 0) > 28).map((p) => `${p.keyword} (${p.kd})`);
 
   const scorecard: [string, string, string][] = [
     [dupes.length === 0 ? 'pass' : 'warn', 'One keyword = one URL (focus and secondary)', dupes.length === 0 ? `${all.length} mapped keywords, 0 duplicates` : `Duplicates: ${dupes.join(', ')}`],
@@ -107,6 +108,7 @@ export default function Page() {
     [primaryOk >= rows.length / 2 ? 'pass' : 'warn', 'Primary is T/C with KD 28 or lower', `${primaryOk} of ${rows.length} primaries (informational guides and brand pages are exempt)`],
     [pagesWithFive >= 8 ? 'pass' : 'warn', 'Secondaries per page (Semrush-backed only, up to 5)', `${pagesWithFive} of ${Object.keys(pages).length} pages have 5; the rest have fewer because no more data-backed keywords exist for them (brand and contact pages included)`],
     [overKd.length === 0 ? 'pass' : 'warn', 'Secondary keywords at KD 28 or lower', overKd.length === 0 ? 'none above' : `Above 28: ${overKd.join(', ')}`],
+    [blogOverKd.length === 0 ? 'pass' : 'warn', 'Blog primaries at KD 28 or lower', blogOverKd.length === 0 ? 'none above' : `Above 28 (informational guides, swap when an easier variant has volume): ${blogOverKd.join(', ')}`],
     [thin === 0 ? 'pass' : 'warn', 'Blog posts 1,500+ words', `${POSTS.length} posts, shortest ${minWords} words, ${thin} under 1,500`],
     [noFaq === 0 ? 'pass' : 'warn', 'Five FAQs on every post (FAQPage schema)', `${POSTS.length - noFaq} of ${POSTS.length}`],
     [badMeta === 0 ? 'pass' : 'warn', 'Blog meta 110-158 characters', `${POSTS.length - badMeta} of ${POSTS.length}`],
