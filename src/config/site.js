@@ -694,6 +694,11 @@ export const PRODUCT_SEO = {
     "title": "Kids Play Money | Event & Party Prop Cash Pack",
     "what": "kids play money and party prop cash"
   },
+  "party-cash-cannon-kit": {
+    "h1": "Cash Gun — Party Money Gun and Cash Cannon Kit",
+    "title": "Cash Gun | Party Money Gun and Cash Cannon Kit",
+    "what": "cash gun and party money gun kits"
+  },
   "custom-and-branded-prop-currency": {
     "h1": "Custom Prop Notes — Custom & Branded Prop Currency",
     "title": "Custom Prop Notes | Custom & Branded Prop Currency",
@@ -875,6 +880,23 @@ export const PRODUCTS = [
       'use case': 'Events, parties & themed entertainment',
       paper: 'Premium archival-grade paper',
       print: 'Dual-sided high-definition print',
+      dispatch: 'Australia Post Express with signature on delivery'
+    }
+  },
+  {
+    slug: 'party-cash-cannon-kit',
+    name: 'Party Cash Cannon Kit',
+    price: 345,
+    category: 'event-and-party-props',
+    badge: 'New',
+    featured: false,
+    images: ['event-party-props.jpeg'], // TODO before publishing: replace with a clean photo of the real kit (golden image rule)
+    shortDescription: 'A money gun (cash cannon) with clearly marked party play notes to fire, plus one stack of specimen-marked PROPPS notes for the photo.',
+    description: 'A money gun for parties, reveals and photo shoots. The kit has a cash cannon that fires the included party play notes, which are clearly pretend and printed PLAY MONEY, and one stack of specimen-marked PROPPS notes packed separately for the photo or film shot. Only the play notes are fired; the marked prop notes stay with the host. Every PROPPS note carries mandatory non-legal-tender specimen markings.',
+    bundles: [{ id: 'kit', label: 'Cash Cannon Kit', faceValue: 0, price: 345 }],
+    details: {
+      'use case': 'Parties, reveals & photo shoots',
+      'kit contents': 'Cash cannon, party play notes, one stack of specimen-marked PROPPS notes',
       dispatch: 'Australia Post Express with signature on delivery'
     }
   },
@@ -2644,6 +2666,28 @@ export const PRODUCT_FAQS = {
     {
       question: 'Can I order novelty prop money Australia in bulk for an event?',
       answer: `Yes. Event planners can order larger bundles for themed nights, festivals and promotions. ${FAQ_BUNDLES}`
+    }
+  ],
+  'party-cash-cannon-kit': [
+    {
+      question: 'Where can I buy a money gun in Australia for a party?',
+      answer: `The Party Cash Cannon Kit is a money gun that fires clearly marked party play notes, sold with one stack of specimen-marked PROPPS notes for the photo. Order online from Melbourne. ${FAQ_SHIP}`
+    },
+    {
+      question: 'What does the money gun fire?',
+      answer: `Only the party play notes in the kit, which are clearly pretend and printed PLAY MONEY. They are not a reproduction of an Australian note, so they are safe to scatter through a crowd.`
+    },
+    {
+      question: 'Why is a stack of PROPPS prop notes included?',
+      answer: `It is the hero stack for photos and video: fan it, hold it or pile it on the table beside the cannon. It is specimen-marked, packed separately and never loaded or fired. Keep it with the host and count it back in after the event.`
+    },
+    {
+      question: 'Is it legal to use a money gun with fake money in Australia?',
+      answer: `Yes, when the notes fired are clearly pretend and nobody uses them as payment. Realistic notes should never be scattered, which is why the kit fires play notes only. Read our guide to [novelty money for parties](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/) and the [compliance standard](/compliance/).`
+    },
+    {
+      question: 'Can I order extra play notes or a bigger kit for an event?',
+      answer: `Yes. Ask about extra play notes or several kits for a venue, festival or promotion through the contact page. Studio-scale and event quantities can be quoted on the wholesale page.`
     }
   ],
   'custom-and-branded-prop-currency': [

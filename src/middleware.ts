@@ -42,7 +42,7 @@ function buildMarkdown(pathname: string): string | null {
     const product = PRODUCTS.find((p) => p.category === productMatch[1] && p.slug === productMatch[2]);
     if (!product) return null;
     const bundleLines = product.bundles
-      ? product.bundles.map((b) => `- ${b.label}: $${b.price} AUD ($${b.faceValue.toLocaleString()} face value)`).join('\n')
+      ? product.bundles.map((b) => `- ${b.label}: $${b.price} AUD${b.faceValue > 0 ? ` ($${b.faceValue.toLocaleString()} face value)` : ''}`).join('\n')
       : '';
     return `# ${product.name}\n\n${product.description}\n\n## Price\nFrom $${product.price} AUD (10% off paying with crypto)\n\n${bundleLines ? `## Bundle Sizes\n${bundleLines}\n` : ''}`;
   }

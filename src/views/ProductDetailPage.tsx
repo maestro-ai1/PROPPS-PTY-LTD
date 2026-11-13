@@ -148,9 +148,11 @@ export const ProductDetailContent: React.FC<ProductDetailContentProps> = ({ prod
                       }`}
                     >
                       <span className="text-xs font-bold text-[#1A1414] block">{bundle.label}</span>
-                      <span className="text-[10px] text-[#6F665F] font-mono-code block">
-                        ${bundle.faceValue.toLocaleString()} face value
-                      </span>
+                      {bundle.faceValue > 0 && (
+                        <span className="text-[10px] text-[#6F665F] font-mono-code block">
+                          ${bundle.faceValue.toLocaleString()} face value
+                        </span>
+                      )}
                       <span className="text-sm font-mono-code font-bold text-[#D4AF37] block mt-1">
                         ${bundle.price} AUD
                       </span>

@@ -126,6 +126,22 @@ export const PRODUCT_COPY = {
       ],
     },
   ],
+  'party-cash-cannon-kit': [
+    {
+      h2: 'A money gun that fires play notes, with a prop stack for the photo',
+      paras: [
+        'The Party Cash Cannon Kit is a money gun for parties, reveals and photo shoots. It fires the party play notes in the kit, which are clearly pretend and printed PLAY MONEY, so they are safe to scatter through a crowd. One stack of specimen-marked PROPPS notes is packed separately as the hero prop for the camera. It is never loaded or fired.',
+        'Planning a bigger night? Read [novelty money for parties and events](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/) and browse the full [event and party props](/shop/event-and-party-props/) range.',
+      ],
+    },
+    {
+      h2: 'Ordering a money gun kit in Australia',
+      paras: [
+        'The kit is priced to meet our $300 AUD minimum order, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. For several kits at a venue or festival, ask through the [contact page](/contact/).',
+        `${LEGAL} ${SHIP}`,
+      ],
+    },
+  ],
   'custom-and-branded-prop-currency': [
     {
       h2: 'Custom prop notes for brands and agencies',

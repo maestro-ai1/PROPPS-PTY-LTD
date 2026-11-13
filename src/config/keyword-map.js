@@ -98,6 +98,12 @@ export const KEYWORD_PRODUCTS = {
     focus: k('kids play money', 'C', 20, 12),
     secondary: [k('play money set', 'I/T', 20, 6), k('money toy', 'I/T', 50, 6), k('$50 play money', 'I', 20, 14), k('australian toy money', 'I/C', 170, 14), k('australian play money notes', 'C', 20, 15)],
   },
+  'party-cash-cannon-kit': {
+    // 2026-11-13 Semrush AU (every row refreshed, all showed Now). money gun (C 1,000) is KD 30, over the rule, so it is held (KEYWORD_HOLD).
+    // Primary = cash gun (C, 140, KD 28), the highest-volume T/C term at KD 28 or below. Secondaries = the five best T/C terms at KD 28 or below.
+    focus: k('cash gun', 'I/C', 140, 28),
+    secondary: [k('party money gun', 'I/T', 20, 19), k('cash cannon', 'I/T', 20, 20), k('best money gun', 'C', 20, 26), k('money gun shooter', 'C', 20, 23), k('money cannon', 'I/T', 20, 27)],
+  },
   'custom-and-branded-prop-currency': {
     focus: k('custom prop notes', 'I/T', null, 13),
     secondary: [],
@@ -151,7 +157,11 @@ export const KEYWORD_POSTS = {
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).
 // type: pool = big demand that needs a product or authority first; excluded = brand safety or wrong audience.
 export const KEYWORD_HOLD = [
-  { keyword: 'money gun', intent: 'C', vol: 1000, kd: 28, type: 'pool', reason: 'No stock. Biggest unlocked pool: add a cash cannon / money gun product, then map it to /shop/event-and-party-props/' },
+  // 2026-11-13 money gun cluster (Semrush AU, refreshed). Product mapped: /shop/event-and-party-props/party-cash-cannon-kit/
+  { keyword: 'money gun', intent: 'C', vol: 1000, kd: 30, type: 'pool', reason: 'KD 30, over the rule (was 28 on 2026-10-20). Used as natural wording on the money gun kit page; the page primary is cash gun (140/28). Revisit if KD drops to 28' },
+  { keyword: 'confetti cannon', intent: 'I/C', vol: 1300, kd: 9, type: 'pool', reason: 'Informational, and we do not stock confetti cannons (to-source list)' },
+  { keyword: 'money gun party / money gun toy / money shooter / money spray gun / fake money gun / make it rain money gun / toy money gun / money gun australia / prop money gun', intent: 'I/T', vol: 30, kd: 28, type: 'copy', reason: '10 to 30 searches each, same meaning as the mapped secondaries; copy wording only' },
+  { keyword: 'buy money gun / cash cannon australia / money gun for sale / money gun for party / money gun for kids / money gun kit', intent: 'T', vol: 0, kd: 22, type: 'copy', reason: 'Under 10 searches; copy wording only' },
   { keyword: 'prop american money', intent: 'C', vol: 110, kd: 17, type: 'pool', reason: 'We sell AUD only. USD prop line would unlock this plus fake american money prop and british prop money' },
   { keyword: 'prop hire melbourne', intent: 'C', vol: 170, kd: 15, type: 'pool', reason: 'We sell, not hire. A short-hire service would unlock this and prop hire sydney (140/29)' },
   { keyword: 'prop money', intent: 'C', vol: 480, kd: 33, type: 'pool', reason: 'KD over 28. Supporting copy now; target after the head terms rank and links build' },
