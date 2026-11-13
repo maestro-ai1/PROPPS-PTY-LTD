@@ -152,6 +152,8 @@ export const KEYWORD_POSTS = {
   'australian-polymer-prop-money-vs-paper-prop-notes': k('australian polymer prop money', 'I/C', 10, 4),
   'australian-play-money-where-to-buy-and-what-to-check': k('australian play money set', 'I/T', 20, 9),
   'fake-money-for-classroom-play-money-lessons-by-year-level': k('fake money for classroom', 'T', 20, 14),
+  // 2026-11-13 money gun cluster (Semrush AU, refreshed)
+  'money-gun-australia-how-a-cash-cannon-works-and-party-rules': k('money gun australia', 'I', 20, 17),
 }
 
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).

@@ -1,0 +1,90 @@
+// Money gun guide, 2026-11-13. Primary: money gun australia (Semrush AU 20/month, KD 17, informational). The product primary is cash gun.
+//   node scripts/apply-new-posts.cjs scripts/posts-batch-2026-11-13.cjs
+const B = (...blocks) => blocks.join('\n\n');
+const RBA = 'https://www.rba.gov.au/banknotes/';
+const AUSPOST = 'https://auspost.com.au/';
+const SAFETY = 'https://www.productsafety.gov.au/';
+const LAW = 'https://www.legislation.gov.au/';
+const KIT = '/shop/event-and-party-props/party-cash-cannon-kit/';
+const CLOSE = `The [Party Cash Cannon Kit](${KIT}) is priced to meet our $300 AUD minimum order, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. We invoice with an ABN and ship from Eltham, Melbourne by [Australia Post Express](${AUSPOST}) with a signature on delivery. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.`;
+
+module.exports = [
+  {
+    slug: 'money-gun-australia-how-a-cash-cannon-works-and-party-rules',
+    title: 'Money Gun Australia: How a Cash Cannon Works, What to Load It With and Party Rules',
+    seoTitle: 'Money Gun Australia: How a Cash Cannon Works and Rules',
+    primary: 'money gun australia',
+    excerpt: 'Money gun Australia guide: how a cash cannon works, which notes are safe to fire, party rules and how to photograph it without making it look like real cash.',
+    category: 'Buying Guide',
+    date: '2026-11-13',
+    readTime: '9 min read',
+    image: 'money-gun-australia-how-a-cash-cannon-works-and-party-rules.webp',
+    imageAlt: 'Money gun Australia guide: a red cash cannon on a white background',
+    relatedCategories: ['event-and-party-props'],
+    relatedProducts: ['party-cash-cannon-kit', 'event-and-party-prop-cash-pack'],
+    relatedPage: { href: KIT, label: 'See the Party Cash Cannon Kit' },
+    content: B(
+      `A money gun, also called a cash gun or cash cannon, is the party prop everyone recognises: pull the trigger and a stream of paper notes sprays across the room. If you searched for a money gun in Australia, you probably want one for a birthday, a bucks or hens night, a reveal, a music video or a photo, and you want to know how it works, what to load into it and how to use it without trouble. This guide covers all of that in plain terms. It is general information, not legal advice. Every PROPPS product is a non-legal tender prop.`,
+      `## The short answer`,
+      `A money gun is a small hand-held device with a spinning wheel or roller that grabs the top note from a stack and flicks it out of the front. You load a stack of paper notes, switch it on and squeeze the trigger. The notes fly a metre or two and flutter down. Use clearly pretend play notes in it, never realistic reproductions of Australian notes, keep the area tidy, and photograph it so nobody could mistake the notes for real money. The [Party Cash Cannon Kit](${KIT}) is built around exactly that rule.`,
+      `## How a money gun works`,
+      `Most cash cannons use a small motor, a rubber wheel and a spring-loaded tray. The tray presses the stack against the wheel, the wheel spins when you pull the trigger and each turn pushes one note through a slot at the front. A few simple toy models work by hand with a lever. The notes need to be thin, flat and about the right size, which is why the better kits ship with their own purpose-made paper notes rather than relying on whatever paper you have.`,
+      `Because the notes feed one at a time, a jam is the usual fault. Creased, damp or stuck-together notes are the main cause. Fan the stack before loading, keep the notes dry and load only what the tray is designed to hold.`,
+      `## What to load into a money gun`,
+      `This is the question that matters most. A money gun scatters notes through a crowd, and in a crowd notes end up in pockets, handbags, gutters and car parks. That is why the notes in the gun should be clearly pretend.`,
+      `- **Party play notes, printed PLAY MONEY.** Bright, obviously unlike real currency and not a copy of an Australian note. These are the notes to fire.`,
+      `- **Realistic prop notes.** Do not fire them. A realistic reproduction that leaves the venue can be mistaken for real money, even with a specimen marking. Our guide to [novelty money for parties and events](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/) makes the same point.`,
+      `- **Real money.** Never. It is not a prop and you will lose it.`,
+      `The kit includes the play notes for the cannon and one separate stack of specimen-marked PROPPS notes for the photo or video. The stack stays with the host and is never loaded or fired.`,
+      `## Where the law comes in`,
+      `The Commonwealth Crimes (Currency) Act 1981 is aimed at counterfeit currency and reproductions that could deceive a reasonable person. The [Reserve Bank](${RBA}) publishes guidance on banknote reproductions, and you can read the Act at [legislation.gov.au](${LAW}). In broad terms, clearly marked props used as props are treated very differently from notes made to pass as real. Firing obviously pretend play notes sits at the safe end of that range. Read our [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the [compliance page](/compliance/) for how PROPPS builds to the standard.`,
+      `## Safety and where to use it`,
+      `A money gun is a toy for adults and older children, so treat it like any party device. Keep it away from faces, particularly eyes, and do not point it at people at close range. Check the manufacturer's age guidance, and see the [Product Safety Australia](${SAFETY}) site if you are buying for children. Use it indoors on a floor you can sweep or outdoors where the notes will not blow onto a road. Keep batteries, if the model uses them, away from small children, and remove them when you store it.`,
+      `## Money gun at a party: simple rules`,
+      `1. **Choose one person to run the cannon.** They load it and control who fires.`,
+      `2. **Brief the crowd.** Tell guests the notes are party props and should be left on the floor, not taken home or used as payment.`,
+      `3. **Brief the venue and staff.** Bar and door staff should know what is being fired.`,
+      `4. **Collect and count.** Sweep the notes up at the end. Bag the play notes and bin or reuse them, and count the marked stack back in.`,
+      `5. **Do not use the notes as payment, even as a joke.** Never.`,
+      `## Money gun for photos and video`,
+      `A money gun looks great on camera, and it also makes it easy to post a picture that gets misread. A clear photo of someone holding a fan of realistic notes with a caption about winning or gifting cash is the kind of post that attracts complaints. Make it obvious the money is a prop. Fire the play notes for the action shot, and use the separate marked stack in a still set-up with the gun beside it. Our [guide for content creators](/blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/) explains how to present prop money honestly, and the guide to [lighting prop money for camera](/blog/lighting-prop-money-for-camera-avoiding-glare/) helps with glare.`,
+      `## What the best money gun kit includes`,
+      `Searches for the best money gun usually come down to a few things: a sturdy body, reliable feeding, notes made for the machine and a clear way to keep the setup safe and legal. When you compare a cash cannon, check these points.`,
+      `- **The notes.** Purpose-made play notes feed better than office paper and look obviously pretend.`,
+      `- **Power.** Check whether it runs on batteries or a cable, and what is included.`,
+      `- **Build.** A solid housing and a decent trigger last through a whole party, not just the first song.`,
+      `- **The photo prop.** A clearly marked stack for the picture, kept separate from the notes you fire.`,
+      `- **Paperwork.** An Australian supplier who invoices with an ABN and ships with tracking.`,
+      `## Planning how many notes you need`,
+      `A cash cannon fires notes quickly. A hundred notes can be gone in under half a minute, so plan the moment. For a reveal or a first-dance finale, a single load is plenty. For a longer party, keep a spare pack and a helper to reload. If you want to run a casino night or game stall as well, use [play money for events](/shop/event-and-party-props/) for the tables, kept separate from the cannon's notes.`,
+      `## Money gun, confetti cannon or something else?`,
+      `A confetti cannon is a different product, a single burst of paper or foil. A money gun is a repeat fire device with a money theme, and it needs the safety rules above. If you only want a one-off burst, a confetti cannon is simpler. If the money theme is the point, whether for a themed night, a music video or a surprise, the cash cannon is the better pick.`,
+      `## Cleaning up and keeping the venue happy`,
+      `Venues care about two things: mess and surprises. Tell the venue manager before the event that you will be using a cash cannon with paper play notes, ask where the cleaning gear is and agree who sweeps up. Paper notes are light, so a small hand broom and a bag clear a dance floor in minutes. Outdoors, watch the wind, because notes travel further than you expect, and never fire near a pool, a road or a car park. A quick heads-up and a tidy finish keep the venue happy and make it easier to book again.`,
+      `## Five quick party plans`,
+      `**Birthday finale.** Load the play notes, count down, fire. Sweep the notes the next morning.`,
+      `**Bucks or hens night.** One person runs the cannon, and the marked stack sits on the table for photos.`,
+      `**Reveal or announcement.** One load, one fire and a clear caption on the photo that it is party money.`,
+      `**Music video or social shoot.** Fire play notes for movement, shoot the stack separately and add a caption that the money is a prop.`,
+      `**Corporate night.** Use it as a prize moment, with a briefing and a collect-and-count at the end.`,
+      `## After the party`,
+      `Sweep up every note you can find. Bag the play notes and reuse them for the next event or discard them. Keep the marked stack with the invoice and store it flat and dry. Remove the batteries from the cannon if you are putting it away for a while.`,
+      `## Common mistakes`,
+      `- **Loading realistic notes.** They will leave the venue.`,
+      `- **Letting guests take marked notes home.** One note in a wallet can turn into a question later.`,
+      `- **Skipping the briefing.** Staff and guests should know it is a prop.`,
+      `- **Overloading the tray.** It jams and the party stalls.`,
+      `- **Posting a photo without context.** Add a line that the money is a prop.`,
+      `## Where to go next`,
+      `Browse the [Party Cash Cannon Kit](${KIT}), see the full [event and party props](/shop/event-and-party-props/) range, or [contact the studio](/contact/) with your event details. ${CLOSE}`
+    ),
+    faqs: [
+      { q: 'Can I buy a money gun in Australia?', a: `Yes. The [Party Cash Cannon Kit](${KIT}) is a money gun with clearly marked party play notes, sold from Melbourne with Express Post and a signature on delivery. Orders start at $300 AUD.` },
+      { q: 'What do you put in a money gun?', a: 'Clearly pretend play notes made for the machine, printed PLAY MONEY. Do not load realistic reproductions of Australian notes, because notes scattered in a crowd can end up in pockets and be mistaken for real money.' },
+      { q: 'Is a money gun legal in Australia?', a: `A money gun is legal to own and use. The notes matter: clearly marked, obviously pretend play notes are the safe choice. See the [compliance page](/compliance/) and the [novelty money guide](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/).` },
+      { q: 'How many notes does a cash cannon fire?', a: 'A tray load of about 100 notes can be fired in well under a minute. Keep a spare pack and a helper for longer events, and fan the notes before loading to avoid jams.' },
+      { q: 'Can I use a money gun for a photo or video?', a: `Yes, and the kit is made for it: fire the play notes for action and use the separate specimen-marked stack for still shots. Add a caption that the money is a prop. See our [content creator guidelines](/blog/prop-money-for-content-creators-social-media-and-photoshoot-guidelines/).` }
+    ],
+    updated: '2026-11-13',
+  },
+];
