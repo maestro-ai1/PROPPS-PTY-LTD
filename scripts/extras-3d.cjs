@@ -11,7 +11,7 @@ const extras = {
     '## Mixing mistakes to avoid',
     '- **All one denomination.** A till or a wallet of only $100 notes looks staged.\n- **Too many large notes in everyday scenes.** A shop till rarely holds many $100s.\n- **Uniform wear.** Real notes in the same wallet have different ages.\n- **Ignoring colour in the grade.** If the grade desaturates greens, a $100 stack may lose its punch. Check the notes in the grade, not only on set.\n- **Forgetting continuity.** If a character pays with a $50 and receives change, the notes on screen should add up.',
     '## Ordering by denomination',
-    'Each denomination is a separate product in the [New Notes range](/shop/new-notes/), and the stack tiers are the same across all five. For a typical drama, order the hero denominations in the larger tiers and the small ones in a Starter Stack. A single order combining several denominations also helps reach the $300 minimum and the $500 free delivery threshold. If you are unsure about the mix, send the scene list through the [contact page](/contact/) and we will suggest one.',
+    'Each denomination is a separate product in the [New Notes range](/shop/new-notes/), and the stack tiers are the same across all five. For a typical drama, order the hero denominations in the larger tiers and the small ones in a Starter Stack. A single order combining several denominations also helps reach the $150 minimum and the $500 free delivery threshold. If you are unsure about the mix, send the scene list through the [contact page](/contact/) and we will suggest one.',
   ],
   'brief-history-of-australian-currency-notes-for-set-designers': [
     '## A short method for researching your era',

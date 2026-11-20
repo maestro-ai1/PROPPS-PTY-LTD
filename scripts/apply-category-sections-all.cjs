@@ -18,7 +18,7 @@ const sections = {
       'Hero stacks and close-ups usually use $100 and $50 notes because their colours read strongly on camera. Tills, wallets and counter exchanges look more natural with $20, $10 and $5 notes mixed in. Most orders combine two or three denominations rather than a single one.'),
     S('The best prop money reads correctly on camera',
       "The best prop money has crisp fine print at arm's length, matte paper that avoids hot spots under studio lights, matching print on both sides and notes that survive repeated takes. Every PROPPS note is checked against that list, so stacks match from take to take.",
-      'Searching for prop money au usually means a deadline. Orders start at $300 AUD, dispatch leaves our Melbourne studio within 24 business hours of payment by Australia Post Express, and delivery is free from $500 AUD.'),
+      'Searching for prop money au usually means a deadline. Orders start at $150 AUD, dispatch leaves our Melbourne studio within 24 business hours of payment by Australia Post Express, and delivery is free from $500 AUD.'),
     S('Specimen-marked, never spendable',
       'Some buyers search for fake Australian money prop. To be clear about what we sell: these are non-legal tender reproduction props made solely for motion pictures, television, theatre, visual arts and simulation training. They are never to be spent, handed over as payment or presented as real cash. Read the compliance guide for the standard each note is built to.'),
   ],
@@ -32,7 +32,7 @@ const sections = {
     S('Realistic money that holds up under studio lights',
       'Realistic money for film does not need to look identical to a real note. It needs to read correctly through the lens while staying clearly marked and different in the hand. Matte, non-reflective paper avoids glare, and double-sided print means a fanned or flipped stack still looks right.'),
     S('Orders for series and studios',
-      'Ordering the full quantity for a block of shooting keeps stacks matching across episodes. Orders start at $300 AUD, free delivery applies from $500 AUD, and larger or repeat runs can be quoted on the wholesale page. Every pack carries specimen markings and is a non-legal tender prop.'),
+      'Ordering the full quantity for a block of shooting keeps stacks matching across episodes. Orders start at $150 AUD, free delivery applies from $500 AUD, and larger or repeat runs can be quoted on the wholesale page. Every pack carries specimen markings and is a non-legal tender prop.'),
   ],
   'money-stacks': [
     S('Prop money stacks for bank, vault and heist scenes',
@@ -46,7 +46,7 @@ const sections = {
   'photography-props': [
     S('Photography props Australia: prop money that photographs cleanly',
       'Photographers use prop money for editorial, product and advertising shoots where cash has to look real in print without the legal risk. Our photography sets are matte, glare-free and double-sided, so they photograph cleanly under strobes and continuous light.',
-      'For a prop money photoshoot, a single set of fanned notes plus one strapped stack covers most set-ups. Orders start at $300 AUD and ship by Express Post, so you can book the studio with notes in hand.'),
+      'For a prop money photoshoot, a single set of fanned notes plus one strapped stack covers most set-ups. Orders start at $150 AUD and ship by Express Post, so you can book the studio with notes in hand.'),
     S('Photoshoot props and prop money for photography',
       'Photoshoot props Australia buyers usually need a few things: fanned notes for a flat lay, a strapped stack for a table shot and a handful of loose notes for continuity. Prop money for photography should be matte so the highlights stay clean, and double-sided so a flipped note still looks right.'),
     S('Prop dollar bills and dollar bills prop sets',
@@ -59,7 +59,7 @@ const sections = {
     S('Play money vs prop money for events',
       'Play money is designed to look obviously unlike real notes. Prop money is built to read as real on camera while staying marked. If your event is a photo or video shoot, choose the prop notes. If it is a game or a fundraiser, play money is the better fit and the safer one.'),
     S('Ordering for a party or event',
-      'Orders start at $300 AUD and ship by Australia Post Express from Melbourne, with free delivery from $500. For a larger run, ask about wholesale rates on the wholesale page. Every pack is a non-legal tender prop.'),
+      'Orders start at $150 AUD and ship by Australia Post Express from Melbourne, with free delivery from $500. For a larger run, ask about wholesale rates on the wholesale page. Every pack is a non-legal tender prop.'),
   ],
   'custom-and-branded-props': [
     S('Custom prop money for brands and agencies',
@@ -81,7 +81,7 @@ const faqs = {
     F('Is fake Australian money prop the same as your prop money?', 'Our product is a specimen-marked reproduction prop for production use, not fake currency. Every note is marked, printed on paper and sold as non-legal tender.', '/blog/fake-money-vs-prop-money-the-legal-difference-in-australia/', 'Fake money vs prop money'),
   ],
   'film-and-tv-props': [
-    F('Where can I buy film props in Australia?', 'PROPPS supplies film and television art departments with prop currency from its Eltham, Melbourne studio. Orders start at $300 AUD and ship by Australia Post Express with signature on delivery.', '/blog/buying-film-props-in-australia-a-checklist-for-art-departments/', 'Buying film props checklist'),
+    F('Where can I buy film props in Australia?', 'PROPPS supplies film and television art departments with prop currency from its Eltham, Melbourne studio. Orders start at $150 AUD and ship by Australia Post Express with signature on delivery.', '/blog/buying-film-props-in-australia-a-checklist-for-art-departments/', 'Buying film props checklist'),
     F('Are these movie set props for sale only prop money?', 'Yes. We specialise in prop currency for cash scenes. For furniture, costume or general set dressing, use a general prop supplier or hire house.', '/shop/', 'Browse the full catalog'),
     F('How realistic is the money on camera?', 'It is printed on matte, non-reflective paper with double-sided print, so it reads correctly through the lens without glare. It stays clearly marked as a specimen.', '/blog/lighting-prop-money-for-camera-avoiding-glare/', 'Lighting prop money without glare'),
     F('How fast can film props be delivered?', 'Orders dispatch from Melbourne within 24 business hours of payment by Australia Post Express, signature required on delivery.', '/blog/shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia/', 'Shipping and dispatch'),
@@ -91,7 +91,7 @@ const faqs = {
     F('What are prop money stacks?', 'Prop money stacks are counted, strapped bundles of specimen-marked notes that the art department can place on set without building them. Sizes run from a Starter Stack to 100 Stacks.', '/blog/ready-prop-money-stacks-for-fast-turnaround/', 'Ready stacks for fast turnarounds'),
     F('How many stacks do I need for a scene?', 'Count the stacks the camera sees, add the hidden ones, double for repeat set-ups and keep one sealed as a reserve. A wallet shot needs a Starter Stack, a desk spread one or two stacks, a vault ten or more.', '/blog/how-much-prop-money-do-you-need-for-a-scene/', 'How much prop money you need'),
     F('Is a money stack prop legal to use on set?', 'Yes. Every stack carries specimen markings and is a non-legal tender prop for film, television, theatre, photography and training. Never spend it.', '/compliance/', 'Read the compliance guide'),
-    F('Where can I buy a bundle of prop money?', 'You can buy a bundle of prop money from PROPPS in Melbourne. Orders start at $300 AUD, ship by Australia Post Express with signature, and are free to deliver from $500 AUD.', '/blog/where-to-buy-prop-money-in-australia-legally/', 'Where to buy prop money'),
+    F('Where can I buy a bundle of prop money?', 'You can buy a bundle of prop money from PROPPS in Melbourne. Orders start at $150 AUD, ship by Australia Post Express with signature, and are free to deliver from $500 AUD.', '/blog/where-to-buy-prop-money-in-australia-legally/', 'Where to buy prop money'),
     F('Do larger money bundle prop orders get a discount?', 'Yes. Larger runs qualify for wholesale tiers of 10% to 30% off. Ask on the wholesale page with your quantity.', '/wholesale/', 'Wholesale pricing'),
   ],
   'photography-props': [
@@ -113,7 +113,7 @@ const faqs = {
     F('Is custom money printing legal in Australia?', 'It is lawful when the notes carry permanent specimen markings, differ from genuine currency and are sold as non-legal tender props. Custom prop notes are never made to pass as real money.', '/blog/custom-and-branded-prop-currency-guide-for-agencies/', 'Custom prop currency guide'),
     F('How long does custom prop money take?', 'Timing depends on artwork and quantity. Tell us your deadline when you enquire and we will confirm what is realistic.', '/contact/', 'Contact the studio'),
     F('Do you make custom play money?', 'Yes. Custom play money and personalised play money suit schools, loyalty promotions and events.', '/shop/event-and-party-props/', 'See event and party props'),
-    F('Is there a minimum order for custom prop notes?', 'Standard orders start at $300 AUD. Custom runs are quoted per job, and larger runs can use the wholesale tiers.', '/wholesale/', 'Wholesale pricing'),
+    F('Is there a minimum order for custom prop notes?', 'Standard orders start at $150 AUD. Custom runs are quoted per job, and larger runs can use the wholesale tiers.', '/wholesale/', 'Wholesale pricing'),
   ],
 }
 
@@ -143,15 +143,15 @@ const setCat = (slug, fields) => {
 setCat('money-stacks', {
   h1: 'Prop Money Stacks — Money Stack Prop Bundles Australia',
   seoTitle: 'Prop Money Stacks Australia | Money Stack Prop',
-  seoDescription: 'Prop money stacks Australia: strapped, counted money stack prop bundles for bank, vault and heist scenes. Specimen-marked, shipped from Melbourne. From $300.',
+  seoDescription: 'Prop money stacks Australia: strapped, counted money stack prop bundles for bank, vault and heist scenes. Specimen-marked, shipped from Melbourne. From $150.',
 })
 setCat('photography-props', {
   h1: 'Photography Props Australia — Prop Money for Photoshoot',
   seoTitle: 'Photography Props Australia | Prop Money for Photoshoot',
-  seoDescription: 'Photography props Australia: prop money for photoshoot and editorial shoots. Matte, glare-free, specimen-marked notes shipped from Melbourne. From $300.',
+  seoDescription: 'Photography props Australia: prop money for photoshoot and editorial shoots. Matte, glare-free, specimen-marked notes shipped from Melbourne. From $150.',
 })
 setCat('event-and-party-props', {
-  seoDescription: 'Play money Australia for parties and events: Australian play money, toy money and kids play money, clearly marked and shipped from Melbourne. From $300.',
+  seoDescription: 'Play money Australia for parties and events: Australian play money, toy money and kids play money, clearly marked and shipped from Melbourne. From $150.',
 })
 setCat('custom-and-branded-props', {
   h1: 'Custom Prop Money — Custom Money Printing Australia',

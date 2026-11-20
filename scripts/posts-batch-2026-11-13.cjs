@@ -6,7 +6,7 @@ const AUSPOST = 'https://auspost.com.au/';
 const SAFETY = 'https://www.productsafety.gov.au/';
 const LAW = 'https://www.legislation.gov.au/';
 const KIT = '/shop/event-and-party-props/party-cash-cannon-kit/';
-const CLOSE = `The [Party Cash Cannon Kit](${KIT}) is priced to meet our $300 AUD minimum order, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. We invoice with an ABN and ship from Eltham, Melbourne by [Australia Post Express](${AUSPOST}) with a signature on delivery. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.`;
+const CLOSE = `The [Party Cash Cannon Kit](${KIT}) starts at the $150 AUD minimum order, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. We invoice with an ABN and ship from Eltham, Melbourne by [Australia Post Express](${AUSPOST}) with a signature on delivery. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.`;
 
 module.exports = [
   {
@@ -79,7 +79,7 @@ module.exports = [
       `Browse the [Party Cash Cannon Kit](${KIT}), see the full [event and party props](/shop/event-and-party-props/) range, or [contact the studio](/contact/) with your event details. ${CLOSE}`
     ),
     faqs: [
-      { q: 'Can I buy a money gun in Australia?', a: `Yes. The [Party Cash Cannon Kit](${KIT}) is a money gun with clearly marked party play notes, sold from Melbourne with Express Post and a signature on delivery. Orders start at $300 AUD.` },
+      { q: 'Can I buy a money gun in Australia?', a: `Yes. The [Party Cash Cannon Kit](${KIT}) is a money gun with clearly marked party play notes, sold from Melbourne with Express Post and a signature on delivery. Orders start at $150 AUD.` },
       { q: 'What do you put in a money gun?', a: 'Clearly pretend play notes made for the machine, printed PLAY MONEY. Do not load realistic reproductions of Australian notes, because notes scattered in a crowd can end up in pockets and be mistaken for real money.' },
       { q: 'Is a money gun legal in Australia?', a: `A money gun is legal to own and use. The notes matter: clearly marked, obviously pretend play notes are the safe choice. See the [compliance page](/compliance/) and the [novelty money guide](/blog/novelty-money-for-parties-and-events-whats-legal-in-australia/).` },
       { q: 'How many notes does a cash cannon fire?', a: 'A tray load of about 100 notes can be fired in well under a minute. Keep a spare pack and a helper for longer events, and fan the notes before loading to avoid jams.' },

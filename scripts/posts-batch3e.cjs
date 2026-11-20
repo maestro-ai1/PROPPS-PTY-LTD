@@ -31,7 +31,7 @@ module.exports = [
       `## What to buy`,
       `A single creator or small crew needs less than a film set. Plan on:`,
       `- **One hero set.** A fan of notes and a strapped stack.\n- **A few loose notes.** For scatter and continuity.\n- **A reserve.** A sealed stack in case a note is damaged.`,
-      `PROPPS orders start at $300 AUD, ship by [Australia Post](${AUSPOST}) Express with signature on delivery and are free to deliver from $500 AUD. Crypto payments receive a 10% discount. A Starter Stack plus a 1 Stack clears the minimum at $315 and covers most creator needs. Our guide to [how much prop money you need](/blog/how-much-prop-money-do-you-need-for-a-scene/) helps you size an order, and the [New Notes range](/shop/new-notes/) shows the options.`,
+      `PROPPS orders start at $150 AUD, ship by [Australia Post](${AUSPOST}) Express with signature on delivery and are free to deliver from $500 AUD. Crypto payments receive a 10% discount. A Starter Stack plus a 1 Stack clears the minimum at $315 and covers most creator needs. Our guide to [how much prop money you need](/blog/how-much-prop-money-do-you-need-for-a-scene/) helps you size an order, and the [New Notes range](/shop/new-notes/) shows the options.`,
       `## What the law cares about`,
       `The Commonwealth Crimes (Currency) Act 1981 is aimed at counterfeit currency and at reproductions that could deceive a reasonable person. The [Reserve Bank](${RBA}) publishes guidance on banknote reproductions. Marked prop notes used as props are treated very differently from notes made to pass as real. Never spend prop notes, never offer them as payment and never present them in a way that could mislead. Read our [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the [compliance page](/compliance/) for the standard PROPPS builds to. If you have a concern about counterfeit currency, the [Australian Federal Police](${AFP}) is the contact.`,
       `## Common creator mistakes`,
@@ -87,7 +87,7 @@ module.exports = [
     content: B(
       `When a shoot is booked and the cash scene is on Thursday, the question is not only where to buy prop money but how quickly it can arrive and who needs to be at the door. Searching for prop money near you usually means a deadline. This guide explains how PROPPS dispatches orders from Melbourne, how Australia Post Express and the signature requirement work, what to expect for Melbourne, Sydney and the rest of the country, how to plan delivery around a shoot and what to do if something goes wrong. It is general information. Delivery times depend on Australia Post and the destination, so check their estimates for your address. All PROPPS notes are specimen-marked, non-legal tender props.`,
       `## The short answer`,
-      `PROPPS dispatches from its Eltham, Melbourne studio within 24 business hours of payment, by Australia Post Express with a mandatory signature on delivery. Orders start at $300 AUD and delivery is free from $500 AUD. Tell the studio your shoot date when you order, nominate someone to sign and allow a few days between order and first use.`,
+      `PROPPS dispatches from its Eltham, Melbourne studio within 24 business hours of payment, by Australia Post Express with a mandatory signature on delivery. Orders start at $150 AUD and delivery is free from $500 AUD. Tell the studio your shoot date when you order, nominate someone to sign and allow a few days between order and first use.`,
       `## How dispatch works`,
       `1. **You order and pay.** Add items to the cart and pay by bank transfer, PayID or crypto, which receives a 10% discount.\n2. **We confirm.** You receive an invoice and a confirmation.\n3. **We pack and dispatch.** Orders leave the Melbourne studio within 24 business hours of payment.\n4. **Australia Post Express carries it.** The parcel is tracked.\n5. **Someone signs.** A signature is mandatory on delivery. If nobody is there, the parcel goes to a collection point or a redelivery is arranged.\n6. **You check and file.** Count the notes, check the condition and file the invoice.`,
       `## Why a signature is required`,
@@ -142,7 +142,7 @@ module.exports = [
       },
       {
         q: 'Is delivery free?',
-        a: 'Delivery is free from $500 AUD. Orders start at $300 AUD. Crypto payments receive a 10% discount.',
+        a: 'Delivery is free from $500 AUD. Orders start at $150 AUD. Crypto payments receive a 10% discount.',
       },
       {
         q: 'What should I do if my delivery is missed?',
@@ -180,7 +180,7 @@ module.exports = [
       `Good value is not the same as the lowest price. These steps help.`,
       `1. **Size the order properly.** Do not buy more than the camera sees. Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) shows how.\n2. **Put hero quality where the camera is close.** Use matching stock behind it.\n3. **Order once.** One order saves minimums, shipping and mismatches.\n4. **Ask about wholesale tiers.** Larger and repeat runs may be 10% to 30% off. See the [wholesale page](/wholesale/).\n5. **Use the crypto discount if it suits you.** PROPPS gives 10% off crypto payments.\n6. **Reuse stacks across scenes.** Matching stacks can appear more than once.`,
       `## What PROPPS prices look like`,
-      `At PROPPS, orders start at $300 AUD and delivery is free from $500 AUD. Stacks run from $115 for a Starter Stack to $14,000 for 100 Stacks. Every note is specimen-marked, printed double-sided on matte archival paper and sold with an invoice. Our guide to [high quality prop money](/blog/high-quality-prop-money-how-to-judge-it-on-camera/) shows what to check in any listing.`,
+      `At PROPPS, orders start at $150 AUD and delivery is free from $500 AUD. Stacks run from $115 for a Starter Stack to $14,000 for 100 Stacks. Every note is specimen-marked, printed double-sided on matte archival paper and sold with an invoice. Our guide to [high quality prop money](/blog/high-quality-prop-money-how-to-judge-it-on-camera/) shows what to check in any listing.`,
       `## A quick price check`,
       `Before you buy from anyone, ask:`,
       `1. Can I see a photo of an actual note, front and back?\n2. Is the specimen marking on every note?\n3. What is the paper?\n4. Are the stacks counted and strapped?\n5. Will I get an invoice?\n6. How is it delivered, and is a signature required?\n7. Can I reorder matching stock?`,

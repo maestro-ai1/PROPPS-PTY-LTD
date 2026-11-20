@@ -59,7 +59,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
         <p className="text-xs sm:text-sm text-[#6F665F] max-w-3xl leading-relaxed">
           {currentCatObj
             ? currentCatObj.description
-            : 'Australian prop money for sale from a Melbourne studio: specimen-marked notes from $5 to $100, strapped money stacks and film packs. Orders start at $300 AUD, ship by Express Post and are free to deliver from $500. Not sure what you need? Prop money is not the same as the fake money you see in novelty shops, so check our compliance page or contact the studio.'}
+            : 'Australian prop money for sale from a Melbourne studio: specimen-marked notes from $5 to $100, strapped money stacks and film packs. Orders start at $150 AUD, ship by Express Post and are free to deliver from $500. Not sure what you need? Prop money is not the same as the fake money you see in novelty shops, so check our compliance page or contact the studio.'}
         </p>
       </div>
 
@@ -208,7 +208,7 @@ export const ShopContent: React.FC<ShopContentProps> = ({ category }) => {
           </h2>
           <p className="text-sm text-[#6F665F] leading-relaxed">
             Buying prop money online from PROPPS is simple. Choose the range, pick a stack size and check out: orders for aus
-            prop money start at $300 AUD, ship by Australia Post Express with signature on delivery and are free to deliver
+            prop money start at $150 AUD, ship by Australia Post Express with signature on delivery and are free to deliver
             from $500. Buying prop money for a shoot, a stage show or a training exercise? Every product is a specimen-marked,
             non-legal tender prop.
           </p>

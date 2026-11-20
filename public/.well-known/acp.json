@@ -27,7 +27,7 @@
       "crypto-ETH"
     ],
     "currency": "AUD",
-    "minimum_order_usd": 300,
+    "minimum_order_usd": 150,
     "free_shipping_threshold_usd": 500
   },
   "contact": {

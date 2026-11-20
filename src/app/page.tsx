@@ -8,7 +8,7 @@ import { PageTopics } from '../components/PageTopics.js';
 export const metadata: Metadata = {
   title: { absolute: 'Australian Prop Money for Film & TV | PROPPS Melbourne' },
   description:
-    'Cinema-grade Australian prop money for film, TV, theatre and photo shoots. Specimen-marked, made in Melbourne, Express dispatch nationwide. From $300.',
+    'Cinema-grade Australian prop money for film, TV, theatre and photo shoots. Specimen-marked, made in Melbourne, Express dispatch nationwide. From $150.',
   keywords: SITE.keywords,
 };
 

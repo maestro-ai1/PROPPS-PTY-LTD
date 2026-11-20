@@ -49,7 +49,7 @@ export const PageTopics: React.FC<Props> = ({ target, name }) => {
 
   const sentence = (intent: string, kw: string) => {
     const lead = intent.charAt(0);
-    if (lead === 'T') return <>Buying {kw}? Every PROPPS note is a specimen-marked reproduction prop. Orders start at $300 AUD and ship from Melbourne by Express Post with signature.</>;
+    if (lead === 'T') return <>Buying {kw}? Every PROPPS note is a specimen-marked reproduction prop. Orders start at $150 AUD and ship from Melbourne by Express Post with signature.</>;
     if (lead === 'I') return <>Researching {kw}? {link ? <>Our guide <em>{link}</em> explains it in plain English.</> : 'Our buying guides explain it in plain English.'}</>;
     if (lead === 'N') return <>Looking for {kw}? This page and the {name} range are the quickest way to find it.</>;
     return <>Comparing {kw}? {link ? <>Check the options on this page, then read <em>{link}</em> before you order.</> : 'Check the options on this page before you order.'}</>;

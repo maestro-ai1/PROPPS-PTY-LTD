@@ -191,7 +191,7 @@ and the authorization server metadata (with an \`agent_auth\` block) is at
 
 ## Ordering
 Human-in-the-loop required. Agents may browse and prepare order drafts.
-Orders are completed by an adult human via WhatsApp or the checkout order form. Minimum order $300 AUD.
+Orders are completed by an adult human via WhatsApp or the checkout order form. Minimum order $150 AUD.
 `;
 fs.writeFileSync(path.join(rootDir, 'public', 'auth.md'), authMd);
 
@@ -250,7 +250,7 @@ const serverCard = {
       ordering: "human-assisted-whatsapp-or-form",
       payment: ["bank-transfer", "payid", "crypto-BTC", "crypto-USDT", "crypto-ETH"],
       currency: "AUD",
-      minimumOrder: 300,
+      minimumOrder: 150,
       freeShipping: 500
     }
   },
@@ -278,7 +278,7 @@ const acpJson = {
     ordering: "human-assisted",
     payment_methods: ["bank-transfer", "payid", "crypto-BTC", "crypto-USDT", "crypto-ETH"],
     currency: "AUD",
-    minimum_order_usd: 300,
+    minimum_order_usd: 150,
     free_shipping_threshold_usd: 500
   },
   contact: {
@@ -387,7 +387,7 @@ const webmcpJs = `(function () {
       },
       {
         name: "order_via_whatsapp",
-        description: "Initiate a WhatsApp prop order. Minimum order $300 AUD. Human completes.",
+        description: "Initiate a WhatsApp prop order. Minimum order $150 AUD. Human completes.",
         inputSchema: { type: "object", properties: { message: { type: "string" } } },
         execute: async ({ message }) => {
           const url = message ? \`https://wa.me/61420128746?text=\${encodeURIComponent(message)}\` : \`https://wa.me/61420128746\`;

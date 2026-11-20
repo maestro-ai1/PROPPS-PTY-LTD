@@ -83,7 +83,7 @@ export const PolicyContent: React.FC<PolicyContentProps> = ({ policyType }) => {
             To protect studio privacy and ensure seamless transit, all orders are packaged in plain, heavy-duty, tamper-evident cartons or reinforced Australia Post Express satchels. There are <strong>no external markings, logos, or references to prop money or replica cash</strong> on the exterior packaging.
           </p>
           <p>
-            Every parcel includes full end-to-end tracking with live SMS and email tracking links provided upon package scan. A mandatory <strong>Signature on Delivery</strong> is enforced on all orders over $300 AUD to eliminate doorstep theft.
+            Every parcel includes full end-to-end tracking with live SMS and email tracking links provided upon package scan. A mandatory <strong>Signature on Delivery</strong> is enforced on all orders over $150 AUD to eliminate doorstep theft.
           </p>
         </section>
 
@@ -312,7 +312,7 @@ export const PolicyContent: React.FC<PolicyContentProps> = ({ policyType }) => {
             3. Minimum Order Quantity &amp; Payment Terms
           </h2>
           <p>
-            To maintain our studio production wholesale tier, our standard minimum order value is <strong>$300.00 AUD</strong>. Invoices and payment details are issued immediately upon order submission. Orders must be settled via direct bank transfer or cryptocurrency within 48 hours to secure allocated stock.
+            To maintain our studio production wholesale tier, our standard minimum order value is <strong>$150.00 AUD</strong>. Invoices and payment details are issued immediately upon order submission. Orders must be settled via direct bank transfer or cryptocurrency within 48 hours to secure allocated stock.
           </p>
         </section>
 

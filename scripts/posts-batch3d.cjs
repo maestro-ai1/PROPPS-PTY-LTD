@@ -35,7 +35,7 @@ module.exports = [
       `## Realism tips`,
       `1. **Match the character.** A character who carries $20s is a different person from one who carries $100s.\n2. **Weather the everyday notes.** Small notes are handled more. Our [art department guide](/blog/art-department-guide-weathering-prop-cash/) shows how.\n3. **Use strapped stacks for banks and criminals.** Loose notes suggest someone who spends cash daily.\n4. **Do not match the stack too neatly.** Real money is slightly irregular.\n5. **Keep the same notes for the same story.** If money appears before and after a handover, match the stacks.`,
       `## Planning quantities`,
-      `The right quantity depends on what the camera sees. A wallet needs a few notes. A till needs a handful of each denomination. A vault needs stacks. Our [how much prop money guide](/blog/how-much-prop-money-do-you-need-for-a-scene/) explains the method, and the stack tiers run from a Starter Stack at $115 to 100 Stacks at $14,000. Orders start at $300 AUD and delivery is free from $500 AUD, with a 10% discount for crypto payments.`,
+      `The right quantity depends on what the camera sees. A wallet needs a few notes. A till needs a handful of each denomination. A vault needs stacks. Our [how much prop money guide](/blog/how-much-prop-money-do-you-need-for-a-scene/) explains the method, and the stack tiers run from a Starter Stack at $115 to 100 Stacks at $14,000. Orders start at $150 AUD and delivery is free from $500 AUD, with a 10% discount for crypto payments.`,
       `## Period and international notes`,
       `Productions set in earlier decades sometimes need older note designs, which have different colours and sizes. If your story is set in the past, tell the art department early, and read our [history of Australian currency notes for set designers](/blog/brief-history-of-australian-currency-notes-for-set-designers/). Productions shooting overseas stories may need other currencies, which PROPPS does not currently supply. We make Australian dollar props only.`,
       `## Compliance`,
@@ -51,7 +51,7 @@ module.exports = [
 - **Ignoring colour in the grade.** If the grade desaturates greens, a $100 stack may lose its punch. Check the notes in the grade, not only on set.
 - **Forgetting continuity.** If a character pays with a $50 and receives change, the notes on screen should add up.`,
       `## Ordering by denomination`,
-      `Each denomination is a separate product in the [New Notes range](/shop/new-notes/), and the stack tiers are the same across all five. For a typical drama, order the hero denominations in the larger tiers and the small ones in a Starter Stack. A single order combining several denominations also helps reach the $300 minimum and the $500 free delivery threshold. If you are unsure about the mix, send the scene list through the [contact page](/contact/) and we will suggest one.`,
+      `Each denomination is a separate product in the [New Notes range](/shop/new-notes/), and the stack tiers are the same across all five. For a typical drama, order the hero denominations in the larger tiers and the small ones in a Starter Stack. A single order combining several denominations also helps reach the $150 minimum and the $500 free delivery threshold. If you are unsure about the mix, send the scene list through the [contact page](/contact/) and we will suggest one.`,
       `## Small details that sell the cash`,
       `Rubber bands, paper clips and folded receipts make a bundle look like it belongs to a person. A $5 note folded in half in a back pocket tells a different story from the same note flat in a wallet. Think about how the money is carried, not just what it is.`,
       `## Where to go next`,
@@ -112,7 +112,7 @@ module.exports = [
       `## Compliance`,
       `Whatever era you dress, the notes must be clearly marked props. Every PROPPS note carries permanent specimen markings, is printed on paper rather than polymer and is sold as a non-legal tender reproduction for motion pictures, television, theatre, visual arts and simulation training. Never spend them. Read our [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the [compliance page](/compliance/).`,
       `## Delivery and ordering`,
-      `PROPPS orders start at $300 AUD, ship by [Australia Post](${AUSPOST}) Express with signature on delivery and are free to deliver from $500 AUD. Crypto payments receive a 10% discount.`,
+      `PROPPS orders start at $150 AUD, ship by [Australia Post](${AUSPOST}) Express with signature on delivery and are free to deliver from $500 AUD. Crypto payments receive a 10% discount.`,
       `## A short method for researching your era`,
       `1. **Fix the year.** Write the year on the scene breakdown.
 2. **Find reference photos.** Archive photographs, adverts and film stills of the era show cash in use.
@@ -183,7 +183,7 @@ module.exports = [
       `1. **Specimen markings on every note.** Ask for a photo of the front and back of a real note.\n2. **Paper.** Genuine Australian banknotes are polymer. Reproductions on paper are easy to tell apart by touch. PROPPS prints on 120gsm matte archival paper.\n3. **Business details.** An ABN, a physical address and a working phone number.\n4. **Honest descriptions.** The listing should say the notes are non-legal tender props.\n5. **Delivery.** Traceable shipping with a signature.\n6. **Policies.** Published shipping, refund and privacy policies.\n7. **Paperwork.** An invoice for the production file.`,
       `Our guide to [where to buy prop money in Australia legally](/blog/where-to-buy-prop-money-in-australia-legally/) goes through these in detail.`,
       `## Step four: size the order`,
-      `Count the stacks the camera sees, add the hidden ones, double for repeat set-ups and keep one sealed as a reserve. Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) gives examples, and the stack tiers run from a Starter Stack at $115 to 100 Stacks at $14,000. Orders start at $300 AUD.`,
+      `Count the stacks the camera sees, add the hidden ones, double for repeat set-ups and keep one sealed as a reserve. Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) gives examples, and the stack tiers run from a Starter Stack at $115 to 100 Stacks at $14,000. Orders start at $150 AUD.`,
       `## Step five: set the budget`,
       `A currency budget has four lines.`,
       `- **Notes.** Priced by stack tier and denomination.\n- **Delivery.** Free from $500 AUD at PROPPS.\n- **Weathering and prep.** Art department time and materials.\n- **Reserve.** A sealed stack for late changes.`,
@@ -247,7 +247,7 @@ module.exports = [
       },
       {
         q: 'How much should I budget for cash scenes?',
-        a: 'Size the order from what the camera sees, then price by stack tier. Orders start at $300 AUD. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/).',
+        a: 'Size the order from what the camera sees, then price by stack tier. Orders start at $150 AUD. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/).',
       },
       {
         q: 'Do I need paperwork for prop currency?',
@@ -293,7 +293,7 @@ module.exports = [
       `## Lighting a vault`,
       `A vault is a hard set to light, because shelves and cages cast shadows and metal throws reflections. Keep light soft, flag the key off the lens axis and test the notes at working distance. Our [lighting guide](/blog/lighting-prop-money-for-camera-avoiding-glare/) goes through it. Matte paper helps, because it avoids hot spots.`,
       `## Planning quantities, delivery and reuse`,
-      `Order the full quantity once for a block of shooting. PROPPS orders start at $300 AUD, ship by [Australia Post](${AUSPOST}) Express with signature on delivery and are free to deliver from $500 AUD, with a 10% discount for crypto payments. For larger orders, ask about wholesale tiers of 10% to 30% off on the [wholesale page](/wholesale/). After the shoot, keep the stacks for pickups and reshoots, or reuse them in another scene.`,
+      `Order the full quantity once for a block of shooting. PROPPS orders start at $150 AUD, ship by [Australia Post](${AUSPOST}) Express with signature on delivery and are free to deliver from $500 AUD, with a 10% discount for crypto payments. For larger orders, ask about wholesale tiers of 10% to 30% off on the [wholesale page](/wholesale/). After the shoot, keep the stacks for pickups and reshoots, or reuse them in another scene.`,
       `## Safety and compliance on a heist set`,
       `A heist scene is the kind of scene that attracts attention, especially on location. If you shoot in or near a bank or a shop, tell the venue and the local police beforehand, and keep the supplier invoice on set. Keep notes under the prop master's control, never leave them in a vehicle, and never let background performers keep souvenirs. Every PROPPS note carries permanent specimen markings, is printed on paper rather than polymer and is sold as a non-legal tender reproduction. Read the [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the [Reserve Bank guidance](${RBA}).`,
       `## Planning the shot list around the money`,

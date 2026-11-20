@@ -51,10 +51,10 @@ export default function Page() {
       page: 'Home /',
       intent: 'C (commercial) → hub to T',
       title: 'Australian Prop Money for Film & TV | PROPPS Melbourne',
-      meta: 'Cinema-grade prop Australian money for film, TV and photo shoots. Specimen-marked, made in Melbourne, express dispatch Australia-wide. Orders from $300.',
+      meta: 'Cinema-grade prop Australian money for film, TV and photo shoots. Specimen-marked, made in Melbourne, express dispatch Australia-wide. Orders from $150.',
       primary: 'australian prop money (C · 720 · KD 21, new bank) — ONE primary, no secondaries (golden rule).',
       secondary: 'None targeted. Brand "PROPPS PTY LTD" (N) in header/footer only.',
-      cta: 'Hero: "Shop Prop Money" → /shop/ · "Wholesale Quote" → /wholesale/ · Sticky: "Order on WhatsApp" · Footer band: "Start Your Order (min $300)" → /shop/',
+      cta: 'Hero: "Shop Prop Money" → /shop/ · "Wholesale Quote" → /wholesale/ · Sticky: "Order on WhatsApp" · Footer band: "Start Your Order (min $150)" → /shop/',
     },
     {
       page: 'Shop /shop/',
@@ -85,7 +85,7 @@ export default function Page() {
     },
   ];
   const wireframes: [string, string][] = [
-    ['Home', 'H1 "Prop Australian Money for Film, TV & Photography" · H2 Shop by category (6 tiles) · H2 Why productions buy from PROPPS (specimen markings, Melbourne dispatch, 500+ productions) · H2 Popular denominations ($100, $50 cards) · H2 How ordering works (min $300, free over $500, crypto -10%) · H2 Compliance (Crimes (Currency) Act s22) · H2 FAQ (6) · closing CTA'],
+    ['Home', 'H1 "Prop Australian Money for Film, TV & Photography" · H2 Shop by category (6 tiles) · H2 Why productions buy from PROPPS (specimen markings, Melbourne dispatch, 500+ productions) · H2 Popular denominations ($100, $50 cards) · H2 How ordering works (min $150, free over $500, crypto -10%) · H2 Compliance (Crimes (Currency) Act s22) · H2 FAQ (6) · closing CTA'],
     ['Shop', 'H1 "Buy Prop Money Online in Australia" · intro with prop buy once · H2 Shop by use (film/TV, stacks, photography, events, custom) · H2 Notes by denomination · H2 Delivery and payment (Express, PayID, crypto) · H2 FAQ (5) · CTA bar'],
     ['About', 'H1 "About PROPPS PTY LTD" · H2 Our story (Eltham 2019) · H2 Quality and specimen standards · H2 Who we supply · H2 Our commitment (dispatch, signature on delivery) · CTA to /shop/ and /contact/'],
     ['Contact', 'H1 "Contact PROPPS PTY LTD" · H2 Request a quote (form, 4 fields) · H2 Direct contact (WhatsApp, email, address) · H2 Trade and wholesale · H2 FAQ (3) · no popups on this page'],

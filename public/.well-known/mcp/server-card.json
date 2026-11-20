@@ -108,7 +108,7 @@
         "crypto-ETH"
       ],
       "currency": "AUD",
-      "minimumOrder": 300,
+      "minimumOrder": 150,
       "freeShipping": 500
     }
   },

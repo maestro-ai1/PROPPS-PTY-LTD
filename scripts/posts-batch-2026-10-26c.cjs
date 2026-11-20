@@ -3,7 +3,7 @@
 const B = (...blocks) => blocks.join('\n\n');
 const RBA = 'https://www.rba.gov.au/banknotes/';
 const AUSPOST = 'https://auspost.com.au/';
-const CLOSE = `Orders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. We invoice with an ABN for school and council records and ship from Eltham, Melbourne by [Australia Post Express](${AUSPOST}) with a signature on delivery. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.`;
+const CLOSE = `Orders start at $150 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. We invoice with an ABN for school and council records and ship from Eltham, Melbourne by [Australia Post Express](${AUSPOST}) with a signature on delivery. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.`;
 
 module.exports = [
   {
@@ -64,7 +64,7 @@ module.exports = [
       { q: 'What is the best fake money for a classroom?', a: 'A set of sturdy, clearly marked Australian notes in $5 to $100 denominations, in enough quantity for the whole class. See the [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/).' },
       { q: 'How much play money does a class of 24 need?', a: 'Plan a float per student for a market game, plus a teacher bank, and about double that for a term-long class economy. Count the notes in and out each lesson.' },
       { q: 'Is it legal to use fake money in a classroom in Australia?', a: 'Yes, when the notes are clearly marked as play money or specimens and never used as payment. The Reserve Bank explains its approach on its [banknote pages](https://www.rba.gov.au/banknotes/). See our [compliance page](/compliance/).' },
-      { q: 'Can schools get an invoice for play money?', a: 'Yes. PROPPS invoices with an ABN and ships by Express Post with signature. Orders start at $300 AUD, which suits a class set or a whole-school order.' },
+      { q: 'Can schools get an invoice for play money?', a: 'Yes. PROPPS invoices with an ABN and ships by Express Post with signature. Orders start at $150 AUD, which suits a class set or a whole-school order.' },
       { q: 'What is the difference between play money and prop money?', a: 'Play money is made for games and learning, while prop money is a film-grade reproduction for stage, screen and photography. Both must be clearly marked. Read [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/).' }
     ],
     updated: '2026-10-26',

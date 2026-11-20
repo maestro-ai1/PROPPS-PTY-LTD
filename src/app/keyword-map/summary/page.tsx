@@ -333,7 +333,7 @@ export default function Page() {
           <li>Resolved: contact phone and WhatsApp are +61 420 128 746 everywhere (the 0400 000 000 strings are form placeholders for customers).</li>
           <li>Resolved: Semrush data pulled for music video, double-sided, Melbourne/Sydney, wholesale, custom printing, play money and denomination terms.</li>
           <li>Dropped: "1 1 prop money" (size compliance). Not targeted: any "polymer" terms (site uses paper).</li>
-          <li>Owner decision: the $300 minimum order against the competitor .org at $150.</li>
+          <li>Decided 2026-11-20: the minimum order is now $150, level with the competitor .org.</li>
           <li>Owner decision: the money gun, USD prop and prop hire pools (section 5) need a product or service before they can be mapped.</li>
           <li>Pending: request indexing in GSC once the daily quota resets; re-check rankings around 2026-10-26.</li>
         </ol>

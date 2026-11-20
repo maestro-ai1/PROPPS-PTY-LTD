@@ -49,7 +49,7 @@ module.exports = [
       `Toy money is very low risk. A few simple habits keep it that way.`,
       `- **Never use toy money as payment.** It is not legal tender and a shop assistant is entitled to refuse it.\n- **Keep it away from the very young.** Small notes can be a choking hazard for toddlers, so supervise young children.\n- **Do not let children carry it out of the house or school.** A pocket of play notes in a real shop causes confusion.\n- **Choose marked notes.** Packs with visible markings make the purpose obvious to anyone who finds one.\n- **Check realism.** If a set looks very close to real banknotes, treat it like prop money: keep it controlled and marked. Our [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) explains the law, and the [Reserve Bank](${RBA}) publishes guidance on banknote reproductions.`,
       `## How much to buy and what it costs`,
-      `The right quantity depends on the activity. A family game needs a few dozen notes. A classroom shop for twenty-five children needs several hundred. A school fair stall may need more. PROPPS orders start at $300 AUD, ship by Australia Post Express with signature on delivery and are free to deliver from $500 AUD. That minimum suits schools, fundraising committees and event hosts ordering for a whole term or a whole event. For larger runs, ask about wholesale rates on the [wholesale page](/wholesale/).`,
+      `The right quantity depends on the activity. A family game needs a few dozen notes. A classroom shop for twenty-five children needs several hundred. A school fair stall may need more. PROPPS orders start at $150 AUD, ship by Australia Post Express with signature on delivery and are free to deliver from $500 AUD. That minimum suits schools, fundraising committees and event hosts ordering for a whole term or a whole event. For larger runs, ask about wholesale rates on the [wholesale page](/wholesale/).`,
       `## Where to go next`,
       `Browse [event and party props](/shop/event-and-party-props/) for play money, read about [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/) if you are unsure which you need, or [contact the studio](/contact/) with your quantity and deadline.`
     ),
@@ -106,7 +106,7 @@ module.exports = [
       `## Planning quantities`,
       `The right quantity depends on the activity.`,
       `- **Casino night:** a starting stack per guest, plus extra for the bank.\n- **Game stall:** enough to cover prizes and change for the expected crowd.\n- **Photo wall or prize table:** a few stacks or a handful of fanned notes, not a vault.\n- **Proposal or reveal:** one hero stack or box.`,
-      `PROPPS orders start at $300 AUD, ship by Australia Post Express with signature on delivery and are free to deliver from $500 AUD. For larger events and school or charity runs, see the [wholesale page](/wholesale/). Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) also helps you size a stack.`,
+      `PROPPS orders start at $150 AUD, ship by Australia Post Express with signature on delivery and are free to deliver from $500 AUD. For larger events and school or charity runs, see the [wholesale page](/wholesale/). Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) also helps you size a stack.`,
       `## Five quick event plans`,
       `**Birthday casino night.** Give each guest the same starting stack of play money, run three or four table games, and finish with a prize table. Count all the notes back in before guests leave.`,
       `**School or club fundraiser.** Sell tickets for play money, run game stalls and let children spend at a prize table. A volunteer holds the cash box and counts notes in and out.`,
@@ -157,11 +157,11 @@ module.exports = [
     content: B(
       `Ordering too little prop money leaves a scene looking thin. Ordering too much puts budget into bundles the lens never sees. The answer is not a single number. It depends on what the camera shows, how many takes and set-ups there are, how many days you shoot and how closely the shots match. This guide gives you a method for sizing prop money for any scene, with the real stack sizes and prices, worked examples for common scenes and tips for stretching a small budget on an independent production. It is written for art departments, line producers and independent filmmakers. All PROPPS notes are specimen-marked, non-legal tender props.`,
       `## The short answer`,
-      `Count the stacks the camera sees, add the hidden ones that sit behind them, double the count for any repeat set-up and add one sealed reserve. A wallet shot needs a Starter Stack, a desk spread one or two stacks, a briefcase five, and a vault ten or more. Prop money cost is driven by stack size, and orders start at $300 AUD.`,
+      `Count the stacks the camera sees, add the hidden ones that sit behind them, double the count for any repeat set-up and add one sealed reserve. A wallet shot needs a Starter Stack, a desk spread one or two stacks, a briefcase five, and a vault ten or more. Prop money cost is driven by stack size, and orders start at $150 AUD.`,
       `## The stack sizes and prices`,
       `Every product in the [New Notes range](/shop/new-notes/) uses the same stack tiers. Sizes are described by face value, and prices are in AUD.`,
       `- **Starter Stack:** $1,500 face value, $115\n- **1 Stack:** $2,000 face value, $200\n- **5 Stacks:** $10,000 face value, $850\n- **10 Stacks:** $20,000 face value, $1,600\n- **50 Stacks:** $100,000 face value, $7,500\n- **100 Stacks:** $200,000 face value, $14,000`,
-      `Orders start at $300 AUD, so a Starter Stack alone does not clear the minimum. Delivery is free from $500 AUD, and crypto payments receive a 10% discount. Prices come from the live range, so check the product page before you order.`,
+      `Orders start at $150 AUD, so a Starter Stack alone does not clear the minimum. Delivery is free from $500 AUD, and crypto payments receive a 10% discount. Prices come from the live range, so check the product page before you order.`,
       `## A five-step method`,
       `1. **Break the scene into shots.** List every shot that shows money: wide, medium, insert and close-up.\n2. **Count the visible stacks in each shot.** Include stacks in the foreground and the background.\n3. **Add the hidden ones.** Stacks behind hero bundles, under a bag or on a shelf out of focus still need to be there.\n4. **Allow for repeat set-ups.** If the same money appears before and after a handover, you need matching stacks for both sides of the cut.\n5. **Add a reserve.** One sealed stack is cheaper than a rush order on the morning of the shoot.`,
       `## How much for common scenes`,
@@ -211,7 +211,7 @@ module.exports = [
       },
       {
         q: 'What is the prop money cost per stack?',
-        a: 'Starter Stack $115, 1 Stack $200, 5 Stacks $850, 10 Stacks $1,600, 50 Stacks $7,500 and 100 Stacks $14,000, all in AUD. Orders start at $300 AUD.',
+        a: 'Starter Stack $115, 1 Stack $200, 5 Stacks $850, 10 Stacks $1,600, 50 Stacks $7,500 and 100 Stacks $14,000, all in AUD. Orders start at $150 AUD.',
       },
       {
         q: 'Can I stretch a small prop money budget?',

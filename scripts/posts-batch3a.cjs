@@ -179,13 +179,13 @@ module.exports = [
       `## What the law cares about`,
       `The Commonwealth Crimes (Currency) Act 1981 is aimed at counterfeit currency and at reproductions that could deceive a reasonable person. Play money rarely raises a question because it looks nothing like real notes. Prop money is lawful when it is clearly marked, differs from genuine notes and is used for a legitimate purpose. Never spend either. Read our [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) and the [compliance page](/compliance/) for how PROPPS builds to the standard.`,
       `## What each costs`,
-      `Play money is sold in large, low-cost packs because the print is simple and the paper is basic. Prop money is priced on print quality, paper weight, double-sided alignment, counting and strapping, paperwork and delivery. At PROPPS, orders start at $300 AUD and delivery is free from $500 AUD, with stacks sized from a Starter Stack up to 100 Stacks. If you only need a few hundred notes for a game, play money is far cheaper. If you need a hero stack that reads in a close-up, the extra cost buys the detail the camera sees. Our guide to [cheap prop money](/blog/cheap-prop-money-what-you-are-really-paying-for/) explains the trade-offs.`,
+      `Play money is sold in large, low-cost packs because the print is simple and the paper is basic. Prop money is priced on print quality, paper weight, double-sided alignment, counting and strapping, paperwork and delivery. At PROPPS, orders start at $150 AUD and delivery is free from $500 AUD, with stacks sized from a Starter Stack up to 100 Stacks. If you only need a few hundred notes for a game, play money is far cheaper. If you need a hero stack that reads in a close-up, the extra cost buys the detail the camera sees. Our guide to [cheap prop money](/blog/cheap-prop-money-what-you-are-really-paying-for/) explains the trade-offs.`,
       `## When to use both`,
       `Some jobs call for both. A film set might use play money in the background of a children's party scene and prop money for the hero stack on the kitchen table. A fundraiser might use play money for the games and marked prop notes for a photo wall. Keep them in separate containers and label them so nobody mixes them up.`,
       `## Common mistakes`,
       `- **Using play money in a close-up.** It will read as a toy.\n- **Using prop money as a party favour.** It is more realistic than a party needs and may be mistaken for real money by someone who does not know the context.\n- **Spending either.** Neither should ever be offered as payment.\n- **Removing markings.** Do not cut, crop or cover specimen markings.\n- **Ordering at the last minute.** Express Post is fast, but a signature is required on delivery.`,
       `## Ordering`,
-      `PROPPS orders start at $300 AUD, ship by Australia Post Express with signature on delivery and are free to deliver from $500 AUD. Crypto payments receive a 10% discount. For larger runs, see the [wholesale page](/wholesale/).`,
+      `PROPPS orders start at $150 AUD, ship by Australia Post Express with signature on delivery and are free to deliver from $500 AUD. Crypto payments receive a 10% discount. For larger runs, see the [wholesale page](/wholesale/).`,
       `## Where to go next`,
       `For games and parties, see [event and party props](/shop/event-and-party-props/). For film, television, theatre and photography, see the [New Notes range](/shop/new-notes/). If you are unsure, [contact the studio](/contact/) and tell us the job.`
     ),
@@ -204,7 +204,7 @@ module.exports = [
       },
       {
         q: 'Is prop money more expensive than play money?',
-        a: 'Yes, because of print quality, paper and specimen marking. Prop money orders start at $300 AUD with PROPPS. See [cheap prop money and what you are really paying for](/blog/cheap-prop-money-what-you-are-really-paying-for/).',
+        a: 'Yes, because of print quality, paper and specimen marking. Prop money orders start at $150 AUD with PROPPS. See [cheap prop money and what you are really paying for](/blog/cheap-prop-money-what-you-are-really-paying-for/).',
       },
       {
         q: 'Is it legal to buy play money or prop money?',

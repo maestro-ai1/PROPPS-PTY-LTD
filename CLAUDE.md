@@ -27,7 +27,7 @@ derive directly from `src/config/site.js` via `npm run gen`.
 - Emails entity-encoded (&#64;) across all rendered HTML and JSON-LD.
 - Reply Portal emails MUST use the LIGHT shell (white body, `#141010` header band, `#C5A059` accent).
 - `ADMIN_PASSCODE` is server-only, never exposed in client bundles.
-- Minimum order: $300 AUD. Free shipping threshold: $500 AUD. Crypto discount: 10%.
+- Minimum order: $150 AUD. Free shipping threshold: $500 AUD. Crypto discount: 10%.
 
 ## Live Placeholders
 - `SITE.domain`: currently `proppsptyltd.com.au` (update in `src/config/site.js` when final DNS is pointed — this is the single source of truth; never hand-edit a domain into any other file).

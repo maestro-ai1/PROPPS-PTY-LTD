@@ -36,7 +36,7 @@ module.exports = [
       `Buying from an Australian studio changes a number of small things that add up on a production:`,
       `- **Speed.** Express dispatch from Melbourne takes days, not weeks. A late change to the call sheet is manageable.\n- **Recourse.** If a parcel is damaged or a count is wrong, you can ring someone.\n- **Paperwork.** A local invoice answers questions from insurers and location owners.\n- **Currency fit.** A local studio keeps up with changes to the real note designs, so your on-screen cash looks current.\n- **Lower legal risk.** Local specimen-marked notes avoid the border and compliance questions that come with overseas polymer copies.`,
       `## How much to expect to pay`,
-      `Prices depend on denomination, bundle size and finish. At PROPPS, orders start at $300 AUD, delivery is free from $500 AUD and payments in cryptocurrency receive a 10% discount. Notes are sold in stacks, from a Starter Stack up to 100 Stacks for large scenes. For help matching quantity to the shot, read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/). If you are watching the budget, our [cheap prop money guide](/blog/cheap-prop-money-what-you-are-really-paying-for/) explains where a low price usually comes from.`,
+      `Prices depend on denomination, bundle size and finish. At PROPPS, orders start at $150 AUD, delivery is free from $500 AUD and payments in cryptocurrency receive a 10% discount. Notes are sold in stacks, from a Starter Stack up to 100 Stacks for large scenes. For help matching quantity to the shot, read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/). If you are watching the budget, our [cheap prop money guide](/blog/cheap-prop-money-what-you-are-really-paying-for/) explains where a low price usually comes from.`,
       `## A simple buying process`,
       `1. **List the scenes.** Write down which scenes show cash, which denominations are visible and whether any shot is a close-up.\n2. **Choose the denominations.** Start with the [$100](/shop/new-notes/100-australian-prop-money-for-sale/) and [$50](/shop/new-notes/50-australian-prop-money-for-sale/) products, then add $20, $10 and $5 notes for tills and wallets.\n3. **Choose stack sizes.** Match stack size to what the camera sees. Our guide to [$100 prop money bundle sizes](/blog/100-dollar-prop-money-which-bundle-size/) shows how.\n4. **Order early enough.** Express dispatch is quick, but a signature is required, so plan who will be at the address.\n5. **File the paperwork.** Keep the invoice and a note of the specimen markings with the production file.\n6. **Control the notes on set.** Store them with the prop master and count them in and out each day.`,
       `## Buying for different uses`,
@@ -66,7 +66,7 @@ module.exports = [
       },
       {
         q: 'Is there a minimum order for prop money?',
-        a: 'At PROPPS, orders start at $300 AUD and delivery is free from $500 AUD. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) to size an order to the shot.',
+        a: 'At PROPPS, orders start at $150 AUD and delivery is free from $500 AUD. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) to size an order to the shot.',
       },
       {
         q: 'Can I buy prop money near me?',
@@ -88,7 +88,7 @@ module.exports = [
       `## The bundle sizes and what they cost`,
       `Every product in the [New Notes range](/shop/new-notes/) is sold in the same stack tiers. Stack sizes are described by face value, and prices are in AUD:`,
       `- **Starter Stack:** $1,500 face value, $115\n- **1 Stack:** $2,000 face value, $200\n- **5 Stacks:** $10,000 face value, $850\n- **10 Stacks:** $20,000 face value, $1,600\n- **50 Stacks:** $100,000 face value, $7,500\n- **100 Stacks:** $200,000 face value, $14,000`,
-      `Orders start at $300 AUD, so a Starter Stack on its own does not clear the minimum. A Starter Stack plus a 1 Stack, or a single 5 Stacks order, is the usual way to start. Delivery is free from $500 AUD, and payments in cryptocurrency receive a 10% discount. You can see the current prices on the [$100 product page](/shop/new-notes/100-australian-prop-money-for-sale/).`,
+      `Orders start at $150 AUD, so a Starter Stack on its own does not clear the minimum. A Starter Stack plus a 1 Stack, or a single 5 Stacks order, is the usual way to start. Delivery is free from $500 AUD, and payments in cryptocurrency receive a 10% discount. You can see the current prices on the [$100 product page](/shop/new-notes/100-australian-prop-money-for-sale/).`,
       `## Match the bundle to the shot`,
       `### Wallet or hand shot`,
       `A close shot of a hand counting notes or a wallet opening only shows a few notes. One Starter Stack covers it, with plenty left over for continuity. Spend the saved budget on a clean, uncreased hero note that you keep for the close-up.`,
@@ -132,7 +132,7 @@ module.exports = [
       },
       {
         q: 'Can I order a single Starter Stack?',
-        a: 'Orders start at $300 AUD, so a Starter Stack on its own does not clear the minimum. Add a 1 Stack or choose 5 Stacks. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) before you order.',
+        a: 'Orders start at $150 AUD, so a Starter Stack on its own does not clear the minimum. Add a 1 Stack or choose 5 Stacks. Read [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) before you order.',
       },
       {
         q: 'Are $100 prop notes double-sided?',
@@ -166,7 +166,7 @@ module.exports = [
       `## How to size a ready-stack order`,
       `Use a simple process:`,
       `1. **Count the visible stacks.** Walk the shot list and count how many stacks the camera sees in each scene.\n2. **Add the hidden ones.** Add stacks that sit behind hero bundles, under bags or in the background. The lens may blur them, but they still need to be there.\n3. **Allow for continuity.** If the same money appears twice in a scene, double the count for the second set-up.\n4. **Add a reserve.** Keep one stack unopened as a spare for late changes.\n5. **Round up to the nearest tier.** The tiers are Starter ($115), 1 Stack ($200), 5 Stacks ($850), 10 Stacks ($1,600), 50 Stacks ($7,500) and 100 Stacks ($14,000), in AUD.`,
-      `Orders start at $300 AUD, delivery is free from $500 AUD and payments in cryptocurrency receive a 10% discount. For larger or repeat runs, ask about wholesale rates on our [wholesale page](/wholesale/).`,
+      `Orders start at $150 AUD, delivery is free from $500 AUD and payments in cryptocurrency receive a 10% discount. For larger or repeat runs, ask about wholesale rates on our [wholesale page](/wholesale/).`,
       `## Choosing denominations for ready stacks`,
       `Ready stacks work best when the denomination mix fits the scene. Use $100 and $50 notes on the visible faces of hero stacks, because those colours read strongly on camera. Add $20, $10 and $5 stacks for tills, wallets and counters. See our [$100 bundle size guide](/blog/100-dollar-prop-money-which-bundle-size/) for how to size the biggest stacks, and the guide to the [best Australian banknote denominations for film and TV](/blog/best-australian-banknote-denominations-for-film-and-tv-scenes/) for the mix.`,
       `## A worked example: a three-day shoot`,
@@ -246,7 +246,7 @@ module.exports = [
       `## Keeping prop money in good condition`,
       `Even good notes can be ruined by poor storage. Keep them flat, dry and out of direct sun. Avoid leaving them in a hot car, where edges curl. Keep them strapped and in the box until the scene. Handle them by the edges, and keep a few spare notes for hero shots so the best ones are not handled more than needed. At wrap, count the notes in and store them with the prop master, never loose in a bag or costume.`,
       `## Quality is not the same as cost`,
-      `A higher price does not guarantee quality, and a low price does not always mean poor quality. What matters is whether the price covers the things you cannot see on a product page: paper weight, double-sided alignment, consistent colour between runs, counting and strapping, paperwork and delivery. Our guide to [cheap prop money and what you are really paying for](/blog/cheap-prop-money-what-you-are-really-paying-for/) goes through the trade-offs. At PROPPS, orders start at $300 AUD, delivery is free from $500 AUD and payments in cryptocurrency receive a 10% discount.`,
+      `A higher price does not guarantee quality, and a low price does not always mean poor quality. What matters is whether the price covers the things you cannot see on a product page: paper weight, double-sided alignment, consistent colour between runs, counting and strapping, paperwork and delivery. Our guide to [cheap prop money and what you are really paying for](/blog/cheap-prop-money-what-you-are-really-paying-for/) goes through the trade-offs. At PROPPS, orders start at $150 AUD, delivery is free from $500 AUD and payments in cryptocurrency receive a 10% discount.`,
       `## Match quality to the shot`,
       `Not every shot needs the same level of detail. A close-up of a hand counting notes needs hero-quality print and handling. A wide of a vault needs volume, and a shallow depth of field will blur the bundles at the back. Put your best notes where the camera is close and use stacks for the rest. Our guide to [$100 prop money bundle sizes](/blog/100-dollar-prop-money-which-bundle-size/) shows how to split an order between hero and background stacks.`,
       `## Compliance still matters`,

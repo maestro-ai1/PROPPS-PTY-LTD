@@ -20,7 +20,7 @@ const denom = (n, a, b, c, guide) => [
   {
     h2: `Ordering ${n} dollar prop money in Australia`,
     paras: [
-      `${c} Orders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. For studio quantities, ask about [wholesale prop money](/wholesale/) tiers of 10% to 30% off.`,
+      `${c} Orders start at $150 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. For studio quantities, ask about [wholesale prop money](/wholesale/) tiers of 10% to 30% off.`,
       `${LEGAL} ${SHIP}`,
     ],
   },
@@ -137,7 +137,7 @@ export const PRODUCT_COPY = {
     {
       h2: 'Ordering a money gun kit in Australia',
       paras: [
-        'The kit is priced to meet our $300 AUD minimum order, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. For several kits at a venue or festival, ask through the [contact page](/contact/).',
+        'Orders start at $150 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. For several kits at a venue or festival, ask through the [contact page](/contact/).',
         `${LEGAL} ${SHIP}`,
       ],
     },

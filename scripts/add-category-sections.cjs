@@ -25,7 +25,7 @@ const sections = {
       h2: 'High quality prop money, built to read on camera',
       paras: [
         "High quality prop money means crisp fine print at arm's length, matte paper that avoids hot spots under studio lights, matching print on both sides and notes that survive repeated takes. Every PROPPS note is checked against that list, so stacks match from take to take.",
-        'Searching for prop money au usually means a deadline. Orders start at $300 AUD, dispatch leaves our Melbourne studio within 24 business hours of payment by Australia Post Express, and delivery is free from $500 AUD.',
+        'Searching for prop money au usually means a deadline. Orders start at $150 AUD, dispatch leaves our Melbourne studio within 24 business hours of payment by Australia Post Express, and delivery is free from $500 AUD.',
       ],
     },
     {
@@ -58,7 +58,7 @@ const sections = {
     {
       h2: 'Orders for series and studios',
       paras: [
-        'Ordering the full quantity for a block of shooting keeps stacks matching across episodes. Orders start at $300 AUD, free delivery applies from $500 AUD, and larger or repeat runs can be quoted on the wholesale page. Every pack carries specimen markings and is a non-legal tender prop.',
+        'Ordering the full quantity for a block of shooting keeps stacks matching across episodes. Orders start at $150 AUD, free delivery applies from $500 AUD, and larger or repeat runs can be quoted on the wholesale page. Every pack carries specimen markings and is a non-legal tender prop.',
       ],
     },
   ],
@@ -73,7 +73,7 @@ const faqs = {
     { q: 'Is fake Australian money prop the same as your prop money?', a: 'Our product is a specimen-marked reproduction prop for production use, not fake currency. Every note is marked, printed on paper and sold as non-legal tender.', link: { href: '/blog/fake-money-vs-prop-money-the-legal-difference-in-australia/', label: 'Fake money vs prop money' } },
   ],
   'film-and-tv-props': [
-    { q: 'Where can I buy film props in Australia?', a: 'PROPPS supplies film and television art departments with prop currency from its Eltham, Melbourne studio. Orders start at $300 AUD and ship by Australia Post Express with signature on delivery.', link: { href: '/blog/buying-film-props-in-australia-a-checklist-for-art-departments/', label: 'Buying film props checklist' } },
+    { q: 'Where can I buy film props in Australia?', a: 'PROPPS supplies film and television art departments with prop currency from its Eltham, Melbourne studio. Orders start at $150 AUD and ship by Australia Post Express with signature on delivery.', link: { href: '/blog/buying-film-props-in-australia-a-checklist-for-art-departments/', label: 'Buying film props checklist' } },
     { q: 'Are these movie set props for sale only prop money?', a: 'Yes. We specialise in prop currency for cash scenes. For furniture, costume or general set dressing, use a general prop supplier or hire house.', link: { href: '/shop/', label: 'Browse the full catalog' } },
     { q: 'How realistic is the money on camera?', a: 'It is printed on matte, non-reflective paper with double-sided print, so it reads correctly through the lens without glare. It stays clearly marked as a specimen.', link: { href: '/blog/lighting-prop-money-for-camera-avoiding-glare/', label: 'Lighting prop money without glare' } },
     { q: 'How fast can film props be delivered?', a: 'Orders dispatch from Melbourne within 24 business hours of payment by Australia Post Express, signature required on delivery.', link: { href: '/blog/shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia/', label: 'Shipping and dispatch' } },

@@ -110,7 +110,7 @@ export const TagContent: React.FC<{ tag: Tag }> = ({ tag }) => {
       )}
 
       <p className="text-xs text-[#6F665F] leading-relaxed border-t border-[#EAE3DC] pt-4">
-        {TAG_NOTE} Orders start at $300 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. See the <Link href="/compliance/" className={LINK}>compliance page</Link>, <Link href="/shipping-policy/" className={LINK}>shipping policy</Link> and <Link href="/refund-policy/" className={LINK}>refund policy</Link>.
+        {TAG_NOTE} Orders start at $150 AUD, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. See the <Link href="/compliance/" className={LINK}>compliance page</Link>, <Link href="/shipping-policy/" className={LINK}>shipping policy</Link> and <Link href="/refund-policy/" className={LINK}>refund policy</Link>.
       </p>
     </div>
   );

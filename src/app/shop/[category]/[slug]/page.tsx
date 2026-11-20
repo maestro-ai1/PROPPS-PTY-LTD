@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seo = PRODUCT_SEO[product.slug];
   const what = seo?.what ?? label;
   const title = seo?.title ?? `${product.name} | Buy Online Australia`;
-  const description = `Buy ${what} online from $${product.price} AUD. Specimen-marked, Express Post from Melbourne, free delivery over $500, orders from $300.`;
+  const description = `Buy ${what} online from $${product.price} AUD. Specimen-marked, Express Post from Melbourne, free delivery over $500, orders from $150.`;
 
   return {
     title: { absolute: title },

@@ -41,4 +41,4 @@ and the authorization server metadata (with an `agent_auth` block) is at
 
 ## Ordering
 Human-in-the-loop required. Agents may browse and prepare order drafts.
-Orders are completed by an adult human via WhatsApp or the checkout order form. Minimum order $300 AUD.
+Orders are completed by an adult human via WhatsApp or the checkout order form. Minimum order $150 AUD.

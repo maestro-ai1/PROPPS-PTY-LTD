@@ -176,7 +176,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="p-3.5 bg-white rounded-xl border border-[#EAE3DC] space-y-1.5 text-xs">
               <p className="font-mono-code text-[#D4AF37]">
-                <strong>Minimum Order:</strong> $300 AUD
+                <strong>Minimum Order:</strong> $150 AUD
               </p>
               <p className="font-mono-code text-[#6F665F]">
                 <strong>Free Express Shipping:</strong> $500+ AUD
