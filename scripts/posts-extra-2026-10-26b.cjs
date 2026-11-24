@@ -72,7 +72,7 @@ module.exports = {
     `## Insurance, locations and public places`,
     `Insurers and location owners ask about the props that will be on set. A paper note with a clear marking and an invoice from an Australian supplier is a simple answer. A polymer note from an overseas listing with no invoice is a complicated one. Productions that shoot in banks, shops or public places should be especially careful, because staff and members of the public may see the notes and have no context. Keep the notes under control, brief the crew and keep the supplier details on hand.`,
     `## Buying checklist for polymer claims`,
-    `If you are still considering a polymer lookalike, ask the seller in writing: Where is the marking and how large is it? Who is the business and what is its ABN? How is the parcel shipped and who signs for it? What happens if it is held at the border? Honest sellers answer quickly and in detail. If the answers are vague, you have your answer.`,
+    `If you are still considering a polymer lookalike, ask the seller in writing: Where is the marking and how large is it? Who is the business and what is its registered name? How is the parcel shipped and who signs for it? What happens if it is held at the border? Honest sellers answer quickly and in detail. If the answers are vague, you have your answer.`,
     `For a clear alternative, our notes are available from the [$5](/shop/new-notes/5-australian-prop-money-for-sale/) to the [$100](/shop/new-notes/100-australian-prop-money-for-sale/) and in strapped stacks. The [film and TV prop currency pack](/shop/film-and-tv-props/film-and-tv-prop-currency-pack/) covers a full set.`
   ),
 

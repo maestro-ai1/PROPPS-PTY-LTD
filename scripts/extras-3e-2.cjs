@@ -15,7 +15,7 @@ const extras = {
   ],
   'local-vs-overseas-prop-money-suppliers-compared': [
     '## What local studios should be able to show you',
-    'A good local studio can show a photo of a marked note on request, a clear description of the paper, a named business with an ABN, published shipping and refund policies and a recent order history. It can also explain how its notes are built to the Section 22 standard, in plain language. If a studio cannot do these things, keep looking. The same test applies to any overseas seller you consider.',
+    'A good local studio can show a photo of a marked note on request, a clear description of the paper, a named business with a business name, published shipping and refund policies and a recent order history. It can also explain how its notes are built to the Section 22 standard, in plain language. If a studio cannot do these things, keep looking. The same test applies to any overseas seller you consider.',
     '## A final word on risk',
     'Risk is the part of the price that never appears on a listing. A small saving on the unit price can be wiped out by one held parcel, one missed date or one awkward question from a venue. Weigh the whole picture, ask the questions above and choose the supplier you would be comfortable explaining to your producer.',
   ],

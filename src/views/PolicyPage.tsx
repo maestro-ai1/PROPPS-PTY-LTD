@@ -283,7 +283,7 @@ export const PolicyContent: React.FC<PolicyContentProps> = ({ policyType }) => {
           <span>MANDATORY INTENDED USE ACKNOWLEDGMENT</span>
         </div>
         <p className="text-[#6F665F] leading-relaxed">
-          By purchasing from {SITE.name} (PROPPS PTY LTD, ABN 72 642 507 042), you warrant and declare that all reproduction currency items are acquired exclusively for legitimate artistic, theatrical, cinematic, educational, or training purposes. Passing, tendering, or attempting to use replica currency as genuine legal tender is a serious criminal offence under Commonwealth law.
+          By purchasing from {SITE.name} (PROPPS PTY LTD), you warrant and declare that all reproduction currency items are acquired exclusively for legitimate artistic, theatrical, cinematic, educational, or training purposes. Passing, tendering, or attempting to use replica currency as genuine legal tender is a serious criminal offence under Commonwealth law.
         </p>
       </div>
 
@@ -291,7 +291,7 @@ export const PolicyContent: React.FC<PolicyContentProps> = ({ policyType }) => {
         <section className="space-y-3">
           <h2 className="font-serif-luxury text-lg font-bold text-[#1A1414]">1. Entity Identification</h2>
           <p>
-            These Terms and Conditions apply to all purchases made through this website operated by PROPPS PTY LTD, a registered proprietary company in Victoria, Australia (ABN: 72 642 507 042, Registered Office: Eltham VIC 3093).
+            These Terms and Conditions apply to all purchases made through this website operated by PROPPS PTY LTD, a registered proprietary company in Victoria, Australia (Registered Office: Eltham VIC 3093).
           </p>
         </section>
 

@@ -1,7 +1,7 @@
 // src/components/Footer.tsx
 import React from 'react';
 import Link from 'next/link';
-import { Mail, MapPin, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 import { SITE, CONTACT, CATEGORIES } from '../config/site.js';
 
 export const Footer: React.FC = () => {
@@ -31,19 +31,6 @@ export const Footer: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#D4AF37]" />
                 <span dangerouslySetInnerHTML={{ __html: CONTACT.email }} />
-              </div>
-              <div className="flex items-center gap-2 pt-1">
-                <a
-                  href={`https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#00b67a]/15 border border-[#00b67a]/40 text-[#00b67a] hover:bg-[#00b67a]/25 hover:text-[#1A1414] transition-all shadow-sm"
-                  title="Verify PROPPS PTY LTD on Australian Business Register"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#00b67a]" />
-                  <span className="font-bold tracking-wider">ABN: {SITE.abn}</span>
-                  <ExternalLink className="w-3 h-3 text-[#00b67a]" />
-                </a>
               </div>
             </div>
           </div>
@@ -195,16 +182,6 @@ export const Footer: React.FC = () => {
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11.5px] text-[#6F665F] space-y-3 sm:space-y-0">
           <div className="flex flex-wrap items-center gap-2">
             <span>© {new Date().getFullYear()} {SITE.name}. All Rights Reserved.</span>
-            <span>·</span>
-            <a
-              href={`https://abr.business.gov.au/ABN/View?id=${SITE.abn.replace(/\s+/g, '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono-code text-[#00b67a] hover:underline transition-colors flex items-center gap-1.5"
-            >
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#00b67a]" />
-              <span>ABN: {SITE.abn} (Active · Registered Melbourne VIC 3093)</span>
-            </a>
           </div>
 
           <div className="flex items-center gap-3 text-xs font-mono-code">

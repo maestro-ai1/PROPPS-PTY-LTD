@@ -65,7 +65,7 @@ const DEFS = [
   {
     kw: 'buy realistic prop money', title: 'Buy Realistic Prop Money in Australia',
     desc: 'Buy realistic prop money in Australia: legal, specimen-marked notes shipped by Express Post with signature. Orders from $150 AUD.',
-    paras: ['Buy realistic prop money online the simple, legal way: PROPPS sells specimen-marked reproduction notes, invoices with an ABN and dispatches from Melbourne by Express Post with signature on delivery.', 'The guides below explain the legal position, how to order and what to check before you pay, so there are no surprises at checkout.'],
+    paras: ['Buy realistic prop money online the simple, legal way: PROPPS sells specimen-marked reproduction notes, invoices and dispatches from Melbourne by Express Post with signature on delivery.', 'The guides below explain the legal position, how to order and what to check before you pay, so there are no surprises at checkout.'],
     target: { href: '/shop/', label: 'Browse the full shop' },
     terms: ['buy', 'order', 'where to', 'legal', 'checkout'], cats: ['new-notes'], related: ['best-australian-prop-money', 'australian-dollar-prop-money'],
   },
@@ -128,7 +128,7 @@ const DEFS = [
   {
     kw: 'buy prop money online', title: 'Buy Prop Money Online in Australia',
     desc: 'Buy prop money online from an Australian supplier: specimen-marked notes, Express Post with signature, orders from $150 AUD. Guides and range inside.',
-    paras: ['Buying prop money online is simple when the seller is clear about what the notes are: reproduction props with specimen markings, made for the screen, the stage and the camera. PROPPS invoices with an ABN and dispatches from Melbourne by Express Post with signature on delivery.', 'The range and guides below cover denominations, bundle sizes, delivery times and the legal position, so you know exactly what you are ordering before you pay.'],
+    paras: ['Buying prop money online is simple when the seller is clear about what the notes are: reproduction props with specimen markings, made for the screen, the stage and the camera. PROPPS invoices and dispatches from Melbourne by Express Post with signature on delivery.', 'The range and guides below cover denominations, bundle sizes, delivery times and the legal position, so you know exactly what you are ordering before you pay.'],
     target: { href: '/shop/', label: 'Browse the full shop' },
     terms: ['buy', 'order', 'where to', 'online', 'legal', 'checkout'], cats: ['new-notes'], related: ['buy-realistic-prop-money', 'best-australian-prop-money'],
   },

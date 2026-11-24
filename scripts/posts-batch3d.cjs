@@ -169,7 +169,7 @@ module.exports = [
     content: B(
       `Buying props for a screen production in Australia is a mix of planning, sourcing and paperwork. Furniture can be hired, costumes can be made, but cash and currency need special care, because the law treats reproductions of banknotes differently from a chair or a lamp. This guide is a buying checklist for art departments, prop masters and line producers. It covers how to brief, where movie props in Australia come from, what to check before you order, how to budget, how to handle delivery and storage and how to keep the paperwork in order, with a focus on currency props. It is general information, not legal advice. All PROPPS notes are specimen-marked, non-legal tender props.`,
       `## The short answer`,
-      `List every cash scene, count what the camera sees, choose a specialist supplier with marked notes, an ABN and signed-for delivery, order the full quantity once, and file the invoice. For currency, the supplier matters as much as the price, because markings, paper and paperwork are what keep the props lawful and the production protected.`,
+      `List every cash scene, count what the camera sees, choose a specialist supplier with marked notes, a business name and signed-for delivery, order the full quantity once, and file the invoice. For currency, the supplier matters as much as the price, because markings, paper and paperwork are what keep the props lawful and the production protected.`,
       `## Step one: write the brief`,
       `A clear brief prevents most buying problems. For each cash scene, note:`,
       `1. **What is shown.** A wallet, a till, a briefcase, a vault.\n2. **How it is handled.** Held, counted, thrown, hidden or left on a table.\n3. **The camera distance.** Wide, medium, close-up or insert.\n4. **The number of takes and set-ups.**\n5. **The look.** New, used or aged.\n6. **The era.** Contemporary or period.\n7. **The date.** When the notes must be on set.`,
@@ -180,7 +180,7 @@ module.exports = [
       `You can buy movie props online in Australia for the cash scene from a specialist, and keep the rest of the set dressing with a general supplier. See [film and TV props](/shop/film-and-tv-props/) for our currency packs.`,
       `## Step three: check the supplier`,
       `Before you order currency props, check:`,
-      `1. **Specimen markings on every note.** Ask for a photo of the front and back of a real note.\n2. **Paper.** Genuine Australian banknotes are polymer. Reproductions on paper are easy to tell apart by touch. PROPPS prints on 120gsm matte archival paper.\n3. **Business details.** An ABN, a physical address and a working phone number.\n4. **Honest descriptions.** The listing should say the notes are non-legal tender props.\n5. **Delivery.** Traceable shipping with a signature.\n6. **Policies.** Published shipping, refund and privacy policies.\n7. **Paperwork.** An invoice for the production file.`,
+      `1. **Specimen markings on every note.** Ask for a photo of the front and back of a real note.\n2. **Paper.** Genuine Australian banknotes are polymer. Reproductions on paper are easy to tell apart by touch. PROPPS prints on 120gsm matte archival paper.\n3. **Business details.** A business name, a physical address and a working phone number.\n4. **Honest descriptions.** The listing should say the notes are non-legal tender props.\n5. **Delivery.** Traceable shipping with a signature.\n6. **Policies.** Published shipping, refund and privacy policies.\n7. **Paperwork.** An invoice for the production file.`,
       `Our guide to [where to buy prop money in Australia legally](/blog/where-to-buy-prop-money-in-australia-legally/) goes through these in detail.`,
       `## Step four: size the order`,
       `Count the stacks the camera sees, add the hidden ones, double for repeat set-ups and keep one sealed as a reserve. Our guide to [how much prop money you need for a scene](/blog/how-much-prop-money-do-you-need-for-a-scene/) gives examples, and the stack tiers run from a Starter Stack at $115 to 100 Stacks at $14,000. Orders start at $150 AUD.`,
@@ -192,7 +192,7 @@ module.exports = [
       `Express Post needs a signature, so nominate someone at the delivery address. Dispatch leaves our Melbourne studio within 24 business hours of payment. Plan delivery a few days before the first cash scene, not the morning of. On arrival, check the count and the condition, file the invoice and store the notes with the prop master in a secure, dry place. Read [shipping and dispatch](/blog/shipping-and-dispatch-how-fast-can-you-get-prop-money-in-australia/) for timing.`,
       `## Step seven: keep the paperwork`,
       `A simple production file covers most questions from insurers, location owners and police:`,
-      `- The supplier's invoice, with the business name, ABN and address.\n- A photo of the front and back of a note.\n- A line in the call sheet or prop schedule naming the scene and the person responsible.\n- A log of notes in and out each day.`,
+      `- The supplier's invoice, with the business name and address.\n- A photo of the front and back of a note.\n- A line in the call sheet or prop schedule naming the scene and the person responsible.\n- A log of notes in and out each day.`,
       `Our [compliance page](/compliance/) and [Section 22 guide](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) explain the standard behind the markings.`,
       `## Common buying mistakes`,
       `- **Leaving it until the week of the shoot.** Express dispatch is fast, but a late order costs more.\n- **Choosing on price alone.** A cheap listing often means no markings, no invoice and no one to call.\n- **Forgetting the reserve.** A late change forces a rush.\n- **No storage plan.** Notes left in a car or on location are a risk.\n- **No paperwork.** A reshoot or an insurance question needs the file.`,
@@ -243,7 +243,7 @@ module.exports = [
       },
       {
         q: 'What should I check before buying currency props?',
-        a: 'Specimen markings on every note, paper rather than polymer, an ABN and address, honest descriptions, signed-for delivery and an invoice. See [where to buy prop money legally](/blog/where-to-buy-prop-money-in-australia-legally/).',
+        a: 'Specimen markings on every note, paper rather than polymer, a business name and address, honest descriptions, signed-for delivery and an invoice. See [where to buy prop money legally](/blog/where-to-buy-prop-money-in-australia-legally/).',
       },
       {
         q: 'How much should I budget for cash scenes?',

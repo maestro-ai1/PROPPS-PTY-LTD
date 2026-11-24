@@ -3,8 +3,6 @@ export declare const SITE: {
   name: string;
   tagline: string;
   domain: string;
-  abn: string;
-  abrUrl?: string;
   locale: string;
   currency: string;
   target: string;
@@ -16,7 +14,6 @@ export declare const SITE: {
 };
 
 export declare const CONTACT: {
-  abn?: string;
   email: string;
   phone: string;
   whatsapp: string;

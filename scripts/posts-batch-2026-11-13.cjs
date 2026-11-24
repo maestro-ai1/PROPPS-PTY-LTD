@@ -6,7 +6,7 @@ const AUSPOST = 'https://auspost.com.au/';
 const SAFETY = 'https://www.productsafety.gov.au/';
 const LAW = 'https://www.legislation.gov.au/';
 const KIT = '/shop/event-and-party-props/party-cash-cannon-kit/';
-const CLOSE = `The [Party Cash Cannon Kit](${KIT}) starts at the $150 AUD minimum order, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. We invoice with an ABN and ship from Eltham, Melbourne by [Australia Post Express](${AUSPOST}) with a signature on delivery. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.`;
+const CLOSE = `The [Party Cash Cannon Kit](${KIT}) starts at the $150 AUD minimum order, delivery is free from $500 AUD and cryptocurrency payments receive a 10% discount. We invoice and ship from Eltham, Melbourne by [Australia Post Express](${AUSPOST}) with a signature on delivery. See the [shipping policy](/shipping-policy/) for times and the [refund policy](/refund-policy/) for the 3 to 8 business day refund window.`;
 
 module.exports = [
   {
@@ -54,7 +54,7 @@ module.exports = [
       `- **Power.** Check whether it runs on batteries or a cable, and what is included.`,
       `- **Build.** A solid housing and a decent trigger last through a whole party, not just the first song.`,
       `- **The photo prop.** A clearly marked stack for the picture, kept separate from the notes you fire.`,
-      `- **Paperwork.** An Australian supplier who invoices with an ABN and ships with tracking.`,
+      `- **Paperwork.** An Australian supplier who invoices and ships with tracking.`,
       `## Planning how many notes you need`,
       `A cash cannon fires notes quickly. A hundred notes can be gone in under half a minute, so plan the moment. For a reveal or a first-dance finale, a single load is plenty. For a longer party, keep a spare pack and a helper to reload. If you want to run a casino night or game stall as well, use [play money for events](/shop/event-and-party-props/) for the tables, kept separate from the cannon's notes.`,
       `## Money gun, confetti cannon or something else?`,

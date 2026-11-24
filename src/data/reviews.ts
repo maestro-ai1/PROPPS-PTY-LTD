@@ -75,7 +75,7 @@ export const REVIEWS_DATA: Review[] = [
     rating: 5,
     title: 'Tax invoices and compliance paperwork ready for audit',
     comment:
-      'From a production accounting perspective, PROPPS makes life effortless. Detailed itemized tax invoices with valid ABN 72 642 507 042, certificates of simulation for our studio insurance underwriter, and consistent pallet-level packaging. Best B2B supplier in Australia.',
+      'From a production accounting perspective, PROPPS makes life effortless. Detailed itemized tax invoices, certificates of simulation for our studio insurance underwriter, and consistent pallet-level packaging. Best B2B supplier in Australia.',
     date: '2 weeks ago',
     category: 'wholesale',
     verified: true,

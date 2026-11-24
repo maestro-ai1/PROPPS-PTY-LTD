@@ -170,7 +170,7 @@ const POSTS_B = [
       `## Party ideas that use fake money`,
       `- **Casino night.** Give each guest a starting stack and let them play. Winners swap their winnings for a prize at the end of the night.\n- **Birthday party.** Use notes as table decoration, a treasure-hunt reward or a themed backdrop for photos.\n- **Wedding and hens or bucks nights.** Notes work as photo props, a "dollar dance" theme, or decor for a retro casino table. Keep them away from real tips and gifts so no one mixes them up.\n- **Kids and teen parties.** A pretend shop or bank game with play money keeps younger guests busy. See [monetary toys and play money sets](/blog/monetary-toys-and-play-money-sets-for-kids/).\n- **Fundraisers and raffles.** A table of notes sets the tone for a themed auction.`,
       `## What to look for in party fake money`,
-      `1. **Clear markings.** A visible specimen marking makes it obvious the notes are not real.\n2. **Sturdy paper.** Party notes get dealt, folded and spilled. Matte archival paper survives longer than thin novelty stock.\n3. **A mix of denominations.** Casino games need small notes for betting and large ones for the cash-out.\n4. **Enough quantity.** Plan a stack per player at a casino table.\n5. **A supplier with an ABN and an invoice.** Venues and councils sometimes ask where the props came from.`,
+      `1. **Clear markings.** A visible specimen marking makes it obvious the notes are not real.\n2. **Sturdy paper.** Party notes get dealt, folded and spilled. Matte archival paper survives longer than thin novelty stock.\n3. **A mix of denominations.** Casino games need small notes for betting and large ones for the cash-out.\n4. **Enough quantity.** Plan a stack per player at a casino table.\n5. **A supplier with a business name and an invoice.** Venues and councils sometimes ask where the props came from.`,
       `Our [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/) is built for this, and the full [play money range](/shop/event-and-party-props/) shows other sizes.`,
       `## How much to buy`,
       `A simple rule: one mixed stack per player for a casino night, one bundle per table for decoration, and a small bundle per child for a pretend shop. For a 40-guest casino evening with five tables, plan about eight stacks in total (one per table for the house, plus player stacks). Order a margin for lost and damaged notes.`,
@@ -192,7 +192,7 @@ const POSTS_B = [
       { q: 'How much fake money do I need for a casino night?', a: 'Plan one mixed stack per player plus a house stack for each table. Add a margin for lost and damaged notes. Browse the [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/).' },
       { q: 'Can I use fake money at a wedding?', a: 'Yes, as decor, a photo prop or a casino-table theme. Keep it away from real gifts and tips. See the [play money range](/shop/event-and-party-props/).' },
       { q: 'What is the difference between play money and prop money?', a: 'Play money is for games and learning, while prop money is a film-grade reproduction for photos and productions. Both must be clearly marked. Read [play money vs prop money](/blog/play-money-vs-prop-money-which-one-do-you-need/).' },
-      { q: 'How do I order party money in Australia?', a: 'Order online from an Australian supplier with an ABN. PROPPS ships from Melbourne by Express Post with signature. See the [shipping policy](/shipping-policy/).' }
+      { q: 'How do I order party money in Australia?', a: 'Order online from an Australian supplier with a business name. PROPPS ships from Melbourne by Express Post with signature. See the [shipping policy](/shipping-policy/).' }
     ],
     updated: '2026-10-26',
   },
@@ -220,7 +220,7 @@ const POSTS_B = [
       `The [Reserve Bank](${RBA}) publishes guidance on reproducing banknotes, and the offences are in the Commonwealth [Crimes (Currency) Act 1981](${LAW}). Both focus on whether a reproduction could be mistaken for a genuine note. Material is one of the clearest differences a person can feel in the hand:`,
       `| | Paper specimen prop note | Polymer lookalike |\n|---|---|---|\n| Feels like | Paper | Plastic, close to a real note |\n| Specimen marking | Permanent, prominent | Often faint, small or missing |\n| Distinct from real notes | Yes, by material and marking | Much less |\n| Overseas shipping risk | Lower | Higher; parcels can be held at the border |\n| Typical use | Film, TV, theatre, photography | Often marketed with misleading claims |`,
       `## Red flags in polymer prop listings`,
-      `- Claims that notes "pass the pen test", are "undetectable" or "indistinguishable".\n- Specimen markings described as "optional" or removable.\n- No Australian ABN, address or phone number.\n- Discreet or unmarked packaging sold as a benefit.\n- Delivery from overseas with no tracking or signature.`,
+      `- Claims that notes "pass the pen test", are "undetectable" or "indistinguishable".\n- Specimen markings described as "optional" or removable.\n- No Australian business name, address or phone number.\n- Discreet or unmarked packaging sold as a benefit.\n- Delivery from overseas with no tracking or signature.`,
       `Any one of these is a reason to walk away. Our guide to [the legal difference between fake money and prop money](/blog/fake-money-vs-prop-money-the-legal-difference-in-australia/) explains why, and [local vs overseas prop money suppliers](/blog/local-vs-overseas-prop-money-suppliers-compared/) compares the options.`,
       `## What a compliant paper prop looks like`,
       `A PROPPS note is printed double-sided on matte archival paper and carries permanent specimen markings. The size, material and treatment deliberately differ from a genuine note, so the prop reads as money on camera and as a reproduction in the hand. You can see the standard on our [compliance page](/compliance/), and the guide to [Crimes Act and RBA prop money rules](/blog/crimes-currency-act-1981-rba-prop-money-guidelines/) goes into detail.`,
@@ -230,7 +230,7 @@ const POSTS_B = [
       `## Overseas polymer: the shipping and customs problem`,
       `Polymer lookalikes ordered from overseas can be seized or held at the border, delaying a shoot. Local supply avoids this, and an Australian supplier gives you an invoice, a contact and recourse if a count is wrong. Our post on [where to buy prop money legally](/blog/where-to-buy-prop-money-in-australia-legally/) sets out the steps.`,
       `## A buyer checklist`,
-      `1. Ask for a close-up photo of an actual note, front and back, with the marking visible.\n2. Confirm the material and how it differs from a genuine note.\n3. Check for an ABN, a physical address and a phone number.\n4. Confirm signed-for delivery and an invoice.\n5. Read the refund terms.`,
+      `1. Ask for a close-up photo of an actual note, front and back, with the marking visible.\n2. Confirm the material and how it differs from a genuine note.\n3. Check for a business name, a physical address and a phone number.\n4. Confirm signed-for delivery and an invoice.\n5. Read the refund terms.`,
       `${CLOSE}`
     ),
     faqs: [
@@ -266,7 +266,7 @@ const POSTS_B = [
       `## What to check on the notes`,
       `1. **A clear play or specimen marking.** This makes the notes safe to use in games and classrooms. Reproductions of banknotes are regulated; the Reserve Bank explains its approach on its [banknote pages](${RBA}).\n2. **Australian denominations.** A set with $5, $10, $20, $50 and $100 notes lets children practise change-making in dollars.\n3. **Paper weight.** Thin notes tear in the first game.\n4. **Print quality.** Clear numbers and bright colours help young children tell values apart.\n5. **Pack size.** Count the notes per pack, not just the pack price.`,
       `## What to check on the seller`,
-      `- An ABN and a physical address.\n- A clear return policy. Ours is set out on the [refund policy](/refund-policy/) page with refunds in 3 to 8 business days.\n- A stated delivery time and tracking. We dispatch by [Australia Post Express](${AUSPOST}) with signature.\n- An invoice for schools and councils.`,
+      `- A business name and a physical address.\n- A clear return policy. Ours is set out on the [refund policy](/refund-policy/) page with refunds in 3 to 8 business days.\n- A stated delivery time and tracking. We dispatch by [Australia Post Express](${AUSPOST}) with signature.\n- An invoice for schools and councils.`,
       `## Play money by age and use`,
       `**Under 5.** Chunky coins and thick notes of low value. Keep small coins away from toddlers because they can be a choking hazard; see [Product Safety Australia](https://www.productsafety.gov.au/).`,
       `**Ages 6 to 8.** A full mixed set for shop and cafe games.`,
@@ -284,7 +284,7 @@ const POSTS_B = [
       { q: 'Is Australian play money legal?', a: 'Yes, when it is clearly marked as play money or a specimen and never used as payment. The Reserve Bank explains its approach on its [banknote pages](https://www.rba.gov.au/banknotes/).' },
       { q: 'What should an Australian play money set include?', a: 'Notes in $5, $10, $20, $50 and $100 denominations, sturdy paper and a clear play marking. Read [monetary toys and play money sets](/blog/monetary-toys-and-play-money-sets-for-kids/).' },
       { q: 'Is printable play money a good option?', a: 'It is fine for one lesson, but it is flimsy and needs cutting. A ready-made set lasts longer. See [toy money for kids games and learning](/blog/toy-money-and-play-money-for-kids-games-and-learning/).' },
-      { q: 'Can schools order play money in bulk?', a: 'Yes. PROPPS invoices with an ABN and ships by Express Post, with orders from $150 AUD. See the [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/).' }
+      { q: 'Can schools order play money in bulk?', a: 'Yes. PROPPS invoices and ships by Express Post, with orders from $150 AUD. See the [event and party prop cash pack](/shop/event-and-party-props/event-and-party-prop-cash-pack/).' }
     ],
     updated: '2026-10-26',
   },
