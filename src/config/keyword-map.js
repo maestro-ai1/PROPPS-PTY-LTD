@@ -154,6 +154,17 @@ export const KEYWORD_POSTS = {
   'fake-money-for-classroom-play-money-lessons-by-year-level': k('fake money for classroom', 'T', 20, 14),
   // 2026-11-13 money gun cluster (Semrush AU, refreshed)
   'money-gun-australia-how-a-cash-cannon-works-and-party-rules': k('money gun australia', 'I', 20, 17),
+  // 2026-11-28 batch (Semrush AU, refreshed; fake-money and play-money searcher language, compliance-safe)
+  'play-money-kmart-vs-a-prop-money-supplier-what-to-buy-in-australia': k('play money kmart', 'T/N', 260, 28),
+  'play-money-printouts-australia-print-at-home-or-buy-a-ready-made-set': k('play money printouts', 'I', 210, 19),
+  'monopoly-money-vs-australian-play-money-what-to-use-for-board-games-and-parties': k('monopoly money', 'I', 1600, 28),
+  'how-much-money-do-you-start-with-in-the-monopoly-game-and-how-to-play-with-more': k('how much money do you start with in monopoly game', 'I', 1300, 15),
+  'buy-movie-props-in-australia-prop-money-and-where-to-find-it': k('buy movie props', 'T', 110, 24),
+  'toy-shop-money-games-play-money-for-pretend-shops-and-kids-learning': k('toy shop money game', 'I', 260, 18),
+  'bundle-of-money-prop-cash-bundles-and-stacks-for-film-photos-and-events': k('bundle of money', 'I', 90, 25),
+  'fake-money-for-film-what-productions-should-use-and-how-to-buy-it-legally': k('fake money for film', 'I', 20, 6),
+  'night-at-the-casino-party-play-money-games-and-setup-for-a-casino-night': k('night at the casino', 'I', 170, 26),
+  'monopoly-money-amounts-every-denomination-and-how-many-notes-are-in-the-bank': k('money amounts for monopoly', 'I', 390, 28),
 }
 
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).
