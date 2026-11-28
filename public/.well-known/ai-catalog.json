@@ -2,14 +2,14 @@
   "specVersion": "1.0",
   "host": {
     "displayName": "PROPPS PTY LTD",
-    "documentationUrl": "https://proppsptyltd.com.au/llms.txt"
+    "documentationUrl": "https://aupropmoney.com/llms.txt"
   },
   "entries": [
     {
-      "identifier": "urn:air:proppsptyltd.com.au:catalog:products",
+      "identifier": "urn:air:aupropmoney.com:catalog:products",
       "displayName": "PROPPS PTY LTD Product Catalog",
       "type": "application/json",
-      "url": "https://proppsptyltd.com.au/api/products",
+      "url": "https://aupropmoney.com/api/products",
       "representativeQueries": [
         "Show me all Australian prop money products",
         "What prop currency does PROPPS sell?",
@@ -17,30 +17,30 @@
       ]
     },
     {
-      "identifier": "urn:air:proppsptyltd.com.au:catalog:categories",
+      "identifier": "urn:air:aupropmoney.com:catalog:categories",
       "displayName": "PROPPS PTY LTD Categories",
       "type": "application/json",
-      "url": "https://proppsptyltd.com.au/api/categories",
+      "url": "https://aupropmoney.com/api/categories",
       "representativeQueries": [
         "What categories of prop money are available?",
         "Browse prop currency by category"
       ]
     },
     {
-      "identifier": "urn:air:proppsptyltd.com.au:catalog:search",
+      "identifier": "urn:air:aupropmoney.com:catalog:search",
       "displayName": "PROPPS PTY LTD Product Search",
       "type": "application/json",
-      "url": "https://proppsptyltd.com.au/api/search",
+      "url": "https://aupropmoney.com/api/search",
       "representativeQueries": [
         "Search for $100 prop notes under $200",
         "Find play money for a party"
       ]
     },
     {
-      "identifier": "urn:air:proppsptyltd.com.au:mcp:server",
+      "identifier": "urn:air:aupropmoney.com:mcp:server",
       "displayName": "PROPPS PTY LTD MCP Server",
       "type": "application/json",
-      "url": "https://proppsptyltd.com.au/api/mcp",
+      "url": "https://aupropmoney.com/api/mcp",
       "representativeQueries": [
         "Connect to PROPPS PTY LTD via MCP",
         "What tools does the PROPPS MCP server expose?"

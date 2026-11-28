@@ -7,10 +7,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.proppsptyltd.com.au"
+          "value": "www.aupropmoney.com"
         }
       ],
-      "destination": "https://proppsptyltd.com.au/:path*",
+      "destination": "https://aupropmoney.com/:path*",
       "permanent": true
     }
   ],

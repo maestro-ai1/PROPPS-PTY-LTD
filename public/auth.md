@@ -8,23 +8,23 @@ No authentication required. All resources are publicly accessible.
 ## Public Resources
 | Resource | URL |
 |---|---|
-| Product Catalog | https://proppsptyltd.com.au/shop/ |
-| Production Guides | https://proppsptyltd.com.au/blog/ |
-| FAQ | https://proppsptyltd.com.au/faq/ |
-| Wholesale Studio Supply | https://proppsptyltd.com.au/wholesale/ |
-| Compliance Guidelines | https://proppsptyltd.com.au/compliance/ |
-| Contact | https://proppsptyltd.com.au/contact/ |
-| Products API | https://proppsptyltd.com.au/api/products |
-| Categories API | https://proppsptyltd.com.au/api/categories |
-| Search API | https://proppsptyltd.com.au/api/search |
-| MCP Server | https://proppsptyltd.com.au/api/mcp |
+| Product Catalog | https://aupropmoney.com/shop/ |
+| Production Guides | https://aupropmoney.com/blog/ |
+| FAQ | https://aupropmoney.com/faq/ |
+| Wholesale Studio Supply | https://aupropmoney.com/wholesale/ |
+| Compliance Guidelines | https://aupropmoney.com/compliance/ |
+| Contact | https://aupropmoney.com/contact/ |
+| Products API | https://aupropmoney.com/api/products |
+| Categories API | https://aupropmoney.com/api/categories |
+| Search API | https://aupropmoney.com/api/search |
+| MCP Server | https://aupropmoney.com/api/mcp |
 
 ## OAuth Protected Resource Metadata
 
 This site has no protected resources requiring OAuth. Metadata is published per
-RFC 9728 at [/.well-known/oauth-protected-resource](https://proppsptyltd.com.au/.well-known/oauth-protected-resource)
+RFC 9728 at [/.well-known/oauth-protected-resource](https://aupropmoney.com/.well-known/oauth-protected-resource)
 and the authorization server metadata (with an `agent_auth` block) is at
-[/.well-known/oauth-authorization-server](https://proppsptyltd.com.au/.well-known/oauth-authorization-server).
+[/.well-known/oauth-authorization-server](https://aupropmoney.com/.well-known/oauth-authorization-server).
 
 ## Authentication
 

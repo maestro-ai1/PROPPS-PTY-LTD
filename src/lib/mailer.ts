@@ -31,7 +31,7 @@ export async function sendMail(opts: MailerOptions): Promise<MailerResult> {
   const host = typeof process !== 'undefined' ? process.env?.EMAIL_SERVER_HOST : undefined;
   const user = typeof process !== 'undefined' ? process.env?.EMAIL_SERVER_USER : undefined;
   const pass = typeof process !== 'undefined' ? process.env?.EMAIL_SERVER_PASSWORD : undefined;
-  const from = (typeof process !== 'undefined' ? process.env?.EMAIL_FROM : undefined) || 'noreply@proppsptyltd.com.au';
+  const from = (typeof process !== 'undefined' ? process.env?.EMAIL_FROM : undefined) || 'noreply@aupropmoney.com';
 
   if (!host || !user || !pass) {
     console.error('[mailer] not configured: missing EMAIL_SERVER_HOST/USER/PASSWORD');

@@ -30,7 +30,7 @@ derive directly from `src/config/site.js` via `npm run gen`.
 - Minimum order: $150 AUD. Free shipping threshold: $500 AUD. Crypto discount: 10%.
 
 ## Live Placeholders
-- `SITE.domain`: currently `proppsptyltd.com.au` (update in `src/config/site.js` when final DNS is pointed — this is the single source of truth; never hand-edit a domain into any other file).
+- `SITE.domain`: currently `aupropmoney.com` (update in `src/config/site.js` when final DNS is pointed — this is the single source of truth; never hand-edit a domain into any other file).
 - `EMAIL_SERVER_*`: SMTP credentials in `.env` (without them, `sendMail()` returns `{sent:false}` gracefully and logs locally).
 - `ADMIN_PASSCODE`: default dev passcode `PROPPS2026`.
 - `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`: Upstash Redis store (uses localStorage fallback if absent).

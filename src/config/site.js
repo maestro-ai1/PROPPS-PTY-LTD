@@ -4,7 +4,7 @@
 export const SITE = {
   name: 'PROPPS PTY LTD',
   tagline: 'Cinema-Grade Reproduction Australian Prop Money for Film, Television & Visual Arts',
-  domain: 'proppsptyltd.com.au',
+  domain: 'aupropmoney.com',
   locale: 'en-AU',
   currency: 'AUD',
   target: 'vercel',
@@ -37,7 +37,7 @@ export const SITE = {
 }
 
 export const CONTACT = {
-  email: 'sales&#64;proppsptyltd.com.au',
+  email: 'sales&#64;aupropmoney.com',
   phone: '+61 420 128 746',
   whatsapp: '+61 420 128 746',
   address: 'Suite 4, 95 Main Road, Eltham, VIC 3093, Australia',
@@ -55,7 +55,7 @@ export const SHOP = {
 
 export const FORMS = {
   provider: 'smtp',
-  smtpFrom: 'sales@proppsptyltd.com.au',
+  smtpFrom: 'sales@aupropmoney.com',
   web3formsKey: '',
   resendFrom: '',
   turnstileSiteKey: '',
@@ -68,7 +68,7 @@ export const REPLY = {
   headerTagline: 'Australian Prop Money · Eltham, Melbourne VIC 3093',
   dispatchLine: 'Dispatched via Australia Post Express with end-to-end tracking, fast and safe delivery. Refunded if not satisfied.',
   bizNumber: null, // business number deliberately not published (owner decision 2026-11-24)
-  channels: { email: 'sales&#64;proppsptyltd.com.au', whatsapp: '+61420128746', whatsappCountryCode: '61' },
+  channels: { email: 'sales&#64;aupropmoney.com', whatsapp: '+61420128746', whatsappCountryCode: '61' },
   deadlineHours: 48,
   paymentMethods: [
     {

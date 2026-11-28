@@ -4,15 +4,15 @@
     "name": "PROPPS PTY LTD",
     "version": "1.0.0",
     "description": "Cinema-Grade Reproduction Australian Prop Money for Film, Television & Visual Arts",
-    "homepage": "https://proppsptyltd.com.au",
+    "homepage": "https://aupropmoney.com",
     "contact": {
-      "email": "sales@proppsptyltd.com.au",
+      "email": "sales@aupropmoney.com",
       "whatsapp": "+61420128746"
     }
   },
   "transport": {
     "type": "http",
-    "endpoint": "https://proppsptyltd.com.au/api/mcp"
+    "endpoint": "https://aupropmoney.com/api/mcp"
   },
   "capabilities": {
     "tools": [
@@ -85,17 +85,17 @@
       {
         "name": "product-catalog",
         "description": "Full prop currency catalog",
-        "uri": "https://proppsptyltd.com.au/shop/"
+        "uri": "https://aupropmoney.com/shop/"
       },
       {
         "name": "wholesale",
         "description": "Studio B2B wholesale pricing tiers",
-        "uri": "https://proppsptyltd.com.au/wholesale/"
+        "uri": "https://aupropmoney.com/wholesale/"
       },
       {
         "name": "blog",
         "description": "Cinematography lighting and camera guide",
-        "uri": "https://proppsptyltd.com.au/blog/"
+        "uri": "https://aupropmoney.com/blog/"
       }
     ],
     "commerce": {

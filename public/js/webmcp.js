@@ -11,7 +11,7 @@
           if (query) params.set('q', query);
           if (category) params.set('category', category);
           if (max_price) params.set('max_price', max_price);
-          const res = await fetch(`https://proppsptyltd.com.au/api/search?${params}`);
+          const res = await fetch(`https://aupropmoney.com/api/search?${params}`);
           return res.json();
         }
       },
@@ -20,7 +20,7 @@
         description: "Browse cinema props by category",
         inputSchema: { type: "object", properties: { category: { type: "string" } } },
         execute: async ({ category }) => {
-          const url = category ? `https://proppsptyltd.com.au/shop/${category}/` : `https://proppsptyltd.com.au/shop/`;
+          const url = category ? `https://aupropmoney.com/shop/${category}/` : `https://aupropmoney.com/shop/`;
           window.location.href = url;
           return { url };
         }
@@ -40,8 +40,8 @@
         description: "Get studio wholesale bulk pricing tiers",
         inputSchema: { type: "object", properties: {} },
         execute: async () => {
-          window.location.href = `https://proppsptyltd.com.au/wholesale/`;
-          return { url: `https://proppsptyltd.com.au/wholesale/` };
+          window.location.href = `https://aupropmoney.com/wholesale/`;
+          return { url: `https://aupropmoney.com/wholesale/` };
         }
       },
       {
@@ -49,8 +49,8 @@
         description: "Contact PROPPS PTY LTD Melbourne fulfillment desk",
         inputSchema: { type: "object", properties: {} },
         execute: async () => {
-          window.location.href = `https://proppsptyltd.com.au/contact/`;
-          return { url: `https://proppsptyltd.com.au/contact/` };
+          window.location.href = `https://aupropmoney.com/contact/`;
+          return { url: `https://aupropmoney.com/contact/` };
         }
       }
     ]
