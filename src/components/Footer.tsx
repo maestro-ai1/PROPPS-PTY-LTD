@@ -119,6 +119,12 @@ export const Footer: React.FC = () => {
             </p>
             <ul className="space-y-2 text-xs">
               <li>
+                <Link href="/locations/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
+                  <span className="group-hover:translate-x-1 transition-transform">Delivery Locations</span>
+                  <span className="text-[10px] font-mono-code text-[#6F665F]">AU wide</span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/shipping-policy/" className="hover:text-[#D4AF37] transition-colors text-left w-full flex items-center justify-between group">
                   <span className="group-hover:translate-x-1 transition-transform">Shipping Policy</span>
                   <span className="text-[10px] font-mono-code text-[#6F665F]">Express</span>

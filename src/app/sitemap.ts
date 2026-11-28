@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE, CATEGORIES, PRODUCTS, POSTS } from '../config/site.js';
 import { TAGS } from '../config/tags.js';
+import { LOCATIONS } from '../config/locations.js';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = `https://${SITE.domain}`;
@@ -54,6 +55,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [`${base}/images/blog/${post.image}`],
   }));
 
+  const locationRoutes: MetadataRoute.Sitemap = [
+    { url: `${base}/locations/`, lastModified: new Date('2026-11-28'), changeFrequency: 'monthly', priority: 0.6, alternates: alt('/locations/') },
+    ...LOCATIONS.map((l) => ({ url: `${base}/locations/${l.slug}/`, lastModified: new Date('2026-11-28'), changeFrequency: 'monthly' as const, priority: 0.6, alternates: alt(`/locations/${l.slug}/`) })),
+  ];
+
   const tagRoutes: MetadataRoute.Sitemap = [
     { url: `${base}/tags/`, lastModified: tagsDate, changeFrequency: 'monthly', priority: 0.4, alternates: alt('/tags/') },
     ...TAGS.map((t) => ({
@@ -65,5 +71,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...tagRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...locationRoutes, ...tagRoutes];
 }

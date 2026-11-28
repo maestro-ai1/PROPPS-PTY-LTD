@@ -8,6 +8,34 @@
 const k = (keyword, intent, vol, kd) => ({ keyword, intent, vol, kd })
 
 export const KEYWORD_PAGES = {
+  '/locations/sydney': {
+    focus: k('prop money sydney', 'T', null, 21),
+    secondary: [k('fake money sydney', 'I/T', null, null), k('buy prop money sydney', 'T', null, null), k('film prop money sydney', 'C', null, null), k('prop money delivery sydney', 'T', null, null)],
+  },
+  '/locations/melbourne': {
+    focus: k('prop money melbourne', 'T', null, 27),
+    secondary: [k('fake money melbourne', 'I/T', null, null), k('buy prop money melbourne', 'T', null, null), k('film prop money melbourne', 'C', null, null), k('prop money delivery melbourne', 'T', null, null)],
+  },
+  '/locations/brisbane': {
+    focus: k('prop money brisbane', 'T', null, null),
+    secondary: [k('fake money brisbane', 'I/T', null, null), k('buy prop money brisbane', 'T', null, null), k('film prop money brisbane', 'C', null, null), k('prop money delivery brisbane', 'T', null, null)],
+  },
+  '/locations/perth': {
+    focus: k('prop money perth', 'T', null, null),
+    secondary: [k('fake money perth', 'I/T', null, null), k('buy prop money perth', 'T', null, null), k('film prop money perth', 'C', null, null), k('prop money delivery perth', 'T', null, null)],
+  },
+  '/locations/adelaide': {
+    focus: k('prop money adelaide', 'T', null, null),
+    secondary: [k('fake money adelaide', 'I/T', null, null), k('buy prop money adelaide', 'T', null, null), k('film prop money adelaide', 'C', null, null), k('prop money delivery adelaide', 'T', null, null)],
+  },
+  '/locations/canberra': {
+    focus: k('prop money canberra', 'T', null, null),
+    secondary: [k('fake money canberra', 'I/T', null, null), k('buy prop money canberra', 'T', null, null), k('film prop money canberra', 'C', null, null), k('prop money delivery canberra', 'T', null, null)],
+  },
+  '/locations/gold-coast': {
+    focus: k('prop money gold coast', 'T', null, null),
+    secondary: [k('fake money gold coast', 'I/T', null, null), k('buy prop money gold coast', 'T', null, null), k('film prop money gold coast', 'C', null, null), k('prop money delivery gold coast', 'T', null, null)],
+  },
   '/': {
     focus: k('australian prop money', 'I/C', 720, 4),
     secondary: [k('prop money australia', 'C', 590, 27), k('props australia', 'N/C', 110, 18), k('props money', 'I/C', 50, 6), k('au props', 'C', 50, 12), k('props for sale australia', 'T', 20, 0)],
@@ -22,7 +50,7 @@ export const KEYWORD_PAGES = {
   },
   '/contact': {
     focus: k('prop shop melbourne', 'I', 20, 19),
-    secondary: [k('prop money melbourne', 'I/T', null, 27), k('prop money sydney', 'I/T', null, 21), k('contact propps', 'T/N', null, 17), k('fake money sydney', 'I/T', 30, 26)],
+    secondary: [k('contact propps', 'T/N', null, 17)],
   },
   '/shop/new-notes': {
     // 2026-10-20: au prop money 390/KD19 is the largest easy commercial term (the .org is only #4), so it is the primary.
@@ -165,6 +193,9 @@ export const KEYWORD_POSTS = {
   'fake-money-for-film-what-productions-should-use-and-how-to-buy-it-legally': k('fake money for film', 'I', 20, 6),
   'night-at-the-casino-party-play-money-games-and-setup-for-a-casino-night': k('night at the casino', 'I', 170, 26),
   'monopoly-money-amounts-every-denomination-and-how-many-notes-are-in-the-bank': k('money amounts for monopoly', 'I', 390, 28),
+  // 2026-11-28 owner decision: fake-money head terms (owner has the final say on KD)
+  'fake-money-for-sale-in-australia-realistic-fake-money-notes-for-film-photos-and-parties': k('fake money', 'C', 1600, 31),
+  'fake-australian-money-buy-realistic-fake-australian-notes-for-sets-shoots-and-parties': k('fake australian money', 'I', 720, 29),
 }
 
 // Keywords researched on 2026-10-20 that are deliberately NOT mapped, with the reason (nothing omitted).
@@ -179,7 +210,6 @@ export const KEYWORD_HOLD = [
   { keyword: 'prop hire melbourne', intent: 'C', vol: 170, kd: 15, type: 'pool', reason: 'We sell, not hire. A short-hire service would unlock this and prop hire sydney (140/29)' },
   { keyword: 'prop money', intent: 'C', vol: 480, kd: 33, type: 'pool', reason: 'KD over 28. Supporting copy now; target after the head terms rank and links build' },
   { keyword: 'imitation money', intent: 'I', vol: 1300, kd: 38, type: 'pool', reason: 'KD 38 (was 25). Supporting copy only' },
-  { keyword: 'fake money', intent: 'C', vol: 1600, kd: 36, type: 'pool', reason: 'KD over 28 and ambiguous intent. Supporting copy only' },
   { keyword: '$5 note australia', intent: 'I', vol: 320, kd: 44, type: 'pool', reason: 'KD 44. Covered by 5 dollar note australia (880/21)' },
   { keyword: 'movie props', intent: 'C', vol: 260, kd: 49, type: 'pool', reason: 'KD 49 and generic props we do not stock' },
   { keyword: 'money for teaching', intent: 'I', vol: 70, kd: 35, type: 'pool', reason: 'KD 35' },

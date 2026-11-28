@@ -23,3 +23,16 @@ const COVERS = [
     console.log(slug.slice(0, 40), (await sharp(file).metadata()).width + 'x750');
   }
 })();
+// batch C covers
+(async () => {
+  const more = [
+    ['fake-money-for-sale-in-australia-realistic-fake-money-notes-for-film-photos-and-parties', 'blog/blog-bundled-stacks.jpg', 0.5],
+    ['fake-australian-money-buy-realistic-fake-australian-notes-for-sets-shoots-and-parties', 'blog/blog-100-fan-handheld.jpg', 0.5],
+  ];
+  for (const [slug, src, pos] of more) {
+    const m = await sharp(IMG + src).metadata();
+    const height = Math.min(m.height, Math.round(m.width / 1.6));
+    const top = Math.round((m.height - height) * pos);
+    await sharp(IMG + src).extract({ left: 0, top, width: m.width, height }).resize(1200, 750).webp({ quality: 76 }).toFile(IMG + 'blog/' + slug + '.webp');
+  }
+})();
